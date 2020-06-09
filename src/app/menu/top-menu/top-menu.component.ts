@@ -19,6 +19,7 @@ export class TopMenuComponent implements OnInit {
   @Input() resources;
   hasAccount: boolean;
   user$ = new Observable<User>(null);
+  user: User;
 
   constructor(
     private accountService: AccountService,
@@ -36,6 +37,7 @@ export class TopMenuComponent implements OnInit {
         this.hasAccount = true;
       }
     });
+    this.user = this.setMockUser();
   }
 
   showLogoutModal() {
@@ -60,4 +62,14 @@ export class TopMenuComponent implements OnInit {
   trocaMenuLateral() {
     this.sidemenuService.trocar();
   }
+
+  setMockUser(): User {
+    return {
+      nome_completo: "Usuário Teste",
+      primeiro_nome: "Usuário",
+      matricula: "C123456",
+      roles: []
+    };
+  }
+
 }
