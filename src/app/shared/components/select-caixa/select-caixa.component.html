@@ -1,0 +1,26 @@
+<div #wrapper class="input-caixa-wrapper border-bottom-0">
+	<div class="input-caixa-label d-block w-100">
+	  <ng-content select="label"></ng-content>  
+	  <ng-content select=".label"></ng-content>
+	  <ng-content select="app-tooltip-icon"></ng-content>
+	</div>
+	<div class="input-caixa-flex-field d-inline-flex w-100 align-items-baseline bg-white">
+	  <div class="input-caixa-field d-block w-100">
+		 <ng-content></ng-content>
+	  </div>
+	  <div *ngIf="formInput?.dirty" class="input-caixa-feedback-icon rounded-circle my-auto ripple ripple-dark d-inline-block px-2 py-1" 
+	  role="button" (click)="reset()"
+		 [ngClass]="{'text-success': formInput?.valid, 'text-danger': formInput?.invalid}">
+		 <i *ngIf="formInput?.valid" class="fas fa-check" title="Resetar campo"></i>
+		 <i *ngIf="formInput?.invalid" class="fas fa-exclamation-triangle" title="Resetar campo"></i>
+	  </div>
+	</div>
+ </div>
+
+ <div id="feedbackMessage" class="w-100 text-right">
+	<ng-container class="w-100 text-right" *ngIf="(formInput?.untouched || formInput?.valid)">
+	  <small class="font-italic">
+		 {{ isRequired(formInput) ? "Obrigatório" : "" }}
+	  </small>
+	</ng-container>
+</div>

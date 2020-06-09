@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-6">
+        <h5 class="mb-4">Informe os dados da conta a ser ativada
+            <a class="ml-2" href="https://developers.facebook.com/docs/whatsapp/api/account" target="_blank"><i class="fas fa-question-circle"></i></a>
+        </h5>
+        <form [formGroup]="activationForm" class="form-caixa">
+            <div class="row mt-3">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="countryCode">Código do país</label>
+                        <input name='countryCode' formControlName="countryCode" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input name='phone' formControlName="phone" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputFormaAtiv">Forma de ativação</label>
+                <select name='channel' formControlName="channel" class="form-control custom-select">
+                    <option value="sms">SMS</option>
+                    <option value="voice">Voz</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="textareaCertificado">Certificado</label>
+                <textarea name='cert' formControlName="cert" class="form-control clearable"></textarea>
+            </div>
+
+        </form>
+        <hr class="my-5 d-block d-lg-none">
+    </div>
+
+    <div class="col-md-6">
+        <h5 class="mb-4">Informe o código recebido por SMS ou Voz para concluir a ativação
+            <a class="ml-2" href="https://developers.facebook.com/docs/whatsapp/api/account#verify" target="_blank">
+                <i class="fas fa-question-circle"></i>
+            </a>
+        </h5>
+        <form [formGroup]="codeSendForm" class="form-caixa">
+            <div class="form-group">
+                <label for="code">Código de registro</label>
+                <input name='code' formControlName="code" class="form-control" type="text">
+            </div>
+
+        </form>
+    </div>
+</div>

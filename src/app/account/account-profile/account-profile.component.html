@@ -1,0 +1,81 @@
+<div class="d-flex align-items-center mb-2">
+  <h3 class="header-caixa-principal mb-0">
+    Detalhamento
+  </h3>
+  <span class="text-info ml-2">{{ account?.getTelefoneFormatado() }}</span>
+</div>
+
+<hr class="mt-0">
+
+<app-back-button></app-back-button>
+
+<ng-container *ngIf="account">
+  <ul class="nav nav-pills nav-fill border-bottom tab-caixa" id="tabsConsultarConta" role="tablist">
+    <li class="nav-item ripple ripple-dark">
+      <a class="nav-link nav-link-caixa active" id="sobre-tab" data-toggle="tab" href="#tab-sobre" role="tab" aria-controls="profile" aria-selected="false">
+        <i class="fas fa-id-card-alt fa-lg mr-2"></i>Sobre</a>
+    </li>
+    <li class="nav-item ripple ripple-dark">
+      <a class="nav-link nav-link-caixa" id="perfil-tab" data-toggle="tab" href="#tab-perfil" role="tab" aria-controls="profile" aria-selected="false">
+    <i class="fas fa-id-card fa-lg mr-2"></i>Perfil Comercial</a>
+    </li>
+    <li class="nav-item ripple ripple-dark">
+      <a class="nav-link nav-link-caixa" id="param-tab" data-toggle="tab" href="#tab-param" role="tab" aria-controls="contact" aria-selected="false">
+        <i class="fas fa-check-square fa-lg mr-2"></i>Parâmetros</a>
+    </li>
+    <li class="nav-item ripple ripple-dark">
+      <a class="nav-link nav-link-caixa" id="config-tab" data-toggle="tab" href="#tab-config" role="tab" aria-controls="contact" aria-selected="false">
+        <i class="fas fa-cogs fa-lg mr-2"></i>Configurações</a>
+    </li>
+  </ul>
+
+  <app-content-card>
+    <div body>
+
+      <div class="tab-content" id="tabContentConsultar">
+
+        <div class="tab-pane fade show active" id="tab-sobre" role="tabpanel" aria-labelledby="perfil-tab">
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <app-profile-photo-form
+                [account]="account"
+                [photo]="(whatsappService.photo$ | async)"
+              ></app-profile-photo-form>
+              <hr class="my-4 d-block d-md-none">
+            </div>
+
+            <div class="col-md-6">
+              <app-profile-about-form
+                [account]="account"
+                [profileAboutData]="(whatsappService.profileAboutData$ | async)"
+              ></app-profile-about-form>
+            </div>
+          </div><!-- Row -->
+        </div><!-- Tab Sobre -->
+
+        <div class="tab-pane fade" id="tab-perfil" role="tabpanel" aria-labelledby="config-tab">
+          <app-profile-business-form
+            [account]="(accountService.currentAccount$ | async)"
+            [businessData]="(whatsappService.profileBusinessData$ | async)"
+          ></app-profile-business-form>
+        </div>
+
+        <div class="tab-pane fade" id="tab-param" role="tabpanel" aria-labelledby="config-tab">
+          <app-parameters-form
+            [account]="account"
+            [appParameters]="(accountService.appParameters$ | async)"
+          ></app-parameters-form>
+        </div>
+
+        <div class="tab-pane fade" id="tab-config" role="tabpanel" aria-labelledby="config-tab">
+          <app-profile-settings-form
+            [account]="(accountService.currentAccount$ | async)"
+            [settingsData]="(whatsappService.settingsData$ | async)"
+          ></app-profile-settings-form>
+        </div>
+
+      </div><!-- Tab Content -->
+
+    </div><!-- Card Body -->
+  </app-content-card>
+</ng-container>

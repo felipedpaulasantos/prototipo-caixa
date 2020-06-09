@@ -1,0 +1,23 @@
+<h1 class="header-principal-caixa">
+  Início
+</h1>
+<hr class="header-line-caixa">
+
+<div *ngFor="let cols of rows" class="row d-flex justify-content-center">
+  <div *ngFor="let resource of cols" class="col-xs-12 col-md-6 col-lg-4">
+    <div class="card card-caixa {{ resource.cardClass }}" role="button" [routerLink]="resource.url">
+      <div class="card-header">
+        <h5 class="m-0 mr-3 text-center">
+          <i class="{{ resource.icon }} fa-lg mr-1"></i>
+          {{ resource.name }}
+        </h5>
+      </div>
+      <div class="card-body">
+        <span class="d-inline-block w-100 text-center">
+          {{ resource.description }}
+        </span>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>

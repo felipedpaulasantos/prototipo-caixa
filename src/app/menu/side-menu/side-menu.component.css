@@ -1,0 +1,36 @@
+#menuLateral {
+  width: 260px;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  bottom: 0;
+  transition: 0.7s;
+  z-index: 2;
+}
+#menuLateral.escondido {
+  margin-left: -400px;
+  visibility: hidden;
+}
+
+@media (min-width: 768px) {
+  #menuLateral {
+    width: 50%;
+    max-width: 50%;
+  }
+  #menuLateral.escondido {
+    margin-left: -500px;
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 992px) {
+  #menuLateral {
+    max-width: 260px;
+    transition: 0.5s;
+    /* z-index: 2; */
+  }
+  #menuLateral.escondido {
+    margin-left: -262px;
+    visibility: hidden;
+  }
+}

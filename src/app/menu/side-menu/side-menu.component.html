@@ -1,0 +1,39 @@
+<perfect-scrollbar #menuLateral id="menuLateral" class="bg-lightest border-right shadow" [ngClass]="{'escondido': !isAberto}">
+<!-- <div #menuLateral id="menuLateral" class="bg-lightest border-right shadow" [ngClass]="{'escondido': !isAberto}"> -->
+
+  <div id="menuLateralPesquisa" class="my-4 px-3">
+    <i class="fas fa-lg fa-search mr-3"></i>
+    <input class="form-control w-75 d-inline" placeholder="Pesquisar..." disabled>
+  </div>
+
+  <div id="menuLateralNav">
+
+<!--     <ul class="nav flex-column border-top">
+      <li class="nav-item" *ngFor="let resource of resources">
+        <a routerLink="{{ resource.url }}" routerLinkActive="active" class="nav-item nav-link side-menu-item border-bottom py-4 rounded-0">
+            <i class="{{ resource.icon }} fa-lg mr-3"></i>
+            {{ resource.name }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a target="_blank" class="nav-item nav-link py-4 rounded-0 side-menu-item border-bottom" href="https://developers.facebook.com/docs/whatsapp/overview">
+            <i class="fas fa-lg fa-external-link-alt mr-3"></i>
+            Referência da API
+        </a>
+      </li>
+    </ul> -->
+
+    <app-accordion
+      [options]="options"
+      [menus]="menus"
+    ></app-accordion>
+  </div>
+
+  <div id="menuLateralDinamico" class="mt-5">
+    <ng-container #menuTarget>
+      <!-- Componente dinâmico a ser inserido -->
+    </ng-container>
+  </div>
+
+<!-- </div> -->
+</perfect-scrollbar>

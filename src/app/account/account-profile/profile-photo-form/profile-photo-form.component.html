@@ -1,0 +1,39 @@
+<h5 class="header-caixa text-primary mb-4">Foto de perfil</h5>
+<div id="containerPhotoPreview" class="card mx-auto mt-3 d-flex align-items-center">
+  <img *ngIf="photoUrl" #photoPreview id="photoPreview"
+    name='image' [src]="photoUrl" class="img-fluid mx-auto my-auto align-self-center p-1" alt="Não foi possível carregar a imagem da conta.">
+  <h6 *ngIf="!photoUrl" class="h-100 d-flex align-items-center text-center">
+    Não foi possível carregar a imagem da conta.
+  </h6>
+</div>
+<span *ngIf="photoUrl" class="text-muted d-inline-block my-3">Tamanho máximo de 5MB e dimensão recomendada de 640x640</span>
+
+<br class="my-3">
+
+<ng-container *ngIf="photo">
+  <div class="form-group" >
+      <input #fileInput
+        type="file" accept="image/*"
+        class="form-control-file profile-photo d-none clearable"
+        name="foto" id="input_profile_foto"
+        (change)="onFileChanged($event)">
+      <button class="btn btn-outline-primary btn-caixa" type="button" id="loadFileXml" (click)="fileInput.click();">
+        <i class="far fa-image fa-lg mr-1"></i>
+        Procurar imagem
+      </button>
+  </div>
+
+  <div class="form-group">
+    <button (click)="submitPhoto()" [disabled]="!selectedFile" class="btn btn-secondary btn-caixa">
+      <i class="fas fa-save mr-1"></i>
+      Salvar
+    </button>
+  </div>
+
+  <div class="form-group">
+    <button (click)="setPhoto()" class="btn btn-outline-dark btn-caixa">
+      <i class="fas fa-undo-alt mr-1"></i>
+      Redefinir
+    </button>
+  </div>
+</ng-container>

@@ -1,0 +1,143 @@
+<h1 class="header-principal-caixa">
+	Tabelas
+</h1>
+<hr>
+
+<section id="painelTabelas" class="section-caixa">
+	<h5>As tabelas podem ter os seguintes complementos:</h5>
+	<ul>
+	  <li>Botões auxiliares</li>
+	  <li>Filtro (campo 'Pesquisar')</li>
+	  <li>Informações de quantidade de registros</li>
+	  <li>Títulos ordenáveis em cada coluna</li>
+	  <li>Paginação</li>
+	</ul>
+ 
+	<div class="card card-caixa section-caixa">
+	  <div class="card-header">
+		 <h3>Completa</h3>
+	  </div>
+	  <div class="card-body">
+		 <cx-table-caixa [showAll]=true>
+			<table tableCaixa id="tableTeste" class="table table-caixa">
+			  <thead>
+				 <tr>
+					<th>Coluna 1</th>
+					<th>Coluna 2</th>
+					<th>Coluna 3</th>
+				 </tr>
+			  </thead>
+			  <tbody>
+				 <tr>
+					<td>Linha 1</td>
+					<td>Linha 1</td>
+					<td>Linha 1</td>
+				 </tr>
+				 <tr>
+					<td>Linha 2</td>
+					<td>Linha 2</td>
+					<td>Linha 2</td>
+				 </tr>
+				 <tr>
+					<td>Linha 3</td>
+					<td>Linha 3</td>
+					<td>Linha 3</td>
+				 </tr>
+				 <tr>
+					<td>Linha 4</td>
+					<td>Linha 4</td>
+					<td>Linha 4</td>
+				 </tr>
+			  </tbody>
+			</table>
+		 </cx-table-caixa>
+	  </div>
+	</div>
+ 
+	<h5>Pode ser simples, apenas com os títulos ordenáveis.</h5>
+ 
+	<div class="card card-caixa section-caixa">
+	  <div class="card-header">
+		 <h3>Simples</h3>
+	  </div>
+	  <div class="card-body">
+		 <cx-table-caixa>
+			<table tableCaixa id="tableTeste2" class="table table-caixa">
+			  <thead>
+				 <tr>
+					<th>Coluna 1</th>
+					<th>Coluna 2</th>
+					<th>Coluna 3</th>
+				 </tr>
+			  </thead>
+			  <tbody>
+				 <tr>
+					<td>Linha 1</td>
+					<td>Linha 1</td>
+					<td>Linha 1</td>
+				 </tr>
+				 <tr>
+					<td>Linha 2</td>
+					<td>Linha 2</td>
+					<td>Linha 2</td>
+				 </tr>
+				 <tr>
+					<td>Linha 3</td>
+					<td>Linha 3</td>
+					<td>Linha 3</td>
+				 </tr>
+				 <tr>
+					<td>Linha 4</td>
+					<td>Linha 4</td>
+					<td>Linha 4</td>
+				 </tr>
+			  </tbody>
+			</table>
+		 </cx-table-caixa>
+	  </div>
+	</div>
+ 
+	<h5>Ou ainda ter apenas os componentes desejados.</h5>
+ 
+	<div class="card card-caixa section-caixa">
+	  <div class="card-header">
+		 <h3>Customizada</h3>
+	  </div>
+	  <div class="card-body">
+		 <cx-table-caixa [showFilter]=true [showPagination]=true>
+			<table tableCaixa id="tableTeste3" class="table table-caixa">
+			  <thead>
+				 <tr>
+					<th>Coluna 1</th>
+					<th>Coluna 2</th>
+					<th>Coluna 3</th>
+				 </tr>
+			  </thead>
+			  <tbody>
+				 <tr>
+					<td>Linha 1</td>
+					<td>Linha 1</td>
+					<td>Linha 1</td>
+				 </tr>
+				 <tr>
+					<td>Linha 2</td>
+					<td>Linha 2</td>
+					<td>Linha 2</td>
+				 </tr>
+				 <tr>
+					<td>Linha 3</td>
+					<td>Linha 3</td>
+					<td>Linha 3</td>
+				 </tr>
+				 <tr>
+					<td>Linha 4</td>
+					<td>Linha 4</td>
+					<td>Linha 4</td>
+				 </tr>
+			  </tbody>
+			</table>
+		 </cx-table-caixa>
+	  </div>
+	</div>
+ 
+ </section>

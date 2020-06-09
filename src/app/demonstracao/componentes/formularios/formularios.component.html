@@ -1,0 +1,149 @@
+<h1 class="header-principal-caixa">
+	Formulários
+</h1>
+<hr>
+
+<section id="painelFormularios" class="section-caixa">
+
+	<div class="row">
+		<div class="col-md-4 my-3">
+			<div class="card card-caixa">
+				<div class="card-header">
+					<h5 class="header-caixa text-primary">
+						Validadores embutidos
+					</h5>
+				</div>
+				<div class="card-body">
+					<form [formGroup]="formulario">
+						<cx-input-caixa msgErroPadrao="Erro!!!">
+							<label>Campo avulso</label>
+							<input #inputTeste inputCaixa required [ngClass]="{'ng-valid': inputTeste.value != ''}">
+						</cx-input-caixa>
+
+						<cx-input-caixa [formInput]="formulario.get('nome')">
+							<i class="fa fa-user prefix-icon text-dark-light"></i>
+							<label>Nome</label>
+							<app-tooltip-icon text="teste"></app-tooltip-icon>
+							<input inputCaixa formControlName="nome">
+						</cx-input-caixa>
+
+						<cx-input-caixa [formInput]="formulario.get('tel')" formato="(00) 00000-0000">
+							<label>Telefone</label>
+							<input inputCaixa placeholder="(00) 00000-0000" formControlName="tel" mask="{{ phoneMask }}"
+								(keyup)="onPhoneChanged($event);">
+						</cx-input-caixa>
+
+						<cx-input-caixa [formInput]="formulario.get('idade')">
+							<label>Idade</label>
+							<input inputCaixa formControlName="idade" mask="00">
+						</cx-input-caixa>
+
+						<cx-input-caixa [formInput]="formulario.get('nascimento')" optionalErrors='{"simpleDate": "Data inválida"}'>
+							<label>Nascimento</label>
+							<input inputCaixa placeholder="00/00/0000" formControlName="nascimento" mask="00/00/0000"
+								[dropSpecialCharacters]=false>
+						</cx-input-caixa>
+					</form>
+				</div>
+				<div class="card-footer text-right">
+					<button class="btn btn-success btn-caixa my-2 my-md-0" (click)="formulario.markAllAsTouched()">
+						<i class="fas fa-lg fa-check-square mr-2"></i>
+						Validar
+					</button>
+					<button class="btn btn-outline-dark btn-caixa my-2 my-md-0 mx-3" (click)="formulario.reset()">
+						<i class="fas fa-lg fa-sync mr-2"></i>
+						Redefinir
+					</button>
+					<button class="btn btn-secondary btn-caixa my-2 my-md-0" [disabled]="formulario.invalid"
+						(click)="toastr.success('Formulário salvo com sucesso!', 'Sucesso')">
+						<i class="fas fa-lg fa-save mr-2"></i>
+						Salvar
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8 my-3">
+			<div class="card card-caixa">
+				<div class="card-header">
+					<h5 class="header-caixa text-primary">
+						Outros tipos de campos
+					</h5>
+				</div>
+				<div class="card-body">
+					<form [formGroup]="formulario2">
+
+						<cx-input-caixa [formInput]="formulario2.get('mensagem')">
+							<label>Mensagem</label>
+							<textarea inputCaixa formControlName="mensagem"></textarea>
+						</cx-input-caixa>
+
+						<cx-select [formInput]="formulario2.get('comida')">
+							<label>Comida favorita</label>
+							<select selectCaixa formControlName="comida">
+								<option value="" selected>Escolha uma comida</option>
+								<option value="lasanha">Lasanha</option>
+								<option value="pizza">Pizza</option>
+								<option value="bolo">Bolo de Chocolate</option>
+								<option value="feijao-com-arroz">Feijão com arroz</option>
+							</select>
+						</cx-select>
+
+						<cx-select [formInput]="formulario2.get('filme')">
+							<label>Filme favorito</label>
+							<select selectCaixa formControlName="filme">
+								<option value="" selected>Escolha um filme</option>
+								<option value="lasanha">Senhor dos Anéis</option>
+								<option value="pizza">O Poderoso Chefão</option>
+								<option value="bolo">Vingadores</option>
+							</select>
+						</cx-select>
+
+						<div class="row my-4">
+							<div class="col-6">
+								<div class="custom-control custom-checkbox">
+									<input formControlName="marque" type="checkbox" class="custom-control-input" id="customCheck1">
+									<label class="custom-control-label" for="customCheck1">
+										Me marque!
+									</label>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="custom-control custom-checkbox">
+									<input formControlName="naoMarque" type="checkbox" class="custom-control-input" id="customCheck2">
+									<label class="custom-control-label" for="customCheck2">
+										Não me marque!
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="formControlRange">Valor</label>
+							<input formControlName="valor" type="range" class="form-control-range" id="formControlRange">
+							<span>{{ formulario2.get('valor').value }}</span>
+						</div>
+
+						<div class="custom-control custom-switch my-4">
+							<input formControlName="condicoes" id="condicoes" class="custom-control-input" type="checkbox">
+							<label for="condicoes" class="custom-control-label">
+								Aceito as condições
+							</label>
+						</div>
+					</form>
+				</div>
+				<div class="card-footer text-right">
+					<button class="btn btn-secondary btn-caixa my-2 my-md-0 mr-3"
+						[disabled]="formulario2.invalid || formulario2.get('naoMarque').value"
+						(click)="toastr.success('Formulário salvo com sucesso!', 'Sucesso')">
+						<i class="fas fa-lg fa-save mr-2"></i>
+						Salvar
+					</button>
+					<button class="btn btn-outline-dark btn-caixa my-2 my-md-0" (click)="formulario2.reset()">
+						<i class="fas fa-lg fa-sync mr-2"></i>
+						Redefinir
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

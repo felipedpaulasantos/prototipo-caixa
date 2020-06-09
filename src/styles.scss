@@ -1,0 +1,881 @@
+/* Overriden Bootstrap variables */
+@import "./styles/bootstrap-variables-override";
+
+// Bootstrap and its default variables
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* SEÇÕES DA PÁGINA */
+
+.section-caixa {
+  margin-bottom: 1.5rem;
+}
+
+/* Headers */
+
+h1, h2, h3, h4, h5, h6 {
+  &.header-caixa {
+    font-family: $cx-font-family-bold;
+    opacity: $cx-opacity-text-1;
+  }
+  &.header-principal-caixa {
+    font-family: $cx-font-family-bold;
+    color: $cx-color-dark-light;
+    opacity: $cx-opacity-text-2;
+    text-transform: uppercase;
+  }
+}
+hr.header-line-caixa {
+  border-color: $cx-color-light-darkest;
+  opacity: $cx-opacity-bg-1;
+  border-width: 1px;
+  margin-bottom: 1.5rem;
+}
+
+/* 
+  Fundos - fontes
+*/
+
+/* .bg-primary, .bg-primary-dark,
+.bg-secondary, .bg-secondary-dark,
+.bg-info, .bg-info-dark,
+.bg-warning, .bg-warning-dark,
+.bg-danger, .bg-danger-dark,
+.bg-aux, .bg-aux-dark,
+.bg-dark, .bg-darkest {
+  color: $cx-color-lightest;
+} */
+
+/* Fundos em degrade */
+
+.bg-gradient-primary {
+  background: $cx-gradient-primary;
+  color: $cx-color-lightest;
+  .img-logo {
+    content: $cx-logo-branco;
+  }
+}
+.bg-gradient-sky {
+  background: $cx-gradient-sky;
+  color: $cx-color-lightest;
+  .img-logo {
+    content: $cx-logo-branco;
+  }
+}
+.bg-gradient-aux {
+  background: $cx-gradient-aux;
+  color: $cx-color-lightest;
+  .img-logo {
+    content: $cx-logo-branco;
+  }
+}
+.bg-gradient-success {
+  background: $cx-gradient-success;
+  color: $cx-color-lightest;
+  .img-logo {
+    content: $cx-logo-branco;
+  }
+}
+.bg-gradient-light {
+  background: $cx-gradient-light;
+  color: $cx-color-dark;
+  .img-logo {
+    content: $cx-logo-azul;
+  }
+}
+.bg-gradient-dark {
+  background: $cx-gradient-dark;
+  color: $cx-color-lightest;
+  .img-logo {
+    content: $cx-logo-branco;
+  }
+}
+
+/* Botões */
+
+[role=button] {
+  cursor: pointer !important;
+}
+.btn-caixa {
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  font-family: $cx-font-family-bold;
+  box-shadow: 0 0.25rem 0.2rem 0 rgba(0, 0, 0, 0.15) !important;
+}
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn.focus:active,
+.btn:active:focus,
+.btn:focus {
+  outline: 0 !important;
+  outline-offset: 0  !important;
+  background-image: none  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none  !important;
+}
+.btn-caixa:disabled,
+.btn-caixa.disabled {
+  cursor: not-allowed;
+}
+.btn-sm {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.btn-flat {
+  @include button-variant(transparent, transparent);
+  :focus, :active {
+    box-shadow: none;
+  }
+  &:hover {
+    filter: brightness(50%);
+  }
+}
+.btn-secondary, .btn-secondary:disabled, 
+.btn-secondary-dark, .btn-secondary-dark:disabled,
+.btn-danger, .btn-danger:disabled, 
+.btn-danger-dark, .btn-danger-dark:disabled,
+.btn-success, .btn-success:disabled,
+.btn-success-dark, .btn-success-dark:disabled,
+.btn-warning, .btn-warning:disabled, .btn-warning:hover, .btn-warning:focus, 
+.btn-warning-dark, .btn-warning-dark:disabled,
+.btn-apoio, .btn-apoio:disabled,
+.btn-aux, .btn-aux:disabled {
+  color: $cx-color-lightest;
+}
+
+.btn-light, .btn-outline-light,
+.btn-lightest, .btn-outline-lightest,
+.btn-light-dark, .btn-outline-light-dark,
+.btn-light-darkest, .btn-outline-light-darkest {
+  color: $cx-color-dark;
+}
+
+/* Toastr (Mensagens) */
+
+#toast-container > .toast {
+  background-image: none !important;
+  padding: 15px 15px 15px 50px;
+}
+#toast-container > .toast:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  font-family: "Font Awesome 5 Free";
+  font-size: 1.4rem;
+  line-height: 18px;
+  float: left;
+  font-weight: 900;
+  padding-left: 1rem;
+}
+.toast {
+  background-color: $cx-color-dark;
+  pointer-events: auto;
+  border-radius: 5px !important;
+  transition: box-shadow 0.2s, border-bottom 0.3s;
+  box-shadow: none !important;
+}
+.toast .toast-title {
+  font-size: 0.875rem !important;
+  font-family: $cx-font-family-bold;
+  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+}
+.toast .toast-message {
+  font-size: 0.875rem !important;
+}
+.toast .toast-progress {
+  opacity: 0.7;
+}
+
+/* TOAST SUCCESS */
+.toast-success {
+  // background-color: $cx-color-success !important;
+  color: $cx-color-lightest !important;
+  // border-color: $cx-color-success-dark !important;
+  .toast-progress {
+    background-color: $cx-color-success-light;
+  }
+}
+#toast-container > .toast-success:before {
+  content: "\f00c";
+  color: $cx-color-success !important;
+}
+
+/* TOAST ERROR */
+.toast-error {
+  color: $cx-color-lightest !important;
+  .toast-progress {
+    background-color: $cx-color-danger-light;
+  }
+}
+#toast-container > .toast-error:before {
+  content: "\f00d";
+  color: $cx-color-danger;
+}
+
+/* TOAST INFO */
+.toast-info {
+  color: $cx-color-lightest !important;
+  .toast-progress {
+    background-color: $cx-color-info-light;
+  }
+}
+#toast-container > .toast-info:before {
+  content: "\f129";
+  color: $cx-color-info !important;
+}
+
+/* TOAST WARNING */
+.toast-warning {
+  color: $cx-color-lightest;
+  .toast-progress {
+    background-color: $cx-color-warning-light;
+  }
+}
+#toast-container > .toast-warning:before {
+  content: "\f12a";
+  color: $cx-color-warning;
+}
+
+/* Side Menu */
+
+#menuLateralNav.nav-item {
+  border-right: transparent;
+}
+#menuLateralNav .nav-item .side-menu-item.active {
+  color: $cx-color-lightest !important;
+  border-right: solid 3px $cx-color-secondary;
+  background: $cx-gradient-sky;
+}
+#menuLateralNav .nav-item .side-menu-item:hover {
+	border-right: solid 3px $cx-color-secondary;
+	transition: 0.1s;
+}
+
+#menuLateral.bg-primary #menuLateralPesquisa,
+#menuLateral.bg-primary #menuLateralNav,
+#menuLateral.bg-primary #menuLateralDinamico {
+  i {
+    color: $cx-color-lightest;
+  }
+  .nav-item {
+    color: $cx-color-lightest !important;
+    border-bottom-color: $cx-color-primary-light !important;
+    &:hover {
+      background-color: $cx-color-primary-dark;
+    }
+  }
+/*   .nav-item.active {
+    color: $cx-color-lightest !important;
+    background-color: $cx-color-primary !important;
+  } */
+  ul {
+    border-top-color: $cx-color-primary-light !important;
+  }
+}
+
+
+/* Inputs */
+
+.form-caixa .form-group {
+  position: relative;
+  margin-bottom: 1rem;
+  label {
+    font-family: $cx-font-family-bold;
+    font-size: 0.875rem;
+    margin-bottom: 0;
+    transition: 0.2s;
+  }
+  .form-control {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    border-color: $cx-color-light-darkest;
+    color: $cx-color-dark-light;
+    padding-left: 0.5rem;
+    padding-right: 2rem;
+    &:focus, &:active {
+      box-shadow: none;
+      border-color: $cx-color-primary !important;
+    }
+    &.ng-invalid.ng-touched {
+      border-color: $cx-color-danger;
+    }
+    &.ng-valid.ng-touched {
+      border-color: $cx-color-success;
+    }
+    &:disabled {
+      background-color: #EFF5F6;
+      opacity: 0.5;
+      padding-left: 0.5rem;
+      border: solid 1px !important;
+      border-radius: 5px !important;
+      cursor: not-allowed;
+    }
+  }
+  .input-group {
+    .form-control {
+      width: calc(100% - 30px);
+      min-width: calc(100% - 30px);
+    }
+    .input-group-prepend {
+      width: 30px;
+      min-width: 30px;
+      .input-group-text {
+      background-color: transparent;
+      border: none;
+      padding-left: 0.3rem;
+      color: $cx-color-dark-light;
+      }
+    }
+  }
+  .form-group-prefix-icon {
+    width: 100%;
+    display: flex !important;
+    align-items: center !important;
+    .prefix-icon {
+      height: 100%;
+      display: inline-block;
+      width: 30px;
+      max-width: 30px;
+      margin-right: 2px;
+      text-align: center;
+    }
+    .form-control {
+      display: inline-block !important;
+      width: calc(100% - 33px) !important;
+      max-width: calc(100% - 33px) !important;
+    }
+    .feedback-icon {
+      right: 1.2rem;
+    }
+    .bootstrap-select {
+      display: inline-block !important;
+      width: calc(100% - 33px) !important;
+      max-width: calc(100% - 33px) !important;
+    }
+  }
+}
+
+
+label {
+  font-family: $cx-font-family-bold;
+  font-size: 0.875rem;
+  margin-bottom: 0.2rem;
+  transition: 0.2s;
+}
+.form-control.input-caixa,
+.form-caixa .form-control {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: $cx-color-light-darkest;
+  color: $cx-color-dark-light;
+  padding-left: 0.5rem;
+  padding-right: 2rem;
+  &:focus, &:active {
+    box-shadow: none;
+    border-color: $cx-color-primary !important;
+  }
+  &.ng-invalid.ng-touched {
+    border-color: $cx-color-danger;
+  }
+  &.ng-valid.ng-touched {
+    border-color: $cx-color-success;
+  }
+  &:disabled {
+    background-color: #EFF5F6;
+    opacity: 0.5;
+    padding-left: 0.5rem;
+    border: solid 1px !important;
+    border-radius: 5px !important;
+    cursor: not-allowed;
+  }
+}
+.form-caixa .input-group,
+.input-caixa .input-group {
+  .form-control {
+    width: calc(100% - 30px);
+    min-width: calc(100% - 30px);
+  }
+  .input-group-prepend {
+    width: 30px;
+    min-width: 30px;
+    .input-group-text {
+    background-color: transparent;
+    border: none;
+    padding-left: 0.3rem;
+    color: $cx-color-dark-light;
+    }
+  }
+}
+.form-caixa .form-group-prefix-icon,
+.input-caixa .form-group-prefix-icon {
+  width: 100%;
+  display: flex !important;
+  align-items: center !important;
+  .prefix-icon {
+    height: 100%;
+    display: inline-block;
+    width: 30px;
+    max-width: 30px;
+    margin-right: 2px;
+    text-align: center;
+  }
+  .form-control, .input-caixa {
+    display: inline-block !important;
+    width: calc(100% - 33px) !important;
+    max-width: calc(100% - 33px) !important;
+  }
+  .feedback-icon {
+    right: 1.2rem;
+  }
+  .bootstrap-select {
+    display: inline-block !important;
+    width: calc(100% - 33px) !important;
+    max-width: calc(100% - 33px) !important;
+  }
+}
+
+.form-caixa {
+  .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: $cx-color-primary-light;
+    border-color: $cx-color-primary-light;
+  }
+}
+
+.custom-switch .custom-control-label,
+.custom-checkbox .custom-control-label {
+  cursor: pointer;
+} 
+
+.custom-checkbox .custom-control-label::before,
+.custom-checkbox .custom-control-label::after {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+	border-color: $cx-color-dark-light;
+}
+.custom-control-input:focus ~ .custom-control-label::before {
+	box-shadow: none;
+}
+
+.custom-checkbox .custom-control-label {
+	padding-left: 0.3em;
+}
+
+[type=range]:hover {
+  cursor: pointer;
+}
+
+/* Bootstrap-select */
+
+.dropdown.bootstrap-select {
+  display: block !important;
+  width: 100% !important;
+  padding-right: 0 !important;
+
+  button.btn.dropdown-toggle.btn-light {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 0 !important;
+    border-color: $cx-color-light-darkest !important;
+    background-color: $cx-color-lightest !important;
+    padding-right: 2rem !important;
+    padding-left: 0 !important;
+    &:focus, &:active {
+      box-shadow: none !important;
+      border-color: $cx-color-primary-light !important;
+    }
+    &.ng-invalid.ng-touched {
+      border-color: $cx-color-danger !important;
+    }
+    &.ng-valid.ng-touched {
+      border-color: $cx-color-success !important;
+    }
+    &:disabled {
+      background-color: #EFF5F6;
+      opacity: 0.5;
+      padding-left: 0.5rem;
+      border: solid 1px !important;
+      border-radius: 5px !important;
+      cursor: not-allowed;
+    }
+  }
+  > .dropdown-toggle::after {
+    position: absolute;
+    right: 0.5rem;
+    font-size: 1.2rem;
+    bottom: 1rem;;
+  }
+}
+
+/* Tabela */
+
+.table-caixa {
+  thead th {
+    font-family: $cx-font-family-bold;
+    color: $cx-color-light-darkest;
+    border-top: 0;
+    border-bottom: 0;
+  }
+  tbody {
+    tr:hover {
+    background-color: $cx-color-light;
+    }
+    td {
+      vertical-align: middle;
+    }
+  }
+}
+
+.datatable-search-icon {
+  color: $cx-color-light-darkest;
+}
+
+.dataTables_filter {
+  label {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    width: 50%;
+  }
+  input {
+    @extend .input-caixa;
+    font-family: $cx-font-family-normal;
+    width: 100% !important;
+  }
+}
+
+/* Remove setas do Input do tipo Number */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $cx-color-light-darkest;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $cx-color-light-darkest;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $cx-color-light-darkest;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: $cx-color-light-darkest;
+}
+
+/* Lista */
+
+/* Dropdown item */
+.dropdown-item {
+  padding: 1rem 1.5rem;
+}
+.dropdown-item.active, .dropdown-item:active {
+  color: $cx-color-primary;
+  background-color: $cx-color-light;
+}
+
+ul.tab-caixa li a {
+  color: $cx-color-dark-light;
+  padding: 1rem 1.5rem;
+  transition: ease-in-out 0.2s;
+  border-bottom: solid 2px transparent;
+}
+ul.tab-caixa li a.nav-link-caixa.active,
+ul.tab-caixa li a.nav-link-caixa:active,
+ul.tab-caixa .dropdown-item:active {
+  color: $cx-color-primary;
+  background-color: transparent;
+  border-bottom: solid 2px $cx-color-primary;
+  border-radius: 50;
+  opacity: $cx-opacity-text-1;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+ul.dropdown-menu li.selected.active,
+ul.dropdown-menu a.dropdown-item.active.selected {
+  background-color: $cx-color-light;
+  color: $cx-color-primary;
+}
+
+.nav-link-caixa {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+/* Modal */
+
+.modal {
+  z-index: 10;
+}
+.modal-backdrop.fade.show {
+  z-index: 9;
+}
+
+/* Cards */
+
+.card-caixa {
+  box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.15);
+  transition: all 0.2s ease-in-out;
+  // box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12);
+  & > .card-header {
+    background-color: inherit;
+    border: none;
+    vertical-align: center;
+    padding-top: 1.25rem;
+    & h1, h2, h3, h4, h5, h6 {
+      margin-bottom: 0;
+    }
+  }
+  & > .card-footer {
+    background-color: inherit;
+    border-top: 0;
+  }
+}
+  
+/* Create the hidden pseudo-element */
+/* include the shadow for the end state */
+.card-caixa::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 5px;
+  box-shadow: 0 0.3rem 0.8rem rgba(0,0,0,0.15);
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Fade in the pseudo-element with the bigger shadow */
+.card-caixa:hover::after {
+  opacity: 1;
+}
+
+.card-caixa.card-no-hover:after {
+  display: none !important;
+}
+
+/* Bootstrap Select */
+
+.bs-searchbox {
+  padding: 0.8rem 0.5rem !important;
+}
+
+/* Classes auxiliares */
+
+.bg-opacity-1 { opacity: $cx-opacity-bg-1 !important; }
+.bg-opacity-2 { opacity: $cx-opacity-bg-2 !important; }
+.bg-opacity-3 { opacity: $cx-opacity-bg-3 !important; }
+.bg-opacity-100 { opacity: 1 !important; }
+
+.text-opacity-1 { opacity: $cx-opacity-text-1 !important; }
+.text-opacity-2 { opacity: $cx-opacity-text-2 !important; }
+.text-opacity-3 { opacity: $cx-opacity-text-3 !important; }
+.text-opacity-100 { opacity: 1 !important; }
+
+.font-fam-normal { font-family: Futura LT Book !important; }
+.font-fam-bold { font-family: Futura LT Bold !important; }
+
+/* Spinner */
+
+.la-ball-clip-rotate.la-2x {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  > div {
+    max-height: 50px !important;
+    max-width: 50px !important;
+  }
+}
+
+/* Firefox hack */
+
+/* Remove a borda pontilhada de botões e links */
+:focus, :active { outline: none !important; }
+::-moz-focus-inner {border:0;}
+.bootstrap-select .dropdown-toggle:focus, .bootstrap-select > select.mobile-device:focus + .dropdown-toggle {
+  outline: none !important;
+}
+/* Efeito ripple - onda ao clicar em botão */
+
+.ripple, 
+.btn-caixa:not([disabled]) {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+ }
+ .ripple:after, 
+ .btn-caixa:not([disabled]):after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, $cx-color-lightest 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+ }
+ .ripple:active:after, 
+ .btn-caixa:not([disabled]):active:after {
+  transform: scale(0, 0);
+  opacity: .3;
+  transition: 0s;
+ }
+
+ .btn-light:after, .btn-lightest:after, .btn-light-dark:after, .btn-light-darkest:after,
+ .btn-outline-light:after, .btn-outline-lightest:after, .btn-outline-light-dark:after, .btn-outline-light-darkest:after,
+ .ripple-dark:after {
+  background-image: radial-gradient(circle, $cx-color-dark 10%, transparent 10.01%);
+ }
+
+/* 
+  Efeito ripple em inputs 
+*/
+
+.form-control, .nav-link-caixa, .input-caixa-wrapper {
+  transition: background-size 0.4s, background-color 0.4s, border-color 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
+  &,
+  &:focus,
+  &:active,
+  &[aria-expanded="true"],
+  &.focused {
+    background-image: 
+      linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%), 
+      linear-gradient(0deg, $cx-color-primary 0%, $cx-color-primary 100%);
+    background-repeat: no-repeat;
+    background-position: 50% 100%, 50% 100%;
+    background-size: 100% 1px, 0% 1px;
+    // border-color: $cx-color-primary-light;
+  }
+
+  &:focus,
+  &:active,
+  &[aria-expanded="true"],
+  &.focused,
+  &.click-fx {
+    background-size: 100% 1px, 100% 1px;
+    animation: input-ripple 0.5s ease-in !important;
+  }
+
+  &.pre-click-fx:not(.post-click-fx) {
+    animation: none !important;
+  }
+}
+
+cx-input-caixa.ng-valid .input-caixa-wrapper,
+select.ng-dirty.ng-valid + button.input-caixa {
+/*   label {
+    color: $cx-color-success;
+  } */
+  &,
+  &:focus,
+  &:active,
+  &[aria-expanded="true"],
+  &.focused {
+    background-image: 
+      linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%), 
+      linear-gradient(0deg, $cx-color-success 0%, $cx-color-success 100%) !important;
+    border-color: $cx-color-success !important;
+  }
+}
+
+cx-input-caixa.ng-invalid .input-caixa-wrapper,
+select.ng-dirty.ng-invalid + button.input-caixa {
+/*   label {
+    color: $cx-color-danger;
+  } */
+  &,
+  &:focus,
+  &:active,
+  &[aria-expanded="true"],
+  &.focused {
+    background-image: 
+      linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%), 
+      linear-gradient(0deg, $cx-color-danger 0%, $cx-color-danger 100%) !important;
+    border-color: $cx-color-danger !important;
+  }
+}
+
+@keyframes input-ripple {
+  0% {
+    background-position: 50% 100%, calc(~'50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%; 
+  }
+  100% {
+    background-position: 50% 100%, calc(~'50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%; 
+  }
+}
+
+
+.input-caixa-wrapper {
+	width: 100%;
+	z-index: 999;
+	padding-bottom: 1px;
+	border-top: none;
+	border-left: none;
+  border-right: none;
+  border-bottom: solid 1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+	border-color: $cx-color-light-darkest;
+	&:focus, &:active, &.focused {
+		box-shadow: none;
+		border-color: $cx-color-primary !important;
+	}
+	&.ng-invalid.ng-touched {
+		border-color: $cx-color-danger;
+	}
+	&.ng-valid.ng-touched {
+		border-color: $cx-color-success;
+	}
+	&:disabled {
+		background-color: #EFF5F6;
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
+
+
+select.ng-dirty.ng-valid + button.input-caixa {
+  border-color: $cx-color-success !important;
+}
+select.ng-dirty.ng-invalid + button.input-caixa {
+  border-color: $cx-color-danger !important;
+}

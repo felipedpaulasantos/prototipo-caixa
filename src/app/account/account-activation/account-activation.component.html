@@ -1,0 +1,31 @@
+<ul class="tab-caixa nav nav-pills nav-fill" id="tabsAtivarConta" role="tablist">
+  <li class="nav-item">
+		<a class="nav-link active" id="ativacao-tab" data-toggle="tab" href="#tab-ativacao" role="tab">
+			<i class="fas fa-toggle-on mr-2"></i>
+			Processo de Ativação
+		</a>
+  </li>
+  <li class="nav-item">
+		<a class="nav-link" id="conexao-tab" data-toggle="tab" href="#tab-conexao" role="tab">
+			<i class="fas fa-plug mr-2"></i>
+			Conexão ao Docker
+		</a>
+  </li>
+</ul>
+
+<app-content-card>
+	<div body>
+
+		<div class="tab-content" id="tabContentAtivacao">
+
+			<div class="tab-pane fade show active" id="tab-ativacao" role="tabpanel" aria-labelledby="perfil-tab">
+				<app-activation-form></app-activation-form>
+			</div>
+
+			<div class="tab-pane fade" id="tab-conexao" role="tabpanel" aria-labelledby="perfil-tab">
+				<app-docker-connection-form></app-docker-connection-form>
+			</div>
+		</div>
+
+	</div>
+</app-content-card>

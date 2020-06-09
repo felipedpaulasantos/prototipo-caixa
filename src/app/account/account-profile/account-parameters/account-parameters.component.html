@@ -1,0 +1,122 @@
+<h5 class="header-caixa text-primary mb-4">Parâmetros da Conta</h5>
+
+<div body>
+  <form class="form-caixa" [formGroup]="accountParametersForm">
+    <section class="row mb-1">
+      <div class="col-md-6">
+        <cx-input-caixa [formInput]="accountParametersForm.get('user')">
+          <label class="inline-block" for="user">User</label>
+          <app-tooltip-icon class="label" text="Usuário para comunicação com a API do Whatsapp"></app-tooltip-icon>
+          <input inputCaixa formControlName="user" type="text">
+        </cx-input-caixa>
+        <cx-input-caixa [formInput]="accountParametersForm.get('description')">
+          <label for="description">Descrição</label>
+          <input inputCaixa formControlName="description" type="text">
+        </cx-input-caixa>
+        <cx-input-caixa [formInput]="accountParametersForm.get('endpoint')">
+          <label for="endpoint">Endpoint</label>
+          <app-tooltip-icon text="URL do docker onde está instalada a API do WhatsApp"></app-tooltip-icon>
+          <input inputCaixa formControlName="endpoint" type="text">
+        </cx-input-caixa>
+        <cx-select [formInput]="accountParametersForm.get('status')">
+          <label for="status">Status</label>
+          <select selectCaixa formControlName="status">
+            <option value="A">Ativo</option>
+            <option value="I">Inativo</option>
+          </select>
+        </cx-select>
+      </div>
+
+      <div class="col-md-6">
+        <div formGroupName="serviceParameters">
+          <cx-input-caixa [formInput]="accountParametersForm.get('serviceParameters').get('name')">
+            <label for="name">Gerenciador</label>
+            <input inputCaixa formControlName="name" type="text" maxlength="5">
+          </cx-input-caixa>
+          <cx-input-caixa [formInput]="accountParametersForm.get('serviceParameters').get('endpoint')">
+            <label for="endpoint">URL do Gerenciador</label>
+            <input inputCaixa formControlName="endpoint" type="text">
+          </cx-input-caixa>
+          <div class="custom-control custom-switch py-3">
+              <input formControlName="storeReceivedMessages" id="storeReceivedMessages" class="custom-control-input" type="checkbox">
+              <label for="storeReceivedMessages" class="custom-control-label">
+                  Armazenar Mensagens Recebidas
+              </label>
+          </div>
+          <div class="custom-control custom-switch py-3">
+              <input formControlName="storeSentMessages" id="storeSentMessages" class="custom-control-input" type="checkbox">
+              <label for="storeSentMessages" class="custom-control-label">
+                  Armazenar Mensagens Enviadas
+              </label>
+          </div>
+          <div class="custom-control custom-switch py-3">
+              <input formControlName="updateErrors" id="updateErrors" class="custom-control-input" type="checkbox">
+              <label for="updateErrors" class="custom-control-label">
+                  Atualizar Erros
+              </label>
+          </div>
+          <div class="custom-control custom-switch py-3">
+            <input formControlName="updateStatus" id="updateStatus" class="custom-control-input" type="checkbox">
+            <label for="updateStatus" class="custom-control-label">
+                Atualizar Status
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+  </form>
+
+  <div class="d-flex">
+    <button (click)="updateServiceParameter()" [disabled]="!accountParametersForm.valid || !appParameters" class="btn btn-secondary btn-caixa mr-2">
+      <i class="fas fa-save mr-1"></i>
+      Salvar
+    </button>
+  
+    <button (click)="setParametersData()" class="btn btn-outline-dark btn-caixa mr-2">
+      <i class="fas fa-undo-alt mr-1"></i>
+      Redefinir
+    </button>
+  </div>
+
+  <ng-container *ngIf="appParameters">
+      <hr class="my-5">
+      <h5 class="header-caixa mb-4 text-primary">Parâmetros da Aplicação</h5>
+      <cx-table-caixa *ngIf="appParameters">
+          <thead>
+              <th>Índice</th>
+              <th>Nome</th>
+              <th>Valor</th>
+              <th>Ações</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let parameter of appParameters">
+                <td>{{ parameter.number }}</td>
+                <td>{{ parameter.name }}</td>
+                <td class="w-50">
+                  <input *ngIf="parameter.value.length < 95 else longValue"
+                    id="parameter_{{ parameter.number }}" class="form-control" value="{{ parameter.value }}" minlength="1">
+                  <ng-template #longValue>
+                    <textarea id="parameter_{{ parameter.number }}" class="form-control" value="{{ parameter.value }}" minlength="1"></textarea>
+                  </ng-template>
+                </td>
+                <td>
+                  <span class="btn btn-outline-primary btn-caixa btn-sm d-inline-block mr-2 mb-1"
+                    (click)="updateParameter(parameter)"
+                    onmouseenter="$(this).tooltip('show')"
+                    data-toggle="top"
+                    title="Salvar">
+                    <i class="fas fa-save fa-lg"></i>
+                  </span>
+                  <span class="btn btn-outline-secondary btn-caixa btn-sm d-inline-block mr-2 mb-1"
+                    (click)="resetParameter(parameter)"
+                    onmouseenter="$(this).tooltip('show')"
+                    data-toggle="top"
+                    title="Redefinir">
+                    <i class="fas fa-undo-alt fa-lg"></i>
+                  </span>
+                </td>
+            </tr>
+          </tbody>
+      </cx-table-caixa>
+  </ng-container>
+</div>

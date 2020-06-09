@@ -1,0 +1,15 @@
+.button-card {
+	cursor: pointer;
+ }
+ 
+ .button-card:hover {
+	transition: color .2s ease;
+ }
+ 
+ /* tablets/desktops and up ----------- */
+ @media (min-width: 992px) {
+	 .button-card-container {
+		 width: 50%;
+	 }
+ }
+ 

@@ -1,0 +1,51 @@
+<h1 class="header-principal-caixa">
+  Mensagens
+</h1>
+<hr>
+
+<section id="painelMensagens" class="section-caixa">
+
+  <div class="row">
+    <div class="col-md-3 my-3">
+      <button class="btn btn-caixa my-2 my-md-0 btn-success mr-3" (click)="toastr.success('Sucesso!')">
+        Sucesso!
+      </button>
+      <button class="btn btn-caixa my-2 my-md-0 btn-success mr-3" (click)="toastr.success('Um texto de apoio!', 'Sucesso')">
+        Sucesso com título!
+      </button>
+    </div>
+
+    <div class="col-md-3 my-3">
+      <button class="btn btn-caixa my-2 my-md-0 btn-danger mr-3" (click)="toastr.error('Erro!')">
+        Erro!
+      </button>
+      <button class="btn btn-caixa my-2 my-md-0 btn-danger mr-3" (click)="toastr.error('Um texto de apoio!', 'Erro')">
+        Erro com título!
+      </button>
+    </div>
+
+    <div class="col-md-3 my-3">
+      <button class="btn btn-caixa my-2 my-md-0 btn-warning mr-3" (click)="toastr.warning('Atenção!')">
+        Atenção!
+      </button>
+      <button class="btn btn-caixa my-2 my-md-0 btn-warning mr-3" (click)="toastr.warning('Um texto de apoio!', 'Atenção')">
+        Atenção com título!
+      </button>
+    </div>
+
+    <div class="col-md-3 my-3">
+      <button class="btn btn-caixa my-2 my-md-0 btn-info mr-3" (click)="toastr.info('Informação!')">
+        Informação!
+      </button>
+      <button class="btn btn-caixa my-2 my-md-0 btn-info mr-3" (click)="toastr.info('Um texto de apoio!', 'Informação')">
+        Informação com título!
+      </button>
+    </div>
+  </div>
+
+  <br><br>
+
+  <button class="btn btn-caixa btn-outline-dark" (click)="showLoading()">
+    Mostrar tela de carregamento
+  </button>
+</section>

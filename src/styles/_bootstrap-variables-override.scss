@@ -1,0 +1,63 @@
+@import "./caixa-variables";
+
+/* Temas */
+
+$theme-colors: (
+  "primary": $cx-color-primary,
+  "primary-light": $cx-color-primary-light,
+  "primary-dark": $cx-color-primary-dark,
+
+  "secondary": $cx-color-secondary,
+  "secondary-light": $cx-color-secondary-light,
+  "secondary-dark": $cx-color-secondary-dark,
+
+  "success": $cx-color-success,
+  "success-light": $cx-color-success-light,
+  "success-dark": $cx-color-success-dark,
+
+  "danger": $cx-color-danger,
+  "danger-light": $cx-color-danger-light,
+  "danger-dark": $cx-color-danger-dark,
+
+  "info": $cx-color-info,
+  "info-light": $cx-color-info-light,
+  "info-dark": $cx-color-info-dark,
+
+  "warning": $cx-color-warning,
+  "warning-light": $cx-color-warning-light,
+  "warning-dark": $cx-color-warning-dark,
+
+  "apoio": $cx-color-apoio,
+  "apoio-light": $cx-color-apoio-light,
+  "apoio-dark": $cx-color-apoio-dark,
+
+  "aux": $cx-color-aux,
+  "aux-light": $cx-color-aux-light,
+  "aux-dark": $cx-color-aux-dark,
+
+  "light": $cx-color-light,
+  "lightest": $cx-color-lightest,
+  "light-dark": $cx-color-light-dark,
+  "light-darkest": $cx-color-light-darkest,
+
+  "dark": $cx-color-dark,
+  "dark-light": $cx-color-dark-light,
+  "darkest": $cx-color-darkest
+);
+
+/* Links */
+
+$link-color: $cx-color-dark !default;
+
+/* Fontes */
+
+$font-size-base: $cx-font-size-base;
+$h1-font-size: $cx-font-size-base * 2.5 !default;
+$h2-font-size: $cx-font-size-base * 2 !default;
+$h3-font-size: $cx-font-size-base * 1.75 !default;
+$h4-font-size: $cx-font-size-base * 1.5 !default;
+$h5-font-size: $cx-font-size-base * 1.25 !default;
+$h6-font-size: $cx-font-size-base;
+
+$font-family-base: $cx-font-family-base;
+$body-color: $cx-color-darkest;

@@ -1,0 +1,68 @@
+<ng-container *ngIf="formInput">
+
+<!-- 	<ng-container>
+		<div role="button" class="feedback-icon ripple ripple-dark" (click)="formInput.reset()"
+			[ngClass]="{'valid-feedback': formInput.valid, 'invalid-feedback': formInput.invalid}">
+			<i *ngIf="formInput.valid" class="fas fa-check"></i>
+			<i *ngIf="formInput.invalid" class="fas fa-exclamation"></i>
+		</div>
+  	</ng-container> -->
+
+  <div class="feedback-message text-right">
+    <ng-container *ngIf="(formInput.untouched || formInput.valid) else errorFeedback">
+      <small class="text-dark-light font-italic">
+        {{ isRequired(formInput) ? "Obrigatório" : "" }}
+	  </small>
+    </ng-container>
+	
+    <ng-template #errorFeedback>
+		<small *ngIf="Object.keys(formInput.errors)[0] as error" class="text-danger-dark font-italic">
+			<!-- Implementação para exibir apenas um erro por vez -->		      
+			<span *ngIf="error == 'required'">Este campo é obrigatório.</span>
+			<span *ngIf="error == 'min'">Valor mínimo do campo deve ser: {{ formInput.errors.min.min.actual }} / {{ formInput.errors.min.min }}</span>
+			<span *ngIf="error == 'max'">Valor máximo do campo deve ser: {{ formInput.errors.max.max }} / {{ formInput.errors.max.max.actual }}.</span>
+			<span *ngIf="error == 'max'">Valor máximo do campo deve ser: {{ formInput.errors.max }} / {{ formInput.errors.max.actual }}.</span>
+			<span *ngIf="error == 'requiredTrue'">Este campo deve ser verdadeiro.</span>
+			<span *ngIf="error == 'email'">Valor de e-mail inválido.</span>
+			<span *ngIf="formInput.errors.minlength as minlength">
+			Comprimento mínimo do campo deve ser: {{ minlength.actualLength }} / {{ minlength.requiredLength }}.
+			</span>
+			<span *ngIf="formInput.errors.maxlength as maxlength">
+			Comprimento máximo do campo deve ser: {{ maxlength.requiredLength }} / {{ maxlength.actualLength }}.
+			</span>
+			<span *ngIf="parsedOptionalErrors && parsedOptionalErrors.length > 0">
+				<ng-container *ngFor="let parsedError of parsedOptionalErrors">
+					<ng-container *ngIf="error == Object.keys(parsedError)[0]">
+						{{ parsedError[Object.keys(parsedError)[0]] }}
+					</ng-container>
+				</ng-container>	
+			</span>
+		</small> 
+		
+
+		<!-- Implementação para exibir todos os erros de uma vez -->		
+		<!-- 		
+			<span *ngIf="formInput.errors.required">Este campo é obrigatório.</span>
+			<span *ngIf="formInput.errors.min">Valor mínimo do campo deve ser: {{ formInput.errors.min.min.actual }} / {{ formInput.errors.min.min }}</span>
+			<span *ngIf="formInput.errors.max">Valor máximo do campo deve ser: {{ formInput.errors.max.max }} / {{ formInput.errors.max.max.actual }}.</span>
+			<span *ngIf="formInput.errors.max">Valor máximo do campo deve ser: {{ formInput.errors.max }} / {{ formInput.errors.max.actual }}.</span>
+			<span *ngIf="formInput.errors.requiredTrue">Este campo deve ser verdadeiro.</span>
+			<span *ngIf="formInput.errors.email">Valor de e-mail inválido.</span>
+			<span *ngIf="formInput.errors.minlength as minlength">
+				Comprimento mínimo do campo deve ser: {{ minlength.actualLength }} / {{ minlength.requiredLength }}.
+			</span>
+			<span *ngIf="formInput.errors.maxlength as maxlength">
+				Comprimento máximo do campo deve ser: {{ maxlength.requiredLength }} / {{ maxlength.actualLength }}.
+			</span>
+			<span *ngIf="parsedOptionalErrors && parsedOptionalErrors.length > 0">
+				<ng-container *ngFor="let parsedError of parsedOptionalErrors">
+					<ng-container *ngIf="formInput.errors[Object.keys(parsedError)[0]]">
+						{{ parsedError[Object.keys(parsedError)[0]] }}
+					</ng-container>
+				</ng-container>	
+			</span>  
+		-->
+    </ng-template>
+  </div>
+
+</ng-container>

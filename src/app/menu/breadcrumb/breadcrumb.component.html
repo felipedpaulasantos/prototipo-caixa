@@ -1,0 +1,16 @@
+<div>
+<!--   <span class="text-sm text-opac-1">
+    Você está em:
+  </span> -->
+  <ul class="breadcrumb" *ngIf="breadcrumbs?.length > 1">
+    <li *ngFor="let breadcrumb of breadcrumbs; last as isLast"
+        class="breadcrumb-item align-items-center">
+      <a class="text-info" routerLink="{{breadcrumb.url}}">
+        {{ breadcrumb.label }}
+      </a>
+<!--       <span *ngIf="!isLast" class="d-flex align-items-center">
+        <i class="fas fa-chevron-right"></i>
+      </span> -->
+    </li>
+  </ul>
+</div>

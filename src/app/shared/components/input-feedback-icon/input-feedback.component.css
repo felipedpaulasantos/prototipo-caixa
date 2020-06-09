@@ -1,0 +1,21 @@
+.valid-feedback.feedback-icon,
+.invalid-feedback.feedback-icon {
+    position: absolute;
+    bottom: 2.5em;
+    right: 0;
+    width: 1.5rem;
+    margin-top: 0;
+    display: block;
+    font-size: 1em;
+    text-align: center;
+    background-color: white;
+}
+.ng-untouched .feedback-icon {
+  display: none !important;
+}
+
+.feedback-message {
+  position: relative;
+  height: 1.5em;
+  margin-top: 0.3em;
+}

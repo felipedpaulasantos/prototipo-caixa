@@ -1,0 +1,29 @@
+<app-top-menu></app-top-menu>
+
+<app-ngx-spinner-default></app-ngx-spinner-default>
+
+<main role="main">
+
+  <app-side-menu></app-side-menu>
+
+  <section id="conteudoPrincipal" [ngClass]="{'sem-menu-lateral': !isMenuAberto}">
+
+    <div id="mobileBackdrop"
+      (click)="menuService.fechar()"
+      [ngClass]="{'exibindo': isMenuAberto}">
+    </div>
+
+    <div class="painelConteudoPrincipal">
+      <app-breadcrumb></app-breadcrumb>
+      <br>
+      <div [@routeAnimations]="prepareRoute(outlet)" [hidden]="!hasAccount">
+        <router-outlet #outlet="outlet"></router-outlet>
+      </div>
+    </div>
+
+    <!-- <app-footer></app-footer> -->
+    
+  </section>
+</main>
+
+<nov-modal></nov-modal>

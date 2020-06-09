@@ -1,0 +1,53 @@
+<ng-container *ngIf="(chatReportData && chatReportData.length > 0) else noChatData">
+
+  <app-content-card [header]="true">
+    <div header>
+      <h5 class="header-caixa text-primary mb-4">Gráfico por período</h5>
+    </div>
+    <div body>
+      <app-bar-chart *ngIf="chatChartData"
+          [chartData]="chatChartData">
+      </app-bar-chart>
+    </div>
+  </app-content-card>
+
+  <br>
+
+  <app-content-card [header]="true">
+    <div header>
+      <h5 class="header-caixa text-primary mb-4">Estatísticas</h5>
+    </div>
+    <div body>
+      <div class="table-responsive">
+        <table id="tableChatsDetailed" class="table table-caixa w-100 mx-0 px-0">
+          <thead>
+            <tr>
+              <th>Período</th>
+              <th>Total de Conversas</th>
+              <th>Conversas reativas</th>
+              <th>Conversas ativas</th>
+            </tr>
+          </thead>
+          <tbody class="text-center">
+              <tr #tableChatsDetailedRows *ngFor="let c of chatReportData">
+                <td>{{ c.period }}</td>
+                <td>{{ c.totalChats | number }}</td>
+                <td>{{ c.reactiveChats | number }}</td>
+                <td>{{ c.activeChats | number }}</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </app-content-card>
+</ng-container>
+
+<ng-template #noChatData>
+  <app-content-card>
+    <div body>
+      <h6 class="center py-5">
+          Não há dados de conversas a serem exibidos.
+      </h6>
+    </div>
+  </app-content-card>
+</ng-template>
