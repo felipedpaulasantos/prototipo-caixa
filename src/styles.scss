@@ -376,7 +376,6 @@ hr.header-line-caixa {
 
 label {
   font-family: $cx-font-family-bold;
-  font-size: 0.875rem;
   margin-bottom: 0.2rem;
   transition: 0.2s;
 }
@@ -598,7 +597,7 @@ input[type=number] {
 /* Dropdown item */
 
 .dropdown-item {
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.3rem;
 }
 .dropdown-item.active, .dropdown-item:active {
   color: $cx-color-primary;

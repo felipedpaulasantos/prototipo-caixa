@@ -26,7 +26,7 @@
   *ngIf="!formInput && (!inputDirective?.changed || (isFieldValid() && inputDirective?.changed))
     || (formInput?.untouched || formInput?.valid) 
     else errorFeedback">
-    <small class="font-italic">
+    <small class="text-muted font-italic">
       {{ isRequired ? "Obrigatório" : "" }}
       <ng-container *ngIf="formato">
         : {{ formato }}
