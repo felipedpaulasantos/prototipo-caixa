@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges, Renderer2,
-  ViewChild, ElementRef, ContentChild, HostBinding } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+  ViewChild, ElementRef, ContentChild, HostBinding, AfterContentInit } from '@angular/core';
+import { AbstractControl, NgControl, FormControlName } from '@angular/forms';
+
 import { InputCaixaDirective } from './input-caixa.directive';
 
 @Component({
@@ -8,30 +9,49 @@ import { InputCaixaDirective } from './input-caixa.directive';
   templateUrl: './input-caixa.component.html',
   styleUrls: ['./input-caixa.component.scss']
 })
-export class InputCaixaComponent implements OnInit, OnChanges {
+export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit {
 
   constructor(
     private renderer: Renderer2
   ) { }
 
+  Object = Object;
+
   @ContentChild(InputCaixaDirective, { read: InputCaixaDirective, static: true })
   inputDirective: InputCaixaDirective;
+
+  @ContentChild(NgControl, { read: NgControl, static: true })
+  ngControlDirective: NgControl;
+
+  @ContentChild(FormControlName, { read: FormControlName, static: true })
+  formControlDirective: FormControlName;
 
   @ViewChild("wrapper", { read: ElementRef, static: true })
   wrapper;
 
-  @Input() formInput: AbstractControl;
   @Input() optionalErrors: string;
   @Input() formato: string;
   @Input() msgErroPadrao: string;
   parsedOptionalErrors = [];
 
-  Object = Object;
-
+  formInput: AbstractControl;
   isRequired = false;
+  nativeElement: any;
 
   ngOnInit() {
+  }
+
+  ngAfterContentInit(): void {
+    if (this.formControlDirective) {
+      this.formInput = this.formControlDirective.control;
+    } else if (this.ngControlDirective) {
+      this.formInput = this.ngControlDirective.control;
+    }
     this.isRequired = this.isFieldRequired(this.formInput);
+
+    if (this.inputDirective && this.inputDirective.element && this.inputDirective.element.nativeElement) {
+      this.nativeElement = this.inputDirective.element.nativeElement;
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -58,8 +78,7 @@ export class InputCaixaComponent implements OnInit, OnChanges {
         }
       }
     }
-    if (this.inputDirective && this.inputDirective.element
-      && this.inputDirective.element.nativeElement && this.inputDirective.element.nativeElement.required) {
+    if (this.nativeElement && this.nativeElement.required) {
       return true;
     }
     return false;
@@ -69,8 +88,8 @@ export class InputCaixaComponent implements OnInit, OnChanges {
     if (this.formInput) {
       return this.formInput.valid;
     } else {
-      if (this.inputDirective && this.inputDirective.element && this.inputDirective.element.nativeElement) {
-        return this.inputDirective.changed && (this.inputDirective.element.nativeElement.classList.contains("ng-valid"));
+      if (this.nativeElement) {
+        return this.inputDirective.changed && (this.nativeElement.classList.contains("ng-valid"));
       }
     }
     return false;
@@ -79,9 +98,9 @@ export class InputCaixaComponent implements OnInit, OnChanges {
   resetField() {
     if (this.formInput) {
       this.formInput.reset();
-    } else {
+    } else if (this.inputDirective) {
       this.inputDirective.changed = false;
-      this.inputDirective.element.nativeElement.value = "";
+      this.nativeElement.value = "";
     }
   }
 

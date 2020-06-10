@@ -4,21 +4,21 @@
   <form class="form-caixa" [formGroup]="accountParametersForm">
     <section class="row mb-1">
       <div class="col-md-6">
-        <cx-input-caixa [formInput]="accountParametersForm.get('user')">
+        <cx-input-caixa>
           <label class="inline-block" for="user">User</label>
           <app-tooltip-icon class="label" text="Usuário para comunicação com a API do Whatsapp"></app-tooltip-icon>
           <input inputCaixa formControlName="user" type="text">
         </cx-input-caixa>
-        <cx-input-caixa [formInput]="accountParametersForm.get('description')">
+        <cx-input-caixa>
           <label for="description">Descrição</label>
           <input inputCaixa formControlName="description" type="text">
         </cx-input-caixa>
-        <cx-input-caixa [formInput]="accountParametersForm.get('endpoint')">
+        <cx-input-caixa>
           <label for="endpoint">Endpoint</label>
           <app-tooltip-icon text="URL do docker onde está instalada a API do WhatsApp"></app-tooltip-icon>
           <input inputCaixa formControlName="endpoint" type="text">
         </cx-input-caixa>
-        <cx-select [formInput]="accountParametersForm.get('status')">
+        <cx-select>
           <label for="status">Status</label>
           <select selectCaixa formControlName="status">
             <option value="A">Ativo</option>
@@ -29,11 +29,11 @@
 
       <div class="col-md-6">
         <div formGroupName="serviceParameters">
-          <cx-input-caixa [formInput]="accountParametersForm.get('serviceParameters').get('name')">
+          <cx-input-caixa>
             <label for="name">Gerenciador</label>
             <input inputCaixa formControlName="name" type="text" maxlength="5">
           </cx-input-caixa>
-          <cx-input-caixa [formInput]="accountParametersForm.get('serviceParameters').get('endpoint')">
+          <cx-input-caixa>
             <label for="endpoint">URL do Gerenciador</label>
             <input inputCaixa formControlName="endpoint" type="text">
           </cx-input-caixa>

@@ -23,13 +23,6 @@
                   mask="00/00/0000"
                   [showMaskTyped]="true"
                   [dropSpecialCharacters]="false">
-                <cx-input-feedback
-                  [formInput]="messageFilterForm.get('dataInicial')"
-				  optionalErrors='[
-					  { "simpleDate": "Data deve estar no formato tal" },
-					  { "simpleMonthDate": "Data deve estar no formato x" }
-				  ]'>
-                </cx-input-feedback>
               </div>
             </div>
             <div *ngIf="fields && fields.includes('dataFinal')" class="form-group col-sm-4">
@@ -46,7 +39,6 @@
                   mask="00/00/0000"
                   [showMaskTyped]="true"
                   [dropSpecialCharacters]="false">
-                <cx-input-feedback [formInput]="messageFilterForm.get('dataFinal')"></cx-input-feedback>
               </div>
             </div>
             <div *ngIf="fields && fields.includes('creator')" class="form-group col-sm-4">
@@ -72,7 +64,6 @@
                   <select name="origin" formControlName="origin" class="form-control custom-select">
                       <option *ngFor="let origin of origins" [value]="origin.value">{{ origin.name }}</option>
                   </select>
-                  <cx-input-feedback [formInput]="messageFilterForm.get('origin')"></cx-input-feedback>
                 </div>
             </div>
             <div *ngIf="fields && fields.includes('managerName')" class="form-group col-sm-4">
@@ -84,13 +75,11 @@
                 <select name="managerName" formControlName="managerName" class="form-control custom-select">
                     <option *ngFor="let manager of managers" [value]="manager.value">{{ manager.name }}</option>
                 </select>
-                <cx-input-feedback [formInput]="messageFilterForm.get('managerName')"></cx-input-feedback>
               </div>
             </div>
             <div *ngIf="fields && fields.includes('pageSize')" class="form-group col-sm-4">
               <label for="pageSize">Quantidade de mensagens</label>
               <input name='pageSize' formControlName="pageSize" class="form-control" required min="10">
-              <cx-input-feedback [formInput]="messageFilterForm.get('pageSize')"></cx-input-feedback>
           </div>
         </div>
 

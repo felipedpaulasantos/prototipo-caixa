@@ -23,7 +23,7 @@
 
 <div class="feedback-message w-100 text-right">
   <ng-container class="w-100 text-right" 
-  *ngIf="!formInput && (!inputDirective.changed || (isFieldValid() && inputDirective.changed))
+  *ngIf="!formInput && (!inputDirective?.changed || (isFieldValid() && inputDirective?.changed))
     || (formInput?.untouched || formInput?.valid) 
     else errorFeedback">
     <small class="font-italic">

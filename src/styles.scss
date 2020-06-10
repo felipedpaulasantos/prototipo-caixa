@@ -845,6 +845,10 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   &.pre-click-fx:not(.post-click-fx) {
     animation: none !important;
   }
+
+  input {
+    box-shadow: none !important;
+  }
 }
 
 cx-input-caixa.ng-valid .input-caixa-wrapper,

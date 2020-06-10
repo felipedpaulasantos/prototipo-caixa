@@ -12,45 +12,27 @@
             <div class="form-group">
                 <label for="business_profile_address">Endereço</label>             >
                 <textarea formControlName="address" id='business_profile_address' name='address' class="form-control" type="text"></textarea>
-                <cx-input-feedback
-                  [formInput]="profileBusinessForm.get('address')">
-                </cx-input-feedback>
             </div>
             <div class="form-group">
                 <label for="business_profile_description">Descrição</label>
                 <textarea formControlName="description" id='business_profile_description' name='description' class="form-control" type="text"></textarea>
-                <cx-input-feedback
-                  [formInput]="profileBusinessForm.get('description')">
-                </cx-input-feedback>
             </div>
             <div class="form-group">
                 <label for="business_profile_email">E-mail</label>
                 <input formControlName="email" id='business_profile_email' name='email' class="form-control" type="text">
-                <cx-input-feedback
-                  [formInput]="profileBusinessForm.get('email')">
-                </cx-input-feedback>
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
                 <label for="business_profile_websites">Websites</label>
                 <input formControlName="website1" class="form-control" type="text">
-                <cx-input-feedback
-                  [formInput]="profileBusinessForm.get('website1')">
-                </cx-input-feedback>
             </div>
             <div class="form-group">
                 <input formControlName="website2" class="form-control" type="text">
-                <cx-input-feedback
-                  [formInput]="profileBusinessForm.get('website2')">
-                </cx-input-feedback>
             </div>
             <div class="form-group">
                 <label for="business_profile_vertical">Ramo do negócio</label>
                 <input formControlName="vertical" id='business_profile_vertical' name='vertical' class="form-control" type="text">
-                <cx-input-feedback
-                  [formInput]="profileBusinessForm.get('vertical')">
-                </cx-input-feedback>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@ import { ComponentesRoutingModule } from './componentes-routing.module';
 import { BotoesComponent } from './botoes/botoes.component';
 import { MensagensComponent } from './mensagens/mensagens.component';
 import { FormulariosComponent } from './formularios/formularios.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { TabelasComponent } from './tabelas/tabelas.component';
 
@@ -16,6 +16,7 @@ import { TabelasComponent } from './tabelas/tabelas.component';
     ComponentesRoutingModule,
     CommonModule,
     SharedModule,
+    FormsModule,
     ReactiveFormsModule,
     NgxMaskModule
   ],

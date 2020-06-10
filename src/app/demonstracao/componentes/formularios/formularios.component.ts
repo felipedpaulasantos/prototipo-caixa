@@ -40,6 +40,8 @@ export class FormulariosComponent implements OnInit {
     condicoes: [null, [Validators.requiredTrue]]
   });
 
+  name = '';
+
   onPhoneChanged(phoneNumber) {
     console.log(phoneNumber.target.value.length);
     this.phoneNumber = phoneNumber.target.value;
