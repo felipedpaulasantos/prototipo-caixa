@@ -32,7 +32,10 @@
 
 					<div *ngIf="cor.darkest" class="square" 
 						[ngClass]="{'bg-darkest': cor.name != 'light', 'bg-light-darkest': cor.name == 'light'}">
-						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">bg-darkest</span>
+						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">
+							<ng-container *ngIf="cor.name == 'light' else noLight">bg-light-darkest</ng-container>
+							<ng-template #noLight>bg-darkest</ng-template>
+						</span>
 					</div>
 				</div>
 				<div class="col-8">

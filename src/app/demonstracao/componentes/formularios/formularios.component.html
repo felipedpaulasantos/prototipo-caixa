@@ -15,6 +15,22 @@
 				</div>
 				<div class="card-body">
 
+					<cx-select>
+						<label>Comida favorita</label>
+						<select selectCaixa>
+							<option value="" selected>Escolha uma comida</option>
+							<option value="lasanha">Lasanha</option>
+							<option value="pizza">Pizza</option>
+							<option value="bolo">Bolo de Chocolate</option>
+							<option value="feijao-com-arroz">Feijão com arroz</option>
+						</select>
+					</cx-select>
+
+
+					<label>Classe Input Caixa</label>
+					<input class="input-caixa mb-3" required>
+
+
 					<cx-input-caixa>
 						<label>NG Model</label>
 						<app-tooltip-icon text="teste"></app-tooltip-icon>
@@ -38,11 +54,6 @@
 							<label>Telefone</label>
 							<input inputCaixa placeholder="(00) 00000-0000" formControlName="tel" mask="{{ phoneMask }}"
 								(keyup)="onPhoneChanged($event);">
-						</cx-input-caixa>
-
-						<cx-input-caixa>
-							<label>Idade</label>
-							<input inputCaixa formControlName="idade" mask="00">
 						</cx-input-caixa>
 
 						<cx-input-caixa optionalErrors='{"simpleDate": "Data inválida"}'>
@@ -81,10 +92,11 @@
 
 						<cx-input-caixa>
 							<label>Mensagem</label>
+							<i class="fa fa-comments prefix-icon text-dark-light"></i>
 							<textarea inputCaixa formControlName="mensagem"></textarea>
 						</cx-input-caixa>
 
-						<cx-select [formInput]="formulario2.get('comida')">
+						<cx-select>
 							<label>Comida favorita</label>
 							<select selectCaixa formControlName="comida">
 								<option value="" selected>Escolha uma comida</option>
@@ -95,8 +107,9 @@
 							</select>
 						</cx-select>
 
-						<cx-select [formInput]="formulario2.get('filme')">
+						<cx-select>
 							<label>Filme favorito</label>
+							<i class="fa fa-film prefix-icon text-dark-light"></i>
 							<select selectCaixa formControlName="filme">
 								<option value="" selected>Escolha um filme</option>
 								<option value="lasanha">Senhor dos Anéis</option>

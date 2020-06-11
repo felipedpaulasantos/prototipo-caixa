@@ -27,7 +27,6 @@ export class CoresComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(BootstrapTheme);
   }
 
 }
