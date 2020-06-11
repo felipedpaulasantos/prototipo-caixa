@@ -258,9 +258,8 @@ hr.header-line-caixa {
   border-right: transparent;
 }
 #menuLateralNav .nav-item .side-menu-item.active {
-  color: $cx-color-lightest !important;
+  color: $cx-color-primary-light !important;
   border-right: solid 3px $cx-color-secondary;
-  background: $cx-gradient-sky;
 }
 #menuLateralNav .nav-item .side-menu-item:hover {
 	border-right: solid 3px $cx-color-secondary;
@@ -373,13 +372,12 @@ hr.header-line-caixa {
   }
 }
 
-
 label {
   font-family: $cx-font-family-bold;
   margin-bottom: 0.2rem;
   transition: 0.2s;
 }
-.form-control.input-caixa,
+/* .form-control.input-caixa,
 .form-caixa .form-control {
   border-top: none;
   border-left: none;
@@ -408,8 +406,8 @@ label {
     border-radius: 5px !important;
     cursor: not-allowed;
   }
-}
-.form-caixa .input-group,
+} */
+/* .form-caixa .input-group,
 .input-caixa .input-group {
   .form-control {
     width: calc(100% - 30px);
@@ -425,8 +423,8 @@ label {
     color: $cx-color-dark-light;
     }
   }
-}
-.form-caixa .form-group-prefix-icon,
+} */
+/* .form-caixa .form-group-prefix-icon,
 .input-caixa .form-group-prefix-icon {
   width: 100%;
   display: flex !important;
@@ -452,14 +450,14 @@ label {
     width: calc(100% - 33px) !important;
     max-width: calc(100% - 33px) !important;
   }
-}
+} */
 
-.form-caixa {
+/* .form-caixa {
   .custom-control-input:checked ~ .custom-control-label::before {
     background-color: $cx-color-primary-light;
     border-color: $cx-color-primary-light;
   }
-}
+} */
 
 .custom-switch .custom-control-label,
 .custom-checkbox .custom-control-label {
@@ -816,7 +814,7 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   Efeito ripple em inputs 
 */
 
-.form-control, .nav-link-caixa, .input-caixa-wrapper {
+.input-caixa, .nav-link-caixa, .input-caixa-wrapper {
   transition: background-size 0.4s, background-color 0.4s, border-color 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
   &,
   &:focus,
@@ -893,11 +891,13 @@ select.ng-dirty.ng-invalid + button.input-caixa {
   }
 }
 
+.input-caixa {
 
-.input-caixa-wrapper {
+}
+
+.input-caixa-wrapper, .input-caixa {
 	width: 100%;
 	z-index: 999;
-	padding-bottom: 1px;
 	border-top: none;
 	border-left: none;
   border-right: none;

@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, AfterViewInit, ContentChild, ViewChild, ElementRef, HostBinding, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, ContentChild,
+  ViewChild, ElementRef, HostBinding, Renderer2, AfterContentInit } from '@angular/core';
 import { SelectCaixaDirective } from './select-caixa.directive';
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, NgControl, FormControlName } from '@angular/forms';
 
 declare let $: any;
 
@@ -32,7 +33,7 @@ interface BootstrapSelectOptions {
   templateUrl: './select-caixa.component.html',
   styleUrls: ['./select-caixa.component.scss']
 })
-export class SelectCaixaComponent implements OnInit, AfterViewInit {
+export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContentInit {
 
   defaultOptions: BootstrapSelectOptions = {
     bootstrapVersion: '4',
@@ -52,71 +53,87 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit {
     width: false
   };
 
-  @Input() formInput: AbstractControl;
-
   @Input() options: BootstrapSelectOptions = {};
 
+  @ContentChild(NgControl, { read: NgControl, static: true })
+  ngControlDirective: NgControl;
+
+  @ContentChild(FormControlName, { read: FormControlName, static: true })
+  formControlDirective: FormControlName;
+
   @ContentChild(SelectCaixaDirective, { read: SelectCaixaDirective, static: true })
-  input: SelectCaixaDirective;
+  selectDirective: SelectCaixaDirective;
 
   @ViewChild("wrapper", { read: ElementRef, static: true })
   wrapper;
+
+  formInput: AbstractControl;
+  isRequired = false;
+  nativeElement: any;
 
   constructor(
     private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
-    $.fn.selectpicker.Constructor.BootstrapVersion = this.options.bootstrapVersion || this.defaultOptions.bootstrapVersion;
-    $.fn.selectpicker.Constructor.actionsBox = this.options.actionsBox || this.defaultOptions.actionsBox;
-    $.fn.selectpicker.Constructor.DEFAULTS.liveSearch = this.options.liveSearch || this.defaultOptions.liveSearch;
-    $.fn.selectpicker.Constructor.DEFAULTS.multipleSeparator = this.options.multipleSeparator || this.defaultOptions.multipleSeparator;
-    $.fn.selectpicker.Constructor.DEFAULTS.noneSelectedText = this.options.noneSelectedText || this.defaultOptions.noneSelectedText;
-    $.fn.selectpicker.Constructor.DEFAULTS.noneResultsText = this.options.noneResultsText || this.defaultOptions.noneResultsText;
-    $.fn.selectpicker.Constructor.DEFAULTS.selectAllText = this.options.selectAllText || this.defaultOptions.selectAllText;
-    $.fn.selectpicker.Constructor.DEFAULTS.style = this.options.style || this.defaultOptions.style;
-    $.fn.selectpicker.Constructor.DEFAULTS.width = this.options.width || this.defaultOptions.width;
+    this.setBootstrapSelectDefault();
   }
 
   ngAfterViewInit(): void {
     this.initialize();
   }
 
-  initialize() {
-    // $('select').selectpicker('refresh');
+  ngAfterContentInit(): void {
+    if (this.formControlDirective) {
+      this.formInput = this.formControlDirective.control;
+    } else if (this.ngControlDirective) {
+      this.formInput = this.ngControlDirective.control;
+    }
+    this.isRequired = this.isFieldRequired(this.formInput);
 
-    if (this.input && this.input.nativeElement) {
-      $(this.input.nativeElement).selectpicker("refresh");
+    if (this.selectDirective && this.selectDirective.nativeElement && this.selectDirective.nativeElement.nativeElement) {
+      this.nativeElement = this.selectDirective.nativeElement.nativeElement;
     }
   }
 
-  isRequired = (abstractControl: AbstractControl): boolean => {
-    if (abstractControl.validator) {
+  initialize() {
+    // $('select').selectpicker('refresh');
+
+    if (this.selectDirective && this.selectDirective.nativeElement) {
+      $(this.selectDirective.nativeElement).selectpicker("refresh");
+    }
+  }
+
+  isFieldRequired(abstractControl: AbstractControl): boolean {
+    if (abstractControl && abstractControl.validator) {
       const validator = abstractControl.validator({}as AbstractControl);
       if (validator && validator.required) {
         return true;
       }
     }
-    if (abstractControl['controls']) {
+    if (abstractControl && abstractControl['controls']) {
       for (const controlName in abstractControl['controls']) {
         if (abstractControl['controls'][controlName]) {
-          if (this.isRequired(abstractControl['controls'][controlName])) {
+          if (this.isFieldRequired(abstractControl['controls'][controlName])) {
             return true;
           }
         }
       }
+    }
+    if (this.nativeElement && this.nativeElement.required) {
+      return true;
     }
     return false;
   }
 
   @HostBinding("class.input-caixa-focused")
   get focus() {
-    if (this.input && this.input.focus) {
+    if (this.selectDirective && this.selectDirective.focus) {
       this.renderer.addClass(this.wrapper.nativeElement, "focused");
     } else {
       this.renderer.removeClass(this.wrapper.nativeElement, "focused");
     }
-    return this.input ? this.input.focus : false;
+    return this.selectDirective ? this.selectDirective.focus : false;
   }
 
   @HostBinding("class.ng-invalid")
@@ -141,6 +158,18 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit {
       this.formInput.reset();
     }
     this.initialize();
+  }
+
+  setBootstrapSelectDefault() {
+    $.fn.selectpicker.Constructor.BootstrapVersion = this.options.bootstrapVersion || this.defaultOptions.bootstrapVersion;
+    $.fn.selectpicker.Constructor.actionsBox = this.options.actionsBox || this.defaultOptions.actionsBox;
+    $.fn.selectpicker.Constructor.DEFAULTS.liveSearch = this.options.liveSearch || this.defaultOptions.liveSearch;
+    $.fn.selectpicker.Constructor.DEFAULTS.multipleSeparator = this.options.multipleSeparator || this.defaultOptions.multipleSeparator;
+    $.fn.selectpicker.Constructor.DEFAULTS.noneSelectedText = this.options.noneSelectedText || this.defaultOptions.noneSelectedText;
+    $.fn.selectpicker.Constructor.DEFAULTS.noneResultsText = this.options.noneResultsText || this.defaultOptions.noneResultsText;
+    $.fn.selectpicker.Constructor.DEFAULTS.selectAllText = this.options.selectAllText || this.defaultOptions.selectAllText;
+    $.fn.selectpicker.Constructor.DEFAULTS.style = this.options.style || this.defaultOptions.style;
+    $.fn.selectpicker.Constructor.DEFAULTS.width = this.options.width || this.defaultOptions.width;
   }
 
 }
