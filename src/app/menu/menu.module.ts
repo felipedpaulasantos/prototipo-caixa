@@ -21,8 +21,8 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
     CommonModule,
     RouterModule,
     SharedModule,
-	ReactiveFormsModule,
-	PerfectScrollbarModule
+    ReactiveFormsModule,
+    PerfectScrollbarModule
   ],
   exports: [
     TopMenuComponent,
