@@ -1,4 +1,4 @@
-<header #navbarTop id="navbarTop" class="bg-gradient-primary shadow-sm" appCloseTab>
+<header #navbarTop id="navbarTop" class="bg-primary-light text-lightest" appCloseTab>
     <nav class="d-flex align-items-center h-100">
 
       <div (click)="trocaMenuLateral()" class="d-flex align-items-center h-100 px-4 ripple" role="button">
@@ -20,7 +20,7 @@
       <div class="ml-auto">
         <div *ngIf="user" class="dropdown mr-4">
           <h6 class="nav-link mb-0 d-flex align-items-center" data-toggle="dropdown" role="button">
-            <button class="btn btn-caixa btn-apoio d-flex align-items-center">
+            <button class="btn btn-caixa btn-primary-light shadow-none d-flex align-items-center">
               <i class="fas fa-user-circle fa-lg"></i>
               <span class="ml-2 d-none d-md-block font-fam-bold">
                 {{ user.nome_completo | titlecase }}

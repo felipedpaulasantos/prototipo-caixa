@@ -108,7 +108,7 @@ hr.header-line-caixa {
   padding-left: 1.5em;
   padding-right: 1.5em;
   font-family: $cx-font-family-bold;
-  box-shadow: 0 0.25rem 0.2rem 0 rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.15);
 }
 .btn.active.focus,
 .btn.active:focus,
@@ -255,14 +255,15 @@ hr.header-line-caixa {
 /* Side Menu */
 
 #menuLateralNav.nav-item {
-  border-right: transparent;
+  // border-right: transparent;
 }
 #menuLateralNav .nav-item .side-menu-item.active {
   color: $cx-color-primary-light !important;
-  border-right: solid 3px $cx-color-secondary;
+  font-family: $cx-font-family-bold;
+  // border-right: solid 3px $cx-color-secondary;
 }
 #menuLateralNav .nav-item .side-menu-item:hover {
-	border-right: solid 3px $cx-color-secondary;
+	// border-right: solid 3px $cx-color-secondary;
 	transition: 0.1s;
 }
 
@@ -536,6 +537,7 @@ label {
     color: $cx-color-light-darkest;
     border-top: 0;
     border-bottom: 0;
+    font-weight: 400;
   }
   tbody {
     tr:hover {

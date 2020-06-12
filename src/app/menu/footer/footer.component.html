@@ -2,20 +2,13 @@
   <div class="row mx-5 text-center w-100">
 
     <div class="col-md-4">
-      Caixa Econômica Federal - Sistema SIGMO
+      Caixa Econômica Federal
     </div>
 
     <div class="col-md-4">
       Versão:
       <b>{{ appVersion }}</b>
     </div>
-
-    <div class="col-md-4">
-      <span *ngIf="(whatsappService.whatsappApiMeta$ | async) as meta">
-        Versão da WhatsAppBusiness API:
-        <b>{{ meta.version }}</b>
-      </span>
-    </div>
-
+    
   </div>
 </footer>
