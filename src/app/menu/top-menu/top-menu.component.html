@@ -1,4 +1,5 @@
-<header #navbarTop id="navbarTop" class="{{ (styleService.toolbarBg$ | async) }} text-lightest" appCloseTab>
+<header #navbarTop id="navbarTop" class="bg-{{ (styleService.toolbarBg$ | async) }} text-{{ (styleService.toolbarText$ | async) }}" appCloseTab>
+
   <nav id="navToolbar">
 
     <div id="btnTrocarMenuLateral" (click)="trocaMenuLateral()" class="px-4 ripple" role="button">
@@ -11,7 +12,7 @@
     <div id="verticalLine" class="d-none d-md-block bg-opacity-1"></div>
 
     <div class="d-flex align-items-center mr-auto ml-md-4 h-100">
-      <img src="assets/images/caixa-logo-x-branco.png" class="img-fluid img-logo rounded mr-2">
+      <img src="assets/images/caixa-logo-x-branco.png" [src]="(styleService.toolbarIcon$ | async)" class="img-fluid img-logo rounded mr-2">
       <h4 class="m-0 header-caixa text-opacity-100 text-uppercase d-none d-sm-block">
         Protótipo Caixa
       </h4>
@@ -20,7 +21,7 @@
     <div class="ml-auto">
       <div *ngIf="user" class="dropdown mr-4">
         <h6 class="nav-link mb-0 d-flex align-items-center" data-toggle="dropdown" role="button">
-          <button class="btn btn-caixa btn-primary shadow-none d-flex align-items-center">
+          <button class="btn btn-caixa btn-{{ (styleService.toolbarBg$ | async) }} shadow-none d-flex align-items-center">
             <i class="fas fa-user-circle fa-lg"></i>
             <span class="ml-2 d-none d-md-block font-fam-bold">
               {{ user.nome_completo | titlecase }}
