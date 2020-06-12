@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BootstrapTheme, LOGO_CAIXA_BRANCO_SRC, LOGO_CAIXA_SRC } from '../shared/constants/constants';
 import { StyleService } from '../shared/services/style.service';
-
-
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-layout',
@@ -15,10 +14,17 @@ export class LayoutComponent implements OnInit {
   logoPadrao = LOGO_CAIXA_SRC;
 
   constructor(
-    private styleService: StyleService
+    public styleService: StyleService,
+    private fb: FormBuilder
   ) { }
 
   temas = [];
+
+  formToolbar = this.fb.group({
+    icone: [""],
+    bg: [""],
+    tom: [""]
+  });
 
   ngOnInit() {
     Object.getOwnPropertyNames(BootstrapTheme).forEach((theme: any) => {
@@ -28,17 +34,30 @@ export class LayoutComponent implements OnInit {
     console.log("TEMAS", this.temas);
   }
 
-  onToolbarBgChange(theme) {
+  onToolbarBgChange(theme, tom?) {
     if (!theme) { return; }
+
     const temaSelecionado = this.temas.find(tema => tema.name === theme);
-    console.log(temaSelecionado);
     if (!temaSelecionado) { return; }
-    this.styleService.setToolbarBg(temaSelecionado.name);
+
+    if (!tom && this.formToolbar.get("tom").value) {
+      tom = this.formToolbar.get("tom").value;
+    } else if (!tom) {
+      tom = "";
+    }
+
+    this.styleService.setToolbarBg(temaSelecionado.name + tom);
     this.styleService.setToolbarText(temaSelecionado.textColor);
   }
 
   onIconChange(src) {
+    if (!src) { return; }
     this.styleService.setToolbarIcon(src);
+  }
+
+  onSidemenuBgChange(className) {
+    if (!className) { return; }
+    this.styleService.setSidemenuBg(className);
   }
 
 }

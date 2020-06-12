@@ -1,4 +1,4 @@
-<perfect-scrollbar #menuLateral id="menuLateral" class="bg-lightest border-right shadow" [ngClass]="{'escondido': !isAberto}">
+<perfect-scrollbar #menuLateral id="menuLateral" class="bg-{{ (styleService.sidemenuBg$ | async) }} border-right shadow" [ngClass]="{'escondido': !isAberto}">
 <!-- <div #menuLateral id="menuLateral" class="bg-lightest border-right shadow" [ngClass]="{'escondido': !isAberto}"> -->
 
   <div id="menuLateralPesquisa" class="my-4 px-3">

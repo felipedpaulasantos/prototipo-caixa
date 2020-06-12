@@ -14,27 +14,28 @@
 		<div class="row">
 			<ng-container>
 				<div class="col-4 d-flex align-items-center justify-content-between">
-					<div *ngIf="cor.lightest" class="square bg-lightest">
-						<span>bg-lightest</span>
-					</div>
 
 					<div *ngIf="cor.light" class="square bg-{{ cor.name }}-light">
-						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">bg-{{ cor.name }}-light</span>
+						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">
+							bg-{{ cor.name }}-light
+						</span>
 					</div>
 
 					<div class="square bg-{{ cor.name }}">
-						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">bg-{{ cor.name }}</span>
+						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">
+							bg-{{ cor.name }}
+						</span>
 					</div>
 
 					<div *ngIf="cor.dark" class="square bg-{{ cor.name }}-dark">
-						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">bg-{{ cor.name }}-dark</span>
+						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">
+							bg-{{ cor.name }}-dark
+						</span>
 					</div>
 
-					<div *ngIf="cor.darkest" class="square" 
-						[ngClass]="{'bg-darkest': cor.name != 'light', 'bg-light-darkest': cor.name == 'light'}">
-						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">
-							<ng-container *ngIf="cor.name == 'light' else noLight">bg-light-darkest</ng-container>
-							<ng-template #noLight>bg-darkest</ng-template>
+					<div *ngIf="cor.darkest" class="square bg-{{ cor.name }}-darkest">
+						<span class="text-light">
+							bg-{{ cor.name }}-dark
 						</span>
 					</div>
 				</div>

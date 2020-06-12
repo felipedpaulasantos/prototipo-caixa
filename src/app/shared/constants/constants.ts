@@ -4,7 +4,6 @@ export const loremIpsumPlaceHolder = "Lorem ipsum dolor sit amet, consectetur ad
 export interface ColorTheme {
 	name: string;
 	textColor: string;
-	lightest: boolean;
 	light: boolean;
 	dark: boolean;
 	darkest: boolean;
@@ -12,25 +11,25 @@ export interface ColorTheme {
 
 export class BootstrapTheme {
   static readonly PRIMARY  = new BootstrapTheme(
-		'PRIMARY', { name: "primary", textColor: "light", lightest: false, light: true, dark: true, darkest: false });
+		'PRIMARY', { name: "primary", textColor: "light", light: true, dark: true, darkest: false });
 	static readonly SECONDARY  = new BootstrapTheme(
-		'SECONDARY', { name: "secondary", textColor: "light", lightest: false, light: true, dark: true, darkest: false });
+		'SECONDARY', { name: "secondary", textColor: "light", light: true, dark: true, darkest: false });
 	static readonly SUCCESS  = new BootstrapTheme(
-		'SUCCESS', { name: "success", textColor: "light", lightest: false, light: true, dark: true, darkest: false });
+		'SUCCESS', { name: "success", textColor: "light", light: true, dark: true, darkest: false });
 	static readonly DANGER  = new BootstrapTheme(
-		'DANGER', { name: "danger", textColor: "light", lightest: false, light: true, dark: true, darkest: false });
+		'DANGER', { name: "danger", textColor: "light", light: true, dark: true, darkest: false });
 	static readonly INFO  = new BootstrapTheme(
-		'INFO', { name: "info", textColor: "light", lightest: false, light: true, dark: true, darkest: false });
+		'INFO', { name: "info", textColor: "light", light: true, dark: true, darkest: false });
 	static readonly WARNING  = new BootstrapTheme(
-		'WARNING', { name: "warning", textColor: "light", lightest: false, light: true, dark: true, darkest: false });
+		'WARNING', { name: "warning", textColor: "light", light: true, dark: true, darkest: false });
 	static readonly APOIO  = new BootstrapTheme(
-		'APOIO', { name: "apoio", textColor: "light", lightest: false, light: true, dark: true, darkest: false });
+		'APOIO', { name: "apoio", textColor: "light", light: true, dark: true, darkest: false });
 	static readonly AUX  = new BootstrapTheme(
-		'AUX', { name: "aux", textColor: "light", lightest: false, light: true, dark: true, darkest: false });
+		'AUX', { name: "aux", textColor: "light",  light: true, dark: true, darkest: false });
 	static readonly LIGHT  = new BootstrapTheme(
-		'LIGHT', { name: "light", textColor: "dark", lightest: true, light: false, dark: true, darkest: true });
+		'LIGHT', { name: "light", textColor: "dark", light: false, dark: true, darkest: true });
 	static readonly DARK  = new BootstrapTheme(
-		'DARK', { name: "dark", textColor: "light", lightest: false, light: true, dark: false, darkest: true });
+		'DARK', { name: "dark", textColor: "light", light: true, dark: false, darkest: false });
 
   // private to disallow creating other instances of this type
   private constructor(private readonly key: string, public readonly value: ColorTheme) {

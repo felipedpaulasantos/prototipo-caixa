@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { filter, tap, map, mergeMap } from 'rxjs/operators';
 import { AccordionConfig } from 'src/app/shared/components/accordion/types/accordion-config';
 import { AccordionMenu } from 'src/app/shared/components/accordion/types/accordion-menu';
+import { StyleService } from 'src/app/shared/services/style.service';
 
 const MENU_ROUTE_PROPERTY = "menuLateral";
 const MOBILE_BREAKPOINT = 991.9;
@@ -25,6 +26,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private menuService: SideMenuService,
+    public styleService: StyleService
   ) {}
 
   options: AccordionConfig = { multi: false };
