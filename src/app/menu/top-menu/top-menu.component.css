@@ -46,6 +46,18 @@
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
 }
 
+#navToolbar {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+#btnTrocarMenuLateral {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 @media (max-width: 767px) {
   #navbarCollapse {
     padding-top: 1rem !important;

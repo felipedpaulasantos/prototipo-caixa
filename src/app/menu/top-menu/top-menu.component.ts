@@ -8,6 +8,7 @@ import { User } from "../../authentication/users/user";
 import { ModalService } from "src/app/shared/services/modal.service";
 import { SideMenuService } from "../side-menu/side-menu.service";
 import { FormControl } from "@angular/forms";
+import { StyleService } from 'src/app/shared/services/style.service';
 
 @Component({
   selector: "app-top-menu",
@@ -15,6 +16,7 @@ import { FormControl } from "@angular/forms";
   styleUrls: ["./top-menu.component.css"]
 })
 export class TopMenuComponent implements OnInit {
+
   @ViewChild("navbarTop", { static: true }) navbarTop: ElementRef;
   @Input() resources;
   hasAccount: boolean;
@@ -26,7 +28,8 @@ export class TopMenuComponent implements OnInit {
     private oauthService: OAuthService,
     private userService: UserService,
     private modalService: ModalService,
-    private sidemenuService: SideMenuService
+    private sidemenuService: SideMenuService,
+    public styleService: StyleService
   ) {
     this.user$ = this.userService.perfil;
   }
