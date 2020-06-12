@@ -66,22 +66,22 @@ export const buttonSettings = {
               },
               {
                   extend: 'print',
-                  title: 'Relatório SIGMO',
+                  title: 'Relatório',
                   exportOptions: {
                       columns: [ ':visible' ]
                   }
               },
               {
                   extend: 'excelHtml5',
-                  filename: 'Relatório SIGMO',
-                  title: 'Relatório SIGMO',
+                  filename: 'Relatório',
+                  title: 'Relatório',
                   exportOptions: {
                       columns: [ ':visible' ]
                   }
               },
               {
                   extend: 'pdfHtml5',
-                  title: 'Relatório SIGMO',
+                  title: 'Relatório',
                   exportOptions: {
                       columns: [ ':visible' ]
                   }

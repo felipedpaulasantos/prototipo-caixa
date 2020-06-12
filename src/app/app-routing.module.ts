@@ -17,9 +17,10 @@ const routes: Routes = [
       animation: 'Home'
     }
   },
-  { 
+  {
     path: 'cores',
     data: {
+      title: 'Cores',
       breadcrumb: 'Cores',
       animation: 'Cores'
     },
@@ -35,6 +36,7 @@ const routes: Routes = [
   {
     path: 'relatorios',
     data: {
+      title: 'Relatórios',
       breadcrumb: 'Relatórios',
       animation: 'Relatórios'
     },
@@ -43,6 +45,7 @@ const routes: Routes = [
   {
     path: 'componentes',
     data: {
+      title: 'Componentes',
       breadcrumb: 'Componentes',
       animation: 'Componentes'
     },
