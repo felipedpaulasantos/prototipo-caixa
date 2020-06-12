@@ -43,6 +43,12 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       active: false
     },
     {
+      name: 'Layout',
+      iconClass: 'fas fa-lg fa-layer-group',
+      url: '/layout',
+      active: false
+    },
+    {
       name: 'Contas',
       iconClass: 'fas fa-lg fa-phone-alt',
       url: '/contas',

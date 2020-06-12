@@ -1,0 +1,31 @@
+<h1 class="header-principal-caixa">
+	Layout
+</h1>
+<hr class="header-line-caixa">
+
+<h5 class="header-caixa text-primary">
+	Toolbar (barra-superior)
+</h5>
+
+<div class="row">
+	<div class="col-md-4 my-3">
+		<cx-select>
+			<label>Ícone</label>
+			<select selectCaixa (change)="onIconChange($event.target.value)">
+				<option [value]="logoBranco" selected>Logo branco</option>
+				<option [value]="logoPadrao">Logo padrão</option>
+			</select>
+		</cx-select>
+	</div>
+	<div class="col-md-4 my-3">
+		<cx-select>
+			<label>Background</label>
+			<select selectCaixa (change)="onToolbarBgChange($event.target.value)">
+				<option value="" selected>Escolha um tema</option>
+				<option *ngFor="let tema of temas" class="text-{{ tema.name }} font-fam-bold" [value]="tema.name">
+					{{ tema.name | titlecase }}
+				</option>
+			</select>
+		</cx-select>
+	</div>
+</div>
