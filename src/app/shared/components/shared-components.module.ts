@@ -10,7 +10,6 @@ import { ChartsModule } from 'ng2-charts';
 import { NgxMaskModule } from 'ngx-mask';
 import { TooltipIconComponent } from './tooltip-icon/tooltip-icon.component';
 import { ModalComponent } from './modal/modal.component';
-import { InputFeedbackComponent } from './input-feedback-icon/input-feedback.component';
 import { BackButtonComponent } from './buttons/back-button/back-button.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { RouterModule } from '@angular/router';
@@ -29,7 +28,6 @@ import { SelectCaixaDirective } from './select-caixa/select-caixa.directive';
 		NgxSpinnerDefaultComponent,
 		TooltipIconComponent,
 		ModalComponent,
-		InputFeedbackComponent,
 		BackButtonComponent,
 		AccordionComponent,
 		InputCaixaComponent,
@@ -52,7 +50,6 @@ import { SelectCaixaDirective } from './select-caixa/select-caixa.directive';
 		CustomChartComponent,
 		TooltipIconComponent,
 		ModalComponent,
-		InputFeedbackComponent,
 		BackButtonComponent,
 		AccordionComponent,
 		InputCaixaComponent,
