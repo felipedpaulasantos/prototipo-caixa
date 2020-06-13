@@ -204,92 +204,84 @@ hr.header-line-caixa {
 
 /* Toastr (Mensagens) */
 
-#toast-container > .toast {
-  background-image: none !important;
-  padding: 15px 15px 15px 50px;
-}
-#toast-container > .toast:before {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  font-family: "Font Awesome 5 Free";
-  font-size: 1.4rem;
-  line-height: 18px;
-  float: left;
-  font-weight: 900;
-  padding-left: 1rem;
-}
-.toast {
-  background-color: $cx-color-dark;
-  pointer-events: auto;
-  border-radius: 5px !important;
-  transition: box-shadow 0.2s, border-bottom 0.3s;
-  box-shadow: none !important;
-}
-.toast .toast-title {
-  font-size: 0.875rem !important;
-  font-family: $cx-font-family-bold;
-  margin-bottom: 0.3rem;
-  letter-spacing: 1px;
-}
-.toast .toast-message {
-  font-size: 0.875rem !important;
-}
-.toast .toast-progress {
-  opacity: 0.7;
-}
-
-/* TOAST SUCCESS */
-.toast-success {
-  // background-color: $cx-color-success !important;
-  color: $cx-color-lightest !important;
-  // border-color: $cx-color-success-dark !important;
-  .toast-progress {
-    background-color: $cx-color-success-light;
-  }
-}
-#toast-container > .toast-success:before {
-  content: "\f00c";
-  color: $cx-color-success !important;
-}
-
-/* TOAST ERROR */
-.toast-error {
-  color: $cx-color-lightest !important;
-  .toast-progress {
-    background-color: $cx-color-danger-light;
-  }
-}
-#toast-container > .toast-error:before {
-  content: "\f00d";
-  color: $cx-color-danger;
-}
-
-/* TOAST INFO */
-.toast-info {
-  color: $cx-color-lightest !important;
-  .toast-progress {
-    background-color: $cx-color-info-light;
-  }
-}
-#toast-container > .toast-info:before {
-  content: "\f129";
-  color: $cx-color-info !important;
-}
-
-/* TOAST WARNING */
-.toast-warning {
+.toast-container {
+  font-family: $cx-font-family-normal;
   color: $cx-color-lightest;
-  .toast-progress {
-    background-color: $cx-color-warning-light;
+  > div {
+    background-image: none !important;
+    padding: 15px 15px 15px 50px;
+    background-color: $cx-color-dark;
+    pointer-events: auto;
+    border-radius: 5px !important;
+    transition: box-shadow 0.2s, border-bottom 0.3s, box-shadow 0.3s ease-in-out;
+    box-shadow: none !important;
+    &:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      font-family: "Font Awesome 5 Free";
+      font-size: 1.4rem;
+      line-height: 18px;
+      float: left;
+      font-weight: 900;
+      padding-left: 1rem;
+    }
+    &.toast-success {
+      &:before {
+        content: "\f00c";
+        color: $cx-color-success;
+      }
+      .toast-progress {
+        background-color: $cx-color-success-light;
+      }
+    }
+    &.toast-error {
+      &:before {
+        content: "\f00d";
+        color: $cx-color-danger;
+      }
+      .toast-progress {
+        background-color: $cx-color-danger-light;
+      }
+    }
+    &.toast-info {
+      &:before {
+        content: "\f129";
+        color: $cx-color-info;
+      }
+      .toast-progress {
+        background-color: $cx-color-info-light;
+      }
+    }
+    &.toast-warning {
+      &:before {
+        content: "\f12a";
+        color: $cx-color-warning;
+      }
+      .toast-progress {
+        background-color: $cx-color-warning-light;
+      }
+    }
+    &:hover {
+      box-shadow: 0 0.3rem 0.8rem rgba(0,0,0,0.15) !important;
+      transition: opacity 0.3s ease-in-out;
+    }
+    div.toast-title {
+      font-family: $cx-font-family-bold;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+    div.toast-message {
+      color: $cx-color-light !important;
+    }
+    div .toast-progress {
+      opacity: 0.9;
+    }
   }
-}
-#toast-container > .toast-warning:before {
-  content: "\f12a";
-  color: $cx-color-warning;
 }
 
 /* Side Menu */
@@ -884,10 +876,10 @@ ul.dropdown-menu a.dropdown-item.active.selected {
 
 @keyframes input-ripple {
   0% {
-    background-position: 50% 100%, calc(~'50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%; 
+    background-position: 50% 100%, calc('50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%; 
   }
   100% {
-    background-position: 50% 100%, calc(~'50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%; 
+    background-position: 50% 100%, calc('50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%; 
   }
 }
 
