@@ -31,36 +31,36 @@
 					<input class="input-caixa mb-3" required>
 
 
-					<cx-input-caixa>
+					<cx-input>
 						<label>NG Model</label>
 						<app-tooltip-icon text="teste"></app-tooltip-icon>
 						<input inputCaixa [(ngModel)]="name" #ctrl="ngModel" required>
-					</cx-input-caixa>
+					</cx-input>
 
-					<cx-input-caixa msgErroPadrao="Erro!!!">
+					<cx-input msgErroPadrao="Erro!!!">
 						<label>Campo avulso</label>
 						<input #inputTeste inputCaixa required [ngClass]="{'ng-valid': inputTeste.value != ''}">
-					</cx-input-caixa>
+					</cx-input>
 
 					<form [formGroup]="formulario">
-						<cx-input-caixa>
+						<cx-input>
 							<i class="fa fa-user prefix-icon"></i>
 							<label>Nome</label>
 							<app-tooltip-icon text="teste"></app-tooltip-icon>
 							<input inputCaixa formControlName="nome">
-						</cx-input-caixa>
+						</cx-input>
 
-						<cx-input-caixa formato="(00) 00000-0000">
+						<cx-input formato="(00) 00000-0000">
 							<label>Telefone</label>
 							<input inputCaixa placeholder="(00) 00000-0000" formControlName="tel" mask="{{ phoneMask }}"
 								(keyup)="onPhoneChanged($event);">
-						</cx-input-caixa>
+						</cx-input>
 
-						<cx-input-caixa optionalErrors='{"simpleDate": "Data inválida"}'>
+						<cx-input optionalErrors='{"simpleDate": "Data inválida"}'>
 							<label>Nascimento</label>
 							<input inputCaixa placeholder="00/00/0000" formControlName="nascimento" mask="00/00/0000"
 								[dropSpecialCharacters]=false>
-						</cx-input-caixa>
+						</cx-input>
 					</form>
 				</div>
 				<div class="card-footer text-right">
@@ -90,11 +90,11 @@
 				<div class="card-body">
 					<form [formGroup]="formulario2">
 
-						<cx-input-caixa>
+						<cx-input>
 							<label>Mensagem</label>
 							<i class="fa fa-comments prefix-icon"></i>
 							<textarea inputCaixa formControlName="mensagem"></textarea>
-						</cx-input-caixa>
+						</cx-input>
 
 						<cx-select>
 							<label>Comida favorita</label>

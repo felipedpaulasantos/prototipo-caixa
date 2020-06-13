@@ -14,10 +14,10 @@
           <input id='wa_id' name='wa_id' class="input-caixa profile-about" type="text" value="{{ account?.id }}" disabled>
       </div>
 
-      <cx-input-caixa>
+      <cx-input>
         <label for="text">Descrição da Conta</label>
         <input inputCaixa id='text' name='text' formControlName="text" type="text">
-      </cx-input-caixa>
+      </cx-input>
   </form>
 
   <button (click)="onProfileAboutSubmit()" [disabled]="!profileAboutForm.valid || !profileAboutData" class="btn btn-secondary btn-caixa mr-2 mr-2">

@@ -4,20 +4,20 @@
   <form class="form-caixa" [formGroup]="accountParametersForm">
     <section class="row mb-1">
       <div class="col-md-6">
-        <cx-input-caixa>
+        <cx-input>
           <label class="inline-block" for="user">User</label>
           <app-tooltip-icon class="label" text="Usuário para comunicação com a API do Whatsapp"></app-tooltip-icon>
           <input inputCaixa formControlName="user" type="text">
-        </cx-input-caixa>
-        <cx-input-caixa>
+        </cx-input>
+        <cx-input>
           <label for="description">Descrição</label>
           <input inputCaixa formControlName="description" type="text">
-        </cx-input-caixa>
-        <cx-input-caixa>
+        </cx-input>
+        <cx-input>
           <label for="endpoint">Endpoint</label>
           <app-tooltip-icon text="URL do docker onde está instalada a API do WhatsApp"></app-tooltip-icon>
           <input inputCaixa formControlName="endpoint" type="text">
-        </cx-input-caixa>
+        </cx-input>
         <cx-select>
           <label for="status">Status</label>
           <select selectCaixa formControlName="status">
@@ -29,14 +29,14 @@
 
       <div class="col-md-6">
         <div formGroupName="serviceParameters">
-          <cx-input-caixa>
+          <cx-input>
             <label for="name">Gerenciador</label>
             <input inputCaixa formControlName="name" type="text" maxlength="5">
-          </cx-input-caixa>
-          <cx-input-caixa>
+          </cx-input>
+          <cx-input>
             <label for="endpoint">URL do Gerenciador</label>
             <input inputCaixa formControlName="endpoint" type="text">
-          </cx-input-caixa>
+          </cx-input>
           <div class="custom-control custom-switch py-3">
               <input formControlName="storeReceivedMessages" id="storeReceivedMessages" class="custom-control-input" type="checkbox">
               <label for="storeReceivedMessages" class="custom-control-label">

@@ -10,7 +10,7 @@
   <form [formGroup]="settingsForm" class="form-caixa">
     <div class="row">
       <div class="col-md-6">
-        <cx-input-caixa>
+        <cx-input>
           <label for="callback_backoff_delay_ms">Atraso de retirada para um retorno de chamada (milissegundos)</label>
           <app-tooltip-icon
             text="Atraso de retirada para um retorno de chamada com falha em milissegundos.
@@ -18,24 +18,24 @@
             <br>Padrão: 3.000"
           ></app-tooltip-icon>
           <input inputCaixa formControlName="callback_backoff_delay_ms" mask="9*" type="text">
-        </cx-input-caixa>
-        <cx-input-caixa>
+        </cx-input>
+        <cx-input>
           <label for="max_callback_backoff_delay_ms">Atraso máximo para um retorno de chamada (milissegundos)</label>
           <app-tooltip-icon
             text="Atraso máximo para um retorno de chamada com falha em milissegundos
             <br>Padrão: 900.000"
           ></app-tooltip-icon>
           <input inputCaixa formControlName="max_callback_backoff_delay_ms" mask="9*" type="text">
-        </cx-input-caixa>
-        <cx-input-caixa>
+        </cx-input>
+        <cx-input>
           <label for="heartbeat_interval">Intervalo de monitoramento (segundos)</label>
           <app-tooltip-icon
             text="Multiconexão: Intervalo do monitoramento pelo nó mestre dos nós Coreapp em segundos
             <br>Padrão: 5"
           ></app-tooltip-icon>
           <input inputCaixa formControlName="heartbeat_interval" mask="9*" type="text">
-        </cx-input-caixa>
-        <cx-input-caixa>
+        </cx-input>
+        <cx-input>
           <label for="unhealthy_interval">Intervalo de verificação (segundos)</label>
           <app-tooltip-icon
             text="Multiconexão: Tempo máximo em segundos que um nó mestre aguarda a resposta do nó Coreapp
@@ -43,7 +43,7 @@
             <br>Padrão: 30"
           ></app-tooltip-icon>
           <input inputCaixa formControlName="unhealthy_interval" mask="9*" type="text">
-        </cx-input-caixa>
+        </cx-input>
       </div>
 
       <div class="col-md-6">
@@ -81,14 +81,14 @@
     <h5 class="header-caixa mb-4 text-primary">Webhooks</h5>
     <div class="row" formGroupName="webhooks">
       <div class="col-md-7">
-        <cx-input-caixa>
+        <cx-input>
           <label for="webhooks">URL</label>
           <app-tooltip-icon
             text="As notificações de entrada e saída são roteadas para esse URL.
             <br><b>É necessário um ponto de extremidade baseado em HTTPS; HTTP não funcionará.</b>"
           ></app-tooltip-icon>
           <input inputCaixa formControlName="url" type="text">
-        </cx-input-caixa>
+        </cx-input>
       </div>
       <div class="col-md-5">
         <cx-select>

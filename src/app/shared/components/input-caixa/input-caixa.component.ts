@@ -5,7 +5,7 @@ import { AbstractControl, NgControl, FormControlName } from '@angular/forms';
 import { InputCaixaDirective } from './input-caixa.directive';
 
 @Component({
-  selector: 'cx-input-caixa',
+  selector: 'cx-input',
   templateUrl: './input-caixa.component.html',
   styleUrls: ['./input-caixa.component.scss']
 })
