@@ -6,7 +6,7 @@
 
   <app-side-menu></app-side-menu>
 
-  <section id="conteudoPrincipal" [ngClass]="{'sem-menu-lateral': !isMenuAberto}">
+  <section id="conteudoPrincipal" class="{{ (styleService.conteudoPrincipalBg$ | async) }}" [ngClass]="{'sem-menu-lateral': !isMenuAberto}">
 
     <div id="mobileBackdrop"
       (click)="menuService.fechar()"

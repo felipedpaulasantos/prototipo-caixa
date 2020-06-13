@@ -3,7 +3,8 @@ import {
   Input,
   ViewChild,
   SimpleChanges,
-  OnChanges
+  OnChanges,
+  OnInit
 } from "@angular/core";
 import { ChartOptions, ChartDataSets, ChartType } from "chart.js";
 import { ChangeDetectorRef } from "@angular/core";
@@ -11,15 +12,23 @@ import { Label, BaseChartDirective, Colors } from "ng2-charts";
 import * as pluginDataLabels from "chartjs-plugin-datalabels";
 
 import { CustomChartData } from "../custom-chart-data";
+import { StyleService } from 'src/app/shared/services/style.service';
 
 declare var Chart: any;
+
+const DARK_COLOR = "#48586C";
+const LIGHT_COLOR = "rgba(255, 255, 255, 1)";
 
 @Component({
   selector: "app-bar-chart",
   templateUrl: "./bar-chart.component.html"
 })
-export class CustomChartComponent implements OnChanges {
-  constructor(private cdRef: ChangeDetectorRef) {}
+export class CustomChartComponent implements OnChanges, OnInit {
+
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    private styleService: StyleService
+    ) {}
 
   @ViewChild(BaseChartDirective, { static: false })
   public chart: BaseChartDirective;
@@ -87,6 +96,16 @@ export class CustomChartComponent implements OnChanges {
   ];
 
   public barChartLegend = true;
+
+  ngOnInit(): void {
+    this.styleService.conteudoPrincipalBg$.subscribe(color => {
+      if (color === "bg-dark-dark") { 
+        this.setDefaultGlobalColor(LIGHT_COLOR);
+      } else {
+        this.setDefaultGlobalColor(DARK_COLOR);
+      }
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.prepareChartData();
@@ -175,5 +194,9 @@ export class CustomChartComponent implements OnChanges {
       dataset["maxBarThickness"] = this.maxBarWidth;
       return dataset;
     });
+  }
+
+  setDefaultGlobalColor(color: string) {
+    Chart.defaults.global.defaultFontColor = color;
   }
 }

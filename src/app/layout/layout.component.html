@@ -70,3 +70,20 @@
 		</cx-select>
 	</div>
 </div>
+
+<h5 class="header-subtitulo-caixa">
+	Conteúdo Principal
+</h5>
+
+<div class="row">
+	<div class="col-md-4 my-3">
+		<cx-select [showFeedback]=false>
+			<label>Background</label>
+			<select selectCaixa (change)="onConteudoPrincipalChange($event.target.value)">
+				<option [selected]="(styleService.conteudoPrincipalBg$ | async) == ''" value="">Branco</option>
+				<option [selected]="(styleService.conteudoPrincipalBg$ | async) == 'bg-light'" value="bg-light">Claro</option>
+				<option [selected]="(styleService.conteudoPrincipalBg$ | async) == 'bg-dark-dark'" value="bg-dark-dark">Escuro</option>
+			</select>
+		</cx-select>
+	</div>
+</div>

@@ -77,4 +77,8 @@ export class LayoutComponent implements OnInit {
     this.styleService.setSidemenuBg(temaSelecionado.name + tom);
   }
 
+  onConteudoPrincipalChange(theme: string) {
+    this.styleService.setConteudoPrincipalBg(theme);
+  }
+
 }

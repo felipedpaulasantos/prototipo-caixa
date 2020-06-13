@@ -21,6 +21,9 @@ export class StyleService {
   private sidemenuBgSource = new BehaviorSubject<string>("lightest");
   sidemenuBg$ = this.sidemenuBgSource.asObservable();
 
+  private conteudoPrincipalBg = new BehaviorSubject<string>("");
+  conteudoPrincipalBg$ = this.conteudoPrincipalBg.asObservable();
+
   setToolbarBg(className: string) {
     this.toolbarBgSource.next(className);
   }
@@ -37,4 +40,7 @@ export class StyleService {
     this.sidemenuBgSource.next(className);
   }
 
+  setConteudoPrincipalBg(conteudoPrincipalBg: string) {
+    this.conteudoPrincipalBg.next(conteudoPrincipalBg);
+  }
 }

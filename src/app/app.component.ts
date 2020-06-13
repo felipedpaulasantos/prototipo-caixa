@@ -9,6 +9,7 @@ import { AuthenticationService } from './authentication/authentication.service';
 import { UserService } from './authentication/users/user.service';
 import { SideMenuService } from './menu/side-menu/side-menu.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { StyleService } from './shared/services/style.service';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit {
     private titleService: Title,
     public menuService: SideMenuService,
     public userService: UserService,
+    public styleService: StyleService
   ) {
     // this.authService.initSSO();
   }

@@ -41,6 +41,16 @@ body {
       background-color: $cx-color-dark-light;
     }
   }
+  ul.tab-caixa li a {
+    color: $cx-color-light;
+    padding: 1rem 1.5rem;
+    transition: ease-in-out 0.2s;
+    border-bottom: solid 2px transparent;
+  }
+  ul.tab-caixa li a.nav-link-caixa.active,
+  ul.tab-caixa .dropdown-item:active {
+    color: $cx-color-info-light;
+  }
 }
 
 /* Headers */
