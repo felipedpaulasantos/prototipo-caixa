@@ -39,7 +39,7 @@
     "ng2-charts": "^2.3.2",
     "ngx-mask": "^8.2.0",
     "ngx-perfect-scrollbar": "^9.0.0",
-    "ngx-spinner": "^7.2.0",
+    "ngx-spinner": "^9.0.2",
     "ngx-toastr": "^12.1.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.4.0",
