@@ -41,7 +41,7 @@ const routes: Routes = [
       breadcrumb: 'Contas',
       animation: 'Contas'
     },
-    loadChildren: './account/account.module#AccountModule'
+    loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
   },
   {
     path: 'relatorios',
@@ -50,7 +50,7 @@ const routes: Routes = [
       breadcrumb: 'Relatórios',
       animation: 'Relatórios'
     },
-    loadChildren: './reports/reports.module#ReportsModule'
+    loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)
   },
   {
     path: 'componentes',
@@ -59,7 +59,7 @@ const routes: Routes = [
       breadcrumb: 'Componentes',
       animation: 'Componentes'
     },
-    loadChildren: './demonstracao/componentes/componentes.module#ComponentesModule'
+    loadChildren: () => import('./demonstracao/componentes/componentes.module').then(m => m.ComponentesModule)
   },
   {
     path: '**',
