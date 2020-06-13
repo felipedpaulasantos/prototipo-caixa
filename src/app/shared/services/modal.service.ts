@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter, Output } from "@angular/core";
+import { ModalOptions } from '../components/modal/modal-options';
 
 declare var $;
 

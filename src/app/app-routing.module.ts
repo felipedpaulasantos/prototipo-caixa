@@ -24,7 +24,7 @@ const routes: Routes = [
       breadcrumb: 'Cores',
       animation: 'Cores'
     },
-    loadChildren: () => import('./cores/cores.module').then(m => m.CoresModule) 
+    loadChildren: () => import('./cores/cores.module').then(m => m.CoresModule)
   },
   {
     path: 'layout',
@@ -33,7 +33,7 @@ const routes: Routes = [
       breadcrumb: 'Layout',
       animation: 'Layout'
     },
-    loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule) 
+    loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule)
   },
   {
     path: 'contas',

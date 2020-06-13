@@ -1,4 +1,4 @@
-interface ModalOptions {
+export interface ModalOptions {
   titulo?: string;
   mensagem?: string;
   btOkTexto?: string;

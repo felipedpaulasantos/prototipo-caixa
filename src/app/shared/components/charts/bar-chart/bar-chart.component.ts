@@ -99,7 +99,7 @@ export class CustomChartComponent implements OnChanges, OnInit {
 
   ngOnInit(): void {
     this.styleService.conteudoPrincipalBg$.subscribe(color => {
-      if (color === "bg-dark-dark") { 
+      if (color === "bg-dark-dark") {
         this.setDefaultGlobalColor(LIGHT_COLOR);
       } else {
         this.setDefaultGlobalColor(DARK_COLOR);

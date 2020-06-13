@@ -9,7 +9,7 @@ import { fadeAnimation } from 'src/app/shared/animations/simple-fade.animation';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WhatsappApiService } from 'src/app/whatsapp-api/whatsapp-api.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { mockAccount } from 'src/app/mock/mock-account'
+import { mockAccount } from 'src/app/mock/mock-account';
 
 declare var $;
 

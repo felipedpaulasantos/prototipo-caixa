@@ -6,6 +6,7 @@ import {
   ElementRef
 } from "@angular/core";
 import { ModalService } from "../../services/modal.service";
+import { ModalOptions } from './modal-options';
 
 declare var $;
 
