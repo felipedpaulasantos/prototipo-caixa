@@ -5,18 +5,18 @@
   <hr class="mt-0">
 </div>
 
-<app-content-card *ngIf="!statsData || (statsData && statsData.length == 0)">
+<div class="card card-caixa" *ngIf="!statsData || (statsData && statsData.length == 0)">
   <div body>
     <div class="alert alert-danger m-0">
       <i class="fas fa-times-circle mr-2"></i>
       A API não retornou dados de Relatório.
     </div>
   </div>
-</app-content-card>
+</div>
 
-<app-content-card [header]="true" *ngIf="statsData && statsData.length > 0">
+<div class="card card-caixa" *ngIf="statsData && statsData.length > 0">
 
-	<div header>
+	<div class="card-header">
 		<h5>
 			Relatórios da WhatsappBusiness API:
 			<span *ngIf="isMultiInstance">Alta disponibilidade / Multiconexão</span>
@@ -57,7 +57,7 @@
 			</div>
 		</form>
   </div>
-</app-content-card>
+</div>
 
 <ng-container *ngIf="statsData && statsData.length > 0">
 

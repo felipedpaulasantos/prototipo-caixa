@@ -10,8 +10,8 @@
 
 	<section class="row">
 		<div class="col-md-4" *ngIf="statsData[0]?.in_message_decoded">
-			<app-content-card [header]="true">
-				<div header>
+			<div class="card card-caixa">
+				<div class="card-header">
 					<h6 class="center">Total</h6>
 				</div>
 				<div body>
@@ -32,12 +32,12 @@
 						</tbody>
 					</cx-table-caixa>
 				</div>
-			</app-content-card>
+			</div>
 		</div>
 
 		<div class="col-md-4" *ngIf="statsData[0]?.in_message_from_server">
-			<app-content-card [header]="true">
-				<div header>
+			<div class="card card-caixa">
+				<div class="card-header">
 					<h6 class="center">Mensagens Recebidas do Servidor</h6>
 				</div>
 				<div body>
@@ -56,12 +56,12 @@
 						</tbody>
 					</cx-table-caixa>
 				</div>
-			</app-content-card>
+			</div>
 		</div>
 
 		<div *ngIf="statsData[0]?.in_message_persisted" class="col-md-4">
-			<app-content-card [header]="true">
-					<div header>
+			<div class="card card-caixa">
+					<div class="card-header">
 						<h6 class="center">Mensagens Recebidas e persistidas</h6>
 					</div>
 					<div body>
@@ -82,7 +82,7 @@
 							</tbody>
 						</cx-table-caixa>
 					</div>
-				</app-content-card>
+				</div>
 		</div>
 	</section><!-- Row -->
 	<hr>
@@ -113,8 +113,8 @@
 
 	<section class="row">
 		<div class="col-md-6" *ngIf="statsData[0]?.out_message_status">
-			<app-content-card [header]="true">
-				<div header>
+			<div class="card card-caixa">
+				<div class="card-header">
 					<h6 class="center">Status das mensagens enviadas</h6>
 				</div>
 				<div body>
@@ -135,12 +135,12 @@
 						</tbody>
 					</cx-table-caixa>
 				</div>
-			</app-content-card>
+			</div>
 		</div>
 
 		<div class="col-md-6" *ngIf="statsData[0]?.out_message_persisted">
-			<app-content-card [header]="true">
-				<div header>
+			<div class="card card-caixa">
+				<div class="card-header">
 					<h6 class="center">Mensagens Enviadas e Persistidas</h6>
 				</div>
 				<div body>
@@ -161,7 +161,7 @@
 						</tbody>
 					</cx-table-caixa>
 				</div>
-			</app-content-card>
+			</div>
 		</div>
 	</section>
 	<hr>
@@ -179,8 +179,6 @@
 
 
 
-
-
 <ng-container *ngIf="filter.media == true && (statsData[0]?.media_downloads ||
 	statsData[0]?.media_uploads)
 	else noMediaTitle">
@@ -192,8 +190,8 @@
 
 	<section class="row">
     <div class="col-md-6" *ngIf="statsData[0]?.media_downloads">
-      <app-content-card [header]="true">
-        <div header>
+      <div class="card card-caixa">
+        <div class="card-header">
           <h6 class="center">Download</h6>
         </div>
         <div body>
@@ -216,12 +214,12 @@
             </tbody>
           </cx-table-caixa>
         </div>
-      </app-content-card>
+      </div>
     </div>
 
     <div class="col-md-6" *ngIf="statsData[0]?.media_uploads">
-      <app-content-card [header]="true">
-        <div header>
+      <div class="card card-caixa">
+        <div class="card-header">
           <h6 class="center">Upload</h6>
         </div>
         <div body>
@@ -244,7 +242,7 @@
             </tbody>
           </cx-table-caixa>
         </div>
-      </app-content-card>
+      </div>
     </div>
 	</section>
 	<hr>

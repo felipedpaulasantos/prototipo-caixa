@@ -36,11 +36,11 @@
 
     <br>
 
-    <app-content-card [header]="true">
-      <div header>
-        <h5 class="header-caixa text-primary mb-4">Agregado</h5>
+    <div class="card card-caixa">
+      <div class="card-header">
+        <h5 class="header-subtitulo-caixa mb-4">Agregado</h5>
       </div>
-      <div body>
+      <div class="card-body">
         <div class="row" *ngIf="(messagesDetailsComponent.totalMsg != 0 && chatDetailsComponent.totalChats != 0) else noReportData">
           <div class="col-md-6" *ngIf="messagesDetailsComponent.totalMsg != 0">
             <cx-table-caixa>
@@ -117,5 +117,5 @@
             </h6>
         </ng-template>
       </div>
-    </app-content-card>
+    </div>
 </div>

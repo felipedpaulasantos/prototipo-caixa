@@ -1,10 +1,10 @@
-<app-content-card [header]="true">
+<div class="card card-caixa">
 
-  <div header>
-    <h5 class="header-caixa text-primary">Filtros de pesquisa</h5>
+  <div class="card-header">
+    <h5 class="header-subtitulo-caixa">Filtros de pesquisa</h5>
   </div>
 
-  <div body>
+  <div class="card-body">
 
     <form [formGroup]="messageFilterForm" class="form-caixa" (ngSubmit)="emitValue()">
         <div class="row">
@@ -102,4 +102,4 @@
     </form>
   </div>
 
-</app-content-card>
+</div>

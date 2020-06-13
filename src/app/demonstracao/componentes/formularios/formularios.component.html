@@ -9,7 +9,7 @@
 		<div class="col-md-4 my-3">
 			<div class="card card-caixa">
 				<div class="card-header">
-					<h5 class="header-caixa text-primary">
+					<h5 class="header-subtitulo-caixa">
 						Validadores embutidos
 					</h5>
 				</div>
@@ -44,7 +44,7 @@
 
 					<form [formGroup]="formulario">
 						<cx-input-caixa>
-							<i class="fa fa-user prefix-icon text-dark-light"></i>
+							<i class="fa fa-user prefix-icon"></i>
 							<label>Nome</label>
 							<app-tooltip-icon text="teste"></app-tooltip-icon>
 							<input inputCaixa formControlName="nome">
@@ -83,7 +83,7 @@
 		<div class="col-md-8 my-3">
 			<div class="card card-caixa">
 				<div class="card-header">
-					<h5 class="header-caixa text-primary">
+					<h5 class="header-subtitulo-caixa">
 						Outros tipos de campos
 					</h5>
 				</div>
@@ -92,7 +92,7 @@
 
 						<cx-input-caixa>
 							<label>Mensagem</label>
-							<i class="fa fa-comments prefix-icon text-dark-light"></i>
+							<i class="fa fa-comments prefix-icon"></i>
 							<textarea inputCaixa formControlName="mensagem"></textarea>
 						</cx-input-caixa>
 
@@ -109,7 +109,7 @@
 
 						<cx-select>
 							<label>Filme favorito</label>
-							<i class="fa fa-film prefix-icon text-dark-light"></i>
+							<i class="fa fa-film prefix-icon"></i>
 							<select selectCaixa formControlName="filme">
 								<option value="" selected>Escolha um filme</option>
 								<option value="lasanha">Senhor dos Anéis</option>

@@ -89,7 +89,7 @@ export class DataTableService {
 			});
 
 			$('.dataTables_filter label').addClass('d-flex align-items-center ml-auto w-50');
-			$('.dataTables_filter input').addClass('input-caixa font-fam-normal w-100 float-right').removeClass('form-control-sm');
+			$('.dataTables_filter input').addClass('input-caixa font-fam-normal w-100 float-right').removeClass('form-control form-control-sm');
 
 		} catch (err) {
 			console.error(`Erro ao inicializar Datatable: ${err}`);
@@ -126,7 +126,7 @@ export class DataTableService {
 
 	private appendHeaderFilter(tabelaId, dataTable) {
 
-		const icon = "<i class='fas fa-search text-muted mr-2'></i>";
+		const icon = "<i class='fas fa-search mr-2'></i>";
 		const searchInput = "<input class='input-caixa font-fam-normal w-100 float-right' \
 												placeholder='Procurar...' type='text'>";
 		const searchDiv = `<div class="my-3 d-flex form-caixa align-items-center justify-content-center"> ${icon} ${searchInput} </div>`;

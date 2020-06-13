@@ -1,4 +1,4 @@
-<h5 class="header-caixa text-primary mb-4">Foto de perfil</h5>
+<h5 class="header-subtitulo-caixa mb-4">Foto de perfil</h5>
 <div id="containerPhotoPreview" class="card mx-auto mt-3 d-flex align-items-center">
   <img *ngIf="photoUrl" #photoPreview id="photoPreview"
     name='image' [src]="photoUrl" class="img-fluid mx-auto my-auto align-self-center p-1" alt="Não foi possível carregar a imagem da conta.">
@@ -6,7 +6,7 @@
     Não foi possível carregar a imagem da conta.
   </h6>
 </div>
-<span *ngIf="photoUrl" class="text-muted d-inline-block my-3">Tamanho máximo de 5MB e dimensão recomendada de 640x640</span>
+<span *ngIf="photoUrl" class="d-inline-block my-3">Tamanho máximo de 5MB e dimensão recomendada de 640x640</span>
 
 <br class="my-3">
 
