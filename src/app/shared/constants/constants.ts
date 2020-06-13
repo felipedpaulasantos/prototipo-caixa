@@ -29,7 +29,7 @@ export class BootstrapTheme {
 	static readonly LIGHT  = new BootstrapTheme(
 		'LIGHT', { name: "light", textColor: "dark", light: false, dark: true, darkest: true });
 	static readonly DARK  = new BootstrapTheme(
-		'DARK', { name: "dark", textColor: "light", light: true, dark: false, darkest: false });
+		'DARK', { name: "dark", textColor: "light", light: true, dark: true, darkest: false });
 
   // private to disallow creating other instances of this type
   private constructor(private readonly key: string, public readonly value: ColorTheme) {
