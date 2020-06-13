@@ -30,7 +30,7 @@ export class CustomChartComponent implements OnChanges, OnInit {
     private styleService: StyleService
     ) {}
 
-  @ViewChild(BaseChartDirective, { static: false })
+  @ViewChild(BaseChartDirective)
   public chart: BaseChartDirective;
 
   @Input() public chartData: CustomChartData;

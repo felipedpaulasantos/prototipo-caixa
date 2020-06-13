@@ -3,7 +3,9 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } fr
 import { NgxSpinnerService } from "../../../../node_modules/ngx-spinner";
 import { Observable } from "../../../../node_modules/rxjs";
 import { finalize, tap, catchError } from "../../../../node_modules/rxjs/operators";
+import { Injectable as Injectable_1 } from "@angular/core";
 
+@Injectable_1()
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
 

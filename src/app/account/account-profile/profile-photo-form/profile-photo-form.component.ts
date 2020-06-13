@@ -25,7 +25,7 @@ export class ProfilePhotoFormComponent implements OnChanges {
     private domSanitizer: DomSanitizer
   ) {}
 
-  @ViewChild("photoPreview", { static: false }) photoPreview;
+  @ViewChild("photoPreview") photoPreview;
   @Input() account: Account;
   @Input() photo: string;
   photoUrl: SafeUrl;

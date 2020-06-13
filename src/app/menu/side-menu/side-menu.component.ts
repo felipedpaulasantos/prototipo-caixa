@@ -97,10 +97,10 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     }
   ];
 
-  @ViewChild("menuLateral", { read: ElementRef, static: false })
+  @ViewChild("menuLateral", { read: ElementRef })
   menuLateral: ElementRef;
 
-  @ViewChild("menuTarget", { read: ViewContainerRef, static: false })
+  @ViewChild("menuTarget", { read: ViewContainerRef })
   menuTargetRef: ViewContainerRef;
 
   larguraTela: number;
