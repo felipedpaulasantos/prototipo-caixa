@@ -9,7 +9,7 @@
 
 <div [formGroup]="formToolbar" class="row">
 	<div class="col-md-4 my-3">
-		<cx-select>
+		<cx-select [showFeedback]=false>
 			<label>Ícone</label>
 			<select selectCaixa formControlName="icone" (change)="onIconChange($event.target.value)">
 				<option [value]="logoBranco" selected>Logo branco</option>
@@ -18,7 +18,7 @@
 		</cx-select>
 	</div>
 	<div class="col-md-4 my-3">
-		<cx-select>
+		<cx-select [showFeedback]=false>
 			<label>Background</label>
 			<select selectCaixa formControlName="bg" (change)="onToolbarBgChange($event.target.value)">
 				<option value="">Escolha um tema</option>
@@ -30,7 +30,7 @@
 		</cx-select>
 	</div>
 	<div class="col-md-4 my-3">
-		<cx-select>
+		<cx-select [showFeedback]=false>
 			<label>Tom</label>
 			<select selectCaixa formControlName="tom" (change)="onToolbarBgChange(formToolbar.get('bg').value, $event.target.value)">
 				<option value="">Padrão</option>
@@ -47,7 +47,7 @@
 
 <div class="row">
 	<div class="col-md-4 my-3">
-		<cx-select>
+		<cx-select [showFeedback]=false>
 			<label>Background</label>
 			<select selectCaixa (change)="onSidemenuBgChange($event.target.value)">
 				<option value="">Escolha um tema</option>
