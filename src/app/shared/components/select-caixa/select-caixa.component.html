@@ -7,14 +7,18 @@
 		<div class="input-caixa-prefix-icon">
 			<ng-content select=".prefix-icon"></ng-content>
 		</div>
-		<div class="input-caixa-field d-block w-100">
-			<ng-content></ng-content>
-		</div>
-		<div *ngIf="formInput?.dirty"
-			class="input-caixa-feedback-icon rounded-circle my-auto ripple ripple-dark d-inline-block px-2 py-1" role="button"
-			(click)="reset()" [ngClass]="{'text-success': formInput?.valid, 'text-danger': formInput?.invalid}">
-			<i *ngIf="formInput?.valid" class="fas fa-check" title="Resetar campo"></i>
-			<i *ngIf="formInput?.invalid" class="fas fa-exclamation-triangle" title="Resetar campo"></i>
+		<div class="row w-100 no-gutters">
+			<div class="input-caixa-field col">
+				<ng-content></ng-content>
+			</div>
+			<div *ngIf="formInput?.dirty && showFeedback" class="col-1 d-flex align-items-center text-center">
+				<div class="input-caixa-feedback-icon rounded-circle w-100 px-2 py-1 ripple ripple-dark"
+					role="button" (click)="reset()"
+					[ngClass]="{'text-success': formInput?.valid, 'text-danger': formInput?.invalid}">
+					<i *ngIf="formInput?.valid" class="fas fa-check" title="Resetar campo"></i>
+					<i *ngIf="formInput?.invalid" class="fas fa-exclamation-triangle" title="Resetar campo"></i>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -55,6 +55,8 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
 
   @Input() options: BootstrapSelectOptions = {};
 
+  @Input() showFeedback = true;
+
   @ContentChild(NgControl, { read: NgControl, static: true })
   ngControlDirective: NgControl;
 
