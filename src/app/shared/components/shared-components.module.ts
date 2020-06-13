@@ -4,7 +4,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { NgxSpinnerDefaultComponent } from './ngx-spinner-default/ngx-spinner-default.component';
 import { BootstrapSelectComponent } from './bootstrap-select/bootstrap-select.component';
-import { ContentCardComponent } from './cards/content-card.component';
 import { TableCaixaComponent } from './tables/table-caixa/table-caixa.component';
 import { CustomChartComponent } from './charts/bar-chart/bar-chart.component';
 import { ChartsModule } from 'ng2-charts';
@@ -24,7 +23,6 @@ import { SelectCaixaDirective } from './select-caixa/select-caixa.directive';
 @NgModule({
 	declarations: [
 		BootstrapSelectComponent,
-		ContentCardComponent,
 		TableCaixaComponent,
 		TableCaixaDirective,
 		CustomChartComponent,
@@ -48,7 +46,6 @@ import { SelectCaixaDirective } from './select-caixa/select-caixa.directive';
 	],
 	exports: [
 		BootstrapSelectComponent,
-		ContentCardComponent,
 		TableCaixaComponent,
 		TableCaixaDirective,
 		NgxSpinnerDefaultComponent,
