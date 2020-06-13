@@ -17,7 +17,7 @@
                 <input
                   id="dataInicial"
                   mask="99/99/9999"
-                  class="form-control"
+                  class="input-caixa"
                   formControlName="dataInicial"
                   placeholder="dd/mm/aaaa"
                   mask="00/00/0000"
@@ -33,7 +33,7 @@
                 </span>
                 <input
                   mask="99/99/9999"
-                  class="form-control"
+                  class="input-caixa"
                   formControlName="dataFinal"
                   placeholder="dd/mm/aaaa"
                   mask="00/00/0000"
@@ -79,7 +79,7 @@
             </div>
             <div *ngIf="fields && fields.includes('pageSize')" class="form-group col-sm-4">
               <label for="pageSize">Quantidade de mensagens</label>
-              <input name='pageSize' formControlName="pageSize" class="form-control" required min="10">
+              <input name='pageSize' formControlName="pageSize" class="input-caixa" required min="10">
           </div>
         </div>
 
