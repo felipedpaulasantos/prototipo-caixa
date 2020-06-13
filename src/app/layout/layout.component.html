@@ -45,17 +45,27 @@
 	Menu Lateral
 </h5>
 
-<div class="row">
+<div [formGroup]="formSidemenu" class="row">
 	<div class="col-md-4 my-3">
 		<cx-select [showFeedback]=false>
 			<label>Background</label>
-			<select selectCaixa (change)="onSidemenuBgChange($event.target.value)">
+			<select selectCaixa formControlName="bg" (change)="onSidemenuBgChange($event.target.value)">
 				<option value="">Escolha um tema</option>
-				<option [selected]="(styleService.sidemenuBg$ | async) == 'lightest'">Branco</option>
+				<option [selected]="(styleService.sidemenuBg$ | async) == 'lightest'" value="lightest">Branco</option>
 				<option [selected]="(styleService.sidemenuBg$ | async) == tema.name" 
 				*ngFor="let tema of temas" class="text-{{ tema.name }} font-fam-bold" [value]="tema.name">
 					{{ tema.name | titlecase }}
 				</option>
+			</select>
+		</cx-select>
+	</div>
+	<div class="col-md-4 my-3">
+		<cx-select [showFeedback]=false>
+			<label>Tom</label>
+			<select selectCaixa formControlName="tom" (change)="onSidemenuBgChange(formSidemenu.get('bg').value, $event.target.value)">
+				<option value="">Padrão</option>
+				<option value="-light">Claro</option>
+				<option value="-dark">Escuro</option>
 			</select>
 		</cx-select>
 	</div>

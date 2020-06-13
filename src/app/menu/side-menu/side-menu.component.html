@@ -1,9 +1,10 @@
-<perfect-scrollbar #menuLateral id="menuLateral" class="bg-{{ (styleService.sidemenuBg$ | async) }} border-right shadow" [ngClass]="{'escondido': !isAberto}">
+<perfect-scrollbar #menuLateral id="menuLateral" 
+  class="bg-{{ (styleService.sidemenuBg$ | async) }} border-right shadow" [ngClass]="{'escondido': !isAberto}">
 <!-- <div #menuLateral id="menuLateral" class="bg-lightest border-right shadow" [ngClass]="{'escondido': !isAberto}"> -->
 
-  <div id="menuLateralPesquisa" class="my-4 px-3">
-    <i class="fas fa-lg fa-search mr-3"></i>
-    <input class="form-control w-75 d-inline" placeholder="Pesquisar..." disabled>
+  <div id="menuLateralPesquisa" class="py-4 px-3">
+    <i id="sidemenuSearchIcon" class="fas fa-lg fa-search mr-3"></i>
+    <input class="input-caixa w-75 d-inline" placeholder="Pesquisar...">
   </div>
 
   <div id="menuLateralNav">

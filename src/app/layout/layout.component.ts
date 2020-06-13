@@ -26,6 +26,11 @@ export class LayoutComponent implements OnInit {
     tom: [""]
   });
 
+  formSidemenu = this.fb.group({
+    bg: [""],
+    tom: [""]
+  });
+
   ngOnInit() {
     Object.getOwnPropertyNames(BootstrapTheme).forEach((theme: any) => {
       const tema = BootstrapTheme[theme].value;
@@ -34,7 +39,12 @@ export class LayoutComponent implements OnInit {
     console.log("TEMAS", this.temas);
   }
 
-  onToolbarBgChange(theme, tom?) {
+  onIconChange(src: string): void {
+    if (!src) { return; }
+    this.styleService.setToolbarIcon(src);
+  }
+
+  onToolbarBgChange(theme: string, tom?: string): void {
     if (!theme) { return; }
 
     const temaSelecionado = this.temas.find(tema => tema.name === theme);
@@ -50,14 +60,21 @@ export class LayoutComponent implements OnInit {
     this.styleService.setToolbarText(temaSelecionado.textColor);
   }
 
-  onIconChange(src) {
-    if (!src) { return; }
-    this.styleService.setToolbarIcon(src);
-  }
+  onSidemenuBgChange(theme: string, tom?: string): void {
+    if (!theme) { return; }
 
-  onSidemenuBgChange(className) {
-    if (!className) { return; }
-    this.styleService.setSidemenuBg(className);
+    console.log(theme, tom);
+
+    const temaSelecionado = this.temas.find(tema => tema.name === theme);
+    if (!temaSelecionado) { return; }
+
+    if (!tom && this.formSidemenu.get("tom").value) {
+      tom = this.formSidemenu.get("tom").value;
+    } else if (!tom) {
+      tom = "";
+    }
+
+    this.styleService.setSidemenuBg(temaSelecionado.name + tom);
   }
 
 }
