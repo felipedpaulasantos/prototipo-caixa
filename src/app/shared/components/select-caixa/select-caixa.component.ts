@@ -48,7 +48,7 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
     noneSelectedText: 'Nenhuma opção selecionada',
     noneResultsText: 'Nenhum resultado encontrado',
     selectAllText: 'Selecionar todos',
-    style: 'form-control input-caixa',
+    style: 'input-caixa',
     tickIcon: 'fa fa-check',
     width: false
   };

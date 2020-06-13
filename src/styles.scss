@@ -254,20 +254,72 @@ hr.header-line-caixa {
 
 /* Side Menu */
 
-#menuLateralNav.nav-item {
-  // border-right: transparent;
+#menuLateralNav .nav-item .side-menu-item {
+  transition: 0.1s;
+  color: $cx-color-dark;
 }
-#menuLateralNav .nav-item .side-menu-item.active {
-  color: $cx-color-primary-light !important;
-  font-family: $cx-font-family-bold;
-  // border-right: solid 3px $cx-color-secondary;
-}
-#menuLateralNav .nav-item .side-menu-item:hover {
-	// border-right: solid 3px $cx-color-secondary;
-	transition: 0.1s;
+#menuLateral {
+  &.bg-lightest, &.bg-white, &.bg-light, &.bg-warning {
+    .nav-item .side-menu-item {
+      #sidemenuSearchIcon { color: $cx-color-dark; }
+      color: $cx-color-dark;
+      @extend .ripple, .ripple-dark;
+      &:hover, &.active {
+        color: $cx-color-primary;
+      }
+    }
+  }
+  &.bg-primary, &.bg-dark, &.bg-secondary, &.bg-success, &.bg-danger, &.bg-info, &.bg-apoio, &.bg-aux {
+    #sidemenuSearchIcon { color: $cx-color-light; }
+    .nav-item .side-menu-item {
+      color: $cx-color-light;
+      @extend .ripple;
+      &:hover, &.active {
+        color: $cx-color-secondary-light;
+      }
+    }
+  }
 }
 
-#menuLateral.bg-primary #menuLateralPesquisa,
+#menuLateral.bg-lightest { 
+  #menuLateralPesquisa, .nav-item .side-menu-item { border-bottom: solid 1px $cx-color-light; } 
+}
+#menuLateral.bg-light { 
+  #menuLateralPesquisa, .nav-item .side-menu-item { border-bottom: solid 1px $cx-color-light-dark; } 
+}
+#menuLateral.bg-primary { 
+  #menuLateralPesquisa, .nav-item .side-menu-item { border-bottom: solid 1px $cx-color-primary-light; } 
+}
+#menuLateral.bg-secondary { 
+  #menuLateralPesquisa, .nav-item .side-menu-item { border-bottom: solid 1px $cx-color-secondary-light; } 
+}
+#menuLateral.bg-success { 
+  #menuLateralPesquisa, .nav-item .side-menu-item { border-bottom: solid 1px $cx-color-success-light; } 
+}
+#menuLateral.bg-danger { 
+  #menuLateralPesquisa, .nav-item .side-menu-item { border-bottom: solid 1px $cx-color-danger-light; } 
+}
+#menuLateral.bg-warning { 
+  #menuLateralPesquisa, .nav-item .side-menu-item { border-bottom: solid 1px $cx-color-warning-light; } 
+}
+#menuLateral.bg-info { 
+  #menuLateralPesquisa, .nav-item .side-menu-item { border-bottom: solid 1px $cx-color-info-light; } 
+}
+#menuLateral.bg-aux { 
+  #menuLateralPesquisa, .nav-item .side-menu-item { border-bottom: solid 1px $cx-color-aux-light; } 
+}
+#menuLateral.bg-apoio { 
+  #menuLateralPesquisa, .nav-item .side-menu-item { border-bottom: solid 1px $cx-color-apoio-light; } 
+}
+#menuLateral.bg-dark { 
+  #menuLateralPesquisa, .nav-item .side-menu-item { border-bottom: solid 1px $cx-color-dark-light; } 
+}
+
+#menuLateralNav .nav-item .side-menu-item.active {
+  font-family: $cx-font-family-bold;
+}
+
+/* #menuLateral.bg-primary #menuLateralPesquisa,
 #menuLateral.bg-primary #menuLateralNav,
 #menuLateral.bg-primary #menuLateralDinamico {
   i {
@@ -280,14 +332,10 @@ hr.header-line-caixa {
       background-color: $cx-color-primary-dark;
     }
   }
-/*   .nav-item.active {
-    color: $cx-color-lightest !important;
-    background-color: $cx-color-primary !important;
-  } */
   ul {
     border-top-color: $cx-color-primary-light !important;
   }
-}
+} */
 
 
 /* Inputs */
@@ -774,6 +822,7 @@ ul.dropdown-menu a.dropdown-item.active.selected {
 .bootstrap-select .dropdown-toggle:focus, .bootstrap-select > select.mobile-device:focus + .dropdown-toggle {
   outline: none !important;
 }
+
 /* Efeito ripple - onda ao clicar em botão */
 
 .ripple, 
@@ -816,7 +865,7 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   Efeito ripple em inputs 
 */
 
-.input-caixa, .nav-link-caixa, .input-caixa-wrapper {
+/* .form-control, .nav-link-caixa, .input-caixa-wrapper, .input-caixa {
   transition: background-size 0.4s, background-color 0.4s, border-color 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
   &,
   &:focus,
@@ -844,9 +893,96 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   &.pre-click-fx:not(.post-click-fx) {
     animation: none !important;
   }
+} */
 
-  input {
-    box-shadow: none !important;
+@keyframes input-ripple {
+  0% {
+    background-position: 50% 100%, calc(~'50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%; 
+  }
+  100% {
+    background-position: 50% 100%, calc(~'50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%; 
+  }
+}
+
+.input-caixa {
+  box-shadow: none;
+}
+.input-caixa-wrapper { 
+  z-index: 999;
+  padding-bottom: 1px;
+  input { 
+    box-shadow: none;
+  }
+}
+.input-caixa-wrapper, .input-caixa {
+	width: 100%;
+	border-top: none;
+	border-left: none;
+  border-right: none;
+  border-bottom: solid 1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+	border-color: $cx-color-light-darkest;
+/* 	&:focus, &:active, &.focused {
+		box-shadow: none;
+		border-color: $cx-color-primary !important;
+	}
+	&.ng-invalid.ng-touched {
+		border-color: $cx-color-danger;
+	}
+	&.ng-valid.ng-touched {
+		border-color: $cx-color-success;
+	} */
+	&:disabled {
+		background-color: #EFF5F6;
+		opacity: 0.5;
+		cursor: not-allowed;
+  }
+}
+
+.input-caixa-wrapper, .input-caixa, select + button.input-caixa[aria-expanded="true"] {
+  transition: background-size 0.4s, background-color 0.4s, border-color 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
+  &,
+  &:focus,
+  &:active,
+  &[aria-expanded="true"],
+  &.focused {
+    background-image: 
+      linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%), 
+      linear-gradient(0deg, $cx-color-primary 0%, $cx-color-primary 100%);
+    background-repeat: no-repeat;
+    background-position: 50% 100%, 50% 100%;
+    background-size: 100% 1px, 0% 1px;
+    // border-color: $cx-color-primary-light;
+  }
+
+  &:focus,
+  &:active,
+  &[aria-expanded="true"],
+  &.focused,
+  &.click-fx {
+    border-color: $cx-color-primary;
+    background-size: 100% 1px, 100% 1px;
+    animation: input-ripple 0.5s ease-in !important;
+  }
+
+  &.pre-click-fx:not(.post-click-fx) {
+    animation: none !important;
+  }
+}
+
+cx-input-caixa.ng-invalid .input-caixa-wrapper,
+select.ng-dirty.ng-invalid + button.input-caixa,
+.input-caixa.ng-invalid {
+  &,
+  &:focus,
+  &:active,
+  &[aria-expanded="true"],
+  &.focused {
+    background-image: 
+      linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%), 
+      linear-gradient(0deg, $cx-color-danger 0%, $cx-color-danger 100%) !important;
+    border-color: $cx-color-danger !important;
   }
 }
 
@@ -865,69 +1001,4 @@ select.ng-dirty.ng-valid + button.input-caixa {
       linear-gradient(0deg, $cx-color-success 0%, $cx-color-success 100%) !important;
     border-color: $cx-color-success !important;
   }
-}
-
-cx-input-caixa.ng-invalid .input-caixa-wrapper,
-select.ng-dirty.ng-invalid + button.input-caixa {
-/*   label {
-    color: $cx-color-danger;
-  } */
-  &,
-  &:focus,
-  &:active,
-  &[aria-expanded="true"],
-  &.focused {
-    background-image: 
-      linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%), 
-      linear-gradient(0deg, $cx-color-danger 0%, $cx-color-danger 100%) !important;
-    border-color: $cx-color-danger !important;
-  }
-}
-
-@keyframes input-ripple {
-  0% {
-    background-position: 50% 100%, calc(~'50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%; 
-  }
-  100% {
-    background-position: 50% 100%, calc(~'50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%; 
-  }
-}
-
-.input-caixa {
-
-}
-
-.input-caixa-wrapper, .input-caixa {
-	width: 100%;
-	z-index: 999;
-	border-top: none;
-	border-left: none;
-  border-right: none;
-  border-bottom: solid 1px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-	border-color: $cx-color-light-darkest;
-	&:focus, &:active, &.focused {
-		box-shadow: none;
-		border-color: $cx-color-primary !important;
-	}
-	&.ng-invalid.ng-touched {
-		border-color: $cx-color-danger;
-	}
-	&.ng-valid.ng-touched {
-		border-color: $cx-color-success;
-	}
-	&:disabled {
-		background-color: #EFF5F6;
-		opacity: 0.5;
-		cursor: not-allowed;
-	}
-}
-
-
-select.ng-dirty.ng-valid + button.input-caixa {
-  border-color: $cx-color-success !important;
-}
-select.ng-dirty.ng-invalid + button.input-caixa {
-  border-color: $cx-color-danger !important;
 }
