@@ -10,16 +10,7 @@
 <div [formGroup]="formToolbar" class="row">
 	<div class="col-md-4 my-3">
 		<cx-select [showFeedback]=false>
-			<label>Ícone</label>
-			<select selectCaixa formControlName="icone" (change)="onIconChange($event.target.value)">
-				<option [value]="logoBranco" selected>Logo branco</option>
-				<option [value]="logoPadrao">Logo padrão</option>
-			</select>
-		</cx-select>
-	</div>
-	<div class="col-md-4 my-3">
-		<cx-select [showFeedback]=false>
-			<label>Background</label>
+			<label>Cor de fundo</label>
 			<select selectCaixa formControlName="bg" (change)="onToolbarBgChange($event.target.value)">
 				<option value="">Escolha um tema</option>
 				<option [selected]="(styleService.toolbarBg$ | async) == tema.name" 
@@ -39,6 +30,15 @@
 			</select>
 		</cx-select>
 	</div>
+	<div class="col-md-4 my-3">
+		<cx-select [showFeedback]=false>
+			<label>Ícone</label>
+			<select selectCaixa formControlName="icone" (change)="onIconChange($event.target.value)">
+				<option [value]="logoBranco" selected>Logo branco</option>
+				<option [value]="logoPadrao">Logo padrão</option>
+			</select>
+		</cx-select>
+	</div>
 </div>
 
 <h5 class="header-subtitulo-caixa">
@@ -48,7 +48,7 @@
 <div [formGroup]="formSidemenu" class="row">
 	<div class="col-md-4 my-3">
 		<cx-select [showFeedback]=false>
-			<label>Background</label>
+			<label>Cor de fundo</label>
 			<select selectCaixa formControlName="bg" (change)="onSidemenuBgChange($event.target.value)">
 				<option value="">Escolha um tema</option>
 				<option [selected]="(styleService.sidemenuBg$ | async) == 'lightest'" value="lightest">Branco</option>
@@ -78,7 +78,7 @@
 <div class="row">
 	<div class="col-md-4 my-3">
 		<cx-select [showFeedback]=false>
-			<label>Background</label>
+			<label>Cor de fundo</label>
 			<select selectCaixa (change)="onConteudoPrincipalChange($event.target.value)">
 				<option [selected]="(styleService.conteudoPrincipalBg$ | async) == ''" value="">Branco</option>
 				<option [selected]="(styleService.conteudoPrincipalBg$ | async) == 'bg-light'" value="bg-light">Claro</option>

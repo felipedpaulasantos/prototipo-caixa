@@ -17,7 +17,7 @@ import { StyleService } from 'src/app/shared/services/style.service';
 declare var Chart: any;
 
 const DARK_COLOR = "#48586C";
-const LIGHT_COLOR = "rgba(255, 255, 255, 1)";
+const LIGHT_COLOR = "#FFFFFF";
 
 @Component({
   selector: "app-bar-chart",
@@ -28,7 +28,9 @@ export class CustomChartComponent implements OnChanges, OnInit {
   constructor(
     private cdRef: ChangeDetectorRef,
     private styleService: StyleService
-    ) {}
+  ) { }
+
+  textColor = DARK_COLOR;
 
   @ViewChild(BaseChartDirective)
   public chart: BaseChartDirective;
@@ -78,10 +80,11 @@ export class CustomChartComponent implements OnChanges, OnInit {
     },
     plugins: {
       datalabels: {
+        color: this.textColor,
         anchor: "end",
         align: "end",
         font: {
-          size: 12
+          size: 12,
         }
       }
     }
@@ -100,10 +103,13 @@ export class CustomChartComponent implements OnChanges, OnInit {
   ngOnInit(): void {
     this.styleService.conteudoPrincipalBg$.subscribe(color => {
       if (color === "bg-dark-dark") {
+        this.textColor = LIGHT_COLOR;
         this.setDefaultGlobalColor(LIGHT_COLOR);
       } else {
+        this.textColor = DARK_COLOR;
         this.setDefaultGlobalColor(DARK_COLOR);
       }
+      this.reloadChart();
     });
   }
 
@@ -154,11 +160,11 @@ export class CustomChartComponent implements OnChanges, OnInit {
 
   reloadChart() {
     // Aumenta o espaçamento entre a legenda e o gráfico
-    Chart.Legend.prototype.afterFit = function() {
+    Chart.Legend.prototype.afterFit = function () {
       this.height = this.height + 50;
     };
 
-    if (this.chart !== undefined) {
+    if (this.chart && this.chart.chart) {
       this.chart.chart.destroy();
       this.chart.chart = null;
       this.chart.labels = this.barChartLabels.slice(0, this.maxChartLength);

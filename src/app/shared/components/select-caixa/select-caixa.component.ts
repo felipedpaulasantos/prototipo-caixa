@@ -141,7 +141,6 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
   @HostBinding("class.ng-invalid")
   get invalid() {
     if (this.formInput && this.formInput.touched && this.formInput.invalid) {
-      console.log("Teste", this.wrapper.nativeElement);
       this.renderer.addClass(this.wrapper.nativeElement, "ng-invalid");
       return "ng-invalid ng-touched";
     }

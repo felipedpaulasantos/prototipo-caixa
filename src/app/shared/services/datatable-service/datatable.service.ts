@@ -119,7 +119,6 @@ export class DataTableService {
 	private destroyDatatableIfExists(tabelaId) {
 
 		if ( $.fn.DataTable.isDataTable( $(tabelaId) ) ) {
-			console.log("destruindo datatable");
 			$(tabelaId).DataTable().clear().destroy();
 		}
 	}

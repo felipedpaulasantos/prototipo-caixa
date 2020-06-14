@@ -36,7 +36,6 @@ export class LayoutComponent implements OnInit {
       const tema = BootstrapTheme[theme].value;
       if (tema) { this.temas.push(tema); }
     });
-    console.log("TEMAS", this.temas);
   }
 
   onIconChange(src: string): void {
@@ -62,8 +61,6 @@ export class LayoutComponent implements OnInit {
 
   onSidemenuBgChange(theme: string, tom?: string): void {
     if (!theme) { return; }
-
-    console.log(theme, tom);
 
     const temaSelecionado = this.temas.find(tema => tema.name === theme);
     if (!temaSelecionado) { return; }

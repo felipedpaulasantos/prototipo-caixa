@@ -43,7 +43,6 @@ export class FormulariosComponent implements OnInit {
   name = '';
 
   onPhoneChanged(phoneNumber) {
-    console.log(phoneNumber.target.value.length);
     this.phoneNumber = phoneNumber.target.value;
     this.phoneNumberLength = phoneNumber.target.value.length;
 
