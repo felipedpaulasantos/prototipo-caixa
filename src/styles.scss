@@ -1208,11 +1208,11 @@ ul.dropdown-menu a.dropdown-item.active.selected {
 
 @keyframes input-ripple {
   0% {
-    background-position: 50% 100%, calc('50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%;
+    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)) 100%;
   }
 
   100% {
-    background-position: 50% 100%, calc('50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)') 100%;
+    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)) 100%;
   }
 }
 
