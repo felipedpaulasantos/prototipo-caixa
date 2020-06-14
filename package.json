@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "prod": "ng build --prod --base-href /",
     "e2e": "ng e2e",
-    "gh-pages-build": "ng build --prod --output-path docs --base-href https://felipedpaulasantos.github.io/prototipo-caixa"
+    "gh-pages-build": "ng build --prod --output-path docs --base-href prototipo-caixa"
   },
   "private": true,
   "dependencies": {
