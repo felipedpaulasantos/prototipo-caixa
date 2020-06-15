@@ -485,7 +485,6 @@ hr.header-line-caixa {
     } @else {
       $default-theme: $theme+"-light";
       $default-theme-color: map.get($theme-colors, $default-theme);
-      @debug "theme: #{$default-theme}";
       #menuLateralPesquisa,
       .nav-item .side-menu-item {
         border-bottom: solid 1px $default-theme-color
@@ -1181,6 +1180,10 @@ select+button.input-caixa[aria-expanded="true"] {
 
     &.pre-click-fx:not(.post-click-fx) {
       animation: none !important;
+    }
+
+    &:disabled, &.disabled {
+      color: $cx-color-dark;
     }
   }
 
