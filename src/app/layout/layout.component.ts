@@ -60,8 +60,6 @@ export class LayoutComponent implements OnInit {
   }
 
   onSidemenuBgChange(theme: string, tom?: string): void {
-    if (!theme) { return; }
-
     const temaSelecionado = this.temas.find(tema => tema.name === theme);
     if (!temaSelecionado) { return; }
 
