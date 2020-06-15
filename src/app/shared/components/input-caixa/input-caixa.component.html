@@ -10,7 +10,8 @@
     <div class="input-caixa-field">
       <ng-content></ng-content>
     </div>
-    <div *ngIf="(formInput && formInput?.touched) || (!formInput && inputDirective && inputDirective.changed)" 
+    <div *ngIf="(formInput && formInput?.touched && showFeedback) 
+      || (!formInput && inputDirective && inputDirective.changed && showFeedback)" 
       class="input-caixa-feedback-icon ripple ripple-dark" 
       role="button" 
       (click)="resetField()"
@@ -66,7 +67,7 @@
           </ng-container>	
         </span>
       </ng-container>
-      <ng-container *ngIf="!formInput && inputDirective?.changed && !isFieldValid() && msgErroPadrao">
+      <ng-container *ngIf="!formInput && inputDirective?.changed && !isFieldValid() && msgErroPadrao && showFeedback">
         <span>{{ msgErroPadrao }}</span>
       </ng-container>
     </small> 

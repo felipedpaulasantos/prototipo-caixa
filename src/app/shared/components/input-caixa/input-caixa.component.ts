@@ -29,6 +29,7 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   @ViewChild("wrapper", { read: ElementRef, static: true })
   wrapper;
 
+  @Input() showFeedback = true;
   @Input() optionalErrors: string;
   @Input() formato: string;
   @Input() msgErroPadrao: string;
@@ -119,11 +120,11 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   @HostBinding("class.ng-invalid")
   get invalid() {
     if (this.formInput) {
-      if (this.formInput.touched && this.formInput.invalid) {
+      if (this.formInput.touched && this.formInput.invalid && this.showFeedback) {
         return "ng-invalid ng-touched";
       }
     } else {
-      if (this.inputDirective && this.inputDirective.changed && !this.isFieldValid()) {
+      if (this.inputDirective && this.inputDirective.changed && !this.isFieldValid() && this.showFeedback) {
         return "ng-invalid ng-touched";
       }
     }
@@ -132,11 +133,11 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   @HostBinding("class.ng-valid")
   get valid() {
     if (this.formInput) {
-      if (this.formInput.touched && this.formInput.valid) {
+      if (this.formInput.touched && this.formInput.valid && this.showFeedback) {
         return "ng-valid ng-touched";
       }
     } else {
-      if (this.inputDirective && this.inputDirective.changed && this.isFieldValid()) {
+      if (this.inputDirective && this.inputDirective.changed && this.isFieldValid() && this.showFeedback) {
         return "ng-valid ng-touched";
       }
     }
