@@ -6,7 +6,6 @@ import { finalize, tap, catchError } from "../../../../node_modules/rxjs/operato
 import { Injectable as Injectable_1 } from "@angular/core";
 
 @Injectable_1()
-@Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
 
     private totalRequests = 0;

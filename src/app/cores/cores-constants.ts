@@ -24,4 +24,5 @@ export const textosCores = {
 	light: loremIpsumPlaceHolder,
 
 	dark: loremIpsumPlaceHolder
+
 };
