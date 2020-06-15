@@ -51,7 +51,7 @@
 			<label>Cor de fundo</label>
 			<select selectCaixa formControlName="bg" (change)="onSidemenuBgChange($event.target.value)">
 				<option value="">Escolha um tema</option>
-				<option [selected]="(styleService.sidemenuBg$ | async) == 'white'" value="white">Branco</option>
+				<option [selected]="(styleService.sidemenuBg$ | async) == 'lightest'" value="lightest">Branco</option>
 				<option [selected]="(styleService.sidemenuBg$ | async) == tema.name" 
 				*ngFor="let tema of temas" class="text-{{ tema.name }} font-fam-bold" [value]="tema.name">
 					{{ tema.name | titlecase }}

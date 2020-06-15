@@ -60,8 +60,8 @@ export class LayoutComponent implements OnInit {
   }
 
   onSidemenuBgChange(theme: string, tom?: string): void {
-    const temaSelecionado = this.temas.find(tema => tema.name === theme);
-    if (!temaSelecionado) { return; }
+
+    const temaSelecionado = this.temas.find(tema => tema.name === theme) || { name: "lightest" };
 
     if (!tom && this.formSidemenu.get("tom").value) {
       tom = this.formSidemenu.get("tom").value;
