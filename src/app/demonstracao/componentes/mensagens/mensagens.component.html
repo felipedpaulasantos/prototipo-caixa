@@ -5,47 +5,100 @@
 
 <section id="painelMensagens" class="section-caixa">
 
-  <div class="row">
-    <div class="col-md-6 my-3">
-      <button class="btn btn-caixa my-2 my-md-0 btn-success mr-3" (click)="toastr.success('Sucesso!')">
-        Sucesso!
-      </button>
-      <button class="btn btn-caixa my-2 my-md-0 btn-success mr-3" (click)="toastr.success('Um texto de apoio!', 'Sucesso')">
-        Sucesso com título!
-      </button>
-    </div>
-
-    <div class="col-md-6 my-3">
-      <button class="btn btn-caixa my-2 my-md-0 btn-danger mr-3" (click)="toastr.error('Erro!')">
-        Erro!
-      </button>
-      <button class="btn btn-caixa my-2 my-md-0 btn-danger mr-3" (click)="toastr.error('Um texto de apoio!', 'Erro')">
-        Erro com título!
-      </button>
-    </div>
-
-    <div class="col-md-6 my-3">
-      <button class="btn btn-caixa my-2 my-md-0 btn-warning mr-3" (click)="toastr.warning('Atenção!')">
-        Atenção!
-      </button>
-      <button class="btn btn-caixa my-2 my-md-0 btn-warning mr-3" (click)="toastr.warning('Um texto de apoio!', 'Atenção')">
-        Atenção com título!
-      </button>
-    </div>
-
-    <div class="col-md-6 my-3">
-      <button class="btn btn-caixa my-2 my-md-0 btn-info mr-3" (click)="toastr.info('Informação!')">
-        Informação!
-      </button>
-      <button class="btn btn-caixa my-2 my-md-0 btn-info mr-3" (click)="toastr.info('Um texto de apoio!', 'Informação')">
-        Informação com título!
-      </button>
+  <div id="painelNotificacoes">
+    <h4 class="header-caixa text-primary">Notificações</h4>
+  
+    <div class="row">
+      <div class="col-md-6 my-3">
+        <button class="btn btn-caixa my-2 my-md-0 btn-success mr-3" (click)="toastr.success('Sucesso!')">
+          Sucesso!
+        </button>
+        <button class="btn btn-caixa my-2 my-md-0 btn-success mr-3" (click)="toastr.success('Um texto de apoio!', 'Sucesso')">
+          Sucesso com título!
+        </button>
+      </div>
+  
+      <div class="col-md-6 my-3">
+        <button class="btn btn-caixa my-2 my-md-0 btn-danger mr-3" (click)="toastr.error('Erro!')">
+          Erro!
+        </button>
+        <button class="btn btn-caixa my-2 my-md-0 btn-danger mr-3" (click)="toastr.error('Um texto de apoio!', 'Erro')">
+          Erro com título!
+        </button>
+      </div>
+  
+      <div class="col-md-6 my-3">
+        <button class="btn btn-caixa my-2 my-md-0 btn-warning mr-3" (click)="toastr.warning('Atenção!')">
+          Atenção!
+        </button>
+        <button class="btn btn-caixa my-2 my-md-0 btn-warning mr-3" (click)="toastr.warning('Um texto de apoio!', 'Atenção')">
+          Atenção com título!
+        </button>
+      </div>
+  
+      <div class="col-md-6 my-3">
+        <button class="btn btn-caixa my-2 my-md-0 btn-info mr-3" (click)="toastr.info('Informação!')">
+          Informação!
+        </button>
+        <button class="btn btn-caixa my-2 my-md-0 btn-info mr-3" (click)="toastr.info('Um texto de apoio!', 'Informação')">
+          Informação com título!
+        </button>
+      </div>
     </div>
   </div>
 
-  <br><br>
+  <hr class="my-4">
 
-  <button class="btn btn-caixa btn-outline-dark" (click)="showLoading()">
-    Mostrar tela de carregamento
-  </button>
+  <div id="painelSpinner">
+    <h4 class="header-caixa text-primary mb-4">Spinner</h4>
+    <button class="btn btn-caixa btn-outline-dark" (click)="showLoading()">
+      Mostrar tela de carregamento
+    </button>
+  </div>
+
+  <hr class="my-4">
+
+  <div id="painelModal">
+    <h4 class="header-caixa text-primary mb-4">Modal</h4>
+  
+    <div class="row">
+      <div class="col-8">
+  
+        <div class="row">
+          <div class="col-6">
+            <cx-input [showFeedback]="false">
+              <label>Título</label>
+              <input inputCaixa #modalTitulo value="Título do Modal">
+            </cx-input>
+          </div>
+          <div class="col-6">
+            <cx-select [showFeedback]="false">
+              <label>Tamanho</label>
+              <select selectCaixa #modalTamanho>
+                <option *ngFor="let tamanho of modalSize | keyvalue" [value]="tamanho.value">
+                  {{ tamanho.key }}
+                </option>
+              </select>
+            </cx-select>
+          </div>
+        </div>
+        <cx-input [showFeedback]="false">
+          <label>Mensagem</label>
+          <textarea rows=3 inputCaixa #modalMensagem [innerHTML]="'Mensagem do modal'"></textarea>
+        </cx-input>
+        <div class="custom-control custom-switch">
+          <input id="modalCentro" type="checkbox" #modalCentralizado class="custom-control-input">
+          <label for="modalCentro" class="custom-control-label">Centralizado</label>
+        </div>
+      </div>
+      <div class="col-4 d-flex align-items-center mx-auto">
+        <button class="btn btn-caixa btn-outline-dark btn-block btn-lg" 
+        (click)="showTesteModal(modalTitulo.value, modalMensagem.value, modalTamanho.value, modalCentralizado.checked)">
+        <i class="fa fa-lg fa-external-link-alt mr-2"></i>
+          Mostrar modal
+        </button>
+      </div>
+    </div>
+  </div>
+
 </section>
