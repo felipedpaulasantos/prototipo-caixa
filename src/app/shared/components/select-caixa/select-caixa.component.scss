@@ -20,3 +20,18 @@
 ::ng-deep .feedback-message {
 	min-height: 1.6rem;
 }
+
+::ng-deep cx-select .input-caixa-feedback-icon {
+	display: inline-block;
+	margin-top: auto;
+	margin-bottom: auto;
+	border-radius: 50% !important;
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+::ng-deep button.bootstrap-select-button {
+	width: 100%;
+}
