@@ -1,6 +1,5 @@
 import { Component, Input, Renderer2, OnInit, ViewChild, ElementRef, AfterViewInit, ContentChild } from '@angular/core';
 import { DatatableInitOptions } from 'src/app/shared/services/datatable-service/datatable-definitions';
-import { DataTableService } from 'src/app/shared/services/datatable-service/datatable.service';
 import { TableCaixaDirective } from './table-caixa.directive';
 
 @Component({
@@ -13,7 +12,7 @@ export class TableCaixaComponent implements OnInit, AfterViewInit {
   tableSelectorClass = ".table";
 
   constructor(
-    private dt: DataTableService
+/*     private dt: DataTableService */
   ) {}
 
   @ContentChild(TableCaixaDirective, { read: TableCaixaDirective, static: true }) table: TableCaixaDirective;
@@ -44,9 +43,9 @@ export class TableCaixaComponent implements OnInit, AfterViewInit {
       showPagination: this.showPagination
     };
     if (this.tableId) {
-      this.dt.initializeById("#" + this.tableId, this.initOptions);
+/*       this.dt.initializeById("#" + this.tableId, this.initOptions); */
     } else {
-      this.dt.initializeByClass(this.tableSelectorClass, this.initOptions);
+/*       this.dt.initializeByClass(this.tableSelectorClass, this.initOptions); */
     }
   }
 

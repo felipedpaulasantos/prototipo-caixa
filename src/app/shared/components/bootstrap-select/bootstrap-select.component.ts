@@ -52,7 +52,6 @@ export class BootstrapSelectComponent implements OnInit, AfterViewInit {
 
   @Input() options: BootstrapSelectOptions = {};
 
-
   constructor() {
 /*     $.fn.selectpicker.Constructor.BootstrapVersion = '4';
     $.fn.selectpicker.Constructor.actionsBox = false;

@@ -3,7 +3,6 @@ import { ChatReportData } from "../../chat-report-data";
 import { CustomChartData } from "src/app/shared/components/charts/custom-chart-data";
 import { MessageService } from "src/app/messages/message.service";
 import { ToastrService } from "ngx-toastr";
-import { DataTableService } from "src/app/shared/services/datatable-service/datatable.service";
 import { MessageFilter } from "src/app/messages/message-filter-form/messageFilter";
 
 @Component({
@@ -15,7 +14,7 @@ export class ChatDetailsComponent implements AfterViewInit {
   constructor(
     private messageService: MessageService,
     private toastr: ToastrService,
-    private datatable: DataTableService
+/*     private datatable: DataTableService */
   ) {}
 
   @ViewChildren('tableChatDetailedRows', { read: false }) tableChatRows: QueryList<any>;
@@ -29,7 +28,7 @@ export class ChatDetailsComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.tableChatRows.changes.subscribe(t => {
-      this.datatable.initializePrePopulated("#tableChatsDetailed");
+/*       this.datatable.initializePrePopulated("#tableChatsDetailed"); */
     });
   }
 

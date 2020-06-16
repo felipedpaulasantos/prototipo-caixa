@@ -8,7 +8,6 @@ import {
   Output
 } from "@angular/core";
 import { Message } from "../../../messages/message";
-import { DataTableService } from "../../../shared/services/datatable-service/datatable.service";
 import { MessageService } from "../../../messages/message.service";
 import { MessageReportData } from "../message-report-data";
 import { ToastrService } from "ngx-toastr";
@@ -24,7 +23,7 @@ export class AnalyticMessageReportComponent implements OnInit {
   hasMessages = false;
 
   constructor(
-    private datatable: DataTableService,
+/*     private datatable: DataTableService, */
     private messageService: MessageService,
     private toastr: ToastrService
   ) {}
@@ -83,7 +82,7 @@ export class AnalyticMessageReportComponent implements OnInit {
     });
     this.messages = messages;
 
-    this.datatable.initialize("tableMensagens", this.messages, [
+/*     this.datatable.initialize("tableMensagens", this.messages, [
       "idChat",
       "fromId",
       "toId",
@@ -94,6 +93,6 @@ export class AnalyticMessageReportComponent implements OnInit {
       "origin",
       "openMessageDateString",
       "lastMessageDateString"
-    ]);
+    ]); */
   }
 }

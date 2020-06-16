@@ -10,7 +10,7 @@
     "prod": "ng build --prod --base-href /",
     "e2e": "ng e2e",
     "ghpages": "ng build --prod --output-path docs --base-href prototipo-caixa",
-    "stats": "webpack-bundle-analyzer dist/stats.json"
+    "stats": "webpack-bundle-analyzer docs/stats.json"
   },
   "private": true,
   "dependencies": {

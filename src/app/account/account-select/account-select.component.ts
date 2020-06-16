@@ -9,7 +9,6 @@ import { SideMenuService } from 'src/app/menu/side-menu/side-menu.service';
 import { AccountActivationComponent } from '../account-activation/account-activation.component';
 import { ContextoInjecaoComponente } from 'src/app/menu/side-menu/contexto-injecao-componente';
 import { AccountSidemenuComponent } from '../account-sidemenu/account-sidemenu.component';
-import { DataTableService } from 'src/app/shared/services/datatable-service/datatable.service';
 import { Router } from '@angular/router';
 
 declare var $;
@@ -22,7 +21,7 @@ export class AccountSelectComponent implements OnInit {
 
 	constructor(
     private accountService: AccountService,
-    private datatableService: DataTableService,
+/*     private datatableService: DataTableService, */
     private toastr: ToastrService,
     private menuService: SideMenuService,
     private factoryResolver: ComponentFactoryResolver,
@@ -68,7 +67,7 @@ export class AccountSelectComponent implements OnInit {
         });
         this.accounts = newAccounts;
         this.accountService.setAccounts(this.accounts);
-        this.datatableService.initializePrePopulated("#dataTable");
+/*         this.datatableService.initializePrePopulated("#dataTable"); */
       },
       (err: Error) => {
         return this.toastr.error(`Não foi possível consultar as contas da Caixa`);

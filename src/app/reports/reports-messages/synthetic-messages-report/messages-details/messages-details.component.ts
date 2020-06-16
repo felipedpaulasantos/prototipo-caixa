@@ -14,7 +14,7 @@ export class MessagesDetailsComponent implements AfterViewInit {
   constructor(
     private messageService: MessageService,
     private toastr: ToastrService,
-    private datatable: DataTableService
+/*     private datatable: DataTableService */
   ) {}
 
   @ViewChildren('tableMessageDetailedRows', { read: false }) tableMessageRows: QueryList<any>;
@@ -31,7 +31,7 @@ export class MessagesDetailsComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.tableMessageRows.changes.subscribe(t => {
-      this.datatable.initializePrePopulated('#tableMessagesDetailed');
+/*       this.datatable.initializePrePopulated('#tableMessagesDetailed'); */
     });
   }
 
