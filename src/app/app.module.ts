@@ -7,6 +7,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ChartsModule } from 'ng2-charts';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
+import { DataTablesModule } from 'angular-datatables';
 import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 import { PERFECT_SCROLLBAR_CONFIG } from "ngx-perfect-scrollbar";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
@@ -50,6 +51,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       ErrorsModule,
       SharedModule,
       PerfectScrollbarModule,
+      DataTablesModule,
       NgxMaskModule.forRoot(),
       OAuthModule.forRoot(),
       ToastrModule.forRoot({

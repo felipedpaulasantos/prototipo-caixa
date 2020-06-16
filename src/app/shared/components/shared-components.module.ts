@@ -4,7 +4,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { NgxSpinnerDefaultComponent } from './ngx-spinner-default/ngx-spinner-default.component';
 import { BootstrapSelectComponent } from './bootstrap-select/bootstrap-select.component';
-import { TableCaixaComponent } from './tables/table-caixa/table-caixa.component';
 import { CustomChartComponent } from './charts/bar-chart/bar-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { NgxMaskModule } from 'ngx-mask';
@@ -15,15 +14,12 @@ import { AccordionComponent } from './accordion/accordion.component';
 import { RouterModule } from '@angular/router';
 import { InputCaixaComponent } from './input-caixa/input-caixa.component';
 import { InputCaixaDirective } from './input-caixa/input-caixa.directive';
-import { TableCaixaDirective } from './tables/table-caixa/table-caixa.directive';
 import { SelectCaixaComponent } from './select-caixa/select-caixa.component';
 import { SelectCaixaDirective } from './select-caixa/select-caixa.directive';
 
 @NgModule({
 	declarations: [
 		BootstrapSelectComponent,
-		TableCaixaComponent,
-		TableCaixaDirective,
 		CustomChartComponent,
 		NgxSpinnerDefaultComponent,
 		TooltipIconComponent,
@@ -44,8 +40,6 @@ import { SelectCaixaDirective } from './select-caixa/select-caixa.directive';
 	],
 	exports: [
 		BootstrapSelectComponent,
-		TableCaixaComponent,
-		TableCaixaDirective,
 		NgxSpinnerDefaultComponent,
 		CustomChartComponent,
 		TooltipIconComponent,

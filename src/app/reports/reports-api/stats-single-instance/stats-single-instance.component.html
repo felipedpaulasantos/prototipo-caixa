@@ -17,7 +17,7 @@
 				<div body>
 					<p>Descrição: {{ statsData[0]?.in_message_decoded.help }}</p>
 					<p>Tipo: {{ statsData[0]?.in_message_decoded.type }}</p>
-					<cx-table-caixa>
+					<table class="table table-caixa">
 						<thead class="text-center">
 							<tr>
 								<th>Tipo</th>
@@ -30,7 +30,7 @@
 									<td>{{ item.value | number }}</td>
 							</tr>
 						</tbody>
-					</cx-table-caixa>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -43,7 +43,7 @@
 				<div body>
 					<p>Descrição: {{ statsData[0]?.in_message_from_server.help }}</p>
 					<p>Tipo: {{ statsData[0]?.in_message_from_server.type }}</p>
-					<cx-table-caixa>
+					<table class="table table-caixa">
 						<thead>
 							<tr>
 								<th>Quantidade</th>
@@ -54,7 +54,7 @@
 								<td>{{ item.value | number }}</td>
 							</tr>
 						</tbody>
-					</cx-table-caixa>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -67,7 +67,7 @@
 					<div body>
 						<p>Descrição: {{ statsData[0]?.in_message_persisted.help }}</p>
 						<p>Tipo: {{ statsData[0]?.in_message_persisted.type }}</p>
-						<cx-table-caixa>
+						<table class="table table-caixa">
 							<thead>
 								<tr>
 									<th>Tipo</th>
@@ -80,7 +80,7 @@
 									<td>{{ item.value | number }}</td>
 								</tr>
 							</tbody>
-						</cx-table-caixa>
+						</table>
 					</div>
 				</div>
 		</div>
@@ -120,7 +120,7 @@
 				<div body>
 					<p>Descrição: {{ statsData[0]?.out_message_status.help }}</p>
 					<p>Tipo: {{ statsData[0]?.out_message_status.type }}</p>
-					<cx-table-caixa>
+					<table class="table table-caixa">
 						<thead>
 							<tr>
 								<th>Status</th>
@@ -133,7 +133,7 @@
 								<td>{{ item.value | number }}</td>
 							</tr>
 						</tbody>
-					</cx-table-caixa>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -146,7 +146,7 @@
 				<div body>
 					<p>Descrição: {{ statsData[0]?.out_message_persisted.help }}</p>
 					<p>Tipo: {{ statsData[0]?.out_message_persisted.type }}</p>
-					<cx-table-caixa>
+					<table class="table table-caixa">
 						<thead>
 							<tr>
 								<th>Tipo</th>
@@ -159,7 +159,7 @@
 									<td>{{ item.value | number }}</td>
 							</tr>
 						</tbody>
-					</cx-table-caixa>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -197,7 +197,7 @@
         <div body>
           <p>Descrição: {{ statsData[0]?.media_downloads.help }}</p>
           <p>Tipo: {{ statsData[0]?.media_downloads.type }}</p>
-          <cx-table-caixa>
+          <table class="table table-caixa">
             <thead>
               <tr>
                 <th>Tipo</th>
@@ -212,7 +212,7 @@
                 <td>{{ item.value | number }}</td>
               </tr>
             </tbody>
-          </cx-table-caixa>
+          </table>
         </div>
       </div>
     </div>
@@ -225,7 +225,7 @@
         <div body>
           <p>Descrição: {{ statsData[0]?.media_uploads.help }}</p>
           <p>Tipo: {{ statsData[0]?.media_uploads.type }}</p>
-          <cx-table-caixa>
+          <table class="table table-caixa">
             <thead>
               <tr>
                 <th>Tipo</th>
@@ -240,7 +240,7 @@
                   <td>{{ item.value | number }}</td>
               </tr>
             </tbody>
-          </cx-table-caixa>
+          </table>
         </div>
       </div>
     </div>

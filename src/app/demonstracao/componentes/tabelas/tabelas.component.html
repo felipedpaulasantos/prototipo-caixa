@@ -18,8 +18,7 @@
 		 <h3>Completa</h3>
 	  </div>
 	  <div class="card-body">
-		 <cx-table-caixa [showAll]=true>
-			<table tableCaixa id="tableTeste" class="table table-caixa">
+			<table datatable [dtOptions]="dtOptions" class="table table-caixa">
 			  <thead>
 				 <tr>
 					<th>Coluna 1</th>
@@ -28,29 +27,13 @@
 				 </tr>
 			  </thead>
 			  <tbody>
-				 <tr>
-					<td>Linha 1</td>
-					<td>Linha 1</td>
-					<td>Linha 1</td>
-				 </tr>
-				 <tr>
-					<td>Linha 2</td>
-					<td>Linha 2</td>
-					<td>Linha 2</td>
-				 </tr>
-				 <tr>
-					<td>Linha 3</td>
-					<td>Linha 3</td>
-					<td>Linha 3</td>
-				 </tr>
-				 <tr>
-					<td>Linha 4</td>
-					<td>Linha 4</td>
-					<td>Linha 4</td>
+				 <tr *ngFor="let item of rows; let i = index">
+					<td>Linha {{ i }}</td>
+					<td>Linha {{ i }}</td>
+					<td>Linha {{ i }}</td>
 				 </tr>
 			  </tbody>
 			</table>
-		 </cx-table-caixa>
 	  </div>
 	</div>
  
@@ -61,8 +44,8 @@
 		 <h3>Simples</h3>
 	  </div>
 	  <div class="card-body">
-		 <cx-table-caixa>
-			<table tableCaixa id="tableTeste2" class="table table-caixa">
+
+			<table datatable [dtOptions]="dtOptions" id="tableTeste2" class="table table-caixa">
 			  <thead>
 				 <tr>
 					<th>Coluna 1</th>
@@ -93,7 +76,7 @@
 				 </tr>
 			  </tbody>
 			</table>
-		 </cx-table-caixa>
+
 	  </div>
 	</div>
  
@@ -104,7 +87,6 @@
 		 <h3>Customizada</h3>
 	  </div>
 	  <div class="card-body">
-		 <cx-table-caixa [showFilter]=true [showPagination]=true>
 			<table tableCaixa id="tableTeste3" class="table table-caixa">
 			  <thead>
 				 <tr>
@@ -136,7 +118,6 @@
 				 </tr>
 			  </tbody>
 			</table>
-		 </cx-table-caixa>
 	  </div>
 	</div>
  

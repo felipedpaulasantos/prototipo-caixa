@@ -10,6 +10,7 @@ import { FormulariosComponent } from './formularios/formularios.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { TabelasComponent } from './tabelas/tabelas.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { TabelasComponent } from './tabelas/tabelas.component';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskModule
+    NgxMaskModule,
+    DataTablesModule
   ],
   declarations: [
     ComponentesComponent,

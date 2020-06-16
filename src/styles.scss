@@ -689,21 +689,21 @@ label {
 /* Tabela */
 
 .table-caixa {
+  border-bottom: none !important;
   thead th {
     font-family: $cx-font-family-bold;
     color: $cx-color-light-darkest;
     border-top: 0;
-    border-bottom: 0;
-    font-weight: 400;
+    border-bottom: 0 !important;
+    font-weight: 400 !important;
   }
-
   tbody {
     tr:hover {
       background-color: $cx-color-light;
     }
-
     td {
       vertical-align: middle;
+      padding: 0.75rem !important;
     }
   }
 }
@@ -713,17 +713,63 @@ label {
 }
 
 .dataTables_filter {
+  width: 50%;
+  display: inline-block;
+  margin-bottom: 1rem;
   label {
     display: flex;
     align-items: center;
-    margin-left: auto;
-    width: 50%;
+    width: 100%;
   }
 
   input {
     @extend .input-caixa;
+    margin-left: 0.5rem;
     font-family: $cx-font-family-normal;
-    width: 100% !important;
+    width: 100%;
+  }
+}
+
+.dataTables_length {
+  width: 50%;
+  display: inline-block;
+  margin-bottom: 1rem;
+  label {
+    width: 50%;
+  }
+  select {
+    @extend .form-control, .custom-select, .border-top-0, .border-left-0, .border-right-0, .d-inline-block, .w-50;
+    box-shadow: none !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.dataTables_info {
+  display: inline-block;
+  width: 50%;
+}
+
+.dataTables_paginate {
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+  > a.paginate_button {
+    margin-left: 0.5rem;
+    &:not(.disabled) {
+      cursor: pointer;
+      @extend .btn, .btn-caixa, .btn-lightest, .btn-sm;
+    }
+    &.disabled {
+      @extend .text-muted;
+    }
+  }
+  span a {
+    @extend .btn, .btn-caixa, .btn-sm, .btn-outline-primary;
+    margin-left: 0.5rem;
+    &.current {
+      @extend .active;
+    }
   }
 }
 

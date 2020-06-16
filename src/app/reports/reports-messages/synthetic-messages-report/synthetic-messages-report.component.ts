@@ -4,12 +4,9 @@ import {
   Validators
 } from "../../../../../node_modules/@angular/forms";
 
-import { MessageService } from "../../../messages/message.service";
-import { AccountService } from "../../../account/account.service";
 import { Account } from "../../../account/account";
 import { MessagesDetailsComponent } from "./messages-details/messages-details.component";
 import { ChatDetailsComponent } from "./chat-details/chat-details.component";
-import { MessageFilter } from "src/app/messages/message-filter-form/messageFilter";
 import { DateValidator } from "../../../shared/validators/date.validator";
 
 @Component({
@@ -18,10 +15,7 @@ import { DateValidator } from "../../../shared/validators/date.validator";
 })
 export class SyntheticMessageReportComponent implements OnInit {
   constructor(
-    private messageService: MessageService,
-    private fb: FormBuilder,
-    private accountService: AccountService
-  ) {}
+    private fb: FormBuilder  ) {}
 
   @ViewChild(MessagesDetailsComponent, { static: true })
   messagesDetailsComponent: MessagesDetailsComponent;
@@ -55,7 +49,7 @@ export class SyntheticMessageReportComponent implements OnInit {
     this.listAggregatedData();
   }
 
-  listAggregatedData(filterValue?: MessageFilter) {
+  listAggregatedData() {
 /*     this.messagesDetailsComponent.listMessageAggregatedData(
       filterValue as MessageFilter
     );

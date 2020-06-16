@@ -16,35 +16,31 @@
           </button>
         </div>
       </section>
-
-      <cx-table-caixa *ngIf="accounts && accounts.length > 0"
-        [showFilter]=true [showPagination]=true>
-        <table tableCaixa id="tableAccountSelect" class="table table-caixa">
-          <thead>
-            <tr>
-              <th>Número</th>
-              <th>Descrição</th>
-              <th>Endpoint</th>
-              <th>Status</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let account of accounts">
-              <td>{{ account.getTelefoneFormatado() }}</td>
-              <td>{{ account.description }}</td>
-              <td>{{ account.endpoint }}</td>
-              <td>{{ account.status == "A" ? "Ativo" : "Inativo" }}</td>
-              <td>
-                <span class="btn btn-outline-primary btn-sm btn-caixa" (click)="redirectTo(account.id)">
-                  <i class="fas fa-edit mr-2"></i>
-                  Detalhar
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </cx-table-caixa>
+      <table tableCaixa id="tableAccountSelect" class="table table-caixa">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Descrição</th>
+            <th>Endpoint</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let account of accounts">
+            <td>{{ account.getTelefoneFormatado() }}</td>
+            <td>{{ account.description }}</td>
+            <td>{{ account.endpoint }}</td>
+            <td>{{ account.status == "A" ? "Ativo" : "Inativo" }}</td>
+            <td>
+              <span class="btn btn-outline-primary btn-sm btn-caixa" (click)="redirectTo(account.id)">
+                <i class="fas fa-edit mr-2"></i>
+                Detalhar
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </div>
 

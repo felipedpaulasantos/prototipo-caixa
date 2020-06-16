@@ -3,7 +3,6 @@ import { MessageReportData } from '../../message-report-data';
 import { CustomChartData } from 'src/app/shared/components/charts/custom-chart-data';
 import { MessageService } from 'src/app/messages/message.service';
 import { ToastrService } from 'ngx-toastr';
-import { DataTableService } from 'src/app/shared/services/datatable-service/datatable.service';
 
 @Component({
   selector: 'app-messages-details',
@@ -30,7 +29,7 @@ export class MessagesDetailsComponent implements AfterViewInit {
   totalErrorMsg = 0;
 
   ngAfterViewInit() {
-    this.tableMessageRows.changes.subscribe(t => {
+    this.tableMessageRows.changes.subscribe(() => {
 /*       this.datatable.initializePrePopulated('#tableMessagesDetailed'); */
     });
   }
@@ -47,7 +46,7 @@ export class MessagesDetailsComponent implements AfterViewInit {
           this.messageReportData = messageReportData;
           this.aggregateMessageData();
         },
-        (err => {
+        (() => {
           this.toastr.error(`Erro ao consultar o relatório de Mensagens`);
         })
       );
