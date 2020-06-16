@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "prod": "ng build --prod --base-href /",
     "e2e": "ng e2e",
-    "ghpages": "ng build --prod --output-path docs --base-href prototipo-caixa"
+    "ghpages": "ng build --prod --output-path docs --base-href prototipo-caixa",
+    "stats": "webpack-bundle-analyzer dist/stats.json"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +53,7 @@
     "@angular/cli": "^9.1.8",
     "@angular/compiler-cli": "~9.1.11",
     "@angular/language-service": "~9.1.11",
+    "@types/datatables.net": "^1.10.19",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/jquery": "^3.3.38",
@@ -70,6 +72,7 @@
     "protractor": "^7.0.0",
     "ts-node": "^8.10.2",
     "tslint": "^6.1.2",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "webpack-bundle-analyzer": "^3.8.0"
   }
 }
