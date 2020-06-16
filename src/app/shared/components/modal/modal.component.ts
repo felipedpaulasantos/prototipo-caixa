@@ -7,7 +7,7 @@ import {
   Input
 } from "@angular/core";
 import { ModalService } from "../../services/modal.service";
-import { ModalOptions, ModalSize } from './modal-options';
+import { ModalOptions, ModalSize, defaultModalOptions } from './modal-options';
 
 declare var $;
 
@@ -53,23 +53,23 @@ export class ModalComponent implements OnInit {
   }
 
   config(options: ModalOptions) {
-    this.titulo = options.titulo || this.titulo;
-    this.mensagem = options.mensagem || this.mensagem;
-    this.btOkTexto = options.btOkTexto || this.btOkTexto;
-    this.btnOkClass = options.btnOkClass || this.btnOkClass;
+    this.titulo = options.titulo || defaultModalOptions.titulo;
+    this.mensagem = options.mensagem || defaultModalOptions.mensagem;
+    this.btOkTexto = options.btOkTexto || defaultModalOptions.btOkTexto;
+    this.btnOkClass = options.btnOkClass || defaultModalOptions.btnOkClass;
 
-    this.btnCancelarClass = options.btnCancelarClass || this.btnCancelarClass;
-    this.btCancelarTexto = options.btCancelarTexto || this.btCancelarTexto;
+    this.btnCancelarClass = options.btnCancelarClass || defaultModalOptions.btnCancelarClass;
+    this.btCancelarTexto = options.btCancelarTexto || defaultModalOptions.btCancelarTexto;
 
     this.showCancelar = options.showCancelar;
-    this.classTitulo = options.classTitulo || this.classTitulo;
+    this.classTitulo = options.classTitulo || defaultModalOptions.classTitulo;
 
     this.centralizado = options.centralizado;
-    this.tamanho = (options.tamanho != undefined && options.tamanho != null) ? options.tamanho : this.tamanho;
+    this.tamanho = (options.tamanho != undefined && options.tamanho != null) ? options.tamanho : defaultModalOptions.tamanho;
 
-    this.modalBodyClass = options.modalBodyClass || this.modalBodyClass;
-    this.modalHeaderClass = options.modalHeaderClass || this.modalHeaderClass;
-    this.modalFooterClass = options.modalFooterClass || this.modalFooterClass;
+    this.modalBodyClass = options.modalBodyClass || defaultModalOptions.modalBodyClass;
+    this.modalHeaderClass = options.modalHeaderClass || defaultModalOptions.modalHeaderClass;
+    this.modalFooterClass = options.modalFooterClass || defaultModalOptions.modalFooterClass;
   }
 
   show() {

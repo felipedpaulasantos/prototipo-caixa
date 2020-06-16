@@ -47,10 +47,13 @@ export class TopMenuComponent implements OnInit {
     this.modalService.show({
       showCancelar: true,
       titulo: "Logout",
+      classTitulo: "header-caixa text-danger-dark",
       mensagem: "Deseja realmente sair?",
       btOkTexto: "Sair",
-      btnOkClass: "btn btn-danger btn-caixa",
-      btCancelarTexto: "Cancelar"
+      btnOkClass: "btn btn-caixa btn-danger",
+      btnCancelarClass: "btn btn-caixa btn-outline-dark",
+      btCancelarTexto: "Cancelar",
+      modalBodyClass: "bg-danger-dark text-light-light"
     });
 
     this.modalService.btOKEvent.subscribe(e => {
