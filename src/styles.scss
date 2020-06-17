@@ -696,6 +696,19 @@ label {
     border-top: 0;
     border-bottom: 0 !important;
     font-weight: 400 !important;
+    &.sorting::after {
+      @extend .th-sorting;
+      opacity: 0.5;
+      content: "\f0dc";
+    }
+    &.sorting_asc::after {
+      @extend .th-sorting;
+      content: "\f0de";
+    }
+    &.sorting_desc::after { 
+      @extend .th-sorting;
+      content: "\f0dd";
+    }
   }
   tbody {
     tr:hover {
@@ -708,8 +721,13 @@ label {
   }
 }
 
-.datatable-search-icon {
-  color: $cx-color-light-darkest;
+.th-sorting {
+  font-weight: 900;
+  margin-left: 2rem;
+  font-family: "Font Awesome 5 Free";
+  float: right;
+  color: $cx-color-dark;
+  @extend .header-caixa;
 }
 
 .dataTables_filter {
@@ -719,14 +737,14 @@ label {
   label {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 50%;
+    margin-left: auto;
   }
-
   input {
     @extend .input-caixa;
     margin-left: 0.5rem;
     font-family: $cx-font-family-normal;
-    width: 100%;
+    width: 100% !important;
   }
 }
 
@@ -735,10 +753,13 @@ label {
   display: inline-block;
   margin-bottom: 1rem;
   label {
-    width: 50%;
+    width: 100%;
   }
   select {
-    @extend .form-control, .custom-select, .border-top-0, .border-left-0, .border-right-0, .d-inline-block, .w-50;
+    @extend .form-control, .custom-select, .border-top-0, .border-left-0, .border-right-0;
+    display: inline-block;
+    width: 25%;
+    text-align: center;
     box-shadow: none !important;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -758,10 +779,11 @@ label {
     margin-left: 0.5rem;
     &:not(.disabled) {
       cursor: pointer;
-      @extend .btn, .btn-caixa, .btn-lightest, .btn-sm;
+      @extend .btn, .btn-caixa, .btn-outline-light, .btn-sm;
     }
     &.disabled {
       @extend .text-muted;
+      cursor: not-allowed;
     }
   }
   span a {
@@ -771,6 +793,28 @@ label {
       @extend .active;
     }
   }
+}
+
+.dt-buttons {
+  margin-bottom: 1rem;
+  button.dt-button {
+    @extend .btn, .btn-caixa, .btn-sm, .btn-outline-primary;
+  }
+}
+.dt-button-collection {
+  position: absolute;
+  z-index: 999;
+  border: solid 1px $cx-color-light;
+  background-color: white;
+  width: auto;
+  float: left;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  @extend .shadow-sm, .rounded;
+}
+.dt-button-background {
+  display: none !important;
 }
 
 /* Remove setas do Input do tipo Number */
@@ -786,6 +830,8 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+/* Placeholder */
 
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
@@ -818,16 +864,6 @@ input[type=number] {
   /* Most modern browsers support this now. */
   color: $cx-color-placeholder;
 }
-
-/* ::-webkit-input-placeholder,
-::-moz-placeholder,
-:-ms-input-placeholder,
-:-moz-placeholder,
-::placeholder
- { 
-  color: $cx-color-danger !important;
-  opacity: 1;
-} */
 
 /* Dropdown item */
 
@@ -890,9 +926,7 @@ input[type=number] {
 }
 
 .dropdown.bootstrap-select .dropdown-menu {
-  @extend .animate,
-  .slideIn,
-  .shadow
+  @extend .animate, .slideIn,  .shadow;
 }
 
 ul.tab-caixa li a {

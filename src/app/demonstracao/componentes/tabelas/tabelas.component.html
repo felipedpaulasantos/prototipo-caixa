@@ -18,26 +18,28 @@
 		 <h3>Completa</h3>
 	  </div>
 	  <div class="card-body">
-			<table datatable [dtOptions]="dtOptions" class="table table-caixa">
-			  <thead>
-				 <tr>
-					<th>Coluna 1</th>
-					<th>Coluna 2</th>
-					<th>Coluna 3</th>
-				 </tr>
-			  </thead>
-			  <tbody>
-				 <tr *ngFor="let item of rows; let i = index">
-					<td>Linha {{ i }}</td>
-					<td>Linha {{ i }}</td>
-					<td>Linha {{ i }}</td>
-				 </tr>
-			  </tbody>
-			</table>
+			<div class="table-responsive p-2">
+				<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-caixa">
+					<thead>
+					 <tr>
+						<th>Coluna 1</th>
+						<th>Coluna 2</th>
+						<th>Coluna 3</th>
+					 </tr>
+					</thead>
+					<tbody>
+					 <tr *ngFor="let item of rows; let i = index">
+						<td>Linha {{ i }}</td>
+						<td>Linha {{ i }}</td>
+						<td>Linha {{ i }}</td>
+					 </tr>
+					</tbody>
+				</table>
+			</div>
 	  </div>
 	</div>
  
-	<h5>Pode ser simples, apenas com os títulos ordenáveis.</h5>
+<!-- 	<h5>Pode ser simples, apenas com os títulos ordenáveis.</h5>
  
 	<div class="card card-caixa section-caixa">
 	  <div class="card-header">
@@ -119,6 +121,6 @@
 			  </tbody>
 			</table>
 	  </div>
-	</div>
+	</div> -->
  
  </section>
