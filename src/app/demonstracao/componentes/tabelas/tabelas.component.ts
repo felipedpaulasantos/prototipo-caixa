@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild } from '@angular
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { DatatableConfig, DatatableSettings } from 'src/app/shared/constants/datatable-definitions';
-import { defaultCipherList } from 'constants';
 
 @Component({
   selector: 'app-tabelas',
