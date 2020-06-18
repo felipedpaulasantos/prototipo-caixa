@@ -1,9 +1,27 @@
-import { DataTableDirective } from 'angular-datatables';
-import { Subject, BehaviorSubject } from 'rxjs';
+enum DatatableDefaultButtons {
+    COLVIS = 'colvis',
+    COPY = 'copy',
+    PRINT = 'print',
+    EXCEL = 'excel'
+}
 
-const BTN_CLASS = "btn btn-sm btn-outline-dark-light btn-caixa";
+export interface DatatableSettings extends DataTables.Settings {
+    buttons?: any;
+}
 
-export const dtPortugues = {
+export interface CustomDatatableConfig {
+    showFilter?: boolean;
+    showLength?: boolean;
+    showButtons?: boolean;
+    showTable?: boolean;
+    showInfo?: boolean;
+    showProcessing?: boolean;
+    showPagination?: boolean;
+    menuLength?: number[];
+    buttons?: any[];
+}
+
+export const dtLanguageDefinitionPt = {
     buttons: {
         copy: '<i class="fas fa-lg fa-copy mr-2"></i>Copiar',
         copyTitle: 'Copiado',
@@ -46,141 +64,80 @@ export const dtPortugues = {
     }
 };
 
-export function getRefreshDtButton(dtDirective: DataTableDirective, dtTrigger: Subject<any> | BehaviorSubject<any>) {
-    console.log(dtDirective, dtTrigger);
-    if (dtDirective || dtTrigger) {
-        return;
+export class DatatableConfig {
+
+    static BTN_CLASS = "btn btn-sm btn-outline-dark-light btn-caixa";
+    static SHOW_FILTER = "f";
+    static SHOW_LENGTH = "l";
+    static SHOW_BUTTONS = "B";
+    static SHOW_TABLE = "t";
+    static SHOW_INFO = "i";
+    static SHOW_PROCESSING = "r";
+    static SHOW_PAGINATION = "p";
+    static DEFAULT_BUTTONS = DatatableDefaultButtons;
+
+    static CONFIG_COMPLETA: DatatableSettings = DatatableConfig.getDatatableConfig({
+        buttons: [
+            DatatableDefaultButtons.COLVIS,
+            DatatableDefaultButtons.COPY,
+            DatatableDefaultButtons.PRINT,
+            DatatableDefaultButtons.EXCEL
+        ],
+        showFilter: true,
+        showLength: true,
+        showButtons: true,
+        showTable: true,
+        showInfo: true,
+        showProcessing: true,
+        showPagination: true
+    });
+
+    static CONFIG_FILTRO: DatatableSettings = DatatableConfig.getDatatableConfig({
+        buttons: [],
+        showFilter: true
+    });
+
+    static CONFIG_PAGINACAO: DatatableSettings = DatatableConfig.getDatatableConfig({
+        showPagination: true
+    });
+
+    static CONFIG_SIMPLES: DatatableSettings = DatatableConfig.getDatatableConfig({});
+
+    static getDatatableConfig(options: CustomDatatableConfig): DatatableSettings {
+
+        const customConfig: DatatableSettings = {
+            dom: this.SHOW_TABLE,
+            buttons: [],
+            language: dtLanguageDefinitionPt
+        };
+        let paging = false;
+        let preTableElements = "";
+        let postTableElements = "";
+
+        if (options.showButtons || (options.buttons && options.buttons.length > 0)) {
+            preTableElements = preTableElements += this.SHOW_BUTTONS;
+        }
+        if (options.showLength) { preTableElements = preTableElements += this.SHOW_LENGTH; }
+        if (options.showFilter) { preTableElements = preTableElements += this.SHOW_FILTER; }
+        if (options.showProcessing) { preTableElements = preTableElements += this.SHOW_PROCESSING; }
+
+        if (options.showInfo) { postTableElements = postTableElements += this.SHOW_INFO; }
+        if (options.showPagination) {
+            paging = true;
+            postTableElements = postTableElements += this.SHOW_PAGINATION;
+        }
+
+        if (options.buttons && options.buttons.length > 0) {
+            customConfig.buttons = options.buttons;
+        }
+
+        if (options.menuLength && options.menuLength.length > 0) {
+            customConfig.lengthMenu = options.menuLength;
+        }
+
+        const dtDom = preTableElements + this.SHOW_TABLE + postTableElements;
+        customConfig.dom = dtDom;
+        customConfig.paging = paging;
+        return customConfig;
     }
-    return {
-        text: '<i class="fa fa-lg fa-sync-alt mr-2"></i>Recarregar',
-        key: '1',
-        action: (e, dt, node, config, dtDirective, dtTrigger) => {
-            if (dtDirective && dtDirective.dtInstance) {
-                dtDirective.dtInstance.then((dtInstance: DataTables.Api) => {
-                    // Destroy the table first
-                    dtInstance.destroy();
-                    // Call the dtTrigger to rerender again
-                    dtTrigger.next(null);
-                });
-            }
-        }
-    };
-}
-
-export const completeDatatableConfig = {
-    dom: "Blfrtip",
-    buttons: [
-        'colvis',
-        'copy',
-        'print',
-        'excel'
-    ],
-    language: dtPortugues
-};
-
-export const languageSettings = {
-    buttons: {
-        copy: '<i class="fas fa-copy mr-3"></i>Copiar',
-        copyTitle: 'Copiado',
-        copySuccess: {
-            _: 'Copiados %d registros',
-            1: 'Copiado 1 registro'
-        },
-        pdf: '<i class="fas fa-file-pdf mr-3"></i>PDF',
-        print: '<i class="fas fa-print mr-3"></i>Imprimir',
-        excel: '<i class="fas fa-file-excel mr-3"></i>Planilha do Excel',
-        colvis: '<i class="fas fa-columns mr-3"></i>Colunas visíveis',
-        pageLength: '<i class="fas fa-bars mr-3"></i>Mostrar <b>%d</b> linhas'
-    },
-    "sEmptyTable": "Nenhum registro encontrado",
-    "sInfo": "Mostrando de <i>_START_</i> até <i>_END_</i> de <b>_TOTAL_</b> registros",
-    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-    "sInfoFiltered": "(Filtrados de <b>_MAX_</b> registros)",
-    "sInfoPostFix": "",
-    "sInfoThousands": ".",
-    "sLengthMenu": "_MENU_ resultados por página",
-    "sLoadingRecords": "Carregando...",
-    "sProcessing": "Processando...",
-    "sZeroRecords": "Nenhum registro encontrado",
-    "sSearch": "<i class='fas fa-search datatable-search-icon mr-1'></i>",
-    "searchPlaceholder": "Pesquisar...",
-    "oPaginate": {
-        "sNext": "Próximo",
-        "sPrevious": "Anterior",
-        "sFirst": "Primeiro",
-        "sLast": "Último"
-    },
-    "oAria": {
-        "sSortAscending": ": Ordenar colunas de forma ascendente",
-        "sSortDescending": ": Ordenar colunas de forma descendente"
-    },
-    select: {
-        rows: {
-            _: " - %d linhas selecionadas",
-            0: " - Clique em uma linha para selecioná-la",
-            1: " - 1 linha selecionada"
-        }
-    }
-};
-
-export const buttonSettings = {
-    dom: {
-        button: {
-            tag: 'button',
-            className: ''
-        },
-    },
-    buttons: [
-        {
-            extend: 'collection',
-            text: '<i class="fas fa-lg fa-file mr-3"></i>Exportar',
-            className: BTN_CLASS,
-            buttons: [
-                {
-                    extend: 'copy',
-                    exportOptions: {
-                        columns: [':visible']
-                    }
-                },
-                {
-                    extend: 'print',
-                    title: 'Relatório',
-                    exportOptions: {
-                        columns: [':visible']
-                    }
-                },
-                {
-                    extend: 'excelHtml5',
-                    filename: 'Relatório',
-                    title: 'Relatório',
-                    exportOptions: {
-                        columns: [':visible']
-                    }
-                },
-                {
-                    extend: 'pdfHtml5',
-                    title: 'Relatório',
-                    exportOptions: {
-                        columns: [':visible']
-                    }
-                }
-            ],
-        },
-        {
-            extend: 'pageLength',
-            className: BTN_CLASS
-        },
-        {
-            extend: 'colvis',
-            className: BTN_CLASS
-        }
-    ],
-};
-
-export interface DatatableInitOptions {
-    showButtons?: boolean;
-    showFilter?: boolean;
-    showInfo?: boolean;
-    showPagination?: boolean;
-    showOnlyTable?: boolean;
 }

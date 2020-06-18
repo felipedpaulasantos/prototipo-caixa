@@ -4,22 +4,21 @@
 <hr class="header-line-caixa">
 
 <section id="painelTabelas" class="section-caixa">
-	<h5>As tabelas podem ter os seguintes complementos:</h5>
-	<ul>
-	  <li>Botões auxiliares</li>
-	  <li>Filtro (campo 'Pesquisar')</li>
-	  <li>Informações de quantidade de registros</li>
-	  <li>Títulos ordenáveis em cada coluna</li>
-	  <li>Paginação</li>
-	</ul>
- 
+
 	<div class="card card-caixa section-caixa">
 	  <div class="card-header">
 		 <h3>Completa</h3>
 	  </div>
 	  <div class="card-body">
+			<ul>
+				<li>Botões auxiliares</li>
+				<li>Filtro (campo 'Pesquisar')</li>
+				<li>Informações de quantidade de registros</li>
+				<li>Títulos ordenáveis em cada coluna</li>
+				<li>Paginação</li>
+			</ul>
 			<div class="table-responsive p-2">
-				<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-caixa">
+				<table datatable [dtOptions]="dtCompleteOptions" [dtTrigger]="dtTrigger" class="table table-caixa">
 					<thead>
 					 <tr>
 						<th>Coluna 1</th>
@@ -38,89 +37,89 @@
 			</div>
 	  </div>
 	</div>
- 
-<!-- 	<h5>Pode ser simples, apenas com os títulos ordenáveis.</h5>
- 
+  
 	<div class="card card-caixa section-caixa">
 	  <div class="card-header">
 		 <h3>Simples</h3>
 	  </div>
 	  <div class="card-body">
-
-			<table datatable [dtOptions]="dtOptions" id="tableTeste2" class="table table-caixa">
-			  <thead>
-				 <tr>
-					<th>Coluna 1</th>
-					<th>Coluna 2</th>
-					<th>Coluna 3</th>
-				 </tr>
-			  </thead>
-			  <tbody>
-				 <tr>
-					<td>Linha 1</td>
-					<td>Linha 1</td>
-					<td>Linha 1</td>
-				 </tr>
-				 <tr>
-					<td>Linha 2</td>
-					<td>Linha 2</td>
-					<td>Linha 2</td>
-				 </tr>
-				 <tr>
-					<td>Linha 3</td>
-					<td>Linha 3</td>
-					<td>Linha 3</td>
-				 </tr>
-				 <tr>
-					<td>Linha 4</td>
-					<td>Linha 4</td>
-					<td>Linha 4</td>
-				 </tr>
-			  </tbody>
-			</table>
-
+			<h5>Pode ser simples, apenas com os títulos ordenáveis.</h5>
+			<div class="table-responsive">
+				<table datatable [dtOptions]="dtSimpleOptions" id="tableTeste2" class="table table-caixa">
+					<thead>
+					 <tr>
+						<th>Coluna 1</th>
+						<th>Coluna 2</th>
+						<th>Coluna 3</th>
+					 </tr>
+					</thead>
+					<tbody>
+					 <tr>
+						<td>Linha 1</td>
+						<td>Linha 1</td>
+						<td>Linha 1</td>
+					 </tr>
+					 <tr>
+						<td>Linha 2</td>
+						<td>Linha 2</td>
+						<td>Linha 2</td>
+					 </tr>
+					 <tr>
+						<td>Linha 3</td>
+						<td>Linha 3</td>
+						<td>Linha 3</td>
+					 </tr>
+					 <tr>
+						<td>Linha 4</td>
+						<td>Linha 4</td>
+						<td>Linha 4</td>
+					 </tr>
+					</tbody>
+				</table>
+			</div>
 	  </div>
 	</div>
- 
-	<h5>Ou ainda ter apenas os componentes desejados.</h5>
- 
+  
 	<div class="card card-caixa section-caixa">
 	  <div class="card-header">
 		 <h3>Customizada</h3>
 	  </div>
 	  <div class="card-body">
-			<table tableCaixa id="tableTeste3" class="table table-caixa">
-			  <thead>
-				 <tr>
-					<th>Coluna 1</th>
-					<th>Coluna 2</th>
-					<th>Coluna 3</th>
-				 </tr>
-			  </thead>
-			  <tbody>
-				 <tr>
-					<td>Linha 1</td>
-					<td>Linha 1</td>
-					<td>Linha 1</td>
-				 </tr>
-				 <tr>
-					<td>Linha 2</td>
-					<td>Linha 2</td>
-					<td>Linha 2</td>
-				 </tr>
-				 <tr>
-					<td>Linha 3</td>
-					<td>Linha 3</td>
-					<td>Linha 3</td>
-				 </tr>
-				 <tr>
-					<td>Linha 4</td>
-					<td>Linha 4</td>
-					<td>Linha 4</td>
-				 </tr>
-			  </tbody>
-			</table>
+			<h5 class="mb-3">Ou ainda ter apenas os componentes desejados.</h5>
+			<div class="table-responsive">
+				<table datatable [dtOptions]="dtCustomOptions" id="tableTeste3" class="table table-caixa">
+					<thead>
+					 <tr>
+						<th>Coluna 1</th>
+						<th>Coluna 2</th>
+						<th>Coluna 3</th>
+					 </tr>
+					</thead>
+					<tbody>
+					 <tr>
+						<td>Linha 1</td>
+						<td>Linha 1</td>
+						<td>Linha 1</td>
+					 </tr>
+					 <tr>
+						<td>Linha 2</td>
+						<td>Linha 2</td>
+						<td>Linha 2</td>
+					 </tr>
+					 <tr>
+						<td>Linha 3</td>
+						<td>Linha 3</td>
+						<td>Linha 3</td>
+					 </tr>
+					 <tr>
+						<td>Linha 4</td>
+						<td>Linha 4</td>
+						<td>Linha 4</td>
+					 </tr>
+					</tbody>
+				</table>
+			</div>
 	  </div>
-	</div> -->
+	</div>
  
  </section>

@@ -688,6 +688,15 @@ label {
 
 /* Tabela */
 
+th.th-sorting {
+  font-weight: 900;
+  margin-left: 2rem;
+  font-family: "Font Awesome 5 Free";
+  float: right;
+  color: $cx-color-dark;
+  @extend .header-caixa;
+}
+
 .table-caixa {
   border-bottom: none !important;
   thead th {
@@ -696,6 +705,9 @@ label {
     border-top: 0;
     border-bottom: 0 !important;
     font-weight: 400 !important;
+    &.sorting, &.sorting_asc, &.sorting_desc {
+      cursor: pointer;
+    }
     &.sorting::after {
       @extend .th-sorting;
       opacity: 0.5;
@@ -721,23 +733,37 @@ label {
   }
 }
 
-.th-sorting {
-  font-weight: 900;
-  margin-left: 2rem;
-  font-family: "Font Awesome 5 Free";
-  float: right;
-  color: $cx-color-dark;
-  @extend .header-caixa;
+/* .dataTables_wrapper {
+  @extend .row, .m-0;
+} */
+
+.dataTables_length {
+  display: inline-block;
+  margin-bottom: 1rem;
+  width: 50%;
+  label {
+    width: 100%;
+  }
+  select {
+    @extend .form-control, .custom-select, .border-top-0, .border-left-0, .border-right-0, .input-caixa;
+    display: inline-block;
+    width: 25% !important;
+    text-align: center;
+    box-shadow: none !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
 
 .dataTables_filter {
-  width: 50%;
-  display: inline-block;
+  display: block;
   margin-bottom: 1rem;
+  float: right;
+  width: 50%;
   label {
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 75%;
     margin-left: auto;
   }
   input {
@@ -748,33 +774,13 @@ label {
   }
 }
 
-.dataTables_length {
-  width: 50%;
-  display: inline-block;
-  margin-bottom: 1rem;
-  label {
-    width: 100%;
-  }
-  select {
-    @extend .form-control, .custom-select, .border-top-0, .border-left-0, .border-right-0;
-    display: inline-block;
-    width: 25%;
-    text-align: center;
-    box-shadow: none !important;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-}
-
 .dataTables_info {
   display: inline-block;
-  width: 50%;
 }
 
 .dataTables_paginate {
-  display: inline-block;
-  width: 50%;
   text-align: right;
+  float: right;
   > a.paginate_button {
     margin-left: 0.5rem;
     &:not(.disabled) {
@@ -796,7 +802,7 @@ label {
 }
 
 .dt-buttons {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   button.dt-button {
     @extend .btn, .btn-caixa, .btn-sm, .btn-outline-primary;
   }
