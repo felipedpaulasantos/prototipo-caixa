@@ -431,109 +431,11 @@ hr.header-line-caixa {
   }
 }
 
-
-
 #menuLateralNav .nav-item .side-menu-item.active {
   font-family: $cx-font-family-bold;
 }
 
 /* Inputs */
-
-.form-caixa .form-group {
-  position: relative;
-  margin-bottom: 1rem;
-
-  label {
-    font-family: $cx-font-family-bold;
-    font-size: 0.875rem;
-    margin-bottom: 0;
-    transition: 0.2s;
-  }
-
-  .form-control {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
-    border-color: $cx-color-light-darkest;
-    color: $cx-color-dark-light;
-    padding-left: 0.5rem;
-    padding-right: 2rem;
-
-    &:focus,
-    &:active {
-      box-shadow: none;
-      border-color: $cx-color-primary !important;
-    }
-
-    &.ng-invalid.ng-touched {
-      border-color: $cx-color-danger;
-    }
-
-    &.ng-valid.ng-touched {
-      border-color: $cx-color-success;
-    }
-
-    &:disabled {
-      background-color: #EFF5F6;
-      opacity: 0.5;
-      padding-left: 0.5rem;
-      border: solid 1px !important;
-      border-radius: 5px !important;
-      cursor: not-allowed;
-    }
-  }
-
-  .input-group {
-    .form-control {
-      width: calc(100% - 30px);
-      min-width: calc(100% - 30px);
-    }
-
-    .input-group-prepend {
-      width: 30px;
-      min-width: 30px;
-
-      .input-group-text {
-        background-color: transparent;
-        border: none;
-        padding-left: 0.3rem;
-        color: $cx-color-dark-light;
-      }
-    }
-  }
-
-  .form-group-prefix-icon {
-    width: 100%;
-    display: flex !important;
-    align-items: center !important;
-
-    .prefix-icon {
-      height: 100%;
-      display: inline-block;
-      width: 30px;
-      max-width: 30px;
-      margin-right: 2px;
-      text-align: center;
-    }
-
-    .form-control {
-      display: inline-block !important;
-      width: calc(100% - 33px) !important;
-      max-width: calc(100% - 33px) !important;
-    }
-
-    .feedback-icon {
-      right: 1.2rem;
-    }
-
-    .bootstrap-select {
-      display: inline-block !important;
-      width: calc(100% - 33px) !important;
-      max-width: calc(100% - 33px) !important;
-    }
-  }
-}
 
 label {
   font-family: $cx-font-family-bold;
@@ -562,6 +464,26 @@ label {
 
 .custom-checkbox .custom-control-label {
   padding-left: 0.3em;
+}
+
+
+.custom-checkbox .custom-control-input.ng-dirty.ng-valid:checked~.custom-control-label::before {
+  background-color: $cx-color-success;
+  border-color: $cx-color-success-dark;
+}
+.custom-control-input.ng-dirty.ng-valid:checked~.custom-control-label::before {
+  color: #fff;
+  background-color: $cx-color-success;
+  border-color: $cx-color-success-dark;
+}
+.custom-checkbox .custom-control-input.ng-dirty.ng-invalid:checked~.custom-control-label::before {
+  background-color: $cx-color-danger;
+  border-color: $cx-color-danger-dark;
+}
+.custom-control-input.ng-dirty.ng-invalid:checked~.custom-control-label::before {
+  color: #fff;
+  background-color: $cx-color-danger;
+  border-color: $cx-color-danger-dark;
 }
 
 [type=range]:hover {
@@ -912,14 +834,11 @@ ul.dropdown-menu a.dropdown-item.active.selected {
 .card-caixa {
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease-in-out;
-
-  // box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12);
   &>.card-header {
     background-color: inherit;
     border: none;
     vertical-align: center;
     padding-top: 1.25rem;
-
     & h1,
     h2,
     h3,
@@ -929,7 +848,6 @@ ul.dropdown-menu a.dropdown-item.active.selected {
       margin-bottom: 0;
     }
   }
-
   &>.card-footer {
     background-color: inherit;
     border-top: 0;
@@ -1096,23 +1014,50 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   }
 }
 
-.input-caixa {
-  box-shadow: none;
-  padding: 0.375rem 0.5rem;
-  background-color: transparent;
-}
-
-.input-caixa-wrapper {
-  z-index: 999;
-  padding-bottom: 1px;
-
-  input {
-    box-shadow: none;
+@each $theme, $color in $theme-colors {
+  .input-ripple-#{$theme} {
+    transition: background-size 0.4s, background-color 0.4s, border-color 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
+    &,
+    &:focus,
+    &:active,
+    &[aria-expanded="true"],
+    &.focused {
+      @if ($theme == "danger" or $theme == "success") {
+        background-image:
+          linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
+          linear-gradient(0deg, $color 0%, $color 100%) !important;
+        border-color: $color !important;
+      } @else {
+        background-image:
+        linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(0deg, $color 0%, $color 100%);
+      }
+      background-repeat: no-repeat;
+      background-position: 50% 100%, 50% 100%;
+      background-size: 100% 1px, 0% 1px;
+    }
+  
+    &:focus,
+    &:active,
+    &[aria-expanded="true"],
+    &.focused,
+    &.click-fx {
+      @if ($theme == "danger" or $theme == "success") {
+        border-color: $color !important;
+      } @else {
+        border-color: $color;
+      }
+      background-size: 100% 1px, 100% 1px;
+      animation: input-ripple 0.5s ease-in !important;
+    }
+  
+    &.pre-click-fx:not(.post-click-fx) {
+      animation: none !important;
+    }
   }
 }
 
-.input-caixa-wrapper,
-.input-caixa {
+.input-base {
   width: 100%;
   border-top: none;
   border-left: none;
@@ -1128,80 +1073,37 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   }
 }
 
-.input-caixa-wrapper,
+.input-caixa {
+  box-shadow: none;
+  padding: 0.375rem 0.5rem;
+  background-color: transparent;
+  @extend .input-base;
+}
+
+.input-caixa-wrapper {
+  z-index: 999;
+  padding-bottom: 1px;
+  input {
+    box-shadow: none;
+  }
+  @extend .input-base;
+}
+
 .input-caixa,
+.input-caixa-wrapper,
 select+button.input-caixa[aria-expanded="true"] {
-  transition: background-size 0.4s, background-color 0.4s, border-color 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
-
-  &,
-  &:focus,
-  &:active,
-  &[aria-expanded="true"],
-  &.focused {
-    background-image:
-      linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-      linear-gradient(0deg, $cx-color-primary 0%, $cx-color-primary 100%);
-    background-repeat: no-repeat;
-    background-position: 50% 100%, 50% 100%;
-    background-size: 100% 1px, 0% 1px;
-    // border-color: $cx-color-primary-light;
-  }
-
-  &:focus,
-  &:active,
-  &[aria-expanded="true"],
-  &.focused,
-  &.click-fx {
-    border-color: $cx-color-primary;
-    background-size: 100% 1px, 100% 1px;
-    animation: input-ripple 0.5s ease-in !important;
-  }
-
-  &.pre-click-fx:not(.post-click-fx) {
-    animation: none !important;
-  }
+  @extend .input-ripple-primary;
 }
 
 #conteudoPrincipal.bg-dark-dark {
-
   .input-caixa-wrapper,
   .input-caixa,
   select+button.input-caixa[aria-expanded="true"] {
-    transition: background-size 0.4s, background-color 0.4s, border-color 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
-
-    &,
-    &:focus,
-    &:active,
-    &[aria-expanded="true"],
-    &.focused {
-      background-image:
-        linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-        linear-gradient(0deg, $cx-color-info 0%, $cx-color-info 100%);
-      background-repeat: no-repeat;
-      background-position: 50% 100%, 50% 100%;
-      background-size: 100% 1px, 0% 1px;
-      // border-color: $cx-color-primary-light;
-    }
-
-    &:focus,
-    &:active,
-    &[aria-expanded="true"],
-    &.focused,
-    &.click-fx {
-      border-color: $cx-color-info;
-      background-size: 100% 1px, 100% 1px;
-      animation: input-ripple 0.5s ease-in !important;
-    }
-
-    &.pre-click-fx:not(.post-click-fx) {
-      animation: none !important;
-    }
-
+    @extend .input-ripple-info;
     &:disabled, &.disabled {
       color: $cx-color-dark;
     }
   }
-
   .btn-caixa {
     box-shadow: 0 0.2rem 0.2rem 0 rgba(255, 255, 255, 0.15);
   }
@@ -1210,33 +1112,10 @@ select+button.input-caixa[aria-expanded="true"] {
 cx-input.ng-invalid .input-caixa-wrapper,
 select.ng-dirty.ng-invalid+button.input-caixa,
 .input-caixa.ng-invalid {
-
-  &,
-  &:focus,
-  &:active,
-  &[aria-expanded="true"],
-  &.focused {
-    background-image:
-      linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-      linear-gradient(0deg, $cx-color-danger 0%, $cx-color-danger 100%) !important;
-    border-color: $cx-color-danger !important;
-  }
+  @extend .input-ripple-danger;
 }
 
 cx-input.ng-valid .input-caixa-wrapper,
 select.ng-dirty.ng-valid+button.input-caixa {
-
-  /*   label {
-    color: $cx-color-success;
-  } */
-  &,
-  &:focus,
-  &:active,
-  &[aria-expanded="true"],
-  &.focused {
-    background-image:
-      linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-      linear-gradient(0deg, $cx-color-success 0%, $cx-color-success 100%) !important;
-    border-color: $cx-color-success !important;
-  }
+  @extend .input-ripple-success;
 }

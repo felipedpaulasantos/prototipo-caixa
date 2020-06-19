@@ -35,7 +35,6 @@ export class FormulariosComponent implements OnInit {
     comida: [null, [Validators.required]],
     filme: [null, [Validators.required]],
     marque: [false, [Validators.requiredTrue]],
-    naoMarque: [true],
     valor: [50, [Validators.min(50)]],
     condicoes: [null, [Validators.requiredTrue]]
   });
