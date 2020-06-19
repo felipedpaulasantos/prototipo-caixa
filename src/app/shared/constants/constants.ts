@@ -42,3 +42,5 @@ export class BootstrapTheme {
 
 export const LOGO_CAIXA_BRANCO_SRC = "assets/images/caixa-logo-x-branco.png";
 export const LOGO_CAIXA_SRC = "assets/images/caixa-logo-x.png";
+export const LOGO_COMPLETO_SRC = "assets/images/caixa-logo-completo.png";
+export const LOGO_COMPLETO_BRANCO_SRC = "assets/images/caixa-logo-completo-branco.png";

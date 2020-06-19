@@ -34,8 +34,10 @@
 		<cx-select [showFeedback]=false>
 			<label>Ícone</label>
 			<select selectCaixa formControlName="icone" (change)="onIconChange($event.target.value)">
-				<option [value]="logoBranco" selected>Logo branco</option>
-				<option [value]="logoPadrao">Logo padrão</option>
+				<option [value]="logoBranco">Logo X branco</option>
+				<option [value]="logoCompletoBranco">Logo completo branco</option>
+				<option [value]="logoPadrao">Logo X azul</option>
+				<option [value]="logoCompleto">Logo completo azul</option>
 			</select>
 		</cx-select>
 	</div>

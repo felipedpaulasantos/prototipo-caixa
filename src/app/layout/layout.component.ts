@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BootstrapTheme, LOGO_CAIXA_BRANCO_SRC, LOGO_CAIXA_SRC } from '../shared/constants/constants';
+import { BootstrapTheme, LOGO_CAIXA_BRANCO_SRC, LOGO_CAIXA_SRC, LOGO_COMPLETO_SRC, LOGO_COMPLETO_BRANCO_SRC } from '../shared/constants/constants';
 import { StyleService } from '../shared/services/style.service';
 import { FormBuilder } from '@angular/forms';
 
@@ -12,6 +12,8 @@ export class LayoutComponent implements OnInit {
 
   logoBranco = LOGO_CAIXA_BRANCO_SRC;
   logoPadrao = LOGO_CAIXA_SRC;
+  logoCompleto = LOGO_COMPLETO_SRC;
+  logoCompletoBranco = LOGO_COMPLETO_BRANCO_SRC;
 
   constructor(
     public styleService: StyleService,
@@ -40,6 +42,7 @@ export class LayoutComponent implements OnInit {
 
   onIconChange(src: string): void {
     if (!src) { return; }
+    console.log(src);
     this.styleService.setToolbarIcon(src);
   }
 
