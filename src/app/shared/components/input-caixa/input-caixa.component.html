@@ -5,71 +5,84 @@
   </div>
   <div class="input-caixa-flex-field">
     <div class="input-caixa-prefix-icon">
-			<ng-content select=".prefix-icon"></ng-content>
-		</div>
+      <ng-content select=".prefix-icon"></ng-content>
+    </div>
     <div class="input-caixa-field">
       <ng-content></ng-content>
     </div>
-    <div *ngIf="(formInput && formInput?.touched && showFeedback) 
-      || (!formInput && inputDirective && inputDirective.changed && showFeedback)" 
-      class="input-caixa-feedback-icon ripple ripple-dark" 
-      role="button" 
-      (click)="resetField()"
-      [ngClass]="{'text-success': isFieldValid(), 'text-danger': !isFieldValid()}">
-      <i *ngIf="isFieldValid()" class="fas fa-check" title="Resetar campo"></i>
-      <i *ngIf="!isFieldValid()" class="fas fa-exclamation-triangle" title="Resetar campo"></i>
-    </div>
+    <ng-container *ngIf="showFeedbackIcon">
+      <div *ngIf="(formInput && formInput?.touched) 
+        || (!formInput && inputDirective && inputDirective.changed)"
+        class="input-caixa-feedback-icon ripple ripple-dark" role="button" (click)="resetField()"
+        [ngClass]="{'text-success': isFieldValid(), 'text-danger': !isFieldValid()}">
+        <i *ngIf="isFieldValid()" class="fas fa-check" title="Resetar campo"></i>
+        <i *ngIf="!isFieldValid()" class="fas fa-exclamation-triangle" title="Resetar campo"></i>
+      </div>
+    </ng-container>
   </div>
-</div>
+</div>  <!-- Wrapper -->
 
 <div class="feedback-message w-100 text-right">
-  <ng-container class="w-100 text-right" 
-  *ngIf="!formInput && (!inputDirective?.changed || (isFieldValid() && inputDirective?.changed))
-    || (formInput?.untouched || formInput?.valid) 
-    else errorFeedback">
-    <small class="font-italic">
-      {{ isRequired ? "Obrigatório" : "" }}
-      <ng-container *ngIf="formato">
-        : {{ formato }}
-      </ng-container>
-    </small>
-  </ng-container>
-  
-  <ng-template #errorFeedback>
-    <small class="text-danger-dark font-italic">
-      <ng-container *ngIf="formInput && Object.keys(formInput?.errors)[0] as error">
-        <!-- Implementação para exibir apenas um erro por vez -->		      
-        <span *ngIf="error == 'required'">
-          Este campo é obrigatório.</span>
-        <span *ngIf="error == 'min'">
-          Valor mínimo do campo deve ser: {{ formInput?.errors.min.actual }} / <b>{{ formInput?.errors.min.min }}</b></span>
-        <span *ngIf="error == 'max'">
-          Valor máximo do campo deve ser: <b>{{ formInput?.errors.max.max }}</b> / {{ formInput?.errors.max.actual }}.</span>
-        <span *ngIf="error == 'requiredTrue'">Este campo deve ser <b>verdadeiro</b>.</span>
-        <span *ngIf="error == 'email'">Valor de e-mail inválido.</span>
-        <span *ngIf="error == 'Mask error'">
-          Valor não atende o formato desejado.
-          <ng-container *ngIf="formato">
-            : <b>{{ formato }}</b>
-          </ng-container>
-        </span>
-        <span *ngIf="formInput.errors.minlength as minlength">
-          Comprimento mínimo do campo deve ser: {{ minlength.actualLength }} / <b>{{ minlength.requiredLength }}</b>.
-        </span>
-        <span *ngIf="formInput.errors.maxlength as maxlength">
-          Comprimento máximo do campo deve ser: <b>{{ maxlength.requiredLength }}</b> / {{ maxlength.actualLength }}.
-        </span>
-        <span *ngIf="parsedOptionalErrors?.length > 0">
-          <ng-container *ngFor="let parsedError of parsedOptionalErrors">
-            <ng-container *ngIf="error == Object.keys(parsedError)[0]">
-              {{ parsedError[Object.keys(parsedError)[0]] }}
+  <ng-container *ngIf="showFeedbackMessage">
+    <ng-container class="w-100 text-right" *ngIf="!formInput && (!inputDirective?.changed || (isFieldValid() && inputDirective?.changed))
+      || (formInput?.untouched || formInput?.valid) 
+      else errorFeedback">
+      <small class="font-italic">
+        {{ isRequired ? "Obrigatório" : "" }}
+        <ng-container *ngIf="formato">
+          : {{ formato }}
+        </ng-container>
+      </small>
+    </ng-container>
+
+    <ng-template #errorFeedback>
+      <small class="text-danger-dark font-italic">
+        <ng-container *ngIf="formInput && Object.keys(formInput?.errors)[0] as error">
+          <!-- Implementação para exibir apenas um erro por vez -->
+          <span *ngIf="error == 'required'">
+            Este campo é obrigatório.
+          </span>
+
+          <span *ngIf="error == 'min'">
+            Valor mínimo do campo deve ser: {{ formInput?.errors.min.actual }} / <b>{{ formInput?.errors.min.min }}</b>.
+          </span>
+
+          <span *ngIf="error == 'max'">
+            Valor máximo do campo deve ser: <b>{{ formInput?.errors.max.max }}</b> / {{ formInput?.errors.max.actual }}.
+          </span>
+
+          <span *ngIf="error == 'requiredTrue'">Este campo deve ser <b>verdadeiro</b>.</span>
+          <span *ngIf="error == 'email'">Valor de e-mail inválido.</span>
+
+          <span *ngIf="error == 'mask'">
+            Valor não atende o formato desejado.
+            <ng-container *ngIf="formato">
+              : <b>{{ formato }}</b>
             </ng-container>
-          </ng-container>	
-        </span>
-      </ng-container>
-      <ng-container *ngIf="!formInput && inputDirective?.changed && !isFieldValid() && msgErroPadrao && showFeedback">
-        <span>{{ msgErroPadrao }}</span>
-      </ng-container>
-    </small> 
-  </ng-template>
-</div>
+          </span>
+
+          <span *ngIf="formInput.errors.minlength as minlength">
+            Comprimento mínimo do campo deve ser: {{ minlength.actualLength }} / <b>{{ minlength.requiredLength }}</b>.
+          </span>
+
+          <span *ngIf="formInput.errors.maxlength as maxlength">
+            Comprimento máximo do campo deve ser: <b>{{ maxlength.requiredLength }}</b> / {{ maxlength.actualLength }}.
+          </span>
+
+          <span *ngIf="parsedOptionalErrors?.length > 0">
+            <ng-container *ngFor="let parsedError of parsedOptionalErrors">
+              <ng-container *ngIf="error == Object.keys(parsedError)[0]">
+                {{ parsedError[Object.keys(parsedError)[0]] }}
+              </ng-container>
+            </ng-container>
+          </span>
+        </ng-container>
+
+        <ng-container *ngIf="!formInput && inputDirective?.changed && !isFieldValid() && msgErroPadrao">
+          <span>{{ msgErroPadrao }}</span>
+        </ng-container>
+      </small>
+    </ng-template>  <!-- ErrorFeedback -->
+
+  </ng-container> <!-- ShowFeedbackMessage -->
+</div>  <!-- Feedback Message -->

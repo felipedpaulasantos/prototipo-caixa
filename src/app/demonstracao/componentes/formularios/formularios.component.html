@@ -34,7 +34,7 @@
 
 					<cx-input msgErroPadrao="Erro!!!">
 						<label>Campo avulso</label>
-						<input #inputTeste inputCaixa required [ngClass]="{'ng-valid': inputTeste.value != '', 'ng-invalid': '!inputTeste.value'}">
+						<input #inputTeste inputCaixa required [ngClass]="{'ng-valid': inputTeste.value != 1, 'ng-invalid': inputTeste.value == '1'}">
 					</cx-input>
 
 					<form [formGroup]="formulario">
@@ -47,13 +47,19 @@
 
 						<cx-input formato="(00) 00000-0000">
 							<label>Telefone</label>
-							<input inputCaixa placeholder="(00) 00000-0000" formControlName="tel" mask="{{ phoneMask }}"
+							<input inputCaixa 
+								placeholder="(00) 00000-0000" 
+								formControlName="tel" 
+								mask="{{ phoneMask }}"
 								(keyup)="onPhoneChanged($event);">
 						</cx-input>
 
 						<cx-input optionalErrors='{"simpleDate": "Data inválida"}'>
 							<label>Nascimento</label>
-							<input inputCaixa placeholder="00/00/0000" formControlName="nascimento" mask="00/00/0000"
+							<input inputCaixa 
+								placeholder="00/00/0000" 
+								formControlName="nascimento" 
+								mask="00/00/0000"
 								[dropSpecialCharacters]=false>
 						</cx-input>
 					</form>

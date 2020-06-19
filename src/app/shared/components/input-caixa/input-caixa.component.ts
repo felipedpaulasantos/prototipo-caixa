@@ -29,8 +29,9 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   @ViewChild("wrapper", { read: ElementRef, static: true })
   wrapper;
 
-  @Input() showFeedback = true;
-  @Input() optionalErrors: string;
+  @Input() showFeedbackIcon = true;
+  @Input() showFeedbackMessage = true;
+  @Input() optionalErrors: string | any[];
   @Input() formato: string;
   @Input() msgErroPadrao: string;
   parsedOptionalErrors = [];
@@ -39,8 +40,7 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   isRequired = false;
   nativeElement: any;
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngAfterContentInit(): void {
     if (this.formControlDirective) {
@@ -56,10 +56,19 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.optionalErrors) {
-      const parsedErrors = JSON.parse(this.optionalErrors.trim());
-      this.parsedOptionalErrors.push(parsedErrors);
+    this.parseOptionalErrors();
+  }
+
+  parseOptionalErrors() {
+    if (!this.optionalErrors) { return; }
+    let parsedErrors;
+    if (Array.isArray(this.optionalErrors)) {
+      return this.parsedOptionalErrors = this.optionalErrors;
     }
+    if (typeof this.optionalErrors === 'string') {
+      parsedErrors = JSON.parse(this.optionalErrors.trim());
+    }
+    this.parsedOptionalErrors.push(parsedErrors);
   }
 
   isFieldRequired(abstractControl: AbstractControl): boolean {
@@ -120,11 +129,11 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   @HostBinding("class.ng-invalid")
   get invalid() {
     if (this.formInput) {
-      if (this.formInput.touched && this.formInput.invalid && this.showFeedback) {
+      if (this.formInput.touched && this.formInput.invalid) {
         return "ng-invalid ng-touched";
       }
     } else {
-      if (this.inputDirective && this.inputDirective.changed && !this.isFieldValid() && this.showFeedback) {
+      if (this.inputDirective && this.inputDirective.changed && !this.isFieldValid()) {
         return "ng-invalid ng-touched";
       }
     }
@@ -133,11 +142,11 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   @HostBinding("class.ng-valid")
   get valid() {
     if (this.formInput) {
-      if (this.formInput.touched && this.formInput.valid && this.showFeedback) {
+      if (this.formInput.touched && this.formInput.valid) {
         return "ng-valid ng-touched";
       }
     } else {
-      if (this.inputDirective && this.inputDirective.changed && this.isFieldValid() && this.showFeedback) {
+      if (this.inputDirective && this.inputDirective.changed && this.isFieldValid()) {
         return "ng-valid ng-touched";
       }
     }
