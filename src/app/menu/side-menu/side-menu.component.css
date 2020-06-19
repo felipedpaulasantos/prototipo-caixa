@@ -1,11 +1,11 @@
 #menuLateral {
-  width: 260px;
+  width: 70%;
   position: fixed;
   top: 64px;
   left: 0;
   bottom: 0;
-  transition: 0.7s;
-  z-index: 2;
+  transition: 0.5s;
+  z-index: 999;
 }
 #menuLateral.escondido {
   margin-left: -400px;
@@ -26,8 +26,6 @@
 @media (min-width: 992px) {
   #menuLateral {
     max-width: 260px;
-    transition: 0.5s;
-    /* z-index: 2; */
   }
   #menuLateral.escondido {
     margin-left: -262px;

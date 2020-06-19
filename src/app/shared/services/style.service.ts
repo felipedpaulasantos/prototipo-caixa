@@ -18,7 +18,7 @@ export class StyleService {
   private toolbarIconSource = new BehaviorSubject<string>(LOGO_CAIXA_BRANCO_SRC);
   toolbarIcon$ = this.toolbarIconSource.asObservable();
 
-  private sidemenuBgSource = new BehaviorSubject<string>("lightest");
+  private sidemenuBgSource = new BehaviorSubject<string>("light-light");
   sidemenuBg$ = this.sidemenuBgSource.asObservable();
 
   private conteudoPrincipalBg = new BehaviorSubject<string>("");

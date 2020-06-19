@@ -6,7 +6,7 @@
 <section id="painelFormularios" class="section-caixa">
 
 	<div class="row">
-		<div class="col-md-4 my-3">
+		<div class="col-xl-4 mx-auto my-3">
 			<div class="card card-caixa">
 				<div class="card-header">
 					<h5 class="header-subtitulo-caixa">
@@ -81,7 +81,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-8 my-3">
+		<div class="col-xl-6 mx-auto my-3">
 			<div class="card card-caixa">
 				<div class="card-header">
 					<h5 class="header-subtitulo-caixa">
@@ -100,7 +100,7 @@
 						<cx-select>
 							<label>Comida favorita</label>
 							<select selectCaixa formControlName="comida">
-								<option value="" selected>Escolha uma comida</option>
+								<option value="">Escolha uma comida</option>
 								<option value="lasanha">Lasanha</option>
 								<option value="pizza">Pizza</option>
 								<option value="bolo">Bolo de Chocolate</option>
@@ -112,14 +112,14 @@
 							<label>Filme favorito</label>
 							<i class="fa fa-film prefix-icon"></i>
 							<select selectCaixa formControlName="filme">
-								<option value="" selected>Escolha um filme</option>
+								<option value="">Escolha um filme</option>
 								<option value="lasanha">Senhor dos Anéis</option>
 								<option value="pizza">O Poderoso Chefão</option>
 								<option value="bolo">Vingadores</option>
 							</select>
 						</cx-select>
 
-						<div class="row my-4">
+						<div class="row mt-2 mb-4">
 							<div class="col-6">
 								<div class="custom-control custom-checkbox">
 									<input formControlName="marque" type="checkbox" class="custom-control-input" id="customCheck1">
@@ -133,7 +133,7 @@
 						<div class="form-group">
 							<label for="formControlRange">Valor</label>
 							<input formControlName="valor" type="range" class="form-control-range" id="formControlRange">
-							<span>{{ formulario2.get('valor').value }}</span>
+							<span>{{ formulario2.get('valor').value }}</span> / 50
 						</div>
 
 						<div class="custom-control custom-switch my-4">
@@ -146,7 +146,7 @@
 				</div>
 				<div class="card-footer text-right">
 					<button class="btn btn-secondary btn-caixa my-2 my-md-0 mr-3"
-						[disabled]="formulario2.invalid || formulario2.get('naoMarque').value"
+						[disabled]="formulario2.invalid"
 						(click)="toastr.success('Formulário salvo com sucesso!', 'Sucesso')">
 						<i class="fas fa-lg fa-save mr-2"></i>
 						Salvar

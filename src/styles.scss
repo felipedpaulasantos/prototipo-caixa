@@ -188,8 +188,8 @@ hr.header-line-caixa {
 
 .btn-light,
 .btn-outline-light,
-.btn-lightest,
-.btn-outline-lightest,
+.btn-light-light,
+.btn-outline-light-light,
 .btn-light-dark,
 .btn-outline-light-dark,
 .btn-light-darkest,
@@ -302,7 +302,7 @@ hr.header-line-caixa {
 
 #menuLateral {
 
-  &.bg-lightest,
+  &.bg-light-light,
   &.bg-white,
   &.bg-light,
   &.bg-warning,
@@ -991,11 +991,11 @@ ul.dropdown-menu a.dropdown-item.active.selected {
 }
 
 .btn-light:after,
-.btn-lightest:after,
+.btn-light-light:after,
 .btn-light-dark:after,
 .btn-light-darkest:after,
 .btn-outline-light:after,
-.btn-outline-lightest:after,
+.btn-outline-light-light:after,
 .btn-outline-light-dark:after,
 .btn-outline-light-darkest:after,
 .ripple-dark:after {
