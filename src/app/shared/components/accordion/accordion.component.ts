@@ -1,6 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Config } from 'protractor';
 import { AccordionMenu } from './types/accordion-menu';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-accordion',
@@ -8,14 +10,30 @@ import { AccordionMenu } from './types/accordion-menu';
   styleUrls: ['./accordion.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccordionComponent implements OnInit {
+export class AccordionComponent implements OnInit, AfterViewInit {
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private location: Location
+  ) {}
 
   @Input() options;
   @Input() menus: AccordionMenu[];
   config: Config;
+  url: string;
 
   ngOnInit() {
     this.config = this.mergeConfig(this.options);
+  }
+
+  ngAfterViewInit(): void {
+    const loc = this.location.path();
+    this.menus.forEach((menu, index) => {
+      if (loc.includes(menu.url)) {
+        this.toggle(index);
+        this.cdr.detectChanges();
+      }
+    });
   }
 
   mergeConfig(options: Config) {
@@ -29,7 +47,6 @@ export class AccordionComponent implements OnInit {
   }
 
   toggle(index: number) {
-
     if (!this.config.multi) {
       this.menus.filter(
         (menu, i) => i !== index && menu.active
@@ -37,6 +54,11 @@ export class AccordionComponent implements OnInit {
     }
 
     this.menus[index].active = !this.menus[index].active;
+  }
+
+  teste(i: number) {
+    const menu = this.menus[i];
+    console.log("MENU", menu);
   }
 
 }

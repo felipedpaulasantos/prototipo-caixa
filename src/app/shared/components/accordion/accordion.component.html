@@ -21,7 +21,7 @@
 
     <div class="d-flex align-items-center">
       <ng-container *ngIf="menu.url">
-        <a routerLink="{{ menu.url }}" [routerLinkActive]="menu.url ? 'active' : ''" role="button" (click)="toggle(i)"
+        <a routerLink="{{ menu.url }}" [routerLinkActive]="menu.url ? 'active' : ''" role="button" (click)="toggle(i); teste(i)"
           class="nav-item nav-link side-menu-item py-3 rounded-0 d-flex align-items-center w-100">
           <span class="side-menu-item-icon">
             <i *ngIf="menu.iconClass" class="{{ menu.iconClass }} mr-auto"></i>
