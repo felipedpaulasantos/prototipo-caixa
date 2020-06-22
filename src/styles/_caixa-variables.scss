@@ -43,10 +43,59 @@ $cx-color-darkest:#3A4859;
 
 $cx-color-placeholder: #999;
 
+/* 
+	Mapa
+	COR DE FUNDO / COR DO TEXTO / COR ATIVA / REALCE
+*/
+$cx-colors: (
+	"primary": ($cx-color-primary, $cx-color-light, $cx-color-secondary, $cx-color-primary-light),
+	"primary-light": ($cx-color-primary-light, $cx-color-light, $cx-color-secondary, $cx-color-primary),
+	"primary-dark": ($cx-color-primary-dark, $cx-color-light, $cx-color-secondary, $cx-color-primary),
+
+	"secondary": ($cx-color-secondary, $cx-color-light, $cx-color-primary, $cx-color-secondary-light),
+	"secondary-light": ($cx-color-secondary-light, $cx-color-dark, $cx-color-primary, $cx-color-secondary),
+	"secondary-dark": ($cx-color-secondary-dark, $cx-color-light, $cx-color-primary, $cx-color-secondary),
+
+	"success": ($cx-color-success, $cx-color-light, $cx-color-primary, $cx-color-success-light),
+	"success-light": ($cx-color-success-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-success),
+	"success-dark": ($cx-color-success-dark, $cx-color-light, $cx-color-primary, $cx-color-success),
+
+	"danger": ($cx-color-danger, $cx-color-light, $cx-color-primary, $cx-color-danger-light),
+	"danger-light": ($cx-color-danger-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-danger),
+	"danger-dark": ($cx-color-danger-dark, $cx-color-light, $cx-color-primary, $cx-color-danger),
+
+	"info": ($cx-color-info, $cx-color-light, $cx-color-primary, $cx-color-info-light),
+	"info-light": ($cx-color-info-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-info),
+	"info-dark": ($cx-color-info-dark, $cx-color-light, $cx-color-primary, $cx-color-info),
+
+	"warning": ($cx-color-warning, $cx-color-light, $cx-color-primary, $cx-color-warning-light),
+	"warning-light": ($cx-color-warning-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-warning),
+	"warning-dark": ($cx-color-warning-dark, $cx-color-light, $cx-color-primary, $cx-color-warning),
+
+	"apoio": ($cx-color-apoio, $cx-color-light, $cx-color-primary, $cx-color-apoio-light),
+	"apoio-light": ($cx-color-apoio-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-apoio),
+	"apoio-dark": ($cx-color-apoio-dark, $cx-color-light, $cx-color-primary, $cx-color-apoio),
+
+	"aux": ($cx-color-aux, $cx-color-light, $cx-color-info-light, $cx-color-aux-light),
+	"aux-light": ($cx-color-aux-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-aux),
+	"aux-dark": ($cx-color-aux-dark, $cx-color-light, $cx-color-info-light, $cx-color-aux),
+
+	"light": ($cx-color-light, $cx-color-dark, $cx-color-primary, $cx-color-light-dark),
+	"light-light": ($cx-color-lightest, $cx-color-dark, $cx-color-primary, $cx-color-light),
+	"light-dark": ($cx-color-light-dark, $cx-color-dark, $cx-color-primary, $cx-color-light),
+	"light-darkest": ($cx-color-light-darkest, $cx-color-dark, $cx-color-primary, $cx-color-light-dark),
+
+	"dark": ($cx-color-dark, $cx-color-light, $cx-color-secondary, $cx-color-dark-light),
+	"dark-light": ($cx-color-dark-light, $cx-color-light, $cx-color-secondary, $cx-color-dark),
+	"dark-dark": ($cx-color-darkest, $cx-color-light, $cx-color-secondary, $cx-color-dark),
+);
+
 /* Logo */
 
 $cx-logo-azul: url("/assets/images/caixa-logo-x.png");
 $cx-logo-branco: url("/assets/images/caixa-logo-x-branco.png");
+$cx-logo-completo-azul: url("/assets/images/caixa-logo-completo.png");
+$cx-logo-completo-branco: url("/assets/images/caixa-logo-completo-branco.png");
 
 /* Font */
 
@@ -83,10 +132,22 @@ $cx-gradient-themes: (
 
 /* Opacidade */
 
-$cx-opacity-bg-1: 0.64;
-$cx-opacity-bg-2: 0.4;
-$cx-opacity-bg-3: 0.24;
+$cx-bg-opacity-1: 0.64;
+$cx-bg-opacity-2: 0.4;
+$cx-bg-opacity-3: 0.24;
 
-$cx-opacity-text-1: 0.72;
-$cx-opacity-text-2: 0.56;
-$cx-opacity-text-3: 0.32;
+$cx-bg-opacities: (
+	"1": $cx-bg-opacity-1,
+	"2": $cx-bg-opacity-2,
+	"3": $cx-bg-opacity-3
+);
+
+$cx-text-opacity-1: 0.72;
+$cx-text-opacity-2: 0.56;
+$cx-text-opacity-3: 0.32;
+
+$cx-text-opacities: (
+	"1": $cx-text-opacity-1,
+	"2": $cx-text-opacity-2,
+	"3": $cx-text-opacity-3
+);

@@ -13,10 +13,8 @@
 @import "../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
 @import "../node_modules/ngx-toastr/toastr.css";
 
-// Fonte
-@import "./assets/fonts/style.css";
-
 // Estilos complementares
+@import "./styles/functions";
 @import "./styles/datatables";
 @import "./styles/animations";
 
@@ -26,88 +24,44 @@ body {
   overflow-x: hidden;
 }
 
-/* SEÇÕES DA PÁGINA */
-
-.section-caixa {
-  margin-bottom: 1.5rem;
-}
-
-#conteudoPrincipal.bg-dark-dark {
-  color: $cx-color-lightest;
-
-  .btn,
-  .header-principal-caixa,
-  .input-caixa,
-  .table.table-caixa {
-    color: $cx-color-lightest;
-  }
-
-  .header-subtitulo-caixa {
-    color: $cx-color-info-light;
-  }
-
-  .card.card-caixa {
-    background-color: $cx-color-dark;
-    color: $cx-color-lightest;
-  }
-
-  .input-caixa-field,
-  .input-caixa-field input,
-  .input-caixa-field textarea,
-  select+button.input-caixa {
-    color: $cx-color-light-dark;
-    background-color: transparent;
-  }
-
-  .table-caixa tbody {
-    tr:hover {
-      background-color: $cx-color-dark-light;
-    }
-  }
-
-  ul.tab-caixa li a {
-    color: $cx-color-light;
-    padding: 1rem 1.5rem;
-    transition: ease-in-out 0.2s;
-    border-bottom: solid 2px transparent;
-  }
-
-  ul.tab-caixa li a.nav-link-caixa.active,
-  ul.tab-caixa .dropdown-item:active {
-    color: $cx-color-info-light;
-  }
-}
-
 /* Headers */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   &.header-caixa {
     font-family: $cx-font-family-bold;
-    opacity: $cx-opacity-text-1;
+    opacity: $cx-text-opacity-1;
   }
+
   &.header-subtitulo-caixa {
     @extend .header-caixa;
     margin-bottom: 1.0rem;
     color: $cx-color-primary;
   }
+
   &.header-principal-caixa {
     font-family: $cx-font-family-bold;
     color: $cx-color-dark-light;
-    opacity: $cx-opacity-text-2;
+    opacity: $cx-text-opacity-2;
     text-transform: uppercase;
   }
 }
 
 hr.header-line-caixa {
   border-color: $cx-color-light-darkest;
-  opacity: $cx-opacity-bg-1;
+  opacity: $cx-bg-opacity-1;
   border-width: 1px;
   margin-bottom: 1rem;
 }
 
 /* Fundos em degrade */
 
-@each $theme, $color in $cx-gradient-themes {
+@each $theme,
+$color in $cx-gradient-themes {
   .bg-gradient-#{$theme} {
     background: $color;
   }
@@ -155,29 +109,21 @@ hr.header-line-caixa {
 
 .btn-flat {
   @include button-variant(transparent, transparent);
+
   &:focus,
   &:active {
     box-shadow: none;
   }
+
   &:hover {
     filter: brightness(50%);
   }
 }
 
-@each $theme, $color in $theme-colors {
-  @if (str-index($theme, light)
-  and not (str-index($theme, dark))
-  and not (str-index($theme, primary))) {
-    @debug $theme;
-    .btn-#{$theme},
-    .btn-#{$theme}:disabled {
-      color: $cx-color-dark;
-    }
-  } @else {
-    .btn-#{$theme},
-    .btn-#{$theme}:disabled {
-      color: $cx-color-lightest;
-    }
+@each $theme,
+$colors in $cx-colors {
+  .btn-#{$theme} {
+    color: nth($list: $colors, $n: 2);
   }
 }
 
@@ -227,6 +173,7 @@ hr.header-line-caixa {
         content: "\f00c";
         color: $cx-color-success;
       }
+
       .toast-progress {
         background-color: $cx-color-success-light;
       }
@@ -237,6 +184,7 @@ hr.header-line-caixa {
         content: "\f00d";
         color: $cx-color-danger;
       }
+
       .toast-progress {
         background-color: $cx-color-danger-light;
       }
@@ -247,6 +195,7 @@ hr.header-line-caixa {
         content: "\f129";
         color: $cx-color-info;
       }
+
       .toast-progress {
         background-color: $cx-color-info-light;
       }
@@ -257,6 +206,7 @@ hr.header-line-caixa {
         content: "\f12a";
         color: $cx-color-warning;
       }
+
       .toast-progress {
         background-color: $cx-color-warning-light;
       }
@@ -271,7 +221,6 @@ hr.header-line-caixa {
       font-family: $cx-font-family-bold;
       font-weight: 400;
       margin-bottom: 0.3rem;
-      letter-spacing: 1px;
     }
 
     div.toast-message {
@@ -286,130 +235,34 @@ hr.header-line-caixa {
 
 /* Side Menu */
 
-#menuLateralNav .nav-item .side-menu-item {
-  transition: 0.1s;
-  color: $cx-color-dark;
-}
-
-#menuLateral {
-
-  &.bg-light-light,
-  &.bg-white,
-  &.bg-light,
-  &.bg-warning,
-  &.bg-warning-dark,
-  &.bg-danger-light,
-  &.bg-success,
-  &.bg-success-light {
-    .nav-item .side-menu-item {
-      #sidemenuSearchIcon {
-        color: $cx-color-dark;
-      }
-      color: $cx-color-dark;
-      @extend .ripple,
-      .ripple-dark;
-      &:hover,
-      &.active {
-        color: $cx-color-primary;
-      }
-    }
-  }
-
-  &.bg-primary,
-  &.bg-primary-light,
-  &.bg-primary-dark,
-  &.bg-dark,
-  &.bg-dark-light,
-  &.bg-dark-dark,
-  &.bg-secondary-dark,
-  &.bg-success-dark,
-  &.bg-danger,
-  &.bg-danger-dark,
-  &.bg-info,
-  &.bg-info-dark,
-  &.bg-apoio,
-  &.bg-apoio-dark,
-  &.bg-aux,
-  &.bg-aux-dark {
-    #sidemenuSearchIcon {
-      color: $cx-color-light;
-    }
-    .nav-item .side-menu-item {
-      color: $cx-color-light;
-      @extend .ripple;
-      &:hover,
-      &.active {
-        color: $cx-color-secondary-light;
-      }
-    }
-  }
-
-  &.bg-secondary {
-    #sidemenuSearchIcon {
-      color: $cx-color-light;
-    }
-    .nav-item .side-menu-item {
-      color: $cx-color-light;
-      @extend .ripple;
-      &:hover,
-      &.active {
-        color: $cx-color-lightest;
-      }
-    }
-  }
-
-  &.bg-secondary-light {
-    #sidemenuSearchIcon {
-      color: $cx-color-dark;
-    }
-    .nav-item .side-menu-item {
-      color: $cx-color-dark;
-      @extend .ripple;
-      &:hover,
-      &.active {
-        color: $cx-color-dark;
-      }
-    }
-  }
-}
-
-@function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
-  @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace 
-    + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-  }
-  @return $string;
-}
-
-#menuLateralPesquisa,
-.nav-item .side-menu-item {
-    border-bottom: solid 1px $cx-color-light;
-}
-
-@each $theme, $color in $theme-colors {
+@each $theme,
+$colors in $cx-colors {
   #menuLateral.bg-#{$theme} {
+    @include placeholder {
+      color: nth($colors, 2);
+    }
 
-    @if (str-index($theme, -light)) {
-      $default-theme: str-replace($theme, -light, "");
-      $default-theme-color: map.get($theme-colors, $default-theme);
-      #menuLateralPesquisa,
-      .nav-item .side-menu-item {
-        border-bottom: solid 1px $default-theme-color
+    input {
+      color: nth($colors, 2);
+    }
+
+    #sidemenuSearchIcon {
+      color: nth($colors, 2);
+    }
+
+    .nav-item .side-menu-item {
+      border-bottom: solid 1px nth($colors, 4);
+      color: nth($colors, 2);
+
+      &:hover,
+      &.active {
+        color: nth($colors, 3);
       }
-    } @else if (str-index($theme, -dark)) {
-      $default-theme: str-replace($theme, -dark, "");
-      $default-theme-color: map.get($theme-colors, $default-theme);
-      #menuLateralPesquisa,
-      .nav-item .side-menu-item {
-        border-bottom: solid 1px $default-theme-color
-      }
-    } @else {
-      $default-theme: $theme+"-light";
-      $default-theme-color: map.get($theme-colors, $default-theme);
-      #menuLateralPesquisa,
-      .nav-item .side-menu-item {
-        border-bottom: solid 1px $default-theme-color
+
+      @extend .ripple;
+
+      @if (str-index($theme, "-light")) {
+        @extend .ripple-dark;
       }
     }
   }
@@ -455,15 +308,18 @@ label {
   background-color: $cx-color-success;
   border-color: $cx-color-success-dark;
 }
+
 .custom-control-input.ng-dirty.ng-valid:checked~.custom-control-label::before {
   color: #fff;
   background-color: $cx-color-success;
   border-color: $cx-color-success-dark;
 }
+
 .custom-checkbox .custom-control-input.ng-dirty.ng-invalid:checked~.custom-control-label::before {
   background-color: $cx-color-danger;
   border-color: $cx-color-danger-dark;
 }
+
 .custom-control-input.ng-dirty.ng-invalid:checked~.custom-control-label::before {
   color: #fff;
   background-color: $cx-color-danger;
@@ -537,41 +393,48 @@ th.th-sorting {
 
 .table-caixa {
   border-bottom: none !important;
+
   thead th {
     font-family: $cx-font-family-bold;
     color: $cx-color-light-darkest;
     border-top: 0;
     border-bottom: 0 !important;
     font-weight: 400 !important;
-    &.sorting, &.sorting_asc, &.sorting_desc {
+
+    &.sorting,
+    &.sorting_asc,
+    &.sorting_desc {
       cursor: pointer;
     }
+
     &.sorting::after {
       @extend .th-sorting;
       opacity: 0.5;
       content: "\f0dc";
     }
+
     &.sorting_asc::after {
       @extend .th-sorting;
       content: "\f0de";
     }
-    &.sorting_desc::after { 
+
+    &.sorting_desc::after {
       @extend .th-sorting;
       content: "\f0dd";
     }
   }
+
   tbody {
     tr:hover {
       background-color: $cx-color-light;
     }
+
     td {
       vertical-align: middle;
       padding: 0.75rem !important;
     }
   }
 }
-
-
 
 /* Remove setas do Input do tipo Number */
 
@@ -585,44 +448,6 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
-}
-
-/* Placeholder */
-
-::-webkit-input-placeholder {
-  /* WebKit, Blink, Edge */
-  // color: $cx-color-placeholder;
-  opacity: $cx-opacity-text-3;
-}
-
-:-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  // color: $cx-color-placeholder;
-  opacity: $cx-opacity-text-3;
-}
-
-::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  // color: $cx-color-placeholder;
-  opacity: $cx-opacity-text-3;
-}
-
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  // color: $cx-color-placeholder;
-  opacity: $cx-opacity-text-3;
-}
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */
-  // color: $cx-color-placeholder;
-  opacity: $cx-opacity-text-3;
-}
-
-::placeholder {
-  /* Most modern browsers support this now. */
-  // color: $cx-color-placeholder;
-  opacity: $cx-opacity-text-3;
 }
 
 /* Dropdown item */
@@ -652,7 +477,9 @@ input[type=number] {
 }
 
 .dropdown.bootstrap-select .dropdown-menu {
-  @extend .animate, .slideIn,  .shadow;
+  @extend .animate,
+  .slideIn,
+  .shadow;
 }
 
 ul.tab-caixa li a {
@@ -669,7 +496,7 @@ ul.tab-caixa .dropdown-item:active {
   background-color: transparent;
   border-bottom: solid 2px $cx-color-primary;
   border-radius: 50;
-  opacity: $cx-opacity-text-1;
+  opacity: $cx-text-opacity-1;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -700,11 +527,13 @@ ul.dropdown-menu a.dropdown-item.active.selected {
 .card-caixa {
   box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease-in-out;
+
   &>.card-header {
     background-color: inherit;
     border: none;
     vertical-align: center;
     padding-top: 1.25rem;
+
     & h1,
     h2,
     h3,
@@ -714,6 +543,7 @@ ul.dropdown-menu a.dropdown-item.active.selected {
       margin-bottom: 0;
     }
   }
+
   &>.card-footer {
     background-color: inherit;
     border-top: 0;
@@ -735,60 +565,13 @@ ul.dropdown-menu a.dropdown-item.active.selected {
 }
 
 /* Fade in the pseudo-element with the bigger shadow */
+
 .card-caixa:hover::after {
   opacity: 1;
 }
 
 .card-caixa.card-no-hover:after {
   display: none !important;
-}
-
-/* Bootstrap Select */
-
-.bs-searchbox {
-  padding: 0.8rem 0.5rem !important;
-}
-
-/* Classes auxiliares */
-
-.bg-opacity-1 {
-  opacity: $cx-opacity-bg-1 !important;
-}
-
-.bg-opacity-2 {
-  opacity: $cx-opacity-bg-2 !important;
-}
-
-.bg-opacity-3 {
-  opacity: $cx-opacity-bg-3 !important;
-}
-
-.bg-opacity-100 {
-  opacity: 1 !important;
-}
-
-.text-opacity-1 {
-  opacity: $cx-opacity-text-1 !important;
-}
-
-.text-opacity-2 {
-  opacity: $cx-opacity-text-2 !important;
-}
-
-.text-opacity-3 {
-  opacity: $cx-opacity-text-3 !important;
-}
-
-.text-opacity-100 {
-  opacity: 1 !important;
-}
-
-.font-fam-normal {
-  font-family: Futura LT Book !important;
-}
-
-.font-fam-bold {
-  font-family: Futura LT Bold !important;
 }
 
 /* Spinner */
@@ -816,12 +599,22 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   border: 0;
 }
 
+/* 
+  Bootstrap Select 
+*/
+
 .bootstrap-select .dropdown-toggle:focus,
 .bootstrap-select>select.mobile-device:focus+.dropdown-toggle {
   outline: none !important;
 }
 
-/* Efeito ripple - onda ao clicar em botão */
+.bs-searchbox {
+  padding: 0.8rem 0.5rem !important;
+}
+
+/* 
+  Efeito ripple - onda ao clicar em botão 
+*/
 
 .ripple,
 .btn-caixa:not([disabled]) {
@@ -864,46 +657,57 @@ ul.dropdown-menu a.dropdown-item.active.selected {
 .btn-outline-light-dark:after,
 .btn-outline-light-darkest:after,
 .ripple-dark:after {
-  background-image: radial-gradient(circle, $cx-color-dark 10%, transparent 10.01%);
+  background-image: radial-gradient(circle, $cx-color-darkest 10%, transparent 10.01%) !important;
 }
 
-@each $theme, $color in $theme-colors {
+@each $theme,
+$color in $theme-colors {
   .input-ripple-#{$theme} {
     transition: background-size 0.4s, background-color 0.4s, border-color 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
+
     &,
     &:focus,
     &:active,
     &[aria-expanded="true"],
     &.focused {
-      @if ($theme == "danger" or $theme == "success") {
+      @if ($theme=="danger"or $theme=="success") {
         background-image:
           linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
           linear-gradient(0deg, $color 0%, $color 100%) !important;
         border-color: $color !important;
-      } @else {
-        background-image:
-        linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-        linear-gradient(0deg, $color 0%, $color 100%);
       }
+
+      @else {
+        background-image:
+          linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
+          linear-gradient(0deg, $color 0%, $color 100%);
+      }
+
       background-repeat: no-repeat;
-      background-position: 50% 100%, 50% 100%;
-      background-size: 100% 1px, 0% 1px;
+      background-position: 50% 100%,
+      50% 100%;
+      background-size: 100% 1px,
+      0% 1px;
     }
-  
+
     &:focus,
     &:active,
     &[aria-expanded="true"],
     &.focused,
     &.click-fx {
-      @if ($theme == "danger" or $theme == "success") {
+      @if ($theme=="danger"or $theme=="success") {
         border-color: $color !important;
-      } @else {
+      }
+
+      @else {
         border-color: $color;
       }
-      background-size: 100% 1px, 100% 1px;
+
+      background-size: 100% 1px,
+      100% 1px;
       animation: input-ripple 0.5s ease-in !important;
     }
-  
+
     &.pre-click-fx:not(.post-click-fx) {
       animation: none !important;
     }
@@ -919,6 +723,7 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-color: $cx-color-light-darkest;
+
   &:disabled {
     background-color: #EFF5F6;
     opacity: 0.5;
@@ -936,9 +741,11 @@ ul.dropdown-menu a.dropdown-item.active.selected {
 .input-caixa-wrapper {
   z-index: 999;
   padding-bottom: 1px;
+
   input {
     box-shadow: none;
   }
+
   @extend .input-base;
 }
 
@@ -949,14 +756,18 @@ select+button.input-caixa[aria-expanded="true"] {
 }
 
 #conteudoPrincipal.bg-dark-dark {
+
   .input-caixa-wrapper,
   .input-caixa,
   select+button.input-caixa[aria-expanded="true"] {
     @extend .input-ripple-info;
-    &:disabled, &.disabled {
+
+    &:disabled,
+    &.disabled {
       color: $cx-color-dark;
     }
   }
+
   .btn-caixa {
     box-shadow: 0 0.2rem 0.2rem 0 rgba(255, 255, 255, 0.15);
   }
@@ -978,4 +789,88 @@ select.ng-dirty.ng-valid+button.input-caixa {
 .input-caixa-field textarea,
 select+button.input-caixa {
   background-color: transparent;
+}
+
+
+
+/* 
+  Modo Escuro (não finalizado)
+*/
+
+#conteudoPrincipal.bg-dark-dark {
+  color: $cx-color-lightest;
+
+  .btn,
+  .header-principal-caixa,
+  .input-caixa,
+  .table.table-caixa {
+    color: $cx-color-lightest;
+  }
+
+  .header-subtitulo-caixa {
+    color: $cx-color-info-light;
+  }
+
+  .card.card-caixa {
+    background-color: $cx-color-dark;
+    color: $cx-color-lightest;
+  }
+
+  .input-caixa-field,
+  .input-caixa-field input,
+  .input-caixa-field textarea,
+  select+button.input-caixa {
+    color: $cx-color-light-dark;
+    background-color: transparent;
+  }
+
+  .table-caixa tbody {
+    tr:hover {
+      background-color: $cx-color-dark-light;
+    }
+  }
+
+  ul.tab-caixa li a {
+    color: $cx-color-light;
+    padding: 1rem 1.5rem;
+    transition: ease-in-out 0.2s;
+    border-bottom: solid 2px transparent;
+  }
+
+  ul.tab-caixa li a.nav-link-caixa.active,
+  ul.tab-caixa .dropdown-item:active {
+    color: $cx-color-info-light;
+  }
+}
+
+/* Classes auxiliares */
+
+@each $theme,
+$value in $cx-bg-opacities {
+  .bg-opacity-#{$theme} {
+    opacity: $value !important;
+  }
+}
+
+@each $theme,
+$value in $cx-text-opacities {
+  .text-opacity-#{$theme} {
+    opacity: $value !important;
+  }
+}
+
+.full-opacity {
+  opacity: 1 !important;
+}
+
+.font-fam-normal {
+  font-family: Futura LT Book !important;
+}
+
+.font-fam-bold {
+  font-family: Futura LT Bold !important;
+}
+
+.section-caixa {
+  margin-bottom: 1.5rem;
 }
