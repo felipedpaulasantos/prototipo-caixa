@@ -58,7 +58,6 @@ export class AccordionComponent implements OnInit, AfterViewInit {
 
   teste(i: number) {
     const menu = this.menus[i];
-    console.log("MENU", menu);
   }
 
 }

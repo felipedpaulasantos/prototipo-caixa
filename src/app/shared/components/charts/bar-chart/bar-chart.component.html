@@ -10,7 +10,8 @@
       <input
         #maxLenghtFilter
         (keyup)="updateMaxLength($event.target.value)"
-        [ngClass]="{'text-danger': (maxLenghtFilter.value > chartData?.chartLabels?.length) || (maxLenghtFilter.value <= 0)}"
+        [ngClass]="{'text-danger': 
+          (maxLenghtFilter.value) && ((maxLenghtFilter.value > chartData?.chartLabels?.length) || (maxLenghtFilter.value <= 0))}"
         class="input-caixa text-center"
         placeholder="1 a {{ chartData?.chartLabels?.length }}"
         mask="00">
@@ -36,7 +37,8 @@
       <input
         #numberOfBarsFilter
         (keyup)="updateNumberOfBars($event.target.value)"
-        [ngClass]="{'text-danger': (numberOfBarsFilter.value > chartData?.chartDatasets?.length) || (numberOfBarsFilter.value <= 0)}"
+        [ngClass]="{'text-danger': 
+          (numberOfBarsFilter.value) && ((numberOfBarsFilter.value > chartData?.chartDatasets?.length) || (numberOfBarsFilter.value <= 0))}"
         class="input-caixa text-center"
         placeholder="1 a {{ chartData?.chartDatasets?.length }}"
         mask="00">

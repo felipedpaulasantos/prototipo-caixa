@@ -42,7 +42,6 @@ export class LayoutComponent implements OnInit {
 
   onIconChange(src: string): void {
     if (!src) { return; }
-    console.log(src);
     this.styleService.setToolbarIcon(src);
   }
 

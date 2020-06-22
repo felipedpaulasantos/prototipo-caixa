@@ -13,7 +13,6 @@ export class BotoesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.temas);
   }
 
 }

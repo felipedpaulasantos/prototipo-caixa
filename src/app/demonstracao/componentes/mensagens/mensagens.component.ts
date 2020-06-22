@@ -30,7 +30,6 @@ export class MensagensComponent implements OnInit {
   }
 
   showTesteModal(titulo?: string, mensagem?: string, tamanho?: ModalSize, centro?: boolean) {
-    console.log(tamanho);
     this.modalService.show({
       showCancelar: true,
       classTitulo: "",
