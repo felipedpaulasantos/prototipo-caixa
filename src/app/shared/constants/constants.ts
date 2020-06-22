@@ -4,32 +4,40 @@ export const loremIpsumPlaceHolder = "Lorem ipsum dolor sit amet, consectetur ad
 export interface ColorTheme {
 	name: string;
 	textColor: string;
-	light: boolean;
-	dark: boolean;
-	darkest: boolean;
 }
 
 export class BootstrapTheme {
   static readonly PRIMARY  = new BootstrapTheme(
-		'PRIMARY', { name: "primary", textColor: "light", light: true, dark: true, darkest: false });
+		'PRIMARY', { name: "primary", textColor: "light" });
 	static readonly SECONDARY  = new BootstrapTheme(
-		'SECONDARY', { name: "secondary", textColor: "light", light: true, dark: true, darkest: false });
+		'SECONDARY', { name: "secondary", textColor: "light" });
 	static readonly SUCCESS  = new BootstrapTheme(
-		'SUCCESS', { name: "success", textColor: "light", light: true, dark: true, darkest: false });
+		'SUCCESS', { name: "success", textColor: "light" });
 	static readonly DANGER  = new BootstrapTheme(
-		'DANGER', { name: "danger", textColor: "light", light: true, dark: true, darkest: false });
+		'DANGER', { name: "danger", textColor: "light" });
 	static readonly INFO  = new BootstrapTheme(
-		'INFO', { name: "info", textColor: "light", light: true, dark: true, darkest: false });
+		'INFO', { name: "info", textColor: "light" });
 	static readonly WARNING  = new BootstrapTheme(
-		'WARNING', { name: "warning", textColor: "light", light: true, dark: true, darkest: false });
+		'WARNING', { name: "warning", textColor: "light" });
 	static readonly APOIO  = new BootstrapTheme(
-		'APOIO', { name: "apoio", textColor: "light", light: true, dark: true, darkest: false });
+		'APOIO', { name: "apoio", textColor: "light" });
 	static readonly AUX  = new BootstrapTheme(
-		'AUX', { name: "aux", textColor: "light",  light: true, dark: true, darkest: false });
+		'AUX', { name: "aux", textColor: "light" });
 	static readonly LIGHT  = new BootstrapTheme(
-		'LIGHT', { name: "light", textColor: "dark", light: false, dark: true, darkest: true });
+		'LIGHT', { name: "light", textColor: "dark" });
 	static readonly DARK  = new BootstrapTheme(
-		'DARK', { name: "dark", textColor: "light", light: true, dark: true, darkest: false });
+		'DARK', { name: "dark", textColor: "light" });
+
+	static getTemas() {
+		const temas = [];
+		Object.getOwnPropertyNames(BootstrapTheme).forEach((theme: any) => {
+			const tema = BootstrapTheme[theme].value;
+			if (tema) {
+				temas.push(tema);
+			}
+		});
+		return temas;
+	}
 
   // private to disallow creating other instances of this type
   private constructor(private readonly key: string, public readonly value: ColorTheme) {
