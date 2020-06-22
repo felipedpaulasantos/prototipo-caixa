@@ -52,12 +52,12 @@ $link-color: $cx-color-dark !default;
 /* Fontes */
 
 $font-size-base: $cx-font-size-base;
-$h1-font-size: $cx-font-size-base * 2.5 !default;
-$h2-font-size: $cx-font-size-base * 2 !default;
-$h3-font-size: $cx-font-size-base * 1.75 !default;
-$h4-font-size: $cx-font-size-base * 1.5 !default;
-$h5-font-size: $cx-font-size-base * 1.25 !default;
-$h6-font-size: $cx-font-size-base;
+$cx-h1-font-size: $cx-font-size-base * 2.5 !default;
+$cx-h2-font-size: $cx-font-size-base * 2 !default;
+$cx-h3-font-size: $cx-font-size-base * 1.75 !default;
+$cx-h4-font-size: $cx-font-size-base * 1.5 !default;
+$cx-h5-font-size: $cx-font-size-base * 1.25 !default;
+$cx-h6-font-size: $cx-font-size-base;
 
 $font-family-base: $cx-font-family-base;
 $body-color: $cx-color-darkest;

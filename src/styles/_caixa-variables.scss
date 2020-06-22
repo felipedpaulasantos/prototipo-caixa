@@ -56,6 +56,12 @@ $cx-font-family-base: Futura LT, Futura LT Book !default;
 $cx-font-family-normal: Futura LT Book;
 $cx-font-family-bold: Futura LT Bold;
 $cx-font-size-base: 0.875rem;	/* 0.812 = 13px | 0.875 = 14px */
+$cx-h1-font-size: $cx-font-size-base * 2.5 !default;
+$cx-h2-font-size: $cx-font-size-base * 2 !default;
+$cx-h3-font-size: $cx-font-size-base * 1.75 !default;
+$cx-h4-font-size: $cx-font-size-base * 1.5 !default;
+$cx-h5-font-size: $cx-font-size-base * 1.25 !default;
+$cx-h6-font-size: $cx-font-size-base;
 
 /* Gradiente */
 

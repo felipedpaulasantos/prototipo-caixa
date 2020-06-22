@@ -13,7 +13,12 @@
 @import "../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
 @import "../node_modules/ngx-toastr/toastr.css";
 
+// Fonte
 @import "./assets/fonts/style.css";
+
+// Estilos complementares
+@import "./styles/datatables";
+@import "./styles/animations";
 
 body {
   height: 100%;
@@ -123,12 +128,12 @@ hr.header-line-caixa {
   box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.15);
 }
 
-.btn.active.focus,
-.btn.active:focus,
-.btn.focus,
-.btn.focus:active,
-.btn:active:focus,
-.btn:focus {
+.btn-caixa.active.focus,
+.btn-caixa.active:focus,
+.btn-caixa.focus,
+.btn-caixa.focus:active,
+.btn-caixa:active:focus,
+.btn-caixa:focus {
   outline: 0 !important;
   outline-offset: 0 !important;
   background-image: none !important;
@@ -150,40 +155,30 @@ hr.header-line-caixa {
 
 .btn-flat {
   @include button-variant(transparent, transparent);
-
-  :focus,
-  :active {
+  &:focus,
+  &:active {
     box-shadow: none;
   }
-
   &:hover {
     filter: brightness(50%);
   }
 }
 
-.btn-secondary,
-.btn-secondary:disabled,
-.btn-secondary-dark,
-.btn-secondary-dark:disabled,
-.btn-danger,
-.btn-danger:disabled,
-.btn-danger-dark,
-.btn-danger-dark:disabled,
-.btn-success,
-.btn-success:disabled,
-.btn-success-dark,
-.btn-success-dark:disabled,
-.btn-warning,
-.btn-warning:disabled,
-.btn-warning:hover,
-.btn-warning:focus,
-.btn-warning-dark,
-.btn-warning-dark:disabled,
-.btn-apoio,
-.btn-apoio:disabled,
-.btn-aux,
-.btn-aux:disabled {
-  color: $cx-color-lightest;
+@each $theme, $color in $theme-colors {
+  @if (str-index($theme, light)
+  and not (str-index($theme, dark))
+  and not (str-index($theme, primary))) {
+    @debug $theme;
+    .btn-#{$theme},
+    .btn-#{$theme}:disabled {
+      color: $cx-color-dark;
+    }
+  } @else {
+    .btn-#{$theme},
+    .btn-#{$theme}:disabled {
+      color: $cx-color-lightest;
+    }
+  }
 }
 
 .btn-light,
@@ -232,7 +227,6 @@ hr.header-line-caixa {
         content: "\f00c";
         color: $cx-color-success;
       }
-
       .toast-progress {
         background-color: $cx-color-success-light;
       }
@@ -243,7 +237,6 @@ hr.header-line-caixa {
         content: "\f00d";
         color: $cx-color-danger;
       }
-
       .toast-progress {
         background-color: $cx-color-danger-light;
       }
@@ -254,7 +247,6 @@ hr.header-line-caixa {
         content: "\f129";
         color: $cx-color-info;
       }
-
       .toast-progress {
         background-color: $cx-color-info-light;
       }
@@ -265,7 +257,6 @@ hr.header-line-caixa {
         content: "\f12a";
         color: $cx-color-warning;
       }
-
       .toast-progress {
         background-color: $cx-color-warning-light;
       }
@@ -343,11 +334,9 @@ hr.header-line-caixa {
     #sidemenuSearchIcon {
       color: $cx-color-light;
     }
-
     .nav-item .side-menu-item {
       color: $cx-color-light;
       @extend .ripple;
-
       &:hover,
       &.active {
         color: $cx-color-secondary-light;
@@ -359,11 +348,9 @@ hr.header-line-caixa {
     #sidemenuSearchIcon {
       color: $cx-color-light;
     }
-
     .nav-item .side-menu-item {
       color: $cx-color-light;
       @extend .ripple;
-
       &:hover,
       &.active {
         color: $cx-color-lightest;
@@ -375,11 +362,9 @@ hr.header-line-caixa {
     #sidemenuSearchIcon {
       color: $cx-color-dark;
     }
-
     .nav-item .side-menu-item {
       color: $cx-color-dark;
       @extend .ripple;
-
       &:hover,
       &.active {
         color: $cx-color-dark;
@@ -390,17 +375,15 @@ hr.header-line-caixa {
 
 @function str-replace($string, $search, $replace: '') {
   $index: str-index($string, $search);
-
   @if $index {
     @return str-slice($string, 1, $index - 1) + $replace 
     + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
   }
-
   @return $string;
 }
 
 #menuLateralPesquisa,
-  .nav-item .side-menu-item {
+.nav-item .side-menu-item {
     border-bottom: solid 1px $cx-color-light;
 }
 
@@ -498,15 +481,15 @@ label {
   width: 100% !important;
   padding-right: 0 !important;
 
-  button.btn.dropdown-toggle.btn-light {
+  button.btn.dropdown-toggle {
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
     border-radius: 0 !important;
     border-color: $cx-color-light-darkest !important;
-    background-color: $cx-color-lightest !important;
+    background-color: transparent !important;
     padding-right: 2rem !important;
-    padding-left: 0 !important;
+    padding-left: 0.5rem !important;
 
     &:focus,
     &:active {
@@ -588,95 +571,7 @@ th.th-sorting {
   }
 }
 
-/* .dataTables_wrapper {
-  @extend .row, .m-0;
-} */
 
-.dataTables_length {
-  display: inline-block;
-  margin-bottom: 1rem;
-  width: 50%;
-  label {
-    width: 100%;
-  }
-  select {
-    @extend .form-control, .custom-select, .border-top-0, .border-left-0, .border-right-0, .input-caixa;
-    display: inline-block;
-    width: 25% !important;
-    text-align: center;
-    box-shadow: none !important;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-}
-
-.dataTables_filter {
-  display: block;
-  margin-bottom: 1rem;
-  float: right;
-  width: 50%;
-  label {
-    display: flex;
-    align-items: center;
-    width: 75%;
-    margin-left: auto;
-  }
-  input {
-    @extend .input-caixa;
-    margin-left: 0.5rem;
-    font-family: $cx-font-family-normal;
-    width: 100% !important;
-  }
-}
-
-.dataTables_info {
-  display: inline-block;
-}
-
-.dataTables_paginate {
-  text-align: right;
-  float: right;
-  > a.paginate_button {
-    margin-left: 0.5rem;
-    &:not(.disabled) {
-      cursor: pointer;
-      @extend .btn, .btn-caixa, .btn-outline-light, .btn-sm;
-    }
-    &.disabled {
-      @extend .text-muted;
-      cursor: not-allowed;
-    }
-  }
-  span a {
-    @extend .btn, .btn-caixa, .btn-sm, .btn-outline-primary;
-    margin-left: 0.5rem;
-    &.current {
-      @extend .active;
-    }
-  }
-}
-
-.dt-buttons {
-  margin-bottom: 1.5rem;
-  button.dt-button {
-    @extend .btn, .btn-caixa, .btn-sm, .btn-outline-primary;
-  }
-}
-.dt-button-collection {
-  position: absolute;
-  z-index: 999;
-  border: solid 1px $cx-color-light;
-  background-color: white;
-  width: auto;
-  float: left;
-  top: 0;
-  left: 0;
-  padding: 1rem;
-  @extend .shadow-sm, .rounded;
-}
-.dt-button-background {
-  display: none !important;
-}
 
 /* Remove setas do Input do tipo Number */
 
@@ -696,34 +591,38 @@ input[type=number] {
 
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
-  color: $cx-color-placeholder;
+  // color: $cx-color-placeholder;
+  opacity: $cx-opacity-text-3;
 }
 
 :-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  color: $cx-color-placeholder;
-  opacity: 1;
+  // color: $cx-color-placeholder;
+  opacity: $cx-opacity-text-3;
 }
 
 ::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: $cx-color-placeholder;
-  opacity: 1;
+  // color: $cx-color-placeholder;
+  opacity: $cx-opacity-text-3;
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: $cx-color-placeholder;
+  // color: $cx-color-placeholder;
+  opacity: $cx-opacity-text-3;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: $cx-color-placeholder;
+  // color: $cx-color-placeholder;
+  opacity: $cx-opacity-text-3;
 }
 
 ::placeholder {
   /* Most modern browsers support this now. */
-  color: $cx-color-placeholder;
+  // color: $cx-color-placeholder;
+  opacity: $cx-opacity-text-3;
 }
 
 /* Dropdown item */
@@ -744,40 +643,6 @@ input[type=number] {
     -webkit-animation-duration: 0.3s;
     animation-fill-mode: both;
     -webkit-animation-fill-mode: both;
-  }
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateY(1rem);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0rem);
-    opacity: 1;
-  }
-
-  0% {
-    transform: translateY(1rem);
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes slideIn {
-  0% {
-    -webkit-transform: transform;
-    -webkit-opacity: 0;
-  }
-
-  100% {
-    -webkit-transform: translateY(0);
-    -webkit-opacity: 1;
-  }
-
-  0% {
-    -webkit-transform: translateY(1rem);
-    -webkit-opacity: 0;
   }
 }
 
@@ -1002,19 +867,6 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   background-image: radial-gradient(circle, $cx-color-dark 10%, transparent 10.01%);
 }
 
-/* 
-  Efeito ripple em inputs 
-*/
-
-@keyframes input-ripple {
-  0% {
-    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)) 100%;
-  }
-  100% {
-    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)) 100%;
-  }
-}
-
 @each $theme, $color in $theme-colors {
   .input-ripple-#{$theme} {
     transition: background-size 0.4s, background-color 0.4s, border-color 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -1119,4 +971,11 @@ select.ng-dirty.ng-invalid+button.input-caixa,
 cx-input.ng-valid .input-caixa-wrapper,
 select.ng-dirty.ng-valid+button.input-caixa {
   @extend .input-ripple-success;
+}
+
+.input-caixa-field,
+.input-caixa-field input,
+.input-caixa-field textarea,
+select+button.input-caixa {
+  background-color: transparent;
 }
