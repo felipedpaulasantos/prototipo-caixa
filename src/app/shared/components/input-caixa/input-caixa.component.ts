@@ -72,7 +72,6 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   }
 
   isFieldRequired(abstractControl: AbstractControl): boolean {
-
     if (abstractControl && abstractControl.validator) {
       const validator = abstractControl.validator({}as AbstractControl);
       if (validator && validator.required) {

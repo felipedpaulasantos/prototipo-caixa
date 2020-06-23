@@ -1,29 +1,29 @@
-::ng-deep input {
+::ng-deep cx-input input {
 	padding: 0.375rem 0.5rem;
 	width: 100%;
 	border: 0;
 }
 
-::ng-deep textarea {
+::ng-deep cx-input textarea {
 	width: 100%;
 	border: none;
 	padding-top: 0.5rem;
 	padding-left: 0.5rem;
 }
 
-::ng-deep .input-caixa-label {
+::ng-deep cx-input .input-caixa-label {
 	display: block;
 	width: 100%;
 }
 
-::ng-deep .input-caixa-flex-field {
+::ng-deep cx-input .input-caixa-flex-field {
 	display: inline-flex;
 	width: 100%;
 	align-items: center;
 	background: transparent;
 }
 
-::ng-deep .input-caixa-field {
+::ng-deep cx-input .input-caixa-field {
 	display: block;
 	width: 100%;
 }
@@ -39,11 +39,11 @@
 	padding-right: 0.5rem;
 }
 
-::ng-deep .feedback-message {
+::ng-deep cx-input .feedback-message {
 	min-height: 1.6rem;
 }
 
-::ng-deep .input-caixa-prefix-icon {
+::ng-deep cx-input .input-caixa-prefix-icon {
 	width: 1.5rem;
 	min-width: 1.5rem;
 	max-width: 1.5rem;
@@ -51,6 +51,6 @@
 	align-items: center;
 	vertical-align: middle;
 }
-::ng-deep .input-caixa-prefix-icon:empty {
+::ng-deep cx-input .input-caixa-prefix-icon:empty {
 	display: none;
 }
