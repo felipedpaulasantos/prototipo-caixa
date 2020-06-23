@@ -657,3 +657,42 @@ $value in $cx-text-opacities {
     }
   }
 }
+
+/* MENU LATERAL */
+
+@each $theme, $colors in $cx-colors {
+  #menuLateral.bg-#{$theme} {
+
+    @include placeholder {
+      color: nth($colors, 2);
+    }
+    #menuLateralPesquisa {
+      border-bottom: solid 1px nth($colors, 4);
+    }
+    #sidemenuSearchIcon {
+      color: nth($colors, 2);
+      +input {
+        color: nth($colors, 2);
+        background-color: transparent;
+        padding: 0.375rem 0.5rem;
+        $realce-color: nth($colors, 5);
+        @extend .input-ripple-#{$realce-color};
+      }
+    }
+    .nav-item .side-menu-item {
+      border-bottom: solid 1px nth($colors, 4);
+      color: nth($colors, 2);
+      &:hover,
+      &.active {
+        color: nth($colors, 3);
+      }
+      @extend .ripple;
+      @if (str-index($theme, "-light")) {
+        @extend .ripple-dark;
+      }
+      &.active {
+        font-family: $cx-font-family-bold;
+      }
+    }
+  }
+}
