@@ -1,5 +1,7 @@
 @use "sass:map";
 
+@import "./assets/fonts/style.css";
+
 /* Overriden Bootstrap variables */
 @import "./styles/bootstrap-variables-override";
 
@@ -116,8 +118,7 @@ $color in $cx-gradient-themes {
   }
 }
 
-@each $theme,
-$colors in $cx-colors {
+@each $theme, $colors in $cx-colors {
   .btn-#{$theme} {
     color: nth($list: $colors, $n: 2);
   }
@@ -139,7 +140,6 @@ $colors in $cx-colors {
 .toast-container {
   font-family: $cx-font-family-normal;
   color: $cx-color-lightest;
-
   >div {
     background-image: none !important;
     padding: 15px 15px 15px 50px;
@@ -216,46 +216,6 @@ $colors in $cx-colors {
   }
 }
 
-/* Side Menu */
-
-@each $theme, $colors in $cx-colors {
-  #menuLateral.bg-#{$theme} {
-
-    @include placeholder {
-      color: nth($colors, 2);
-    }
-    #menuLateralPesquisa {
-      border-bottom: solid 1px nth($colors, 4);
-    }
-    #sidemenuSearchIcon {
-      color: nth($colors, 2);
-      +input {
-        color: nth($colors, 2);
-        background-color: transparent;
-        padding: 0.375rem 0.5rem;
-        $realce-color: nth($colors, 5);
-        @extend .input-ripple-#{$realce-color};
-      }
-    }
-    .nav-item .side-menu-item {
-      border-bottom: solid 1px nth($colors, 4);
-      color: nth($colors, 2);
-      &:hover,
-      &.active {
-        color: nth($colors, 3);
-      }
-      @extend .ripple;
-      @if (str-index($theme, "-light")) {
-        @extend .ripple-dark;
-      }
-    }
-  }
-}
-
-#menuLateralNav .nav-item .side-menu-item.active {
-  font-family: $cx-font-family-bold;
-}
-
 /* Inputs */
 
 label {
@@ -314,7 +274,7 @@ label {
     border-left: none !important;
     border-right: none !important;
     border-radius: 0 !important;
-    border-color: $cx-color-light-darkest !important;
+    border-color: $cx-color-light-darkest;
     background-color: transparent !important;
     padding-right: 2rem !important;
     padding-left: 0.5rem !important;
@@ -384,7 +344,6 @@ th.th-sorting {
       content: "\f0dd";
     }
   }
-
   tbody {
     tr:hover {
       background-color: $cx-color-light;
@@ -396,7 +355,9 @@ th.th-sorting {
   }
 }
 
-/* Remove setas do Input do tipo Number */
+/* 
+  Remove setas do Input do tipo Number 
+*/
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -406,11 +367,14 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
+
 input[type=number] {
   -moz-appearance: textfield;
 }
 
-/* Dropdown item */
+/* 
+  Dropdown item 
+*/
 
 .dropdown-item {
   padding: 1rem 1.3rem;
@@ -499,8 +463,10 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   }
 }
 
-/* Create the hidden pseudo-element */
-/* include the shadow for the end state */
+/* 
+  Card-caixa
+*/
+
 .card-caixa::after {
   content: '';
   position: absolute;
@@ -512,9 +478,6 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
   transition: opacity 0.3s ease-in-out;
 }
-
-/* Fade in the pseudo-element with the bigger shadow */
-
 .card-caixa:hover::after {
   opacity: 1;
 }
@@ -561,13 +524,11 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   Efeito ripple - onda ao clicar em botão 
 */
 
-.ripple,
 .btn-caixa:not([disabled]) {
   position: relative;
   overflow: hidden;
   transform: translate3d(0, 0, 0);
 }
-.ripple:after,
 .btn-caixa:not([disabled]):after {
   content: "";
   display: block;
@@ -584,7 +545,6 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   opacity: 0;
   transition: transform .5s, opacity 1s;
 }
-.ripple:active:after,
 .btn-caixa:not([disabled]):active:after {
   transform: scale(0, 0);
   opacity: .3;
@@ -597,56 +557,10 @@ ul.dropdown-menu a.dropdown-item.active.selected {
 .btn-outline-light:after,
 .btn-outline-light-light:after,
 .btn-outline-light-dark:after,
-.btn-outline-light-darkest:after,
-.ripple-dark:after {
+.btn-outline-light-darkest:after {
   background-image: radial-gradient(circle, $cx-color-darkest 10%, transparent 10.01%) !important;
 }
-@each $theme,
-$color in $theme-colors {
-  .input-ripple-#{$theme} {
-    transition: background-size 0.4s, background-color 0.4s, border-color 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
-    &,
-    &:focus,
-    &:active,
-    &[aria-expanded="true"],
-    &.focused {
-      @if ($theme=="danger"or $theme=="success") {
-        background-image:
-          linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-          linear-gradient(0deg, $color 0%, $color 100%) !important;
-        border-color: $color !important;
-      }
-      @else {
-        background-image:
-          linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-          linear-gradient(0deg, $color 0%, $color 100%);
-      }
-      background-repeat: no-repeat;
-      background-position: 50% 100%,
-      50% 100%;
-      background-size: 100% 1px,
-      0% 1px;
-    }
-    &:focus,
-    &:active,
-    &[aria-expanded="true"],
-    &.focused,
-    &.click-fx {
-      @if ($theme=="danger"or $theme=="success") {
-        border-color: $color !important;
-      }
-      @else {
-        border-color: $color;
-      }
-      background-size: 100% 1px,
-      100% 1px;
-      animation: input-ripple 0.5s ease-in !important;
-    }
-    &.pre-click-fx:not(.post-click-fx) {
-      animation: none !important;
-    }
-  }
-}
+
 .input-base {
   width: 100%;
   padding: 0.375rem 0.5rem;
@@ -684,20 +598,6 @@ $color in $theme-colors {
 select+button.input-caixa[aria-expanded="true"] {
   @extend .input-ripple-primary;
 }
-#conteudoPrincipal.bg-dark-dark {
-  .input-caixa-wrapper,
-  .input-caixa,
-  select+button.input-caixa[aria-expanded="true"] {
-    @extend .input-ripple-info;
-    &:disabled,
-    &.disabled {
-      color: $cx-color-dark;
-    }
-  }
-  .btn-caixa {
-    box-shadow: 0 0.2rem 0.2rem 0 rgba(255, 255, 255, 0.15);
-  }
-}
 cx-input.ng-invalid .input-caixa-wrapper,
 select.ng-dirty.ng-invalid+button.input-caixa,
 .input-caixa.ng-invalid {
@@ -714,13 +614,38 @@ select+button.input-caixa {
   background-color: transparent;
 }
 
+/* Classes auxiliares */
+
+@each $theme,
+$value in $cx-bg-opacities {
+  .bg-opacity-#{$theme} {
+    opacity: $value !important;
+  }
+}
+@each $theme,
+$value in $cx-text-opacities {
+  .text-opacity-#{$theme} {
+    opacity: $value !important;
+  }
+}
+.full-opacity {
+  opacity: 1 !important;
+}
+.font-fam-normal {
+  font-family: Futura LT Book !important;
+}
+.font-fam-bold {
+  font-family: Futura LT Bold !important;
+}
+.section-caixa {
+  margin-bottom: 1.5rem;
+}
+
 /* 
   Modo Escuro (não finalizado)
 */
-
 #conteudoPrincipal.bg-dark-dark {
   color: $cx-color-lightest;
-  .btn,
   .header-principal-caixa,
   .input-caixa,
   .table.table-caixa {
@@ -755,31 +680,16 @@ select+button.input-caixa {
   ul.tab-caixa .dropdown-item:active {
     color: $cx-color-info-light;
   }
-}
-
-/* Classes auxiliares */
-
-@each $theme,
-$value in $cx-bg-opacities {
-  .bg-opacity-#{$theme} {
-    opacity: $value !important;
+  .input-caixa-wrapper,
+  .input-caixa,
+  select+button.input-caixa[aria-expanded="true"] {
+    @extend .input-ripple-info;
+    &:disabled,
+    &.disabled {
+      color: $cx-color-dark;
+    }
   }
-}
-@each $theme,
-$value in $cx-text-opacities {
-  .text-opacity-#{$theme} {
-    opacity: $value !important;
+  .btn-caixa {
+    box-shadow: 0 0.2rem 0.2rem 0 rgba(255, 255, 255, 0.15);
   }
-}
-.full-opacity {
-  opacity: 1 !important;
-}
-.font-fam-normal {
-  font-family: Futura LT Book !important;
-}
-.font-fam-bold {
-  font-family: Futura LT Bold !important;
-}
-.section-caixa {
-  margin-bottom: 1.5rem;
 }

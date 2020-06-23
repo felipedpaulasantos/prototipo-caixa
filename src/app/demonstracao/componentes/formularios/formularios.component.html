@@ -59,15 +59,6 @@
 							</div>
 						</div>
 
-						<cx-input formato="(00) 00000-0000">
-							<label>Telefone</label>
-							<input inputCaixa 
-								placeholder="(00) 00000-0000" 
-								formControlName="tel" 
-								mask="{{ phoneMask }}"
-								(keyup)="onPhoneChanged($event);">
-						</cx-input>
-
 						<cx-input optionalErrors='{"simpleDate": "Data inválida"}'>
 							<label>Nascimento</label>
 							<input inputCaixa 
