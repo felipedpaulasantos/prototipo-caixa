@@ -38,12 +38,26 @@
 					</cx-input>
 
 					<form [formGroup]="formulario">
-						<cx-input>
-							<i class="fa fa-user prefix-icon"></i>
-							<label>Nome</label>
-							<app-tooltip-icon text="teste"></app-tooltip-icon>
-							<input inputCaixa formControlName="nome">
-						</cx-input>
+						<div class="row">
+							<div class="col-6">
+								<cx-input formato="(00) 00000-0000">
+									<label>Telefone</label>
+									<input inputCaixa 
+										placeholder="(00) 00000-0000" 
+										formControlName="tel" 
+										mask="{{ phoneMask }}"
+										(keyup)="onPhoneChanged($event);">
+								</cx-input>
+							</div>
+							<div class="col-6">
+								<cx-input>
+									<i class="fa fa-user prefix-icon"></i>
+									<label>Nome</label>
+									<app-tooltip-icon text="teste"></app-tooltip-icon>
+									<input inputCaixa formControlName="nome">
+								</cx-input>
+							</div>
+						</div>
 
 						<cx-input formato="(00) 00000-0000">
 							<label>Telefone</label>

@@ -3,26 +3,10 @@
 
   <div id="menuLateralPesquisa" class="py-4 px-3">
     <i id="sidemenuSearchIcon" class="fas fa-lg fa-search mr-3"></i>
-    <input class="input-caixa w-75 d-inline" placeholder="Pesquisar...">
+    <input class="input-base w-75 d-inline" placeholder="Pesquisar...">
   </div>
 
   <div id="menuLateralNav">
-
-<!--     <ul class="nav flex-column border-top">
-      <li class="nav-item" *ngFor="let resource of resources">
-        <a routerLink="{{ resource.url }}" routerLinkActive="active" class="nav-item nav-link side-menu-item border-bottom py-4 rounded-0">
-            <i class="{{ resource.icon }} fa-lg mr-3"></i>
-            {{ resource.name }}
-        </a>
-      </li>
-      <li class="nav-item">
-        <a target="_blank" class="nav-item nav-link py-4 rounded-0 side-menu-item border-bottom" href="https://developers.facebook.com/docs/whatsapp/overview">
-            <i class="fas fa-lg fa-external-link-alt mr-3"></i>
-            Referência da API
-        </a>
-      </li>
-    </ul> -->
-
     <app-accordion
       [options]="options"
       [menus]="menus"
