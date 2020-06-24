@@ -104,6 +104,17 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
     return false;
   }
 
+  isFieldInvalid(): boolean {
+    if (this.formInput) {
+      return this.formInput.invalid;
+    } else {
+      if (this.nativeElement) {
+        return this.inputDirective.changed && (this.nativeElement.classList.contains("ng-invalid"));
+      }
+    }
+    return false;
+  }
+
   resetField() {
     if (this.formInput) {
       this.formInput.reset();
@@ -132,7 +143,7 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
         return "ng-invalid ng-touched";
       }
     } else {
-      if (this.inputDirective && this.inputDirective.changed && !this.isFieldValid()) {
+      if (this.inputDirective && this.inputDirective.changed && this.isFieldInvalid()) {
         return "ng-invalid ng-touched";
       }
     }

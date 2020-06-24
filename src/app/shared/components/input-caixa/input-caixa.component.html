@@ -14,9 +14,9 @@
       <div *ngIf="(formInput && formInput?.touched) 
         || (!formInput && inputDirective && inputDirective.changed)"
         class="input-caixa-feedback-icon ripple ripple-dark" role="button" (click)="resetField()"
-        [ngClass]="{'text-success': isFieldValid(), 'text-danger': !isFieldValid()}">
+        [ngClass]="{'text-success': isFieldValid(), 'text-danger': isFieldInvalid()}">
         <i *ngIf="isFieldValid()" class="fas fa-check" title="Resetar campo"></i>
-        <i *ngIf="!isFieldValid()" class="fas fa-exclamation-triangle" title="Resetar campo"></i>
+        <i *ngIf="isFieldInvalid()" class="fas fa-exclamation-triangle" title="Resetar campo"></i>
       </div>
     </ng-container>
   </div>
@@ -79,7 +79,7 @@
           </span>
         </ng-container>
 
-        <ng-container *ngIf="!formInput && inputDirective?.changed && !isFieldValid() && msgErroPadrao">
+        <ng-container *ngIf="!formInput && inputDirective?.changed && isFieldInvalid() && msgErroPadrao">
           <span>{{ msgErroPadrao }}</span>
         </ng-container>
       </small>
