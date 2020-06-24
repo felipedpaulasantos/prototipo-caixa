@@ -11,6 +11,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { TabelasComponent } from './tabelas/tabelas.component';
 import { DataTablesModule } from 'angular-datatables';
+import { HighlightModule } from 'ngx-highlightjs';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { DataTablesModule } from 'angular-datatables';
     FormsModule,
     ReactiveFormsModule,
     NgxMaskModule,
-    DataTablesModule
+    DataTablesModule,
+    HighlightModule
   ],
   declarations: [
     ComponentesComponent,

@@ -25,8 +25,8 @@
 <div class="feedback-message w-100 text-right">
   <ng-container *ngIf="showFeedbackMessage">
     <ng-container class="w-100 text-right" 
-    *ngIf="!formInput && (!inputDirective?.changed || (isFieldValid() && inputDirective?.changed))
-      || (formInput?.untouched || formInput?.valid) 
+    *ngIf="!formInput && inputDirective && ((!inputDirective.changed && !isFieldInvalid()) || (inputDirective.changed && (isFieldValid() || !isFieldInvalid()) ))
+      || formInput && (formInput.untouched || formInput.valid) 
       else errorFeedback">
       <small class="font-italic">
         {{ isRequired ? "Obrigatório" : "" }}

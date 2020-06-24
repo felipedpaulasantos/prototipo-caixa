@@ -369,6 +369,9 @@ ul.tab-caixa li a {
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
   border-bottom: solid 2px transparent;
+  &.disabled, &:disabled {
+    opacity: $cx-text-opacity-2;
+  }
 }
 ul.tab-caixa li a.nav-link-caixa.active,
 ul.tab-caixa li a.nav-link-caixa:active,

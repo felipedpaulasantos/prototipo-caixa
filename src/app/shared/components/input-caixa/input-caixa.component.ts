@@ -87,6 +87,9 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
         }
       }
     }
+    if (this.inputDirective && this.inputDirective.element && this.inputDirective.element.nativeElement) {
+      return this.inputDirective.element.nativeElement.required;
+    }
     if (this.nativeElement && this.nativeElement.required) {
       return true;
     }

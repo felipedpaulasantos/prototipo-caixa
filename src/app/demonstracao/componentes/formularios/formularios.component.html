@@ -3,7 +3,160 @@
 </h1>
 <hr class="header-line-caixa">
 
-<section id="painelFormularios" class="section-caixa">
+<section id="painelFormularios" class="section-caixa pr-5">
+
+	<div id="cardInputBasico" class="card card-caixa mb-5">
+		<div class="card-body">
+			<div class="d-flex align-items-center mb-3">
+				<div class="mr-auto">
+					<h5 class="header-subtitulo-caixa mb-0">Inputs básicos</h5>
+				</div>
+				<div class="ml-auto">
+					<button (click)="showTabsInputBasico = !showTabsInputBasico" 
+					class="btn btn-caixa ripple-dark shadow-none text-dark-light rounded-circle" title="Visualizar código">
+						<i class="fa fa-lg fa-code"></i>
+					</button>
+				</div>
+			</div>
+
+			<div *ngIf="showTabsInputBasico" id="tabsInputBasico" class="mb-4">
+				<cx-code-view
+					htmlTabId="htmlIdInputBasico"
+					[htmlCode]="htmlCodeInputBasico"
+				></cx-code-view>
+			</div>	<!-- tabsCodigoInput1 -->
+
+			<div class="row">
+				<div class="col-12 col-md-6 col-lg-4">
+					<form>
+						<cx-input>
+							<label>Nome</label>
+							<input inputCaixa placeholder="Digite seu nome aqui..." value="Fulano da Silva">
+						</cx-input>
+
+						<cx-input>
+							<label>Mensagem</label>
+							<textarea inputCaixa placeholder="Faça um comentário..."></textarea>
+						</cx-input>
+					</form>
+				</div>
+			</div> <!-- Row -->
+		</div> <!-- Card Body -->
+	</div> <!-- Card -->
+
+	<div id="cardInputClasse" class="card card-caixa mb-5">
+		<div class="card-body">
+			<div class="d-flex align-items-center mb-3">
+				<div class="mr-auto">
+					<h5 class="header-subtitulo-caixa mb-0">Apenas por classe</h5>
+				</div>
+				<div class="ml-auto">
+					<button (click)="showTabsInputClasse = !showTabsInputClasse" 
+					class="btn btn-caixa ripple-dark shadow-none text-dark-light rounded-circle" title="Visualizar código">
+						<i class="fa fa-lg fa-code"></i>
+					</button>
+				</div>
+			</div>
+
+			<div *ngIf="showTabsInputClasse" id="showTabsInputClasse" class="mb-4">
+				<cx-code-view
+					htmlTabId="htmlIdInputClasse"
+					[htmlCode]="htmlCodeInputClasse"
+				></cx-code-view>
+			</div>	<!-- tabsCodigoInput1 -->
+
+			<div class="row">
+				<div class="col-12 col-md-6 col-lg-4">
+					<form>
+						<label>Nome</label>
+						<input class="input-caixa" placeholder="Estilo apenas por classe..." value="Fulano da Silva">
+					</form>
+				</div>
+			</div> <!-- Row -->
+		</div> <!-- Card Body -->
+	</div> <!-- Card -->
+
+	<div id="cardValidadores" class="card card-caixa mb-5">
+		<div class="card-body">
+			<div class="d-flex align-items-center mb-3">
+				<div class="mr-auto">
+					<h5 class="header-subtitulo-caixa mb-0">Validação</h5>
+				</div>
+				<div class="ml-auto">
+					<button (click)="showTabsValidacao = !showTabsValidacao" 
+					class="btn btn-caixa ripple-dark shadow-none text-dark-light rounded-circle" title="Visualizar código">
+						<i class="fa fa-lg fa-code"></i>
+					</button>
+				</div>
+			</div>
+
+			<div *ngIf="showTabsValidacao" id="showTabsValidacao" class="mb-4">
+				<cx-code-view
+					htmlTabId="htmlIdValidacao"
+					[htmlCode]="htmlCodeValidacao"
+					tsTabId="tsIdValidacao"
+					[tsCode]="tsCodeValidacao"
+				></cx-code-view>
+			</div>	<!-- tabsCodigoInput1 -->
+
+			<div class="row">
+				<div class="col-12 col-md-6 col-lg-4">
+					<form [formGroup]="formulario">
+						<cx-input>
+							<label>Texto</label>
+							<input inputCaixa placeholder="Vazio ou pelo menos 5 caracteres" formControlName="texto">
+						</cx-input>
+
+						<cx-input>
+							<label>Idade</label>
+							<input inputCaixa formControlName="idade" placeholder="Obrigatório - Entre 18 e 100" mask="009">
+						</cx-input>
+					</form>
+				</div>
+			</div> <!-- Row -->
+		</div> <!-- Card Body -->
+	</div> <!-- Card -->
+
+	<div id="cardInputIcone" class="card card-caixa mb-5">
+		<div class="card-body">
+			<div class="d-flex align-items-center mb-3">
+				<div class="mr-auto">
+					<h5 class="header-subtitulo-caixa mb-0">Com ícone</h5>
+				</div>
+				<div class="ml-auto">
+					<button (click)="showTabsInputIcone = !showTabsInputIcone" 
+					class="btn btn-caixa ripple-dark shadow-none text-dark-light rounded-circle" title="Visualizar código">
+						<i class="fa fa-lg fa-code"></i>
+					</button>
+				</div>
+			</div>
+
+			<div *ngIf="showTabsInputIcone" id="tabsInputBasico" class="mb-4">
+				<cx-code-view
+					htmlTabId="htmlIdInputIcone"
+					[htmlCode]="htmlCodeInputIcone"
+				></cx-code-view>
+			</div>	<!-- tabsCodigoInput1 -->
+
+			<div class="row">
+				<div class="col-12 col-md-6 col-lg-4">
+					<form>
+						<cx-input>
+							<label>Usuário</label>
+							<i class="fa fa-user prefix-icon"></i>
+							<input inputCaixa placeholder="Username" required>
+						</cx-input>
+
+						<cx-input>
+							<label>Senha</label>
+							<i class="fa fa-key prefix-icon"></i>
+							<input inputCaixa type="password" required>
+						</cx-input>
+					</form>
+				</div>
+			</div> <!-- Row -->
+		</div> <!-- Card Body -->
+	</div> <!-- Card -->
 
 	<div class="row">
 		<div class="col-xl-4 mx-auto my-3">
@@ -34,7 +187,8 @@
 
 					<cx-input msgErroPadrao="Erro!!!">
 						<label>Campo avulso</label>
-						<input #inputTeste inputCaixa required [ngClass]="{'ng-valid': inputTeste.value != 1, 'ng-invalid': inputTeste.value == '1'}">
+						<input #inputTeste inputCaixa required
+							[ngClass]="{'ng-valid': inputTeste.value != 1, 'ng-invalid': inputTeste.value == '1'}">
 					</cx-input>
 
 					<form [formGroup]="formulario">
@@ -42,10 +196,7 @@
 							<div class="col-6">
 								<cx-input formato="(00) 00000-0000">
 									<label>Telefone</label>
-									<input inputCaixa 
-										placeholder="(00) 00000-0000" 
-										formControlName="tel" 
-										mask="{{ phoneMask }}"
+									<input inputCaixa placeholder="(00) 00000-0000" formControlName="tel" mask="{{ phoneMask }}"
 										(keyup)="onPhoneChanged($event);">
 								</cx-input>
 							</div>
@@ -61,10 +212,7 @@
 
 						<cx-input optionalErrors='{"simpleDate": "Data inválida"}'>
 							<label>Nascimento</label>
-							<input inputCaixa 
-								placeholder="00/00/0000" 
-								formControlName="nascimento" 
-								mask="00/00/0000"
+							<input inputCaixa placeholder="00/00/0000" formControlName="nascimento" mask="00/00/0000"
 								[dropSpecialCharacters]=false>
 						</cx-input>
 					</form>
@@ -150,8 +298,7 @@
 					</form>
 				</div>
 				<div class="card-footer text-right">
-					<button class="btn btn-secondary btn-caixa my-2 my-md-0 mr-3"
-						[disabled]="formulario2.invalid"
+					<button class="btn btn-secondary btn-caixa my-2 my-md-0 mr-3" [disabled]="formulario2.invalid"
 						(click)="toastr.success('Formulário salvo com sucesso!', 'Sucesso')">
 						<i class="fas fa-lg fa-save mr-2"></i>
 						Salvar
