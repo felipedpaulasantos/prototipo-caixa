@@ -1,3 +1,5 @@
+@use "sass:map";
+
 /* Colors */
 
 $cx-color-primary: #005CA9;
@@ -47,48 +49,48 @@ $cx-color-placeholder: #999;
 	Mapa
 	COR DE FUNDO / COR DO TEXTO / COR ATIVA / REALCE / RIPPLE
 */
-$cx-colors: (
-	"primary": ($cx-color-primary, $cx-color-light, $cx-color-secondary, $cx-color-primary-light, "secondary"),
-	"primary-light": ($cx-color-primary-light, $cx-color-light, $cx-color-secondary, $cx-color-primary, "secondary"),
-	"primary-dark": ($cx-color-primary-dark, $cx-color-light, $cx-color-secondary, $cx-color-primary, "secondary"),
 
-	"secondary": ($cx-color-secondary, $cx-color-light, $cx-color-primary, $cx-color-secondary-light, "primary"),
-	"secondary-light": ($cx-color-secondary-light, $cx-color-dark, $cx-color-primary, $cx-color-secondary, "primary-dark"),
-	"secondary-dark": ($cx-color-secondary-dark, $cx-color-light, $cx-color-primary, $cx-color-secondary, "primary"),
-
-	"success": ($cx-color-success, $cx-color-light, $cx-color-primary, $cx-color-success-light, "primary"),
-	"success-light": ($cx-color-success-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-success, "primary-dark"),
-	"success-dark": ($cx-color-success-dark, $cx-color-light, $cx-color-primary, $cx-color-success, "primary"),
-
-	"danger": ($cx-color-danger, $cx-color-light, $cx-color-primary, $cx-color-danger-light, "primary"),
-	"danger-light": ($cx-color-danger-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-danger, "primary-dark"),
-	"danger-dark": ($cx-color-danger-dark, $cx-color-light, $cx-color-primary, $cx-color-danger, "primary"),
-
-	"info": ($cx-color-info, $cx-color-light, $cx-color-primary, $cx-color-info-light, "primary"),
-	"info-light": ($cx-color-info-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-info, "primary-dark"),
-	"info-dark": ($cx-color-info-dark, $cx-color-light, $cx-color-primary, $cx-color-info, "primary"),
-
-	"warning": ($cx-color-warning, $cx-color-light, $cx-color-primary, $cx-color-warning-light, "primary"),
-	"warning-light": ($cx-color-warning-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-warning, "primary-dark"),
-	"warning-dark": ($cx-color-warning-dark, $cx-color-light, $cx-color-primary, $cx-color-warning, "primary"),
-
-	"apoio": ($cx-color-apoio, $cx-color-light, $cx-color-primary, $cx-color-apoio-light, "primary"),
-	"apoio-light": ($cx-color-apoio-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-apoio, "primary-dark"),
-	"apoio-dark": ($cx-color-apoio-dark, $cx-color-light, $cx-color-primary, $cx-color-apoio, "primary"),
-
-	"aux": ($cx-color-aux, $cx-color-light, $cx-color-info-light, $cx-color-aux-light, "info-light"),
-	"aux-light": ($cx-color-aux-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-aux, "primary-dark"),
-	"aux-dark": ($cx-color-aux-dark, $cx-color-light, $cx-color-info-light, $cx-color-aux, "info-light"),
-
+$cx-main-colors: (
+	"primary": ($cx-color-primary, $cx-color-lightest, $cx-color-secondary, $cx-color-primary-light, "secondary"),
+	"secondary": ($cx-color-secondary, $cx-color-lightest, $cx-color-primary, $cx-color-secondary-light, "primary"),
+	"success": ($cx-color-success, $cx-color-lightest, $cx-color-primary, $cx-color-success-light, "primary"),
+	"danger": ($cx-color-danger, $cx-color-lightest, $cx-color-primary, $cx-color-danger-light, "primary"),
+	"info": ($cx-color-info, $cx-color-lightest, $cx-color-primary, $cx-color-info-light, "primary"),
+	"warning": ($cx-color-warning, $cx-color-lightest, $cx-color-primary, $cx-color-warning-light, "primary"),
+	"apoio": ($cx-color-apoio, $cx-color-lightest, $cx-color-primary, $cx-color-apoio-light, "primary"),
+	"aux": ($cx-color-aux, $cx-color-lightest, $cx-color-info-light, $cx-color-aux-light, "info-light"),
 	"light": ($cx-color-light, $cx-color-dark, $cx-color-primary, $cx-color-light-dark, "primary"),
+	"dark": ($cx-color-dark, $cx-color-lightest, $cx-color-secondary, $cx-color-dark-light, "secondary")
+);
+
+$cx-light-colors: (
+	"primary-light": ($cx-color-primary-light, $cx-color-lightest, $cx-color-secondary, $cx-color-primary, "secondary"),
+	"secondary-light": ($cx-color-secondary-light, $cx-color-dark, $cx-color-primary, $cx-color-secondary, "primary-dark"),
+	"success-light": ($cx-color-success-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-success, "primary-dark"),
+	"danger-light": ($cx-color-danger-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-danger, "primary-dark"),
+	"info-light": ($cx-color-info-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-info, "primary-dark"),
+	"warning-light": ($cx-color-warning-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-warning, "primary-dark"),
+	"apoio-light": ($cx-color-apoio-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-apoio, "primary-dark"),
+	"aux-light": ($cx-color-aux-light, $cx-color-lightest, $cx-color-info-light, $cx-color-aux, "info-light"),
 	"light-light": ($cx-color-lightest, $cx-color-dark, $cx-color-primary, $cx-color-light, "primary"),
+	"dark-light": ($cx-color-dark-light, $cx-color-light, $cx-color-secondary, $cx-color-dark, "secondary")
+);
+
+$cx-dark-colors: (
+	"primary-dark": ($cx-color-primary-dark, $cx-color-lightest, $cx-color-secondary, $cx-color-primary, "secondary"),
+	"secondary-dark": ($cx-color-secondary-dark, $cx-color-lightest, $cx-color-primary, $cx-color-secondary, "primary"),
+	"success-dark": ($cx-color-success-dark, $cx-color-lightest, $cx-color-primary, $cx-color-success, "primary"),
+	"danger-dark": ($cx-color-danger-dark, $cx-color-lightest, $cx-color-primary, $cx-color-danger, "primary"),
+	"info-dark": ($cx-color-info-dark, $cx-color-lightest, $cx-color-primary, $cx-color-info, "primary"),
+	"warning-dark": ($cx-color-warning-dark, $cx-color-lightest, $cx-color-primary, $cx-color-warning, "primary"),
+	"apoio-dark": ($cx-color-apoio-dark, $cx-color-lightest, $cx-color-primary, $cx-color-apoio, "primary"),
+	"aux-dark": ($cx-color-aux-dark, $cx-color-lightest, $cx-color-info-light, $cx-color-aux, "info-light"),
 	"light-dark": ($cx-color-light-dark, $cx-color-dark, $cx-color-primary, $cx-color-light, "primary"),
 	"light-darkest": ($cx-color-light-darkest, $cx-color-dark, $cx-color-primary, $cx-color-light-dark, "primary"),
-
-	"dark": ($cx-color-dark, $cx-color-light, $cx-color-secondary, $cx-color-dark-light, "secondary"),
-	"dark-light": ($cx-color-dark-light, $cx-color-light, $cx-color-secondary, $cx-color-dark, "secondary"),
-	"dark-dark": ($cx-color-darkest, $cx-color-light, $cx-color-secondary, $cx-color-dark, "secondary"),
+	"dark-dark": ($cx-color-darkest, $cx-color-lightest, $cx-color-secondary, $cx-color-dark, "secondary"),
 );
+
+$cx-colors: map.merge(map.merge($cx-main-colors, $cx-light-colors), $cx-dark-colors);
 
 /* Logo */
 
