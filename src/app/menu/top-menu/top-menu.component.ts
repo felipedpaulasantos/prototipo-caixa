@@ -7,8 +7,8 @@ import { UserService } from "../../authentication/users/user.service";
 import { User } from "../../authentication/users/user";
 import { ModalService } from "src/app/shared/services/modal.service";
 import { SideMenuService } from "../side-menu/side-menu.service";
-import { FormControl } from "@angular/forms";
 import { StyleService } from 'src/app/shared/services/style.service';
+import { LOGO_CAIXA_BRANCO_SRC } from 'src/app/shared/constants/constants';
 
 @Component({
   selector: "app-top-menu",
@@ -16,6 +16,8 @@ import { StyleService } from 'src/app/shared/services/style.service';
   styleUrls: ["./top-menu.component.css"]
 })
 export class TopMenuComponent implements OnInit {
+
+  logoBranco = LOGO_CAIXA_BRANCO_SRC;
 
   @ViewChild("navbarTop", { static: true }) navbarTop: ElementRef;
   @Input() resources;
@@ -56,7 +58,7 @@ export class TopMenuComponent implements OnInit {
       modalBodyClass: "bg-danger-dark text-light-light"
     });
 
-    this.modalService.btOKEvent.subscribe(e => {
+    this.modalService.btOKEvent.subscribe(() => {
       this.sair();
     });
   }

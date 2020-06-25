@@ -39,30 +39,6 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       active: false
     },
     {
-      name: 'Cores',
-      iconClass: 'fas fa-lg fa-palette',
-      url: '/cores',
-      active: false
-    },
-    {
-      name: 'Layout',
-      iconClass: 'fas fa-lg fa-layer-group',
-      url: '/layout',
-      active: false
-    },
-    {
-      name: 'Contas',
-      iconClass: 'fas fa-lg fa-phone-alt',
-      url: '/contas',
-      active: false
-    },
-    {
-      name: 'Relatórios',
-      iconClass: 'fas fa-lg fa-chart-bar',
-      url: '/relatorios',
-      active: false
-    },
-    {
       name: 'Componentes',
       iconClass: 'fas fa-lg fa-vial',
       url: '/componentes',
@@ -94,6 +70,30 @@ export class SideMenuComponent implements OnInit, OnDestroy {
           active: false
         }
       ]
+    },
+    {
+      name: 'Cores',
+      iconClass: 'fas fa-lg fa-palette',
+      url: '/cores',
+      active: false
+    },
+/*     {
+      name: 'Layout',
+      iconClass: 'fas fa-lg fa-layer-group',
+      url: '/layout',
+      active: false
+    }, */
+    {
+      name: 'Contas',
+      iconClass: 'fas fa-lg fa-phone-alt',
+      url: '/contas',
+      active: false
+    },
+    {
+      name: 'Relatórios',
+      iconClass: 'fas fa-lg fa-chart-bar',
+      url: '/relatorios',
+      active: false
     }
   ];
 
