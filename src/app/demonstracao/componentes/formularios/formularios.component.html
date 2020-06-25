@@ -3,9 +3,9 @@
 </h1>
 <hr class="header-line-caixa">
 
-<section id="painelFormularios" class="section-caixa pr-5">
+<section id="painelFormularios" class="section-caixa col-12 col-lg-8 pl-0">
 
-	<div id="cardInputBasico" class="card card-caixa mb-5">
+	<div id="cardInputBasico" class="card card-caixa mb-4">
 		<div class="card-body">
 			<div class="d-flex align-items-center mb-3">
 				<div class="mr-auto">
@@ -44,7 +44,97 @@
 		</div> <!-- Card Body -->
 	</div> <!-- Card -->
 
-	<div id="cardInputClasse" class="card card-caixa mb-5">
+	<div id="cardValidadores" class="card card-caixa mb-4">
+		<div class="card-body">
+			<div class="d-flex align-items-center mb-3">
+				<div class="mr-auto">
+					<h5 class="header-subtitulo-caixa mb-0">Validação</h5>
+				</div>
+				<div class="ml-auto">
+					<button (click)="showTabsValidacao = !showTabsValidacao" 
+					class="btn btn-caixa ripple-dark shadow-none text-dark-light rounded-circle" title="Visualizar código">
+						<i class="fa fa-lg fa-code"></i>
+					</button>
+				</div>
+			</div>
+
+			<div *ngIf="showTabsValidacao" id="showTabsValidacao" class="mb-4">
+				<cx-code-view
+					[htmlTabId]="'htmlIdValidacao'"
+					[htmlCode]="htmlCodeValidacao"
+					[tsTabId]="'tsIdValidacao'"
+					[tsCode]="tsCodeValidacao"
+				></cx-code-view>
+			</div>	<!-- tabsCodigoInput1 -->
+
+			<div class="row">
+				<div class="col-12 col-md-6 col-lg-4">
+					<form [formGroup]="formulario">
+						<cx-input>
+							<label>Texto</label>
+							<input inputCaixa formControlName="texto" placeholder="Vazio ou pelo menos 5 caracteres" >
+						</cx-input>
+
+						<cx-input>
+							<label>Idade</label>
+							<input inputCaixa formControlName="idade" placeholder="Obrigatório - Entre 18 e 100" mask="009">
+						</cx-input>
+					</form>
+
+					<cx-input>
+						<label>NG Model</label>
+						<input inputCaixa placeholder="Inválido se vazio" [(ngModel)]="ngModelTeste" #ctrl="ngModel" required
+						[ngClass]="{'ng-invalid': ngModelTeste == ''}">
+					</cx-input>
+				</div>
+			</div> <!-- Row -->
+		</div> <!-- Card Body -->
+	</div> <!-- Card -->
+
+	<div id="cardInputIcone" class="card card-caixa mb-4">
+		<div class="card-body">
+			<div class="d-flex align-items-center mb-3">
+				<div class="mr-auto">
+					<h5 class="header-subtitulo-caixa mb-0">Com ícone</h5>
+				</div>
+				<div class="ml-auto">
+					<button (click)="showTabsInputIcone = !showTabsInputIcone" 
+					class="btn btn-caixa ripple-dark shadow-none text-dark-light rounded-circle" title="Visualizar código">
+						<i class="fa fa-lg fa-code"></i>
+					</button>
+				</div>
+			</div>
+
+			<div *ngIf="showTabsInputIcone" id="tabsInputBasico" class="mb-4">
+				<cx-code-view
+					[htmlTabId]="'htmlIdInputIcone'"
+					[htmlCode]="htmlCodeInputIcone"
+					[tsTabId]="'tsIdInputIcone'"
+					[tsCode]="tsCodeInputIcone"
+				></cx-code-view>
+			</div>	<!-- tabsCodigoInput1 -->
+
+			<div class="row">
+				<div class="col-12 col-md-6 col-lg-4">
+					<form [formGroup]="formularioLogin">
+						<cx-input>
+							<label>E-mail</label>
+							<i class="fa fa-envelope prefix-icon"></i>
+							<input inputCaixa formControlName="email" placeholder="Endereço de e-mail válido">
+						</cx-input>
+
+						<cx-input>
+							<label>Senha</label>
+							<i class="fa fa-key prefix-icon"></i>
+							<input inputCaixa formControlName="senha" placeholder="Mínimo de 10 caracteres" type="password">
+						</cx-input>
+					</form>
+				</div>
+			</div> <!-- Row -->
+		</div> <!-- Card Body -->
+	</div> <!-- Card -->
+
+	<div id="cardInputClasse" class="card card-caixa mb-4">
 		<div class="card-body">
 			<div class="d-flex align-items-center mb-3">
 				<div class="mr-auto">
@@ -76,89 +166,7 @@
 		</div> <!-- Card Body -->
 	</div> <!-- Card -->
 
-	<div id="cardValidadores" class="card card-caixa mb-5">
-		<div class="card-body">
-			<div class="d-flex align-items-center mb-3">
-				<div class="mr-auto">
-					<h5 class="header-subtitulo-caixa mb-0">Validação</h5>
-				</div>
-				<div class="ml-auto">
-					<button (click)="showTabsValidacao = !showTabsValidacao" 
-					class="btn btn-caixa ripple-dark shadow-none text-dark-light rounded-circle" title="Visualizar código">
-						<i class="fa fa-lg fa-code"></i>
-					</button>
-				</div>
-			</div>
-
-			<div *ngIf="showTabsValidacao" id="showTabsValidacao" class="mb-4">
-				<cx-code-view
-					htmlTabId="htmlIdValidacao"
-					[htmlCode]="htmlCodeValidacao"
-					tsTabId="tsIdValidacao"
-					[tsCode]="tsCodeValidacao"
-				></cx-code-view>
-			</div>	<!-- tabsCodigoInput1 -->
-
-			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4">
-					<form [formGroup]="formulario">
-						<cx-input>
-							<label>Texto</label>
-							<input inputCaixa placeholder="Vazio ou pelo menos 5 caracteres" formControlName="texto">
-						</cx-input>
-
-						<cx-input>
-							<label>Idade</label>
-							<input inputCaixa formControlName="idade" placeholder="Obrigatório - Entre 18 e 100" mask="009">
-						</cx-input>
-					</form>
-				</div>
-			</div> <!-- Row -->
-		</div> <!-- Card Body -->
-	</div> <!-- Card -->
-
-	<div id="cardInputIcone" class="card card-caixa mb-5">
-		<div class="card-body">
-			<div class="d-flex align-items-center mb-3">
-				<div class="mr-auto">
-					<h5 class="header-subtitulo-caixa mb-0">Com ícone</h5>
-				</div>
-				<div class="ml-auto">
-					<button (click)="showTabsInputIcone = !showTabsInputIcone" 
-					class="btn btn-caixa ripple-dark shadow-none text-dark-light rounded-circle" title="Visualizar código">
-						<i class="fa fa-lg fa-code"></i>
-					</button>
-				</div>
-			</div>
-
-			<div *ngIf="showTabsInputIcone" id="tabsInputBasico" class="mb-4">
-				<cx-code-view
-					htmlTabId="htmlIdInputIcone"
-					[htmlCode]="htmlCodeInputIcone"
-				></cx-code-view>
-			</div>	<!-- tabsCodigoInput1 -->
-
-			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4">
-					<form>
-						<cx-input>
-							<label>Usuário</label>
-							<i class="fa fa-user prefix-icon"></i>
-							<input inputCaixa placeholder="Username" required>
-						</cx-input>
-
-						<cx-input>
-							<label>Senha</label>
-							<i class="fa fa-key prefix-icon"></i>
-							<input inputCaixa type="password" required>
-						</cx-input>
-					</form>
-				</div>
-			</div> <!-- Row -->
-		</div> <!-- Card Body -->
-	</div> <!-- Card -->
-
-	<div class="row">
+	<div class="row d-none">
 		<div class="col-xl-4 mx-auto my-3">
 			<div class="card card-caixa">
 				<div class="card-header">
@@ -182,7 +190,7 @@
 					<cx-input>
 						<label>NG Model</label>
 						<app-tooltip-icon text="teste"></app-tooltip-icon>
-						<input inputCaixa [(ngModel)]="name" #ctrl="ngModel" required>
+						<input inputCaixa [(ngModel)]="ngModelTeste" #ctrl="ngModel" required>
 					</cx-input>
 
 					<cx-input msgErroPadrao="Erro!!!">

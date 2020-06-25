@@ -33,6 +33,11 @@ export class FormulariosComponent implements OnInit {
     texto: [null, [Validators.minLength(5)]]
   });
 
+  formularioLogin = this.fb.group({
+    email: [null, [Validators.required, Validators.email]],
+    senha: [null, [Validators.required, Validators.minLength(10)]]
+  });
+
   formulario2 = this.fb.group({
     mensagem: ['Campo para mensagens grandes, com várias linhas.\nComo este exemplo.', [Validators.required]],
     comida: [null, [Validators.required]],
@@ -42,7 +47,7 @@ export class FormulariosComponent implements OnInit {
     condicoes: [null, [Validators.requiredTrue]]
   });
 
-  name = '';
+  ngModelTeste = '';
 
   showTabsInputBasico = false;
   htmlCodeInputBasico = `<form>
@@ -69,7 +74,7 @@ export class FormulariosComponent implements OnInit {
   htmlCodeValidacao = `<form [formGroup]="formulario">
   <cx-input>
     <label>Texto</label>
-    <input inputCaixa placeholder="Vazio ou pelo menos 5 caracteres" formControlName="texto">
+    <input inputCaixa formControlName="texto" placeholder="Vazio ou pelo menos 5 caracteres" >
   </cx-input>
 
   <cx-input>
@@ -77,43 +82,71 @@ export class FormulariosComponent implements OnInit {
     <input inputCaixa formControlName="idade" placeholder="Obrigatório - Entre 18 e 100" mask="009">
   </cx-input>
 </form>
+
+<cx-input>
+  <label>NG Model</label>
+  <input inputCaixa placeholder="Inválido se vazio" [(ngModel)]="name" #ctrl="ngModel" required
+  [ngClass]="{'ng-invalid': name == ''}">
+</cx-input>
   `.trim();
-  tsCodeValidacao = `import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+  tsCodeValidacao = `  import { Component } from '@angular/core';
+  import { FormBuilder, Validators } from '@angular/forms';
 
-@Component({
-    selector: 'app-formularios',
-    templateUrl: './formularios.component.html',
-    styleUrls: ['./formularios.component.scss']
-})
-export class FormulariosComponent implements OnInit {
+  @Component({
+      selector: 'app-formularios',
+      templateUrl: './formularios.component.html',
+      styleUrls: ['./formularios.component.scss']
+  })
+  export class FormulariosComponent {
 
-  constructor(
-    private fb: FormBuilder
-  ) {}
+    constructor(
+      private fb: FormBuilder
+    ) {}
 
-  formulario = this.fb.group({
-    texto: [null, [Validators.minLength(5)]],
-    idade: [null, [Validators.required, Validators.min(18), Validators.max(100)]]
-  });
-}
-  `.trim();
+    formularioLogin = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+      senha: [null, [Validators.required, Validators.minLength(10)]]
+    });
+  }`.trimRight();
 
   showTabsInputIcone = false;
-  htmlCodeInputIcone = `<form>
+  htmlCodeInputIcone = `<form [formGroup]="formularioLogin">
   <cx-input>
-    <label>Usuário</label>
-    <i class="fa fa-user prefix-icon"></i>
-    <input inputCaixa placeholder="Username">
+    <label>E-mail</label>
+    <i class="fa fa-envelope prefix-icon"></i>
+    <input inputCaixa formControlName="email" placeholder="Endereço de e-mail válido">
   </cx-input>
 
   <cx-input>
     <label>Senha</label>
     <i class="fa fa-key prefix-icon"></i>
-    <input type="password">
+    <input inputCaixa formControlName="senha" placeholder="Mínimo de 10 caracteres" type="password">
   </cx-input>
 </form>
   `.trim();
+  tsCodeInputIcone = `  import { Component } from '@angular/core';
+  import { FormBuilder, Validators } from '@angular/forms';
+
+  @Component({
+      selector: 'app-formularios',
+      templateUrl: './formularios.component.html',
+      styleUrls: ['./formularios.component.scss']
+  })
+  export class FormulariosComponent {
+
+    constructor(
+      private fb: FormBuilder
+    ) {}
+
+    formulario = this.fb.group({
+      texto: [null, [Validators.minLength(5)]],
+      idade: [null, [Validators.required, Validators.min(18), Validators.max(100)]]
+    });
+
+    ngModelTeste = '';
+  }
+
+  `.trimRight();
 
   onPhoneChanged(phoneNumber) {
     this.phoneNumber = phoneNumber.target.value;
