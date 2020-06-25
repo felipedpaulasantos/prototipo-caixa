@@ -65,8 +65,23 @@ export class FormulariosComponent implements OnInit {
 
   showTabsInputClasse = false;
   htmlCodeInputClasse = `<form>
-  <label>Nome</label>
-  <input class="input-caixa" placeholder="Estilo apenas por classe..." value="Fulano da Silva">
+  <label>Input Caixa (Padrão)</label>
+  <input class="input-caixa">
+
+  <br><br>
+
+  <label>Input Base</label>
+  <input class="input-base" placeholder="Input-base">
+
+  <br><br>
+
+  <label>Input Ripple Info</label>
+  <input class="input-base input-ripple-info">
+
+  <br><br>
+
+  <label>Input Ripple Aux Dark</label>
+  <input class="input-base input-ripple-aux-dark">
 </form>
   `.trim();
 

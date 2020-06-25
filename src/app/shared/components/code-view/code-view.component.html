@@ -1,17 +1,17 @@
 <ul class="nav nav-pills border-bottom tab-caixa" role="tablist">
-	<li class="nav-item ripple ripple-dark">
+	<li class="nav-item ripple ripple-dark" [ngClass]="{'disabled': !htmlTabId || !htmlCode}">
 		<a class="nav-link nav-link-caixa text-uppercase active px-5" id="{{ htmlTabId }}-tab" data-toggle="tab" href="#{{ htmlTabId }}" role="tab"
 		[ngClass]="{'disabled': !htmlTabId || !htmlCode}">
 			HTML
 		</a>
 	</li>
-	<li class="nav-item ripple ripple-dark">
+	<li class="nav-item ripple ripple-dark" [ngClass]="{'disabled': !tsTabId || !tsCode}">
 		<a class="nav-link nav-link-caixa text-uppercase px-5" id="{{ tsTabId }}-tab" data-toggle="tab" href="#{{ tsTabId }}" role="tab"
 		[ngClass]="{'disabled': !tsTabId || !tsCode}">
 			TS
 		</a>
 	</li>
-	<li class="nav-item ripple ripple-dark">
+	<li class="nav-item ripple ripple-dark" [ngClass]="{'disabled': !cssTabId || !cssCode}">
 		<a class="nav-link nav-link-caixa text-uppercase px-5" id="{{ cssTabId }}-tab" data-toggle="tab" href="#{{ cssTabId }}" role="tab"
 		[ngClass]="{'disabled': !cssTabId || !cssCode}">
 			CSS

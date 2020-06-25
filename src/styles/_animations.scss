@@ -42,12 +42,12 @@
   Efeito de onda em botões
 */
 
-.ripple {
+.ripple:not(.disabled) {
   position: relative;
   overflow: hidden;
   transform: translate3d(0, 0, 0);
 }
-.ripple:after {
+.ripple:not(.disabled):after {
   content: "";
   display: block;
   position: absolute;
@@ -68,10 +68,10 @@
   opacity: .3;
   transition: 0s;
 }
-.ripple-dark {
+.ripple-dark:not(.disabled) {
   @extend .ripple;
 }
-.ripple-dark:after {
+.ripple-dark:not(.disabled):after {
   background-image: radial-gradient(circle, cx-variables.$cx-color-darkest 10%, transparent 10.01%) !important;
 }
 
