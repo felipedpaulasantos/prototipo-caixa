@@ -121,7 +121,10 @@ $color in $cx-gradient-themes {
 }
 
 @each $theme, $colors in $cx-colors {
-  .btn-#{$theme} {
+  .btn-#{$theme}, 
+  .btn-#{$theme}:disabled,
+  .btn-#{$theme}:focus,
+  .btn-#{$theme}:active {
     color: nth($list: $colors, $n: 2);
   }
 }
@@ -429,10 +432,6 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   }
 }
 
-/* 
-  Card-caixa
-*/
-
 .card-caixa::after {
   content: '';
   position: absolute;
@@ -444,9 +443,9 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
   transition: opacity 0.3s ease-in-out;
 }
-.card-caixa:hover::after {
+/* .card-caixa:hover::after {
   opacity: 1;
-}
+} */
 .card-caixa.card-no-hover:after {
   display: none !important;
 }
