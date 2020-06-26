@@ -373,7 +373,7 @@ ul.tab-caixa li a {
   transition: ease-in-out 0.2s;
   border-bottom: solid 2px transparent;
   &.disabled, &:disabled {
-    opacity: $cx-text-opacity-2;
+    opacity: $cx-text-opacity-3;
   }
 }
 ul.tab-caixa li a.nav-link-caixa.active,
@@ -383,7 +383,6 @@ ul.tab-caixa .dropdown-item:active {
   background-color: transparent;
   border-bottom: solid 2px $cx-color-primary;
   border-radius: 50;
-  opacity: $cx-text-opacity-1;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -393,6 +392,8 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   color: $cx-color-primary;
 }
 .nav-link-caixa {
+  opacity: $cx-text-opacity-1;
+  font-family: $cx-font-family-bold;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
@@ -560,11 +561,14 @@ select+button.input-caixa[aria-expanded="true"] {
 }
 cx-input.ng-invalid .input-caixa-wrapper,
 select.ng-dirty.ng-invalid+button.input-caixa,
-.input-caixa.ng-invalid {
+.input-caixa.ng-dirty.ng-invalid,
+.input-caixa.ng-touched.ng-invalid {
   @extend .input-ripple-danger;
 }
 cx-input.ng-valid .input-caixa-wrapper,
-select.ng-dirty.ng-valid+button.input-caixa {
+select.ng-dirty.ng-valid+button.input-caixa,
+.input-caixa.ng-dirty.ng-valid,
+.input-caixa.ng-touched.ng-valid {
   @extend .input-ripple-success;
 }
 .input-caixa-field,

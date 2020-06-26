@@ -5,9 +5,14 @@
 
 <section id="painelFormularios" class="section-caixa col-12 col-lg-8 pl-0">
 
-	<div id="cardInputBasico" class="card card-caixa mb-4">
-		<div class="card-body">
-			<div class="d-flex align-items-center mb-3">
+	<div id="painelInputBasico" class="my-5">
+		<div class="my-5">
+			A diretiva <span class="bg-light border">inputCaixa</span> utilizada em conjunto com o componente 
+			<span class="bg-light border">&#60;cx-input></span> permite a estilização e validação automática do campo.
+		</div>
+	
+		<div id="cardInputBasico" class="card card-caixa mb-4">
+			<div class="card-header d-flex align-items-center">
 				<div class="mr-auto">
 					<h5 class="header-subtitulo-caixa mb-0">Inputs básicos</h5>
 				</div>
@@ -18,35 +23,40 @@
 					</button>
 				</div>
 			</div>
+			<div class="card-body">
+				<div *ngIf="showTabsInputBasico" id="tabsInputBasico" class="mb-4">
+					<cx-code-view
+						[htmlTabId]="'htmlIdInputBasico'" [htmlCode]="htmlCodeInputBasico"
+					></cx-code-view>
+				</div>	<!-- tabsCodigoInput1 -->
+	
+				<div class="row">
+					<div class="col-12 col-md-6 col-lg-6">
+						<form>
+							<cx-input>
+								<label>Nome</label>
+								<input inputCaixa placeholder="Digite seu nome aqui..." value="Fulano da Silva">
+							</cx-input>
+	
+							<cx-input>
+								<label>Mensagem</label>
+								<textarea inputCaixa placeholder="Faça um comentário..."></textarea>
+							</cx-input>
+						</form>
+					</div>
+				</div> <!-- Row -->
+			</div> <!-- Card Body -->
+		</div> <!-- cardInputBasico -->
+	</div>
 
-			<div *ngIf="showTabsInputBasico" id="tabsInputBasico" class="mb-4">
-				<cx-code-view
-					htmlTabId="htmlIdInputBasico"
-					[htmlCode]="htmlCodeInputBasico"
-				></cx-code-view>
-			</div>	<!-- tabsCodigoInput1 -->
+	<div id="painelValidadores" class="my-5">
+		<div id="descricaoValidadores" class="mb-3">
+			<h5 class="header-caixa">Angular Forms Validators</h5>
+			O componente exibirá mensagens predefinidas para cada um dos "Validators" do Angular Forms.
+		</div>
 
-			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4">
-					<form>
-						<cx-input>
-							<label>Nome</label>
-							<input inputCaixa placeholder="Digite seu nome aqui..." value="Fulano da Silva">
-						</cx-input>
-
-						<cx-input>
-							<label>Mensagem</label>
-							<textarea inputCaixa placeholder="Faça um comentário..."></textarea>
-						</cx-input>
-					</form>
-				</div>
-			</div> <!-- Row -->
-		</div> <!-- Card Body -->
-	</div> <!-- Card -->
-
-	<div id="cardValidadores" class="card card-caixa mb-4">
-		<div class="card-body">
-			<div class="d-flex align-items-center mb-3">
+		<div id="cardValidadores" class="card card-caixa">
+			<div class="card-header d-flex align-items-center">
 				<div class="mr-auto">
 					<h5 class="header-subtitulo-caixa mb-0">Validação</h5>
 				</div>
@@ -57,45 +67,96 @@
 					</button>
 				</div>
 			</div>
-
-			<div *ngIf="showTabsValidacao" id="showTabsValidacao" class="mb-4">
-				<cx-code-view
-					[htmlTabId]="'htmlIdValidacao'"
-					[htmlCode]="htmlCodeValidacao"
-					[tsTabId]="'tsIdValidacao'"
-					[tsCode]="tsCodeValidacao"
-				></cx-code-view>
-			</div>	<!-- tabsCodigoInput1 -->
-
-			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4">
-					<form [formGroup]="formulario">
+			<div class="card-body">
+				<div *ngIf="showTabsValidacao" id="showTabsValidacao" class="mb-4">
+					<cx-code-view
+						[htmlTabId]="'htmlIdValidacao'" [htmlCode]="htmlCodeValidacao"
+						[tsTabId]="'tsIdValidacao'" [tsCode]="tsCodeValidacao"
+					></cx-code-view>
+				</div>	<!-- tabsCodigoInput1 -->
+	
+				<div class="row">
+					<div class="col-12 col-md-6 col-lg-6">
+						<form [formGroup]="formulario">
+							<cx-input>
+								<label>Texto</label>
+								<input inputCaixa formControlName="texto" placeholder="Vazio ou pelo menos 5 caracteres" >
+							</cx-input>
+	
+							<cx-input>
+								<label>Idade</label>
+								<input inputCaixa formControlName="idade" placeholder="Obrigatório - Entre 18 e 100" mask="009">
+							</cx-input>
+						</form>
+	
 						<cx-input>
-							<label>Texto</label>
-							<input inputCaixa formControlName="texto" placeholder="Vazio ou pelo menos 5 caracteres" >
+							<label>NG Model</label>
+							<input inputCaixa placeholder="Inválido se vazio" [(ngModel)]="ngModelTeste" #ctrl="ngModel" required
+							[ngClass]="{'ng-invalid': ngModelTeste == ''}">
 						</cx-input>
+					</div>
+				</div> <!-- Row -->
+			</div> <!-- Card Body -->
+		</div> <!-- cardValidadores -->
+	</div>
 
-						<cx-input>
-							<label>Idade</label>
-							<input inputCaixa formControlName="idade" placeholder="Obrigatório - Entre 18 e 100" mask="009">
-						</cx-input>
-					</form>
+	<div id="painelCustomValidadores" class="my-5">
+		<div id="descricaoCustomValidadores" class="mb-3">
+			<h5 class="header-caixa">Validators customizados</h5>
+			Validadores customizados podem ser utilizados passando-os como argumento pela propriedade 
+			<span class="bg-light border">customErrors</span>, como um objeto ou um Array de objetos no formato: <br>
+			<span class="bg-light border">&#123; "nomeDoErro": "Mensagem a ser exibida" &#125;</span>.
+		</div>
 
-					<cx-input>
-						<label>NG Model</label>
-						<input inputCaixa placeholder="Inválido se vazio" [(ngModel)]="ngModelTeste" #ctrl="ngModel" required
-						[ngClass]="{'ng-invalid': ngModelTeste == ''}">
-					</cx-input>
-				</div>
-			</div> <!-- Row -->
-		</div> <!-- Card Body -->
-	</div> <!-- Card -->
-
-	<div id="cardInputIcone" class="card card-caixa mb-4">
-		<div class="card-body">
-			<div class="d-flex align-items-center mb-3">
+		<div id="cardValidadores" class="card card-caixa">
+			<div class="card-header d-flex align-items-center">
 				<div class="mr-auto">
-					<h5 class="header-subtitulo-caixa mb-0">Com ícone</h5>
+					<h5 class="header-subtitulo-caixa mb-0">Validação customizada</h5>
+				</div>
+				<div class="ml-auto">
+					<button (click)="showTabsCustomValidacao = !showTabsCustomValidacao" 
+					class="btn btn-caixa ripple-dark shadow-none text-dark-light rounded-circle" title="Visualizar código">
+						<i class="fa fa-lg fa-code"></i>
+					</button>
+				</div>
+			</div>
+			<div class="card-body">
+				<div *ngIf="showTabsCustomValidacao" id="showTabsCustomValidacao" class="mb-4">
+					<cx-code-view
+						[htmlTabId]="'htmlIdCustomValidacao'" [htmlCode]="htmlCodeCustomValidacao"
+						[tsTabId]="'tsIdCustomValidacao'" [tsCode]="tsCodeCustomValidacao"
+					></cx-code-view>
+				</div>
+	
+				<div class="row">
+					<div class="col-12 col-md-6 col-lg-6">
+						<form [formGroup]="formulario">
+							<cx-input [customErrors]='{"simpleDate": "Data inválida"}'>
+								<label>Data de Nascimento</label>
+								<input inputCaixa formControlName="nascimento">
+							</cx-input>
+
+							<cx-input [customErrors]="mesError">
+								<label>Mês / Ano</label>
+								<input inputCaixa formControlName="mesAno">
+							</cx-input>
+						</form>
+					</div>
+				</div> <!-- Row -->
+			</div> <!-- Card Body -->
+		</div> <!-- cardValidadores -->
+	</div>
+
+	<div id="painelInputIcone" class="my-5">
+		<div id="descricaoInputIcone" class="mb-3">
+			<h5 class="header-caixa">Ícones</h5>
+			Pode-se exibir ícones utilizando a classe <span class="bg-light border">prefix-icon</span> em qualquer elemento.
+		</div>
+	
+		<div id="cardInputIcone" class="card card-caixa">
+			<div class="card-header d-flex align-items-center">
+				<div class="mr-auto">
+					<h5 class="header-subtitulo-caixa">Com ícone</h5>
 				</div>
 				<div class="ml-auto">
 					<button (click)="showTabsInputIcone = !showTabsInputIcone" 
@@ -104,39 +165,45 @@
 					</button>
 				</div>
 			</div>
+			<div class="card-body">
+				<div *ngIf="showTabsInputIcone" id="tabsInputBasico" class="mb-4">
+					<cx-code-view
+						[htmlTabId]="'htmlIdInputIcone'" [htmlCode]="htmlCodeInputIcone"
+						[tsTabId]="'tsIdInputIcone'" [tsCode]="tsCodeInputIcone"
+						[cssTabId]="'cssIdInputIcone'" [cssCode]="cssCodeInputIcone"
+					></cx-code-view>
+				</div>	<!-- tabsCodigoInput1 -->
+	
+				<div class="row">
+					<div class="col-12 col-md-6 col-lg-6">
+						<form [formGroup]="formularioLogin">
+							<cx-input>
+								<label>E-mail</label>
+								<img src="/assets/images/caixa-logo-x.png" class="img-logo prefix-icon">
+								<input inputCaixa formControlName="email" placeholder="Endereço de e-mail válido">
+							</cx-input>
+	
+							<cx-input>
+								<label>Senha</label>
+								<i class="fa fa-key prefix-icon"></i>
+								<input inputCaixa formControlName="senha" placeholder="Mínimo de 10 caracteres" type="password">
+							</cx-input>
+						</form>
+					</div>
+				</div> <!-- Row -->
+			</div> <!-- Card Body -->
+		</div> <!-- cardInputIcone -->
+	</div>
 
-			<div *ngIf="showTabsInputIcone" id="tabsInputBasico" class="mb-4">
-				<cx-code-view
-					[htmlTabId]="'htmlIdInputIcone'"
-					[htmlCode]="htmlCodeInputIcone"
-					[tsTabId]="'tsIdInputIcone'"
-					[tsCode]="tsCodeInputIcone"
-				></cx-code-view>
-			</div>	<!-- tabsCodigoInput1 -->
-
-			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4">
-					<form [formGroup]="formularioLogin">
-						<cx-input>
-							<label>E-mail</label>
-							<i class="fa fa-envelope prefix-icon"></i>
-							<input inputCaixa formControlName="email" placeholder="Endereço de e-mail válido">
-						</cx-input>
-
-						<cx-input>
-							<label>Senha</label>
-							<i class="fa fa-key prefix-icon"></i>
-							<input inputCaixa formControlName="senha" placeholder="Mínimo de 10 caracteres" type="password">
-						</cx-input>
-					</form>
-				</div>
-			</div> <!-- Row -->
-		</div> <!-- Card Body -->
-	</div> <!-- Card -->
-
-	<div id="cardInputClasse" class="card card-caixa mb-4">
-		<div class="card-body">
-			<div class="d-flex align-items-center mb-3">
+	<div id="painelInputClasse" class="my-5">
+		<div id="descricaoInputClasse" class="mb-3">
+			<h5 class="header-caixa">Classe</h5>
+			Uma versão mais simples, sem a validação automática, pode ser utilizada apenas com a classe 
+			<span class="bg-light border">input-base</span> em conjunto com a classe temática <span class="bg-light border">input-ripple-(tema)</span>.
+		</div>
+	
+		<div id="cardInputClasse" class="card card-caixa">
+			<div class="card-header d-flex align-items-center">
 				<div class="mr-auto">
 					<h5 class="header-subtitulo-caixa mb-0">Apenas por classe</h5>
 				</div>
@@ -147,39 +214,39 @@
 					</button>
 				</div>
 			</div>
-
-			<div *ngIf="showTabsInputClasse" id="showTabsInputClasse" class="mb-4">
-				<cx-code-view
-					htmlTabId="htmlIdInputClasse"
-					[htmlCode]="htmlCodeInputClasse"
-				></cx-code-view>
-			</div>	<!-- tabsCodigoInput1 -->
-
-			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4">
-					<form>
-						<label>Input Caixa (Padrão)</label>
-						<input class="input-caixa">
-
-						<br><br>
-
-						<label>Input Base</label>
-						<input class="input-base" placeholder="Input-base">
-
-						<br><br>
-
-						<label>Input Ripple Info</label>
-						<input class="input-base input-ripple-info">
-
-						<br><br>
-
-						<label>Input Ripple Aux Dark</label>
-						<input class="input-base input-ripple-aux-dark">
-					</form>
-				</div>
-			</div> <!-- Row -->
-		</div> <!-- Card Body -->
-	</div> <!-- Card -->
+			<div class="card-body">
+				<div *ngIf="showTabsInputClasse" id="showTabsInputClasse" class="mb-4">
+					<cx-code-view
+						[htmlTabId]="'htmlIdInputClasse'" [htmlCode]="htmlCodeInputClasse"
+					></cx-code-view>
+				</div>	<!-- tabsCodigoInput1 -->
+	
+				<div class="row">
+					<div class="col-12 col-md-6 col-lg-6">
+						<form>
+							<label>Input Caixa (Padrão)</label>
+							<input class="input-caixa">
+	
+							<br><br>
+	
+							<label>Input Base</label>
+							<input class="input-base" placeholder="Input-base">
+	
+							<br><br>
+	
+							<label>Input Ripple Info</label>
+							<input class="input-base input-ripple-info">
+	
+							<br><br>
+	
+							<label>Input Ripple Aux Dark</label>
+							<input class="input-base input-ripple-aux-dark">
+						</form>
+					</div>
+				</div> <!-- Row -->
+			</div> <!-- Card Body -->
+		</div> <!-- cardInputClasse -->
+	</div>
 
 	<div class="row d-none">
 		<div class="col-xl-4 mx-auto my-3">

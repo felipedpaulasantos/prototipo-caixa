@@ -25,11 +25,16 @@ export class FormulariosComponent implements OnInit {
   phoneNumber = '';
   previusLength = 0;
 
+  mesError = [
+    { "simpleMonthDate": "Data do tipo mês/ano inválida" }
+  ];
+
   formulario = this.fb.group({
     nome: ['Fulano da Silva'],
     tel: [11985163524, [Validators.required, Validators.minLength(10)]],
     idade: [null, [Validators.required, Validators.min(18), Validators.max(100)]],
     nascimento: ['01/01/1985', [Validators.required, DateValidator.simpleDate]],
+    mesAno: ['04/2020', [Validators.required, DateValidator.simpleMonthDate]],
     texto: [null, [Validators.minLength(5)]]
   });
 
@@ -47,7 +52,7 @@ export class FormulariosComponent implements OnInit {
     condicoes: [null, [Validators.requiredTrue]]
   });
 
-  ngModelTeste = '';
+  ngModelTeste = 'Teste';
 
   showTabsInputBasico = false;
   htmlCodeInputBasico = `<form>
@@ -100,7 +105,7 @@ export class FormulariosComponent implements OnInit {
 
 <cx-input>
   <label>NG Model</label>
-  <input inputCaixa placeholder="Inválido se vazio" [(ngModel)]="name" #ctrl="ngModel" required
+  <input inputCaixa placeholder="Inválido se vazio" [(ngModel)]="ngModelTeste" #ctrl="ngModel" required
   [ngClass]="{'ng-invalid': name == ''}">
 </cx-input>
   `.trim();
@@ -118,17 +123,74 @@ export class FormulariosComponent implements OnInit {
       private fb: FormBuilder
     ) {}
 
-    formularioLogin = this.fb.group({
-      email: [null, [Validators.required, Validators.email]],
-      senha: [null, [Validators.required, Validators.minLength(10)]]
+    formulario = this.fb.group({
+      texto: [null, [Validators.minLength(5)]],
+      idade: [null, [Validators.required, Validators.min(18), Validators.max(100)]]
     });
-  }`.trimRight();
+
+    ngModelTeste = 'Teste';
+  }
+  `.trimRight();
+
+  showTabsCustomValidacao = false;
+  htmlCodeCustomValidacao = `<form [formGroup]="formulario">
+  <cx-input [customErrors]='{"simpleDate": "Data inválida"}'>
+    <label>Data de Nascimento</label>
+    <input inputCaixa formControlName="nascimento">
+  </cx-input>
+
+  <cx-input [customErrors]="mesError">
+    <label>Mês / Ano</label>
+    <input inputCaixa formControlName="mesAno">
+  </cx-input>
+</form>
+  `.trim();
+  tsCodeCustomValidacao = `  import { Component } from '@angular/core';
+  import { FormBuilder, Validators } from '@angular/forms';
+
+  @Component({
+      selector: 'app-formularios',
+      templateUrl: './formularios.component.html',
+      styleUrls: ['./formularios.component.scss']
+  })
+  export class FormulariosComponent {
+
+    constructor(
+      private fb: FormBuilder
+    ) {}
+
+    /* dd/mm/aaaa */
+    simpleDateValidator = (control: FormControl) => {
+      const simpleDateRegexp = /([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i;
+      return simpleDateRegexp.test(control.value) || control.value == ""
+        ? null
+        : { simpleDate: true };
+    }
+
+    /* mm/aaaa */
+    simpleMonthDateValidator = (control: FormControl) => {
+      const simpleDateRegexp = /^(0[1-9]|10|11|12)\/20[0-9]{2}$/i;
+      return simpleDateRegexp.test(control.value) || control.value == ""
+        ? null
+        : { simpleMonthDate: true };
+    }
+
+    mesError = [
+      { "simpleMonthDate": "Data do tipo mês/ano inválida" }
+    ];
+
+    formulario = this.fb.group({
+      nascimento: ['01/01/1985', [Validators.required, simpleDateValidator]],
+      mesAno: ['04/2020', [Validators.required, simpleMonthDateValidator]],
+    });
+  }
+  `.trimRight();
 
   showTabsInputIcone = false;
   htmlCodeInputIcone = `<form [formGroup]="formularioLogin">
   <cx-input>
     <label>E-mail</label>
-    <i class="fa fa-envelope prefix-icon"></i>
+    <img src="/assets/images/caixa-logo-x.png" class="img-logo prefix-icon">
     <input inputCaixa formControlName="email" placeholder="Endereço de e-mail válido">
   </cx-input>
 
@@ -153,14 +215,16 @@ export class FormulariosComponent implements OnInit {
       private fb: FormBuilder
     ) {}
 
-    formulario = this.fb.group({
-      texto: [null, [Validators.minLength(5)]],
-      idade: [null, [Validators.required, Validators.min(18), Validators.max(100)]]
+    formularioLogin = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+      senha: [null, [Validators.required, Validators.minLength(10)]]
     });
-
-    ngModelTeste = '';
   }
-
+  `.trimRight();
+  cssCodeInputIcone = `.img-logo {
+  max-width: 20px;
+  max-height: 20px;
+}
   `.trimRight();
 
   onPhoneChanged(phoneNumber) {

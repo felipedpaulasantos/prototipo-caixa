@@ -31,7 +31,7 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
 
   @Input() showFeedbackIcon = true;
   @Input() showFeedbackMessage = true;
-  @Input() optionalErrors: string | any[];
+  @Input() customErrors: string | any[];
   @Input() formato: string;
   @Input() msgErroPadrao: string;
   parsedOptionalErrors = [];
@@ -60,15 +60,17 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   }
 
   parseOptionalErrors() {
-    if (!this.optionalErrors) { return; }
-    let parsedErrors;
-    if (Array.isArray(this.optionalErrors)) {
-      return this.parsedOptionalErrors = this.optionalErrors;
+    if (!this.customErrors) { return; }
+    console.log("Erro:", this.customErrors);
+    let parsedErrors = this.customErrors;
+    if (Array.isArray(this.customErrors)) {
+      return this.parsedOptionalErrors = this.customErrors;
     }
-    if (typeof this.optionalErrors === 'string') {
-      parsedErrors = JSON.parse(this.optionalErrors.trim());
+    if (typeof this.customErrors === 'string') {
+      parsedErrors = JSON.parse(this.customErrors.trim());
     }
     this.parsedOptionalErrors.push(parsedErrors);
+    console.log("Erro:", parsedErrors);
   }
 
   isFieldRequired(abstractControl: AbstractControl): boolean {
