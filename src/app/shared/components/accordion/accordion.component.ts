@@ -56,8 +56,4 @@ export class AccordionComponent implements OnInit, AfterViewInit {
     this.menus[index].active = !this.menus[index].active;
   }
 
-  teste(i: number) {
-    const menu = this.menus[i];
-  }
-
 }
