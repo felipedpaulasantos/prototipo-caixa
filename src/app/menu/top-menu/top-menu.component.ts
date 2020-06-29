@@ -13,15 +13,14 @@ import { LOGO_CAIXA_BRANCO_SRC } from 'src/app/shared/constants/constants';
 @Component({
   selector: "app-top-menu",
   templateUrl: "./top-menu.component.html",
-  styleUrls: ["./top-menu.component.css"]
+  styleUrls: ["./top-menu.component.scss"]
 })
 export class TopMenuComponent implements OnInit {
 
   logoBranco = LOGO_CAIXA_BRANCO_SRC;
 
-  @ViewChild("navbarTop", { static: true }) navbarTop: ElementRef;
+  @ViewChild("navbarTop") navbarTop: ElementRef;
   @Input() resources;
-  hasAccount: boolean;
   user$ = new Observable<User>(null);
   user: User;
 
@@ -37,11 +36,6 @@ export class TopMenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.accountService.currentAccount$.subscribe(account => {
-      if (account) {
-        this.hasAccount = true;
-      }
-    });
     this.user = this.setMockUser();
   }
 
