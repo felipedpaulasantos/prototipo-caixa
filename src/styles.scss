@@ -81,7 +81,7 @@ $color in $cx-gradient-themes {
   padding-left: 1.5em;
   padding-right: 1.5em;
   font-family: $cx-font-family-bold;
-  box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.15);
+  box-shadow: $cx-default-box-shadow;
 }
 
 .btn-caixa.active.focus,
@@ -204,7 +204,7 @@ $color in $cx-gradient-themes {
       }
     }
     &:hover {
-      box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15) !important;
+      box-shadow: $cx-big-box-shadow !important;
       transition: opacity 0.3s ease-in-out;
     }
     div.toast-title {
@@ -340,62 +340,42 @@ input[type=number] {
 /* 
   Dropdown item 
 */
-
+.dropdown-menu {
+  box-shadow: $cx-default-box-shadow;
+}
 .dropdown-item {
   padding: 1rem 1.3rem;
 }
-
 .dropdown-item.active,
 .dropdown-item:active {
   color: $cx-color-primary;
   background-color: $cx-color-light;
 }
-@media (min-width: 992px) {
-  .animate {
-    animation-duration: 0.3s;
-    -webkit-animation-duration: 0.3s;
-    animation-fill-mode: both;
-    -webkit-animation-fill-mode: both;
-  }
-}
-.slideIn {
-  -webkit-animation-name: slideIn;
-  animation-name: slideIn;
-}
-.dropdown.bootstrap-select .dropdown-menu {
-  @extend .animate,
-  .slideIn,
-  .shadow;
-}
-ul.tab-caixa li a {
+
+
+/* 
+  Tabs e Navs
+*/
+
+ul.tab-caixa li a,
+.nav-link-caixa {
   color: $cx-color-dark-light;
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
+  opacity: $cx-text-opacity-1;
+  font-family: $cx-font-family-bold;
   border-bottom: solid 2px transparent;
+  &.active, &:active {
+    color: $cx-color-primary !important;
+    background-color: transparent !important;
+    border-bottom: solid 2px $cx-color-primary;
+    border-radius: 50;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
   &.disabled, &:disabled {
     opacity: $cx-text-opacity-3;
   }
-}
-ul.tab-caixa li a.nav-link-caixa.active,
-ul.tab-caixa li a.nav-link-caixa:active,
-ul.tab-caixa .dropdown-item:active {
-  color: $cx-color-primary;
-  background-color: transparent;
-  border-bottom: solid 2px $cx-color-primary;
-  border-radius: 50;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-ul.dropdown-menu li.selected.active,
-ul.dropdown-menu a.dropdown-item.active.selected {
-  background-color: $cx-color-light;
-  color: $cx-color-primary;
-}
-.nav-link-caixa {
-  opacity: $cx-text-opacity-1;
-  font-family: $cx-font-family-bold;
-  border-bottom-right-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
 }
 
 /* Modal */
@@ -410,7 +390,7 @@ ul.dropdown-menu a.dropdown-item.active.selected {
 /* Cards */
 
 .card-caixa {
-  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+  box-shadow: $cx-default-box-shadow;
   transition: all 0.2s ease-in-out;
   &>.card-header {
     background-color: inherit;
@@ -431,8 +411,22 @@ ul.dropdown-menu a.dropdown-item.active.selected {
     border-top: 0;
   }
 }
+.card-caixa.card-hover::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 5px;
+  box-shadow: $cx-big-box-shadow;
+  transition: opacity 0.3s ease-in-out;
+}
+.card-caixa.card-hover:hover::after {
+  opacity: 1;
+}
 
-.card-caixa::after {
+/* .card-caixa::after {
   content: '';
   position: absolute;
   z-index: -1;
@@ -443,12 +437,9 @@ ul.dropdown-menu a.dropdown-item.active.selected {
   box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
   transition: opacity 0.3s ease-in-out;
 }
-/* .card-caixa:hover::after {
+.card-caixa:hover::after {
   opacity: 1;
 } */
-.card-caixa.card-no-hover:after {
-  display: none !important;
-}
 
 /* Spinner */
 

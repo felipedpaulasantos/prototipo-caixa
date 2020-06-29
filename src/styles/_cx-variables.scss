@@ -151,3 +151,8 @@ $cx-text-opacities: (
 	"2": $cx-text-opacity-2,
 	"3": $cx-text-opacity-3
 );
+
+/* Box shadow */
+
+$cx-default-box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+$cx-big-box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);

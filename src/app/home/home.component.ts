@@ -20,12 +20,12 @@ export class HomeComponent implements OnInit {
       icon: "fas fa-palette",
       description: "Consulte as cores disponíveis e a recomendação de seus usos"
     },
-    {
+/*     {
       name: 'Layout',
       icon: 'fas fa-layer-group',
       url: '/layout',
       description: "Altera os temas da aplicação",
-    },
+    }, */
     {
       name: "Conta",
       url: "/contas",
