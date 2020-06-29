@@ -12,7 +12,7 @@
 			<ng-content select="button.bootstrap-select-button"></ng-content>
 		</div>
 		<div *ngIf="formInput?.dirty && showFeedback"
-			class="input-caixa-feedback-icon ripple ripple-dark"
+			class="input-caixa-feedback-icon ripple"
 			role="button" (click)="reset()"
 			[ngClass]="{'text-success': formInput?.valid, 'text-danger': formInput?.invalid}">
 			<i *ngIf="formInput?.valid" class="fas fa-check" title="Resetar campo"></i>

@@ -104,7 +104,10 @@ $cx-logo-completo-branco: url("/assets/images/caixa-logo-completo-branco.png");
 $cx-font-family-base: Futura LT, Futura LT Book !default;
 $cx-font-family-normal: Futura LT Book;
 $cx-font-family-bold: Futura LT Bold;
-$cx-font-size-base: 0.875rem;	/* 0.812 = 13px | 0.875 = 14px */
+
+$cx-font-13: 0.812rem;
+$cx-font-14: 0.875rem;
+$cx-font-size-base: $cx-font-14;
 $cx-h1-font-size: $cx-font-size-base * 2.5 !default;
 $cx-h2-font-size: $cx-font-size-base * 2 !default;
 $cx-h3-font-size: $cx-font-size-base * 1.75 !default;

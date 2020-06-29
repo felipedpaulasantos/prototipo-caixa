@@ -27,22 +27,22 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+/* @media (max-width: 1199.98px) { 
+  html {
+    font-size: $cx-font-13;
+  }
+ } */
 
 /* Headers */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   &.header-caixa {
     font-family: $cx-font-family-bold;
     opacity: $cx-text-opacity-1;
+    margin-bottom: 1.0rem;
   }
   &.header-subtitulo-caixa {
     @extend .header-caixa;
-    margin-bottom: 1.0rem;
     color: $cx-color-primary;
   }
   &.header-principal-caixa {
@@ -52,7 +52,6 @@ h6 {
     text-transform: uppercase;
   }
 }
-
 hr.header-line-caixa {
   border-color: $cx-color-light-darkest;
   opacity: $cx-bg-opacity-1;
@@ -72,7 +71,7 @@ $color in $cx-gradient-themes {
 /* Botões */
 
 [role=button] {
-  cursor: pointer !important;
+  cursor: pointer;
 }
 
 .btn-caixa {
@@ -99,7 +98,7 @@ $color in $cx-gradient-themes {
 
 .btn-caixa:disabled,
 .btn-caixa.disabled {
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 
 .btn-sm {
@@ -682,9 +681,6 @@ $value in $cx-text-opacities {
         color: nth($colors, 3);
       }
       @extend .ripple;
-      @if (str-index($theme, "-light")) {
-        @extend .ripple-dark;
-      }
       &.active {
         font-family: $cx-font-family-bold;
       }

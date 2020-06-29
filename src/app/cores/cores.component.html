@@ -14,24 +14,11 @@
 		<div class="row">
 			<ng-container>
 				<div class="col-4 d-flex align-items-center justify-content-between">
+					<div class="square bg-{{ cor.name }}-light"></div>
 
-					<div class="square bg-{{ cor.name }}-light">
-						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">
-							bg-{{ cor.name }}-light
-						</span>
-					</div>
+					<div class="square bg-{{ cor.name }}"></div>
 
-					<div class="square bg-{{ cor.name }}">
-						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">
-							bg-{{ cor.name }}
-						</span>
-					</div>
-
-					<div class="square bg-{{ cor.name }}-dark">
-						<span [ngClass]="{'text-dark': cor.name == 'light'}" class="text-light">
-							bg-{{ cor.name }}-dark
-						</span>
-					</div>
+					<div class="square bg-{{ cor.name }}-dark"></div>
 				</div>
 				<div class="col-8">
 					<p [innerHTML]="cor.texto"></p>

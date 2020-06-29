@@ -13,7 +13,7 @@
     <ng-container *ngIf="showFeedbackIcon">
       <div *ngIf="(formInput && formInput?.touched) 
         || (!formInput && inputDirective && inputDirective.changed)"
-        class="input-caixa-feedback-icon ripple ripple-dark" role="button" (click)="resetField()"
+        class="input-caixa-feedback-icon ripple" role="button" (click)="resetField()"
         [ngClass]="{'text-success': isFieldValid(), 'text-danger': isFieldInvalid()}">
         <i *ngIf="isFieldValid()" class="fas fa-check" title="Resetar campo"></i>
         <i *ngIf="isFieldInvalid()" class="fas fa-exclamation-triangle" title="Resetar campo"></i>
