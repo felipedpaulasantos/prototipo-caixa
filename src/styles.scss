@@ -109,13 +109,12 @@ $color in $cx-gradient-themes {
 }
 
 .btn-flat {
-  @include button-variant(transparent, transparent);
+  @extend .btn-caixa;
+  background: transparent;
+  box-shadow: none;
   &:focus,
-  &:active {
-    box-shadow: none;
-  }
   &:hover {
-    filter: brightness(50%);
+    filter: brightness(120%);
   }
 }
 
@@ -123,7 +122,8 @@ $color in $cx-gradient-themes {
   .btn-#{$theme}, 
   .btn-#{$theme}:disabled,
   .btn-#{$theme}:focus,
-  .btn-#{$theme}:active {
+  .btn-#{$theme}:active,
+  .btn-#{$theme}:hover {
     color: nth($list: $colors, $n: 2);
   }
 }
