@@ -4,7 +4,7 @@
 <hr class="header-line-caixa">
 
 <div class="row no-gutters">
-	<section #scrollElement class="col-12 col-lg-10 pr-2">
+	<section #scrollElement class="col-12 col-xl-9 pr-2">
 		<section id="painelInputBasico">
 			<div class="mb-5">
 				A diretiva <span class="bg-light border">inputCaixa</span> utilizada em conjunto com o componente
@@ -25,7 +25,8 @@
 				</div>
 				<div class="card-body">
 					<div *ngIf="showTabsInputBasico" id="tabsInputBasico" class="mb-4">
-						<cx-code-view [htmlTabId]="'htmlIdInputBasico'" [htmlCode]="htmlCodeInputBasico"></cx-code-view>
+						<cx-code-view [htmlTabId]="'htmlIdInputBasico'" [htmlCode]="htmlCodeInputBasico">
+						</cx-code-view>
 					</div> <!-- tabsCodigoInput1 -->
 
 					<div class="row">
@@ -67,8 +68,10 @@
 				</div>
 				<div class="card-body">
 					<div *ngIf="showTabsValidacao" id="showTabsValidacao" class="mb-4">
-						<cx-code-view [htmlTabId]="'htmlIdValidacao'" [htmlCode]="htmlCodeValidacao" [tsTabId]="'tsIdValidacao'"
-							[tsCode]="tsCodeValidacao"></cx-code-view>
+						<cx-code-view 
+							[htmlTabId]="'htmlIdValidacao'" [htmlCode]="htmlCodeValidacao" 
+							[tsTabId]="'tsIdValidacao'" [tsCode]="tsCodeValidacao">
+						</cx-code-view>
 					</div> <!-- tabsCodigoInput1 -->
 
 					<div class="row">
@@ -239,7 +242,7 @@
 		</section>
 	</section>
 
-	<nav id="navSection" class="d-none col-2 d-lg-flex justify-content-center">
+	<nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
 		<div class="position-fixed list-group shadow-caixa border-0">
 			<a (click)="scrollTo('painelInputBasico')" class="list-group-item list-group-item-action list-group-caixa"
 				[ngClass]="{'active': currentSection == 'painelInputBasico'}" role="button">
