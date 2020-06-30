@@ -4,11 +4,24 @@ import { DateValidator } from 'src/app/shared/validators/date.validator';
 import { ToastrService } from 'ngx-toastr';
 import { ComponentesInterface } from '../componentes-interface';
 
+interface DocumentacaoItem {
+  sectionId: string;
+  sectionDescricao: string;
+  sectionTitulo: string;
+  codeViewId: string;
+  htmlTabId: string;
+  htmlCode: string;
+  tsTabId?: string;
+  tsCode?: string;
+  cssTabId?: string;
+  cssCode?: string;
+}
+
 @Component({
   selector: 'app-formularios',
   templateUrl: './formularios.component.html',
   styleUrls: ['./formularios.component.scss'],
-  host: {'(window:scroll)': 'onScroll($event)' }
+  host: { '(window:scroll)': 'onScroll($event)' }
 })
 export class FormulariosComponent extends ComponentesInterface {
 
@@ -29,7 +42,7 @@ export class FormulariosComponent extends ComponentesInterface {
   previusLength = 0;
 
   sectionOffset = 0;
-  spiedTags = ['SECTION'];
+  spiedTags = ['APP-DOCUMENTACAO-TEMPLATE'];
   currentSection = "painelInputBasico";
 
   formulario = this.fb.group({

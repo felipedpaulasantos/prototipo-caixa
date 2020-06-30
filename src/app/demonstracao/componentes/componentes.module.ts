@@ -13,6 +13,7 @@ import { TabelasComponent } from './tabelas/tabelas.component';
 import { DataTablesModule } from 'angular-datatables';
 import { HighlightModule } from 'ngx-highlightjs';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { DocumentacaoTemplateComponent } from './documentacao-template/documentacao-template.component';
 
 @NgModule({
   imports: [
@@ -32,12 +33,14 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
     BotoesComponent,
     MensagensComponent,
     FormulariosComponent,
-    TabelasComponent
+    TabelasComponent,
+    DocumentacaoTemplateComponent
   ],
   exports: [
     CardsComponent,
     BotoesComponent,
-    MensagensComponent
+    MensagensComponent,
+    DocumentacaoTemplateComponent
   ]
 })
 export class ComponentesModule { }

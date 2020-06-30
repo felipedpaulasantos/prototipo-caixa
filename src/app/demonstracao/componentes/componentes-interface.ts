@@ -52,13 +52,24 @@ export abstract class ComponentesInterface {
     let currentSection: string;
     if (!this.scrollElement || !this.scrollElement.nativeElement) { return; }
 
-		const children = this.scrollElement.nativeElement.children;
+    const children = this.scrollElement.nativeElement.children;
 		const scrollTop = event.target.scrollingElement.scrollTop;
     const parentOffset = event.target.scrollingElement.offsetTop;
 
+/*     console.log("Element", children); */
+
     if (!children || !scrollTop) { return; }
 		for (let i = 0; i < children.length; i++) {
-			const element = children[i];
+      const element = children[i];
+
+/*       console.log("ID", element.id);
+      console.log("SCROLLTOP", scrollTop);
+      console.log("OFFSET", this.sectionOffset);
+      console.log("OFFSET TOP", element.offsetTop);
+      console.log("PARENTOFFSET", parentOffset);
+      console.log("OFFSETTOP - PARENT - OFFSET", element.offsetTop - parentOffset - this.sectionOffset);
+      console.log("==================="); */
+
 			if (this.spiedTags.some(spiedTag => spiedTag === element.tagName)) {
 				if ((element.offsetTop - parentOffset - this.sectionOffset) <= scrollTop) {
 					currentSection = element.id;

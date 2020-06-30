@@ -1,0 +1,29 @@
+<section id="{{ painelId }}">
+	<div id="{{ cardId }}" class="card card-caixa">
+		<div class="card-header d-flex align-items-center">
+			<div class="mr-auto">
+				<h5 class="header-subtitulo-caixa mb-0">{{ cardTitle }}</h5>
+			</div>
+			<div class="ml-auto">
+				<a data-toggle="collapse" href="#{{ codeViewId }}"
+					class="btn btn-caixa btn-outline-light-light shadow-none rounded-circle p-2" title="Visualizar código">
+					<i class="fa fa-lg fa-code"></i>
+				</a>
+			</div>
+		</div>
+		<div class="card-body">
+			<ng-content select=".descricao"></ng-content>
+			<br>
+			<div id="{{ codeViewId }}" class="collapse">
+				<cx-code-view 
+					[htmlTabId]="htmlTabId" [htmlCode]="htmlCode"
+					[tsTabId]="tsTabId" [tsCode]="tsCode"
+					[cssTabId]="cssTabId" [cssCode]="cssCode">
+				</cx-code-view>
+				<br>
+			</div> <!-- tabsCodigoInput1 -->
+
+			<ng-content select=".conteudo"></ng-content>
+		</div> <!-- Card Body -->
+	</div> <!-- cardInputBasico -->
+</section>
