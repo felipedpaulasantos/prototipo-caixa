@@ -2,26 +2,27 @@ import { Component, OnInit, HostListener, EventEmitter, ViewChild, AfterViewInit
 import { FormBuilder, Validators } from '@angular/forms';
 import { DateValidator } from 'src/app/shared/validators/date.validator';
 import { ToastrService } from 'ngx-toastr';
+import { ComponentesInterface } from '../componentes-interface';
 
 @Component({
   selector: 'app-formularios',
   templateUrl: './formularios.component.html',
-  styleUrls: ['./formularios.component.scss']
+  styleUrls: ['./formularios.component.scss'],
+  host: {'(window:scroll)': 'onScroll($event)' }
 })
-export class FormulariosComponent implements OnInit {
+export class FormulariosComponent extends ComponentesInterface {
 
   constructor(
     private fb: FormBuilder,
-    public toastr: ToastrService
-  ) { }
+    public toastr: ToastrService,
+  ) {
+    super(toastr);
+  }
 
-  @ViewChild("sectionScroll") sectionScroll;
-
-  document = document;
+  @ViewChild("scrollElement") scrollElement;
 
   CELLPHONE = '(00) 00000-0000';
   LANDLINE = '(00) 0000-0000';
-
   phoneMask = this.LANDLINE;
   phoneNumberLength = 0;
   phoneNumber = '';
@@ -31,10 +32,6 @@ export class FormulariosComponent implements OnInit {
   spiedTags = ['SECTION'];
   currentSection = "painelInputBasico";
 
-  mesError = [
-    { "simpleMonthDate": "Data do tipo mês/ano inválida" }
-  ];
-
   formulario = this.fb.group({
     nome: ['Fulano da Silva'],
     tel: [11985163524, [Validators.required, Validators.minLength(10)]],
@@ -43,6 +40,9 @@ export class FormulariosComponent implements OnInit {
     mesAno: ['04/2020', [Validators.required, DateValidator.simpleMonthDate]],
     texto: [null, [Validators.minLength(5)]]
   });
+  mesError = [
+    { "simpleMonthDate": "Data do tipo mês/ano inválida" }
+  ];
 
   formularioLogin = this.fb.group({
     email: [null, [Validators.required, Validators.email]],
@@ -233,8 +233,6 @@ export class FormulariosComponent implements OnInit {
 }
   `.trimRight();
 
-  ngOnInit() {}
-
   onPhoneChanged(phoneNumber): void {
     this.phoneNumber = phoneNumber.target.value;
     this.phoneNumberLength = phoneNumber.target.value.length;
@@ -246,60 +244,6 @@ export class FormulariosComponent implements OnInit {
     }
 
     this.previusLength = this.phoneNumberLength;
-  }
-
-  copiarConteudo(val: string): void {
-    const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = val;
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
-    this.toastr.info('Conteúdo copiado!');
-  }
-
-  onSectionChange(sectionId: string) {
-    this.currentSection = sectionId;
-  }
-
-  scrollTo(section) {
-     document.querySelector('#' + section)
-      .scrollIntoView({ behavior: "smooth" });
-  }
-
-  @HostListener('window:scroll', ['$event']) // for window scroll events
-  onScroll(event) {
-    this.setSectionOffset();
-    let currentSection: string;
-		const children = this.sectionScroll.nativeElement.children;
-		const scrollTop = event.target.scrollingElement.scrollTop;
-    const parentOffset = event.target.scrollingElement.offsetTop;
-		for (let i = 0; i < children.length; i++) {
-			const element = children[i];
-			if (this.spiedTags.some(spiedTag => spiedTag === element.tagName)) {
-				if ((element.offsetTop - parentOffset - this.sectionOffset) <= scrollTop) {
-					currentSection = element.id;
-				}
-			}
-		}
-		if (currentSection !== this.currentSection) {
-			this.currentSection = currentSection;
-		}
-  }
-
-  setSectionOffset() {
-    if (this.sectionOffset) { return; }
-    if (this.sectionScroll.nativeElement.getBoundingClientRect()) {
-      const rect = this.sectionScroll.nativeElement.getBoundingClientRect();
-      const sx = -(window.scrollX ? window.scrollX : window.pageXOffset);
-      const sy = -(window.scrollY ? window.scrollY : window.pageYOffset);
-      this.sectionOffset = rect.top - sy;
-    }
   }
 
 }
