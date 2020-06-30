@@ -95,17 +95,17 @@ export class FormulariosComponent extends ComponentesInterface {
   <br><br>
 
   <label>Input Base</label>
-  <input class="input-base" placeholder="Input-base">
+  <input class="input-base">
 
   <br><br>
 
-  <label>Input Ripple Info</label>
-  <input class="input-base input-ripple-info">
+  <label>Input Info</label>
+  <input class="input-caixa-info">
 
   <br><br>
 
-  <label>Input Ripple Aux Dark</label>
-  <input class="input-base input-ripple-aux-dark">
+  <label>Input Aux Dark</label>
+  <input class="input-caixa-aux-dark">
 </form>
   `.trim();
 
