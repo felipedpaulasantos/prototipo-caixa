@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, EventEmitter, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DateValidator } from 'src/app/shared/validators/date.validator';
 import { ToastrService } from 'ngx-toastr';
@@ -15,6 +15,8 @@ export class FormulariosComponent implements OnInit {
     public toastr: ToastrService
   ) { }
 
+  @ViewChild("sectionScroll") sectionScroll;
+
   document = document;
 
   CELLPHONE = '(00) 00000-0000';
@@ -24,6 +26,10 @@ export class FormulariosComponent implements OnInit {
   phoneNumberLength = 0;
   phoneNumber = '';
   previusLength = 0;
+
+  sectionOffset = 0;
+  spiedTags = ['SECTION'];
+  currentSection = "painelInputBasico";
 
   mesError = [
     { "simpleMonthDate": "Data do tipo mês/ano inválida" }
@@ -136,12 +142,12 @@ export class FormulariosComponent implements OnInit {
   htmlCodeCustomValidacao = `<form [formGroup]="formulario">
   <cx-input [customErrors]='{"simpleDate": "Data inválida"}'>
     <label>Data de Nascimento</label>
-    <input inputCaixa formControlName="nascimento">
+    <input inputCaixa formControlName="nascimento" placeholder="dd/mm/aaaa">
   </cx-input>
 
   <cx-input [customErrors]="mesError">
     <label>Mês / Ano</label>
-    <input inputCaixa formControlName="mesAno">
+    <input inputCaixa formControlName="mesAno" placeholder="mm/aaaa">
   </cx-input>
 </form>
   `.trim();
@@ -227,7 +233,9 @@ export class FormulariosComponent implements OnInit {
 }
   `.trimRight();
 
-  onPhoneChanged(phoneNumber) {
+  ngOnInit() {}
+
+  onPhoneChanged(phoneNumber): void {
     this.phoneNumber = phoneNumber.target.value;
     this.phoneNumberLength = phoneNumber.target.value.length;
 
@@ -240,10 +248,7 @@ export class FormulariosComponent implements OnInit {
     this.previusLength = this.phoneNumberLength;
   }
 
-  ngOnInit() {
-  }
-
-  copiarConteudo(val: string) {
+  copiarConteudo(val: string): void {
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
@@ -256,6 +261,45 @@ export class FormulariosComponent implements OnInit {
     document.execCommand('copy');
     document.body.removeChild(selBox);
     this.toastr.info('Conteúdo copiado!');
+  }
+
+  onSectionChange(sectionId: string) {
+    this.currentSection = sectionId;
+  }
+
+  scrollTo(section) {
+     document.querySelector('#' + section)
+      .scrollIntoView({ behavior: "smooth" });
+  }
+
+  @HostListener('window:scroll', ['$event']) // for window scroll events
+  onScroll(event) {
+    this.setSectionOffset();
+    let currentSection: string;
+		const children = this.sectionScroll.nativeElement.children;
+		const scrollTop = event.target.scrollingElement.scrollTop;
+    const parentOffset = event.target.scrollingElement.offsetTop;
+		for (let i = 0; i < children.length; i++) {
+			const element = children[i];
+			if (this.spiedTags.some(spiedTag => spiedTag === element.tagName)) {
+				if ((element.offsetTop - parentOffset - this.sectionOffset) <= scrollTop) {
+					currentSection = element.id;
+				}
+			}
+		}
+		if (currentSection !== this.currentSection) {
+			this.currentSection = currentSection;
+		}
+  }
+
+  setSectionOffset() {
+    if (this.sectionOffset) { return; }
+    if (this.sectionScroll.nativeElement.getBoundingClientRect()) {
+      const rect = this.sectionScroll.nativeElement.getBoundingClientRect();
+      const sx = -(window.scrollX ? window.scrollX : window.pageXOffset);
+      const sy = -(window.scrollY ? window.scrollY : window.pageYOffset);
+      this.sectionOffset = rect.top - sy;
+    }
   }
 
 }

@@ -594,6 +594,12 @@ $value in $cx-text-opacities {
 .section-caixa {
   margin-bottom: 1.5rem;
 }
+.shadow-caixa {
+  box-shadow: $cx-default-box-shadow !important;
+}
+.shadow-lg-caixa {
+  box-shadow: $cx-big-box-shadow !important;
+}
 
 /* 
   Modo Escuro (não finalizado)
@@ -685,5 +691,17 @@ $value in $cx-text-opacities {
         font-family: $cx-font-family-bold;
       }
     }
+  }
+}
+
+.list-group-caixa {
+  background-color: transparent !important;
+  border: solid 2px transparent !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  @extend .ripple;
+  &.active {
+    color: $cx-color-primary;
+    border-left: solid 2px $cx-color-primary !important;
   }
 }

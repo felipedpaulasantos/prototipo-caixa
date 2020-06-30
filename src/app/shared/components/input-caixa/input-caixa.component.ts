@@ -61,7 +61,6 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
 
   parseOptionalErrors() {
     if (!this.customErrors) { return; }
-    console.log("Erro:", this.customErrors);
     let parsedErrors = this.customErrors;
     if (Array.isArray(this.customErrors)) {
       return this.parsedOptionalErrors = this.customErrors;
@@ -70,7 +69,6 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
       parsedErrors = JSON.parse(this.customErrors.trim());
     }
     this.parsedOptionalErrors.push(parsedErrors);
-    console.log("Erro:", parsedErrors);
   }
 
   isFieldRequired(abstractControl: AbstractControl): boolean {

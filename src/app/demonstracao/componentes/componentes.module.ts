@@ -12,6 +12,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { TabelasComponent } from './tabelas/tabelas.component';
 import { DataTablesModule } from 'angular-datatables';
 import { HighlightModule } from 'ngx-highlightjs';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { HighlightModule } from 'ngx-highlightjs';
     ReactiveFormsModule,
     NgxMaskModule,
     DataTablesModule,
-    HighlightModule
+    HighlightModule,
+    PerfectScrollbarModule
   ],
   declarations: [
     ComponentesComponent,

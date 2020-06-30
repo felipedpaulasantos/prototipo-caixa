@@ -3,402 +3,259 @@
 </h1>
 <hr class="header-line-caixa">
 
-<section id="painelFormularios" class="section-caixa col-12 col-lg-8 pl-0">
-
-	<div id="painelInputBasico" class="my-5">
-		<div class="my-5">
-			A diretiva <span class="bg-light border">inputCaixa</span> utilizada em conjunto com o componente 
-			<span class="bg-light border">&#60;cx-input></span> permite a estilização e validação automática do campo.
-		</div>
-	
-		<div id="cardInputBasico" class="card card-caixa mb-4">
-			<div class="card-header d-flex align-items-center">
-				<div class="mr-auto">
-					<h5 class="header-subtitulo-caixa mb-0">Inputs básicos</h5>
-				</div>
-				<div class="ml-auto">
-					<button (click)="showTabsInputBasico = !showTabsInputBasico" 
-					class="btn btn-caixa shadow-none text-dark-light rounded-circle" title="Visualizar código">
-						<i class="fa fa-lg fa-code"></i>
-					</button>
-				</div>
+<div class="row no-gutters">
+	<section #sectionScroll class="col-12 col-lg-10 pr-2">
+		<section id="painelInputBasico">
+			<div class="mb-5">
+				A diretiva <span class="bg-light border">inputCaixa</span> utilizada em conjunto com o componente
+				<span class="bg-light border">&#60;cx-input></span> permite a estilização e validação automática do campo.
 			</div>
-			<div class="card-body">
-				<div *ngIf="showTabsInputBasico" id="tabsInputBasico" class="mb-4">
-					<cx-code-view
-						[htmlTabId]="'htmlIdInputBasico'" [htmlCode]="htmlCodeInputBasico"
-					></cx-code-view>
-				</div>	<!-- tabsCodigoInput1 -->
-	
-				<div class="row">
-					<div class="col-12 col-md-6 col-lg-6">
-						<form>
-							<cx-input>
-								<label>Nome</label>
-								<input inputCaixa placeholder="Digite seu nome aqui..." value="Fulano da Silva">
-							</cx-input>
-	
-							<cx-input>
-								<label>Mensagem</label>
-								<textarea inputCaixa placeholder="Faça um comentário..."></textarea>
-							</cx-input>
-						</form>
+
+			<div id="cardInputBasico" class="card card-caixa mb-4">
+				<div class="card-header d-flex align-items-center">
+					<div class="mr-auto">
+						<h5 class="header-subtitulo-caixa mb-0">Inputs básicos</h5>
 					</div>
-				</div> <!-- Row -->
-			</div> <!-- Card Body -->
-		</div> <!-- cardInputBasico -->
-	</div>
-
-	<div id="painelValidadores" class="my-5">
-		<div id="descricaoValidadores" class="mb-3">
-			<h5 class="header-caixa">Angular Forms Validators</h5>
-			O componente exibirá mensagens predefinidas para cada um dos "Validators" do Angular Forms.
-		</div>
-
-		<div id="cardValidadores" class="card card-caixa">
-			<div class="card-header d-flex align-items-center">
-				<div class="mr-auto">
-					<h5 class="header-subtitulo-caixa mb-0">Validação</h5>
-				</div>
-				<div class="ml-auto">
-					<button (click)="showTabsValidacao = !showTabsValidacao" 
-					class="btn btn-caixa shadow-none text-dark-light rounded-circle" title="Visualizar código">
-						<i class="fa fa-lg fa-code"></i>
-					</button>
-				</div>
-			</div>
-			<div class="card-body">
-				<div *ngIf="showTabsValidacao" id="showTabsValidacao" class="mb-4">
-					<cx-code-view
-						[htmlTabId]="'htmlIdValidacao'" [htmlCode]="htmlCodeValidacao"
-						[tsTabId]="'tsIdValidacao'" [tsCode]="tsCodeValidacao"
-					></cx-code-view>
-				</div>	<!-- tabsCodigoInput1 -->
-	
-				<div class="row">
-					<div class="col-12 col-md-6 col-lg-6">
-						<form [formGroup]="formulario">
-							<cx-input>
-								<label>Texto</label>
-								<input inputCaixa formControlName="texto" placeholder="Vazio ou pelo menos 5 caracteres" >
-							</cx-input>
-	
-							<cx-input>
-								<label>Idade</label>
-								<input inputCaixa formControlName="idade" placeholder="Obrigatório - Entre 18 e 100" mask="009">
-							</cx-input>
-						</form>
-	
-						<cx-input>
-							<label>NG Model</label>
-							<input inputCaixa placeholder="Inválido se vazio" [(ngModel)]="ngModelTeste" #ctrl="ngModel" required
-							[ngClass]="{'ng-invalid': ngModelTeste == ''}">
-						</cx-input>
+					<div class="ml-auto">
+						<button (click)="showTabsInputBasico = !showTabsInputBasico"
+							class="btn btn-caixa btn-outline-light-light shadow-none rounded-circle" title="Visualizar código">
+							<i class="fa fa-lg fa-code"></i>
+						</button>
 					</div>
-				</div> <!-- Row -->
-			</div> <!-- Card Body -->
-		</div> <!-- cardValidadores -->
-	</div>
-
-	<div id="painelCustomValidadores" class="my-5">
-		<div id="descricaoCustomValidadores" class="mb-3">
-			<h5 class="header-caixa">Validators customizados</h5>
-			Validadores customizados podem ser utilizados passando-os como argumento pela propriedade 
-			<span class="bg-light border">customErrors</span>, como um objeto ou um Array de objetos no formato: <br>
-			<span class="bg-light border">&#123; "nomeDoErro": "Mensagem a ser exibida" &#125;</span>.
-		</div>
-
-		<div id="cardValidadores" class="card card-caixa">
-			<div class="card-header d-flex align-items-center">
-				<div class="mr-auto">
-					<h5 class="header-subtitulo-caixa mb-0">Validação customizada</h5>
-				</div>
-				<div class="ml-auto">
-					<button (click)="showTabsCustomValidacao = !showTabsCustomValidacao" 
-					class="btn btn-caixa shadow-none text-dark-light rounded-circle" title="Visualizar código">
-						<i class="fa fa-lg fa-code"></i>
-					</button>
-				</div>
-			</div>
-			<div class="card-body">
-				<div *ngIf="showTabsCustomValidacao" id="showTabsCustomValidacao" class="mb-4">
-					<cx-code-view
-						[htmlTabId]="'htmlIdCustomValidacao'" [htmlCode]="htmlCodeCustomValidacao"
-						[tsTabId]="'tsIdCustomValidacao'" [tsCode]="tsCodeCustomValidacao"
-					></cx-code-view>
-				</div>
-	
-				<div class="row">
-					<div class="col-12 col-md-6 col-lg-6">
-						<form [formGroup]="formulario">
-							<cx-input [customErrors]='{"simpleDate": "Data inválida"}'>
-								<label>Data de Nascimento</label>
-								<input inputCaixa formControlName="nascimento">
-							</cx-input>
-
-							<cx-input [customErrors]="mesError">
-								<label>Mês / Ano</label>
-								<input inputCaixa formControlName="mesAno">
-							</cx-input>
-						</form>
-					</div>
-				</div> <!-- Row -->
-			</div> <!-- Card Body -->
-		</div> <!-- cardValidadores -->
-	</div>
-
-	<div id="painelInputIcone" class="my-5">
-		<div id="descricaoInputIcone" class="mb-3">
-			<h5 class="header-caixa">Ícones</h5>
-			Pode-se exibir ícones utilizando a classe <span class="bg-light border">prefix-icon</span> em qualquer elemento.
-		</div>
-	
-		<div id="cardInputIcone" class="card card-caixa">
-			<div class="card-header d-flex align-items-center">
-				<div class="mr-auto">
-					<h5 class="header-subtitulo-caixa">Com ícone</h5>
-				</div>
-				<div class="ml-auto">
-					<button (click)="showTabsInputIcone = !showTabsInputIcone" 
-					class="btn btn-caixa shadow-none text-dark-light rounded-circle" title="Visualizar código">
-						<i class="fa fa-lg fa-code"></i>
-					</button>
-				</div>
-			</div>
-			<div class="card-body">
-				<div *ngIf="showTabsInputIcone" id="tabsInputBasico" class="mb-4">
-					<cx-code-view
-						[htmlTabId]="'htmlIdInputIcone'" [htmlCode]="htmlCodeInputIcone"
-						[tsTabId]="'tsIdInputIcone'" [tsCode]="tsCodeInputIcone"
-						[cssTabId]="'cssIdInputIcone'" [cssCode]="cssCodeInputIcone"
-					></cx-code-view>
-				</div>	<!-- tabsCodigoInput1 -->
-	
-				<div class="row">
-					<div class="col-12 col-md-6 col-lg-6">
-						<form [formGroup]="formularioLogin">
-							<cx-input>
-								<label>E-mail</label>
-								<img src="/assets/images/caixa-logo-x.png" class="img-logo prefix-icon">
-								<input inputCaixa formControlName="email" placeholder="Endereço de e-mail válido">
-							</cx-input>
-	
-							<cx-input>
-								<label>Senha</label>
-								<i class="fa fa-key prefix-icon"></i>
-								<input inputCaixa formControlName="senha" placeholder="Mínimo de 10 caracteres" type="password">
-							</cx-input>
-						</form>
-					</div>
-				</div> <!-- Row -->
-			</div> <!-- Card Body -->
-		</div> <!-- cardInputIcone -->
-	</div>
-
-	<div id="painelInputClasse" class="my-5">
-		<div id="descricaoInputClasse" class="mb-3">
-			<h5 class="header-caixa">Classe</h5>
-			Uma versão mais simples, sem a validação automática, pode ser utilizada apenas com a classe 
-			<span class="bg-light border">input-base</span> em conjunto com a classe temática <span class="bg-light border">input-ripple-(tema)</span>.
-		</div>
-	
-		<div id="cardInputClasse" class="card card-caixa">
-			<div class="card-header d-flex align-items-center">
-				<div class="mr-auto">
-					<h5 class="header-subtitulo-caixa mb-0">Apenas por classe</h5>
-				</div>
-				<div class="ml-auto">
-					<button (click)="showTabsInputClasse = !showTabsInputClasse" 
-					class="btn btn-caixa shadow-none text-dark-light rounded-circle" title="Visualizar código">
-						<i class="fa fa-lg fa-code"></i>
-					</button>
-				</div>
-			</div>
-			<div class="card-body">
-				<div *ngIf="showTabsInputClasse" id="showTabsInputClasse" class="mb-4">
-					<cx-code-view
-						[htmlTabId]="'htmlIdInputClasse'" [htmlCode]="htmlCodeInputClasse"
-					></cx-code-view>
-				</div>	<!-- tabsCodigoInput1 -->
-	
-				<div class="row">
-					<div class="col-12 col-md-6 col-lg-6">
-						<form>
-							<label>Input Caixa (Padrão)</label>
-							<input class="input-caixa">
-	
-							<br><br>
-	
-							<label>Input Base</label>
-							<input class="input-base" placeholder="Input-base">
-	
-							<br><br>
-	
-							<label>Input Ripple Info</label>
-							<input class="input-base input-ripple-info">
-	
-							<br><br>
-	
-							<label>Input Ripple Aux Dark</label>
-							<input class="input-base input-ripple-aux-dark">
-						</form>
-					</div>
-				</div> <!-- Row -->
-			</div> <!-- Card Body -->
-		</div> <!-- cardInputClasse -->
-	</div>
-
-	<div class="row d-none">
-		<div class="col-xl-4 mx-auto my-3">
-			<div class="card card-caixa">
-				<div class="card-header">
-					<h5 class="header-subtitulo-caixa">
-						Validadores embutidos
-					</h5>
 				</div>
 				<div class="card-body">
+					<div *ngIf="showTabsInputBasico" id="tabsInputBasico" class="mb-4">
+						<cx-code-view [htmlTabId]="'htmlIdInputBasico'" [htmlCode]="htmlCodeInputBasico"></cx-code-view>
+					</div> <!-- tabsCodigoInput1 -->
 
-					<cx-select>
-						<label>Comida favorita</label>
-						<select selectCaixa>
-							<option value="" selected>Escolha uma comida</option>
-							<option value="lasanha">Lasanha</option>
-							<option value="pizza">Pizza</option>
-							<option value="bolo">Bolo de Chocolate</option>
-							<option value="feijao-com-arroz">Feijão com arroz</option>
-						</select>
-					</cx-select>
-
-					<cx-input>
-						<label>NG Model</label>
-						<app-tooltip-icon text="teste"></app-tooltip-icon>
-						<input inputCaixa [(ngModel)]="ngModelTeste" #ctrl="ngModel" required>
-					</cx-input>
-
-					<cx-input msgErroPadrao="Erro!!!">
-						<label>Campo avulso</label>
-						<input #inputTeste inputCaixa required
-							[ngClass]="{'ng-valid': inputTeste.value != 1, 'ng-invalid': inputTeste.value == '1'}">
-					</cx-input>
-
-					<form [formGroup]="formulario">
-						<div class="row">
-							<div class="col-6">
-								<cx-input formato="(00) 00000-0000">
-									<label>Telefone</label>
-									<input inputCaixa placeholder="(00) 00000-0000" formControlName="tel" mask="{{ phoneMask }}"
-										(keyup)="onPhoneChanged($event);">
-								</cx-input>
-							</div>
-							<div class="col-6">
+					<div class="row">
+						<div class="col-12 col-md-6 col-lg-6">
+							<form>
 								<cx-input>
-									<i class="fa fa-user prefix-icon"></i>
 									<label>Nome</label>
-									<app-tooltip-icon text="teste"></app-tooltip-icon>
-									<input inputCaixa formControlName="nome">
+									<input inputCaixa placeholder="Digite seu nome aqui..." value="Fulano da Silva">
 								</cx-input>
-							</div>
-						</div>
 
-						<cx-input optionalErrors='{"simpleDate": "Data inválida"}'>
-							<label>Nascimento</label>
-							<input inputCaixa placeholder="00/00/0000" formControlName="nascimento" mask="00/00/0000"
-								[dropSpecialCharacters]=false>
-						</cx-input>
-					</form>
-				</div>
-				<div class="card-footer text-right">
-					<button class="btn btn-success btn-caixa my-2 my-md-0" (click)="formulario.markAllAsTouched()">
-						<i class="fas fa-lg fa-check-square mr-2"></i>
-						Validar
-					</button>
-					<button class="btn btn-outline-dark btn-caixa my-2 my-md-0 mx-3" (click)="formulario.reset()">
-						<i class="fas fa-lg fa-sync mr-2"></i>
-						Redefinir
-					</button>
-					<button class="btn btn-secondary btn-caixa my-2 my-md-0" [disabled]="formulario.invalid"
-						(click)="toastr.success('Formulário salvo com sucesso!', 'Sucesso')">
-						<i class="fas fa-lg fa-save mr-2"></i>
-						Salvar
-					</button>
-				</div>
+								<cx-input>
+									<label>Mensagem</label>
+									<textarea inputCaixa placeholder="Faça um comentário..."></textarea>
+								</cx-input>
+							</form>
+						</div>
+					</div> <!-- Row -->
+				</div> <!-- Card Body -->
+			</div> <!-- cardInputBasico -->
+		</section>
+
+		<section id="painelValidadores" class="my-5">
+			<div id="descricaoValidadores" class="mb-3">
+				<h5 class="header-caixa">Angular Forms Validators</h5>
+				O componente exibirá mensagens predefinidas para cada um dos "Validators" do Angular Forms.
 			</div>
-		</div>
-		<div class="col-xl-6 mx-auto my-3">
-			<div class="card card-caixa">
-				<div class="card-header">
-					<h5 class="header-subtitulo-caixa">
-						Outros tipos de campos
-					</h5>
+
+			<div id="cardValidadores" class="card card-caixa">
+				<div class="card-header d-flex align-items-center">
+					<div class="mr-auto">
+						<h5 class="header-subtitulo-caixa mb-0">Validação</h5>
+					</div>
+					<div class="ml-auto">
+						<button (click)="showTabsValidacao = !showTabsValidacao"
+							class="btn btn-caixa btn-outline-light-light shadow-none rounded-circle" title="Visualizar código">
+							<i class="fa fa-lg fa-code"></i>
+						</button>
+					</div>
 				</div>
 				<div class="card-body">
-					<form [formGroup]="formulario2">
+					<div *ngIf="showTabsValidacao" id="showTabsValidacao" class="mb-4">
+						<cx-code-view [htmlTabId]="'htmlIdValidacao'" [htmlCode]="htmlCodeValidacao" [tsTabId]="'tsIdValidacao'"
+							[tsCode]="tsCodeValidacao"></cx-code-view>
+					</div> <!-- tabsCodigoInput1 -->
 
-						<cx-input>
-							<label>Mensagem</label>
-							<i class="fa fa-comments prefix-icon"></i>
-							<textarea inputCaixa formControlName="mensagem"></textarea>
-						</cx-input>
+					<div class="row">
+						<div class="col-12 col-md-6 col-lg-6">
+							<form [formGroup]="formulario">
+								<cx-input>
+									<label>Texto</label>
+									<input inputCaixa formControlName="texto" placeholder="Vazio ou pelo menos 5 caracteres">
+								</cx-input>
 
-						<cx-select>
-							<label>Comida favorita</label>
-							<select selectCaixa formControlName="comida">
-								<option value="">Escolha uma comida</option>
-								<option value="lasanha">Lasanha</option>
-								<option value="pizza">Pizza</option>
-								<option value="bolo">Bolo de Chocolate</option>
-								<option value="feijao-com-arroz">Feijão com arroz</option>
-							</select>
-						</cx-select>
+								<cx-input>
+									<label>Idade</label>
+									<input inputCaixa formControlName="idade" placeholder="Obrigatório - Entre 18 e 100" mask="009">
+								</cx-input>
+							</form>
 
-						<cx-select>
-							<label>Filme favorito</label>
-							<i class="fa fa-film prefix-icon"></i>
-							<select selectCaixa formControlName="filme">
-								<option value="">Escolha um filme</option>
-								<option value="lasanha">Senhor dos Anéis</option>
-								<option value="pizza">O Poderoso Chefão</option>
-								<option value="bolo">Vingadores</option>
-							</select>
-						</cx-select>
-
-						<div class="row mt-2 mb-4">
-							<div class="col-6">
-								<div class="custom-control custom-checkbox">
-									<input formControlName="marque" type="checkbox" class="custom-control-input" id="customCheck1">
-									<label class="custom-control-label" for="customCheck1">
-										Me marque!
-									</label>
-								</div>
-							</div>
+							<cx-input>
+								<label>NG Model</label>
+								<input inputCaixa placeholder="Inválido se vazio" [(ngModel)]="ngModelTeste" #ctrl="ngModel" required
+									[ngClass]="{'ng-invalid': ngModelTeste == ''}">
+							</cx-input>
 						</div>
+					</div> <!-- Row -->
+				</div> <!-- Card Body -->
+			</div> <!-- cardValidadores -->
+		</section>
 
-						<div class="form-group">
-							<label for="formControlRange">Valor</label>
-							<input formControlName="valor" type="range" class="form-control-range" id="formControlRange">
-							<span>{{ formulario2.get('valor').value }}</span> / 50
-						</div>
-
-						<div class="custom-control custom-switch my-4">
-							<input formControlName="condicoes" id="condicoes" class="custom-control-input" type="checkbox">
-							<label for="condicoes" class="custom-control-label">
-								Aceito as condições
-							</label>
-						</div>
-					</form>
-				</div>
-				<div class="card-footer text-right">
-					<button class="btn btn-secondary btn-caixa my-2 my-md-0 mr-3" [disabled]="formulario2.invalid"
-						(click)="toastr.success('Formulário salvo com sucesso!', 'Sucesso')">
-						<i class="fas fa-lg fa-save mr-2"></i>
-						Salvar
-					</button>
-					<button class="btn btn-outline-dark btn-caixa my-2 my-md-0" (click)="formulario2.reset()">
-						<i class="fas fa-lg fa-sync mr-2"></i>
-						Redefinir
-					</button>
-				</div>
+		<section id="painelCustomValidadores" class="my-5">
+			<div id="descricaoCustomValidadores" class="mb-3">
+				<h5 class="header-caixa">Validators customizados</h5>
+				Validadores customizados podem ser utilizados passando-os como argumento pela propriedade
+				<span class="bg-light border">customErrors</span>, como um objeto ou um Array de objetos no formato: <br>
+				<span class="bg-light border">&#123; "nomeDoErro": "Mensagem a ser exibida" &#125;</span>.
 			</div>
+
+			<div id="cardValidadores" class="card card-caixa">
+				<div class="card-header d-flex align-items-center">
+					<div class="mr-auto">
+						<h5 class="header-subtitulo-caixa mb-0">Validação customizada</h5>
+					</div>
+					<div class="ml-auto">
+						<button (click)="showTabsCustomValidacao = !showTabsCustomValidacao"
+							class="btn btn-caixa btn-outline-light-light shadow-none rounded-circle" title="Visualizar código">
+							<i class="fa fa-lg fa-code"></i>
+						</button>
+					</div>
+				</div>
+				<div class="card-body">
+					<div *ngIf="showTabsCustomValidacao" id="showTabsCustomValidacao" class="mb-4">
+						<cx-code-view [htmlTabId]="'htmlIdCustomValidacao'" [htmlCode]="htmlCodeCustomValidacao"
+							[tsTabId]="'tsIdCustomValidacao'" [tsCode]="tsCodeCustomValidacao"></cx-code-view>
+					</div>
+
+					<div class="row">
+						<div class="col-12 col-md-6 col-lg-6">
+							<form [formGroup]="formulario">
+								<cx-input [customErrors]='{"simpleDate": "Data inválida"}'>
+									<label>Data de Nascimento</label>
+									<input inputCaixa formControlName="nascimento" placeholder="dd/mm/aaaa">
+								</cx-input>
+
+								<cx-input [customErrors]="mesError">
+									<label>Mês / Ano</label>
+									<input inputCaixa formControlName="mesAno" placeholder="mm/aaaa">
+								</cx-input>
+							</form>
+						</div>
+					</div> <!-- Row -->
+				</div> <!-- Card Body -->
+			</div> <!-- cardValidadores -->
+		</section>
+
+		<section id="painelInputIcone" class="my-5">
+			<div id="descricaoInputIcone" class="mb-3">
+				<h5 class="header-caixa">Ícones</h5>
+				Pode-se exibir ícones utilizando a classe <span class="bg-light border">prefix-icon</span> em qualquer elemento.
+			</div>
+
+			<div id="cardInputIcone" class="card card-caixa">
+				<div class="card-header d-flex align-items-center">
+					<div class="mr-auto">
+						<h5 class="header-subtitulo-caixa">Com ícone</h5>
+					</div>
+					<div class="ml-auto">
+						<button (click)="showTabsInputIcone = !showTabsInputIcone"
+							class="btn btn-caixa btn-outline-light-light shadow-none rounded-circle" title="Visualizar código">
+							<i class="fa fa-lg fa-code"></i>
+						</button>
+					</div>
+				</div>
+				<div class="card-body">
+					<div *ngIf="showTabsInputIcone" id="tabsInputBasico" class="mb-4">
+						<cx-code-view [htmlTabId]="'htmlIdInputIcone'" [htmlCode]="htmlCodeInputIcone" [tsTabId]="'tsIdInputIcone'"
+							[tsCode]="tsCodeInputIcone" [cssTabId]="'cssIdInputIcone'" [cssCode]="cssCodeInputIcone"></cx-code-view>
+					</div> <!-- tabsCodigoInput1 -->
+
+					<div class="row">
+						<div class="col-12 col-md-6 col-lg-6">
+							<form [formGroup]="formularioLogin">
+								<cx-input>
+									<label>E-mail</label>
+									<img src="/assets/images/caixa-logo-x.png" class="img-logo prefix-icon">
+									<input inputCaixa formControlName="email" placeholder="Endereço de e-mail válido">
+								</cx-input>
+
+								<cx-input>
+									<label>Senha</label>
+									<i class="fa fa-key prefix-icon"></i>
+									<input inputCaixa formControlName="senha" placeholder="Mínimo de 10 caracteres" type="password">
+								</cx-input>
+							</form>
+						</div>
+					</div> <!-- Row -->
+				</div> <!-- Card Body -->
+			</div> <!-- cardInputIcone -->
+		</section>
+
+		<section id="painelInputClasse" class="my-5">
+			<div id="descricaoInputClasse" class="mb-3">
+				<h5 class="header-caixa">Classe</h5>
+				Uma versão mais simples, sem a validação automática, pode ser utilizada apenas com a classe
+				<span class="bg-light border">input-base</span> em conjunto com a classe temática <span
+					class="bg-light border">input-ripple-(tema)</span>.
+			</div>
+
+			<div id="cardInputClasse" class="card card-caixa">
+				<div class="card-header d-flex align-items-center">
+					<div class="mr-auto">
+						<h5 class="header-subtitulo-caixa mb-0">Apenas por classe</h5>
+					</div>
+					<div class="ml-auto">
+						<button (click)="showTabsInputClasse = !showTabsInputClasse"
+							class="btn btn-caixa btn-outline-light-light shadow-none rounded-circle" title="Visualizar código">
+							<i class="fa fa-lg fa-code"></i>
+						</button>
+					</div>
+				</div>
+				<div class="card-body">
+					<div *ngIf="showTabsInputClasse" id="showTabsInputClasse" class="mb-4">
+						<cx-code-view [htmlTabId]="'htmlIdInputClasse'" [htmlCode]="htmlCodeInputClasse"></cx-code-view>
+					</div> <!-- tabsCodigoInput1 -->
+
+					<div class="row">
+						<div class="col-12 col-md-6 col-lg-6">
+							<form>
+								<label>Input Caixa (Padrão)</label>
+								<input class="input-caixa">
+
+								<br><br>
+
+								<label>Input Base</label>
+								<input class="input-base" placeholder="Input-base">
+
+								<br><br>
+
+								<label>Input Ripple Info</label>
+								<input class="input-base input-ripple-info">
+
+								<br><br>
+
+								<label>Input Ripple Aux Dark</label>
+								<input class="input-base input-ripple-aux-dark">
+							</form>
+						</div>
+					</div> <!-- Row -->
+				</div> <!-- Card Body -->
+			</div> <!-- cardInputClasse -->
+		</section>
+	</section>
+
+	<nav id="navSection" class="d-none col-2 d-lg-flex justify-content-center">
+		<div class="position-fixed list-group shadow-caixa border-0">
+			<a (click)="scrollTo('painelInputBasico')" class="list-group-item list-group-item-action list-group-caixa"
+				[ngClass]="{'active': currentSection == 'painelInputBasico'}" role="button">
+				Inputs básicos</a>
+			<a (click)="scrollTo('painelValidadores')" class="list-group-item list-group-item-action list-group-caixa"
+				[ngClass]="{'active': currentSection == 'painelValidadores'}" role="button">
+				Validação</a>
+			<a (click)="scrollTo('painelCustomValidadores')" class="list-group-item list-group-item-action list-group-caixa"
+				[ngClass]="{'active': currentSection == 'painelCustomValidadores'}" role="button">
+				Validação Customizada</a>
+			<a (click)="scrollTo('painelInputIcone')" class="list-group-item list-group-item-action list-group-caixa"
+				[ngClass]="{'active': currentSection == 'painelInputIcone'}" role="button">
+				Ícones</a>
+			<a (click)="scrollTo('painelInputClasse')" class="list-group-item list-group-item-action list-group-caixa"
+				[ngClass]="{'active': currentSection == 'painelInputClasse'}" role="button">
+				Classe</a>
 		</div>
-	</div>
-</section>
+	</nav>
+</div>
