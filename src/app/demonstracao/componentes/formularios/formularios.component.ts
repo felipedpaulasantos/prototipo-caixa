@@ -113,19 +113,19 @@ export class FormulariosComponent extends ComponentesInterface {
   htmlCodeValidacao = `<form [formGroup]="formulario">
   <cx-input>
     <label>Texto</label>
-    <input inputCaixa formControlName="texto" placeholder="Vazio ou pelo menos 5 caracteres" >
+    <input inputCaixa formControlName="texto" placeholder="Vazio ou pelo menos 5 caracteres">
   </cx-input>
 
   <cx-input>
     <label>Idade</label>
-    <input inputCaixa formControlName="idade" placeholder="Obrigatório - Entre 18 e 100" mask="009">
+    <input inputCaixa formControlName="idade" placeholder="Obrigatório - Entre 18 e 100" type=number>
   </cx-input>
 </form>
 
 <cx-input>
   <label>NG Model</label>
   <input inputCaixa placeholder="Inválido se vazio" [(ngModel)]="ngModelTeste" #ctrl="ngModel" required
-  [ngClass]="{'ng-invalid': name == ''}">
+    [ngClass]="{'ng-invalid': ngModelTeste == ''}">
 </cx-input>
   `.trim();
   tsCodeValidacao = `  import { Component } from '@angular/core';

@@ -1,5 +1,7 @@
-import { ViewChild, Injectable, HostListener } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+
+const TOOLBAR_HEIGHT = 64;
 
 @Injectable()
 export abstract class ComponentesInterface {
@@ -14,8 +16,9 @@ export abstract class ComponentesInterface {
 	abstract currentSection = "";
 
 	scrollTo(section) {
-		document.querySelector('#' + section)
-			.scrollIntoView({ behavior: "smooth" });
+ 		document.querySelector('#' + section)
+      .scrollIntoView(true);
+    window.scrollBy({ top: - TOOLBAR_HEIGHT });
 	}
 
 	onSectionChange(sectionId: string) {
@@ -41,7 +44,6 @@ export abstract class ComponentesInterface {
     if (this.sectionOffset) { return; }
     if (this.scrollElement.nativeElement.getBoundingClientRect()) {
       const rect = this.scrollElement.nativeElement.getBoundingClientRect();
-      const sx = -(window.scrollX ? window.scrollX : window.pageXOffset);
       const sy = -(window.scrollY ? window.scrollY : window.pageYOffset);
       this.sectionOffset = rect.top - sy;
     }
