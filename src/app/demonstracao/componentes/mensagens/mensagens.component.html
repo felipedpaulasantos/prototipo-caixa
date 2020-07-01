@@ -3,7 +3,98 @@
 </h1>
 <hr class="header-line-caixa">
 
-<section id="painelMensagens" class="section-caixa">
+<div class="row no-gutters">
+  <section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
+    <app-documentacao-template id="painelMensagens" 
+    [cardTitle]="'Notificações'" 
+    [codeViewId]="'viewMensagens'"
+    [htmlTabId]="'htmlCodeMensagens'" 
+    [htmlCode]="htmlCodeMensagens"
+    [tsTabId]="'tsCodeMensagens'"
+    [tsCode]="tsCodeMensagens">
+      <div class="descricao">
+        As notificações são chamadas pelo <span class="bg-light border px-2">Toastr Service</span>,
+        da biblioteca <span class="bg-light border px-2">Ngx-Toastr</span>.
+      </div>
+  
+      <div class="conteudo">
+        <button class="btn btn-caixa btn-success" (click)="exibirSucesso()">
+          Sucesso!
+        </button> &nbsp;
+
+        <button class="btn btn-caixa btn-danger" (click)="exibirErro()">
+          Erro!
+        </button> &nbsp;
+
+        <button class="btn btn-caixa btn-warning" (click)="exibirAlerta()">
+          Alerta!
+        </button> &nbsp;
+
+        <button class="btn btn-caixa btn-info" (click)="exibirInfo()">
+          Informação!
+        </button> &nbsp;
+      </div>
+    </app-documentacao-template>
+  
+    <br><br><br>
+
+    <app-documentacao-template id="painelSpinner" 
+    [cardTitle]="'Spinner (Tela de carregamento)'" 
+    [codeViewId]="'viewSpinner'"
+    [htmlTabId]="'htmlCodeSpinner'" 
+    [htmlCode]="htmlCodeSpinner"
+    [tsTabId]="'tsCodeSpinner'"
+    [tsCode]="tsCodeSpinner">
+      <div class="descricao">
+        O "spinner" de carregamento pode ser chamado pelo <span class="bg-light border px-2">NgxSpinnerService</span>.
+      </div>
+  
+      <div class="conteudo">
+        <button class="btn btn-caixa btn-outline-dark" (click)="exibirSpinner()">
+          Mostrar tela de carregamento
+        </button>
+      </div>
+    </app-documentacao-template>
+
+    <br><br><br>
+
+    <app-documentacao-template id="painelModal" 
+    [cardTitle]="'Modal'" 
+    [codeViewId]="'viewModal'"
+    [htmlTabId]="'htmlCodeModal'" 
+    [htmlCode]="htmlCodeModal"
+    [tsTabId]="'tsCodeModal'"
+    [tsCode]="tsCodeModal">
+      <div class="descricao">
+        Um modal pode ser chamado pelo serviço <span class="bg-light border px-2">ModalService</span>, com várias opções de customização.
+      </div>
+  
+      <div class="conteudo">
+        <button class="btn btn-caixa btn-outline-dark" 
+        (click)="exibirModal()">
+        <i class="fa fa-lg fa-external-link-alt mr-2"></i>
+          Mostrar modal
+        </button>
+      </div>
+    </app-documentacao-template>
+  </section>
+
+  <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
+    <div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
+      <a (click)="scrollTo('painelMensagens')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelMensagens'}" role="button">
+        Notificações</a>
+      <a (click)="scrollTo('painelSpinner')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelSpinner'}" role="button">
+        Spinner</a>
+      <a (click)="scrollTo('painelModal')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelModal'}" role="button">
+        Modal</a>
+    </div>
+  </nav>
+</div>
+
+<section *ngIf="false" id="painelMensagens" class="section-caixa">
 
   <div id="painelNotificacoes">
     <h4 class="header-subtitulo-caixa">Notificações</h4>
@@ -51,7 +142,7 @@
 
   <div id="painelSpinner">
     <h4 class="header-caixa text-primary mb-4">Spinner</h4>
-    <button class="btn btn-caixa btn-outline-dark" (click)="showLoading()">
+    <button class="btn btn-caixa btn-outline-dark" (click)="exibirSpinner()">
       Mostrar tela de carregamento
     </button>
   </div>
