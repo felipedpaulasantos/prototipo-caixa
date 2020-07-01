@@ -184,20 +184,20 @@
 	</section>
 
 	<nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
-		<div class="position-fixed list-group shadow-caixa border-0">
-			<a (click)="scrollTo('painelInputBasico')" class="list-group-item list-group-item-action list-group-caixa"
+		<div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
+			<a (click)="scrollTo('painelInputBasico')" class="list-group-item list-group-item-action"
 				[ngClass]="{'active': currentSection == 'painelInputBasico'}" role="button">
 				Inputs básicos</a>
-			<a (click)="scrollTo('painelValidadores')" class="list-group-item list-group-item-action list-group-caixa"
+			<a (click)="scrollTo('painelValidadores')" class="list-group-item list-group-item-action"
 				[ngClass]="{'active': currentSection == 'painelValidadores'}" role="button">
 				Validação</a>
-			<a (click)="scrollTo('painelCustomValidadores')" class="list-group-item list-group-item-action list-group-caixa"
+			<a (click)="scrollTo('painelCustomValidadores')" class="list-group-item list-group-item-action"
 				[ngClass]="{'active': currentSection == 'painelCustomValidadores'}" role="button">
 				Validação Customizada</a>
-			<a (click)="scrollTo('painelInputIcone')" class="list-group-item list-group-item-action list-group-caixa"
+			<a (click)="scrollTo('painelInputIcone')" class="list-group-item list-group-item-action"
 				[ngClass]="{'active': currentSection == 'painelInputIcone'}" role="button">
 				Ícones</a>
-			<a (click)="scrollTo('painelInputClasse')" class="list-group-item list-group-item-action list-group-caixa"
+			<a (click)="scrollTo('painelInputClasse')" class="list-group-item list-group-item-action"
 				[ngClass]="{'active': currentSection == 'painelInputClasse'}" role="button">
 				Classe</a>
 		</div>

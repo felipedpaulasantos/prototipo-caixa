@@ -56,17 +56,31 @@
   top: 0;
   left: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle, rgba(128, 128, 128, 0.5) 10%, transparent 10.01%);
+  background-image: radial-gradient(circle, cx-variables.$cx-color-lightest 10%, transparent 10.01%);
   background-repeat: no-repeat;
   background-position: 50%;
   transform: scale(10, 10);
   opacity: 0;
   transition: transform .5s, opacity 1s;
 }
+.ripple-dark {
+  @extend .ripple;
+}
+.ripple-dark:not(.disabled):after {
+  background-image: radial-gradient(circle, cx-variables.$cx-color-darkest 10%, transparent 10.01%) !important;
+}
 .ripple:active:after {
   transform: scale(0, 0);
   opacity: .3;
   transition: 0s;
+}
+
+@function set-ripple($color) {
+  @if lightness($color) <= 50 {
+    @return $cx-color-lightest;
+  } @else {
+    @return $cx-color-darkest;
+  }
 }
 
 /* 

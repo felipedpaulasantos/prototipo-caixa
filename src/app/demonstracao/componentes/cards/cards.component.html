@@ -3,280 +3,114 @@
 </h1>
 <hr class="header-line-caixa">
 
-<section id="painelCards" class="section-caixa">
+<div class="row no-gutters">
+  <section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
+    <app-documentacao-template id="painelCards" 
+    [cardTitle]="'Cards'" 
+    [codeViewId]="'viewCards'"
+    [htmlTabId]="'htmlCodeCards'" 
+    [htmlCode]="htmlCodeCards">
+      <div class="descricao">
+        Os cards seguem a mesma estrutura do card do Bootstrap, acrescida da classe
+        <span class="bg-light border">card-caixa</span>.
+      </div>
   
-  <!-- Branco, Claro, Escuro -->
-  <div class="row mb-4">
-    <div class="col-lg-4 my-3">
-
-      <!-- CARD -->
-      <div class="card card-caixa">
-        <div class="card-header">
-          <h4 class="header-caixa">Card branco</h4>
-        </div>
-        <div class="card-body">
-          <div class="img-view mb-3">
-            <img src="assets/images/caixa-logo-x.png" class="img-fluid">
+      <div class="conteudo">
+        <div class="card card-caixa">
+          <div class="card-header">
+            <h4 class="header-caixa">Título</h4>
           </div>
-          <h5 class="font-fam-bold">Este é um título</h5>
-          <p class="font-fam-bold">Este é um subtítulo</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-        <div class="card-footer">
-          <h5>Isso é um rodapé</h5>
-          <div class="d-flex justify-content-end">
-            <button class="btn btn-caixa btn-success mr-3">
-              <i class="fa fa-check mr-2"></i>
-              OK
-            </button>
-            <button class="btn btn-caixa btn-outline-dark">
-              <i class="fa fa-times mr-2"></i>
-              Cancelar
-            </button>
+          <div class="card-body">
+            <h5>Este é um subtítulo</h5>
+            <p>Este é o corpo do card</p>
+          </div>
+          <div class="card-footer">
+            <h5>Isso é um rodapé</h5>
           </div>
         </div>
       </div>
-      <!-- CARD -->
-
-    </div>
+    </app-documentacao-template>
   
-    <div class="col-lg-4 my-3">
-      <div class="card card-caixa bg-light">
-        <div class="card-header">
-          <h4 class="header-caixa">Card claro</h4>
-        </div>
-        <div class="card-body">        
-          <div class="img-view mb-3">
-            <img src="assets/images/caixa-logo-x.png" class="img-fluid">
-          </div>
-          <h5 class="font-fam-bold">Este é um título</h5>
-          <p class="font-fam-bold">Este é um subtítulo</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-        <div class="card-footer">
-          <h5>Isso é um rodapé</h5>
-          <div class="d-flex justify-content-end">
-            <button class="btn btn-caixa btn-secondary mr-3">
-              <i class="fa fa-check mr-2"></i>
-              OK
-            </button>
-            <button class="btn btn-caixa btn-danger">
-              <i class="fa fa-times mr-2"></i>
-              Cancelar
-            </button>
+    <br><br><br>
+  
+    <app-documentacao-template id="painelCardsTematicos" 
+    [cardTitle]="'Cards temáticos'" 
+    [codeViewId]="'viewCardsTematicos'"
+    [htmlTabId]="'htmlCodeCardsTematicos'" 
+    [htmlCode]="htmlCodeCardsTematicos">
+      <div class="descricao">
+        Qualquer classe temática pode ser utilizada nos cards, com
+        <span class="bg-light border">bg-(tema)</span> e <span class="bg-light border">text-(tema)</span>.
+      </div>
+  
+      <div class="conteudo">
+        <div class="row">
+          <div class="col">
+            <div class="card card-caixa bg-dark text-light">
+              <div class="card-header">
+                <h4 class="header-caixa">Título</h4>
+              </div>
+              <div class="card-body">
+                <h5>Este é um subtítulo</h5>
+                <p>Este é o corpo do card</p>
+              </div>
+              <div class="card-footer">
+                <h5>Isso é um rodapé</h5>
+              </div>
+            </div>
+          </div>  <!-- Coluna -->
+  
+          <div class="col">
+            <div class="card card-caixa bg-primary text-light">
+              <div class="card-header">
+                <h4 class="header-caixa">Título</h4>
+              </div>
+              <div class="card-body">
+                <h5>Este é um subtítulo</h5>
+                <p>Este é o corpo do card</p>
+              </div>
+              <div class="card-footer">
+                <h5>Isso é um rodapé</h5>
+              </div>
+            </div>
+          </div>  <!-- Coluna -->
+        </div>  <!-- Linha -->
+      </div>
+    </app-documentacao-template>
+
+    <br><br><br>
+
+    <app-documentacao-template id="painelCardsEfeito" 
+    [cardTitle]="'Cards com efeito'" 
+    [codeViewId]="'viewCardsEfeito'"
+    [htmlTabId]="'htmlCodeCardsEfeito'" 
+    [htmlCode]="htmlCodeCardsEfeito">
+      <div class="descricao">
+        Um efeito de sombra ao passar o mouse pode ser adicionado com a classe
+        <span class="bg-light border">card-hover</span>.
+      </div>
+  
+      <div class="conteudo">
+        <div class="card card-caixa card-hover">
+          <div class="card-body">
+            <p>Este card possui efeito de sombra.</p>
           </div>
         </div>
       </div>
+    </app-documentacao-template>
+  </section>
+
+  <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
+    <div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
+      <a (click)="scrollTo('painelCards')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelCards'}" role="button">
+        Cards</a>
+      <a (click)="scrollTo('painelCardsTematicos')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelCardsTematicos'}" role="button">
+        Cards temáticos</a>
+      <a (click)="scrollTo('painelCardsEfeito')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelCardsEfeito'}" role="button">
+        Cards com efeito</a>
     </div>
-
-    <div class="col-lg-4 my-3">
-      <div class="card card-caixa bg-dark text-light">
-        <div class="card-header">
-          <h4 class="header-caixa text-light-light">Card escuro</h4>
-        </div>
-        <div class="card-body">
-          <div class="img-view mb-3">
-            <img src="assets/images/caixa-logo-x-branco.png" class="img-fluid">
-          </div>
-          <h5 class="font-fam-bold">Este é um título</h5>
-          <p class="font-fam-bold">Este é um subtítulo</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-        <div class="card-footer">
-          <h5>Isso é um rodapé</h5>
-          <div class="d-flex justify-content-end">
-            <button class="btn btn-caixa btn-outline-info mr-3">
-              <i class="fa fa-check mr-2"></i>
-              OK
-            </button>
-            <button class="btn btn-caixa btn-light">
-              <i class="fa fa-times mr-2"></i>
-              Cancelar
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Grandes, gradiente -->
-  <div class="mb-3">
-    <h3 class="header-subtitulo-caixa">
-      Cores
-    </h3>
-    <p>Todas as cores temáticas podem ser usadas nos cards</p>
-  </div>
-  <div class="row mb-4">
-    <div class="col-md-6 my-3">
-      <!-- CARD -->
-      <div class="card card-caixa bg-primary-light text-white">
-        <div class="card-header">
-          <h4 class="header-caixa">Card um pouco maior</h4>
-        </div>
-        <div class="card-body">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-        <div class="card-footer">
-          <h5>Isso é um rodapé</h5>
-        </div>
-      </div>
-      <!-- CARD -->
-    </div>
-
-    <div class="col-md-6 my-3">
-      <!-- CARD -->
-      <div class="card card-caixa bg-aux-light text-white">
-        <div class="card-header">
-          <h4 class="header-caixa">Card um pouco maior</h4>
-        </div>
-        <div class="card-body">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-        <div class="card-footer">
-          <h5>Isso é um rodapé</h5>
-        </div>
-      </div>
-      <!-- CARD -->
-    </div>
-
-    <div class="col-12 my-3">
-      <!-- CARD -->
-      <div class="card card-caixa bg-gradient-success text-light">
-        <div class="card-header">
-          <h4 class="header-caixa">Card um pouco maior</h4>
-        </div>
-        <div class="card-body">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-        <div class="card-footer">
-          <h5>Isso é um rodapé</h5>
-          <div class="d-flex justify-content-end">
-            <button class="btn btn-caixa btn-outline-primary-light mr-3">
-              <i class="fa fa-check mr-2"></i>
-              OK
-            </button>
-            <button class="btn btn-caixa btn-outline-danger-dark">
-              <i class="fa fa-times mr-2"></i>
-              Cancelar
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- CARD -->
-    </div>
-  </div>
-
-  <!-- Grid -->
-  <div class="mb-3">
-    <h3 class="header-subtitulo-caixa">
-      Cards dentro de outro card
-    </h3>
-    <p>Usando o sistema de grid do Bootstrap, cards podem ser organizados em linhas e colunas, até dentro de outros cards</p>
-  </div>
-  <div class="card card-caixa card-no-hover">
-    <div class="card-header">
-      <h4 class="header-caixa">Card container</h4>
-    </div>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-4 my-3">
-          <div class="card bg-dark card-caixa text-light">
-            <div class="card-header">
-              <h4 class="header-caixa">Card</h4>
-            </div>
-            <div class="card-body">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 my-3">
-          <div class="card bg-dark-dark card-caixa text-light">
-            <div class="card-header">
-              <h4 class="header-caixa">Card</h4>
-            </div>
-            <div class="card-body">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 my-3">
-          <div class="card bg-primary-dark card-caixa text-light">
-            <div class="card-header">
-              <h4 class="header-caixa">Card</h4>
-            </div>
-            <div class="card-body">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
+  </nav>
+</div>
