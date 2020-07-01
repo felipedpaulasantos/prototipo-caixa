@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { HighlightModule } from 'ngx-highlightjs';
-import { NgxSpinnerDefaultComponent } from './ngx-spinner-default/ngx-spinner-default.component';
 import { ChartsModule } from 'ng2-charts';
 import { NgxMaskModule } from 'ngx-mask';
 
@@ -18,12 +17,13 @@ import { InputCaixaDirective } from './input-caixa/input-caixa.directive';
 import { SelectCaixaComponent } from './select-caixa/select-caixa.component';
 import { SelectCaixaDirective } from './select-caixa/select-caixa.directive';
 import { CodeViewComponent } from './code-view/code-view.component';
+import { SpinnerCaixaComponent } from './spinner/spinner.component';
 
 @NgModule({
 	declarations: [
 		BootstrapSelectComponent,
 		CustomChartComponent,
-		NgxSpinnerDefaultComponent,
+		SpinnerCaixaComponent,
 		TooltipIconComponent,
 		ModalComponent,
 		BackButtonComponent,
@@ -44,7 +44,7 @@ import { CodeViewComponent } from './code-view/code-view.component';
 	],
 	exports: [
 		BootstrapSelectComponent,
-		NgxSpinnerDefaultComponent,
+		SpinnerCaixaComponent,
 		CustomChartComponent,
 		TooltipIconComponent,
 		ModalComponent,

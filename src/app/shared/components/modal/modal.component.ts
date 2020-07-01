@@ -1,10 +1,8 @@
 import {
   Component,
   OnInit,
-  ContentChild,
   ViewChild,
-  ElementRef,
-  Input
+  ElementRef
 } from "@angular/core";
 import { ModalService } from "../../services/modal.service";
 import { ModalOptions, ModalSize, defaultModalOptions } from './modal-options';
@@ -12,12 +10,13 @@ import { ModalOptions, ModalSize, defaultModalOptions } from './modal-options';
 declare var $;
 
 @Component({
-  selector: "nov-modal",
+  selector: "cx-modal",
   templateUrl: "./modal.component.html",
   styleUrls: ["./modal.component.scss"]
 })
 export class ModalComponent implements OnInit {
-  constructor(private modalService: ModalService) {}
+
+  constructor(private modalService: ModalService) { }
 
   modalSize = ModalSize;
 
