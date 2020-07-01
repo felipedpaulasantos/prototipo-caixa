@@ -16,9 +16,9 @@ export abstract class ComponentesInterface {
 	abstract currentSection = "";
 
 	scrollTo(section) {
- 		document.querySelector('#' + section)
-      .scrollIntoView(true);
     window.scrollBy({ top: - TOOLBAR_HEIGHT });
+ 		document.querySelector('#' + section)
+      .scrollIntoView({ behavior: "smooth" });
 	}
 
 	onSectionChange(sectionId: string) {

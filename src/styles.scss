@@ -84,12 +84,10 @@ $color in $cx-gradient-themes {
   @extend .ripple;
 }
 
-.btn-caixa.active.focus,
-.btn-caixa.active:focus,
-.btn-caixa.focus,
-.btn-caixa.focus:active,
-.btn-caixa:active:focus,
-.btn-caixa:focus {
+.btn-caixa:not(.disabled):not(:disabled).active,
+.btn-caixa:not(.disabled):not(:disabled):active,
+.btn-caixa:not(.disabled):not(:disabled).focus,
+.btn-caixa:not(.disabled):not(:disabled):focus {
   outline: 0 !important;
   outline-offset: 0 !important;
   background-image: none !important;
@@ -122,8 +120,10 @@ $color in $cx-gradient-themes {
 @each $theme, $colors in $cx-colors {
   .btn-#{$theme}, 
   .btn-#{$theme}:disabled,
+  .btn-#{$theme}.disabled,
   .btn-#{$theme}:focus,
   .btn-#{$theme}:active,
+  .btn-#{$theme}.active,
   .btn-#{$theme}:hover {
     color: nth($list: $colors, $n: 2);
     @extend .ripple;
@@ -132,8 +132,6 @@ $color in $cx-gradient-themes {
       background-image: radial-gradient(circle, $ripple-color 10%, transparent 10.01%);
     }
   }
-
-  @debug $theme + ": " lightness(nth($list: $colors, $n: 1));
 }
 
 .btn-light,
@@ -708,6 +706,7 @@ $value in $cx-text-opacities {
       &.active {
         color: nth($colors, 3);
         font-family: $cx-font-family-bold;
+        opacity: $cx-text-opacity-1;
       }
       @extend .ripple;
       $ripple-color: set-ripple(nth($list: $colors, $n: 1));

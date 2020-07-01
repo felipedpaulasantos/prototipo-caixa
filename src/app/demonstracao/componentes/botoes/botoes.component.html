@@ -3,7 +3,81 @@
 </h1>
 <hr class="header-line-caixa">
 
-<section id="painelBotoes" class="section-caixa">
+<div class="row no-gutters">
+  <section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
+    <app-documentacao-template id="painelBotoes" 
+    [cardTitle]="'Botões'" 
+    [codeViewId]="'viewBotoes'"
+    [htmlTabId]="'htmlCodeBotoes'" 
+    [htmlCode]="htmlCodeBotoes">
+      <div class="descricao">
+        Os botões seguem o padrão do Bootstrap, acrescidos da classe
+        <span class="bg-light border px-2">btn-caixa</span>.
+      </div>
+  
+      <div class="conteudo">
+        <button class="btn btn-caixa">Botão</button>
+      </div>
+    </app-documentacao-template>
+
+    <br><br><br>
+
+    <app-documentacao-template id="painelBotoesTematicos" 
+    [cardTitle]="'Botões temáticos'" 
+    [codeViewId]="'viewBotoesTematicos'"
+    [htmlTabId]="'htmlCodeBotoesTematicos'" 
+    [htmlCode]="htmlCodeBotoesTematicos">
+      <div class="descricao">
+        Todas as varições temáticas com todos os tons e sua alternativa "outline" podem ser utilizadas.
+      </div>
+  
+      <div class="conteudo">
+        <button class="btn btn-caixa btn-primary">Primário</button> &nbsp;
+        <button class="btn btn-caixa btn-danger-dark">Erro com tom escuro</button> &nbsp;
+        <button class="btn btn-caixa btn-apoio-light">Apoio com tom claro</button> &nbsp;
+        <button class="btn btn-caixa btn-outline-info">Info - outline</button>
+      </div>
+    </app-documentacao-template>
+
+    <br><br><br>
+
+    <app-documentacao-template id="painelBotoesTamanho" 
+    [cardTitle]="'Tamanho e ícones'" 
+    [codeViewId]="'viewBotoesTamanho'"
+    [htmlTabId]="'htmlCodeBotoesTamanho'" 
+    [htmlCode]="htmlCodeBotoesTamanho">
+      <div class="descricao">
+        Todas as varições temáticas com todos os tons e sua alternativa "outline" podem ser utilizadas.
+      </div>
+  
+      <div class="conteudo">
+        <button class="btn btn-caixa btn-outline-dark btn-sm">Pequeno</button> &nbsp;
+        <button class="btn btn-caixa btn-secondary btn-lg">Grande</button> &nbsp;
+        <button class="btn btn-caixa btn-secondary btn-lg disabled">Grande desabilitado</button> &nbsp;
+        <button class="btn btn-caixa btn-outline-primary">
+          <i class="fa fa-edit mr-2"></i>
+          Com ícone
+        </button>
+      </div>
+    </app-documentacao-template>
+  </section>
+
+  <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
+    <div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
+      <a (click)="scrollTo('painelBotoes')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelBotoes'}" role="button">
+        Botões</a>
+      <a (click)="scrollTo('painelBotoesTematicos')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelBotoesTematicos'}" role="button">
+        Botões Temáticos</a>
+      <a (click)="scrollTo('painelBotoesTamanho')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelBotoesTamanho'}" role="button">
+        Tamanhos e ícones</a>
+    </div>
+  </nav>
+</div>
+
+<section *ngIf="false" id="painelBotoes" class="section-caixa">
   <div id="painelBotoesTematicos" class="row section-caixa">
     <ng-container *ngFor="let tema of temas; let i = index">
 
@@ -27,51 +101,6 @@
       </div>
     </ng-container>
   </div>
-
-  <div id="painelOutrosExemplos" class="section-caixa">
-    <h5 class="header-subtitulo-caixa">Outros exemplos</h5>
-    <br>
-    <div class="row">
-      <div class="col">
-        <button class="btn btn-secondary btn-caixa my-2 my-md-0 mr-3">
-          <i class="fas fa-lg fa-save mr-2"></i>
-          Com ícone
-        </button>
-
-        <button class="btn btn-outline-primary btn-caixa my-2 my-md-0 mr-3">
-          <i class="fas fa-lg fa-edit mr-2"></i>
-          Com ícone
-        </button>
-
-        <button class="btn btn-info btn-caixa my-2 my-md-0 rounded mr-3">
-          <i class="fas fa-lg fa-info-circle"></i>
-        </button>
-
-        <div class="dropdown d-inline-block">
-          <button class="btn btn-info btn-caixa my-2 my-md-0 mr-3" data-toggle="dropdown">
-            Com dropdown
-            <i class="fas fa-lg fa-caret-down ml-2"></i>
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item">Item 1</a>
-            <a class="dropdown-item">Item 2</a>
-            <a class="dropdown-item">Item 3</a>
-          </div>
-        </div>
-
-      </div>
-      <div class="col">
-        <button class="btn btn-success btn-caixa my-2 my-md-0 btn-sm mr-3">Pequeno</button>
-        <button class="btn btn-warning btn-caixa my-2 my-md-0 mr-3">Médio</button>
-        <button class="btn btn-danger btn-caixa my-2 my-md-0 btn-lg mr-3">Grande</button>
-        <button class="btn btn-aux-dark btn-caixa my-2 my-md-0 btn-lg mr-3">
-          <i class="fas fa-lg fa-bars mr-2"></i>
-          Grande
-          <i class="fas fa-lg fa-caret-down ml-2"></i>
-        </button>
-      </div>
-    </div> <!-- Row -->
-  </div> <!-- Painel Outros Exemplos -->
 
   <div id="painelGeradorBotoes" class="section-caixa">
     <h5 class="header-subtitulo-caixa">Gerador de botão</h5>
