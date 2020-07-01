@@ -28,7 +28,7 @@
       </ng-container>
     </div>
 
-    <ul *ngIf="menu.submenu" class="submenu text-opacity-1" #submenu
+    <ul *ngIf="menu.submenu" class="submenu" #submenu
       [style.height.px]="menu.active ? submenu.scrollHeight : 0">
       <li class="nav-item" *ngFor="let submenu of menu.submenu">
         <a routerLink="{{ submenu.url }}" [routerLinkActive]="submenu.url ? 'active' : ''" role="button"
