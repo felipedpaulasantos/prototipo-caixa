@@ -6,7 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ComponentesRoutingModule } from './componentes-routing.module';
 import { BotoesComponent } from './botoes/botoes.component';
 import { MensagensComponent } from './mensagens/mensagens.component';
-import { FormulariosComponent } from './formularios/formularios.component';
+import { InputsComponent } from './inputs/inputs.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { TabelasComponent } from './tabelas/tabelas.component';
@@ -14,6 +14,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { HighlightModule } from 'ngx-highlightjs';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DocumentacaoTemplateComponent } from './documentacao-template/documentacao-template.component';
+import { SelectComponent } from './select/select.component';
 
 @NgModule({
   imports: [
@@ -32,9 +33,10 @@ import { DocumentacaoTemplateComponent } from './documentacao-template/documenta
     CardsComponent,
     BotoesComponent,
     MensagensComponent,
-    FormulariosComponent,
+    InputsComponent,
     TabelasComponent,
-    DocumentacaoTemplateComponent
+    DocumentacaoTemplateComponent,
+    SelectComponent
   ],
   exports: [
     CardsComponent,

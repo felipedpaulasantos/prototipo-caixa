@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     {
 			name: 'Demonstração',
 			url: '/componentes',
-      icon: 'fas fa-vial',
+      icon: 'fas fa-toolbox',
       description: 'Testes de estilo e componentes'
 		}
   ];

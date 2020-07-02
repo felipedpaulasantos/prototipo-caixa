@@ -4,8 +4,9 @@ import { ComponentesComponent } from './componentes.component';
 import { CardsComponent } from './cards/cards.component';
 import { BotoesComponent } from './botoes/botoes.component';
 import { MensagensComponent } from './mensagens/mensagens.component';
-import { FormulariosComponent } from './formularios/formularios.component';
 import { TabelasComponent } from './tabelas/tabelas.component';
+import { InputsComponent } from './inputs/inputs.component';
+import { SelectComponent } from './select/select.component';
 
 const routes: Routes = [
   {
@@ -45,12 +46,21 @@ const routes: Routes = [
     }
   },
   {
-    path: "formularios",
-    component: FormulariosComponent,
+    path: "inputs",
+    component: InputsComponent,
     data: {
-      title: "Formulários",
-      breadcrumb: "Formulários",
-      animation: "Formulários"
+      title: "Inputs",
+      breadcrumb: "Inputs",
+      animation: "Inputs"
+    }
+  },
+  {
+    path: "select",
+    component: SelectComponent,
+    data: {
+      title: "Select",
+      breadcrumb: "Select",
+      animation: "Select"
     }
   },
   {

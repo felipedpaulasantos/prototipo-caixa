@@ -60,8 +60,13 @@ export class SideMenuComponent implements OnInit, OnDestroy {
           active: false
         },
         {
-          name: 'Formulários',
-          url: '/componentes/formularios',
+          name: 'Inputs',
+          url: '/componentes/inputs',
+          active: false
+        },
+        {
+          name: 'Select',
+          url: '/componentes/select',
           active: false
         },
         {

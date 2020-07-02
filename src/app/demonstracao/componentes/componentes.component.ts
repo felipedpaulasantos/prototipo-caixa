@@ -31,10 +31,16 @@ export class ComponentesComponent implements OnInit {
       description: 'Exibição de mensagens de sucesso, informação, alerta e erro'
     },
     {
-			name: 'Formulários',
-			url: '/componentes/formularios',
-      icon: 'fa fa-file fa-lg',
-      description: 'Campos de formulário e validação de erros'
+			name: 'Inputs',
+			url: '/componentes/inputs',
+      icon: 'fa fa-keyboard fa-lg',
+      description: 'Inputs e validação de erros'
+    },
+    {
+			name: 'Select',
+			url: '/componentes/select',
+      icon: 'fa fa-hand-pointer fa-lg',
+      description: 'Select customizado'
     },
     {
 			name: 'Tabelas',

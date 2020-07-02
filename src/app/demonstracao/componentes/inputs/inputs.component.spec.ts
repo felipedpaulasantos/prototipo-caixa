@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormulariosComponent } from './formularios.component';
+import { FormulariosComponent } from './inputs.component';
 
 describe('FormulariosComponent', () => {
   let component: FormulariosComponent;

@@ -1,29 +1,17 @@
-import { Component, OnInit, HostListener, EventEmitter, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DateValidator } from 'src/app/shared/validators/date.validator';
 import { ToastrService } from 'ngx-toastr';
 import { ComponentesInterface } from '../componentes-interface';
 
-interface DocumentacaoItem {
-  sectionId: string;
-  sectionDescricao: string;
-  sectionTitulo: string;
-  codeViewId: string;
-  htmlTabId: string;
-  htmlCode: string;
-  tsTabId?: string;
-  tsCode?: string;
-  cssTabId?: string;
-  cssCode?: string;
-}
 
 @Component({
-  selector: 'app-formularios',
-  templateUrl: './formularios.component.html',
-  styleUrls: ['./formularios.component.scss'],
+  selector: 'app-inputs',
+  templateUrl: './inputs.component.html',
+  styleUrls: ['./inputs.component.scss'],
   host: { '(window:scroll)': 'onScroll($event)' }
 })
-export class FormulariosComponent extends ComponentesInterface {
+export class InputsComponent extends ComponentesInterface {
 
   constructor(
     private fb: FormBuilder,
