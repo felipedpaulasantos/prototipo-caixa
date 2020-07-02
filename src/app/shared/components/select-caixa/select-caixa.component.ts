@@ -53,8 +53,9 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
     width: false
   };
 
-  @Input() options: BootstrapSelectOptions = {};
+  Object = Object;
 
+  @Input() options: BootstrapSelectOptions = {};
   @Input() showFeedback = true;
 
   @ContentChild(NgControl, { read: NgControl, static: true })
@@ -93,16 +94,15 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
     }
     this.isRequired = this.isFieldRequired(this.formInput);
 
-    if (this.selectDirective && this.selectDirective.nativeElement && this.selectDirective.nativeElement.nativeElement) {
-      this.nativeElement = this.selectDirective.nativeElement.nativeElement;
+    if (this.selectDirective && this.selectDirective.element && this.selectDirective.element.nativeElement) {
+      this.nativeElement = this.selectDirective.element.nativeElement;
     }
   }
 
   initialize() {
-    // $('select').selectpicker('refresh');
-
-    if (this.selectDirective && this.selectDirective.nativeElement) {
-      $(this.selectDirective.nativeElement).selectpicker("refresh");
+    if (this.selectDirective && this.selectDirective.element) {
+      $(this.selectDirective.element).selectpicker(this.options);
+      $(this.selectDirective.element).selectpicker('refresh');
     }
   }
 
@@ -122,8 +122,33 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
         }
       }
     }
+    if (this.selectDirective && this.selectDirective.element && this.selectDirective.element.nativeElement) {
+      return this.selectDirective.element.nativeElement.required;
+    }
     if (this.nativeElement && this.nativeElement.required) {
       return true;
+    }
+    return false;
+  }
+
+  isFieldValid(): boolean {
+    if (this.formInput) {
+      return this.formInput.valid;
+    } else {
+      if (this.nativeElement) {
+        return this.selectDirective.changed && (this.nativeElement.classList.contains("ng-valid"));
+      }
+    }
+    return false;
+  }
+
+  isFieldInvalid(): boolean {
+    if (this.formInput) {
+      return this.formInput.invalid;
+    } else {
+      if (this.nativeElement) {
+        return this.selectDirective.changed && (this.nativeElement.classList.contains("ng-invalid"));
+      }
     }
     return false;
   }
@@ -157,12 +182,31 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
   reset() {
     if (this.formInput) {
       this.formInput.reset();
+    } else if (this.selectDirective) {
+      this.selectDirective.changed = false;
+      this.nativeElement.value = "";
     }
     this.initialize();
   }
 
   setBootstrapSelectDefault() {
-    $.fn.selectpicker.Constructor.BootstrapVersion = this.options.bootstrapVersion || this.defaultOptions.bootstrapVersion;
+
+    const opt: BootstrapSelectOptions = {};
+
+    opt.bootstrapVersion = this.options.bootstrapVersion || this.defaultOptions.bootstrapVersion;
+    opt.actionsBox = this.options.actionsBox || this.defaultOptions.actionsBox;
+    opt.container = this.options.container || this.defaultOptions.container;
+    opt.liveSearch = this.options.liveSearch || this.defaultOptions.liveSearch;
+    opt.multipleSeparator = this.options.multipleSeparator || this.defaultOptions.multipleSeparator;
+    opt.noneSelectedText = this.options.noneSelectedText || this.defaultOptions.noneSelectedText;
+    opt.noneResultsText = this.options.noneResultsText || this.defaultOptions.noneResultsText;
+    opt.selectAllText = this.options.selectAllText || this.defaultOptions.selectAllText;
+    opt.style = this.options.style || this.defaultOptions.style;
+    opt.width = this.options.width || this.defaultOptions.width;
+
+    this.options = opt;
+
+/*     $.fn.selectpicker.Constructor.BootstrapVersion = this.options.bootstrapVersion || this.defaultOptions.bootstrapVersion;
     $.fn.selectpicker.Constructor.actionsBox = this.options.actionsBox || this.defaultOptions.actionsBox;
     $.fn.selectpicker.Constructor.DEFAULTS.liveSearch = this.options.liveSearch || this.defaultOptions.liveSearch;
     $.fn.selectpicker.Constructor.DEFAULTS.multipleSeparator = this.options.multipleSeparator || this.defaultOptions.multipleSeparator;
@@ -170,7 +214,7 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
     $.fn.selectpicker.Constructor.DEFAULTS.noneResultsText = this.options.noneResultsText || this.defaultOptions.noneResultsText;
     $.fn.selectpicker.Constructor.DEFAULTS.selectAllText = this.options.selectAllText || this.defaultOptions.selectAllText;
     $.fn.selectpicker.Constructor.DEFAULTS.style = this.options.style || this.defaultOptions.style;
-    $.fn.selectpicker.Constructor.DEFAULTS.width = this.options.width || this.defaultOptions.width;
+    $.fn.selectpicker.Constructor.DEFAULTS.width = this.options.width || this.defaultOptions.width; */
   }
 
 }

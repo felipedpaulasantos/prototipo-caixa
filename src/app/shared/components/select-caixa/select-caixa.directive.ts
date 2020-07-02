@@ -7,12 +7,18 @@ import { BehaviorSubject } from 'rxjs';
 export class SelectCaixaDirective {
 
 	private keyPressed = new BehaviorSubject<number>(0);
-	nativeElement: any;
+	element: any;
 	keyPressed$ = this.keyPressed.asObservable();
 	focus = false;
+	changed = false;
 
 	constructor(element: ElementRef) {
-		this.nativeElement = element.nativeElement;
+		this.element = element.nativeElement;
+	}
+
+	@HostListener("change")
+	onChange() {
+		this.changed = true;
 	}
 
 	@HostListener("focus")
