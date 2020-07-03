@@ -12,10 +12,13 @@
 		[htmlTabId]="'htmlCodeSelectBasico'" 
 		[htmlCode]="htmlCodeSelectBasico">
 			<div class="descricao">
-				A diretiva <span class="bg-light border px-2">selectCaixa</span> em conjunto com o componente 
-				<span class="bg-light border px-2">cx-select</span> permite a estilização e validação automática dos selects.
+				A diretiva <span class="bg-light border px-1">selectCaixa</span> em conjunto com o componente 
+				<span class="bg-light border px-1">cx-select</span> permite a estilização e validação automática dos selects.
 				<br>
-				O componente utiliza a biblioteca BootstrapSelect.
+				O componente utiliza a biblioteca 
+				<a class="text-info" target="_blank" href="https://developer.snapappointments.com/bootstrap-select/options/">
+					Bootstrap-Select
+				</a>.
 			</div>
 
 			<div class="conteudo">
@@ -64,7 +67,7 @@
 								</select>
 							</cx-select>
 
-							<cx-select [options]="{noneSelectedText: 'Não pode ser Vingadores'}">
+							<cx-select>
 								<label>Filme favorito</label>
 								<select selectCaixa formControlName="filme">
 									<option value="" selected>Selecione uma opção</option>
@@ -73,6 +76,99 @@
 									<option value="Vingadores">Vingadores</option>
 								</select>
 							</cx-select>
+						</form>
+					</div>
+				</div> <!-- Row -->
+			</div>
+		</app-documentacao-template>
+
+		<br class="my-3">
+
+		<app-documentacao-template id="painelSelectVariantes" 
+		[cardTitle]="'Configurações'" 
+		[codeViewId]="'viewSelectVariantes'"
+		[htmlTabId]="'htmlCodeVariantes'" 
+		[htmlCode]="htmlCodeVariantes">
+			<div class="descricao">
+				Todas as opções da biblioteca 
+				<a class="text-info" target="_blank" href="https://developer.snapappointments.com/bootstrap-select/options/">
+					Bootstrap-Select
+				</a> estão disponíveis.
+			</div>
+
+			<div class="conteudo">
+				<div class="row">
+					<div class="col-12 col-md-6 col-lg-6">
+						<form>
+							<cx-select>
+								<label>Seleção múltipla</label>
+								<select selectCaixa multiple>
+									<option value="Lasanha">Lasanha</option>
+									<option value="Feijoada">Feijoada</option>
+									<option value="Churrasco">Churrasco</option>
+								</select>
+							</cx-select>
+
+							<cx-select [options]="{ liveSearch: true }">
+								<label>Filtro de opções</label>
+								<select selectCaixa>
+									<option value="Lasanha">Lasanha</option>
+									<option value="Feijoada">Feijoada</option>
+									<option value="Churrasco">Churrasco</option>
+								</select>
+							</cx-select>
+
+							<cx-select [options]="{ actionsBox: true }">
+								<label>Botões e subtítulos</label>
+								<select selectCaixa multiple>
+									<optgroup label="Massas">
+										<option>Pizza</option>
+										<option>Lasanha</option>
+										<option>Macarrão</option>
+									</optgroup>
+									<optgroup label="Carne">
+										<option>Picanha</option>
+										<option>Alcatra</option>
+										<option>Torresmo</option>
+									</optgroup>
+								</select>
+							</cx-select>
+						</form>
+					</div>
+				</div> <!-- Row -->
+			</div>
+		</app-documentacao-template>
+
+		<br class="my-3">
+
+		<app-documentacao-template id="painelSelectAsync" 
+		[cardTitle]="'Opções assíncronas'" 
+		[codeViewId]="'viewSelectAsync'"
+		[htmlTabId]="'htmlCodeSelectAsync'" 
+		[htmlCode]="htmlCodeSelectAsync"
+		[tsTabId]="'tsCodeSelectAsync'"
+		[tsCode]="tsCodeSelectAsync">
+			<div class="descricao">
+				Para opções carregadas de forma assíncrona, é necessário atualizar a propriedade 
+				<span class="bg-light border px-1">initTrigger</span> para recarregar o componente.
+			</div>
+
+			<div class="conteudo">
+				<div class="row">
+					<div class="col-12 col-md-6 col-lg-6">
+						<form>
+							<cx-select [initTrigger]="opcoesAsync">
+								<label>Número favorito</label>
+								<select selectCaixa>
+									<option *ngIf="opcoesAsync?.length == 0" value="">Clique no botão para atualizar as opções</option>
+									<option *ngFor="let opcao of opcoesAsync">{{ opcao }}</option>
+								</select>
+							</cx-select>
+
+							<button (click)="atualizaOpcoes()" class="btn btn-caixa btn-secondary">
+								<i class="fa fa-sync mr-2"></i>
+								Atualizar opções
+							</button>
 						</form>
 					</div>
 				</div> <!-- Row -->
@@ -88,6 +184,13 @@
 			<a (click)="scrollTo('painelSelectValidacao')" class="list-group-item list-group-item-action"
 				[ngClass]="{'active': currentSection == 'painelSelectValidacao'}" role="button">
 				Validação</a>
+			<a (click)="scrollTo('painelSelectVariantes')" class="list-group-item list-group-item-action"
+				[ngClass]="{'active': currentSection == 'painelSelectVariantes'}" role="button">
+				Configurações</a>
+			<a (click)="scrollTo('painelSelectAsync')" class="list-group-item list-group-item-action"
+				[ngClass]="{'active': currentSection == 'painelSelectAsync'}" role="button">
+				Opções Assíncronas</a>
+				
 		</div>
 	</nav>
 </div>

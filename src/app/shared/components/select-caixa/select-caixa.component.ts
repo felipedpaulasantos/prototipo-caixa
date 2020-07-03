@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit, ContentChild,
-  ViewChild, ElementRef, HostBinding, Renderer2, AfterContentInit } from '@angular/core';
+  ViewChild, ElementRef, HostBinding, Renderer2, AfterContentInit, SimpleChanges, OnChanges } from '@angular/core';
 import { SelectCaixaDirective } from './select-caixa.directive';
 import { AbstractControl, NgControl, FormControlName } from '@angular/forms';
 
@@ -14,6 +14,7 @@ interface BootstrapSelectOptions {
   bootstrapVersion?: string;
   actionsBox?: boolean;
   container?: boolean;
+  deselectAllText?: string;
   liveSearch?: boolean;
   liveSearchNormalize?: boolean;
   liveSearchPlaceholder?: string;
@@ -33,12 +34,13 @@ interface BootstrapSelectOptions {
   templateUrl: './select-caixa.component.html',
   styleUrls: ['./select-caixa.component.scss']
 })
-export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, AfterContentInit {
 
   defaultOptions: BootstrapSelectOptions = {
     bootstrapVersion: '4',
     actionsBox: false,
     container: false,
+    deselectAllText: 'Remover seleção',
     liveSearch: false,
     liveSearchNormalize: false,
     liveSearchPlaceholder: null,
@@ -56,6 +58,7 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
   Object = Object;
 
   @Input() options: BootstrapSelectOptions = {};
+  @Input() initTrigger = false;
   @Input() showFeedback = true;
 
   @ContentChild(NgControl, { read: NgControl, static: true })
@@ -72,7 +75,7 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
 
   formInput: AbstractControl;
   isRequired = false;
-  nativeElement: any;
+  private nativeElement: any;
 
   constructor(
     private renderer: Renderer2
@@ -80,6 +83,10 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
 
   ngOnInit(): void {
     this.setBootstrapSelectDefault();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.refresh();
   }
 
   ngAfterViewInit(): void {
@@ -92,21 +99,30 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
     } else if (this.ngControlDirective) {
       this.formInput = this.ngControlDirective.control;
     }
-    this.isRequired = this.isFieldRequired(this.formInput);
 
-    if (this.selectDirective && this.selectDirective.element && this.selectDirective.element.nativeElement) {
-      this.nativeElement = this.selectDirective.element.nativeElement;
+    if (this.selectDirective && this.selectDirective.element) {
+      this.nativeElement = this.selectDirective.element;
     }
+
+    this.isRequired = this.isFieldRequired(this.formInput);
   }
 
   initialize() {
-    if (this.selectDirective && this.selectDirective.element) {
-      $(this.selectDirective.element).selectpicker(this.options);
-      $(this.selectDirective.element).selectpicker('refresh');
+    if (this.nativeElement) {
+      $(this.nativeElement).selectpicker(this.options);
+      $(this.nativeElement).selectpicker('refresh');
     }
   }
 
-  isFieldRequired(abstractControl: AbstractControl): boolean {
+  refresh() {
+    $(this.nativeElement).selectpicker('destroy');
+    setTimeout(() => {
+      this.ngAfterContentInit();
+      this.ngAfterViewInit();
+    }, 1);
+  }
+
+  private isFieldRequired(abstractControl: AbstractControl): boolean {
     if (abstractControl && abstractControl.validator) {
       const validator = abstractControl.validator({}as AbstractControl);
       if (validator && validator.required) {
@@ -122,8 +138,8 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
         }
       }
     }
-    if (this.selectDirective && this.selectDirective.element && this.selectDirective.element.nativeElement) {
-      return this.selectDirective.element.nativeElement.required;
+    if (this.nativeElement) {
+      return this.nativeElement.required;
     }
     if (this.nativeElement && this.nativeElement.required) {
       return true;
@@ -189,13 +205,14 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
     this.initialize();
   }
 
-  setBootstrapSelectDefault() {
+  private setBootstrapSelectDefault() {
 
     const opt: BootstrapSelectOptions = {};
 
     opt.bootstrapVersion = this.options.bootstrapVersion || this.defaultOptions.bootstrapVersion;
     opt.actionsBox = this.options.actionsBox || this.defaultOptions.actionsBox;
     opt.container = this.options.container || this.defaultOptions.container;
+    opt.deselectAllText = this.options.deselectAllText || this.defaultOptions.deselectAllText;
     opt.liveSearch = this.options.liveSearch || this.defaultOptions.liveSearch;
     opt.multipleSeparator = this.options.multipleSeparator || this.defaultOptions.multipleSeparator;
     opt.noneSelectedText = this.options.noneSelectedText || this.defaultOptions.noneSelectedText;
@@ -203,6 +220,8 @@ export class SelectCaixaComponent implements OnInit, AfterViewInit, AfterContent
     opt.selectAllText = this.options.selectAllText || this.defaultOptions.selectAllText;
     opt.style = this.options.style || this.defaultOptions.style;
     opt.width = this.options.width || this.defaultOptions.width;
+
+    console.log(opt);
 
     this.options = opt;
 
