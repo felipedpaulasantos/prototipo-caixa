@@ -390,6 +390,7 @@ ul.tab-caixa li a,
   opacity: $cx-text-opacity-1;
   font-family: $cx-font-family-bold;
   border-bottom: solid 2px transparent;
+  @extend .ripple-dark;
   &.active, &:active {
     color: $cx-color-primary !important;
     background-color: transparent !important;

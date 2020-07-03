@@ -37,7 +37,7 @@ export class CodeViewComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
-    this.toastr.info('Conteúdo copiado!');
+    this.toastr.info('Conteúdo copiado!', null, { positionClass: "toast-bottom-center", progressBar: false, timeOut: 3000 });
   }
 
 }

@@ -88,7 +88,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       url: '/layout',
       active: false
     }, */
-    {
+/*     {
       name: 'Contas',
       iconClass: 'fas fa-lg fa-phone-alt',
       url: '/contas',
@@ -99,7 +99,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       iconClass: 'fas fa-lg fa-chart-bar',
       url: '/relatorios',
       active: false
-    }
+    } */
   ];
 
   @ViewChild("menuLateral", { read: ElementRef })
