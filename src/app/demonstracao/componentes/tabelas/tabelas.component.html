@@ -3,7 +3,95 @@
 </h1>
 <hr class="header-line-caixa">
 
-<section id="painelTabelas" class="section-caixa">
+<div class="row no-gutters">
+  <section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
+    <app-documentacao-template id="painelTabelasSimples" 
+    [cardTitle]="'Tabelas Simples'" 
+    [codeViewId]="'viewTabelas'"
+    [htmlTabId]="'htmlCodeTabelas'" 
+		[htmlCode]="htmlCodeTabelasSimples"
+		[tsTabId]="'tsCodeTabelasSimples'"
+		[tsCode]="tsCodeTabelasSimples">
+      <div class="descricao">
+				A classe <span class="bg-light border px-1">table</span> do Bootstrap acrescida da classe 
+				<span class="bg-light border px-1">table-caixa</span> aplica o estilo básico de tabelas, sem recursos adicionais.
+      </div>
+  
+      <div class="conteudo">
+				<div class="table-responsive">
+					<table class="table table-caixa">
+						<thead>
+							<tr>
+								<th>Coluna 1</th>
+								<th>Coluna 2</th>
+								<th>Coluna 3</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let row of rows | slice:0:5; let i = index">
+								<td>Linha {{ row }}</td>
+								<td>Linha {{ row  }}</td>
+								<td>Linha {{ row }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+      </div>
+		</app-documentacao-template>
+		
+		<br class="my-3">
+
+		<app-documentacao-template id="painelTabelaDatatable" 
+    [cardTitle]="'Datatable'" 
+    [codeViewId]="'viewDatatable'"
+    [htmlTabId]="'htmlCodeDatatable'" 
+		[htmlCode]="htmlCodeDatatable"
+		[tsTabId]="'tsCodeDatatable'"
+		[tsCode]="tsCodeDatatable">
+      <div class="descricao">
+				A diretiva <span class="bg-light border px-1">datatable</span> acrescenta diversos recursos à tabela automaticamente.
+      </div>
+  
+      <div class="conteudo">
+				<div class="table-responsive">
+					<table datatable class="table table-caixa responsive">
+						<thead>
+							<tr>
+								<th>Coluna 1</th>
+								<th>Coluna 2</th>
+								<th>Coluna 3</th>
+								<th>Coluna 4</th>
+								<th>Coluna 5</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let row of rows">
+								<td>Linha {{ row }}</td>
+								<td>Linha {{ row  }}</td>
+								<td>Linha {{ row }}</td>
+								<td>Linha {{ row }}</td>
+								<td>Linha {{ row }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+      </div>
+    </app-documentacao-template>
+  </section>
+
+  <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
+    <div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
+      <a (click)="scrollTo('painelTabelasSimples')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelTabelasSimples'}" role="button">
+				Tabelas simples</a>
+			<a (click)="scrollTo('painelTabelaDatatable')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelTabelaDatatable'}" role="button">
+        Datatable</a>
+    </div>
+  </nav>
+</div>
+
+<section *ngIf="false" id="" class="section-caixa">
 
 	<h3 class="header-subtitulo-caixa">Completa</h3>
 	<ul>
@@ -14,7 +102,7 @@
 		<li>Paginação</li>
 	</ul>
 	<div class="table-responsive p-2 mb-4">
-		<table datatable [dtOptions]="dtCompleteOptions" [dtTrigger]="dtTrigger" class="table table-caixa">
+		<table datatable [dtOptions]="" [dtTrigger]="dtTrigger" class="table table-caixa">
 			<thead>
 				<tr>
 					<th>Coluna 1</th>
@@ -35,7 +123,7 @@
 	<h3 class="header-subtitulo-caixa">Simples</h3>
 	<h5 class="mb-4">Pode ser simples, apenas com os títulos ordenáveis.</h5>
 	<div class="table-responsive mb-4">
-		<table datatable [dtOptions]="dtSimpleOptions" id="tableTeste2" class="table table-caixa">
+		<table datatable [dtOptions]="" id="tableTeste2" class="table table-caixa">
 			<thead>
 				<tr>
 					<th>Coluna 1</th>
@@ -71,7 +159,7 @@
 	<h3 class="header-subtitulo-caixa">Customizada</h3>
 	<h5 class="mb-4">Ou ainda ter apenas os componentes desejados.</h5>
 	<div class="table-responsive mb-4">
-		<table datatable [dtOptions]="dtCustomOptions" id="tableTeste3" class="table table-caixa">
+		<table datatable [dtOptions]="" id="tableTeste3" class="table table-caixa">
 			<thead>
 				<tr>
 					<th>Coluna 1</th>

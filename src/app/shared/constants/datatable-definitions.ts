@@ -108,7 +108,8 @@ export class DatatableConfig {
         const customConfig: DatatableSettings = {
             dom: this.SHOW_TABLE,
             buttons: [],
-            language: dtLanguageDefinitionPt
+            language: dtLanguageDefinitionPt,
+            responsive: true
         };
         let paging = false;
         let preTableElements = "";
