@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
       description: "Visualize relatórios em formatos de gráficos e tabelas"
     },
     {
-			name: 'Demonstração',
+			name: 'Componentes',
 			url: '/componentes',
       icon: 'fas fa-toolbox',
       description: 'Testes de estilo e componentes'

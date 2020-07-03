@@ -40,7 +40,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     },
     {
       name: 'Componentes',
-      iconClass: 'fas fa-lg fa-vial',
+      iconClass: 'fas fa-lg fa-toolbox',
       url: '/componentes',
       active: false,
       submenu: [
