@@ -94,10 +94,16 @@ $color in $cx-gradient-themes {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
-
 .btn-caixa:disabled,
 .btn-caixa.disabled {
   cursor: not-allowed !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  &:active, &:focus {
+    outline: 0 !important;
+    outline-offset: 0 !important;
+    background-image: none !important;
+  }
 }
 
 .btn-sm {
@@ -275,7 +281,10 @@ label {
 
 /* Bootstrap-select */
 
-
+.bs-searchbox input.form-control {
+  @extend .input-caixa;
+  box-shadow: none !important;
+}
 
 /* Tabela */
 
@@ -350,6 +359,17 @@ input[type=number] {
 }
 .dropdown-item {
   padding: 1rem 1.3rem;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  &.selected {
+    .check-mark {
+      display: flex;
+      align-items: center !important;
+      top: unset !important;
+      @extend .text-success;
+    }
+  }
 }
 .dropdown-item.active,
 .dropdown-item:active {
