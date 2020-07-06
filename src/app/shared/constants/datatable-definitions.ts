@@ -103,6 +103,12 @@ export class DatatableConfig {
 
     static CONFIG_SIMPLES: DatatableSettings = DatatableConfig.getDatatableConfig({});
 
+    static setIdiomaDefault() {
+        $.extend($.fn.dataTable.defaults, {
+            language: dtLanguageDefinitionPt
+        });
+    }
+
     static getDatatableConfig(options: CustomDatatableConfig): DatatableSettings {
 
         const customConfig: DatatableSettings = {

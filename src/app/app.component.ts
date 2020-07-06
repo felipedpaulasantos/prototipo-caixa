@@ -10,6 +10,7 @@ import { UserService } from './authentication/users/user.service';
 import { SideMenuService } from './menu/side-menu/side-menu.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { StyleService } from './shared/services/style.service';
+import { DatatableConfig } from './shared/constants/datatable-definitions';
 
 @Component({
   selector: 'app-root',
@@ -42,6 +43,8 @@ export class AppComponent implements OnInit {
     this.menuService.isAberto$.subscribe(isAberto => {
       this.isMenuAberto = isAberto;
     });
+
+    DatatableConfig.setIdiomaDefault();
   }
 
   updateAccount(account: Account) {

@@ -5,42 +5,6 @@
 
 <div class="row no-gutters">
   <section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
-    <app-documentacao-template id="painelTabelasSimples" 
-    [cardTitle]="'Tabelas Simples'" 
-    [codeViewId]="'viewTabelas'"
-    [htmlTabId]="'htmlCodeTabelas'" 
-		[htmlCode]="htmlCodeTabelasSimples"
-		[tsTabId]="'tsCodeTabelasSimples'"
-		[tsCode]="tsCodeTabelasSimples">
-      <div class="descricao">
-				A classe <span class="bg-light border px-1">table</span> do Bootstrap acrescida da classe 
-				<span class="bg-light border px-1">table-caixa</span> aplica o estilo básico de tabelas, sem recursos adicionais.
-      </div>
-  
-      <div class="conteudo">
-				<div class="table-responsive">
-					<table class="table table-caixa">
-						<thead>
-							<tr>
-								<th>Coluna 1</th>
-								<th>Coluna 2</th>
-								<th>Coluna 3</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let row of rows | slice:0:5; let i = index">
-								<td>Linha {{ row }}</td>
-								<td>Linha {{ row  }}</td>
-								<td>Linha {{ row }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-      </div>
-		</app-documentacao-template>
-		
-		<br class="my-3">
-
 		<app-documentacao-template id="painelTabelaDatatable" 
     [cardTitle]="'Datatable'" 
     [codeViewId]="'viewDatatable'"
@@ -77,16 +41,115 @@
 				</div>
       </div>
     </app-documentacao-template>
+		
+		<br class="my-3">
+
+		<app-documentacao-template id="painelDatatableCustom" 
+    [cardTitle]="'Datatable Customizada'" 
+    [codeViewId]="'viewDatatableCustom'"
+    [htmlTabId]="'htmlCodeDatatableCustom'" 
+		[htmlCode]="htmlCodeDatatableCustom"
+		[tsTabId]="'tsCodeDatatableCustom'"
+		[tsCode]="tsCodeDatatableCustom">
+      <div class="descricao">
+				A classe <span class="bg-light border px-1">DatatableConfig</span> possui métodos e atributos auxiliares para personalizar
+				a Datatable.
+			</div>
+			  
+      <div class="conteudo">
+				<div class="table-responsive">
+					<h5 class="header-caixa">Personalizada</h5>
+					<table datatable [dtOptions]="dtCustomOptions" class="table table-caixa">
+						<thead>
+							<tr>
+								<th>Coluna 1</th>
+								<th>Coluna 2</th>
+								<th>Coluna 3</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let row of rows | slice:0:5; let i = index">
+								<td>Linha {{ row }}</td>
+								<td>Linha {{ row  }}</td>
+								<td>Linha {{ row }}</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<hr class="my-5">
+
+					<h5 class="header-caixa">Completa</h5>
+					<table datatable [dtOptions]="dtCompleteOptions" class="table table-caixa">
+						<thead>
+							<tr>
+								<th>Coluna 1</th>
+								<th>Coluna 2</th>
+								<th>Coluna 3</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let row of rows | slice:0:5; let i = index">
+								<td>Linha {{ row }}</td>
+								<td>Linha {{ row  }}</td>
+								<td>Linha {{ row }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+      </div>
+		</app-documentacao-template>
+
+		<br class="my-3">
+
+		<app-documentacao-template id="painelTabelasSimples" 
+    [cardTitle]="'Tabelas Simples'" 
+    [codeViewId]="'viewTabelas'"
+    [htmlTabId]="'htmlCodeTabelas'" 
+		[htmlCode]="htmlCodeTabelasSimples"
+		[tsTabId]="'tsCodeTabelasSimples'"
+		[tsCode]="tsCodeTabelasSimples">
+      <div class="descricao">
+				A classe <span class="bg-light border px-1">table</span> do Bootstrap acrescida da classe 
+				<span class="bg-light border px-1">table-caixa</span> aplica o estilo básico de tabelas, sem recursos adicionais.
+				<br>
+				As classes auxiliares do Bootstrap como <span class="bg-light border px-1">table-borderless</span> (sem borda) e
+				<span class="bg-light border px-1">table-stripped</span> (cor alternada) podem ser utilizadas.
+      </div>
+  
+      <div class="conteudo">
+				<div class="table-responsive">
+					<table class="table table-caixa">
+						<thead>
+							<tr>
+								<th>Coluna 1</th>
+								<th>Coluna 2</th>
+								<th>Coluna 3</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let row of rows | slice:0:5; let i = index">
+								<td>Linha {{ row }}</td>
+								<td>Linha {{ row  }}</td>
+								<td>Linha {{ row }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+      </div>
+		</app-documentacao-template>
   </section>
 
   <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
     <div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
-      <a (click)="scrollTo('painelTabelasSimples')" class="list-group-item list-group-item-action"
-        [ngClass]="{'active': currentSection == 'painelTabelasSimples'}" role="button">
-				Tabelas simples</a>
 			<a (click)="scrollTo('painelTabelaDatatable')" class="list-group-item list-group-item-action"
         [ngClass]="{'active': currentSection == 'painelTabelaDatatable'}" role="button">
-        Datatable</a>
+				Datatable</a>
+			<a (click)="scrollTo('painelDatatableCustom')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelDatatableCustom'}" role="button">
+				Datatable Customizada</a>
+			<a (click)="scrollTo('painelTabelasSimples')" class="list-group-item list-group-item-action"
+        [ngClass]="{'active': currentSection == 'painelTabelasSimples'}" role="button">
+				Tabelas simples</a>
     </div>
   </nav>
 </div>

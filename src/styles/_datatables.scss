@@ -1,5 +1,10 @@
 @use "cx-variables";
 
+.dataTables_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .dataTables_length {
   display: inline-block;
   margin-bottom: 1rem;
@@ -8,7 +13,12 @@
     width: 100%;
   }
   select {
-    @extend .form-control, .custom-select, .border-top-0, .border-left-0, .border-right-0, .input-caixa;
+    @extend .form-control,
+    .custom-select,
+    .border-top-0,
+    .border-left-0,
+    .border-right-0,
+    .input-caixa;
     display: inline-block;
     width: 25% !important;
     text-align: center;
@@ -21,8 +31,8 @@
 .dataTables_filter {
   display: block;
   margin-bottom: 1rem;
-  float: right;
   width: 50%;
+  margin-left: auto;
   label {
     display: flex;
     align-items: center;
@@ -42,12 +52,15 @@
 
 .dataTables_paginate {
   text-align: right;
-  float: right;
-  > a.paginate_button {
+  margin-left: auto;
+  >a.paginate_button {
     margin-left: 0.5rem;
     &:not(.disabled) {
       cursor: pointer;
-      @extend .btn, .btn-caixa, .btn-outline-light, .btn-sm;
+      @extend .btn,
+      .btn-caixa,
+      .btn-outline-light,
+      .btn-sm;
     }
     &.disabled {
       @extend .text-muted;
@@ -55,8 +68,12 @@
     }
   }
   span a {
-    @extend .btn, .btn-caixa, .btn-sm, .btn-outline-primary;
+    @extend .btn,
+    .btn-caixa,
+    .btn-sm,
+    .btn-outline-primary;
     margin-left: 0.5rem;
+
     &.current {
       @extend .active;
     }
@@ -64,23 +81,30 @@
 }
 
 .dt-buttons {
+  width: 100%;
   margin-bottom: 1.5rem;
+
   button.dt-button {
-    @extend .btn, .btn-caixa, .btn-sm, .btn-outline-primary;
+    @extend .btn,
+    .btn-caixa,
+    .btn-sm,
+    .btn-outline-primary;
   }
 }
+
 .dt-button-collection {
   position: absolute;
   z-index: 999;
   border: solid 1px $cx-color-light;
   background-color: white;
   width: auto;
-  float: left;
   top: 0;
   left: 0;
   padding: 1rem;
-  @extend .shadow-sm, .rounded;
+  @extend .shadow-sm,
+  .rounded;
 }
+
 .dt-button-background {
   display: none !important;
 }
