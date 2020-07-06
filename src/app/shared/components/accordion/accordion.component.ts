@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, ChangeDetectorRef } from '@angular/core';
 import { Config } from 'protractor';
 import { AccordionMenu } from './types/accordion-menu';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
@@ -10,11 +10,12 @@ import { Location } from '@angular/common';
   styleUrls: ['./accordion.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccordionComponent implements OnInit, AfterViewInit {
+export class AccordionComponent implements OnInit {
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {}
 
   @Input() options;
@@ -24,14 +25,17 @@ export class AccordionComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.config = this.mergeConfig(this.options);
-  }
-
-  ngAfterViewInit(): void {
-    const loc = this.location.path();
-    this.menus.forEach((menu, index) => {
-      if (loc.includes(menu.url)) {
-        this.toggle(index);
-        this.cdr.detectChanges();
+    this.router.events.subscribe(ev => {
+      if (ev instanceof NavigationEnd) {
+        const loc = this.location.path();
+        this.menus.forEach((menu, index) => {
+          if (loc.includes(menu.url)) {
+            if (!menu.active) {
+              this.toggle(index);
+              this.cdr.detectChanges();
+            }
+          }
+        });
       }
     });
   }

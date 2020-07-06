@@ -113,7 +113,7 @@ export class TabelasComponent {
 `.trimRight();
 
   ngOnInit() {
-    
+
     $.extend($.fn.dataTable.defaults, {
       language: dtLanguageDefinitionPt
   });
