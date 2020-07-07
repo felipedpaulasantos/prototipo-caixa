@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BootstrapTheme, LOGO_CAIXA_BRANCO_SRC, LOGO_CAIXA_SRC, LOGO_COMPLETO_SRC, LOGO_COMPLETO_BRANCO_SRC } from '../shared/constants/constants';
-import { StyleService } from '../shared/services/style.service';
+import { BootstrapTheme, LOGO_CAIXA_BRANCO_SRC, LOGO_CAIXA_SRC, LOGO_COMPLETO_SRC, LOGO_COMPLETO_BRANCO_SRC, GradientTheme } from '../shared/constants/constants';
+import { StyleService, Tema } from '../shared/services/style.service';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -21,6 +21,8 @@ export class LayoutComponent implements OnInit {
   ) { }
 
   temas = [];
+  temasGradiente = [];
+  temaGlobal: Tema;
 
   formToolbar = this.fb.group({
     icone: [""],
@@ -34,10 +36,8 @@ export class LayoutComponent implements OnInit {
   });
 
   ngOnInit() {
-    Object.getOwnPropertyNames(BootstrapTheme).forEach((theme: any) => {
-      const tema = BootstrapTheme[theme].value;
-      if (tema) { this.temas.push(tema); }
-    });
+    this.temas = BootstrapTheme.getTemas();
+    this.temasGradiente = GradientTheme.getTemas();
   }
 
   onIconChange(src: string): void {
@@ -45,16 +45,16 @@ export class LayoutComponent implements OnInit {
     this.styleService.setToolbarIcon(src);
   }
 
-  onToolbarBgChange(theme: string, tom?: string): void {
+  onToolbarBgChange(theme: string, tom: string = ""): void {
 
     if (!theme) { return; }
 
-    const temaSelecionado = this.temas.find(tema => tema.name === theme);
+    const temaSelecionado = this.temas.find(tema => tema.name === theme) || (this.temasGradiente.find(tema => tema.name === theme));
     if (!temaSelecionado) { return; }
 
     if (!tom && this.formToolbar.get("tom").value) {
       tom = this.formToolbar.get("tom").value;
-    } else if (!tom) {
+    } else if (!tom || theme.includes("gradient")) {
       tom = "";
     }
 

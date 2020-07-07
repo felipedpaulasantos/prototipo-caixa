@@ -3,7 +3,7 @@
 </h1>
 <hr class="header-line-caixa">
 
-
+<h5 class="header-caixa">Personalização temática dos principais componentes</h5>
 
 <div class="row">
 	<div class="col-md-4">
@@ -19,8 +19,10 @@
 						<label>Cor de fundo</label>
 						<select selectCaixa formControlName="bg" (change)="onToolbarBgChange($event.target.value)">
 							<option value="">Escolha um tema</option>
-							<option [selected]="(styleService.toolbarBg$ | async) == tema.name" *ngFor="let tema of temas"
-								class="text-{{ tema.name }} font-fam-bold" value="{{ tema.name }}">
+							<option *ngFor="let tema of temas" class="bg-{{tema.name}} text-{{tema.textColor}} font-fam-bold" value="{{tema.name}}">
+								{{ tema.name | titlecase }}
+							</option>
+							<option *ngFor="let tema of temasGradiente" class="font-fam-bold bg-{{tema.name}} text-{{tema.textColor}}" value="{{tema.name}}">
 								{{ tema.name | titlecase }}
 							</option>
 						</select>
@@ -67,7 +69,7 @@
 							</option>
 						</select>
 					</cx-select>
-		
+
 					<cx-select [showFeedback]=false>
 						<label>Tom</label>
 						<select selectCaixa formControlName="tom"

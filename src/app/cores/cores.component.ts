@@ -10,20 +10,24 @@ import { textosCores } from './cores-constants';
 export class CoresComponent implements OnInit {
 
   cores: any[] = [];
+  coresGradiente: any[] = [];
 
   placeholder: string;
 
   constructor() {
     this.placeholder = loremIpsumPlaceHolder;
 
-    Object.getOwnPropertyNames(BootstrapTheme).forEach((theme: any) => {
+/*     Object.getOwnPropertyNames(BootstrapTheme).forEach((theme: any) => {
       const tema = BootstrapTheme[theme].value;
       if (tema) {
         tema.titulo = tema.name;
         tema.texto = textosCores[tema.name];
         this.cores.push(tema);
       }
-    });
+    }); */
+
+    this.cores = BootstrapTheme.getTemas();
+    this.coresGradiente = BootstrapTheme.getTemas();
   }
 
   ngOnInit() {

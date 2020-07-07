@@ -48,6 +48,40 @@ export class BootstrapTheme {
   }
 }
 
+export class GradientTheme {
+  static readonly PRIMARY  = new GradientTheme(
+		'PRIMARY', { name: "gradient-primary", textColor: "light" });
+	static readonly SECONDARY  = new GradientTheme(
+		'SECONDARY', { name: "gradient-sky", textColor: "light" });
+	static readonly SUCCESS  = new GradientTheme(
+		'SUCCESS', { name: "gradient-success", textColor: "light" });
+	static readonly DANGER  = new GradientTheme(
+		'DANGER', { name: "gradient-aux", textColor: "light" });
+	static readonly INFO  = new GradientTheme(
+		'INFO', { name: "gradient-light", textColor: "dark" });
+	static readonly WARNING  = new GradientTheme(
+		'WARNING', { name: "gradient-dark", textColor: "light" });
+
+	static getTemas() {
+		const temas = [];
+		Object.getOwnPropertyNames(GradientTheme).forEach((theme: any) => {
+			const tema = GradientTheme[theme].value;
+			if (tema) {
+				temas.push(tema);
+			}
+		});
+		return temas;
+	}
+
+  // private to disallow creating other instances of this type
+  private constructor(private readonly key: string, public readonly value: ColorTheme) {
+  }
+
+  toString() {
+    return this.key;
+  }
+}
+
 export const LOGO_CAIXA_BRANCO_SRC = "assets/images/caixa-logo-x-branco.png";
 export const LOGO_CAIXA_SRC = "assets/images/caixa-logo-x.png";
 export const LOGO_COMPLETO_SRC = "assets/images/caixa-logo-completo.png";
