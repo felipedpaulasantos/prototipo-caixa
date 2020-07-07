@@ -520,6 +520,9 @@ ul.tab-caixa li a,
     opacity: 0.5;
     cursor: not-allowed;
   }
+  &:hover {
+    border-color: $cx-color-dark-light;
+  }
 }
 @each $theme, $colors in $cx-colors {
   .input-caixa-#{$theme} {
