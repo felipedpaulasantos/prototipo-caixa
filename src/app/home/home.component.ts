@@ -20,13 +20,13 @@ export class HomeComponent implements OnInit {
       icon: "fas fa-palette",
       description: "Consulte as cores disponíveis e a recomendação de seus usos"
     },
-/*     {
+    {
       name: 'Layout',
       icon: 'fas fa-layer-group',
       url: '/layout',
       description: "Altera os temas da aplicação",
-    }, */
-    {
+    },
+/*     {
       name: "Conta",
       url: "/contas",
       icon: "fas fa-phone-alt",
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
       url: "/relatorios",
       icon: "fas fa-chart-bar",
       description: "Visualize relatórios em formatos de gráficos e tabelas"
-    },
+    }, */
     {
 			name: 'Componentes',
 			url: '/componentes',

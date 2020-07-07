@@ -221,8 +221,6 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
     opt.style = this.options.style || this.defaultOptions.style;
     opt.width = this.options.width || this.defaultOptions.width;
 
-    console.log(opt);
-
     this.options = opt;
 
 /*     $.fn.selectpicker.Constructor.BootstrapVersion = this.options.bootstrapVersion || this.defaultOptions.bootstrapVersion;
