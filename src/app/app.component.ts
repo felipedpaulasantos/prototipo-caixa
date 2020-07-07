@@ -36,14 +36,14 @@ export class AppComponent implements OnInit {
   isMenuAberto = false;
   account: Account;
   hasAccount = true;
+  temaGlobal;
 
   ngOnInit(): void {
     this.setPageTitleAsRoute();
-
     this.menuService.isAberto$.subscribe(isAberto => {
       this.isMenuAberto = isAberto;
     });
-
+    this.styleService.globalTheme$.subscribe(tema => this.temaGlobal = tema);
     DatatableConfig.setIdiomaDefault();
   }
 

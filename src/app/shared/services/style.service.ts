@@ -2,12 +2,31 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { LOGO_CAIXA_BRANCO_SRC } from '../constants/constants';
 
+export interface Tema {
+  toolbarBg: string;
+  toolbarText: string;
+  toolbarIcon: string;
+  sidemenuBg: string;
+  counteudoPrincipalBg: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class StyleService {
 
   constructor() { }
+
+  private defaultTheme: Tema = {
+    toolbarBg: "primary",
+    toolbarText: "light-light",
+    toolbarIcon: LOGO_CAIXA_BRANCO_SRC,
+    sidemenuBg: "light-light",
+    counteudoPrincipalBg: ""
+  };
+
+  private globalThemeSource = new BehaviorSubject<Tema>(this.defaultTheme);
+  globalTheme$ = this.globalThemeSource.asObservable();
 
   private toolbarBgSource = new BehaviorSubject<string>("primary");
   toolbarBg$ = this.toolbarBgSource.asObservable();
@@ -25,22 +44,32 @@ export class StyleService {
   conteudoPrincipalBg$ = this.conteudoPrincipalBg.asObservable();
 
   setToolbarBg(className: string) {
-    this.toolbarBgSource.next(className);
+    const tema = this.globalThemeSource.value;
+    tema.toolbarBg = className;
+    this.globalThemeSource.next(tema);
   }
 
   setToolbarText(className: string) {
-    this.toolbarTextSource.next(className);
+    const tema = this.globalThemeSource.value;
+    tema.toolbarText = className;
+    this.globalThemeSource.next(tema);
   }
 
   setToolbarIcon(src: string) {
-    this.toolbarIconSource.next(src);
+    const tema = this.globalThemeSource.value;
+    tema.toolbarIcon = src;
+    this.globalThemeSource.next(tema);
   }
 
   setSidemenuBg(className: string) {
-    this.sidemenuBgSource.next(className);
+    const tema = this.globalThemeSource.value;
+    tema.sidemenuBg = className;
+    this.globalThemeSource.next(tema);
   }
 
-  setConteudoPrincipalBg(conteudoPrincipalBg: string) {
-    this.conteudoPrincipalBg.next(conteudoPrincipalBg);
+  setConteudoPrincipalBg(className: string) {
+    const tema = this.globalThemeSource.value;
+    tema.counteudoPrincipalBg = className;
+    this.globalThemeSource.next(tema);
   }
 }

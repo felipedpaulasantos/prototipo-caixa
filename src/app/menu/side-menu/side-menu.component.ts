@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 import { filter, tap, map, mergeMap } from 'rxjs/operators';
 import { AccordionConfig } from 'src/app/shared/components/accordion/types/accordion-config';
 import { AccordionMenu } from 'src/app/shared/components/accordion/types/accordion-menu';
-import { StyleService } from 'src/app/shared/services/style.service';
+import { StyleService, Tema } from 'src/app/shared/services/style.service';
 
 const MENU_ROUTE_PROPERTY = "menuLateral";
 const MOBILE_BREAKPOINT = 991.9;
@@ -29,6 +29,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     public styleService: StyleService
   ) {}
 
+  @Input() tema: Tema;
   options: AccordionConfig = { multi: false };
 
   menus: AccordionMenu[] = [
@@ -82,12 +83,12 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       url: '/cores',
       active: false
     },
-/*     {
+     {
       name: 'Layout',
       iconClass: 'fas fa-lg fa-layer-group',
       url: '/layout',
       active: false
-    }, */
+    },
 /*     {
       name: 'Contas',
       iconClass: 'fas fa-lg fa-phone-alt',

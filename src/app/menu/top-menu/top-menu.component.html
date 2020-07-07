@@ -1,4 +1,4 @@
-<header #navbarTop id="navbarTop" class="bg-primary text-white" appCloseTab>
+<header #navbarTop id="navbarTop" class="bg-{{ tema.toolbarBg }} text-{{ tema.toolbarText }}" appCloseTab>
 
   <nav id="navToolbar">
 
@@ -12,7 +12,7 @@
     <div id="verticalLine" class="d-none d-md-block"></div>
 
     <div class="d-flex align-items-center mr-auto ml-md-4 h-100">
-      <img [src]="logoBranco" class="img-fluid img-logo rounded mr-3">
+      <img [src]="tema.toolbarIcon || logoBranco" class="img-fluid img-logo rounded mr-3">
       <h4 class="m-0 header-caixa full-opacity text-uppercase d-none d-sm-block">
         Protótipo Caixa
       </h4>
@@ -20,7 +20,7 @@
 
     <div class="ml-auto">
       <div *ngIf="user" class="mr-4">
-          <button class="btn btn-caixa btn-primary shadow-none d-flex align-items-center" 
+          <button class="btn btn-caixa btn-flat shadow-none d-flex align-items-center" 
           data-toggle="dropdown">
             <i class="fas fa-user-circle fa-lg"></i>
             <span class="ml-2 d-none d-md-block font-fam-bold">

@@ -117,6 +117,7 @@ $color in $cx-gradient-themes {
   @extend .btn-caixa;
   background: transparent;
   box-shadow: none;
+  color: inherit !important;
   &:focus,
   &:hover {
     filter: brightness(120%);
@@ -727,7 +728,6 @@ $value in $cx-text-opacities {
       &.active {
         color: nth($colors, 3);
         font-family: $cx-font-family-bold;
-        opacity: $cx-text-opacity-1;
       }
       @extend .ripple;
       $ripple-color: set-ripple(nth($list: $colors, $n: 1));

@@ -2,12 +2,11 @@ import { Component, Input, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { OAuthService } from "angular-oauth2-oidc";
 import { Observable } from "rxjs";
 
-import { AccountService } from "../../account/account.service";
 import { UserService } from "../../authentication/users/user.service";
 import { User } from "../../authentication/users/user";
 import { ModalService } from "src/app/shared/services/modal.service";
 import { SideMenuService } from "../side-menu/side-menu.service";
-import { StyleService } from 'src/app/shared/services/style.service';
+import { StyleService, Tema } from 'src/app/shared/services/style.service';
 import { LOGO_CAIXA_BRANCO_SRC } from 'src/app/shared/constants/constants';
 
 @Component({
@@ -20,12 +19,12 @@ export class TopMenuComponent implements OnInit {
   logoBranco = LOGO_CAIXA_BRANCO_SRC;
 
   @ViewChild("navbarTop") navbarTop: ElementRef;
+  @Input() tema: Tema;
   @Input() resources;
   user$ = new Observable<User>(null);
   user: User;
 
   constructor(
-    private accountService: AccountService,
     private oauthService: OAuthService,
     private userService: UserService,
     private modalService: ModalService,

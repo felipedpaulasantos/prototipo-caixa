@@ -46,6 +46,7 @@ export class LayoutComponent implements OnInit {
   }
 
   onToolbarBgChange(theme: string, tom?: string): void {
+    console.log(theme);
     if (!theme) { return; }
 
     const temaSelecionado = this.temas.find(tema => tema.name === theme);
