@@ -158,7 +158,7 @@
 					<div class="col-12 col-md-6 col-lg-6">
 						<form>
 							<cx-select [initTrigger]="opcoesAsync">
-								<label>Número favorito</label>
+								<label>Número da sorte</label>
 								<select selectCaixa>
 									<option *ngIf="opcoesAsync?.length == 0" value="">Clique no botão para atualizar as opções</option>
 									<option *ngFor="let opcao of opcoesAsync">{{ opcao }}</option>
@@ -189,8 +189,7 @@
 				Configurações</a>
 			<a (click)="scrollTo('painelSelectAsync')" class="list-group-item list-group-item-action"
 				[ngClass]="{'active': currentSection == 'painelSelectAsync'}" role="button">
-				Opções Assíncronas</a>
-				
+				Opções Assíncronas</a>		
 		</div>
 	</nav>
 </div>

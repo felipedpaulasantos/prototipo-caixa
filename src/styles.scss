@@ -588,18 +588,17 @@ ul.tab-caixa li a,
   @extend .input-base;
 }
 .input-caixa,
-.input-caixa-wrapper,
-select+button.input-caixa[aria-expanded="true"] {
+.input-caixa-wrapper {
   @extend .input-caixa-primary;
 }
 cx-input.ng-invalid .input-caixa-wrapper,
-select.ng-dirty.ng-invalid+button.input-caixa,
+cx-select.ng-invalid .input-caixa-wrapper,
 .input-caixa.ng-dirty.ng-invalid,
 .input-caixa.ng-touched.ng-invalid {
   @extend .input-caixa-danger;
 }
 cx-input.ng-valid .input-caixa-wrapper,
-select.ng-dirty.ng-valid+button.input-caixa,
+cx-select.ng-valid .input-caixa-wrapper,
 .input-caixa.ng-dirty.ng-valid,
 .input-caixa.ng-touched.ng-valid {
   @extend .input-caixa-success;
