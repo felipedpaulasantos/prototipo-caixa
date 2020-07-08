@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Input, AfterViewInit, ContentChild,
-  ViewChild, ElementRef, HostBinding, Renderer2, AfterContentInit, SimpleChanges, OnChanges, AfterContentChecked
+  ViewChild, ElementRef, HostBinding, Renderer2, AfterContentInit, SimpleChanges, OnChanges, AfterContentChecked, HostListener
 } from '@angular/core';
 import { SelectCaixaDirective } from './select-caixa.directive';
 import { AbstractControl, NgControl, FormControlName } from '@angular/forms';
@@ -79,9 +79,10 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
   isRequired = false;
   private nativeElement: any;
 
-  dropdownButton: any;
-  dropdownMenu: any;
-  hasBlurEvent = false;
+  private dropdownButton: any;
+  private dropdownMenu: any;
+  private isDropdownObserved = false;
+  private changes: MutationObserver;
 
   constructor(
     private renderer: Renderer2
@@ -100,24 +101,44 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
   }
 
   ngAfterContentInit(): void {
+    this.setNativeElement();
+    this.setFormInput();
+    this.isRequired = this.isFieldRequired(this.formInput);
+  }
+
+  setNativeElement() {
+    if (this.selectDirective && this.selectDirective.element) {
+      this.nativeElement = this.selectDirective.element;
+    }
+  }
+
+  setFormInput() {
     if (this.formControlDirective) {
       this.formInput = this.formControlDirective.control;
     } else if (this.ngControlDirective) {
       this.formInput = this.ngControlDirective.control;
     }
-
-    if (this.selectDirective && this.selectDirective.element) {
-      this.nativeElement = this.selectDirective.element;
-      this.dropdownButton = this.selectDirective.element.nextElementSibling || this.nativeElement.nextElementSibling;
-    }
-
-    this.isRequired = this.isFieldRequired(this.formInput);
   }
 
   ngAfterContentChecked(): void {
     if (this.nativeElement) {
       this.dropdownButton = this.nativeElement.nextElementSibling;
       this.dropdownMenu = this.dropdownButton ? this.dropdownButton.nextElementSibling : null;
+      if (this.dropdownButton && !this.isDropdownObserved) {
+        this.changes = new MutationObserver((mutations: MutationRecord[]) => {
+          mutations.forEach((mutation: MutationRecord) => {
+            if (mutation.target["attributes"]["aria-expanded"].value !== "true") {
+              this.renderer.removeClass(this.wrapper.nativeElement, "focused");
+            } else {
+              this.renderer.addClass(this.wrapper.nativeElement, "focused");
+            }
+          });
+        });
+        this.changes.observe(this.dropdownButton, {
+          attributeFilter: ["aria-expanded"]
+        });
+        this.isDropdownObserved = true;
+      }
     }
   }
 
@@ -181,18 +202,6 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
       }
     }
     return false;
-  }
-
-  @HostBinding("class.input-caixa-focused")
-  get focus() {
-    if (!this.selectDirective || !this.dropdownMenu || !this.dropdownButton) { return; }
-
-    if (this.dropdownMenu.className.includes("show")) {
-      this.renderer.addClass(this.wrapper.nativeElement, "focused");
-    } else {
-      this.renderer.removeClass(this.wrapper.nativeElement, "focused");
-    }
-    return this.selectDirective ? this.selectDirective.focus : false;
   }
 
   @HostBinding("class.ng-invalid")
