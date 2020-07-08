@@ -67,6 +67,12 @@
 	display: block;
 	width: 100%;
 }
+::ng-deep cx-select .input-caixa-wrapper {
+	background-image: none !important;
+}
+::ng-deep cx-select .input-caixa-wrapper.focused label {
+	color: cx-variables.$cx-color-primary;
+}
 ::ng-deep cx-select .input-caixa-flex-field {
 	display: inline-flex;
 	width: 100%;

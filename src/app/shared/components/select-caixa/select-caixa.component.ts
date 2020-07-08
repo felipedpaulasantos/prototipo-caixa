@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, AfterViewInit, ContentChild,
-  ViewChild, ElementRef, HostBinding, Renderer2, AfterContentInit, SimpleChanges, OnChanges } from '@angular/core';
+import {
+  Component, OnInit, Input, AfterViewInit, ContentChild,
+  ViewChild, ElementRef, HostBinding, Renderer2, AfterContentInit, SimpleChanges, OnChanges, AfterContentChecked
+} from '@angular/core';
 import { SelectCaixaDirective } from './select-caixa.directive';
 import { AbstractControl, NgControl, FormControlName } from '@angular/forms';
 
@@ -34,7 +36,7 @@ interface BootstrapSelectOptions {
   templateUrl: './select-caixa.component.html',
   styleUrls: ['./select-caixa.component.scss']
 })
-export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, AfterContentInit {
+export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, AfterContentInit, AfterContentChecked {
 
   defaultOptions: BootstrapSelectOptions = {
     bootstrapVersion: '4',
@@ -77,6 +79,10 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
   isRequired = false;
   private nativeElement: any;
 
+  dropdownButton: any;
+  dropdownMenu: any;
+  hasBlurEvent = false;
+
   constructor(
     private renderer: Renderer2
   ) { }
@@ -102,9 +108,17 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
 
     if (this.selectDirective && this.selectDirective.element) {
       this.nativeElement = this.selectDirective.element;
+      this.dropdownButton = this.selectDirective.element.nextElementSibling || this.nativeElement.nextElementSibling;
     }
 
     this.isRequired = this.isFieldRequired(this.formInput);
+  }
+
+  ngAfterContentChecked(): void {
+    if (this.nativeElement) {
+      this.dropdownButton = this.nativeElement.nextElementSibling;
+      this.dropdownMenu = this.dropdownButton ? this.dropdownButton.nextElementSibling : null;
+    }
   }
 
   initialize() {
@@ -124,7 +138,7 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
 
   private isFieldRequired(abstractControl: AbstractControl): boolean {
     if (abstractControl && abstractControl.validator) {
-      const validator = abstractControl.validator({}as AbstractControl);
+      const validator = abstractControl.validator({} as AbstractControl);
       if (validator && validator.required) {
         return true;
       }
@@ -171,7 +185,9 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
 
   @HostBinding("class.input-caixa-focused")
   get focus() {
-    if (this.selectDirective && this.selectDirective.focus) {
+    if (!this.selectDirective || !this.dropdownMenu || !this.dropdownButton) { return; }
+
+    if (this.dropdownMenu.className.includes("show")) {
       this.renderer.addClass(this.wrapper.nativeElement, "focused");
     } else {
       this.renderer.removeClass(this.wrapper.nativeElement, "focused");
@@ -222,16 +238,6 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
     opt.width = this.options.width || this.defaultOptions.width;
 
     this.options = opt;
-
-/*     $.fn.selectpicker.Constructor.BootstrapVersion = this.options.bootstrapVersion || this.defaultOptions.bootstrapVersion;
-    $.fn.selectpicker.Constructor.actionsBox = this.options.actionsBox || this.defaultOptions.actionsBox;
-    $.fn.selectpicker.Constructor.DEFAULTS.liveSearch = this.options.liveSearch || this.defaultOptions.liveSearch;
-    $.fn.selectpicker.Constructor.DEFAULTS.multipleSeparator = this.options.multipleSeparator || this.defaultOptions.multipleSeparator;
-    $.fn.selectpicker.Constructor.DEFAULTS.noneSelectedText = this.options.noneSelectedText || this.defaultOptions.noneSelectedText;
-    $.fn.selectpicker.Constructor.DEFAULTS.noneResultsText = this.options.noneResultsText || this.defaultOptions.noneResultsText;
-    $.fn.selectpicker.Constructor.DEFAULTS.selectAllText = this.options.selectAllText || this.defaultOptions.selectAllText;
-    $.fn.selectpicker.Constructor.DEFAULTS.style = this.options.style || this.defaultOptions.style;
-    $.fn.selectpicker.Constructor.DEFAULTS.width = this.options.width || this.defaultOptions.width; */
   }
 
 }
