@@ -27,8 +27,8 @@ export class CardsComponent extends ComponentesInterface {
   </div>
   <div class="card-body">
     <h5 class="font-fam-bold">Este é um título</h5>
-    <p class="font-fam-bold">Este é um subtítulo</p>
-    <p>Este é um texto</p>
+    <span>class="font-fam-bold">Este é um subtítulo</span>
+    <span>Este é um texto</span>
   </div>
   <div class="card-footer">
     <h5>Isso é um rodapé</h5>
@@ -43,8 +43,8 @@ export class CardsComponent extends ComponentesInterface {
       </div>
       <div class="card-body">
         <h5 class="font-fam-bold">Este é um título</h5>
-        <p class="font-fam-bold">Este é um subtítulo</p>
-        <p>Este é um texto</p>
+        <span>class="font-fam-bold">Este é um subtítulo</span>
+        <span>Este é um texto</span>
       </div>
       <div class="card-footer">
         <h5>Isso é um rodapé</h5>
@@ -59,8 +59,8 @@ export class CardsComponent extends ComponentesInterface {
       </div>
       <div class="card-body">
         <h5 class="font-fam-bold">Este é um título</h5>
-        <p class="font-fam-bold">Este é um subtítulo</p>
-        <p>Este é um texto</p>
+        <span>class="font-fam-bold">Este é um subtítulo</span>
+        <span>Este é um texto</span>
       </div>
       <div class="card-footer">
         <h5>Isso é um rodapé</h5>
@@ -71,7 +71,7 @@ export class CardsComponent extends ComponentesInterface {
 
   htmlCodeCardsEfeito = `        <div class="card card-caixa card-hover">
   <div class="card-body">
-    <p>Este card possui efeito de sombra.</p>
+    <span>Este card possui efeito de sombra.</span>
   </div>
 </div>`.trim();
 
