@@ -92,6 +92,16 @@ export class DatatableConfig {
         showPagination: true
     });
 
+    static CONFIG_COMPLETA_SEM_BOTOES: DatatableSettings = DatatableConfig.getDatatableConfig({
+        showFilter: true,
+        showLength: true,
+        showButtons: true,
+        showTable: true,
+        showInfo: true,
+        showProcessing: true,
+        showPagination: true
+    });
+
     static CONFIG_FILTRO: DatatableSettings = DatatableConfig.getDatatableConfig({
         buttons: [],
         showFilter: true
@@ -102,12 +112,6 @@ export class DatatableConfig {
     });
 
     static CONFIG_SIMPLES: DatatableSettings = DatatableConfig.getDatatableConfig({});
-
-    static setIdiomaDefault() {
-        $.extend($.fn.dataTable.defaults, {
-            language: dtLanguageDefinitionPt
-        });
-    }
 
     static getDatatableConfig(options: CustomDatatableConfig): DatatableSettings {
 
@@ -146,5 +150,11 @@ export class DatatableConfig {
         customConfig.dom = dtDom;
         customConfig.paging = paging;
         return customConfig;
+    }
+
+    static setIdiomaDefault() {
+        $.extend($.fn.dataTable.defaults, {
+            language: dtLanguageDefinitionPt
+        });
     }
 }

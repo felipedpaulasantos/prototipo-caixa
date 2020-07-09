@@ -3,6 +3,9 @@
 .dataTables_wrapper {
   display: flex;
   flex-wrap: wrap;
+  label {
+    color: cx-variables.$cx-color-light-darkest;
+  }
 }
 
 .dataTables_length {
@@ -73,7 +76,6 @@
     .btn-sm,
     .btn-outline-primary;
     margin-left: 0.5rem;
-
     &.current {
       @extend .active;
     }
@@ -82,13 +84,12 @@
 
 .dt-buttons {
   width: 100%;
-  margin-bottom: 1.5rem;
-
+  margin-bottom: 1rem;
   button.dt-button {
     @extend .btn,
     .btn-caixa,
     .btn-sm,
-    .btn-outline-primary;
+    .btn-outline-dark-light;
   }
 }
 

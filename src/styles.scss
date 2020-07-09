@@ -115,12 +115,13 @@ $color in $cx-gradient-themes {
 
 .btn-flat {
   @extend .btn-caixa;
+  transition: 0.3s;
   background: transparent;
   box-shadow: none;
   color: inherit !important;
   &:focus,
   &:hover {
-    filter: brightness(120%);
+    filter: brightness(150%);
   }
 }
 
