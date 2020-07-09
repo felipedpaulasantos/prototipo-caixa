@@ -11,8 +11,7 @@
       <ng-content></ng-content>
     </div>
     <ng-container *ngIf="showFeedbackIcon">
-      <div *ngIf="(formInput && formInput?.touched) 
-        || (!formInput && inputDirective && inputDirective.changed)"
+      <div *ngIf="getShowFeedbackIcon()"
         class="input-caixa-feedback-icon ripple" role="button" (click)="resetField()"
         [ngClass]="{'text-success': isFieldValid(), 'text-danger': isFieldInvalid()}">
         <i *ngIf="isFieldValid()" class="fas fa-check" title="Resetar campo"></i>
@@ -25,9 +24,7 @@
 <div class="feedback-message w-100 text-right">
   <ng-container *ngIf="showFeedbackMessage">
     <ng-container class="w-100 text-right" 
-    *ngIf="!formInput && inputDirective && ((!inputDirective.changed && !isFieldInvalid()) || (inputDirective.changed && (isFieldValid() || !isFieldInvalid()) ))
-      || formInput && (formInput.untouched || formInput.valid) 
-      else errorFeedback">
+    *ngIf="getShowFeedbackMessage() else errorFeedback">
       <small class="font-italic">
         {{ isRequired ? "Obrigatório" : "" }}
         <ng-container *ngIf="formato">

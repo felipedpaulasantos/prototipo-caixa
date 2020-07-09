@@ -527,7 +527,7 @@ ul.tab-caixa li a,
 @each $theme, $colors in $cx-colors {
   .input-caixa-#{$theme} {
     @extend .input-base;
-    transition: background-size 0.4s, background-color 0.4s, border-color 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: background-size 0.4s, background-color 0.4s, border-color 0.4s ease-in-out, box-shadow 0.15s ease-in-out;
     &,
     &:focus,
     &:active,
@@ -724,8 +724,9 @@ $value in $cx-text-opacities {
     .nav-item .side-menu-item {
       border-bottom: solid 1px nth($colors, 4);
       color: nth($colors, 2);
-      &:hover {
-        color: nth($colors, 3);
+      transition: background 0.3s;
+      &:hover {       
+        background: darken($color: nth($colors, 1), $amount: 5%);
       }
       &.active {
         color: nth($colors, 3);

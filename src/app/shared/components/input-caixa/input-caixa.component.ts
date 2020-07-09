@@ -34,8 +34,8 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   @Input() customErrors: string | any[];
   @Input() formato: string;
   @Input() msgErroPadrao: string;
-  parsedOptionalErrors = [];
 
+  parsedOptionalErrors = [];
   formInput: AbstractControl;
   isRequired = false;
   nativeElement: any;
@@ -94,6 +94,18 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
       return true;
     }
     return false;
+  }
+
+  getShowFeedbackMessage() {
+    return !this.formInput && this.inputDirective
+      && ((!this.inputDirective.changed && !this.isFieldInvalid())
+      || (this.inputDirective.changed && (this.isFieldValid() || !this.isFieldInvalid()) ))
+      || this.formInput && (this.formInput.untouched || this.formInput.valid);
+  }
+
+  getShowFeedbackIcon() {
+    return (this.formInput && this.formInput?.touched)
+      || (!this.formInput && this.inputDirective && this.inputDirective.changed);
   }
 
   isFieldValid(): boolean {
