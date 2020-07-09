@@ -62,13 +62,6 @@ export abstract class ComponentesInterface {
 		for (let i = 0; i < children.length; i++) {
       const element = children[i];
 			if (this.spiedTags.some(spiedTag => spiedTag === element.tagName)) {
-/*         console.log("CHILD", element);
-        console.log("ID", element.id);
-        console.log("SCROLLTOP", scrollTop);
-        console.log("OFFSET TOP", element.offsetTop);
-        console.log("OFFSET", this.sectionOffset);
-        console.log("OFFSETTOP - PARENT - OFFSET", element.offsetTop - this.sectionOffset);
-        console.log("==================="); */
 				if ((element.offsetTop - this.sectionOffset) <= scrollTop) {
 					currentSection = element.id;
 				}
