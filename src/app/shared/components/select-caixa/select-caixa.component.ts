@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import { SelectCaixaDirective } from './select-caixa.directive';
 import { AbstractControl, NgControl, FormControlName } from '@angular/forms';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 declare let $: any;
 
@@ -31,6 +32,25 @@ interface BootstrapSelectOptions {
   width?: string | boolean;
 }
 
+const defaultOptions: BootstrapSelectOptions = {
+  bootstrapVersion: '4',
+  actionsBox: false,
+  container: false,
+  deselectAllText: 'Remover seleção',
+  liveSearch: false,
+  liveSearchNormalize: false,
+  liveSearchPlaceholder: null,
+  liveSearchStyle: LiveSearchStyle.contains,
+  mobile: true,
+  multipleSeparator: ', ',
+  noneSelectedText: 'Nenhuma opção selecionada',
+  noneResultsText: 'Nenhum resultado encontrado',
+  selectAllText: 'Selecionar todos',
+  style: '',
+  tickIcon: 'fa fa-check',
+  width: false
+};
+
 @Component({
   selector: 'cx-select',
   templateUrl: './select-caixa.component.html',
@@ -38,29 +58,12 @@ interface BootstrapSelectOptions {
 })
 export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, AfterContentInit, AfterContentChecked {
 
-  defaultOptions: BootstrapSelectOptions = {
-    bootstrapVersion: '4',
-    actionsBox: false,
-    container: false,
-    deselectAllText: 'Remover seleção',
-    liveSearch: false,
-    liveSearchNormalize: false,
-    liveSearchPlaceholder: null,
-    liveSearchStyle: LiveSearchStyle.contains,
-    mobile: true,
-    multipleSeparator: ', ',
-    noneSelectedText: 'Nenhuma opção selecionada',
-    noneResultsText: 'Nenhum resultado encontrado',
-    selectAllText: 'Selecionar todos',
-    style: '',
-    tickIcon: 'fa fa-check',
-    width: false
-  };
-
   Object = Object;
 
   @Input() options: BootstrapSelectOptions = {};
   @Input() initTrigger = false;
+  @Input() showFeedbackIcon = true;
+  @Input() showFeedbackMessage = true;
   @Input() showFeedback = true;
 
   @ContentChild(NgControl, { read: NgControl, static: true })
@@ -83,10 +86,11 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
   private dropdownMenu: any;
   private isDropdownObserved = false;
   private changes: MutationObserver;
+  private focus = false;
 
   constructor(
     private renderer: Renderer2
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.setBootstrapSelectDefault();
@@ -94,6 +98,7 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
 
   ngOnChanges(changes: SimpleChanges): void {
     this.refresh();
+    this.setFeedback();
   }
 
   ngAfterViewInit(): void {
@@ -120,6 +125,12 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
     }
   }
 
+  setFeedback() {
+    if (!this.showFeedback) {
+      this.showFeedbackIcon = this.showFeedbackMessage = false;
+    }
+  }
+
   ngAfterContentChecked(): void {
     if (this.nativeElement) {
       this.dropdownButton = this.nativeElement.nextElementSibling;
@@ -127,10 +138,12 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
       if (this.dropdownButton && !this.isDropdownObserved) {
         this.changes = new MutationObserver((mutations: MutationRecord[]) => {
           mutations.forEach((mutation: MutationRecord) => {
-            if (mutation.target["attributes"]["aria-expanded"].value !== "true") {
+            if (mutation.target["attributes"]["aria-expanded"].value !== "true" || !this.hasFocus()) {
               this.renderer.removeClass(this.wrapper.nativeElement, "focused");
+              this.focus = false;
             } else {
               this.renderer.addClass(this.wrapper.nativeElement, "focused");
+              this.focus = true;
             }
           });
         });
@@ -218,6 +231,32 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
       this.renderer.addClass(this.wrapper.nativeElement, "ng-valid");
       return "ng-valid ng-touched";
     }
+    if (this.hasFocus()) {
+      this.renderer.addClass(this.wrapper.nativeElement, "focused");
+    } else if (!this.focus) {
+      this.renderer.removeClass(this.wrapper.nativeElement, "focused");
+    }
+  }
+
+  hasFocus(): boolean {
+    if (!this.dropdownButton) {
+      return false;
+    } else {
+      return $(this.dropdownButton).is(":focus");
+    }
+  }
+
+  getFeedbackIcon() {
+    return (this.formInput && !this.formInput.pristine)
+      || (!this.formInput && this.selectDirective && this.selectDirective.changed
+        && (this.isFieldValid() || this.isFieldInvalid()));
+  }
+
+  getFeedbackMessage() {
+    return !this.formInput
+      && this.selectDirective && ((!this.selectDirective.changed && !this.isFieldInvalid())
+        || (this.selectDirective.changed && (this.isFieldValid() || !this.isFieldInvalid())))
+      || this.formInput && (this.formInput.pristine || this.formInput.valid);
   }
 
   reset() {
@@ -234,17 +273,17 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
 
     const opt: BootstrapSelectOptions = {};
 
-    opt.bootstrapVersion = this.options.bootstrapVersion || this.defaultOptions.bootstrapVersion;
-    opt.actionsBox = this.options.actionsBox || this.defaultOptions.actionsBox;
-    opt.container = this.options.container || this.defaultOptions.container;
-    opt.deselectAllText = this.options.deselectAllText || this.defaultOptions.deselectAllText;
-    opt.liveSearch = this.options.liveSearch || this.defaultOptions.liveSearch;
-    opt.multipleSeparator = this.options.multipleSeparator || this.defaultOptions.multipleSeparator;
-    opt.noneSelectedText = this.options.noneSelectedText || this.defaultOptions.noneSelectedText;
-    opt.noneResultsText = this.options.noneResultsText || this.defaultOptions.noneResultsText;
-    opt.selectAllText = this.options.selectAllText || this.defaultOptions.selectAllText;
-    opt.style = this.options.style || this.defaultOptions.style;
-    opt.width = this.options.width || this.defaultOptions.width;
+    opt.bootstrapVersion = this.options.bootstrapVersion || defaultOptions.bootstrapVersion;
+    opt.actionsBox = this.options.actionsBox || defaultOptions.actionsBox;
+    opt.container = this.options.container || defaultOptions.container;
+    opt.deselectAllText = this.options.deselectAllText || defaultOptions.deselectAllText;
+    opt.liveSearch = this.options.liveSearch || defaultOptions.liveSearch;
+    opt.multipleSeparator = this.options.multipleSeparator || defaultOptions.multipleSeparator;
+    opt.noneSelectedText = this.options.noneSelectedText || defaultOptions.noneSelectedText;
+    opt.noneResultsText = this.options.noneResultsText || defaultOptions.noneResultsText;
+    opt.selectAllText = this.options.selectAllText || defaultOptions.selectAllText;
+    opt.style = this.options.style || defaultOptions.style;
+    opt.width = this.options.width || defaultOptions.width;
 
     this.options = opt;
   }
