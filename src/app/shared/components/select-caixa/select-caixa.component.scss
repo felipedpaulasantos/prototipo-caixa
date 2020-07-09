@@ -70,6 +70,12 @@
 ::ng-deep cx-select .input-caixa-wrapper.focused label {
 	color: cx-variables.$cx-color-primary;
 }
+::ng-deep cx-select.ng-valid .input-caixa-wrapper.focused label {
+	color: cx-variables.$cx-color-success;
+}
+::ng-deep cx-select.ng-invalid .input-caixa-wrapper.focused label {
+	color: cx-variables.$cx-color-danger
+}
 ::ng-deep cx-select .input-caixa-flex-field {
 	display: inline-flex;
 	width: 100%;
