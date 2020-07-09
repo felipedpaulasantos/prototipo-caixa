@@ -1,7 +1,8 @@
 import {
-	Component, Input, ComponentFactoryResolver, ChangeDetectorRef,
-	ViewChild, ElementRef, ViewContainerRef, Type, ComponentRef,
-	Injector, OnInit, OnDestroy, HostListener } from '@angular/core';
+  Component, Input, ComponentFactoryResolver, ChangeDetectorRef,
+  ViewChild, ElementRef, ViewContainerRef, Type, ComponentRef,
+  Injector, OnInit, OnDestroy, HostListener
+} from '@angular/core';
 import { SideMenuService } from './side-menu.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -27,7 +28,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef,
     private menuService: SideMenuService,
     public styleService: StyleService
-  ) {}
+  ) { }
 
   @Input() tema: Tema;
   options: AccordionConfig = { multi: false };
@@ -37,6 +38,12 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       name: 'Início',
       iconClass: 'fas fa-lg fa-home',
       url: '/home',
+      active: false
+    },
+    {
+      name: 'Layout',
+      iconClass: 'fas fa-lg fa-layer-group',
+      url: '/layout',
       active: false
     },
     {
@@ -78,29 +85,29 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       ]
     },
     {
+      name: 'Tipografia',
+      iconClass: 'fas fa-lg fa-font',
+      url: '/tipografia',
+      active: false
+    },
+    {
       name: 'Cores',
       iconClass: 'fas fa-lg fa-palette',
       url: '/cores',
       active: false
-    },
-     {
-      name: 'Layout',
-      iconClass: 'fas fa-lg fa-layer-group',
-      url: '/layout',
-      active: false
-    },
-/*     {
-      name: 'Contas',
-      iconClass: 'fas fa-lg fa-phone-alt',
-      url: '/contas',
-      active: false
-    },
-    {
-      name: 'Relatórios',
-      iconClass: 'fas fa-lg fa-chart-bar',
-      url: '/relatorios',
-      active: false
-    } */
+    }
+    /*     {
+          name: 'Contas',
+          iconClass: 'fas fa-lg fa-phone-alt',
+          url: '/contas',
+          active: false
+        },
+        {
+          name: 'Relatórios',
+          iconClass: 'fas fa-lg fa-chart-bar',
+          url: '/relatorios',
+          active: false
+        } */
   ];
 
   @ViewChild("menuLateral", { read: ElementRef })
@@ -219,7 +226,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       this.componentRef &&
       this.componentRef.componentType &&
       this.componenteParaInjetar.toString() ===
-        this.componentRef.componentType.toString()
+      this.componentRef.componentType.toString()
     ) { return; }
 
     this.clearComponent();

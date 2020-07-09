@@ -62,6 +62,14 @@ const routes: Routes = [
     loadChildren: () => import('./demonstracao/componentes/componentes.module').then(m => m.ComponentesModule)
   },
   {
+    path: 'tipografia',
+    data: {
+      title: 'Tipografia',
+      breadcrumb: 'Tipografia',
+      animation: 'Tipografia'
+    },
+    loadChildren: () => import('./tipografia/tipografia.module').then(m => m.TipografiaModule) },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full'

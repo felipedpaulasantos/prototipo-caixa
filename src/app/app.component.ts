@@ -5,10 +5,8 @@ import { switchMap, map, filter } from 'rxjs/operators';
 
 import { Account } from './account/account';
 import { fadeInAnimation } from './shared/animations/simple-fade.animation';
-import { AuthenticationService } from './authentication/authentication.service';
 import { UserService } from './authentication/users/user.service';
 import { SideMenuService } from './menu/side-menu/side-menu.service';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { StyleService } from './shared/services/style.service';
 import { DatatableConfig } from './shared/constants/datatable-definitions';
 
@@ -23,8 +21,6 @@ export class AppComponent implements OnInit {
   public constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthenticationService,
-    private spinner: NgxSpinnerService,
     private titleService: Title,
     public menuService: SideMenuService,
     public userService: UserService,

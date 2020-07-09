@@ -15,17 +15,30 @@ export class HomeComponent implements OnInit {
 
   resources = [
     {
-      name: "Cores",
-      url: "/cores",
-      icon: "fas fa-palette",
-      description: "Consulte as cores disponíveis e a recomendação de seus usos"
-    },
-    {
       name: 'Layout',
       icon: 'fas fa-layer-group',
       url: '/layout',
       description: "Altera os temas da aplicação",
     },
+    {
+			name: 'Componentes',
+			url: '/componentes',
+      icon: 'fas fa-toolbox',
+      description: 'Testes de estilo e componentes'
+    },
+    {
+			name: 'Tipografia',
+			url: '/tipografia',
+      icon: 'fas fa-font',
+      description: 'Fontes e títulos'
+		},
+    {
+      name: "Cores",
+      url: "/cores",
+      icon: "fas fa-palette",
+      description: "Consulte as cores disponíveis e a recomendação de seus usos"
+    },
+
 /*     {
       name: "Conta",
       url: "/contas",
@@ -38,12 +51,6 @@ export class HomeComponent implements OnInit {
       icon: "fas fa-chart-bar",
       description: "Visualize relatórios em formatos de gráficos e tabelas"
     }, */
-    {
-			name: 'Componentes',
-			url: '/componentes',
-      icon: 'fas fa-toolbox',
-      description: 'Testes de estilo e componentes'
-		}
   ];
 
   ngOnInit() {
