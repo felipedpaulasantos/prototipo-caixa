@@ -206,7 +206,7 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
 
   @HostBinding("class.ng-invalid")
   get invalid() {
-    if (this.formInput && !this.formInput.pristine && this.formInput.invalid) {
+    if (this.formInput && !this.formInput.pristine && this.formInput.invalid && this.showFeedback) {
       this.renderer.addClass(this.wrapper.nativeElement, "ng-invalid");
       return "ng-invalid ng-touched";
     }
@@ -214,8 +214,7 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
 
   @HostBinding("class.ng-valid")
   get valid() {
-    if (this.formInput && !this.formInput.pristine && this.formInput.valid) {
-      console.log("VALID");
+    if (this.formInput && !this.formInput.pristine && this.formInput.valid && this.showFeedback) {
       this.renderer.addClass(this.wrapper.nativeElement, "ng-valid");
       return "ng-valid ng-touched";
     }

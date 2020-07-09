@@ -11,7 +11,7 @@
 			<ng-content></ng-content>
 			<ng-content select="button.bootstrap-select-button"></ng-content>
 		</div>
-		<div *ngIf="(formInput && !formInput.pristine) 
+		<div *ngIf="showFeedback && (formInput && !formInput.pristine) 
 			|| (!formInput && selectDirective && selectDirective.changed && (isFieldValid() || isFieldInvalid()))"
 			class="input-caixa-feedback-icon ripple" role="button" (click)="reset()"
 			[ngClass]="{'text-success': isFieldValid(), 'text-danger': isFieldInvalid()}">
