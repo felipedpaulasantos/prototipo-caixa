@@ -18,13 +18,13 @@ export class HomeComponent implements OnInit {
       name: 'Layout',
       icon: 'fas fa-layer-group',
       url: '/layout',
-      description: "Altera os temas da aplicação",
+      description: "Temas dos principais componentes de layout",
     },
     {
 			name: 'Componentes',
 			url: '/componentes',
       icon: 'fas fa-toolbox',
-      description: 'Testes de estilo e componentes'
+      description: 'Componentes como inputs, botões e tabelas para uso em toda a aplicação'
     },
     {
 			name: 'Tipografia',
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       name: "Cores",
       url: "/cores",
       icon: "fas fa-palette",
-      description: "Consulte as cores disponíveis e a recomendação de seus usos"
+      description: "Cores temáticas e suas aplicações"
     },
 
 /*     {
