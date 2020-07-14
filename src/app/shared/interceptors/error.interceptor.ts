@@ -9,7 +9,7 @@ import {
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { OAuthService } from "angular-oauth2-oidc";
-import { ModalService } from "../services/modal.service";
+import { ModalService } from "../../guia-caixa/services/modal.service";
 import { ToastrService } from "ngx-toastr";
 
 @Injectable()

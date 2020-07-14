@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ModalService } from 'src/app/shared/services/modal.service';
-import { ModalSize } from 'src/app/shared/components/modal/modal-options';
+import { ModalService } from 'src/app/guia-caixa/services/modal.service';
+
 import { ComponentesInterface } from '../componentes-interface';
+import { ModalSize } from 'src/app/guia-caixa/components/modal/modal-options';
 
 @Component({
   selector: 'app-mensagens',

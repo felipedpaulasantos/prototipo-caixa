@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
-import { DatatableConfig, DatatableSettings } from 'src/app/shared/constants/datatable-definitions';
+
 import { ComponentesInterface } from '../componentes-interface';
 import { ToastrService } from 'ngx-toastr';
+import { DatatableSettings, DatatableConfig } from 'src/app/guia-caixa/constants/datatable-definitions';
 
 @Component({
   selector: 'app-tabelas',

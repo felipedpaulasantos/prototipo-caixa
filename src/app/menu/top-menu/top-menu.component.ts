@@ -4,10 +4,11 @@ import { Observable } from "rxjs";
 
 import { UserService } from "../../authentication/users/user.service";
 import { User } from "../../authentication/users/user";
-import { ModalService } from "src/app/shared/services/modal.service";
+import { ModalService } from "src/app/guia-caixa/services/modal.service";
 import { SideMenuService } from "../side-menu/side-menu.service";
-import { StyleService, Tema } from 'src/app/shared/services/style.service';
-import { LOGO_CAIXA_BRANCO_SRC } from 'src/app/shared/constants/constants';
+import { StyleService, Tema } from 'src/app/guia-caixa/services/style.service';
+import { LOGO_CAIXA_BRANCO_SRC } from 'src/app/guia-caixa/constants/constants';
+
 
 @Component({
   selector: "app-top-menu",

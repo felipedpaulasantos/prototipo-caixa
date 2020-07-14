@@ -15,6 +15,7 @@ import { HighlightModule } from 'ngx-highlightjs';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DocumentacaoTemplateComponent } from './documentacao-template/documentacao-template.component';
 import { SelectComponent } from './select/select.component';
+import { GuiaCaixaModule } from 'src/app/guia-caixa/guia-caixa.module';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { SelectComponent } from './select/select.component';
     NgxMaskModule,
     DataTablesModule,
     HighlightModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    GuiaCaixaModule
   ],
   declarations: [
     ComponentesComponent,

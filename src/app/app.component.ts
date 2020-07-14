@@ -7,8 +7,9 @@ import { Account } from './account/account';
 import { fadeInAnimation } from './shared/animations/simple-fade.animation';
 import { UserService } from './authentication/users/user.service';
 import { SideMenuService } from './menu/side-menu/side-menu.service';
-import { StyleService } from './shared/services/style.service';
-import { DatatableConfig } from './shared/constants/datatable-definitions';
+import { StyleService } from './guia-caixa/services/style.service';
+import { DatatableConfig } from './guia-caixa/constants/datatable-definitions';
+
 
 @Component({
   selector: 'app-root',

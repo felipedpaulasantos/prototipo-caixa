@@ -29,6 +29,7 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { AccountModule } from './account/account.module';
 import { CoresModule } from './cores/cores.module';
+import { GuiaCaixaModule } from './guia-caixa/guia-caixa.module';
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -52,6 +53,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       SharedModule,
       PerfectScrollbarModule,
       DataTablesModule,
+      GuiaCaixaModule,
       NgxMaskModule.forRoot(),
       OAuthModule.forRoot(),
       ToastrModule.forRoot({

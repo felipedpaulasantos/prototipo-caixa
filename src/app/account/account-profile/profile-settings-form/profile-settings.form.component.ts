@@ -2,9 +2,7 @@ import {
   Component,
   Input,
   SimpleChanges,
-  OnChanges,
-  AfterViewInit
-} from "@angular/core";
+  OnChanges} from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 

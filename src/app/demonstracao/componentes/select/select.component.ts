@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, ContentChild } from '@angular/core';
 import { ComponentesInterface } from '../componentes-interface';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, Validators } from '@angular/forms';
-import { SelectCaixaDirective } from 'src/app/shared/components/select-caixa/select-caixa.directive';
-import { SelectCaixaComponent } from 'src/app/shared/components/select-caixa/select-caixa.component';
+import { SelectCaixaComponent } from 'src/app/guia-caixa/components/select-caixa/select-caixa.component';
+
 
 @Component({
   templateUrl: './select.component.html',

@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 import { filter, tap, map, mergeMap } from 'rxjs/operators';
 import { AccordionConfig } from 'src/app/shared/components/accordion/types/accordion-config';
 import { AccordionMenu } from 'src/app/shared/components/accordion/types/accordion-menu';
-import { StyleService, Tema } from 'src/app/shared/services/style.service';
+import { StyleService, Tema } from 'src/app/guia-caixa/services/style.service';
 
 const MENU_ROUTE_PROPERTY = "menuLateral";
 const MOBILE_BREAKPOINT = 991.9;

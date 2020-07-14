@@ -12,7 +12,7 @@ import { Label, BaseChartDirective, Colors } from "ng2-charts";
 import * as pluginDataLabels from "chartjs-plugin-datalabels";
 
 import { CustomChartData } from "../custom-chart-data";
-import { StyleService } from 'src/app/shared/services/style.service';
+import { StyleService } from 'src/app/guia-caixa/services/style.service';
 
 declare var Chart: any;
 

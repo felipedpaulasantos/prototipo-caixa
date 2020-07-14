@@ -1,4 +1,4 @@
-import { loremIpsumPlaceHolder } from '../shared/constants/constants';
+import { loremIpsumPlaceHolder } from '../guia-caixa/constants/constants';
 
 export const textosCores = {
 	primary: `

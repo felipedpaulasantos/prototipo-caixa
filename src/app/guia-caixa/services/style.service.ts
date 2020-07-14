@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { LOGO_CAIXA_BRANCO_SRC } from '../constants/constants';
 
+
 export interface Tema {
   toolbarBg: string;
   toolbarText: string;

@@ -10,6 +10,7 @@ import { ProfileSettingsFormComponent } from "./profile-settings-form/profile-se
 import { AccountProfileComponent } from "./account-profile.component";
 import { SharedComponentsModule } from "../../shared/components/shared-components.module";
 import { NgxMaskModule } from 'ngx-mask';
+import { GuiaCaixaModule } from 'src/app/guia-caixa/guia-caixa.module';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { NgxMaskModule } from 'ngx-mask';
         FormsModule,
         ReactiveFormsModule,
         SharedComponentsModule,
+        GuiaCaixaModule,
         NgxMaskModule.forChild()
     ],
     exports: [

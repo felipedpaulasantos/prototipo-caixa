@@ -9,6 +9,7 @@ import { SharedComponentsModule } from '../shared/components/shared-components.m
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountSelectModule } from './account-select/account-select.module';
 import { AccountSidemenuComponent } from './account-sidemenu/account-sidemenu.component';
+import { GuiaCaixaModule } from '../guia-caixa/guia-caixa.module';
 
 @NgModule({
 	imports: [
@@ -20,6 +21,7 @@ import { AccountSidemenuComponent } from './account-sidemenu/account-sidemenu.co
 		ReactiveFormsModule,
 		NgxSpinnerModule,
 		SharedComponentsModule,
+		GuiaCaixaModule,
 		AccountRoutingModule
 	],
 	declarations: [AccountSidemenuComponent]

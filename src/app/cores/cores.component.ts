@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BootstrapTheme, loremIpsumPlaceHolder } from '../shared/constants/constants';
-import { textosCores } from './cores-constants';
+import { loremIpsumPlaceHolder, BootstrapTheme } from '../guia-caixa/constants/constants';
 
 @Component({
   selector: 'app-cores',

@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BootstrapTheme } from 'src/app/shared/constants/constants';
+
 import { ComponentesInterface } from '../componentes-interface';
 import { ToastrService } from 'ngx-toastr';
+import { BootstrapTheme } from 'src/app/guia-caixa/constants/constants';
 
 @Component({
   selector: 'app-botoes',

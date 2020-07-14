@@ -1,11 +1,8 @@
 import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 import { AccountService } from '../../account/account.service';
 import { Account } from '../../account/account';
-import { MessageService } from '../message.service';
 import { DateValidator } from '../../shared/validators/date.validator';
 
 @Component({
@@ -17,11 +14,7 @@ export class MessageFilterFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private messageService: MessageService,
-    private accountService: AccountService,
-    private toastr: ToastrService,
-    private spinner: NgxSpinnerService
-  ) {}
+    private accountService: AccountService  ) {}
 
   @Input() fields: string[] = [
     'accountId', 'dataInicial', 'dataFinal',

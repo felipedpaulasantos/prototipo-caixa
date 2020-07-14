@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { loremIpsumPlaceHolder } from '../shared/constants/constants';
+import { loremIpsumPlaceHolder } from '../guia-caixa/constants/constants';
+
 
 @Component({
   selector: 'app-tipografia',
