@@ -6,7 +6,6 @@ import { HighlightModule } from 'ngx-highlightjs';
 import { ChartsModule } from 'ng2-charts';
 import { NgxMaskModule } from 'ngx-mask';
 
-import { BootstrapSelectComponent } from './bootstrap-select/bootstrap-select.component';
 import { CustomChartComponent } from './charts/bar-chart/bar-chart.component';
 import { TooltipIconComponent } from './tooltip-icon/tooltip-icon.component';
 import { ModalComponent } from './modal/modal.component';
@@ -21,7 +20,6 @@ import { SpinnerCaixaComponent } from './spinner/spinner.component';
 
 @NgModule({
 	declarations: [
-		BootstrapSelectComponent,
 		CustomChartComponent,
 		SpinnerCaixaComponent,
 		TooltipIconComponent,
@@ -43,7 +41,6 @@ import { SpinnerCaixaComponent } from './spinner/spinner.component';
 		NgxMaskModule.forChild()
 	],
 	exports: [
-		BootstrapSelectComponent,
 		SpinnerCaixaComponent,
 		CustomChartComponent,
 		TooltipIconComponent,
