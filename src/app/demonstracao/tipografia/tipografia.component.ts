@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { loremIpsumPlaceHolder } from '../guia-caixa/constants/constants';
+import { loremIpsumPlaceHolder } from 'src/app/guia-caixa/constants/constants';
+
 
 
 @Component({

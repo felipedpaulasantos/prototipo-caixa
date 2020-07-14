@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { LOGO_CAIXA_BRANCO_SRC, LOGO_CAIXA_SRC, LOGO_COMPLETO_SRC, LOGO_COMPLETO_BRANCO_SRC, BootstrapTheme, GradientTheme } from 'src/app/guia-caixa/constants/constants';
+import { StyleService, Tema } from 'src/app/guia-caixa/services/style.service';
 
-import { StyleService, Tema } from '../guia-caixa/services/style.service';
-import { LOGO_CAIXA_BRANCO_SRC, LOGO_CAIXA_SRC, LOGO_COMPLETO_SRC, LOGO_COMPLETO_BRANCO_SRC, BootstrapTheme, GradientTheme } from '../guia-caixa/constants/constants';
+
 
 @Component({
   selector: 'app-layout',
