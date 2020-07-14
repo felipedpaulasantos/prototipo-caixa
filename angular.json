@@ -145,6 +145,46 @@
           "options": {}
         }
       }
+    },
+    "guia-caixa": {
+      "projectType": "library",
+      "root": "projects/guia-caixa",
+      "sourceRoot": "projects/guia-caixa/src",
+      "prefix": "cx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/guia-caixa/tsconfig.lib.json",
+            "project": "projects/guia-caixa/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/guia-caixa/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/guia-caixa/src/test.ts",
+            "tsConfig": "projects/guia-caixa/tsconfig.spec.json",
+            "karmaConfig": "projects/guia-caixa/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/guia-caixa/tsconfig.lib.json",
+              "projects/guia-caixa/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "prototipo-caixa"

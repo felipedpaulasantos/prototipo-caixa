@@ -18,7 +18,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "guia-caixa": [
+        "dist/guia-caixa/guia-caixa",
+        "dist/guia-caixa"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

@@ -1,0 +1,754 @@
+@use "sass:map";
+
+@import '~highlight.js/styles/github.css';
+
+@import "./assets/fonts/style.css";
+
+/* Overriden Bootstrap variables */
+@import "./bootstrap-variables-override";
+
+// Bootstrap and its default variables
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// Dependências externas
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+@import "../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css";
+@import "../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
+@import "../node_modules/ngx-toastr/toastr.css";
+
+// Estilos complementares
+@import "./styles/functions";
+@import "./styles/datatables";
+@import "./styles/animations";
+
+body {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+/* @media (max-width: 1199.98px) { 
+  html {
+    font-size: $cx-font-13;
+  }
+}  */
+
+/* Headers */
+
+h1, h2, h3, h4, h5, h6 {
+  &.header-caixa {
+    font-family: $cx-font-family-bold;
+    opacity: $cx-text-opacity-1;
+    margin-bottom: 1.0rem;
+  }
+  &.header-subtitulo-caixa {
+    @extend .header-caixa;
+    color: $cx-color-primary;
+  }
+  &.header-principal-caixa {
+    font-family: $cx-font-family-bold;
+    color: $cx-color-dark-light;
+    opacity: $cx-text-opacity-2;
+    text-transform: uppercase;
+  }
+}
+hr.header-line-caixa {
+  border-color: $cx-color-light-darkest;
+  opacity: $cx-bg-opacity-1;
+  border-width: 1px;
+  margin-bottom: 1.5rem;
+}
+
+/* Fundos em degrade */
+
+@each $theme,
+$color in $cx-gradient-themes {
+  .bg-gradient-#{$theme} {
+    background: $color;
+  }
+}
+
+/* Botões */
+
+[role=button] {
+  cursor: pointer;
+}
+
+.btn-caixa {
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  font-family: $cx-font-family-bold;
+  box-shadow: $cx-default-box-shadow;
+  @extend .ripple;
+}
+
+.btn-caixa:not(.disabled):not(:disabled).active,
+.btn-caixa:not(.disabled):not(:disabled):active,
+.btn-caixa:not(.disabled):not(:disabled).focus,
+.btn-caixa:not(.disabled):not(:disabled):focus {
+  outline: 0 !important;
+  outline-offset: 0 !important;
+  background-image: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.btn-caixa:disabled,
+.btn-caixa.disabled {
+  cursor: not-allowed !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  &:active, &:focus {
+    outline: 0 !important;
+    outline-offset: 0 !important;
+    background-image: none !important;
+  }
+}
+
+.btn-sm {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.btn-flat {
+  @extend .btn-caixa;
+  transition: 0.3s;
+  background: transparent;
+  box-shadow: none;
+  color: inherit !important;
+  &:focus,
+  &:hover {
+    filter: brightness(150%);
+  }
+}
+
+@each $theme, $colors in $cx-colors {
+  .btn-#{$theme}, 
+  .btn-#{$theme}:disabled,
+  .btn-#{$theme}.disabled,
+  .btn-#{$theme}:focus,
+  .btn-#{$theme}:active,
+  .btn-#{$theme}.active,
+  .btn-#{$theme}:hover {
+    color: nth($list: $colors, $n: 2);
+    @extend .ripple;
+    $ripple-color: set-ripple(nth($list: $colors, $n: 1));
+    &:after {
+      background-image: radial-gradient(circle, $ripple-color 10%, transparent 10.01%);
+    }
+  }
+}
+
+.btn-light,
+.btn-outline-light,
+.btn-light-light,
+.btn-outline-light-light,
+.btn-light-dark,
+.btn-outline-light-dark,
+.btn-light-darkest,
+.btn-outline-light-darkest {
+  color: $cx-color-dark;
+}
+
+/* Toastr (Mensagens) */
+
+.toast-container {
+  font-family: $cx-font-family-normal;
+  color: $cx-color-lightest;
+  >div {
+    background-image: none !important;
+    padding: 15px 15px 15px 50px;
+    background-color: $cx-color-dark;
+    pointer-events: auto;
+    border-radius: 5px !important;
+    transition: box-shadow 0.2s, border-bottom 0.3s, box-shadow 0.3s ease-in-out;
+    box-shadow: none !important;
+    &:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      font-family: "Font Awesome 5 Free";
+      font-size: 1.4rem;
+      line-height: 18px;
+      float: left;
+      font-weight: 900;
+      padding-left: 1rem;
+    }
+    &.toast-success {
+      &:before {
+        content: "\f00c";
+        color: $cx-color-success;
+      }
+      .toast-progress {
+        background-color: $cx-color-success-light;
+      }
+    }
+    &.toast-error {
+      &:before {
+        content: "\f00d";
+        color: $cx-color-danger;
+      }
+      .toast-progress {
+        background-color: $cx-color-danger-light;
+      }
+    }
+    &.toast-info {
+      &:before {
+        content: "\f129";
+        color: $cx-color-info;
+      }
+      .toast-progress {
+        background-color: $cx-color-info-light;
+      }
+    }
+    &.toast-warning {
+      &:before {
+        content: "\f12a";
+        color: $cx-color-warning;
+      }
+      .toast-progress {
+        background-color: $cx-color-warning-light;
+      }
+    }
+    &:hover {
+      box-shadow: $cx-big-box-shadow !important;
+      transition: opacity 0.3s ease-in-out;
+    }
+    div.toast-title {
+      font-family: $cx-font-family-bold;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+    div.toast-message {
+      color: $cx-color-light !important;
+    }
+    div .toast-progress {
+      opacity: 0.9;
+    }
+  }
+}
+
+/* Inputs */
+
+label {
+  font-family: $cx-font-family-bold;
+  margin-bottom: 0.2rem;
+  transition: 0.2s;
+}
+.custom-switch .custom-control-label,
+.custom-checkbox .custom-control-label {
+  cursor: pointer;
+}
+.custom-checkbox .custom-control-label::before,
+.custom-checkbox .custom-control-label::after {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.custom-control-input:focus:not(:checked)~.custom-control-label::before {
+  border-color: $cx-color-dark-light;
+}
+.custom-control-input:focus~.custom-control-label::before {
+  box-shadow: none;
+}
+.custom-checkbox .custom-control-label {
+  padding-left: 0.3em;
+}
+.custom-checkbox .custom-control-input.ng-dirty.ng-valid:checked~.custom-control-label::before {
+  background-color: $cx-color-success;
+  border-color: $cx-color-success-dark;
+}
+.custom-control-input.ng-dirty.ng-valid:checked~.custom-control-label::before {
+  color: #fff;
+  background-color: $cx-color-success;
+  border-color: $cx-color-success-dark;
+}
+.custom-checkbox .custom-control-input.ng-dirty.ng-invalid:checked~.custom-control-label::before {
+  background-color: $cx-color-danger;
+  border-color: $cx-color-danger-dark;
+}
+.custom-control-input.ng-dirty.ng-invalid:checked~.custom-control-label::before {
+  color: #fff;
+  background-color: $cx-color-danger;
+  border-color: $cx-color-danger-dark;
+}
+[type=range]:hover {
+  cursor: pointer;
+}
+
+/* Bootstrap-select */
+
+.bs-searchbox input.form-control {
+  @extend .input-caixa;
+  box-shadow: none !important;
+}
+
+/* Tabela */
+
+th.th-sorting {
+  font-weight: 900;
+  margin-left: 2rem;
+  font-family: "Font Awesome 5 Free";
+  float: right;
+  color: $cx-color-dark;
+  @extend .header-caixa;
+}
+.table-caixa {
+  border-bottom: none !important;
+  thead th {
+    font-family: $cx-font-family-bold;
+    color: $cx-color-light-darkest;
+    border-top: 0;
+    border-bottom: 0 !important;
+    font-weight: 400 !important;
+    &.sorting,
+    &.sorting_asc,
+    &.sorting_desc {
+      cursor: pointer;
+    }
+    &.sorting::after {
+      @extend .th-sorting;
+      opacity: 0.5;
+      content: "\f0dc";
+    }
+    &.sorting_asc::after {
+      @extend .th-sorting;
+      content: "\f0de";
+    }
+    &.sorting_desc::after {
+      @extend .th-sorting;
+      content: "\f0dd";
+    }
+  }
+  tbody {
+    tr:hover {
+      background-color: $cx-color-light;
+    }
+    td {
+      vertical-align: middle;
+      padding: 0.75rem !important;
+    }
+  }
+}
+
+/* 
+  Remove setas do Input do tipo Number 
+*/
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* 
+  Dropdown item 
+*/
+.dropdown-menu {
+  box-shadow: $cx-default-box-shadow;
+}
+.dropdown-item {
+  padding: 1rem 1.3rem;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  &.selected {
+    .check-mark {
+      display: flex;
+      align-items: center !important;
+      top: unset !important;
+      @extend .text-success;
+    }
+  }
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  color: $cx-color-primary;
+  background-color: $cx-color-light;
+}
+
+
+/* 
+  Tabs e Navs
+*/
+
+ul.tab-caixa li a,
+.nav-link-caixa {
+  color: $cx-color-dark-light;
+  padding: 1rem 1.5rem;
+  transition: ease-in-out 0.2s;
+  opacity: $cx-text-opacity-1;
+  font-family: $cx-font-family-bold;
+  border-bottom: solid 2px transparent;
+  @extend .ripple-dark;
+  &.active, &:active {
+    color: $cx-color-primary !important;
+    background-color: transparent !important;
+    border-bottom: solid 2px $cx-color-primary;
+    border-radius: 50;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  &.disabled, &:disabled {
+    opacity: $cx-text-opacity-3;
+  }
+}
+
+/* Modal */
+
+.modal {
+  z-index: 10;
+}
+.modal-backdrop.fade.show {
+  z-index: 9;
+}
+
+/* Cards */
+
+.card-caixa {
+  box-shadow: $cx-default-box-shadow;
+  transition: all 0.2s ease-in-out;
+  &>.card-header {
+    background-color: inherit;
+    border: none;
+    vertical-align: center;
+    padding-top: 1.25rem;
+    & h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 0;
+    }
+  }
+  &>.card-footer {
+    background-color: inherit;
+    border-top: 0;
+  }
+}
+.card-caixa.card-hover::after {
+  content: '';
+  position: absolute;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 5px;
+  box-shadow: $cx-big-box-shadow;
+  transition: opacity 0.3s ease-in-out;
+}
+.card-caixa.card-hover:hover::after {
+  opacity: 1;
+}
+
+/* .card-caixa::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 5px;
+  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+  transition: opacity 0.3s ease-in-out;
+}
+.card-caixa:hover::after {
+  opacity: 1;
+} */
+
+/* Spinner */
+
+.la-ball-clip-rotate.la-2x {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  >div {
+    max-height: 50px !important;
+    max-width: 50px !important;
+  }
+}
+
+/* Firefox hack */
+
+/* Remove a borda pontilhada de botões e links */
+:focus,
+:active {
+  outline: none !important;
+}
+::-moz-focus-inner {
+  border: 0;
+}
+
+/* 
+  Bootstrap Select 
+*/
+
+.bootstrap-select .dropdown-toggle:focus,
+.bootstrap-select>select.mobile-device:focus+.dropdown-toggle {
+  outline: none !important;
+}
+.bs-searchbox {
+  padding: 0.8rem 0.5rem !important;
+}
+
+/* INPUT */
+
+.input-base {
+  width: 100%;
+  padding: 0.375rem 0.5rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: $cx-color-light-darkest;
+  &:disabled {
+    background-color: #EFF5F6;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  &:hover {
+    border-color: $cx-color-dark-light;
+  }
+}
+@each $theme, $colors in $cx-colors {
+  .input-caixa-#{$theme} {
+    @extend .input-base;
+    transition: background-size 0.4s, background-color 0.4s, border-color 0.4s ease-in-out, box-shadow 0.15s ease-in-out;
+    &,
+    &:focus,
+    &:active,
+    &[aria-expanded="true"],
+    &.focused {
+      @if ($theme=="danger"or $theme=="success") {
+        background-image:
+          linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
+          linear-gradient(0deg, nth($colors, 1) 0%, nth($colors, 1) 100%) !important;
+        border-color: nth($colors, 1) !important;
+      }
+      @else {
+        background-image:
+          linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
+          linear-gradient(0deg, nth($colors, 1) 0%, nth($colors, 1) 100%);
+      }
+      background-repeat: no-repeat;
+      background-position: 50% 100%,
+      50% 100%;
+      background-size: 100% 1px,
+      0% 1px;
+    }
+    &:focus,
+    &:active,
+    &[aria-expanded="true"],
+    &.focused,
+    &.click-fx {
+      @if ($theme=="danger"or $theme=="success") {
+        border-color: nth($colors, 1) !important;
+      }
+      @else {
+        border-color: nth($colors, 1);
+      }
+      background-size: 100% 1px,
+      100% 1px;
+      animation: input-ripple 0.5s ease-in !important;
+    }
+    &.pre-click-fx:not(.post-click-fx) {
+      animation: none !important;
+    }
+  }
+}
+.input-caixa {
+  box-shadow: none;
+  background-color: transparent;
+  @extend .input-base;
+  @extend .input-caixa-primary;
+}
+.input-caixa-wrapper {
+  z-index: 999;
+  padding-top: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 1px !important;
+  input {
+    box-shadow: none;
+  }
+  @extend .input-base;
+}
+.input-caixa,
+.input-caixa-wrapper {
+  @extend .input-caixa-primary;
+}
+cx-input.ng-invalid .input-caixa-wrapper,
+cx-select.ng-invalid .input-caixa-wrapper,
+.input-caixa.ng-dirty.ng-invalid,
+.input-caixa.ng-touched.ng-invalid {
+  @extend .input-caixa-danger;
+}
+cx-input.ng-valid .input-caixa-wrapper,
+cx-select.ng-valid .input-caixa-wrapper,
+.input-caixa.ng-dirty.ng-valid,
+.input-caixa.ng-touched.ng-valid {
+  @extend .input-caixa-success;
+}
+.input-caixa-field,
+.input-caixa-field input,
+.input-caixa-field textarea,
+select+button.input-caixa {
+  background-color: transparent;
+}
+
+/* Classes auxiliares */
+
+@each $theme,
+$value in $cx-bg-opacities {
+  .bg-opacity-#{$theme} {
+    opacity: $value !important;
+  }
+}
+@each $theme,
+$value in $cx-text-opacities {
+  .text-opacity-#{$theme} {
+    opacity: $value !important;
+  }
+}
+.full-opacity {
+  opacity: 1 !important;
+}
+.font-fam-normal {
+  font-family: Futura LT Book !important;
+}
+.font-fam-bold {
+  font-family: Futura LT Bold !important;
+}
+.section-caixa {
+  margin-bottom: 1.5rem;
+}
+.shadow-caixa {
+  box-shadow: $cx-default-box-shadow !important;
+}
+.shadow-lg-caixa {
+  box-shadow: $cx-big-box-shadow !important;
+}
+
+/* 
+  Modo Escuro (não finalizado)
+*/
+#conteudoPrincipal.bg-dark-dark {
+  color: $cx-color-lightest;
+  .btn-dark, .btn-dark-light, .btn-dark-dark,
+  .btn-outline-dark, .btn-outline-dark-light, .btn-outline-dark-dark {
+    color: $cx-color-light;
+  }
+  .btn-caixa {
+    box-shadow: 0 0.2rem 0.2rem 0 rgba(255, 255, 255, 0.15);
+  }
+  .header-principal-caixa,
+  .input-caixa,
+  .table.table-caixa {
+    color: $cx-color-lightest;
+  }
+  .header-subtitulo-caixa {
+    color: $cx-color-info-light;
+  }
+  .card.card-caixa {
+    background-color: $cx-color-dark;
+    color: $cx-color-lightest;
+  }
+  .input-caixa-field,
+  .input-caixa-field input,
+  .input-caixa-field textarea,
+  select+button.input-caixa {
+    color: $cx-color-light-dark;
+    background-color: transparent;
+  }
+  .table-caixa tbody {
+    tr:hover {
+      background-color: $cx-color-dark-light;
+    }
+  }
+  ul.tab-caixa li a {
+    color: $cx-color-light;
+    padding: 1rem 1.5rem;
+    transition: ease-in-out 0.2s;
+    border-bottom: solid 2px transparent;
+  }
+  ul.tab-caixa li a.nav-link-caixa.active,
+  ul.tab-caixa .dropdown-item:active {
+    color: $cx-color-info-light;
+  }
+  .input-caixa-wrapper,
+  .input-caixa,
+  select+button.input-caixa[aria-expanded="true"] {
+    @extend .input-caixa-info;
+    &:disabled,
+    &.disabled {
+      color: $cx-color-dark;
+    }
+  }
+}
+
+/* MENU LATERAL */
+
+@each $theme, $colors in $cx-colors {
+  #menuLateral.bg-#{$theme} {
+
+    @include placeholder {
+      color: nth($colors, 2);
+    }
+    #menuLateralPesquisa {
+      border-bottom: solid 1px nth($colors, 4);
+    }
+    #sidemenuSearchIcon {
+      color: nth($colors, 2);
+      +input {
+        color: nth($colors, 2);
+        background-color: transparent;
+        padding: 0.375rem 0.5rem;
+        $realce-color: nth($colors, 5);
+        @extend .input-caixa-#{$realce-color};
+      }
+    }
+    .nav-item .side-menu-item {
+      border-bottom: solid 1px nth($colors, 4);
+      color: nth($colors, 2);
+      transition: background 0.3s;
+      &:hover {       
+        background: darken($color: nth($colors, 1), $amount: 5%);
+      }
+      &.active {
+        color: nth($colors, 3);
+        font-family: $cx-font-family-bold;
+      }
+      @extend .ripple;
+      $ripple-color: set-ripple(nth($list: $colors, $n: 1));
+      &:after {
+        background-image: radial-gradient(circle, $ripple-color 10%, transparent 10.01%) !important;
+      }
+    }
+  }
+}
+
+.list-group-caixa .list-group-item {
+  background-color: transparent !important;
+  border: solid 2px transparent !important;
+  border-radius: 0 !important;
+  @extend .ripple-dark;
+  &.active {
+    color: $cx-color-primary;
+    border-left: solid 2px $cx-color-primary !important;
+  }
+}
