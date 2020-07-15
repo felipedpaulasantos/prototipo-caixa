@@ -1,10 +1,8 @@
-@use "cx-variables";
-
 .dataTables_wrapper {
   display: flex;
   flex-wrap: wrap;
   label {
-    color: cx-variables.$cx-color-light-darkest;
+    color: $cx-color-light-darkest;
   }
 }
 

@@ -1,5 +1,3 @@
-@use "sass:map";
-
 /* Colors */
 
 $cx-color-primary: #005CA9;
@@ -90,7 +88,7 @@ $cx-dark-colors: (
 	"dark-dark": ($cx-color-darkest, $cx-color-lightest, $cx-color-secondary, $cx-color-dark, "secondary"),
 );
 
-$cx-colors: map.merge(map.merge($cx-main-colors, $cx-light-colors), $cx-dark-colors);
+$cx-colors: map-merge(map-merge($cx-main-colors, $cx-light-colors), $cx-dark-colors);
 
 /* Logo */
 

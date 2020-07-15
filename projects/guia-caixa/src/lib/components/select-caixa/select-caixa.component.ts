@@ -1,12 +1,10 @@
 import {
   Component, OnInit, Input, AfterViewInit, ContentChild,
-  ViewChild, ElementRef, HostBinding, Renderer2, AfterContentInit, SimpleChanges, OnChanges, AfterContentChecked, HostListener
-} from '@angular/core';
+  ViewChild, ElementRef, HostBinding, Renderer2, AfterContentInit, SimpleChanges, OnChanges, AfterContentChecked} from '@angular/core';
 import { SelectCaixaDirective } from './select-caixa.directive';
 import { AbstractControl, NgControl, FormControlName } from '@angular/forms';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
-declare let $: any;
+declare var $: any;
 
 enum LiveSearchStyle {
   contains = "contains",
@@ -83,7 +81,6 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
   private nativeElement: any;
 
   private dropdownButton: any;
-  private dropdownMenu: any;
   private isDropdownObserved = false;
   private changes: MutationObserver;
   private focus = false;
@@ -134,7 +131,6 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
   ngAfterContentChecked(): void {
     if (this.nativeElement) {
       this.dropdownButton = this.nativeElement.nextElementSibling;
-      this.dropdownMenu = this.dropdownButton ? this.dropdownButton.nextElementSibling : null;
       if (this.dropdownButton && !this.isDropdownObserved) {
         this.changes = new MutationObserver((mutations: MutationRecord[]) => {
           mutations.forEach((mutation: MutationRecord) => {

@@ -1,8 +1,6 @@
 @use "sass:map";
 
-@import '~highlight.js/styles/github.css';
-
-@import "./assets/fonts/style.css";
+@import "../fonts/style.css";
 
 /* Overriden Bootstrap variables */
 @import "./bootstrap-variables-override";
@@ -11,16 +9,10 @@
 @import "node_modules/bootstrap/scss/mixins";
 @import "node_modules/bootstrap/scss/bootstrap";
 
-// Dependências externas
-@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
-@import "../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css";
-@import "../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
-@import "../node_modules/ngx-toastr/toastr.css";
-
 // Estilos complementares
-@import "./styles/functions";
-@import "./styles/datatables";
-@import "./styles/animations";
+@import "./functions";
+@import "./datatables";
+@import "./animations";
 
 body {
   height: 100%;

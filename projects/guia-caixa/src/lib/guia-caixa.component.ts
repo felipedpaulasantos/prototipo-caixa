@@ -3,9 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'cx-guia-caixa',
   template: `
-    <p>
-      guia-caixa works!
-    </p>
+    <ng-content></ng-content>
   `,
   styleUrls: ["./guia-caixa.component.scss"],
   encapsulation: ViewEncapsulation.None
