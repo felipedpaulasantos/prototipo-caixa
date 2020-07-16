@@ -59,7 +59,7 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
     this.parseOptionalErrors();
   }
 
-  parseOptionalErrors() {
+  private parseOptionalErrors() {
     if (!this.customErrors) { return; }
     let parsedErrors = this.customErrors;
     if (Array.isArray(this.customErrors)) {
@@ -71,7 +71,7 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
     this.parsedOptionalErrors.push(parsedErrors);
   }
 
-  isFieldRequired(abstractControl: AbstractControl): boolean {
+  private isFieldRequired(abstractControl: AbstractControl): boolean {
     if (abstractControl && abstractControl.validator) {
       const validator = abstractControl.validator({}as AbstractControl);
       if (validator && validator.required) {
@@ -96,19 +96,19 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
     return false;
   }
 
-  getShowFeedbackMessage() {
+  get getShowFeedbackMessage() {
     return !this.formInput && this.inputDirective
-      && ((!this.inputDirective.changed && !this.isFieldInvalid())
-      || (this.inputDirective.changed && (this.isFieldValid() || !this.isFieldInvalid()) ))
+      && ((!this.inputDirective.changed && !this.isFieldInvalid)
+      || (this.inputDirective.changed && (this.isFieldValid || !this.isFieldInvalid) ))
       || this.formInput && (this.formInput.untouched || this.formInput.valid);
   }
 
-  getShowFeedbackIcon() {
+  get getShowFeedbackIcon() {
     return (this.formInput && this.formInput?.touched)
       || (!this.formInput && this.inputDirective && this.inputDirective.changed);
   }
 
-  isFieldValid(): boolean {
+  get isFieldValid(): boolean {
     if (this.formInput) {
       return this.formInput.valid;
     } else {
@@ -119,7 +119,7 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
     return false;
   }
 
-  isFieldInvalid(): boolean {
+  get isFieldInvalid(): boolean {
     if (this.formInput) {
       return this.formInput.invalid;
     } else {
@@ -158,7 +158,7 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
         return "ng-invalid ng-touched";
       }
     } else {
-      if (this.inputDirective && this.inputDirective.changed && this.isFieldInvalid()) {
+      if (this.inputDirective && this.inputDirective.changed && this.isFieldInvalid) {
         return "ng-invalid ng-touched";
       }
     }
@@ -171,7 +171,7 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
         return "ng-valid ng-touched";
       }
     } else {
-      if (this.inputDirective && this.inputDirective.changed && this.isFieldValid()) {
+      if (this.inputDirective && this.inputDirective.changed && this.isFieldValid) {
         return "ng-valid ng-touched";
       }
     }
