@@ -96,43 +96,73 @@
   </div>
 
   <div class="tab-pane fade" id="exemplos" role="tabpanel">
-    <div class="card card-caixa mb-3">
-      <div class="card-body">
-        <button class="btn btn-flat ripple-dark btn-caixa mr-3">Flat</button>
-        <button class="btn btn-caixa btn-outline-success rounded-circle p-2 mr-3"><i class="fa fa-check fa-lg"></i></button>
-        <button class="btn btn-flat btn-caixa ripple-dark rounded-circle p-3 mr-3"><i class="fa fa-bars fa-lg"></i></button>
-        <button class="btn btn-caixa btn-outline-danger rounded-circle p-4"><i class="fa fa-trash fa-2x"></i></button>
-      </div>
-    </div>  <!-- Card -->
 
-    <div class="card card-caixa">
-      <div class="card-body">
+    <app-documentacao-template
+    [cardTitle]="'Variados'"
+    [codeViewId]="'viewBotoesExemplo'"
+    [htmlTabId]="'htmlCodeExemplo'"
+    [htmlCode]="htmlCodeExemplo"
+    [cssTabId]="'cssCodeExemplo'"
+    [cssCode]="cssCodeExemplo">
+      <div class="descricao">
+        Botões com a classe <span class="bg-light border px-1">flat</span> são transparentes sem borda.<br>
+        A sombra pode ser retirada com a classe do Bootstrap <span class="bg-light border px-1">shadow-none</span>.
+      </div>
+      <div class="conteudo">
+        <div class="btn-exemplo">
+          <button class="btn btn-caixa btn-flat">
+            Flat
+          </button>
+          <button class="btn btn-caixa btn-flat rounded-circle p-3">
+            <i class="fa fa-bars fa-2x"></i>
+          </button>
+          <button class="btn btn-caixa btn-flat text-primary rounded-circle p-2">
+            <i class="fa fa-home fa-2x"></i>
+          </button>
+          <button class="btn btn-caixa btn-outline-apoio rounded-circle p-2">
+            <i class="fa fa-check fa-lg"></i>
+          </button>
+          <button class="btn btn-caixa btn-secondary rounded-circle p-3">
+            <i class="fa fa-play fa-lg"></i>
+          </button>
+          <button class="btn btn-caixa btn-outline-danger rounded-circle shadow-none p-4">
+            <i class="fa fa-trash fa-2x"></i>
+          </button>
+          <button class="btn btn-caixa btn-aux shadow-none">
+            Sem sombra
+          </button>
+        </div>
+      </div>
+    </app-documentacao-template>
+
+    <br class="my-3">
+
+    <app-documentacao-template
+    [cardTitle]="'Temáticos'"
+    [codeViewId]="'viewBotoesTodosTematicos'"
+    [htmlTabId]="'htmlCodeTodosTematicos'"
+    [htmlCode]="htmlCodeTodosTematicos"
+    [tsTabId]="'tsCodeTodosTematicos'"
+    [tsCode]="tsCodeTodosTematicos">
+
+      <div class="conteudo">
         <div class="table-responsive">
-          <table dataTable class="table table-caixa table-borderless">
-            <thead>
-              <th>Padrão</th>
-              <th>Claro</th>
-              <th>Escuro</th>
-              <th>Outline Padrão</th>
-              <th>Outline Claro</th>
-              <th>Outline Escuro</th>
-            </thead>
+          <table class="table table-caixa table-hover table-borderless">
             <tbody>
               <ng-container *ngFor="let tema of temas; let i = index">
                 <tr>
                   <td><button class="btn btn-caixa btn-{{tema?.name}}">Padrão</button></td>
-                  <td><button class="btn btn-caixa btn-{{tema?.name}}-light mr-2">Claro</button></td>
-                  <td><button class="btn btn-caixa btn-{{tema?.name}}-dark mr-2">Escuro</button></td>
-                  <td><button class="btn btn-caixa btn-outline-{{tema?.name}} mr-2">Outline</button></td>
-                  <td><button class="btn btn-caixa btn-outline-{{tema?.name}}-light mr-2">Claro</button></td>
-                  <td><button class="btn btn-caixa btn-outline-{{tema?.name}}-dark mr-2">Escuro</button></td>
+                  <td><button class="btn btn-caixa btn-{{tema?.name}}-light">Claro</button></td>
+                  <td><button class="btn btn-caixa btn-{{tema?.name}}-dark">Escuro</button></td>
+                  <td><button class="btn btn-caixa btn-outline-{{tema?.name}}">Outline</button></td>
+                  <td><button class="btn btn-caixa btn-outline-{{tema?.name}}-light">Claro</button></td>
+                  <td><button class="btn btn-caixa btn-outline-{{tema?.name}}-dark">Escuro</button></td>
                 </tr>
               </ng-container>
             </tbody>
           </table>
         </div>
       </div>
-    </div>  <!-- Card -->
-
+    </app-documentacao-template>
   </div>  <!-- Tab -->
 </div>  <!-- Tab Content -->

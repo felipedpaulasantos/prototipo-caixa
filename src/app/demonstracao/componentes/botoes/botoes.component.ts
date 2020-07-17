@@ -40,6 +40,74 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
   Com ícone
 </button>`.trim();
 
+  htmlCodeExemplo = `          <button class="btn btn-caixa btn-flat">
+  Flat
+</button>
+<button class="btn btn-caixa btn-flat rounded-circle p-3">
+  <i class="fa fa-bars fa-2x"></i>
+</button>
+<button class="btn btn-caixa btn-flat text-primary rounded-circle p-2">
+  <i class="fa fa-home fa-2x"></i>
+</button>
+<button class="btn btn-caixa btn-outline-apoio rounded-circle p-2">
+  <i class="fa fa-check fa-lg"></i>
+</button>
+<button class="btn btn-caixa btn-secondary rounded-circle p-3">
+  <i class="fa fa-play fa-lg"></i>
+</button>
+<button class="btn btn-caixa btn-outline-danger rounded-circle shadow-none p-4">
+  <i class="fa fa-trash fa-2x"></i>
+</button>
+<button class="btn btn-caixa btn-aux shadow-none">
+  Sem sombra
+</button>`.trim();
+
+  cssCodeExemplo = `.btn-exemplo button {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}`.trim();
+
+  htmlCodeTodosTematicos = `        <div class="table-responsive">
+  <table class="table table-caixa table-hover table-borderless">
+    <tbody>
+      <ng-container *ngFor="let tema of temas; let i = index">
+        <tr>
+          <td><button class="btn btn-caixa btn-{{tema.name}}">Padrão</button></td>
+          <td><button class="btn btn-caixa btn-{{tema.name}}-light">Claro</button></td>
+          <td><button class="btn btn-caixa btn-{{tema.name}}-dark">Escuro</button></td>
+          <td><button class="btn btn-caixa btn-outline-{{tema.name}}">Outline</button></td>
+          <td><button class="btn btn-caixa btn-outline-{{tema.name}}-light">Claro</button></td>
+          <td><button class="btn btn-caixa btn-outline-{{tema.name}}-dark">Escuro</button></td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>`.trim();
+
+  tsCodeTodosTematicos = `  import { Component } from '@angular/core';
+
+  @Component({
+      selector: 'app-botoes',
+      templateUrl: './botoes.component.html',
+      styleUrls: ['./botoes.component.scss']
+  })
+  export class BotoesComponent {
+
+    temas = [
+      { "name": "primary" },
+      { "name": "secondary" },
+      { "name": "success" },
+      { "name": "danger" },
+      { "name": "info" },
+      { "name": "warning" },
+      { "name": "apoio" },
+      { "name": "aux" },
+      { "name": "light" },
+      { "name": "dark" }
+    ]
+  }
+  `.trimRight();
+
   ngOnInit() {
   }
 

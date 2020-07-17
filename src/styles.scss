@@ -118,7 +118,7 @@ $color in $cx-gradient-themes {
   transition: 0.3s;
   background: transparent;
   box-shadow: none;
-  color: inherit !important;
+  color: inherit;
   &:focus,
   &:hover {
     filter: brightness(150%);
@@ -140,17 +140,6 @@ $color in $cx-gradient-themes {
       background-image: radial-gradient(circle, $ripple-color 10%, transparent 10.01%);
     }
   }
-}
-
-.btn-light,
-.btn-outline-light,
-.btn-light-light,
-.btn-outline-light-light,
-.btn-light-dark,
-.btn-outline-light-dark,
-.btn-light-darkest,
-.btn-outline-light-darkest {
-  color: $cx-color-dark;
 }
 
 /* Toastr (Mensagens) */
@@ -311,7 +300,7 @@ th.th-sorting {
     &.sorting_desc {
       cursor: pointer;
     }
-    &.sorting::after {
+    &.sorting:hover::after {
       @extend .th-sorting;
       opacity: 0.5;
       content: "\f0dc";
@@ -326,9 +315,9 @@ th.th-sorting {
     }
   }
   tbody {
-    tr:hover {
+/*     tr:hover {
       background-color: $cx-color-light;
-    }
+    } */
     td {
       vertical-align: middle;
       padding: 0.75rem !important;
