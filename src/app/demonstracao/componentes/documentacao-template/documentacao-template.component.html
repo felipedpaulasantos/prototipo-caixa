@@ -12,8 +12,9 @@
 			</div>
 		</div>
 		<div class="card-body">
-			<ng-content select=".descricao"></ng-content>
-			<br>
+			<div class="descricao-wrapper">
+				<ng-content select=".descricao"></ng-content>
+			</div>
 			<div id="{{ codeViewId }}" class="collapse">
 				<cx-code-view 
 					[htmlTabId]="htmlTabId" [htmlCode]="htmlCode"
