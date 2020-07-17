@@ -281,10 +281,10 @@ label {
 
 th.th-sorting {
   font-weight: 900;
-  margin-left: 2rem;
   font-family: "Font Awesome 5 Free";
   float: right;
   color: $cx-color-dark;
+  transition: 0.5s;
   @extend .header-caixa;
 }
 .table-caixa {
