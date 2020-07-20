@@ -136,12 +136,12 @@ export class CardsComponent extends ComponentesInterface {
     <div class="info-row bg-fade border-bottom">
       <div class="row">
         <div class="col">
-          <h6 class="header-caixa">Código da Reserva</h6>
-          1.797
+          <h6 class="header-caixa">Seguradora</h6>
+          CAIXA SEGUROS
         </div>
         <div class="col">
-          <h6 class="header-caixa">Fonte de recurso</h6>
-          SBPE
+          <h6 class="header-caixa">Apólice</h6>
+          61170 - CAIXA SEGUROS - SBPE
         </div>
       </div>
     </div>  <!-- Info-Row -->
