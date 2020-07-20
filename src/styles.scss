@@ -720,7 +720,7 @@ $value in $cx-text-opacities {
       }
       &.active {
         color: nth($colors, 3);
-        font-family: $cx-font-family-bold;
+        // font-family: $cx-font-family-bold;
       }
       @extend .ripple;
       $ripple-color: set-ripple(nth($list: $colors, $n: 1));
