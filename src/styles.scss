@@ -121,6 +121,7 @@ $color in $cx-gradient-themes {
   color: inherit;
   &:focus,
   &:hover {
+    color: inherit;
     filter: brightness(150%);
   }
 }
@@ -505,6 +506,7 @@ ul.tab-caixa li a,
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-color: $cx-color-light-darkest;
+  transition: background-size 0.4s, background-color 0.4s, border-color 0.4s ease-in-out, box-shadow 0.15s ease-in-out;
   &:disabled {
     background-color: #EFF5F6;
     opacity: 0.5;
@@ -517,7 +519,6 @@ ul.tab-caixa li a,
 @each $theme, $colors in $cx-colors {
   .input-caixa-#{$theme} {
     @extend .input-base;
-    transition: background-size 0.4s, background-color 0.4s, border-color 0.4s ease-in-out, box-shadow 0.15s ease-in-out;
     &,
     &:focus,
     &:active,

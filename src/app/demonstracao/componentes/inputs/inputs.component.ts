@@ -39,7 +39,7 @@ export class InputsComponent extends ComponentesInterface {
     idade: [null, [Validators.required, Validators.min(18), Validators.max(100)]],
     nascimento: ['01/01/1985', [Validators.required, DateValidator.simpleDate]],
     mesAno: ['04/2020', [Validators.required, DateValidator.simpleMonthDate]],
-    texto: [null, [Validators.minLength(5)]]
+    texto: [null, [Validators.minLength(20)]]
   });
   mesError = [
     { "simpleMonthDate": "Data do tipo mês/ano inválida" }
@@ -66,11 +66,6 @@ export class InputsComponent extends ComponentesInterface {
   <cx-input>
     <label>Nome</label>
     <input inputCaixa placeholder="Digite seu nome aqui" value="Fulano da Silva">
-  </cx-input>
-
-  <cx-input>
-    <label>Mensagem</label>
-    <textarea inputCaixa placeholder="Faça um comentário..."></textarea>
   </cx-input>
 </form>
   `.trim();
