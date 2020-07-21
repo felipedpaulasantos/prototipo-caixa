@@ -33,7 +33,6 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
   @Input() showFeedbackMessage = true;
   @Input() customErrors: string | any[];
   @Input() formato: string;
-  @Input() msgErroPadrao: string;
 
   parsedOptionalErrors = [];
   formInput: AbstractControl;
@@ -86,9 +85,6 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
           }
         }
       }
-    }
-    if (this.inputDirective && this.inputDirective.element && this.inputDirective.element.nativeElement) {
-      return this.inputDirective.element.nativeElement.required;
     }
     if (this.nativeElement && this.nativeElement.required) {
       return true;

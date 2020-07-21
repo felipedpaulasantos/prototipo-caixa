@@ -3,97 +3,134 @@
 </h1>
 <hr class="header-line-caixa">
 
-<div class="row no-gutters">
-  <section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
-    <app-documentacao-template id="painelMensagens" 
-    [cardTitle]="'Notificações'" 
-    [codeViewId]="'viewMensagens'"
-    [htmlTabId]="'htmlCodeMensagens'" 
-    [htmlCode]="htmlCodeMensagens"
-    [tsTabId]="'tsCodeMensagens'"
-    [tsCode]="tsCodeMensagens">
-      <div class="descricao">
-        As notificações são chamadas pelo <span class="bg-light border px-1">Toastr Service</span>,
-        da biblioteca <a class="text-info" href="https://www.npmjs.com/package/ngx-toastr" target="_blank">Ngx-Toastr</a>.
-      </div>
-  
-      <div class="conteudo">
-        <button class="btn btn-caixa btn-success" (click)="exibirSucesso()">
-          Sucesso!
-        </button> &nbsp;
+<ul class="nav nav-pills border-bottom tab-caixa" role="tablist">
+  <li class="nav-item ripple-dark">
+    <a class="nav-link text-uppercase active" data-toggle="tab" href="#visaoGeral" role="tab">
+      Visão Geral
+    </a>
+  </li>
+<!--   <li class="nav-item ripple-dark">
+    <a class="nav-link text-uppercase" data-toggle="tab" href="#exemplos" role="tab">
+      Exemplos
+    </a>
+  </li> -->
+</ul>
 
-        <button class="btn btn-caixa btn-danger" (click)="exibirErro()">
-          Erro!
-        </button> &nbsp;
+<br>
 
-        <button class="btn btn-caixa btn-warning" (click)="exibirAlerta()">
-          Alerta!
-        </button> &nbsp;
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="visaoGeral" role="tabpanel">
+    <div class="row no-gutters">
+      <section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
+        <app-documentacao-template id="painelMensagens" 
+        [cardTitle]="'Notificações'" 
+        [codeViewId]="'viewMensagens'"
+        [htmlTabId]="'htmlCodeMensagens'" 
+        [htmlCode]="htmlCodeMensagens"
+        [tsTabId]="'tsCodeMensagens'"
+        [tsCode]="tsCodeMensagens">
+          <div class="descricao">
+            As notificações são chamadas pelo <span class="bg-light border px-1">Toastr Service</span>,
+            da biblioteca <a class="text-info" href="https://www.npmjs.com/package/ngx-toastr" target="_blank">Ngx-Toastr</a>.
+          </div>
+      
+          <div class="conteudo">
+            <button class="btn btn-caixa btn-success" (click)="exibirSucesso()">
+              Sucesso!
+            </button> &nbsp;
 
-        <button class="btn btn-caixa btn-info" (click)="exibirInfo()">
-          Informação!
-        </button> &nbsp;
-      </div>
-    </app-documentacao-template>
-  
-    <br class="my-3">
+            <button class="btn btn-caixa btn-danger" (click)="exibirErro()">
+              Erro!
+            </button> &nbsp;
 
-    <app-documentacao-template id="painelSpinner" 
-    [cardTitle]="'Spinner (Tela de carregamento)'" 
-    [codeViewId]="'viewSpinner'"
-    [htmlTabId]="'htmlCodeSpinner'" 
-    [htmlCode]="htmlCodeSpinner"
-    [tsTabId]="'tsCodeSpinner'"
-    [tsCode]="tsCodeSpinner">
-      <div class="descricao">
-        O "spinner" de carregamento pode ser chamado pelo <span class="bg-light border px-1">NgxSpinnerService</span>,
-        da biblioteca <a class="text-info" href="https://www.npmjs.com/package/ngx-spinner" target="_blank">Ngx Spinner</a>.
-      </div>
-  
-      <div class="conteudo">
-        <button class="btn btn-caixa btn-outline-dark" (click)="exibirSpinner()">
-          Mostrar tela de carregamento
-        </button>
-      </div>
-    </app-documentacao-template>
+            <button class="btn btn-caixa btn-warning" (click)="exibirAlerta()">
+              Alerta!
+            </button> &nbsp;
 
-    <br class="my-3">
+            <button class="btn btn-caixa btn-info" (click)="exibirInfo()">
+              Informação!
+            </button> &nbsp;
+          </div>
+        </app-documentacao-template>
+      
+        <br class="my-3">
 
-    <app-documentacao-template id="painelModal" 
-    [cardTitle]="'Modal'" 
-    [codeViewId]="'viewModal'"
-    [htmlTabId]="'htmlCodeModal'" 
-    [htmlCode]="htmlCodeModal"
-    [tsTabId]="'tsCodeModal'"
-    [tsCode]="tsCodeModal">
-      <div class="descricao">
-        Um modal pode ser chamado pelo serviço <span class="bg-light border px-1">ModalService</span>, com várias opções de customização.
-      </div>
-  
-      <div class="conteudo">
-        <button class="btn btn-caixa btn-outline-dark" 
-        (click)="exibirModal()">
-        <i class="fa fa-lg fa-external-link-alt mr-2"></i>
-          Mostrar modal
-        </button>
-      </div>
-    </app-documentacao-template>
-  </section>
+        <app-documentacao-template id="painelSpinner" 
+        [cardTitle]="'Spinner (Tela de carregamento)'" 
+        [codeViewId]="'viewSpinner'"
+        [htmlTabId]="'htmlCodeSpinner'" 
+        [htmlCode]="htmlCodeSpinner"
+        [tsTabId]="'tsCodeSpinner'"
+        [tsCode]="tsCodeSpinner">
+          <div class="descricao">
+            O "spinner" de carregamento pode ser chamado pelo <span class="bg-light border px-1">NgxSpinnerService</span>,
+            da biblioteca <a class="text-info" href="https://www.npmjs.com/package/ngx-spinner" target="_blank">Ngx Spinner</a>.
+          </div>
+      
+          <div class="conteudo">
+            <button class="btn btn-caixa btn-outline-dark" (click)="exibirSpinner()">
+              Mostrar tela de carregamento
+            </button>
+          </div>
+        </app-documentacao-template>
 
-  <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
-    <div class="position-fixed list-group list-group-caixa bg-white shadow-caixa border-0">
-      <a (click)="scrollTo('painelMensagens')" class="list-group-item list-group-item-action"
-        [ngClass]="{'active': currentSection == 'painelMensagens'}" role="button">
-        Notificações</a>
-      <a (click)="scrollTo('painelSpinner')" class="list-group-item list-group-item-action"
-        [ngClass]="{'active': currentSection == 'painelSpinner'}" role="button">
-        Spinner</a>
-      <a (click)="scrollTo('painelModal')" class="list-group-item list-group-item-action"
-        [ngClass]="{'active': currentSection == 'painelModal'}" role="button">
-        Modal</a>
+        <br class="my-3">
+
+        <app-documentacao-template id="painelModal" 
+        [cardTitle]="'Modal'" 
+        [codeViewId]="'viewModal'"
+        [htmlTabId]="'htmlCodeModal'" 
+        [htmlCode]="htmlCodeModal"
+        [tsTabId]="'tsCodeModal'"
+        [tsCode]="tsCodeModal">
+          <div class="descricao">
+            Um modal pode ser chamado pelo serviço <span class="bg-light border px-1">ModalService</span>, com várias opções de customização.
+          </div>
+      
+          <div class="conteudo">
+            <button class="btn btn-caixa btn-outline-dark" 
+            (click)="exibirModal()">
+            <i class="fa fa-lg fa-external-link-alt mr-2"></i>
+              Mostrar modal
+            </button>
+          </div>
+        </app-documentacao-template>
+      </section>
+
+      <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
+        <div class="position-fixed list-group list-group-caixa bg-white shadow-caixa border-0">
+          <a (click)="scrollTo('painelMensagens')" class="list-group-item list-group-item-action"
+            [ngClass]="{'active': currentSection == 'painelMensagens'}" role="button">
+            Notificações</a>
+          <a (click)="scrollTo('painelSpinner')" class="list-group-item list-group-item-action"
+            [ngClass]="{'active': currentSection == 'painelSpinner'}" role="button">
+            Spinner</a>
+          <a (click)="scrollTo('painelModal')" class="list-group-item list-group-item-action"
+            [ngClass]="{'active': currentSection == 'painelModal'}" role="button">
+            Modal</a>
+        </div>
+      </nav>
     </div>
-  </nav>
-</div>
+
+    <div class="row no-gutters">
+      <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
+        <div class="position-fixed list-group list-group-caixa bg-white shadow-caixa border-0">
+          <a (click)="scrollTo('painelMensagens')" class="list-group-item list-group-item-action"
+            [ngClass]="{'active': currentSection == 'painelMensagens'}" role="button">
+            Notificações</a>
+          <a (click)="scrollTo('painelSpinner')" class="list-group-item list-group-item-action"
+            [ngClass]="{'active': currentSection == 'painelSpinner'}" role="button">
+            Spinner</a>
+          <a (click)="scrollTo('painelModal')" class="list-group-item list-group-item-action"
+            [ngClass]="{'active': currentSection == 'painelModal'}" role="button">
+            Modal</a>
+        </div>
+      </nav>
+    </div>
+  </div>  <!-- Tab Pane -->
+
+  <div class="tab-pane fade" id="exemplos" role="tabpanel"></div>  <!-- Tab Pane -->
+</div>  <!-- Tab Content -->
 
 <section *ngIf="false" id="painelMensagens" class="section-caixa">
 

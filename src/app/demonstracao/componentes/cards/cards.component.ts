@@ -21,30 +21,28 @@ export class CardsComponent extends ComponentesInterface {
   sectionOffset = 0;
   currentSection = "painelCards";
 
-  htmlCodeCards = `      <div class="card card-caixa">
+  htmlCodeCards = `            <div class="card card-caixa">
   <div class="card-header">
-    <h4 class="header-caixa">Card branco</h4>
+    <h4 class="header-caixa">Título</h4>
   </div>
   <div class="card-body">
-    <h5 class="font-fam-bold">Este é um título</h5>
-    <span>class="font-fam-bold">Este é um subtítulo</span>
-    <span>Este é um texto</span>
+    <h5>Este é um subtítulo</h5>
+    <span>Este é o corpo do card</span>
   </div>
   <div class="card-footer">
     <h5>Isso é um rodapé</h5>
   </div>
 </div>`.trim();
 
-  htmlCodeCardsTematicos = `      <div class="row">
+  htmlCodeCardsTematicos = `            <div class="row">
   <div class="col">
     <div class="card card-caixa bg-dark text-light">
       <div class="card-header">
-        <h4 class="header-caixa">Card escuro</h4>
+        <h4 class="header-caixa">Título</h4>
       </div>
       <div class="card-body">
-        <h5 class="font-fam-bold">Este é um título</h5>
-        <span>class="font-fam-bold">Este é um subtítulo</span>
-        <span>Este é um texto</span>
+        <h5>Este é um subtítulo</h5>
+        <span>Este é o corpo do card</span>
       </div>
       <div class="card-footer">
         <h5>Isso é um rodapé</h5>
@@ -55,12 +53,11 @@ export class CardsComponent extends ComponentesInterface {
   <div class="col">
     <div class="card card-caixa bg-primary text-light">
       <div class="card-header">
-        <h4 class="header-caixa">Card escuro</h4>
+        <h4 class="header-caixa">Título</h4>
       </div>
       <div class="card-body">
-        <h5 class="font-fam-bold">Este é um título</h5>
-        <span>class="font-fam-bold">Este é um subtítulo</span>
-        <span>Este é um texto</span>
+        <h5>Este é um subtítulo</h5>
+        <span>Este é o corpo do card</span>
       </div>
       <div class="card-footer">
         <h5>Isso é um rodapé</h5>

@@ -68,7 +68,7 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
 }`.trim();
 
   htmlCodeTodosTematicos = `        <div class="table-responsive">
-  <table class="table table-caixa table-hover table-borderless">
+  <table class="table table-caixa table-borderless">
     <tbody>
       <ng-container *ngFor="let tema of temas; let i = index">
         <tr>

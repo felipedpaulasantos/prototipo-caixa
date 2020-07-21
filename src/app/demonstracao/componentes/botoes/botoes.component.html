@@ -20,7 +20,7 @@
 
 <div class="tab-content">
   <div class="tab-pane fade show active" id="visaoGeral" role="tabpanel">
-    <div id="visaoGeral" class="row no-gutters">
+    <div class="row no-gutters">
       <section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
         <app-documentacao-template id="painelBotoes" 
         [cardTitle]="'Botões'" 
@@ -147,7 +147,7 @@
 
       <div class="conteudo">
         <div class="table-responsive">
-          <table class="table table-caixa table-hover table-borderless">
+          <table class="table table-caixa table-borderless">
             <tbody>
               <ng-container *ngFor="let tema of temas; let i = index">
                 <tr>
