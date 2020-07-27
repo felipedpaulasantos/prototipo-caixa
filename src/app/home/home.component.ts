@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
+import { SocketioService } from './../socketio.service';
 
 declare var $: any;
 
@@ -9,7 +10,11 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {}
+  constructor(
+    private socketService: SocketioService
+  ) {}
+
+  contador;
 
   rows: any[] = [];
 
@@ -37,24 +42,15 @@ export class HomeComponent implements OnInit {
       url: "/cores",
       icon: "fas fa-palette",
       description: "Cores temáticas e suas aplicações"
-    },
-
-/*     {
-      name: "Conta",
-      url: "/contas",
-      icon: "fas fa-phone-alt",
-      description: "Consulte e altere os dados da conta selecionada"
-    },
-    {
-      name: "Relatórios",
-      url: "/relatorios",
-      icon: "fas fa-chart-bar",
-      description: "Visualize relatórios em formatos de gráficos e tabelas"
-    }, */
+    }
   ];
 
   ngOnInit() {
     this.rows = this.groupColumns(this.resources);
+    this.socketService.setupSocketConnection();
+    this.socketService.contador$.subscribe(contador => {
+      this.contador = contador;
+    });
   }
 
   groupColumns(resources: any[]): any[] {
@@ -65,5 +61,9 @@ export class HomeComponent implements OnInit {
     }
 
     return newRows;
+  }
+
+  resetarSocket() {
+    this.socketService.resetSocket();
   }
 }

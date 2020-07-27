@@ -4,7 +4,7 @@
 <hr class="header-line-caixa">
 
 <div *ngFor="let cols of rows" class="row d-flex justify-content-center">
-  <div *ngFor="let resource of cols" class="col-xs-12 col-md-6 col-lg-4">
+  <div *ngFor="let resource of cols" class="col-10 col-md-6 col-xl-4">
     <div class="card card-caixa card-hover {{ resource.cardClass }}" role="button" [routerLink]="resource.url">
       <div class="card-header">
         <h5 class="header-subtitulo-caixa m-0 mr-3 text-center">
@@ -21,3 +21,15 @@
     <br>
   </div>
 </div>
+
+<h4 class="mt-5 text-center">
+  Este contador se atualiza a cada 3 segundos e reseta no 100.<br>
+  <a class="text-info" href="https://socketio-node-teste.herokuapp.com/" target="_blank">
+    https://socketio-node-teste.herokuapp.com/
+  </a>
+</h4>
+<h1 class="text-center">{{contador || 0}}</h1>
+<button (click)="resetarSocket()" class="btn btn-caixa btn-primary d-flex mx-auto align-items-center">
+  <i class="fa fa-sync-alt mr-2"></i>
+  Resetar
+</button>
