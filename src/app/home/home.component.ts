@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
 import { SocketioService } from './../socketio.service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 declare var $: any;
 
@@ -16,7 +17,8 @@ export class HomeComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
-  contador;
+  contador: any;
+  url: string;
 
   rows: any[] = [];
 
@@ -53,6 +55,7 @@ export class HomeComponent implements OnInit {
     this.socketService.contador$.subscribe(contador => {
       this.contador = contador;
     });
+    this.url = environment.SOCKET_ENDPOINT;
   }
 
   groupColumns(resources: any[]): any[] {

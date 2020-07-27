@@ -25,20 +25,20 @@
 <ng-container>
   <h4 class="mt-5 text-center">
     Este contador se atualiza a cada 3 segundos e reseta no 100.<br>
-    <a class="text-info" href="https://socketio-node-teste.herokuapp.com/" target="_blank">
-      https://socketio-node-teste.herokuapp.com/
+    <a class="text-info" [href]="url" target="_blank">
+      {{url}}
     </a>
   </h4>
   
-  <h1 class="text-center">{{contador || 0}}</h1>
+  <h1 class="text-center my-3">{{contador || 0}}</h1>
   <button (click)="resetarSocket()" class="btn btn-caixa btn-primary d-flex mx-auto align-items-center">
     <i class="fa fa-sync-alt mr-2"></i>
     Resetar
   </button>
   
-  <div class="d-flex w-50 mx-auto mt-3">
-    <input #inputMsg class="input-caixa w-50 ml-auto" placeholder="Envie uma mensagem ao servidor">
-    <button (click)="sendMessage(inputMsg.value)" class="btn btn-caixa btn-secondary align-items-center mr-auto shadow-none">
+  <div id="msgInput" class="d-flex w-50 mx-auto mt-3">
+    <input #inputMsg class="input-caixa ml-auto" placeholder="Envie uma mensagem ao servidor">
+    <button (click)="sendMessage(inputMsg.value)" class="btn btn-caixa btn-secondary mr-auto shadow-none">
       <i class="fa fa-paper-plane mr-2"></i>
       Enviar
     </button>
