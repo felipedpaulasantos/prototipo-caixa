@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
 import { SocketioService } from './../socketio.service';
+import { ToastrService } from 'ngx-toastr';
 
 declare var $: any;
 
@@ -11,7 +12,8 @@ declare var $: any;
 export class HomeComponent implements OnInit {
 
   constructor(
-    private socketService: SocketioService
+    private socketService: SocketioService,
+    private toastr: ToastrService
   ) {}
 
   contador;
@@ -65,5 +67,10 @@ export class HomeComponent implements OnInit {
 
   resetarSocket() {
     this.socketService.resetSocket();
+  }
+
+  sendMessage(msg: string) {
+    this.socketService.sendMessage(msg);
+    this.toastr.success("Mensagem enviada!");
   }
 }

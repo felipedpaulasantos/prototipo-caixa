@@ -21,12 +21,16 @@ export class SocketioService {
 
     this.socket.on('my broadcast', (data: string) => {
       this.contadorSource.next(data);
-      this.socket.emit('my message', data);
+      this.socket.emit('update', data);
       console.log(data);
     });
   }
 
   resetSocket() {
     this.socket.emit('reset', 0);
+  }
+
+  sendMessage(msg: string) {
+    this.socket.emit('message', msg);
   }
 }
