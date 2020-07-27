@@ -22,7 +22,12 @@
       <div *ngIf="user" class="mr-4">
           <button class="btn btn-caixa btn-flat shadow-none d-flex align-items-center" 
           data-toggle="dropdown">
-            <i class="fas fa-user-circle fa-lg"></i>
+            <span class="d-none d-md-block">
+              <i class="fas fa-user-circle fa-lg"></i>
+            </span>
+            <span class="d-block d-md-none">
+              <i class="fas fa-user-circle fa-2x"></i>
+            </span>
             <span class="ml-2 d-none d-md-block font-fam-bold">
               {{ user.nome_completo | titlecase }}
             </span>

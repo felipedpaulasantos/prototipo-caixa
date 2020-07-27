@@ -53,23 +53,23 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       active: false,
       submenu: [
         {
-          name: 'Cards',
-          url: '/componentes/cards',
-          active: false
-        },
-        {
           name: 'Botões',
           url: '/componentes/botoes',
           active: false
         },
         {
-          name: 'Mensagens',
-          url: '/componentes/mensagens',
+          name: 'Cards',
+          url: '/componentes/cards',
           active: false
         },
         {
           name: 'Inputs',
           url: '/componentes/inputs',
+          active: false
+        },
+        {
+          name: 'Mensagens',
+          url: '/componentes/mensagens',
           active: false
         },
         {

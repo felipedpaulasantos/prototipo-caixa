@@ -14,7 +14,7 @@ import { DatatableConfig } from './guia-caixa/constants/datatable-definitions';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
   animations: [fadeInAnimation]
 })
 export class AppComponent implements OnInit {

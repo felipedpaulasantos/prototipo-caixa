@@ -14,7 +14,7 @@
       [ngClass]="{'exibindo': isMenuAberto}">
     </div>
 
-    <div class="painelConteudoPrincipal">
+    <div id="painelConteudoPrincipal">
       <app-breadcrumb></app-breadcrumb>
       <br>
       <div [@routeAnimations]="prepareRoute(outlet)" [hidden]="!hasAccount">
