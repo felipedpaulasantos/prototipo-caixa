@@ -1,7 +1,4 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
-import { SocketioService } from './../socketio.service';
-import { ToastrService } from 'ngx-toastr';
-import { environment } from 'src/environments/environment';
 
 declare var $: any;
 
@@ -12,14 +9,7 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
 
-  constructor(
-    private socketService: SocketioService,
-    private toastr: ToastrService
-  ) {}
-
-  contador: any;
-  url: string;
-  message: string;
+  constructor() {}
 
   rows: any[] = [];
 
@@ -47,19 +37,17 @@ export class HomeComponent implements OnInit {
       url: "/cores",
       icon: "fas fa-palette",
       description: "Cores temáticas e suas aplicações"
+    },
+    {
+      name: "Chat",
+      url: "/chat",
+      icon: "fas fa-comment",
+      description: "Protótipo de chat"
     }
   ];
 
   ngOnInit() {
     this.rows = this.groupColumns(this.resources);
-    this.socketService.setupSocketConnection();
-    this.url = environment.SOCKET_ENDPOINT;
-    this.socketService.contador$.subscribe(contador => {
-      this.contador = contador;
-    });
-    this.socketService.message$.subscribe(msg => {
-      this.message = msg;
-    });
   }
 
   groupColumns(resources: any[]): any[] {
@@ -70,13 +58,5 @@ export class HomeComponent implements OnInit {
     }
 
     return newRows;
-  }
-
-  resetarSocket() {
-    this.socketService.resetSocket();
-  }
-
-  sendMessage(msg: string) {
-    this.socketService.sendMessage(msg);
   }
 }

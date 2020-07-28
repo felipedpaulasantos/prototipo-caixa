@@ -23,14 +23,12 @@ export class SocketioService {
     this.socket.emit('my message', 'Hello there from Angular.');
 
     this.socket.on('message', (msg: string) => {
-      console.log("Mensagem: " + msg);
       this.messageSource.next(msg);
     });
 
     this.socket.on('my broadcast', (data: string) => {
       this.contadorSource.next(data);
       this.socket.emit('update', data);
-      console.log(data);
     });
   }
 

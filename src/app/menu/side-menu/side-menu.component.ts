@@ -95,6 +95,12 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       iconClass: 'fas fa-lg fa-palette',
       url: '/cores',
       active: false
+    },
+    {
+      name: 'Chat',
+      iconClass: 'fas fa-lg fa-comment',
+      url: '/chat',
+      active: false
     }
     /*     {
           name: 'Contas',

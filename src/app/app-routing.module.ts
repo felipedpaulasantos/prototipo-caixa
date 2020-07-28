@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'chat',
     pathMatch: 'full'
   },
   {
@@ -69,9 +69,17 @@ const routes: Routes = [
       animation: 'Tipografia'
     },
     loadChildren: () => import('./demonstracao/tipografia/tipografia.module').then(m => m.TipografiaModule) },
+  { 
+    path: 'chat',
+    data: {
+      title: 'Chat',
+      breadcrumb: 'Chat',
+      animation: 'Chat'
+    },
+    loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule) },
   {
     path: '**',
-    redirectTo: 'home',
+    redirectTo: 'chat',
     pathMatch: 'full'
   }
 ];
