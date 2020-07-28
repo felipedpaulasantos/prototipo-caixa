@@ -12,12 +12,20 @@ export class SocketioService {
   private contadorSource = new BehaviorSubject<any>("");
   public contador$ = this.contadorSource.asObservable();
 
+  private messageSource = new BehaviorSubject<string>("");
+  public message$ = this.messageSource.asObservable();
+
   constructor() { }
 
   setupSocketConnection() {
     this.socket = io(environment.SOCKET_ENDPOINT);
 
     this.socket.emit('my message', 'Hello there from Angular.');
+
+    this.socket.on('message', (msg: string) => {
+      console.log("Mensagem: " + msg);
+      this.messageSource.next(msg);
+    });
 
     this.socket.on('my broadcast', (data: string) => {
       this.contadorSource.next(data);

@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
 
   contador: any;
   url: string;
+  message: string;
 
   rows: any[] = [];
 
@@ -52,10 +53,13 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.rows = this.groupColumns(this.resources);
     this.socketService.setupSocketConnection();
+    this.url = environment.SOCKET_ENDPOINT;
     this.socketService.contador$.subscribe(contador => {
       this.contador = contador;
     });
-    this.url = environment.SOCKET_ENDPOINT;
+    this.socketService.message$.subscribe(msg => {
+      this.message = msg;
+    });
   }
 
   groupColumns(resources: any[]): any[] {
@@ -74,6 +78,5 @@ export class HomeComponent implements OnInit {
 
   sendMessage(msg: string) {
     this.socketService.sendMessage(msg);
-    this.toastr.success("Mensagem enviada!");
   }
 }

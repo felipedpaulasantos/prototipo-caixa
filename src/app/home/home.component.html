@@ -29,16 +29,20 @@
       {{url}}
     </a>
   </h4>
-  
   <h1 class="text-center my-3">{{contador || 0}}</h1>
   <button (click)="resetarSocket()" class="btn btn-caixa btn-primary d-flex mx-auto align-items-center">
     <i class="fa fa-sync-alt mr-2"></i>
     Resetar
   </button>
+
+  <h4 class="mt-5 text-center">
+    Mensagem do servidor:<br>
+  </h4>
+  <h1 class="text-center my-3">{{message || ""}}</h1>
   
   <div id="msgInput" class="d-flex w-50 mx-auto mt-3">
     <input #inputMsg class="input-caixa ml-auto" placeholder="Envie uma mensagem ao servidor">
-    <button (click)="sendMessage(inputMsg.value)" class="btn btn-caixa btn-secondary mr-auto shadow-none">
+    <button (click)="sendMessage(inputMsg.value); inputMsg.value = ''" class="btn btn-caixa btn-secondary mr-auto shadow-none">
       <i class="fa fa-paper-plane mr-2"></i>
       Enviar
     </button>
