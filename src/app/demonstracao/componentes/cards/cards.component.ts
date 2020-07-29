@@ -35,7 +35,7 @@ export class CardsComponent extends ComponentesInterface {
 </div>`.trim();
 
   htmlCodeCardsTematicos = `            <div class="row">
-  <div class="col">
+  <div class="col-12 col-md-6 my-2">
     <div class="card card-caixa bg-dark text-light">
       <div class="card-header">
         <h4 class="header-caixa">Título</h4>
@@ -50,7 +50,7 @@ export class CardsComponent extends ComponentesInterface {
     </div>
   </div>  <!-- Coluna -->
 
-  <div class="col">
+  <div class="col my-2">
     <div class="card card-caixa bg-primary text-light">
       <div class="card-header">
         <h4 class="header-caixa">Título</h4>
@@ -72,26 +72,30 @@ export class CardsComponent extends ComponentesInterface {
   </div>
 </div>`.trim();
 
-  htmlCodeCardBotao = `        <div class="cards-menu d-flex align-items-center">
-  <div class="card card-caixa card-hover border border-dark">
-    <div class="card-body">
-      <i class="fa fa-home fa-4x mr-4"></i>
-      <h2 class="d-inline font-fam-bold mb-0">HOME</h2>
-    </div>
-  </div>  <!-- Card -->
-
-  <div class="card card-caixa card-hover border border-dark">
-    <div class="card-body">
-      <i class="fa fa-users fa-4x"></i>
-    </div>
-  </div>  <!-- Card -->
-
-  <div class="card card-caixa card-hover bg-opacity-2 border border-dark-dark">
-    <div class="card-body">
-      <i class="fa fa-file-archive fa-4x"></i>
-    </div>
-  </div>  <!-- Card -->
-</div>`.trim();
+  htmlCodeCardBotao = `        <div class="row">
+  <div class="col-6 col-md-4 mb-3">
+    <div class="card card-caixa card-hover border border-dark">
+      <div class="card-body">
+        <i class="fa fa-home fa-4x mr-4"></i>
+        <h2 class="d-inline font-fam-bold mb-0">HOME</h2>
+      </div>
+    </div>  <!-- Card -->
+  </div>  <!-- Col -->
+  <div class="col-6 col-md-4 mb-3">
+    <div class="card card-caixa card-hover border border-primary bg-gradient-sky text-white">
+      <div class="card-body">
+        <i class="fa fa-users fa-4x"></i>
+      </div>
+    </div>  <!-- Card -->             
+  </div>  <!-- Col -->
+  <div class="col-6 col-md-4 mb-3">
+    <div class="card card-caixa card-hover bg-opacity-2 border border-dark-dark">
+      <div class="card-body">
+        <i class="fa fa-file-archive fa-4x"></i>
+      </div>
+    </div>  <!-- Card -->
+  </div>  <!-- Col -->
+</div>  <!-- Row -->`.trim();
 
   cssCodeCardBotao = `.cards-menu .card {
   cursor: pointer;
@@ -101,7 +105,6 @@ export class CardsComponent extends ComponentesInterface {
   border-top-right-radius: 10px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
-  width: 250px;
 }`.trim();
 
   htmlCodeCardLayout = `        <div id="cardDadosProposta" class="card card-caixa">

@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'chat',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -79,7 +79,7 @@ const routes: Routes = [
     loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule) },
   {
     path: '**',
-    redirectTo: 'chat',
+    redirectTo: 'home',
     pathMatch: 'full'
   }
 ];
