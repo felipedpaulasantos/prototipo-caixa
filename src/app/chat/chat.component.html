@@ -1,31 +1,34 @@
-<ng-container>
-  <h4 class="text-center">
-    <a class="text-info" [href]="url" target="_blank">
-      {{url}}
-    </a>
-  </h4>
-  <h1 class="text-center my-3">{{contador || 0}}</h1>
-  <button (click)="resetarSocket()" class="btn btn-caixa btn-primary d-flex mx-auto align-items-center">
-    <i class="fa fa-sync-alt mr-2"></i>
-    Resetar
-  </button>
-
-<!--   <h4 class="mt-5 text-center">
-    Mensagem do servidor:<br>
-  </h4>
-	<h1 class="text-center my-3">{{message || ""}}</h1> -->
-	
-	<div id="chatDiv">
-		<span class="d-block w-100 p-3" [ngClass]="{'bg-light': i % 2}" *ngFor="let msg of messages; let i = index">
-			{{ msg }}
-		</span>
-	</div>
-  
-  <div id="msgInput" class="d-flex w-100 mx-auto mt-3">
-    <input #inputMsg class="input-caixa w-50 ml-auto" placeholder="Envie uma mensagem ao servidor">
-    <button (click)="sendMessage(inputMsg.value); inputMsg.value = ''" class="btn btn-caixa btn-secondary mr-auto shadow-none">
-      <i class="fa fa-paper-plane mr-2"></i>
-      Enviar
+<div id="chatPanel" class="d-flex flex-wrap">
+  <div class="w-100">
+    <h4 class="text-center">
+      <a class="text-info" [href]="url" target="_blank">
+        {{url}}
+      </a>
+    </h4>
+    <h1 class="text-center my-3">{{contador || 0}}</h1>
+    <button (click)="resetarSocket()" class="btn btn-caixa btn-primary d-flex mx-auto align-items-center">
+      <i class="fa fa-sync-alt mr-2"></i>
+      Resetar
     </button>
   </div>
-</ng-container>
+
+  <!--   <h4 class="mt-5 text-center">
+      Mensagem do servidor:<br>
+    </h4>
+    <h1 class="text-center my-3">{{message || ""}}</h1> -->
+  
+  <div id="chatDiv">
+    <span class="d-block w-100 p-3" [ngClass]="{'bg-light': i % 2}" *ngFor="let msg of messages; let i = index">
+      {{ msg }}
+    </span>
+  </div>
+  
+  <div id="msgInput" class="align-self-end">
+    <div class="d-flex align-items-end">
+      <input #inputMsg class="input-caixa" placeholder="Envie uma mensagem ao servidor">
+      <button (click)="sendMessage(inputMsg.value); inputMsg.value = ''" class="btn btn-caixa btn-secondary shadow-none">
+        <i class="fa fa-lg fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+</div>
