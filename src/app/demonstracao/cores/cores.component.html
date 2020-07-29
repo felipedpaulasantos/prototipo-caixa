@@ -13,19 +13,25 @@
 	<div class="card-body">
 		<div class="row">
 			<ng-container>
-				<div class="col-4 d-flex align-items-center justify-content-between">
-					<div class="square bg-{{ cor.name }}-light"></div>
-
-					<div class="square bg-{{ cor.name }}"></div>
-
-					<div class="square bg-{{ cor.name }}-dark"></div>
+				<div class="col-12 col-xl-6 d-flex align-items-center justify-content-between mb-3">
+					<div class="row no-gutters w-100">
+						<div class="col">
+							<div class="square bg-{{ cor.name }}-light"></div>
+						</div>
+						<div class="col">
+							<div class="square bg-{{ cor.name }}"></div>
+						</div>
+						<div class="col">
+							<div class="square bg-{{ cor.name }}-dark"></div>
+						</div>
+					</div>
 				</div>
-				<div class="col-4 d-flex align-items-center flex-wrap">
+				<div class="col-12 col-sm-6 col-xl-3 d-flex align-items-center flex-wrap mb-3">
 					<h5 class="text-{{ cor.name }}-light font-fam-bold w-100">Título no tom claro</h5>
 					<h5 class="text-{{ cor.name }} font-fam-bold w-100">Título no tom padrão</h5>
 					<h5 class="text-{{ cor.name }}-dark font-fam-bold w-100">Título no tom escuro</h5>
 				</div>
-				<div class="col-4 d-flex align-items-center flex-wrap">
+				<div class="col-12 col-sm-6 col-xl-3 d-flex align-items-center flex-wrap mb-3">
 					<h5 class="text-{{ cor.name }}-light font-fam-bold header-caixa w-100">Header caixa no tom claro</h5>
 					<h5 class="text-{{ cor.name }} font-fam-bold header-caixa w-100">Header caixa no tom padrão</h5>
 					<h5 class="text-{{ cor.name }}-dark font-fam-bold header-caixa w-100">Header caixa no tom escuro</h5>
