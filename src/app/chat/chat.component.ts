@@ -43,7 +43,7 @@ export class ChatComponent implements OnInit {
   sendMessage(msg: string) {
     this.scrollSmoothToBottom("chatDiv");
     this.socketService.sendMessage(`Front: ${msg}`);
-    $("#msgInput input").focus();
+    $("#msgInput input").trigger("focus");
   }
 
   scrollSmoothToBottom(id) {
