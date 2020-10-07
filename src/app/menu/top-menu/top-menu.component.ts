@@ -7,8 +7,7 @@ import { User } from "../../authentication/users/user";
 import { ModalService } from "src/app/guia-caixa/services/modal.service";
 import { SideMenuService } from "../side-menu/side-menu.service";
 import { StyleService, Tema } from 'src/app/guia-caixa/services/style.service';
-import { LOGO_CAIXA_BRANCO_SRC } from 'src/app/guia-caixa/constants/constants';
-
+import { LOGO_CAIXA_BRANCO_SRC, LOGO_COMPLETO_BRANCO_SRC, Meses } from 'src/app/guia-caixa/constants/constants';
 
 @Component({
   selector: "app-top-menu",
@@ -17,13 +16,16 @@ import { LOGO_CAIXA_BRANCO_SRC } from 'src/app/guia-caixa/constants/constants';
 })
 export class TopMenuComponent implements OnInit {
 
-  logoBranco = LOGO_CAIXA_BRANCO_SRC;
+  logoXBranco = LOGO_CAIXA_BRANCO_SRC;
+  logoCompletoBranco = LOGO_COMPLETO_BRANCO_SRC;
 
   @ViewChild("navbarTop") navbarTop: ElementRef;
   @Input() tema: Tema;
   @Input() resources;
   user$ = new Observable<User>(null);
   user: User;
+  isMenuAberto: boolean;
+  dataHora: string;
 
   constructor(
     private oauthService: OAuthService,
@@ -33,6 +35,8 @@ export class TopMenuComponent implements OnInit {
     public styleService: StyleService
   ) {
     this.user$ = this.userService.perfil;
+    this.sidemenuService.isAberto$.subscribe(isAberto => this.isMenuAberto = isAberto);
+    this.showDate();
   }
 
   ngOnInit(): void {
@@ -72,6 +76,17 @@ export class TopMenuComponent implements OnInit {
       matricula: "C123456",
       roles: []
     };
+  }
+
+  showDate(): void {
+    this.setDate(new Date());
+    setInterval(() => {
+      this.setDate(new Date());
+    }, 1000);
+  }
+
+  setDate(data: Date) {
+    this.dataHora = `${data.getHours()}h${data.getMinutes()} - ${data.getDate()} ${Meses[data.getMonth()]} ${data.getFullYear()}`;
   }
 
 }

@@ -19,7 +19,7 @@ export class StyleService {
   constructor() { }
 
   private defaultTheme: Tema = {
-    toolbarBg: "primary",
+    toolbarBg: "gradient-primary",
     toolbarText: "light-light",
     toolbarIcon: LOGO_CAIXA_BRANCO_SRC,
     sidemenuBg: "light-light",

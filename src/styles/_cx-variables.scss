@@ -121,7 +121,7 @@ $cx-gradient-primary: linear-gradient(150deg, $cx-color-primary 10%, $cx-color-a
 $cx-gradient-sky: linear-gradient(150deg, $cx-color-primary 10%, $cx-color-info 100%);
 $cx-gradient-aux: linear-gradient(150deg, $cx-color-primary 10%, $cx-color-aux 100%);
 $cx-gradient-success: linear-gradient(150deg, $cx-color-primary 10%, rgba(175,202,11,1) 100%);
-$cx-gradient-light: linear-gradient(150deg, $cx-color-lightest 10%, $cx-color-light-dark 100%);
+$cx-gradient-light: linear-gradient(150deg, $cx-color-light-dark 10%, $cx-color-lightest 100%);
 $cx-gradient-dark: linear-gradient(150deg, $cx-color-darkest 10%, $cx-color-dark-light 100%);
 
 $cx-gradient-themes: (

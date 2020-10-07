@@ -1,3 +1,13 @@
+#spanLogo {
+  width: 130px;
+  max-width: 130px;
+  transition: 0.2s;
+}
+#spanLogo.menu-is-aberto {
+  width: 260px;
+  max-width: 260px;
+}
+
 .img-logo {
   min-width: 40px;
   max-height: 30px;
@@ -41,9 +51,21 @@
   }
 }
 
-#verticalLine {
-  width: 0;
-  height: 80%;
-  border: solid 0.5px white;
-  opacity: 0.8;
+.notification-container {
+  display: inline-block;
+  position: relative;
+}
+
+/* Make the badge float in the top right corner of the button */
+.notification-badge {
+  background-color: #fa3e3e;
+  border-radius: 10px;
+  color: white;
+ 
+  padding: 0.1rem 0.3rem;
+  font-size: 10px;
+  
+  position: absolute; /* Position the badge within the relatively positioned button */
+  top: -10px;
+  right: -5px;
 }
