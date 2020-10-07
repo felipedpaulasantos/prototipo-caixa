@@ -9,13 +9,17 @@
       <h5 class="d-none d-md-block mb-0">Menu</h5>
     </div> -->
 
-    <div id="spanLogo" class="h-100" (click)="trocaMenuLateral()" [ngClass]="{'menu-is-aberto': isMenuAberto}">
-      <div class="d-flex align-items-center justify-content-center h-100">
-        <img [src]="isMenuAberto ? logoCompletoBranco : logoXBranco" class="img-fluid img-logo rounded">
+    <div id="spanLogo" class="h-100"  [ngClass]="{'menu-is-aberto': isMenuAberto}">
+      <div class="d-flex align-items-center h-100">
+        <img [src]="isMenuAberto ? logoCompletoBranco : logoXBranco" class="img-fluid img-logo rounded mx-auto">
+        <span class="mr-4" role="button" (click)="trocaMenuLateral()">
+          <i class="fas fa-bars fa-lg"></i>
+        </span>
       </div>
+
     </div>
 
-    <h4 class="m-0 header-caixa full-opacity">
+    <h4 class="mb-0 ml-2 header-caixa full-opacity">
       Olá, {{ user.nome_completo }}
     </h4>
 
@@ -27,31 +31,38 @@
 
     <div id="painelIconesUsuario">
       <div class="notification-container mr-4" role="button">
-        <i role="button" class="fa fa-bell fa-lg" title="Notificações"></i>
+        <i role="button" class="fa fa-bell fa-2x" title="Notificações"></i>
         <span class="notification-badge">2</span>
       </div>
 
       <div class="notification-container mr-4" role="button">
-        <i role="button" class="fa fa-envelope fa-lg" title="Mensagens"></i>
+        <i role="button" class="fa fa-envelope fa-2x" title="Mensagens"></i>
         <span class="notification-badge">5</span>
       </div>
       
-      <div class="notification-container">
-        <i role="button" class="fa fa-adjust fa-lg" title="Modo Escuro"></i>
+      <div class="notification-container mx-4">
+        <i role="button" class="fa fa-adjust fa-2x" title="Modo Escuro"></i>
       </div>
     </div>
 
-    <div *ngIf="user" class="mx-4">
+    <div class="mx-4">
+      <button class="btn btn-outline-light">
+        <i class="fa fa-sign-out-alt fa-lg mr-2"></i>
+        <span class="text-uppercase font-fam-bold">Sair</span>
+      </button>
+    </div>
+
+<!--     <div *ngIf="user" class="mx-4">
       <button class="btn btn-caixa btn-flat shadow-none d-flex align-items-center" data-toggle="dropdown">
         <span class="d-none d-md-block">
-          <i class="fas fa-user-circle fa-lg"></i>
+          <i class="fas fa-user-circle fa-2x"></i>
         </span>
         <span class="d-block d-md-none">
           <i class="fas fa-user-circle fa-2x"></i>
         </span>
-        <span class="ml-2 d-none d-md-block font-fam-bold">
+        <h5 class="ml-2 mb-0 d-none d-md-block font-fam-bold">
           {{ user.nome_completo | titlecase }}
-        </span>
+        </h5>
         <i class="fas fa-caret-down ml-2"></i>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -68,7 +79,7 @@
           Sair
         </a>
       </div>
-    </div>
+    </div> -->
 
   </nav>
 </header>
