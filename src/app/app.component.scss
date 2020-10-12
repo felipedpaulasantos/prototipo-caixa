@@ -2,7 +2,7 @@
   position: relative;
   bottom: 0;
   height: 100%;
-  transition: 0.7s;
+  transition: 0.5s;
   z-index: 1;
   overflow: auto;
 }
@@ -14,11 +14,11 @@
 }
 @media (min-width: 992px) {
   #conteudoPrincipal {
-    margin-left: 260px;
+    margin-left: 300px;
     transition: 0.5s;
   }
   #conteudoPrincipal.sem-menu-lateral {
-    margin-left: 0;
+    margin-left: 165px;
     transition: 0.5s;
   }
 }

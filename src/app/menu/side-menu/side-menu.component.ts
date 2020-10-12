@@ -10,6 +10,7 @@ import { filter, tap, map, mergeMap } from 'rxjs/operators';
 import { AccordionConfig } from 'src/app/shared/components/accordion/types/accordion-config';
 import { AccordionMenu } from 'src/app/shared/components/accordion/types/accordion-menu';
 import { StyleService, Tema } from 'src/app/guia-caixa/services/style.service';
+import { ToastrService } from 'ngx-toastr';
 
 const MENU_ROUTE_PROPERTY = "menuLateral";
 const MOBILE_BREAKPOINT = 991.9;
@@ -27,7 +28,8 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private menuService: SideMenuService,
-    public styleService: StyleService
+    public styleService: StyleService,
+    private toastr: ToastrService
   ) { }
 
   @Input() tema: Tema;
@@ -54,31 +56,43 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       submenu: [
         {
           name: 'Botões',
+          iconClass: 'fa fa-lg fa-dot-circle',
           url: '/componentes/botoes',
-          active: false
+          active: false,
+          submenu: [
+            {
+              name: 'Teste',
+              active: false
+            }
+          ]
         },
         {
           name: 'Cards',
+          iconClass: 'fa fa-lg fa-clipboard',
           url: '/componentes/cards',
           active: false
         },
         {
           name: 'Inputs',
+          iconClass: 'fa fa-lg fa-keyboard',
           url: '/componentes/inputs',
           active: false
         },
         {
           name: 'Mensagens',
+          iconClass: 'fa fa-lg fa-comment',
           url: '/componentes/mensagens',
           active: false
         },
         {
           name: 'Select',
+          iconClass: 'fa fa-lg fa-hand-pointer',
           url: '/componentes/select',
           active: false
         },
         {
           name: 'Tabelas',
+          iconClass: 'fa fa-lg fa-table',
           url: '/componentes/tabelas',
           active: false
         }
@@ -93,8 +107,47 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     {
       name: 'Cores',
       iconClass: 'fas fa-lg fa-palette',
-      url: '/cores',
-      active: false
+      /* url: '/cores', */
+      onClick: () => this.toastr.info("Você clicou no item de cores"),
+      active: false,
+      submenu: [
+        {
+          name: 'Botões',
+          iconClass: 'fa fa-lg fa-dot-circle',
+          active: false,
+          submenu: [
+            {
+              name: 'Teste',
+              active: false
+            }
+          ]
+        },
+        {
+          name: 'Cards',
+          iconClass: 'fa fa-lg fa-clipboard',
+          active: false
+        },
+        {
+          name: 'Inputs',
+          iconClass: 'fa fa-lg fa-keyboard',
+          active: false
+        },
+        {
+          name: 'Mensagens',
+          iconClass: 'fa fa-lg fa-comment',
+          active: false
+        },
+        {
+          name: 'Select',
+          iconClass: 'fa fa-lg fa-hand-pointer',
+          active: false
+        },
+        {
+          name: 'Tabelas',
+          iconClass: 'fa fa-lg fa-table',
+          active: false
+        }
+      ]
     },
     {
       name: 'Chat',

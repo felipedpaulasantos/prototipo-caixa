@@ -1,9 +1,18 @@
 <perfect-scrollbar #menuLateral id="menuLateral" 
-  class="bg-{{ tema.sidemenuBg }} shadow" [ngClass]="{'escondido': !isAberto}">
+  class="bg-{{ tema.sidemenuBg }} shadow" [ngClass]="{'reduzido': !isAberto}">
 
-  <div id="menuLateralPesquisa" class="py-4 px-3">
+<!--   <div id="menuLateralPesquisa" class="py-4 px-3">
     <i id="sidemenuSearchIcon" class="fas fa-lg fa-search mr-3"></i>
     <input class="input-base w-75 d-inline" placeholder="Pesquisar...">
+  </div> -->
+
+  <div id="painelBotaoSipan" class="p-3 text-center">
+    <button id="botaoSipan" class="btn btn-primary text-uppercase" [ngClass]="{'btn-block': isAberto}" title="Portal Negócios.Caixa">
+      <i class="fa fa-desktop fa-lg "></i>
+      <span *ngIf="isAberto" class="ml-2">
+        Portal Negócios.Caixa
+      </span>
+    </button>
   </div>
 
   <div id="menuLateralNav">

@@ -86,7 +86,13 @@ export class TopMenuComponent implements OnInit {
   }
 
   setDate(data: Date) {
-    this.dataHora = `${data.getHours()}h${data.getMinutes()} - ${data.getDate()} ${Meses[data.getMonth()]} ${data.getFullYear()}`;
+    const hora = String(data.getHours()).padStart(2, "0");
+    const minutos = String(data.getMinutes()).padStart(2, "0");
+    const dia = String(data.getDate()).padStart(2, "0");
+    const mes = Meses[data.getMonth()];
+    const ano = data.getFullYear();
+
+    this.dataHora = `${hora}h${minutos} - ${dia} ${mes} ${ano}`;
   }
 
 }

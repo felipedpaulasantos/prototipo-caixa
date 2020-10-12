@@ -7,6 +7,10 @@
   transition: 0.5s;
   z-index: 999;
 }
+#menuLateral.reduzido {
+  width: 165px;
+  max-width: 165px;
+}
 #menuLateral.escondido {
   margin-left: -400px;
   visibility: hidden;
@@ -25,10 +29,14 @@
 
 @media (min-width: 992px) {
   #menuLateral {
-    max-width: 260px;
+    max-width: 300px;
   }
   #menuLateral.escondido {
-    margin-left: -262px;
+    margin-left: -302px;
     visibility: hidden;
   }
+}
+
+#botaoSipan {
+  white-space: nowrap;
 }

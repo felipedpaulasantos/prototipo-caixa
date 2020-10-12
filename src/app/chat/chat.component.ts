@@ -22,7 +22,7 @@ export class ChatComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.socketService.setupSocketConnection();
+/*     this.socketService.setupSocketConnection();
     this.url = environment.SOCKET_ENDPOINT;
     this.socketService.contador$.subscribe(contador => {
       this.contador = contador;
@@ -33,7 +33,7 @@ export class ChatComponent implements OnInit {
         this.scrollSmoothToBottom("chatDiv");
       }
       this.message = msg;
-    });
+    }); */
   }
 
   resetarSocket() {
