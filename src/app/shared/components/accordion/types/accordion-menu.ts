@@ -3,6 +3,6 @@ export interface AccordionMenu {
   iconClass?: string;
   active: boolean;
   url?: string;
-  onClick?: any;
+  onClick?: Function;
   submenu?: AccordionMenu[];
 }
