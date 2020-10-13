@@ -24,11 +24,11 @@ export class AccordionComponent implements OnInit {
   @Input() menus: AccordionMenu[];
   config: Config;
   url: string;
-  isMenuAberto: boolean;
 
   ngOnInit() {
     this.config = this.mergeConfig(this.options);
     this.router.events.subscribe(ev => {
+
       if (ev instanceof NavigationEnd) {
         const loc = this.location.path();
         this.menus.forEach((menu, index) => {
@@ -38,33 +38,35 @@ export class AccordionComponent implements OnInit {
               this.cdr.detectChanges();
             }
           }
+          if (menu.submenu) {
+            menu.submenu.forEach((submenu, subindex) => {
+              if (loc.includes(submenu.url)) {
+                if (!submenu.active) {
+                  this.toggle(index, true, subindex);
+                  this.cdr.detectChanges();
+                }
+              } /* else {
+                submenu.active = false;
+                this.cdr.detectChanges();
+              } */
+            });
+          }
         });
       }
-    });
-
-    this.menuService.isAberto$.subscribe(isAberto => {
-      this.isMenuAberto = isAberto;
-      console.log(isAberto);
     });
   }
 
   mergeConfig(options: Config) {
-
     const config = {
       // selector: '#accordion',
       multi: true
     };
-
     return { ...config, ...options };
   }
 
-  toggle(index: number, isSubmenu = false, submenuIndex = null, submenuDiv = null) {
+  toggle(index: number, isSubmenu = false, submenuIndex = null) {
 
-    if (isSubmenu) {
-/*       console.log("=====================================");
-      console.log("ANTES DE TROCAR", index, submenuIndex);
-      console.log(this.menus[index].submenu[submenuIndex].active); */
-    }
+    console.log(index, isSubmenu, submenuIndex);
 
     if (!this.config.multi) {
       this.menus.filter(
@@ -72,13 +74,13 @@ export class AccordionComponent implements OnInit {
       ).forEach(menu => menu.active = !menu.active);
     }
 
-
-
     if (isSubmenu) {
+      const submenus = this.menus[index].submenu;
+      submenus.filter(
+        (submenu, i) => i !== submenuIndex && submenu.active
+      ).forEach(submenu => submenu.active = !submenu.active);
       this.menus[index].submenu[submenuIndex].active = !this.menus[index].submenu[submenuIndex].active;
-/*       console.log("DEPOIS DE TROCAR", index, submenuIndex);
-      console.log(this.menus[index].submenu[submenuIndex].active);
-      console.log("====================================="); */
+
     } else {
       this.menus[index].active = !this.menus[index].active;
     }
@@ -89,7 +91,7 @@ export class AccordionComponent implements OnInit {
   }
 
   private navigate(url: string) {
-    this.router.navigate([url]);
+    this.router.navigateByUrl(url).then(msg => console.log("Routing", msg));
   }
 
   private callAction(menu: AccordionMenu) {

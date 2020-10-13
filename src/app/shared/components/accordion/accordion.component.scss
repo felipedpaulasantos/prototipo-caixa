@@ -62,9 +62,14 @@
     left: 20px;
   }
   .item-close-caret {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     left: auto;
-    right: 20px;
+    right: 1px;
+    height: 100%;
+    width: 40px;
   }
 }
 
@@ -76,7 +81,7 @@
   position: relative;
   padding: 15px 15px 15px 45px;
   border-bottom: 1px solid #ccc;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .accordion li:last-child .menu {
@@ -88,7 +93,7 @@
   top: 1.2rem;
   left: 1rem;
   color: #595959; */
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .accordion a i.fa-chevron-down {
@@ -108,7 +113,7 @@
   overflow: hidden;
 /*   background: #444359; */
 /*   font-size: 14px; */
-  transition: 0.4s ease;
+  transition: 0.3s ease;
   list-style: none;
   padding-left: 0;
 }
@@ -146,7 +151,7 @@
 }
 
 .top-menu {
-  transition: 0.4s;
+  transition: 0.3s;
 }
 .top-menu.active {
   box-shadow: 0 0.6rem 0.4rem -0.4rem rgba(0, 0, 0, 0.1) !important;

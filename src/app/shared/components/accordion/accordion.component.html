@@ -3,7 +3,8 @@
   <li class="nav-item" *ngFor="let menu of menus; let i = index" [class.active]="menu.active">
 
     <!-- Itens de menu de nível 1 -->
-    <div class="top-menu d-flex align-items-center ripple-dark" [ngClass]="{'active': menu.active && menu.submenu}">
+    <div class="top-menu d-flex align-items-center" [ngClass]="{'active': menu.active && menu.submenu, 'text-primary': menu.active}"
+    [title]="menu.name">
       <div (click)="activate(menu); toggle(i)" [routerLinkActive]="menu.url ? 'active' : ''" 
       role="button" class="menu-item">
         <span class="menu-item-caret">
@@ -24,15 +25,16 @@
 
         <!-- Itens de menu de nível 2 -->
         <div class="menu-item" role="button" routerLink="{{ submenu.url }}" [routerLinkActive]="submenu.url ? 'active' : ''" 
-        [ngClass]="{'menu-reduzido': !(menuService.isAberto$ | async), 'active': submenu.active}">      
-          <div class="menu-item-button ripple-dark">
-            <span class="menu-item-caret" (click)="activate(submenu); toggle(i, true, i2, submenuDiv);">
+        [ngClass]="{'active bg-primary text-white': submenu.active}"
+        [title]="submenu.name">      
+          <div class="menu-item-button">
+            <span class="menu-item-caret" (click)="activate(submenu); toggle(i, true, i2);">
               <i *ngIf="submenu.submenu" class="fa fa-chevron-down item-caret"></i>
             </span>
-            <span class="menu-item-icon" (click)="activate(submenu); toggle(i, true, i2, submenuDiv);">
-              <i *ngIf="menu.iconClass" [class]="submenu.iconClass"></i>
+            <span class="menu-item-icon" (click)="activate(submenu); toggle(i, true, i2);">
+              <i *ngIf="submenu.iconClass" [class]="submenu.iconClass"></i>
             </span>
-            <span class="menu-item-name w-50" (click)="activate(submenu); toggle(i, true, i2, submenuDiv);">
+            <span class="menu-item-name w-50" (click)="activate(submenu); toggle(i, true, i2);">
               {{ submenu.name }}
             </span>
             <ng-container *ngIf="submenu.active">
@@ -44,34 +46,8 @@
               </span>
             </ng-container>
           </div>
-<!--           <div class="menu-item-close ripple-dark" *ngIf="submenu.active">
-            <div class="menu-item-close-menu w-100 text-center" (click)="fecharMenulateral()" role="button">
-              <i class="fa fa-angle-double-left" ></i>
-            </div>
-            <div class="menu-item-open-menu w-100 text-center" (click)="abrirMenuLateral()" role="button">
-              <i class="fa fa-angle-double-right" ></i>
-            </div>
-          </div> -->
-
         </div>
         <!-- Itens de menu de nível 2 -->
-
-<!--         <a routerLink="{{ submenu.url }}" [routerLinkActive]="submenu.url ? 'active' : ''" role="button" 
-        (click)="toggle(i, true, i2, submenuDiv);"
-        class="py-3 rounded-0">
-          <i *ngIf="menu.iconClass" [class]="submenu.iconClass"></i>
-          {{ submenu.name }}
-        </a>
-        <ng-container *ngIf="submenu.active">
-          <i role="button" class="fa fa-angle-double-left fa-lg"
-            *ngIf="(menuService.isAberto$ | async)"
-            (click)="trocarMenuLateral()">
-          </i>
-          <i role="button" class="fa fa-angle-double-right fa-lg"
-            *ngIf="!(menuService.isAberto$ | async)"
-            (click)="trocarMenuLateral()">
-          </i>
-        </ng-container> -->
 
         <!-- Itens de menu de nível 3 -->
         <ul id="subsubmenu{{i2}}" *ngIf="submenu.submenu" class="subsubmenu" #subsubmenuDiv 
@@ -79,8 +55,9 @@
           <li class="nav-item border-bottom" *ngFor="let subsubmenu of submenu.submenu">
 
             <div class="menu-item" role="button" routerLink="{{ subsubmenu.url }}" [routerLinkActive]="subsubmenu.url ? 'active' : ''" 
-            [ngClass]="{'menu-reduzido': !(menuService.isAberto$ | async), 'active': subsubmenu.active}">      
-              <div class="menu-item-button ripple-dark" (click)="toggle(i, true, i2, submenuDiv);">
+            [ngClass]="{'active': subsubmenu.active}"
+            [title]="subsubmenu.name">      
+              <div class="menu-item-button ripple-dark" (click)="toggle(i, true, i2);">
                 <span class="menu-item-icon">
                   <i *ngIf="menu.iconClass" [class]="subsubmenu.iconClass"></i>
                 </span>
@@ -89,12 +66,6 @@
                 </span>
               </div>
             </div>
-
-<!--             <a routerLink="{{ subsubmenu.url }}" [routerLinkActive]="subsubmenu.url ? 'active' : ''" role="button"
-              class="nav-item nav-link side-menu-item py-3 rounded-0">
-              <i *ngIf="menu.iconClass" [class]="subsubmenu.iconClass"></i>
-              {{ subsubmenu.name }}
-            </a> -->
           </li>
         </ul>
         <!-- Itens de menu de nível 3 -->
@@ -105,18 +76,3 @@
   </li> <!-- Top Level menus -->
 
 </ul> <!-- Accordion -->
-
-<!-- <ul class="nav nav-pills flex-column border-top">
-  <li class="nav-item" *ngFor="let resource of resources">
-    <a routerLink="{{ resource.url }}" routerLinkActive="active" class="nav-item nav-link side-menu-item border-bottom py-4 rounded-0">
-        <i class="{{ resource.icon }} fa-lg mr-3"></i>
-        {{ resource.name }}
-    </a>
-  </li>
-  <li class="nav-item">
-    <a target="_blank" class="nav-item nav-link py-4 rounded-0 side-menu-item border-bottom" href="https://developers.facebook.com/docs/whatsapp/overview">
-        <i class="fas fa-lg fa-external-link-alt mr-3"></i>
-        Referência da API
-    </a>
-  </li>
-</ul> -->
