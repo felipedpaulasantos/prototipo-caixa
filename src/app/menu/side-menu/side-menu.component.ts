@@ -11,6 +11,7 @@ import { AccordionConfig } from 'src/app/shared/components/accordion/types/accor
 import { AccordionMenu } from 'src/app/shared/components/accordion/types/accordion-menu';
 import { StyleService, Tema } from 'src/app/guia-caixa/services/style.service';
 import { ToastrService } from 'ngx-toastr';
+import { url } from 'inspector';
 
 const MENU_ROUTE_PROPERTY = "menuLateral";
 const MOBILE_BREAKPOINT = 991.9;
@@ -35,7 +36,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
   @Input() tema: Tema;
   options: AccordionConfig = { multi: false };
 
-  menus: AccordionMenu[] = [
+  menusOLD: AccordionMenu[] = [
     {
       name: 'Início',
       iconClass: 'fas fa-lg fa-home',
@@ -58,13 +59,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
           name: 'Botões',
           iconClass: 'fa fa-lg fa-dot-circle',
           url: '/componentes/botoes',
-          active: false,
-          submenu: [
-            {
-              name: 'Teste',
-              active: false
-            }
-          ]
+          active: false
         },
         {
           name: 'Cards',
@@ -107,47 +102,8 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     {
       name: 'Cores',
       iconClass: 'fas fa-lg fa-palette',
-      /* url: '/cores', */
-      onClick: () => this.toastr.info("Você clicou no item de cores"),
-      active: false,
-      submenu: [
-        {
-          name: 'Botões',
-          iconClass: 'fa fa-lg fa-dot-circle',
-          active: false,
-          submenu: [
-            {
-              name: 'Teste',
-              active: false
-            }
-          ]
-        },
-        {
-          name: 'Cards',
-          iconClass: 'fa fa-lg fa-clipboard',
-          active: false
-        },
-        {
-          name: 'Inputs',
-          iconClass: 'fa fa-lg fa-keyboard',
-          active: false
-        },
-        {
-          name: 'Mensagens',
-          iconClass: 'fa fa-lg fa-comment',
-          active: false
-        },
-        {
-          name: 'Select',
-          iconClass: 'fa fa-lg fa-hand-pointer',
-          active: false
-        },
-        {
-          name: 'Tabelas',
-          iconClass: 'fa fa-lg fa-table',
-          active: false
-        }
-      ]
+      url: '/cores',
+      active: false
     },
     {
       name: 'Chat',
@@ -155,18 +111,86 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       url: '/chat',
       active: false
     }
-    /*     {
-          name: 'Contas',
-          iconClass: 'fas fa-lg fa-phone-alt',
-          url: '/contas',
-          active: false
+  ];
+
+  menus: AccordionMenu[] = [
+    {
+      name: "Home",
+      iconClass: "fas fa-lg fa-home",
+      url: "/home"
+    },
+    {
+      name: "Pessoa Física/Jurídica",
+      iconClass: "fa fa-lg fa-user-tie",
+      url: "/home",
+      submenu: [
+        {
+          name: "Cadastro",
+          iconClass: "fa fa-lg fa-file-medical",
+          url: "/home"
         },
         {
-          name: 'Relatórios',
-          iconClass: 'fas fa-lg fa-chart-bar',
-          url: '/relatorios',
-          active: false
-        } */
+          name: "Contratos",
+          iconClass: "fa fa-lg fa-file-alt",
+          url: "/home"
+        },        {
+          name: "Assinatura Eletrônica",
+          iconClass: "fa fa-lg fa-file-signature",
+          url: "/home"
+        },
+        {
+          name: "SMS",
+          iconClass: "fa fa-lg fa-mobile-alt",
+          url: "/home"
+        },
+        {
+          name: "Saque Aniversário - Antecipação",
+          iconClass: "fa fa-lg fa-birthday-cake",
+          url: "/home"
+        },
+      ]
+    },
+    {
+      name: "Serviços ao Cidadão",
+      iconClass: "fa fa-lg fa-user-friends",
+      url: "/home",
+      submenu: [
+        {
+          name: "Resumo do Cidadão",
+          iconClass: "fa fa-lg fa-id-badge",
+          url: "/home"
+        },
+        {
+          name: "Cadastro NIS",
+          iconClass: "fa fa-lg fa-file-medical",
+          url: "/home"
+        },        {
+          name: "Cartões Sociais",
+          iconClass: "fa fa-lg fa-credit-card",
+          url: "/home"
+        },
+        {
+          name: "FGTS",
+          iconClass: "fa fa-lg fa-landmark",
+          url: "/home"
+        },
+        {
+          name: "Saque Emergencial - MP 946/20",
+          iconClass: "fa fa-lg fa-dollar-sign",
+          url: "/home"
+        },
+      ]
+    },
+    {
+      name: "Investimentos",
+      iconClass: "fa fa-lg fa-chart-line",
+      url: "/home"
+    },
+    {
+      name: "Dossiê Digital",
+      iconClass: "fa fa-lg fa-cloud-download-alt",
+      url: "/home"
+    },
   ];
 
   @ViewChild("menuLateral", { read: ElementRef })
@@ -185,29 +209,6 @@ export class SideMenuComponent implements OnInit, OnDestroy {
   component: Type<Component>;
   refInjector: Injector;
   resolverSub: Subscription;
-
-  @Input() resources = [
-    {
-      name: 'Início',
-      url: '/home',
-      icon: 'fas fa-home'
-    },
-    {
-      name: 'Contas',
-      url: '/contas',
-      icon: 'fas fa-phone-alt'
-    },
-    {
-      name: 'Ativação',
-      url: '/ativacao',
-      icon: 'fas fa-plus'
-    },
-    {
-      name: 'Relatórios',
-      url: '/relatorios',
-      icon: 'far fa-chart-bar'
-    }
-  ];
 
   ngOnInit() {
     this.larguraTela = window.innerWidth;
