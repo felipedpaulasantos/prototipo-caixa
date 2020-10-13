@@ -1,8 +1,6 @@
 import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { AccountService } from '../../account/account.service';
-import { Account } from '../../account/account';
 import { DateValidator } from '../../shared/validators/date.validator';
 
 @Component({
@@ -13,14 +11,13 @@ import { DateValidator } from '../../shared/validators/date.validator';
 export class MessageFilterFormComponent implements OnInit {
 
   constructor(
-    private fb: FormBuilder,
-    private accountService: AccountService  ) {}
+    private fb: FormBuilder ) {}
 
   @Input() fields: string[] = [
     'accountId', 'dataInicial', 'dataFinal',
     'pageSize', 'origin', 'managerName', 'creator'
   ];
-  currentAccount = new Account();
+
   accounts: Account[] = null;
   creators: String[];
 
@@ -71,13 +68,13 @@ export class MessageFilterFormComponent implements OnInit {
 
   getCurrentAccount() {
 
-    this.accountService.currentAccount$
+/*     this.accountService.currentAccount$
       .subscribe(account => {
         if (account) {
           this.currentAccount = account;
           this.messageFilterForm.get('accountId').patchValue(account.id);
         }
-      });
+      }); */
   }
 
   emitValue() {

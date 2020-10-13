@@ -3,7 +3,6 @@ import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd, RouterOutlet } from '@angular/router';
 import { switchMap, map, filter } from 'rxjs/operators';
 
-import { Account } from './account/account';
 import { fadeInAnimation } from './shared/animations/simple-fade.animation';
 import { UserService } from './authentication/users/user.service';
 import { SideMenuService } from './menu/side-menu/side-menu.service';

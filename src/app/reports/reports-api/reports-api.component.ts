@@ -1,10 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 
-import { AccountService } from "../../account/account.service";
 import { WhatsappStats } from "../../whatsapp-api/whatsapp-stats";
 import { WhatsappSupport } from "../../whatsapp-api/whatsapp-support";
 import { FormBuilder } from "@angular/forms";
-import { NgxSpinnerService } from "ngx-spinner";
 import { WhatsappApiService } from "src/app/whatsapp-api/whatsapp-api.service";
 
 @Component({

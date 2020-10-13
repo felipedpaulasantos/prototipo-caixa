@@ -7,7 +7,6 @@ import { WhatsappSettings } from "./whatsapp-settings";
 import { WhatsappProfileAbout } from "./whatsapp-profile-about";
 import { WhatsappProfileBusiness } from "./whatsapp-profile-business";
 import { environment } from "src/environments/environment";
-import { AccountService } from "../account/account.service";
 import { WhatsappApiMeta } from "./whatsapp-api-meta";
 
 const BASE_URL = environment.apiUrl;
@@ -24,8 +23,7 @@ const httpOptions = {
 })
 export class WhatsappApiService {
   constructor(
-    private http: HttpClient,
-    private accountService: AccountService
+    private http: HttpClient
   ) {}
 
   private isMultiInstanceSource = new BehaviorSubject(false);
@@ -112,7 +110,6 @@ export class WhatsappApiService {
     this.setPhoto(apiData[3]);
     this.setSupportData(apiData[4]);
     this.setStatsData(apiData[5]);
-    this.accountService.setApplicationParameters(apiData[6]);
   }
 
   setSettingsData(newSettingsData) {

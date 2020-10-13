@@ -4,7 +4,6 @@ import {
   Validators
 } from "../../../../../node_modules/@angular/forms";
 
-import { Account } from "../../../account/account";
 import { MessagesDetailsComponent } from "./messages-details/messages-details.component";
 import { ChatDetailsComponent } from "./chat-details/chat-details.component";
 import { DateValidator } from "../../../shared/validators/date.validator";

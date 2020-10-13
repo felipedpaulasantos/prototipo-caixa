@@ -36,23 +36,6 @@ const routes: Routes = [
     loadChildren: () => import('./demonstracao/layout/layout.module').then(m => m.LayoutModule)
   },
   {
-    path: 'contas',
-    data: {
-      breadcrumb: 'Contas',
-      animation: 'Contas'
-    },
-    loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
-  },
-  {
-    path: 'relatorios',
-    data: {
-      title: 'Relatórios',
-      breadcrumb: 'Relatórios',
-      animation: 'Relatórios'
-    },
-    loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)
-  },
-  {
     path: 'componentes',
     data: {
       title: 'Componentes',
@@ -68,15 +51,17 @@ const routes: Routes = [
       breadcrumb: 'Tipografia',
       animation: 'Tipografia'
     },
-    loadChildren: () => import('./demonstracao/tipografia/tipografia.module').then(m => m.TipografiaModule) },
-  { 
+    loadChildren: () => import('./demonstracao/tipografia/tipografia.module').then(m => m.TipografiaModule)
+  },
+  {
     path: 'chat',
     data: {
       title: 'Chat',
       breadcrumb: 'Chat',
       animation: 'Chat'
     },
-    loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule) },
+    loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)
+  },
   {
     path: '**',
     redirectTo: 'home',
@@ -88,7 +73,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled',
-      useHash: false,
+      useHash: true,
       initialNavigation: true
     })
   ],
