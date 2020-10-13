@@ -3,114 +3,250 @@
 </h1>
 <hr class="header-line-caixa">
 
-<div class="row no-gutters">
-  <section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
-    <app-documentacao-template id="painelCards" 
-    [cardTitle]="'Cards'" 
-    [codeViewId]="'viewCards'"
-    [htmlTabId]="'htmlCodeCards'" 
-    [htmlCode]="htmlCodeCards">
-      <div class="descricao">
-        Os cards seguem a mesma estrutura do card do Bootstrap, acrescida da classe
-        <span class="bg-light border px-1">card-caixa</span>.
-      </div>
-  
-      <div class="conteudo">
-        <div class="card card-caixa">
-          <div class="card-header">
-            <h4 class="header-caixa">Título</h4>
+<ul class="nav nav-pills border-bottom tab-caixa" role="tablist">
+  <li class="nav-item ripple-dark">
+    <a class="nav-link text-uppercase active" data-toggle="tab" href="#visaoGeral" role="tab">
+      Visão Geral
+    </a>
+  </li>
+  <li class="nav-item ripple-dark">
+    <a class="nav-link text-uppercase" data-toggle="tab" href="#exemplos" role="tab">
+      Exemplos
+    </a>
+  </li>
+</ul>
+
+<br>
+
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="visaoGeral" role="tabpanel">
+    <div class="row no-gutters">
+      <section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
+        <app-documentacao-template id="painelCards" 
+        [cardTitle]="'Cards'" 
+        [codeViewId]="'viewCards'"
+        [htmlTabId]="'htmlCodeCards'" 
+        [htmlCode]="htmlCodeCards">
+          <div class="descricao">
+            Os cards seguem a mesma estrutura do card do Bootstrap, acrescida da classe
+            <span class="bg-light border px-1">card-caixa</span>.
           </div>
-          <div class="card-body">
-            <h5>Este é um subtítulo</h5>
-            <span>Este é o corpo do card</span>
+      
+          <div class="conteudo">
+            <div class="card card-caixa">
+              <div class="card-header">
+                <h4 class="header-caixa">Título</h4>
+              </div>
+              <div class="card-body">
+                <h5>Este é um subtítulo</h5>
+                <span>Este é o corpo do card</span>
+              </div>
+              <div class="card-footer">
+                <h5>Isso é um rodapé</h5>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <h5>Isso é um rodapé</h5>
+        </app-documentacao-template>
+      
+        <br class="my-3">
+      
+        <app-documentacao-template id="painelCardsTematicos" 
+        [cardTitle]="'Cards temáticos'" 
+        [codeViewId]="'viewCardsTematicos'"
+        [htmlTabId]="'htmlCodeCardsTematicos'" 
+        [htmlCode]="htmlCodeCardsTematicos">
+          <div class="descricao">
+            Qualquer classe temática pode ser utilizada nos cards, com
+            <span class="bg-light border px-1">bg-(tema)</span> e <span class="bg-light border px-1">text-(tema)</span>.
           </div>
+      
+          <div class="conteudo">
+            <div class="row">
+              <div class="col-12 col-md-6 my-2">
+                <div class="card card-caixa bg-dark text-light">
+                  <div class="card-header">
+                    <h4 class="header-caixa">Título</h4>
+                  </div>
+                  <div class="card-body">
+                    <h5>Este é um subtítulo</h5>
+                    <span>Este é o corpo do card</span>
+                  </div>
+                  <div class="card-footer">
+                    <h5>Isso é um rodapé</h5>
+                  </div>
+                </div>
+              </div>  <!-- Coluna -->
+      
+              <div class="col my-2">
+                <div class="card card-caixa bg-primary text-light">
+                  <div class="card-header">
+                    <h4 class="header-caixa">Título</h4>
+                  </div>
+                  <div class="card-body">
+                    <h5>Este é um subtítulo</h5>
+                    <span>Este é o corpo do card</span>
+                  </div>
+                  <div class="card-footer">
+                    <h5>Isso é um rodapé</h5>
+                  </div>
+                </div>
+              </div>  <!-- Coluna -->
+            </div>  <!-- Linha -->
+          </div>
+        </app-documentacao-template>
+    
+        <br class="my-3">
+    
+        <app-documentacao-template id="painelCardsEfeito" 
+        [cardTitle]="'Cards com efeito'" 
+        [codeViewId]="'viewCardsEfeito'"
+        [htmlTabId]="'htmlCodeCardsEfeito'" 
+        [htmlCode]="htmlCodeCardsEfeito">
+          <div class="descricao">
+            Um efeito de sombra ao passar o mouse pode ser adicionado com a classe
+            <span class="bg-light border px-1">card-hover</span>.
+          </div>
+      
+          <div class="conteudo">
+            <div class="card card-caixa card-hover">
+              <div class="card-body">
+                <span>Este card possui efeito de sombra.</span>
+              </div>
+            </div>
+          </div>
+        </app-documentacao-template>
+      </section>
+    
+      <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
+        <div class="position-fixed list-group list-group-caixa bg-white shadow-caixa border-0">
+          <a (click)="scrollTo('painelCards')" class="list-group-item list-group-item-action"
+            [ngClass]="{'active': currentSection == 'painelCards'}" role="button">
+            Cards</a>
+          <a (click)="scrollTo('painelCardsTematicos')" class="list-group-item list-group-item-action"
+            [ngClass]="{'active': currentSection == 'painelCardsTematicos'}" role="button">
+            Cards temáticos</a>
+          <a (click)="scrollTo('painelCardsEfeito')" class="list-group-item list-group-item-action"
+            [ngClass]="{'active': currentSection == 'painelCardsEfeito'}" role="button">
+            Cards com efeito</a>
         </div>
-      </div>
-    </app-documentacao-template>
-  
-    <br class="my-3">
-  
-    <app-documentacao-template id="painelCardsTematicos" 
-    [cardTitle]="'Cards temáticos'" 
-    [codeViewId]="'viewCardsTematicos'"
-    [htmlTabId]="'htmlCodeCardsTematicos'" 
-    [htmlCode]="htmlCodeCardsTematicos">
-      <div class="descricao">
-        Qualquer classe temática pode ser utilizada nos cards, com
-        <span class="bg-light border px-1">bg-(tema)</span> e <span class="bg-light border px-1">text-(tema)</span>.
-      </div>
-  
+      </nav>
+    </div>
+  </div>  <!-- Tab -->
+
+  <div class="tab-pane fade" id="exemplos" role="tabpanel">
+    <app-documentacao-template
+    [cardTitle]="'Cards de Menu'"
+    [codeViewId]="'viewCardMenu'"
+    [htmlTabId]="'htmlCodeCardBotao'"
+    [htmlCode]="htmlCodeCardBotao"
+    [cssTabId]="'cssCodeCardBotao'"
+    [cssCode]="cssCodeCardBotao">
       <div class="conteudo">
         <div class="row">
-          <div class="col">
-            <div class="card card-caixa bg-dark text-light">
-              <div class="card-header">
-                <h4 class="header-caixa">Título</h4>
-              </div>
+          <div class="col-12 col-sm-4 col-xl-3 mb-3">
+            <div class="card card-caixa card-hover border border-dark">
               <div class="card-body">
-                <h5>Este é um subtítulo</h5>
-                <span>Este é o corpo do card</span>
+                <i class="fa fa-home fa-4x mr-4"></i>
+                <h2 class="d-inline font-fam-bold mb-0">HOME</h2>
               </div>
-              <div class="card-footer">
-                <h5>Isso é um rodapé</h5>
+            </div>  <!-- Card -->
+          </div>  <!-- Col -->
+          <div class="col-12 col-sm-4 col-xl-3 mb-3">
+            <div class="card card-caixa card-hover border border-primary bg-gradient-sky text-white">
+              <div class="card-body">
+                <i class="fa fa-users fa-4x"></i>
               </div>
+            </div>  <!-- Card -->             
+          </div>  <!-- Col -->
+          <div class="col-12 col-sm-4 col-xl-3 mb-3">
+            <div class="card card-caixa card-hover bg-opacity-2 border border-dark-dark">
+              <div class="card-body">
+                <i class="fa fa-file-archive fa-4x"></i>
+              </div>
+            </div>  <!-- Card -->
+          </div>  <!-- Col -->
+        </div>  <!-- Row -->
+
+        <div *ngIf="false" class="cards-menu d-flex align-items-center">
+          <div class="card card-caixa card-hover border border-dark">
+            <div class="card-body">
+              <i class="fa fa-home fa-4x mr-4"></i>
+              <h2 class="d-inline font-fam-bold mb-0">HOME</h2>
             </div>
-          </div>  <!-- Coluna -->
+          </div>  <!-- Card -->
   
-          <div class="col">
-            <div class="card card-caixa bg-primary text-light">
-              <div class="card-header">
-                <h4 class="header-caixa">Título</h4>
-              </div>
-              <div class="card-body">
-                <h5>Este é um subtítulo</h5>
-                <span>Este é o corpo do card</span>
-              </div>
-              <div class="card-footer">
-                <h5>Isso é um rodapé</h5>
-              </div>
+          <div class="card card-caixa card-hover border border-dark">
+            <div class="card-body">
+              <i class="fa fa-users fa-4x"></i>
             </div>
-          </div>  <!-- Coluna -->
-        </div>  <!-- Linha -->
+          </div>  <!-- Card -->
+
+          <div class="card card-caixa card-hover bg-opacity-2 border border-dark-dark">
+            <div class="card-body">
+              <i class="fa fa-file-archive fa-4x"></i>
+            </div>
+          </div>  <!-- Card -->
+        </div>
       </div>
     </app-documentacao-template>
 
     <br class="my-3">
 
-    <app-documentacao-template id="painelCardsEfeito" 
-    [cardTitle]="'Cards com efeito'" 
-    [codeViewId]="'viewCardsEfeito'"
-    [htmlTabId]="'htmlCodeCardsEfeito'" 
-    [htmlCode]="htmlCodeCardsEfeito">
-      <div class="descricao">
-        Um efeito de sombra ao passar o mouse pode ser adicionado com a classe
-        <span class="bg-light border px-1">card-hover</span>.
-      </div>
-  
+    <app-documentacao-template
+    [cardTitle]="'Layouts complexos'"
+    [codeViewId]="'viewCardLayout'"
+    [htmlTabId]="'htmlCodeCardLayout'"
+    [htmlCode]="htmlCodeCardLayout"
+    [cssTabId]="'cssCodeCardLayout'"
+    [cssCode]="cssCodeCardLayout">
       <div class="conteudo">
-        <div class="card card-caixa card-hover">
-          <div class="card-body">
-            <span>Este card possui efeito de sombra.</span>
+        <div id="cardDadosProposta" class="card card-caixa">
+          <div class="card-header">
+            <h4 class="d-inline-block mr-2 font-fam-bold">Dados da proposta</h4>
+            <a class="text-info">0007.1556.0000112-3</a>
+          </div>
+          <div class="card-body p-0">
+            <div class="info-row bg-fade border-top border-bottom">
+              <div class="row">
+                <div class="col">
+                  <h6 class="header-caixa">Código da Reserva</h6>
+                  1.797
+                </div>
+                <div class="col">
+                  <h6 class="header-caixa">Fonte de recurso</h6>
+                  SBPE
+                </div>
+              </div>
+            </div>  <!-- Info-Row -->
+            <div class="info-row border-bottom">
+              <div class="row">
+                <div class="col">
+                  <h6 class="header-caixa">Tipo de financiamento</h6>
+                  143 - CCSBPE - AQUISIÇÃO DE TERRENO E CONSTRUÇÃO - PF -SHF - POS
+                </div>
+              </div>
+            </div>  <!-- Info-Row -->
+            <div class="info-row bg-fade border-bottom">
+              <div class="row">
+                <div class="col">
+                  <h6 class="header-caixa">Seguradora</h6>
+                  CAIXA SEGUROS
+                </div>
+                <div class="col">
+                  <h6 class="header-caixa">Apólice</h6>
+                  61170 - CAIXA SEGUROS - SBPE
+                </div>
+              </div>
+            </div>  <!-- Info-Row -->
+          </div>  <!-- Card-body -->
+          <div class="card-footer text-center">
+            <i class="fa fa-chevron-down mr-3"></i>
+            <span>Mais dados da proposta</span>
           </div>
         </div>
       </div>
     </app-documentacao-template>
-  </section>
+  </div>  <!-- Tab -->
+</div>  <!-- Tab content -->
 
-  <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
-    <div class="position-fixed list-group list-group-caixa bg-white shadow-caixa border-0">
-      <a (click)="scrollTo('painelCards')" class="list-group-item list-group-item-action"
-        [ngClass]="{'active': currentSection == 'painelCards'}" role="button">
-        Cards</a>
-      <a (click)="scrollTo('painelCardsTematicos')" class="list-group-item list-group-item-action"
-        [ngClass]="{'active': currentSection == 'painelCardsTematicos'}" role="button">
-        Cards temáticos</a>
-      <a (click)="scrollTo('painelCardsEfeito')" class="list-group-item list-group-item-action"
-        [ngClass]="{'active': currentSection == 'painelCardsEfeito'}" role="button">
-        Cards com efeito</a>
-    </div>
-  </nav>
-</div>
+

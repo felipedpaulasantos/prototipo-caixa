@@ -13,34 +13,34 @@ export class ComponentesComponent implements OnInit {
 
   resources = [
     {
-      name: "Cards",
-      url: "/componentes/cards",
-      icon: "fa fa-clipboard fa-lg",
-      description: "Cards flexíveis para exibição de qualquer tipo de conteúdo"
-    },
-    {
       name: "Botões",
       url: "/componentes/botoes",
       icon: "fa fa-dot-circle fa-lg",
       description: "Botões com estilo complementar ao framework Bootstrap"
     },
     {
-			name: 'Mensagens',
-			url: '/componentes/mensagens',
-      icon: 'fa fa-comment fa-lg',
-      description: 'Exibição de mensagens de sucesso, informação, alerta e erro'
+      name: "Cards",
+      url: "/componentes/cards",
+      icon: "fa fa-clipboard fa-lg",
+      description: "Cards flexíveis para exibição de qualquer tipo de conteúdo"
     },
     {
 			name: 'Inputs',
 			url: '/componentes/inputs',
       icon: 'fa fa-keyboard fa-lg',
-      description: 'Inputs e validação de erros'
+      description: 'Inputs e validação de erros automática'
+    },
+    {
+			name: 'Mensagens',
+			url: '/componentes/mensagens',
+      icon: 'fa fa-comment fa-lg',
+      description: 'Notificações, tela de carregamento e modais'
     },
     {
 			name: 'Select',
 			url: '/componentes/select',
       icon: 'fa fa-hand-pointer fa-lg',
-      description: 'Select customizado'
+      description: 'Selects customizados integrando a biblioteca Bootstrap-Select'
     },
     {
 			name: 'Tabelas',

@@ -1,0 +1,90 @@
+#conteudoPrincipal {
+  position: relative;
+  bottom: 0;
+  height: 100%;
+  transition: 0.7s;
+  z-index: 1;
+  overflow: auto;
+}
+
+@media (max-width: 992px) {
+  #conteudoPrincipal {
+    margin-left: 0;
+  }
+}
+@media (min-width: 992px) {
+  #conteudoPrincipal {
+    margin-left: 260px;
+    transition: 0.5s;
+  }
+  #conteudoPrincipal.sem-menu-lateral {
+    margin-left: 0;
+    transition: 0.5s;
+  }
+}
+
+#painelConteudoPrincipal {
+  padding-top: 80px;
+  padding-bottom: 2rem;
+  min-height: calc(100vh);
+  /* Se houver footer */
+  /* min-height: calc(100vh - 2rem); */
+  /* padding-bottom: 80px; */
+}
+@media (max-width: 992px) {
+	#painelConteudoPrincipal {
+		padding-top: 80px;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		padding-bottom: 2rem;
+	}
+}
+@media (min-width: 992px) {
+	#painelConteudoPrincipal {
+		padding-top: 80px;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		padding-bottom: 2rem;
+	}
+}
+
+#mobileBackdrop {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  display: block;
+  visibility: hidden;
+  z-index: -1;
+  transition-duration: 0.7s;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-property: background-color,visibility;
+}
+@media (max-width: 992px) {
+  #mobileBackdrop.exibindo {
+    background-color: rgba(0,0,0,.6);
+    z-index: 3;
+    visibility: visible;
+  }
+}
+@media (min-width: 992px) {
+  #mobileBackdrop.exibindo {
+    z-index: -1;
+    visibility: hidden;
+  }
+}
+
+main {
+  min-height: 100%;
+  height: auto!important;
+  max-width: 100%;
+  margin: 0;
+  transform: none;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+  overflow: hidden;
+}

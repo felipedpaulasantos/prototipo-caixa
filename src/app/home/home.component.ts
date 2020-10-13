@@ -38,19 +38,12 @@ export class HomeComponent implements OnInit {
       icon: "fas fa-palette",
       description: "Cores temáticas e suas aplicações"
     },
-
-/*     {
-      name: "Conta",
-      url: "/contas",
-      icon: "fas fa-phone-alt",
-      description: "Consulte e altere os dados da conta selecionada"
-    },
     {
-      name: "Relatórios",
-      url: "/relatorios",
-      icon: "fas fa-chart-bar",
-      description: "Visualize relatórios em formatos de gráficos e tabelas"
-    }, */
+      name: "Chat",
+      url: "/chat",
+      icon: "fas fa-comment",
+      description: "Protótipo de chat"
+    }
   ];
 
   ngOnInit() {

@@ -3,6 +3,8 @@ import { version } from '../../package.json';
 export const environment = {
   production: true,
   apiUrl: 'https://whatscaixa.des.caixa:443/whatscaixa/v1',
+  SOCKET_ENDPOINT: 'https://socketio-node-teste.herokuapp.com/',
+  // SOCKET_ENDPOINT: 'http://localhost:3000',
   version: version,
 
   // CONFIGURACOES DO SSO

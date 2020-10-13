@@ -4,7 +4,7 @@
 <hr class="header-line-caixa">
 
 <div *ngFor="let cols of rows" class="row d-flex justify-content-center">
-  <div *ngFor="let resource of cols" class="col-xs-12 col-md-6 col-lg-4">
+  <div *ngFor="let resource of cols" class="col-10 col-md-6 col-xl-4">
     <div class="card card-caixa card-hover {{ resource.cardClass }}" role="button" [routerLink]="resource.url">
       <div class="card-header">
         <h5 class="header-subtitulo-caixa m-0 mr-3 text-center">

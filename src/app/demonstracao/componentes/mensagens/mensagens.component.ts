@@ -67,11 +67,11 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
     }
 
     exibirAlerta() {
-      this.toastr.warning('Alerta!', null, { positionClass: 'toast-bottom-center' });
+      this.toastr.warning('Alerta!', null, { positionClass: 'toast-bottom-center', progressBar: false });
     }
 
     exibirInfo() {
-      this.toastr.info('Informação!', 'Importante!', { progressBar: false });
+      this.toastr.info('Informação!', 'Importante!', { positionClass: 'toast-bottom-right', progressBar: false });
     }
   }
   `.trimRight();
@@ -150,11 +150,11 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
   }
 
   exibirAlerta() {
-    this.toastr.warning('Alerta!', null, { positionClass: 'toast-bottom-center' });
+    this.toastr.warning('Alerta!', null, { positionClass: 'toast-bottom-center', progressBar: false });
   }
 
   exibirInfo() {
-    this.toastr.info('Informação!', 'Importante!', { progressBar: false });
+    this.toastr.info('Informação!', 'Importante!', { positionClass: 'toast-bottom-right', progressBar: false });
   }
 
   exibirSpinner() {

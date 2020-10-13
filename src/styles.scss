@@ -118,9 +118,10 @@ $color in $cx-gradient-themes {
   transition: 0.3s;
   background: transparent;
   box-shadow: none;
-  color: inherit !important;
+  color: inherit;
   &:focus,
   &:hover {
+    color: inherit;
     filter: brightness(150%);
   }
 }
@@ -140,17 +141,6 @@ $color in $cx-gradient-themes {
       background-image: radial-gradient(circle, $ripple-color 10%, transparent 10.01%);
     }
   }
-}
-
-.btn-light,
-.btn-outline-light,
-.btn-light-light,
-.btn-outline-light-light,
-.btn-light-dark,
-.btn-outline-light-dark,
-.btn-light-darkest,
-.btn-outline-light-darkest {
-  color: $cx-color-dark;
 }
 
 /* Toastr (Mensagens) */
@@ -292,10 +282,10 @@ label {
 
 th.th-sorting {
   font-weight: 900;
-  margin-left: 2rem;
   font-family: "Font Awesome 5 Free";
   float: right;
   color: $cx-color-dark;
+  transition: 0.5s;
   @extend .header-caixa;
 }
 .table-caixa {
@@ -311,7 +301,7 @@ th.th-sorting {
     &.sorting_desc {
       cursor: pointer;
     }
-    &.sorting::after {
+    &.sorting:hover::after {
       @extend .th-sorting;
       opacity: 0.5;
       content: "\f0dc";
@@ -326,9 +316,9 @@ th.th-sorting {
     }
   }
   tbody {
-    tr:hover {
+/*     tr:hover {
       background-color: $cx-color-light;
-    }
+    } */
     td {
       vertical-align: middle;
       padding: 0.75rem !important;
@@ -516,6 +506,7 @@ ul.tab-caixa li a,
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-color: $cx-color-light-darkest;
+  transition: background-size 0.4s, background-color 0.4s, border-color 0.4s ease-in-out, box-shadow 0.15s ease-in-out;
   &:disabled {
     background-color: #EFF5F6;
     opacity: 0.5;
@@ -528,7 +519,6 @@ ul.tab-caixa li a,
 @each $theme, $colors in $cx-colors {
   .input-caixa-#{$theme} {
     @extend .input-base;
-    transition: background-size 0.4s, background-color 0.4s, border-color 0.4s ease-in-out, box-shadow 0.15s ease-in-out;
     &,
     &:focus,
     &:active,
@@ -731,7 +721,7 @@ $value in $cx-text-opacities {
       }
       &.active {
         color: nth($colors, 3);
-        font-family: $cx-font-family-bold;
+        // font-family: $cx-font-family-bold;
       }
       @extend .ripple;
       $ripple-color: set-ripple(nth($list: $colors, $n: 1));

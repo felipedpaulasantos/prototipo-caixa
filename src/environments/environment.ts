@@ -6,6 +6,8 @@ import { version } from '../../package.json';
 
 export const environment = {
   production: false,
+  // SOCKET_ENDPOINT: 'https://socketio-node-teste.herokuapp.com/',
+  SOCKET_ENDPOINT: 'http://localhost:3000',
   apiUrl: 'http://localhost:8180/whatscaixa/v1',
 /*   apiUrl: 'https://whatscaixa.des.caixa:443/whatscaixa/v1', */
   version: String(version),

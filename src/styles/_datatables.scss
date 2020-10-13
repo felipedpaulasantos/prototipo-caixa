@@ -58,12 +58,12 @@
   margin-left: auto;
   >a.paginate_button {
     margin-left: 0.5rem;
+    @extend .btn,
+    .btn-caixa,
+    .btn-flat,
+    .btn-sm;
     &:not(.disabled) {
       cursor: pointer;
-      @extend .btn,
-      .btn-caixa,
-      .btn-outline-light,
-      .btn-sm;
     }
     &.disabled {
       @extend .text-muted;
