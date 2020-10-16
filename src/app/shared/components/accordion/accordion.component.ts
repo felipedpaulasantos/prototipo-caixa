@@ -31,6 +31,11 @@ export class AccordionComponent implements OnInit {
 
       if (ev instanceof NavigationEnd) {
         const loc = this.location.path();
+        this.toggleByLocation(loc, this.menus);
+      }
+
+/*       if (ev instanceof NavigationEnd) {
+        const loc = this.location.path();
         this.menus.forEach((menu, index) => {
           if (loc.includes(menu.url)) {
             if (!menu.active) {
@@ -45,14 +50,37 @@ export class AccordionComponent implements OnInit {
                   this.toggle(index, true, subindex);
                   this.cdr.detectChanges();
                 }
-              } /* else {
-                submenu.active = false;
-                this.cdr.detectChanges();
-              } */
+              }
             });
           }
         });
+      } */
+    });
+  }
+
+  toggleByLocation(location: string, menus: AccordionMenu[], isSubmenu = false, topIndex = null) {
+    this.toggleAllFalse(menus);
+    menus.forEach((menu, index) => {
+
+      if (!isSubmenu) {
+        if (location.includes(menu.url)) {
+          if (!menu.active) {
+            this.toggle(index);
+            this.cdr.detectChanges();
+          }
+        }
+        if (menu.submenu) {
+          this.toggleByLocation(location, menu.submenu, true, index);
+        }
       }
+
+      if (isSubmenu) {
+        if (location.includes(menu.url)) {
+          this.toggle(topIndex, true, index);
+          this.cdr.detectChanges();
+        }
+      }
+
     });
   }
 
@@ -66,35 +94,42 @@ export class AccordionComponent implements OnInit {
 
   toggle(index: number, isSubmenu = false, submenuIndex = null) {
 
-    console.log(index, isSubmenu, submenuIndex);
+    this.menus[index].active = true;
 
     if (!this.config.multi) {
       this.menus.filter(
-        (menu, i) => i !== index && menu.active
-      ).forEach(menu => menu.active = !menu.active);
+        (menu, i) => i !== index && menu.active && !this.location.path().includes(menu.url)
+      ).forEach(
+        (menu) => menu.active = !menu.active);
     }
 
     if (isSubmenu) {
       const submenus = this.menus[index].submenu;
       submenus.filter(
         (submenu, i) => i !== submenuIndex && submenu.active
-      ).forEach(submenu => submenu.active = !submenu.active);
-      this.menus[index].submenu[submenuIndex].active = !this.menus[index].submenu[submenuIndex].active;
-
-    } else {
-      this.menus[index].active = !this.menus[index].active;
+      ).forEach(
+        (submenu) => submenu.active = !submenu.active);
+      this.menus[index].submenu[submenuIndex].active = true;
     }
   }
 
-  activate(menu: AccordionMenu) {
-    menu.url ? this.navigate(menu.url) : this.callAction(menu);
+  toggleAllFalse(menus: AccordionMenu[]) {
+    menus.forEach(menu => {
+      menu.active = false;
+      if (menu.submenu) { this.toggleAllFalse(menu.submenu); }
+    });
+  }
+
+  activate(menu: AccordionMenu, index: number = null) {
+    menu.url ? this.navigate(menu.url) : this.callAction(menu, index);
   }
 
   private navigate(url: string) {
     this.router.navigateByUrl(url).then(msg => console.log("Routing", msg));
   }
 
-  private callAction(menu: AccordionMenu) {
+  private callAction(menu: AccordionMenu, index: number) {
+    this.toggle(index);
     if (!menu.onClick) { return; }
     menu.onClick.call(menu.onClick);
   }

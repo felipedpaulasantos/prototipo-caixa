@@ -52,7 +52,6 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     {
       name: 'Componentes',
       iconClass: 'fas fa-lg fa-toolbox',
-      url: '/componentes',
       active: false,
       submenu: [
         {
@@ -113,83 +112,79 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     }
   ];
 
-  menus: AccordionMenu[] = [
+   menus: AccordionMenu[] = [
     {
       name: "Home",
       iconClass: "fas fa-lg fa-home",
       url: "/home"
-    },
-    {
+    }, {
       name: "Pessoa Física/Jurídica",
       iconClass: "fa fa-lg fa-user-tie",
-      url: "/home",
       submenu: [
         {
           name: "Cadastro",
           iconClass: "fa fa-lg fa-file-medical",
-          url: "/home"
-        },
-        {
+          url: "/cores"
+        }, {
           name: "Contratos",
           iconClass: "fa fa-lg fa-file-alt",
-          url: "/home"
-        },        {
+          url: "/cores"
+        }, {
           name: "Assinatura Eletrônica",
           iconClass: "fa fa-lg fa-file-signature",
-          url: "/home"
-        },
-        {
+          url: "/cores"
+        }, {
           name: "SMS",
           iconClass: "fa fa-lg fa-mobile-alt",
-          url: "/home"
-        },
-        {
+          url: "/cores"
+        }, {
           name: "Saque Aniversário - Antecipação",
           iconClass: "fa fa-lg fa-birthday-cake",
-          url: "/home"
+          url: "/cores"
         },
       ]
-    },
-    {
+    }, {
       name: "Serviços ao Cidadão",
       iconClass: "fa fa-lg fa-user-friends",
-      url: "/home",
       submenu: [
         {
           name: "Resumo do Cidadão",
           iconClass: "fa fa-lg fa-id-badge",
-          url: "/home"
-        },
-        {
+          url: "/componentes/inputs"
+        }, {
           name: "Cadastro NIS",
           iconClass: "fa fa-lg fa-file-medical",
-          url: "/home"
-        },        {
+          url: "/componentes/select"
+        }, {
           name: "Cartões Sociais",
           iconClass: "fa fa-lg fa-credit-card",
-          url: "/home"
-        },
-        {
+          submenu: [
+            {
+              name: "Teste",
+              url: "/componentes/inputs"
+            }, {
+              name: "Teste 2",
+              url: "/componentes/botoes"
+            }
+          ]
+        }, {
           name: "FGTS",
           iconClass: "fa fa-lg fa-landmark",
-          url: "/home"
-        },
-        {
+          url: "/componentes/cards"
+        }, {
           name: "Saque Emergencial - MP 946/20",
           iconClass: "fa fa-lg fa-dollar-sign",
-          url: "/home"
+          url: "/componentes/mensagens"
         },
       ]
-    },
-    {
+    }, {
       name: "Investimentos",
       iconClass: "fa fa-lg fa-chart-line",
-      url: "/home"
-    },
-    {
+      url: "/chat"
+    }, {
       name: "Dossiê Digital",
       iconClass: "fa fa-lg fa-cloud-download-alt",
-      url: "/home"
+      url: "/layout"
     },
   ];
 

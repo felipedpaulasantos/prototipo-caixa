@@ -6,6 +6,7 @@
   bottom: 0;
   transition: 0.5s;
   z-index: 999;
+  max-height: calc(100% - 64px);
 }
 #menuLateral.reduzido {
   width: 165px;

@@ -1,78 +1,74 @@
-<ul id="accordion" class="accordion nav flex-column" [ngClass]="(menuService.isAberto$ | async) ? 'menu-aberto' : 'menu-reduzido'">
-
+<ul class="accordion nav flex-column" [ngClass]="(menuService.isAberto$ | async) ? 'menu-aberto' : 'menu-reduzido'">
   <li class="nav-item" *ngFor="let menu of menus; let i = index" [class.active]="menu.active">
 
     <!-- Itens de menu de nível 1 -->
-    <div class="top-menu d-flex align-items-center" [ngClass]="{'active': menu.active && menu.submenu, 'text-primary': menu.active}"
-    [title]="menu.name">
-      <div (click)="activate(menu); toggle(i)" [routerLinkActive]="menu.url ? 'active' : ''" 
-      role="button" class="menu-item">
-        <span class="menu-item-caret">
-          <i *ngIf="menu.submenu" class="fa fa-chevron-down menu-top-icon item-caret"></i>
+    <div class="menu-item" role="button" [title]="menu.name"
+    [ngClass]="{'active': menu.active, 'text-primary': menu.active && menu.submenu, 'bg-primary text-white': menu.active && !menu.submenu}">
+      <span class="menu-item-caret" (click)="activate(menu, i)">
+        <i *ngIf="menu.submenu" class="fa fa-chevron-down item-caret"></i>
+      </span>
+      <span class="menu-item-icon" (click)="activate(menu, i)">
+        <i *ngIf="menu.iconClass" [class]="menu.iconClass"></i>
+      </span>
+      <span class="menu-item-name" (click)="activate(menu, i)">
+        {{ menu.name }}
+      </span>
+      <ng-container *ngIf="menu.active && !menu.submenu">
+        <span class="menu-item-close-icon" (click)="fecharMenulateral()" role="button">
+          <i class="fa fa-angle-double-left item-close-caret" ></i>
         </span>
-        <span class="menu-item-icon">
-          <i *ngIf="menu.iconClass" [class]="menu.iconClass"></i>
+        <span class="menu-item-open-icon" (click)="abrirMenuLateral()" role="button">
+          <i class="fa fa-angle-double-right item-close-caret" ></i>
         </span>
-        <span class="menu-item-name w-50">
-          {{ menu.name }}
-        </span>
-      </div>    
-    </div>
+      </ng-container>
+    </div>    
     <!-- Itens de menu de nível 1 -->
 
     <ul *ngIf="menu.submenu" class="submenu border-bottom" #submenuDiv [ngClass]="{'d-none': !menu.active}">
-      <li *ngFor="let submenu of menu.submenu; let i2 = index">
+      <li *ngFor="let submenu of menu.submenu; let i2 = index" [class.active]="submenu.active">
 
         <!-- Itens de menu de nível 2 -->
-        <div class="menu-item" role="button" routerLink="{{ submenu.url }}" [routerLinkActive]="submenu.url ? 'active' : ''" 
-        [ngClass]="{'active bg-primary text-white': submenu.active}"
-        [title]="submenu.name">      
-          <div class="menu-item-button">
-            <span class="menu-item-caret" (click)="activate(submenu); toggle(i, true, i2);">
-              <i *ngIf="submenu.submenu" class="fa fa-chevron-down item-caret"></i>
+        <div class="menu-item" role="button" [title]="submenu.name"
+        [ngClass]="{'active': submenu.active, 'text-primary': submenu.active && submenu.submenu, 'bg-primary text-white': submenu.active && !submenu.submenu}">      
+          <span class="menu-item-caret" (click)="activate(submenu)">
+            <i *ngIf="submenu.submenu" class="fa fa-chevron-down item-caret"></i>
+          </span>
+          <span class="menu-item-icon" (click)="activate(submenu)">
+            <i *ngIf="submenu.iconClass" [class]="submenu.iconClass"></i>
+          </span>
+          <span class="menu-item-name" (click)="activate(submenu)">
+            {{ submenu.name }}
+          </span>
+          <ng-container *ngIf="submenu.active && !submenu.submenu">
+            <span class="menu-item-close-icon" (click)="fecharMenulateral()" role="button">
+              <i class="fa fa-angle-double-left item-close-caret" ></i>
             </span>
-            <span class="menu-item-icon" (click)="activate(submenu); toggle(i, true, i2);">
-              <i *ngIf="submenu.iconClass" [class]="submenu.iconClass"></i>
+            <span class="menu-item-open-icon" (click)="abrirMenuLateral()" role="button">
+              <i class="fa fa-angle-double-right item-close-caret" ></i>
             </span>
-            <span class="menu-item-name w-50" (click)="activate(submenu); toggle(i, true, i2);">
-              {{ submenu.name }}
-            </span>
-            <ng-container *ngIf="submenu.active">
-              <span class="menu-item-close-menu" (click)="fecharMenulateral()" role="button">
-                <i class="fa fa-angle-double-left item-close-caret" ></i>
-              </span>
-              <span class="menu-item-open-menu" (click)="abrirMenuLateral()" role="button">
-                <i class="fa fa-angle-double-right item-close-caret" ></i>
-              </span>
-            </ng-container>
-          </div>
+          </ng-container>
         </div>
         <!-- Itens de menu de nível 2 -->
 
         <!-- Itens de menu de nível 3 -->
-        <ul id="subsubmenu{{i2}}" *ngIf="submenu.submenu" class="subsubmenu" #subsubmenuDiv 
-        [style.height.px]="submenu.active ? subsubmenuDiv.scrollHeight : 0">
-          <li class="nav-item border-bottom" *ngFor="let subsubmenu of submenu.submenu">
-
-            <div class="menu-item" role="button" routerLink="{{ subsubmenu.url }}" [routerLinkActive]="subsubmenu.url ? 'active' : ''" 
-            [ngClass]="{'active': subsubmenu.active}"
-            [title]="subsubmenu.name">      
-              <div class="menu-item-button ripple-dark" (click)="toggle(i, true, i2);">
-                <span class="menu-item-icon">
-                  <i *ngIf="menu.iconClass" [class]="subsubmenu.iconClass"></i>
-                </span>
-                <span class="subsubmenu-item-name w-50">
-                  {{ subsubmenu.name }}
-                </span>
-              </div>
+        <ul *ngIf="submenu.submenu" class="lastmenu border-bottom" [ngClass]="{'d-none': !submenu.active}" #lastmenuDiv>
+          <li class="nav-item" *ngFor="let lastmenu of submenu.submenu">
+            <div class="menu-item" role="button" [title]="lastmenu.name"
+            [ngClass]="{'active bg-primary text-white': lastmenu.active}"> 
+              <span class="menu-item-caret" (click)="activate(lastmenu)"></span>     
+              <span class="menu-item-icon">
+                <i *ngIf="menu.iconClass" [class]="lastmenu.iconClass"></i>
+              </span>
+              <span class="menu-item-name" (click)="activate(lastmenu)">
+                {{ lastmenu.name }}
+              </span>    
             </div>
           </li>
         </ul>
         <!-- Itens de menu de nível 3 -->
-      </li>
 
+      </li>
     </ul> <!-- Level 2 menus -->
 
   </li> <!-- Top Level menus -->
-
 </ul> <!-- Accordion -->
