@@ -36,59 +36,61 @@ export class SideMenuComponent implements OnInit, OnDestroy {
   @Input() tema: Tema;
   options: AccordionConfig = { multi: false };
 
-  menusOLD: AccordionMenu[] = [
+  menus: AccordionMenu[] = [
     {
       name: 'Início',
       iconClass: 'fas fa-lg fa-home',
       url: '/home',
-      active: false
+      isLink: true
     },
     {
       name: 'Layout',
       iconClass: 'fas fa-lg fa-layer-group',
       url: '/layout',
-      active: false
+      isLink: true
     },
     {
       name: 'Componentes',
+      url: "componentes",
       iconClass: 'fas fa-lg fa-toolbox',
-      active: false,
+      isLink: false,
       submenu: [
         {
           name: 'Botões',
           iconClass: 'fa fa-lg fa-dot-circle',
           url: '/componentes/botoes',
+          isLink: true,
           active: false
         },
         {
           name: 'Cards',
           iconClass: 'fa fa-lg fa-clipboard',
           url: '/componentes/cards',
-          active: false
+          isLink: true
         },
         {
           name: 'Inputs',
           iconClass: 'fa fa-lg fa-keyboard',
           url: '/componentes/inputs',
-          active: false
+          isLink: true
         },
         {
           name: 'Mensagens',
           iconClass: 'fa fa-lg fa-comment',
           url: '/componentes/mensagens',
-          active: false
+          isLink: true
         },
         {
           name: 'Select',
           iconClass: 'fa fa-lg fa-hand-pointer',
           url: '/componentes/select',
-          active: false
+          isLink: true
         },
         {
           name: 'Tabelas',
           iconClass: 'fa fa-lg fa-table',
           url: '/componentes/tabelas',
-          active: false
+          isLink: true
         }
       ]
     },
@@ -96,97 +98,117 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       name: 'Tipografia',
       iconClass: 'fas fa-lg fa-font',
       url: '/tipografia',
-      active: false
+      isLink: true
     },
     {
       name: 'Cores',
       iconClass: 'fas fa-lg fa-palette',
       url: '/cores',
-      active: false
+      isLink: true
     },
     {
       name: 'Chat',
       iconClass: 'fas fa-lg fa-comment',
       url: '/chat',
-      active: false
+      isLink: true
     }
   ];
 
-   menus: AccordionMenu[] = [
+/*    menus: AccordionMenu[] = [
     {
       name: "Home",
       iconClass: "fas fa-lg fa-home",
-      url: "/home"
+      url: "/home",
+      isLink: true
     }, {
       name: "Pessoa Física/Jurídica",
       iconClass: "fa fa-lg fa-user-tie",
+      url: "/pessoafisica",
+      isLink: false,
       submenu: [
         {
           name: "Cadastro",
           iconClass: "fa fa-lg fa-file-medical",
-          url: "/cores"
+          url: "/cores",
+          isLink: true
         }, {
           name: "Contratos",
           iconClass: "fa fa-lg fa-file-alt",
-          url: "/cores"
+          url: "/cores",
+          isLink: true
         }, {
           name: "Assinatura Eletrônica",
           iconClass: "fa fa-lg fa-file-signature",
-          url: "/cores"
+          url: "/cores",
+          isLink: true
         }, {
           name: "SMS",
           iconClass: "fa fa-lg fa-mobile-alt",
-          url: "/cores"
+          url: "/cores",
+          isLink: true
         }, {
           name: "Saque Aniversário - Antecipação",
           iconClass: "fa fa-lg fa-birthday-cake",
-          url: "/cores"
+          url: "/cores",
+          isLink: true
         },
       ]
     }, {
       name: "Serviços ao Cidadão",
+      url: "/servicosaocidadao",
       iconClass: "fa fa-lg fa-user-friends",
+      isLink: false,
       submenu: [
         {
           name: "Resumo do Cidadão",
           iconClass: "fa fa-lg fa-id-badge",
-          url: "/componentes/inputs"
+          url: "/componentes/inputs",
+          isLink: true
         }, {
           name: "Cadastro NIS",
           iconClass: "fa fa-lg fa-file-medical",
-          url: "/componentes/select"
+          url: "/componentes/select",
+          isLink: true
         }, {
           name: "Cartões Sociais",
+          url: "servicosaocidadao/cartoes",
           iconClass: "fa fa-lg fa-credit-card",
+          isLink: false,
           submenu: [
             {
               name: "Teste",
-              url: "/componentes/inputs"
+              url: "/componentes/inputs",
+              isLink: true
             }, {
               name: "Teste 2",
-              url: "/componentes/botoes"
+              url: "/componentes/botoes",
+              isLink: true
             }
           ]
         }, {
           name: "FGTS",
           iconClass: "fa fa-lg fa-landmark",
-          url: "/componentes/cards"
+          url: "/componentes/cards",
+          isLink: true
         }, {
           name: "Saque Emergencial - MP 946/20",
+          url: "/componentes/mensagens",
           iconClass: "fa fa-lg fa-dollar-sign",
-          url: "/componentes/mensagens"
+          isLink: true
         },
       ]
     }, {
       name: "Investimentos",
       iconClass: "fa fa-lg fa-chart-line",
-      url: "/chat"
+      url: "/chat",
+      isLink: true
     }, {
       name: "Dossiê Digital",
       iconClass: "fa fa-lg fa-cloud-download-alt",
-      url: "/layout"
+      url: "/layout",
+      isLink: true
     },
-  ];
+  ]; */
 
   @ViewChild("menuLateral", { read: ElementRef })
   menuLateral: ElementRef;

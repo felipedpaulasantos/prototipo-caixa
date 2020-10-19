@@ -25,14 +25,25 @@ export class AccordionComponent implements OnInit {
   config: Config;
   url: string;
 
+  private indexMap = new Map<number, number[]>();
+
   ngOnInit() {
     this.config = this.mergeConfig(this.options);
     this.router.events.subscribe(ev => {
 
       if (ev instanceof NavigationEnd) {
+        this.toggleAllFalse(this.menus);
+        this.indexMap.clear();
+        this.toggleByLocation(this.location.path(), this.menus);
+        this.cdr.detectChanges();
+      }
+
+/*       if (ev instanceof NavigationEnd) {
+        this.toggleAllFalse(this.menus);
         const loc = this.location.path();
         this.toggleByLocation(loc, this.menus);
-      }
+        this.cdr.detectChanges();
+      } */
 
 /*       if (ev instanceof NavigationEnd) {
         const loc = this.location.path();
@@ -58,7 +69,7 @@ export class AccordionComponent implements OnInit {
     });
   }
 
-  toggleByLocation(location: string, menus: AccordionMenu[], isSubmenu = false, topIndex = null) {
+/*   toggleByLocation(location: string, menus: AccordionMenu[], isSubmenu = false, topIndex = null) {
     this.toggleAllFalse(menus);
     menus.forEach((menu, index) => {
 
@@ -82,6 +93,19 @@ export class AccordionComponent implements OnInit {
       }
 
     });
+  } */
+
+  toggleByLocation(location: string, menus: AccordionMenu[]) {
+
+    menus.forEach((menu, menuIndex) => {
+      if (location.includes(menu.url)) {
+        if (menu.submenu) {
+          this.toggleByLocation(location, menu.submenu);
+        } else {
+          menu.active = true;
+        }
+      }
+    });
   }
 
   mergeConfig(options: Config) {
@@ -92,7 +116,7 @@ export class AccordionComponent implements OnInit {
     return { ...config, ...options };
   }
 
-  toggle(index: number, isSubmenu = false, submenuIndex = null) {
+/*   toggle(index: number, isSubmenu = false, submenuIndex = null) {
 
     this.menus[index].active = true;
 
@@ -111,17 +135,59 @@ export class AccordionComponent implements OnInit {
         (submenu) => submenu.active = !submenu.active);
       this.menus[index].submenu[submenuIndex].active = true;
     }
+  } */
+
+  toggle(indexArray: number[], menus: AccordionMenu[]) {
+
+    console.log("TOGGLE START", indexArray, this.indexMap);
+
+    indexArray.forEach((indexValue, indexPosition) => {
+
+      if (indexPosition == 0) {
+
+        console.log("INSIDE TOGGLE", menus[indexValue]);
+
+        menus[indexValue].active = true;
+        menus.filter(
+          (menu, i) => i !== indexValue && menu.active && !this.location.path().includes(menu.url)
+        ).forEach(
+          (menu) => menu.active = !menu.active);
+
+      } else {
+
+        let submenus: AccordionMenu[] = menus;
+        if (submenus) {
+          console.log("TOGGLE SUBMENUS", submenus);
+          for (let index = 0; index < indexPosition; index++) {
+            submenus = submenus[indexArray[indexPosition - 1]].submenu;
+          }
+
+          submenus.filter(
+            (submenu, i) => i !== indexValue && submenu.active
+          ).forEach(
+            (submenu) => submenu.active = !submenu.active);
+          submenus[indexValue] ? submenus[indexValue].active = true : null;
+        }
+
+      }
+    });
   }
 
   toggleAllFalse(menus: AccordionMenu[]) {
     menus.forEach(menu => {
-      menu.active = false;
+      if (!menu.submenu || (menu.submenu && !menu.active)) {
+        menu.active = false;
+      }
       if (menu.submenu) { this.toggleAllFalse(menu.submenu); }
     });
   }
 
-  activate(menu: AccordionMenu, index: number = null) {
-    menu.url ? this.navigate(menu.url) : this.callAction(menu, index);
+  activate(menu: AccordionMenu) {
+    if (menu.isLink) {
+      this.navigate(menu.url);
+    } else {
+      menu.active = !menu.active;
+    }
   }
 
   private navigate(url: string) {
@@ -129,7 +195,7 @@ export class AccordionComponent implements OnInit {
   }
 
   private callAction(menu: AccordionMenu, index: number) {
-    this.toggle(index);
+    // this.toggle(index);
     if (!menu.onClick) { return; }
     menu.onClick.call(menu.onClick);
   }

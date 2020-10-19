@@ -4,13 +4,13 @@
     <!-- Itens de menu de nível 1 -->
     <div class="menu-item" role="button" [title]="menu.name"
     [ngClass]="{'active': menu.active, 'text-primary': menu.active && menu.submenu, 'bg-primary text-white': menu.active && !menu.submenu}">
-      <span class="menu-item-caret" (click)="activate(menu, i)">
+      <span class="menu-item-caret" (click)="activate(menu)">
         <i *ngIf="menu.submenu" class="fa fa-chevron-down item-caret"></i>
       </span>
-      <span class="menu-item-icon" (click)="activate(menu, i)">
+      <span class="menu-item-icon" (click)="activate(menu)">
         <i *ngIf="menu.iconClass" [class]="menu.iconClass"></i>
       </span>
-      <span class="menu-item-name" (click)="activate(menu, i)">
+      <span class="menu-item-name" (click)="activate(menu)">
         {{ menu.name }}
       </span>
       <ng-container *ngIf="menu.active && !menu.submenu">
@@ -54,7 +54,7 @@
         <ul *ngIf="submenu.submenu" class="lastmenu border-bottom" [ngClass]="{'d-none': !submenu.active}" #lastmenuDiv>
           <li class="nav-item" *ngFor="let lastmenu of submenu.submenu">
             <div class="menu-item" role="button" [title]="lastmenu.name"
-            [ngClass]="{'active bg-primary text-white': lastmenu.active}"> 
+            [ngClass]="{'active': lastmenu.active, 'bg-primary text-white': lastmenu.active}"> 
               <span class="menu-item-caret" (click)="activate(lastmenu)"></span>     
               <span class="menu-item-icon">
                 <i *ngIf="menu.iconClass" [class]="lastmenu.iconClass"></i>

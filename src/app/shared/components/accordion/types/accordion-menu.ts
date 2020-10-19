@@ -1,8 +1,9 @@
 export interface AccordionMenu {
   name: string;
+  url: string;
+  isLink: boolean;
   iconClass?: string;
   active?: boolean;
-  url?: string;
   onClick?: Function;
   submenu?: AccordionMenu[];
 }
