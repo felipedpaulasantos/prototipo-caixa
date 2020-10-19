@@ -62,6 +62,14 @@
               <span class="menu-item-name" (click)="activate(lastmenu)">
                 {{ lastmenu.name }}
               </span>    
+              <ng-container *ngIf="lastmenu.active && !lastmenu.submenu">
+                <span class="menu-item-close-icon" (click)="fecharMenulateral()" role="button">
+                  <i class="fa fa-angle-double-left item-close-caret" ></i>
+                </span>
+                <span class="menu-item-open-icon" (click)="abrirMenuLateral()" role="button">
+                  <i class="fa fa-angle-double-right item-close-caret" ></i>
+                </span>
+              </ng-container>
             </div>
           </li>
         </ul>

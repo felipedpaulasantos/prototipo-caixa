@@ -66,7 +66,13 @@ export class SideMenuComponent implements OnInit, OnDestroy {
           name: 'Cards',
           iconClass: 'fa fa-lg fa-clipboard',
           url: '/componentes/cards',
-          isLink: true
+          isLink: false,
+          submenu: [{
+            name: 'Teste',
+            iconClass: 'fa fa-lg fa-clipboard',
+            url: '/componentes/cards',
+            isLink: true,
+          }]
         },
         {
           name: 'Inputs',
