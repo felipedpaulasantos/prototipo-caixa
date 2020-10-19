@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, ChangeDetectorRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, ChangeDetectorRef } from '@angular/core';
 import { Config } from 'protractor';
 import { AccordionMenu } from './types/accordion-menu';
 import { Router, NavigationEnd } from '@angular/router';
@@ -28,30 +28,21 @@ export class AccordionComponent implements OnInit {
   ngOnInit() {
     this.config = this.mergeConfig(this.options);
     this.router.events.subscribe(ev => {
-
       if (ev instanceof NavigationEnd) {
-        const loc = this.location.path();
-        this.menus.forEach((menu, index) => {
-          if (loc.includes(menu.url)) {
-            if (!menu.active) {
-              this.toggle(index);
-              this.cdr.detectChanges();
-            }
-          }
-          if (menu.submenu) {
-            menu.submenu.forEach((submenu, subindex) => {
-              if (loc.includes(submenu.url)) {
-                if (!submenu.active) {
-                  this.toggle(index, true, subindex);
-                  this.cdr.detectChanges();
-                }
-              } /* else {
-                submenu.active = false;
-                this.cdr.detectChanges();
-              } */
-            });
-          }
-        });
+        this.toggleAllFalse(this.menus);
+        this.toggleActiveByLocation(this.location.path(), this.menus);
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  toggleActiveByLocation(location: string, menus: AccordionMenu[]) {
+    menus.forEach((menu) => {
+      if (location.includes(menu.url)) {
+        menu.active = true;
+        if (menu.submenu) {
+          this.toggleActiveByLocation(location, menu.submenu);
+        }
       }
     });
   }
@@ -64,39 +55,23 @@ export class AccordionComponent implements OnInit {
     return { ...config, ...options };
   }
 
-  toggle(index: number, isSubmenu = false, submenuIndex = null) {
-
-    console.log(index, isSubmenu, submenuIndex);
-
-    if (!this.config.multi) {
-      this.menus.filter(
-        (menu, i) => i !== index && menu.active
-      ).forEach(menu => menu.active = !menu.active);
-    }
-
-    if (isSubmenu) {
-      const submenus = this.menus[index].submenu;
-      submenus.filter(
-        (submenu, i) => i !== submenuIndex && submenu.active
-      ).forEach(submenu => submenu.active = !submenu.active);
-      this.menus[index].submenu[submenuIndex].active = !this.menus[index].submenu[submenuIndex].active;
-
-    } else {
-      this.menus[index].active = !this.menus[index].active;
-    }
+  toggleAllFalse(menus: AccordionMenu[]) {
+    menus.forEach(menu => {
+      menu.active = false;
+      if (menu.submenu) { this.toggleAllFalse(menu.submenu); }
+    });
   }
 
   activate(menu: AccordionMenu) {
-    menu.url ? this.navigate(menu.url) : this.callAction(menu);
+    if (menu.isLink) {
+      this.navigate(menu.url);
+    } else {
+      menu.active = !menu.active;
+    }
   }
 
   private navigate(url: string) {
-    this.router.navigateByUrl(url).then(msg => console.log("Routing", msg));
-  }
-
-  private callAction(menu: AccordionMenu) {
-    if (!menu.onClick) { return; }
-    menu.onClick.call(menu.onClick);
+    this.router.navigateByUrl(url);
   }
 
   trocarMenuLateral(): void {
