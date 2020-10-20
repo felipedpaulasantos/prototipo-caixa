@@ -74,7 +74,10 @@ export class LayoutComponent implements OnInit {
       tom = "";
     }
 
+    console.log(temaSelecionado);
+
     this.styleService.setSidemenuBg(temaSelecionado.name + tom);
+    this.styleService.setSidemenuText(temaSelecionado.textColor);
   }
 
   onConteudoPrincipalChange(theme: string) {

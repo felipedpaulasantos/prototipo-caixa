@@ -8,6 +8,7 @@ export interface Tema {
   toolbarText: string;
   toolbarIcon: string;
   sidemenuBg: string;
+  sidemenuText: string;
   counteudoPrincipalBg: string;
 }
 
@@ -23,6 +24,7 @@ export class StyleService {
     toolbarText: "light-light",
     toolbarIcon: LOGO_CAIXA_BRANCO_SRC,
     sidemenuBg: "light-light",
+    sidemenuText: "dark",
     counteudoPrincipalBg: ""
   };
 
@@ -65,6 +67,12 @@ export class StyleService {
   setSidemenuBg(className: string) {
     const tema = this.globalThemeSource.value;
     tema.sidemenuBg = className;
+    this.globalThemeSource.next(tema);
+  }
+
+  setSidemenuText(className: string) {
+    const tema = this.globalThemeSource.value;
+    tema.sidemenuText = className;
     this.globalThemeSource.next(tema);
   }
 
