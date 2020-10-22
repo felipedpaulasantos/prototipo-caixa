@@ -6,8 +6,8 @@ export enum ModalSize {
 }
 
 export const defaultModalOptions: ModalOptions = {
-  titulo: "Alerta",
-  mensagem: "Mensagem default",
+  titulo: "",
+  mensagem: "",
   btOkTexto: "Ok",
   btCancelarTexto: "Fechar",
   showCancelar: false,

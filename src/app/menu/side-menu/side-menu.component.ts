@@ -210,7 +210,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       isLink: true
     }, {
       name: "Dossiê Digital",
-      iconClass: "fa fa-lg fa-cloud-download-alt",
+      iconClass: "fa fa-lg fa-cloud-upload-alt",
       url: "/layout",
       isLink: true
     },
