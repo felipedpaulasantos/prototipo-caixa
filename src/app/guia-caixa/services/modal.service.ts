@@ -10,8 +10,8 @@ declare var $;
 })
 export class ModalService {
 
-  private contextoInjecaoSource = new Subject<ContextoInjecaoComponente>();
-  contextoInjecao$ = this.contextoInjecaoSource.asObservable();
+  private contextoInjecaoGenericoSource = new Subject<ContextoInjecaoComponente>();
+  contextoInjecaoGenerico$ = this.contextoInjecaoGenericoSource.asObservable();
 
   private contextoInjecaoInstanciadoSource = new Subject<ComponentRef<any>>();
   contextoInjecaoInstanciado$ = this.contextoInjecaoInstanciadoSource.asObservable();
@@ -45,7 +45,7 @@ export class ModalService {
   }
 
   public receberContexto(componentFactoryResolver: ComponentFactoryResolver, injector: Injector, componenteParaInjetar?: any) {
-    this.contextoInjecaoSource.next({
+    this.contextoInjecaoGenericoSource.next({
       resolver: componentFactoryResolver, injector: injector, componenteParaInjetar: componenteParaInjetar
     });
   }

@@ -76,12 +76,12 @@ export class ModalComponent implements OnInit, OnDestroy {
       this.show();
     });
 
-/*     this.contextoSubscription = this.modalService.contextoInjecao$.subscribe(contexto => {
+    this.contextoSubscription = this.modalService.contextoInjecaoGenerico$.subscribe(contexto => {
       this.componentFactoryResolver = contexto.resolver;
       this.injectorDoComponenteParaInjetar = contexto.injector;
       this.componenteParaInjetar = contexto.componenteParaInjetar;
-      this.injetarComponente();
-    }); */
+      this.injetarComponenteGenerico();
+    });
 
     this.contextoSubscription = this.modalService.contextoInjecaoInstanciado$.subscribe(
       (componentRef) => {
@@ -90,7 +90,7 @@ export class ModalComponent implements OnInit, OnDestroy {
     });
   }
 
-  injetarComponente() {
+  private injetarComponenteGenerico() {
 
     if (!this.componenteParaInjetar) {
       this.clearComponent();
@@ -102,7 +102,6 @@ export class ModalComponent implements OnInit, OnDestroy {
       && (this.componenteParaInjetar.toString() === this.componenteInjetadoRef.componentType.toString())) {
         return;
     }
-
     this.clearComponent();
     const componentType = this.componenteParaInjetar;
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType);
@@ -118,15 +117,13 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.componenteInjetadoRef.changeDetectorRef.detectChanges();
   }
 
-  injetarComponenteInstanciado() {
-
+  private injetarComponenteInstanciado() {
     this.clearComponent();
-
     this.modalDinamicoRef.insert(this.componenteParaInjetarRef.hostView);
     this.componenteParaInjetarRef.changeDetectorRef.detectChanges();
   }
 
-  clearComponent() {
+  private clearComponent() {
     this.modalDinamicoRef.clear();
     if (this.componenteInjetadoRef) {
       this.componenteInjetadoRef.destroy();
@@ -134,7 +131,7 @@ export class ModalComponent implements OnInit, OnDestroy {
     }
   }
 
-  clearContext() {
+  private clearContext() {
     this.componentFactoryResolver = null;
     this.injectorDoComponenteParaInjetar = null;
   }
@@ -164,15 +161,15 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.modalFooterClass = options.modalFooterClass || defaultModalOptions.modalFooterClass;
   }
 
-  show() {
+  public show() {
     $(this.modal.nativeElement).modal("show");
   }
 
-  cancelar() {
+  public cancelar() {
     this.modalService.btCancelarEvent.emit(true);
   }
 
-  ok() {
+  public ok() {
     this.modalService.btOKEvent.emit(true);
   }
 }
