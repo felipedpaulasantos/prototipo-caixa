@@ -41,20 +41,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <ng-container *ngFor="let menu of menus; let i = index">
-                        <tr *ngIf="!menu.active">                       
-                            <td>{{ menu.name | uppercase }}</td>
-                            <td>
-                                <div class="custom-control custom-switch">
-                                    <input (change)="menu.enabled = !menu.enabled; updateMenu(menus)" type="checkbox"
-                                        class="custom-control-input" id="switchMenuNacional{{i}}" [checked]="menu.enabled">
-                                    <label class="custom-control-label font-fam-normal" for="switchMenuNacional{{i}}">
-                                        {{ menu.enabled ? "Habilitado" : "Desabilitado" }}
-                                    </label>
-                                </div>
-                            </td>
-                        </tr>
-                    </ng-container>
+                    <tr *ngFor="let menu of menus; let i = index">
+                        <td>{{ menu.name | uppercase }}</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input (change)="menu.enabled = !menu.enabled; updateMenu(menus)" type="checkbox"
+                                    class="custom-control-input" id="switchMenuNacional{{i}}" [checked]="menu.enabled">
+                                <label class="custom-control-label font-fam-normal" for="switchMenuNacional{{i}}">
+                                    {{ menu.enabled ? "Habilitado" : "Desabilitado" }}
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -115,7 +113,8 @@
                                     <div class="custom-control custom-switch">
                                         <input (change)="categoria.enabled = !categoria.enabled; updateMenu(menus)"
                                             type="checkbox" class="custom-control-input"
-                                            id="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}" [checked]="categoria.enabled">
+                                            id="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}"
+                                            [checked]="categoria.enabled">
                                         <label class="custom-control-label font-fam-normal"
                                             for="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}">
                                             {{ categoria.enabled ? "Habilitado" : "Desabilitado" }}
@@ -155,7 +154,8 @@
                                         <div class="custom-control custom-switch">
                                             <input (change)="categoria.enabled = !categoria.enabled; updateMenu(menus)"
                                                 type="checkbox" class="custom-control-input"
-                                                id="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}_{{i4}}" [checked]="categoria.enabled">
+                                                id="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}_{{i4}}"
+                                                [checked]="categoria.enabled">
                                             <label class="custom-control-label font-fam-normal"
                                                 for="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}_{{i4}}">
                                                 {{ funcionalidade.enabled ? "Habilitado" : "Desabilitado" }}

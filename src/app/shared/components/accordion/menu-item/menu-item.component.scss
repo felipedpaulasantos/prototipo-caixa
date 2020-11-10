@@ -103,6 +103,10 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
    }
 }
 
+.menu-item:hover {
+   background-color: rgba(0, 0, 0, 0.03);
+}
+
 .submenu,
 .lastmenu {
    background-color: rgba(0, 0, 0, 0.02);
