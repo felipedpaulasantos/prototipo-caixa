@@ -16,7 +16,11 @@ export class ConfigMenuComponent implements OnInit {
   ) { }
 
   menus: AccordionMenu[];
-  config = DatatableConfig.CONFIG_INFO_PAGINACAO;
+  config = DatatableConfig.getDatatableConfig({
+    showPagination: true,
+    showFilter: true,
+    showInfo: true
+  });
 
   ngOnInit(): void {
     this.menuService.menuItems$.subscribe(menus => {
