@@ -36,186 +36,6 @@ export class SideMenuComponent implements OnInit, OnDestroy {
   @Input() tema: Tema;
   options: AccordionConfig = { multi: false };
 
-  menus: AccordionMenu[] = [
-    {
-      name: 'Início',
-      iconClass: 'fas fa-lg fa-home',
-      url: '/home',
-      isLink: true
-    },
-    {
-      name: 'Layout',
-      iconClass: 'fas fa-lg fa-layer-group',
-      url: '/layout',
-      isLink: true
-    },
-    {
-      name: 'Componentes',
-      url: "componentes",
-      iconClass: 'fas fa-lg fa-toolbox',
-      isLink: false,
-      submenu: [
-        {
-          name: 'Botões',
-          iconClass: 'fa fa-lg fa-dot-circle',
-          url: '/componentes/botoes',
-          isLink: true,
-          active: false
-        },
-        {
-          name: 'Cards',
-          iconClass: 'fa fa-lg fa-clipboard',
-          url: '/componentes/cards',
-          isLink: false,
-          submenu: [{
-            name: 'Teste',
-            iconClass: 'fa fa-lg fa-clipboard',
-            url: '/componentes/cards',
-            isLink: true,
-          }]
-        },
-        {
-          name: 'Inputs',
-          iconClass: 'fa fa-lg fa-keyboard',
-          url: '/componentes/inputs',
-          isLink: true
-        },
-        {
-          name: 'Mensagens',
-          iconClass: 'fa fa-lg fa-comment',
-          url: '/componentes/mensagens',
-          isLink: true
-        },
-        {
-          name: 'Select',
-          iconClass: 'fa fa-lg fa-hand-pointer',
-          url: '/componentes/select',
-          isLink: true
-        },
-        {
-          name: 'Tabelas',
-          iconClass: 'fa fa-lg fa-table',
-          url: '/componentes/tabelas',
-          isLink: true
-        }
-      ]
-    },
-    {
-      name: 'Tipografia',
-      iconClass: 'fas fa-lg fa-font',
-      url: '/tipografia',
-      isLink: true
-    },
-    {
-      name: 'Cores',
-      iconClass: 'fas fa-lg fa-palette',
-      url: '/cores',
-      isLink: true
-    },
-    {
-      name: 'Chat',
-      iconClass: 'fas fa-lg fa-comment',
-      url: '/chat',
-      isLink: true
-    }
-  ];
-
-/*    menus: AccordionMenu[] = [
-    {
-      name: "Home",
-      iconClass: "fas fa-lg fa-home",
-      url: "/home",
-      isLink: true
-    }, {
-      name: "Pessoa Física/Jurídica",
-      iconClass: "fa fa-lg fa-user-tie",
-      url: "/pessoafisica",
-      isLink: false,
-      submenu: [
-        {
-          name: "Cadastro",
-          iconClass: "fa fa-lg fa-file-medical",
-          url: "/cores",
-          isLink: true
-        }, {
-          name: "Contratos",
-          iconClass: "fa fa-lg fa-file-alt",
-          url: "/cores",
-          isLink: true
-        }, {
-          name: "Assinatura Eletrônica",
-          iconClass: "fa fa-lg fa-file-signature",
-          url: "/cores",
-          isLink: true
-        }, {
-          name: "SMS",
-          iconClass: "fa fa-lg fa-mobile-alt",
-          url: "/cores",
-          isLink: true
-        }, {
-          name: "Saque Aniversário - Antecipação",
-          iconClass: "fa fa-lg fa-birthday-cake",
-          url: "/cores",
-          isLink: true
-        },
-      ]
-    }, {
-      name: "Serviços ao Cidadão",
-      url: "/servicosaocidadao",
-      iconClass: "fa fa-lg fa-user-friends",
-      isLink: false,
-      submenu: [
-        {
-          name: "Resumo do Cidadão",
-          iconClass: "fa fa-lg fa-id-badge",
-          url: "/componentes/inputs",
-          isLink: true
-        }, {
-          name: "Cadastro NIS",
-          iconClass: "fa fa-lg fa-file-medical",
-          url: "/componentes/select",
-          isLink: true
-        }, {
-          name: "Cartões Sociais",
-          url: "servicosaocidadao/cartoes",
-          iconClass: "fa fa-lg fa-credit-card",
-          isLink: false,
-          submenu: [
-            {
-              name: "Teste",
-              url: "/componentes/inputs",
-              isLink: true
-            }, {
-              name: "Teste 2",
-              url: "/componentes/botoes",
-              isLink: true
-            }
-          ]
-        }, {
-          name: "FGTS",
-          iconClass: "fa fa-lg fa-landmark",
-          url: "/componentes/cards",
-          isLink: true
-        }, {
-          name: "Saque Emergencial - MP 946/20",
-          url: "/componentes/mensagens",
-          iconClass: "fa fa-lg fa-dollar-sign",
-          isLink: true
-        },
-      ]
-    }, {
-      name: "Investimentos",
-      iconClass: "fa fa-lg fa-chart-line",
-      url: "/chat",
-      isLink: true
-    }, {
-      name: "Dossiê Digital",
-      iconClass: "fa fa-lg fa-cloud-upload-alt",
-      url: "/layout",
-      isLink: true
-    },
-  ]; */
-
   @ViewChild("menuLateral", { read: ElementRef })
   menuLateral: ElementRef;
 
@@ -233,12 +53,16 @@ export class SideMenuComponent implements OnInit, OnDestroy {
   refInjector: Injector;
   resolverSub: Subscription;
 
+  menus: AccordionMenu[] = [];
+
   ngOnInit() {
     this.larguraTela = window.innerWidth;
 
     this.menuService.isAberto$.subscribe((isAberto: boolean) => {
       this.isAberto = isAberto;
     });
+
+    this.menuService.menuItems$.subscribe(menus => this.menus = menus);
 
     this.verificarContextoMudancaRota();
     this.fecharSeMobile();

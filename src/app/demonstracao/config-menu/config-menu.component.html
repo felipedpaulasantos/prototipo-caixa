@@ -1,0 +1,103 @@
+<h1 class="header-principal-caixa">
+    Configuração do Menu
+</h1>
+<hr class="header-line-caixa">
+
+<ul class="tab-caixa nav nav-pills" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active"
+        data-toggle="tab" href="#tab-menu" role="tab"
+        aria-controls="profile" aria-selected="true">
+            Menu
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"
+        data-toggle="tab" href="#tab-submenu" role="tab"
+        aria-controls="activate" aria-selected="false">
+            Submenu
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"
+        data-toggle="tab" href="#tab-subcategoria" role="tab"
+        aria-controls="activate" aria-selected="false">
+            Sub-Categoria
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"
+        data-toggle="tab" href="#tab-funcionalidade" role="tab"
+        aria-controls="activate" aria-selected="false">
+            Funcionalidade
+        </a>
+    </li>
+</ul>
+
+<div class="tab-content pt-3">
+    <div class="tab-pane show active fade" id="tab-menu" role="tabpanel" aria-labelledby="sintetico-tab">
+        <div class="table-responsive">
+            <table id="menuTable" datatable [dtOptions]="config" class="table table-caixa">
+                <thead>
+                    <tr>
+                        <th>Nome do Menu</th>
+                        <th>Habilitar em Ambiente Nacional</th>
+                        <th>Habilitar no Piloto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let menu of menus; let i = index">
+                        <td>{{ menu.name | uppercase }}</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="switchMenuNacional{{i}}" [checked]="menu.active">
+                                <label class="custom-control-label" for="switchMenuNacional{{i}}"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="switchMenuPiloto{{i}}">
+                                <label class="custom-control-label" for="switchMenuPiloto{{i}}"></label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab-submenu" role="tabpanel" aria-labelledby="analitico-tab">
+        <div id="submenuTable" class="table-responsive">
+            <table datatable [dtOptions]="config" class="table table-caixa">
+                <thead>
+                    <tr>
+                        <th>Nome do Menu</th>
+                        <th>Nome do Submenu</th>
+                        <th>Habilitar em Ambiente Nacional</th>
+                        <th>Habilitar no Piloto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let menu of menus; let i1 = index">
+                        <tr *ngFor="let submenu of menu.submenu; let i2 = index">                            
+                            <td>{{ menu.name | uppercase }}</td>
+                            <td>{{ submenu.name | uppercase }}</td>
+                            <td>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="switchSubmenuNacional{{i1}}_{{i2}}" [checked]="menu.active">
+                                    <label class="custom-control-label" for="switchSubmenuNacional{{i1}}_{{i2}}"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="switchSubmenuPiloto{{i1}}_{{i2}}">
+                                    <label class="custom-control-label" for="switchSubmenuPiloto{{i1}}_{{i2}}"></label>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -111,6 +111,11 @@ export class DatatableConfig {
         showPagination: true
     });
 
+    static CONFIG_INFO_PAGINACAO: DatatableSettings = DatatableConfig.getDatatableConfig({
+        showInfo: true,
+        showPagination: true
+    });
+
     static CONFIG_SIMPLES: DatatableSettings = DatatableConfig.getDatatableConfig({});
 
     static getDatatableConfig(options: CustomDatatableConfig): DatatableSettings {

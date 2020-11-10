@@ -60,8 +60,8 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       OAuthModule.forRoot(),
       ToastrModule.forRoot({
         timeOut: 5000,
-        progressBar: true,
-        positionClass: 'toast-top-right',
+        progressBar: false,
+        positionClass: 'toast-bottom-center',
         preventDuplicates: true,
         enableHtml: true
       })

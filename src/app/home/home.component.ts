@@ -97,7 +97,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.rows = this.groupColumns(this.resources);
-    this.clientePesquisado();
+    // this.clientePesquisado();
     for (let index = 0; index < 10; index++) {
       const contrato = {
         numero: `4200.160.0150${index}-${index}`,
@@ -148,11 +148,6 @@ export class HomeComponent implements OnInit {
     const componenteRef = componenteFactory.create(this.injector);
     const componente = componenteRef.instance;
     componente.placeholder = this.contratos[index].valor;
-    console.log("ComponenteFactory", componenteFactory);
-    console.log("ComponenteRef", componenteRef);
-    console.log("Componente", componente);
-    //this.modal.receberContexto(this.resolver, this.injector, componente);
-
     this.modal.receberContextoInstanciado(componenteRef);
     this.modal.show({
       tamanho: ModalSize.MAIOR,
