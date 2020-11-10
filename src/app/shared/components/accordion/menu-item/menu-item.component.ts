@@ -36,7 +36,11 @@ export class MenuItemComponent implements OnInit {
     }
   }
 
-  private navigate(url: string) {
+  collapse(menu: AccordionMenu) {
+    menu.active = !menu.active;
+  }
+
+  navigate(url: string) {
     this.router.navigateByUrl(url);
   }
 
