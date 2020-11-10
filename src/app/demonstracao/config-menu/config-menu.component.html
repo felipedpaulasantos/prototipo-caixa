@@ -41,8 +41,7 @@
                 <thead>
                     <tr>
                         <th>Nome do Menu</th>
-                        <th>Habilitar em Ambiente Nacional</th>
-                        <th>Habilitar no Piloto</th>
+                        <th>Habilitar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,14 +49,9 @@
                         <td>{{ menu.name | uppercase }}</td>
                         <td>
                             <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="switchMenuNacional{{i}}" [checked]="menu.active">
+                                <input (change)="menu.enabled = !menu.enabled; updateMenu(menus)" 
+                                    type="checkbox" class="custom-control-input" id="switchMenuNacional{{i}}" [checked]="menu.enabled">
                                 <label class="custom-control-label" for="switchMenuNacional{{i}}"></label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="switchMenuPiloto{{i}}">
-                                <label class="custom-control-label" for="switchMenuPiloto{{i}}"></label>
                             </div>
                         </td>
                     </tr>
@@ -73,8 +67,7 @@
                     <tr>
                         <th>Nome do Menu</th>
                         <th>Nome do Submenu</th>
-                        <th>Habilitar em Ambiente Nacional</th>
-                        <th>Habilitar no Piloto</th>
+                        <th>Habilitar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,14 +77,9 @@
                             <td>{{ submenu.name | uppercase }}</td>
                             <td>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="switchSubmenuNacional{{i1}}_{{i2}}" [checked]="menu.active">
+                                    <input (change)="submenu.enabled = !submenu.enabled; updateMenu(menus)"
+                                        type="checkbox" class="custom-control-input" id="switchSubmenuNacional{{i1}}_{{i2}}" [checked]="menu.enabled">
                                     <label class="custom-control-label" for="switchSubmenuNacional{{i1}}_{{i2}}"></label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="switchSubmenuPiloto{{i1}}_{{i2}}">
-                                    <label class="custom-control-label" for="switchSubmenuPiloto{{i1}}_{{i2}}"></label>
                                 </div>
                             </td>
                         </tr>

@@ -9,7 +9,7 @@ import { SideMenuService } from 'src/app/menu/side-menu/side-menu.service';
   selector: 'app-accordion',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class AccordionComponent implements OnInit {
 

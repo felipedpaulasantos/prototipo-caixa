@@ -15,62 +15,72 @@ export class SideMenuService {
       name: 'Início',
       iconClass: 'fas fa-lg fa-home',
       url: '/home',
-      isLink: true
+      isLink: true,
+      enabled: true
     },
     {
       name: 'Layout',
       iconClass: 'fas fa-lg fa-layer-group',
       url: '/layout',
-      isLink: true
+      isLink: true,
+      enabled: true
     },
     {
       name: 'Componentes',
       url: "componentes",
       iconClass: 'fas fa-lg fa-toolbox',
       isLink: false,
+      enabled: true,
       submenu: [
         {
           name: 'Botões',
           iconClass: 'fa fa-lg fa-dot-circle',
           url: '/componentes/botoes',
           isLink: true,
-          active: false
+          active: false,
+          enabled: true
         },
         {
           name: 'Cards',
           iconClass: 'fa fa-lg fa-clipboard',
           url: '/componentes/cards',
           isLink: false,
+          enabled: true,
           submenu: [{
             name: 'Teste',
             iconClass: 'fa fa-lg fa-clipboard',
             url: '/componentes/cards',
             isLink: true,
+            enabled: true
           }]
         },
         {
           name: 'Inputs',
           iconClass: 'fa fa-lg fa-keyboard',
           url: '/componentes/inputs',
-          isLink: true
+          isLink: true,
+          enabled: true
         },
         {
           name: 'Mensagens',
           iconClass: 'fa fa-lg fa-comment',
           url: '/componentes/mensagens',
-          isLink: true
+          isLink: true,
+          enabled: true
         },
         {
           name: 'Select',
           iconClass: 'fa fa-lg fa-hand-pointer',
           url: '/componentes/select',
-          isLink: true
+          isLink: true,
+          enabled: true
         },
         {
           name: 'Tabelas',
           iconClass: 'fa fa-lg fa-table',
           url: '/componentes/tabelas',
-          isLink: true
+          isLink: true,
+          enabled: true
         }
       ]
     },
@@ -78,25 +88,29 @@ export class SideMenuService {
       name: 'Tipografia',
       iconClass: 'fas fa-lg fa-font',
       url: '/tipografia',
-      isLink: true
+      isLink: true,
+      enabled: true
     },
     {
       name: 'Cores',
       iconClass: 'fas fa-lg fa-palette',
       url: '/cores',
-      isLink: true
+      isLink: true,
+      enabled: true
     },
     {
       name: 'Chat',
       iconClass: 'fas fa-lg fa-comment',
       url: '/chat',
-      isLink: true
+      isLink: true,
+      enabled: true
     },
     {
       name: 'Configuração do Menu',
       iconClass: 'fas fa-lg fa-cog',
       url: '/config-menu',
-      isLink: true
+      isLink: true,
+      enabled: true
     }
   ];
 
@@ -221,6 +235,10 @@ export class SideMenuService {
     this.contextoInjecaoSource.next({
       resolver, injector, componenteParaInjetar
     });
+  }
+
+  public updateMenu(menu: AccordionMenu[]): void {
+    this.menuItemsSource.next(menu);
   }
 
   public inserirItemMenu(menuItem: AccordionMenu, parentMenuItemName?: string): void {
