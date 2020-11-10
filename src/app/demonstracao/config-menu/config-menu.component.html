@@ -41,16 +41,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let menu of menus; let i = index">
-                        <td>{{ menu.name | uppercase }}</td>
-                        <td>
-                            <div class="custom-control custom-switch">
-                                <input (change)="menu.enabled = !menu.enabled; updateMenu(menus)" type="checkbox"
-                                    class="custom-control-input" id="switchMenuNacional{{i}}" [checked]="menu.enabled">
-                                <label class="custom-control-label" for="switchMenuNacional{{i}}"></label>
-                            </div>
-                        </td>
-                    </tr>
+                    <ng-container *ngFor="let menu of menus; let i = index">
+                        <tr *ngIf="!menu.active">                       
+                            <td>{{ menu.name | uppercase }}</td>
+                            <td>
+                                <div class="custom-control custom-switch">
+                                    <input (change)="menu.enabled = !menu.enabled; updateMenu(menus)" type="checkbox"
+                                        class="custom-control-input" id="switchMenuNacional{{i}}" [checked]="menu.enabled">
+                                    <label class="custom-control-label" for="switchMenuNacional{{i}}">
+                                        {{ menu.enabled ? "Habilitado" : "Desabilitado" }}
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
                 </tbody>
             </table>
         </div>
@@ -77,7 +81,9 @@
                                         type="checkbox" class="custom-control-input"
                                         id="switchSubmenuNacional{{i1}}_{{i2}}" [checked]="submenu.enabled">
                                     <label class="custom-control-label"
-                                        for="switchSubmenuNacional{{i1}}_{{i2}}"></label>
+                                        for="switchSubmenuNacional{{i1}}_{{i2}}">
+                                        {{ submenu.enabled ? "Habilitado" : "Desabilitado" }}
+                                    </label>
                                 </div>
                             </td>
                         </tr>
@@ -111,7 +117,9 @@
                                             type="checkbox" class="custom-control-input"
                                             id="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}" [checked]="categoria.enabled">
                                         <label class="custom-control-label"
-                                            for="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}"></label>
+                                            for="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}">
+                                            {{ categoria.enabled ? "Habilitado" : "Desabilitado" }}
+                                        </label>
                                     </div>
                                 </td>
                             </tr>
@@ -149,7 +157,9 @@
                                                 type="checkbox" class="custom-control-input"
                                                 id="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}_{{i4}}" [checked]="categoria.enabled">
                                             <label class="custom-control-label"
-                                                for="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}_{{i4}}"></label>
+                                                for="switchSubmenuNacional{{i1}}_{{i2}}_{{i3}}_{{i4}}">
+                                                {{ funcionalidade.enabled ? "Habilitado" : "Desabilitado" }}
+                                            </label>
                                         </div>
                                     </td>
                                 </tr>

@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   rows: any[] = [];
-  resourcesOLD: Resources[] = [
+  resources: Resources[] = [
     {
       name: 'Layout',
       icon: 'fas fa-layer-group',
@@ -61,29 +61,6 @@ export class HomeComponent implements OnInit {
       url: "/chat",
       icon: "fas fa-comment",
       description: "Protótipo de chat"
-    }
-  ];
-
-  resources: Resources[] = [
-    {
-      name: 'Pessoa Física/Jurídica',
-      icon: 'fa fa-user-tie',
-      url: '/layout'
-    },
-    {
-			name: 'Serviços ao Cidadão',
-			url: '/servicosaocidadao',
-      icon: 'fa fa-user-friends'
-    },
-    {
-			name: 'Investimentos',
-			url: '/investimentos',
-      icon: 'fa fa-chart-line'
-		},
-    {
-      name: "Dossiê Digital",
-      url: "/dossiedigital",
-      icon: "fa fa-cloud-upload-alt"
     }
   ];
 

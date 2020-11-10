@@ -3,7 +3,7 @@
 </h1>
 <hr class="header-line-caixa">
 
-<!-- <div *ngFor="let cols of rows" class="row d-flex justify-content-center">
+<div *ngFor="let cols of rows" class="row d-flex justify-content-center">
   <div *ngFor="let resource of cols" class="col-10 col-md-6 col-xl-4">
     <div class="card card-caixa card-hover {{ resource.cardClass }}" role="button" [routerLink]="resource.url">
       <div class="card-header">
@@ -20,126 +20,129 @@
     </div>
     <br>
   </div>
-</div> -->
+</div>
 
-<form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
-  <div class="row">
-    <div class="col-12 col-md-6 col-lg-4">
-      <!--         <cx-input>
-            <label>CPF</label>
-            <input inputCaixa name="cpf" placeholder="Informe o CPF" mask="000.000.000-00">        
-          </cx-input> -->
-      <label>CPF</label>
-      <input class="input-caixa-primary" name="cpf" placeholder="Informe o CPF" mask="000.000.000-00" formControlName="cpf">
-    </div>
-    <div class="col-12 col-md-6 col-lg-4">
-      <!--         <cx-input>
-            <label>NIS</label>
-            <input inputCaixa name="nis" placeholder="Informe o NIS" mask="000.000.000-00">
-          </cx-input> -->
-      <label>NIS</label>
-      <input class="input-caixa-primary" name="nis" placeholder="Informe o NIS" mask="000.000.000-00" formControlName="nis">
-  
-    </div>
-    <div class="col-1 d-flex align-items-center">
-      <button type="submit"
-      [disabled]="isCpfNisInvalid" [title]="!isCpfNisInvalid ? 'Pesquisar' : 'Preencha um dos campos'" 
-      class="btn btn-caixa btn-secondary">
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
-  </div>
-</form>
-
-<ng-container *ngIf="cliente">
-  <section id="secaoInformacoesPessoais" class="row mt-4">
-    <div class="col-12 col-md-3">
-      <h5 class="header-subtitulo-caixa">Informações Pessoais</h5>
-      <div class="card card-caixa">
-        <div class="card-body">
-          <div class="py-2">
-            <span class="font-weight-bold">Nome:</span>
-            {{ cliente.nome }}
-          </div>
-          <div class="py-2">
-            <span class="font-weight-bold">CPF:</span>
-            {{ cliente.cpf }}
-          </div>
-          <div class="py-2">
-            <span class="font-weight-bold">Nome da mãe:</span>
-            {{ cliente.nomeMae }}
-          </div>
-          <div class="py-2">
-            <span class="font-weight-bold">Nascimento:</span>
-            {{ cliente.dataNascimento }}
-          </div>
-        </div>
-        <div class="card-footer text-right">
-          <button class="btn btn-caixa btn-primary">
-            <i class="fa fa-edit"></i>
-            Editar
-          </button>
-        </div>
+<ng-container *ngIf="false">
+  <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <!--         <cx-input>
+              <label>CPF</label>
+              <input inputCaixa name="cpf" placeholder="Informe o CPF" mask="000.000.000-00">        
+            </cx-input> -->
+        <label>CPF</label>
+        <input class="input-caixa-primary" name="cpf" placeholder="Informe o CPF" mask="000.000.000-00" formControlName="cpf">
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <!--         <cx-input>
+              <label>NIS</label>
+              <input inputCaixa name="nis" placeholder="Informe o NIS" mask="000.000.000-00">
+            </cx-input> -->
+        <label>NIS</label>
+        <input class="input-caixa-primary" name="nis" placeholder="Informe o NIS" mask="000.000.000-00" formControlName="nis">
+    
+      </div>
+      <div class="col-1 d-flex align-items-center">
+        <button type="submit"
+        [disabled]="isCpfNisInvalid" [title]="!isCpfNisInvalid ? 'Pesquisar' : 'Preencha um dos campos'" 
+        class="btn btn-caixa btn-secondary">
+          <i class="fa fa-search"></i>
+        </button>
       </div>
     </div>
-    <div class="col">
-      <h5 class="header-subtitulo-caixa">Opções</h5>
-      <div class="row justify-content-center">
+  </form>
   
-        <div *ngFor="let resource of resources" class="col-4 mb-3">
-          <div role="button" class="card card-caixa card-hover text-dark-light h-100">
-            <div class="card-body">
-              <i _ngcontent-wba-c89="" class="{{ resource.icon }} fa-2x mr-4"></i>
-              <h4 _ngcontent-wba-c89="" class="d-inline font-fam-bold mb-0">{{ resource.name }}</h4>
-              <span *ngIf="resource.description">
-                <br><br>
-                {{ resource.description }}
-              </span>
+  <ng-container *ngIf="cliente">
+    <section id="secaoInformacoesPessoais" class="row mt-4">
+      <div class="col-12 col-md-3">
+        <h5 class="header-subtitulo-caixa">Informações Pessoais</h5>
+        <div class="card card-caixa">
+          <div class="card-body">
+            <div class="py-2">
+              <span class="font-weight-bold">Nome:</span>
+              {{ cliente.nome }}
+            </div>
+            <div class="py-2">
+              <span class="font-weight-bold">CPF:</span>
+              {{ cliente.cpf }}
+            </div>
+            <div class="py-2">
+              <span class="font-weight-bold">Nome da mãe:</span>
+              {{ cliente.nomeMae }}
+            </div>
+            <div class="py-2">
+              <span class="font-weight-bold">Nascimento:</span>
+              {{ cliente.dataNascimento }}
             </div>
           </div>
-        </div>  <!-- COL -->
-        
+          <div class="card-footer text-right">
+            <button class="btn btn-caixa btn-primary">
+              <i class="fa fa-edit"></i>
+              Editar
+            </button>
+          </div>
+        </div>
       </div>
-    </div>  <!-- COL -->
-  </section>  <!-- ROW -->
-  
-  <section class="mt-5">
-    <h5 class="header-subtitulo-caixa">
-      Contratos
-    </h5>
-    <div class="card card-caixa">
-      <div class="card-body">
-        <table datatable class="table table-caixa">
-          <thead>
-            <tr>
-              <th>Número</th>
-              <th>Situação</th>
-              <th>Valor</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let contrato of contratos; let indice = index">
-              <td>{{ contrato.numero }}</td>
-              <td>{{ contrato.situacao }}</td>
-              <td>{{ contrato.valor | currency: 'R$' }}</td>
-              <td>
-                <button class="btn btn-caixa btn-sm btn-outline-primary mr-2" title="Detalhar" (click)="injetarTeste(indice)">
-                  <i class="fa fa-search"></i>
-                </button>
-                <button class="btn btn-caixa btn-sm btn-outline-danger mr-2" title="Excluir">
-                  <i class="fa fa-trash"></i>
-                </button>
-                <button class="btn btn-caixa btn-sm btn-outline-success" title="Confirmar">
-                  <i class="fa fa-check"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col">
+        <h5 class="header-subtitulo-caixa">Opções</h5>
+        <div class="row justify-content-center">
+    
+          <div *ngFor="let resource of resources" class="col-4 mb-3">
+            <div role="button" class="card card-caixa card-hover text-dark-light h-100">
+              <div class="card-body">
+                <i _ngcontent-wba-c89="" class="{{ resource.icon }} fa-2x mr-4"></i>
+                <h4 _ngcontent-wba-c89="" class="d-inline font-fam-bold mb-0">{{ resource.name }}</h4>
+                <span *ngIf="resource.description">
+                  <br><br>
+                  {{ resource.description }}
+                </span>
+              </div>
+            </div>
+          </div>  <!-- COL -->
+          
+        </div>
+      </div>  <!-- COL -->
+    </section>  <!-- ROW -->
+    
+    <section class="mt-5">
+      <h5 class="header-subtitulo-caixa">
+        Contratos
+      </h5>
+      <div class="card card-caixa">
+        <div class="card-body">
+          <table datatable class="table table-caixa">
+            <thead>
+              <tr>
+                <th>Número</th>
+                <th>Situação</th>
+                <th>Valor</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let contrato of contratos; let indice = index">
+                <td>{{ contrato.numero }}</td>
+                <td>{{ contrato.situacao }}</td>
+                <td>{{ contrato.valor | currency: 'R$' }}</td>
+                <td>
+                  <button class="btn btn-caixa btn-sm btn-outline-primary mr-2" title="Detalhar" (click)="injetarTeste(indice)">
+                    <i class="fa fa-search"></i>
+                  </button>
+                  <button class="btn btn-caixa btn-sm btn-outline-danger mr-2" title="Excluir">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                  <button class="btn btn-caixa btn-sm btn-outline-success" title="Confirmar">
+                    <i class="fa fa-check"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </ng-container>
 </ng-container>
+
 
 
