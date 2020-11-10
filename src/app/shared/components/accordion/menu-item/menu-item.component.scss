@@ -29,7 +29,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
    box-shadow: 0 0.6rem 0.4rem -0.4rem rgba(0, 0, 0, 0.1) !important;
 }
 
-.menu-aberto {
+:host-context(.menu-aberto) {
    .menu-item-open-icon {
       display: none;
    }
@@ -59,7 +59,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
    }
 }
 
-.menu-reduzido {
+:host-context(.menu-reduzido) {
    .menu-item-name {
       display: none;
    }
