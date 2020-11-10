@@ -9,7 +9,7 @@ import { SideMenuService } from 'src/app/menu/side-menu/side-menu.service';
   selector: 'app-accordion',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class AccordionComponent implements OnInit {
 
@@ -63,6 +63,9 @@ export class AccordionComponent implements OnInit {
   }
 
   activate(menu: AccordionMenu) {
+
+    console.log("Activate Accordion", menu);
+
     if (menu.isLink) {
       this.navigate(menu.url);
     } else {

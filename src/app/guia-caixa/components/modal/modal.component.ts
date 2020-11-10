@@ -2,8 +2,17 @@ import {
   Component,
   OnInit,
   ViewChild,
-  ElementRef
+  ElementRef,
+  ComponentFactoryResolver,
+  ChangeDetectorRef,
+  ViewContainerRef,
+  ComponentRef,
+  Injector,
+  Type,
+  OnDestroy,
+  ViewRef
 } from "@angular/core";
+import { Subscription } from 'rxjs';
 import { ModalService } from "../../services/modal.service";
 import { ModalOptions, ModalSize, defaultModalOptions } from './modal-options';
 
@@ -14,17 +23,34 @@ declare var $;
   templateUrl: "./modal.component.html",
   styleUrls: ["./modal.component.scss"]
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, OnDestroy {
 
-  constructor(private modalService: ModalService) { }
+  constructor(
+    private modalService: ModalService,
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private cdr: ChangeDetectorRef,
+  ) { }
+
+  @ViewChild("modalDinamico", { read: ViewContainerRef, static: false })
+  modalDinamicoRef: ViewContainerRef;
+
+  componenteParaInjetar: Type<Component>;
+  // componenteParaInjetar: any;
+  injectorDoComponenteParaInjetar: Injector;
+  contextoSubscription: Subscription;
+
+  componenteInjetadoRef: ComponentRef<Component>;
+  injectorComponenteInjetado: Injector;
+
+  componenteParaInjetarRef: ComponentRef<any>;
 
   modalSize = ModalSize;
 
   @ViewChild("defaultModal", { static: true })
   private modal: ElementRef<HTMLInputElement>;
 
-  public titulo: String = "Alerta";
-  public mensagem: String = "Mensagem default";
+  public titulo: String = "";
+  public mensagem: String = "";
 
   public btOkTexto: String = "Ok";
   public btCancelarTexto: String = "Fechar";
@@ -49,6 +75,70 @@ export class ModalComponent implements OnInit {
       this.config(options);
       this.show();
     });
+
+    this.contextoSubscription = this.modalService.contextoInjecaoGenerico$.subscribe(contexto => {
+      this.componentFactoryResolver = contexto.resolver;
+      this.injectorDoComponenteParaInjetar = contexto.injector;
+      this.componenteParaInjetar = contexto.componenteParaInjetar;
+      this.injetarComponenteGenerico();
+    });
+
+    this.contextoSubscription = this.modalService.contextoInjecaoInstanciado$.subscribe(
+      (componentRef) => {
+        this.componenteParaInjetarRef = componentRef;
+        this.injetarComponenteInstanciado();
+    });
+  }
+
+  private injetarComponenteGenerico() {
+
+    if (!this.componenteParaInjetar) {
+      this.clearComponent();
+    }
+    if (!this.injectorDoComponenteParaInjetar || !this.componentFactoryResolver) {
+      return;
+    }
+    if (this.componenteInjetadoRef && this.componenteInjetadoRef.componentType
+      && (this.componenteParaInjetar.toString() === this.componenteInjetadoRef.componentType.toString())) {
+        return;
+    }
+    this.clearComponent();
+    const componentType = this.componenteParaInjetar;
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType);
+
+    this.injectorComponenteInjetado = Injector.create(
+      [{provide: componentType, useValue: componentType}],
+      this.injectorDoComponenteParaInjetar
+    );
+    this.componenteInjetadoRef = this.modalDinamicoRef.createComponent(
+      componentFactory, 0, this.injectorComponenteInjetado
+    );
+
+    this.componenteInjetadoRef.changeDetectorRef.detectChanges();
+  }
+
+  private injetarComponenteInstanciado() {
+    this.clearComponent();
+    this.modalDinamicoRef.insert(this.componenteParaInjetarRef.hostView);
+    this.componenteParaInjetarRef.changeDetectorRef.detectChanges();
+  }
+
+  private clearComponent() {
+    this.modalDinamicoRef.clear();
+    if (this.componenteInjetadoRef) {
+      this.componenteInjetadoRef.destroy();
+      this.componenteInjetadoRef = null;
+    }
+  }
+
+  private clearContext() {
+    this.componentFactoryResolver = null;
+    this.injectorDoComponenteParaInjetar = null;
+  }
+
+  ngOnDestroy() {
+    this.contextoSubscription.unsubscribe();
+    this.clearComponent();
   }
 
   config(options: ModalOptions) {
@@ -71,15 +161,15 @@ export class ModalComponent implements OnInit {
     this.modalFooterClass = options.modalFooterClass || defaultModalOptions.modalFooterClass;
   }
 
-  show() {
+  public show() {
     $(this.modal.nativeElement).modal("show");
   }
 
-  cancelar() {
+  public cancelar() {
     this.modalService.btCancelarEvent.emit(true);
   }
 
-  ok() {
+  public ok() {
     this.modalService.btOKEvent.emit(true);
   }
 }

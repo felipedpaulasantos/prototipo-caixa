@@ -1,6 +1,7 @@
 import { Injectable, ComponentFactoryResolver, Injector, Type, Component } from "@angular/core";
 import { BehaviorSubject, Subject } from 'rxjs';
 import { AccordionMenu } from 'src/app/shared/components/accordion/types/accordion-menu';
+import { mockedSideMenuItems } from 'src/app/shared/constants';
 import { ContextoInjecaoComponente } from './contexto-injecao-componente';
 
 @Injectable({
@@ -10,13 +11,15 @@ export class SideMenuService {
 
   constructor() { }
 
+  private menus: AccordionMenu[] = mockedSideMenuItems;
+
   private contextoInjecaoSource = new Subject<ContextoInjecaoComponente>();
   contextoInjecao$ = this.contextoInjecaoSource.asObservable();
 
   private abertoSource = new BehaviorSubject<boolean>(false);
   isAberto$ = this.abertoSource.asObservable();
 
-  private menuItemsSource = new BehaviorSubject<AccordionMenu[]>(null);
+  private menuItemsSource = new BehaviorSubject<AccordionMenu[]>(this.menus);
   menuItems$ = this.menuItemsSource.asObservable();
 
   public trocar() {
@@ -35,6 +38,10 @@ export class SideMenuService {
     this.contextoInjecaoSource.next({
       resolver, injector, componenteParaInjetar
     });
+  }
+
+  public updateMenu(menu: AccordionMenu[]): void {
+    this.menuItemsSource.next(menu);
   }
 
   public inserirItemMenu(menuItem: AccordionMenu, parentMenuItemName?: string): void {

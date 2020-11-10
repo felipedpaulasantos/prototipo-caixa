@@ -3,9 +3,6 @@
 .dataTables_wrapper {
   display: flex;
   flex-wrap: wrap;
-  label {
-    color: cx-variables.$cx-color-light-darkest;
-  }
 }
 
 .dataTables_length {
@@ -14,6 +11,7 @@
   width: 50%;
   label {
     width: 100%;
+    color: cx-variables.$cx-color-light-darkest;
   }
   select {
     @extend .form-control,
@@ -40,6 +38,7 @@
     display: flex;
     align-items: center;
     margin-left: auto;
+    color: cx-variables.$cx-color-light-darkest;
   }
   input {
     @extend .input-caixa;

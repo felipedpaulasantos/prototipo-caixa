@@ -11,6 +11,7 @@ import { TooltipIconComponent } from './tooltip-icon/tooltip-icon.component';
 import { BackButtonComponent } from './buttons/back-button/back-button.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { CodeViewComponent } from './code-view/code-view.component';
+import { MenuItemComponent } from './accordion/menu-item/menu-item.component';
 
 @NgModule({
 	declarations: [
@@ -18,7 +19,8 @@ import { CodeViewComponent } from './code-view/code-view.component';
 		TooltipIconComponent,
 		BackButtonComponent,
 		AccordionComponent,
-		CodeViewComponent
+		CodeViewComponent,
+		MenuItemComponent
 	],
 	imports: [
 		CommonModule,

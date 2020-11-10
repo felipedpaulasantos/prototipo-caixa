@@ -44,7 +44,7 @@ export const dtLanguageDefinitionPt = {
     infoPostFix: "",
     loadingRecords: "Carregando registros...",
     zeroRecords: "Não foram encontrados registros",
-    emptyTable: "Não há dados disponíveis na tabela",
+    emptyTable: "<div class='text-center'>Não há dados disponíveis na tabela</div>",
     paginate: {
         first: "Primeiro",
         previous: "Anterior",
@@ -108,6 +108,11 @@ export class DatatableConfig {
     });
 
     static CONFIG_PAGINACAO: DatatableSettings = DatatableConfig.getDatatableConfig({
+        showPagination: true
+    });
+
+    static CONFIG_INFO_PAGINACAO: DatatableSettings = DatatableConfig.getDatatableConfig({
+        showInfo: true,
         showPagination: true
     });
 

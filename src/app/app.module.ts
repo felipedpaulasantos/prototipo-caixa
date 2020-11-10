@@ -30,6 +30,7 @@ import { HomeComponent } from './home/home.component';
 
 import { GuiaCaixaModule } from './guia-caixa/guia-caixa.module';
 import { CoresModule } from './demonstracao/cores/cores.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -42,6 +43,8 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       BrowserModule,
       BrowserAnimationsModule,
       HttpClientModule,
+      FormsModule,
+      ReactiveFormsModule,
       ChartsModule,
       AppRoutingModule,
       CoresModule,
@@ -57,8 +60,8 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       OAuthModule.forRoot(),
       ToastrModule.forRoot({
         timeOut: 5000,
-        progressBar: true,
-        positionClass: 'toast-top-right',
+        progressBar: false,
+        positionClass: 'toast-bottom-center',
         preventDuplicates: true,
         enableHtml: true
       })
