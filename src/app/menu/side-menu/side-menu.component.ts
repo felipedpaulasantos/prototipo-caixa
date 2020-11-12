@@ -9,6 +9,7 @@ import { filter, tap, map, mergeMap } from 'rxjs/operators';
 import { AccordionConfig } from 'src/app/shared/components/accordion/types/accordion-config';
 import { AccordionMenu } from 'src/app/shared/components/accordion/types/accordion-menu';
 import { StyleService, Tema } from 'src/app/guia-caixa/services/style.service';
+import { mockedSideMenuItems } from 'src/app/shared/constants';
 
 const MENU_ROUTE_PROPERTY = "menuLateral";
 const MOBILE_BREAKPOINT = 991.9;
@@ -24,7 +25,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     private componentFactoryResolver: ComponentFactoryResolver,
     private router: Router,
     private route: ActivatedRoute,
-    private menuService: SideMenuService,
+    public menuService: SideMenuService,
     public styleService: StyleService  ) { }
 
   @Input() tema: Tema;
@@ -157,6 +158,20 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       this.componentRef.destroy();
       this.componentRef = null;
     }
+  }
+
+  filterMenu(ev) {
+    console.log(ev);
+    const text: string = ev.target.value.trim();
+
+    this.menus.forEach(menu => {
+      if (!menu.name.includes(text) && !menu.url.includes(text)) {
+        menu.enabled = false;
+      } else {
+        menu.enabled = true;
+      }
+    });
+
   }
 
   ngOnDestroy() {
