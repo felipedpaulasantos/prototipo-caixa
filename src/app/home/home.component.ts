@@ -6,6 +6,7 @@ import { LayoutComponent } from '../demonstracao/layout/layout.component';
 import { TipografiaComponent } from '../demonstracao/tipografia/tipografia.component';
 import { ModalSize } from '../guia-caixa/components/modal/modal-options';
 import { ModalService } from '../guia-caixa/services/modal.service';
+import { mockedSideMenuCaixaItems } from '../shared/constants';
 
 interface Resources {
   name: string;
@@ -31,38 +32,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   rows: any[] = [];
-  resources: Resources[] = [
-    {
-      name: 'Layout',
-      icon: 'fas fa-layer-group',
-      url: '/layout',
-      description: "Temas dos principais componentes de layout",
-    },
-    {
-			name: 'Componentes',
-			url: '/componentes',
-      icon: 'fas fa-toolbox',
-      description: 'Componentes como inputs, botões e tabelas para uso em toda a aplicação'
-    },
-    {
-			name: 'Tipografia',
-			url: '/tipografia',
-      icon: 'fas fa-font',
-      description: 'Fontes e títulos'
-		},
-    {
-      name: "Cores",
-      url: "/cores",
-      icon: "fas fa-palette",
-      description: "Cores temáticas e suas aplicações"
-    },
-    {
-      name: "Chat",
-      url: "/chat",
-      icon: "fas fa-comment",
-      description: "Protótipo de chat"
-    }
-  ];
+  resources = mockedSideMenuCaixaItems;
 
   contratos = [];
 
@@ -74,7 +44,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.rows = this.groupColumns(this.resources);
-    // this.clientePesquisado();
+    this.clientePesquisado();
     for (let index = 0; index < 10; index++) {
       const contrato = {
         numero: `4200.160.0150${index}-${index}`,
