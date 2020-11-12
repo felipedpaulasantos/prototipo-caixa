@@ -1,4 +1,12 @@
 <div class="card-caixa-botoes">
+   <a *ngIf="cardHeaderElement && !isMinimized" (click)="minimizar()"
+   class="btn btn-caixa text-dark-light ripple-dark shadow-none rounded-circle p-2">
+      <i class="fa fa-lg fa-caret-down" title="Minimizar"></i>
+   </a>
+   <a *ngIf="cardHeaderElement && isMinimized" (click)="maximizar()"
+   class="btn btn-caixa text-dark-light ripple-dark shadow-none rounded-circle p-2">
+      <i class="fa fa-lg fa-caret-up" title="Maximizar"></i>
+   </a>
    <a *ngIf="expandable" (click)="toggleFullscreen()"
    class="btn btn-caixa text-dark-light ripple-dark shadow-none rounded-circle p-2">
       <i *ngIf="!isFullscreen" class="fa fa-lg fa-expand" title="Tela Cheia"></i>

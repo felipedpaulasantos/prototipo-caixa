@@ -8,19 +8,19 @@ import { Component, OnInit, ElementRef, AfterContentInit, ChangeDetectorRef, Vie
 })
 export class CardCaixaComponent implements OnInit, AfterContentInit {
 
+  cardElement: any;
+  cardHeaderElement: any;
+  cardBodyElement: any;
+  cardFooterElement: any;
+
   @ViewChild("moveButton", { static: true })
   moveButton: ElementRef;
 
   @Input()
   draggable: boolean = false;
-  expandable: boolean = true;
-
-  cardElement: any;
-
-  isFullscreen: boolean = false;
+  wasMoved: boolean = false;
   originalTopPosition: string;
   originalLeftPosition: string;
-
   originalHeight: number;
   originalMinHeight: string;
   originalMaxHeight: string;
@@ -28,8 +28,14 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   originalMinWidth: string;
   originalMaxWidth: string;
 
-  wasMoved: boolean = false;
+  @Input()
+  expandable: boolean = true;
+  isFullscreen: boolean = false;
 
+  @Input()
+  minimizable: boolean = true;
+  isMinimized: boolean = false;
+  
   constructor(
     element: ElementRef,
     private renderer: Renderer2
@@ -37,12 +43,31 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
     this.cardElement = element.nativeElement;
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   ngAfterContentInit() {
     if (this.draggable) this.dragElement();
+    if (this.minimizable) this.setChildren();
+  }
+
+  setChildren(): void {
+    const children: HTMLCollection = this.cardElement.children;
+    if (children && children.length) {
+
+      for (let index = 0; index < children.length; index++) {
+        const child = children[index] as any;
+        if (!child.classList) return;
+        if (child.classList.contains("card-header")) {
+          this.cardHeaderElement = child;
+        }
+        if (child.classList.contains("card-body")) {
+          this.cardBodyElement = child
+        }
+        if (child.classList.contains("card-footer")) {
+          this.cardFooterElement = child
+        }
+      }
+    }
   }
 
   setOriginalPosition(): void {
@@ -76,7 +101,6 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   }
 
   resetOriginalSize(): void {
-
     this.renderer.setStyle(this.cardElement, "minHeight", this.originalMinHeight || null);
     this.renderer.setStyle(this.cardElement, "maxHeight", this.originalMaxHeight || null);
     this.renderer.setStyle(this.cardElement, "height", this.originalHeight + "px");
@@ -99,9 +123,7 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   }
 
   toggleFullscreen(): void {
-
     if (!this.cardElement) return;
-
     if (this.checkFullscreen()) {
       document.exitFullscreen().then(() => this.isFullscreen = false);
     } else {
@@ -122,7 +144,6 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   }
 
   dragElement(): void {
-
     this.setOriginalPosition();
     this.setOriginalSize();
 
@@ -169,6 +190,18 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
       document.onmouseup = null;
       document.onmousemove = null;
     }
+  }
+
+  minimizar(): void {
+    if (this.cardBodyElement) this.renderer.addClass(this.cardBodyElement, "d-none");
+    if (this.cardFooterElement) this.renderer.addClass(this.cardFooterElement, "d-none");
+    this.isMinimized = true;
+  }
+
+  maximizar(): void {
+    if (this.cardBodyElement) this.renderer.removeClass(this.cardBodyElement, "d-none");
+    if (this.cardFooterElement) this.renderer.removeClass(this.cardFooterElement, "d-none");
+    this.isMinimized = false;
   }
 
 }
