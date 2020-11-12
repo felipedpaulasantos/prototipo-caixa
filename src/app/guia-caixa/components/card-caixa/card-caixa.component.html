@@ -1,0 +1,17 @@
+<div class="card-caixa-botoes">
+   <a *ngIf="expandable" (click)="toggleFullscreen()"
+   class="btn btn-caixa text-dark-light ripple-dark shadow-none rounded-circle p-2">
+      <i *ngIf="!isFullscreen" class="fa fa-lg fa-expand" title="Expandir"></i>
+      <i *ngIf="isFullscreen" class="fa fa-lg fa-compress" title="Comprimir"></i>
+   </a>
+   <a (mousedown)="wasMoved = true"
+   [ngClass]="{'d-none': !draggable || isFullscreen}"
+   title="Mover" #moveButton class="btn btn-caixa text-dark-light ripple-dark shadow-none rounded-circle p-2">
+      <i class="fa fa-lg fa-arrows-alt"></i>
+   </a>
+   <a *ngIf="draggable && wasMoved" (click)="resetOriginalPosition()"
+   title="Resetar posição" class="btn btn-caixa text-dark-light ripple-dark shadow-none rounded-circle p-2">
+      <i class="fa fa-lg fa-undo-alt"></i>
+   </a>
+</div>
+<ng-content></ng-content>
