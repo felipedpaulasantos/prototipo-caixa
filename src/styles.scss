@@ -413,8 +413,8 @@ ul.tab-caixa li a,
 
 .card-caixa {
   box-shadow: $cx-default-box-shadow;
-  transition: all 0.2s ease-in-out;
-  &>.card-header {
+  transition: box-shadow 0.2s ease-in-out;
+  .card-header {
     background-color: inherit;
     border: none;
     vertical-align: center;
@@ -428,7 +428,7 @@ ul.tab-caixa li a,
       margin-bottom: 0;
     }
   }
-  &>.card-footer {
+  .card-footer {
     background-color: inherit;
     border-top: 0;
   }
