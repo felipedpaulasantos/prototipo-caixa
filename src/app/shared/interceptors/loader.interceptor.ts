@@ -14,7 +14,7 @@ export class LoaderInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         this.totalRequests++;
-        this.spinner.show();
+        this.spinner.show('global');
         return next.handle(req).pipe(
             tap(res => {
                 if (res instanceof HttpResponse) {
@@ -31,7 +31,7 @@ export class LoaderInterceptor implements HttpInterceptor {
     private decreaseRequests() {
         this.totalRequests--;
         if (this.totalRequests === 0) {
-            this.spinner.hide();
+            this.spinner.hide('global');
         }
     }
 }

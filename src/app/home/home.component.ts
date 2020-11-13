@@ -6,7 +6,8 @@ import { LayoutComponent } from '../demonstracao/layout/layout.component';
 import { TipografiaComponent } from '../demonstracao/tipografia/tipografia.component';
 import { ModalSize } from '../guia-caixa/components/modal/modal-options';
 import { ModalService } from '../guia-caixa/services/modal.service';
-import { mockedSideMenuCaixaItems } from '../shared/constants';
+import { AccordionMenu } from '../shared/components/accordion/types/accordion-menu';
+import { mockedSideMenuCaixaItems, mockedSideMenuItems } from '../shared/constants';
 
 interface Resources {
   name: string;
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   rows: any[] = [];
-  resources = mockedSideMenuCaixaItems;
+  resources: AccordionMenu[] = mockedSideMenuItems;
 
   contratos = [];
 
@@ -80,9 +81,9 @@ export class HomeComponent implements OnInit {
   }
 
   pesquisarCpf(): void {
-    this.spinner.show();
+    this.spinner.show('global');
     setTimeout(() => {
-      this.spinner.hide();
+      this.spinner.hide('global');
       this.toastr.success("Cliente pesquisado com sucesso");
       this.clientePesquisado();
     }, 2000);
@@ -113,11 +114,9 @@ export class HomeComponent implements OnInit {
 
   drop(ev: DragEvent, cardEl: ElementRef) {
     ev.preventDefault();
-    this.previaSrc = null;
-    this.uploadedFile = null;
     if (ev.dataTransfer && ev.dataTransfer.files && ev.dataTransfer.files[0]) {
       const files = ev.dataTransfer.files;
-      this.uploadArquivo(files[0]);
+      this.uploadArquivo(files);
     }
     this.dragLeave(null, cardEl);
   }
@@ -130,8 +129,12 @@ export class HomeComponent implements OnInit {
     this.renderer.removeClass(cardEl, "drag-hover");
   }
 
-  uploadArquivo(file: File) {
+  uploadArquivo(files: FileList) {
+    this.previaSrc = null;
+    this.uploadedFile = null;
     this.spinner.show("spinnerUpload");
+
+    const file = files[0];
     setTimeout(() => {
       this.fromFileToBase64(file).then(
         (base64) => {
