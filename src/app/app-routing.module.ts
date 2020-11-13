@@ -71,6 +71,7 @@ const routes: Routes = [
     },
     loadChildren: () => import('./demonstracao/config-menu/config-menu.module').then(m => m.ConfigMenuModule) 
   },
+  { path: 'paginas', loadChildren: () => import('./demonstracao/paginas/paginas.module').then(m => m.PaginasModule) },
   {
     path: '**',
     redirectTo: 'home',
