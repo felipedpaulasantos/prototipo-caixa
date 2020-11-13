@@ -26,7 +26,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     public menuService: SideMenuService,
-    public styleService: StyleService  ) { }
+    public styleService: StyleService) { }
 
   @Input() tema: Tema;
   options: AccordionConfig = { multi: false };
@@ -57,7 +57,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       this.isAberto = isAberto;
     });
 
-    this.menuService.menuItems$.subscribe(menus => this.menus = menus);
+    this.menuService.menuItems$.subscribe(menus => this.menus = [...menus]);
 
     this.verificarContextoMudancaRota();
     this.fecharSeMobile();
@@ -162,16 +162,15 @@ export class SideMenuComponent implements OnInit, OnDestroy {
 
   filterMenu(ev) {
     console.log(ev);
+    this.menus = JSON.parse(JSON.stringify(mockedSideMenuItems));
     const text: string = ev.target.value.trim();
-
-    this.menus.forEach(menu => {
-      if (!menu.name.includes(text) && !menu.url.includes(text)) {
-        menu.enabled = false;
-      } else {
-        menu.enabled = true;
-      }
-    });
-
+    
+    const filteredMenus = this.menus.filter(function f(menu) {
+      return (menu.name.includes(text) || menu.url.includes(text)) ||
+            (menu.submenu && (menu.submenu = menu.submenu.filter(f)).length)
+    })
+    
+    this.menus = JSON.parse(JSON.stringify(filteredMenus));
   }
 
   ngOnDestroy() {
