@@ -3,8 +3,8 @@
    <div class="menu-item" role="button" [title]="menu.name" *ngIf="menu.enabled"
       [ngClass]="{
          'active': menu.active, 
-         'text-primary': menu.active && menu.submenu, 
-         'bg-primary text-white': menu.active && !menu.submenu
+         'has-submenu': menu.active && menu.submenu, 
+         'is-link': menu.active && !menu.submenu
       }">
       <span class="menu-item-caret" (click)="collapse(menu)">
          <i *ngIf="menu.submenu" class="fa fa-chevron-down item-caret"></i>

@@ -1,4 +1,4 @@
-<perfect-scrollbar #menuLateral id="menuLateral" class="bg-{{ tema.sidemenuBg }} text-{{ tema.sidemenuText }} shadow-sm"
+<perfect-scrollbar #menuLateral id="menuLateral" class="shadow-sm"
   [ngClass]="{'reduzido': !isAberto, 'aberto': isAberto}">
 
   <!--   <div id="menuLateralPesquisa" class="py-4 px-3">
@@ -7,7 +7,7 @@
   </div> -->
 
   <div id="painelBotaoSipan" class="p-3 text-center">
-    <button id="botaoSipan" class="btn btn-outline-primary text-uppercase" [ngClass]="{'btn-block': isAberto}"
+    <button id="botaoSipan" class="btn btn-primary text-uppercase" [ngClass]="{'btn-block': isAberto}"
       title="Portal Negócios.Caixa">
       <i class="fa fa-desktop fa-lg "></i>
       <span *ngIf="isAberto" class="ml-2">
