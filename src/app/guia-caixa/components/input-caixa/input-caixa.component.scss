@@ -18,7 +18,7 @@
 	width: 100%;
 }
 
-::ng-deep cx-input .input-caixa-wrapper.focused label {
+/* ::ng-deep cx-input .input-caixa-wrapper.focused label {
 	color: cx-variables.$cx-color-primary;
 }
 ::ng-deep cx-input.ng-valid .input-caixa-wrapper.focused label {
@@ -26,7 +26,7 @@
 }
 ::ng-deep cx-input.ng-invalid .input-caixa-wrapper.focused label {
 	color: cx-variables.$cx-color-danger;
-}
+} */
 
 ::ng-deep cx-input .input-caixa-flex-field {
 	display: inline-flex;

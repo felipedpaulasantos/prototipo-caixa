@@ -95,4 +95,13 @@ export class TopMenuComponent implements OnInit {
     this.dataHora = `${hora}h${minutos} - ${dia} ${mes} ${ano}`;
   }
 
+  changeTheme() {
+    if (document.querySelector('body').classList.contains('dark-theme')) {
+      document.querySelector('body').classList.remove('dark-theme');
+    } else {
+      document.querySelector('body').classList.add('dark-theme');
+    }
+
+  }
+
 }
