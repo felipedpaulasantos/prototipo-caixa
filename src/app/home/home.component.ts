@@ -63,10 +63,13 @@ export class HomeComponent implements OnInit {
   }
 
   groupColumns(resources: any[]): any[] {
+
+    const filteredResources = this.resources.filter(resource => resource.enabled && resource.isLink);
+
     const newRows = [];
 
-    for (let index = 0; index < resources.length; index += 3) {
-      newRows.push(resources.slice(index, index + 3));
+    for (let index = 0; index < filteredResources.length; index += 3) {
+      newRows.push(filteredResources.slice(index, index + 3));
     }
 
     return newRows;

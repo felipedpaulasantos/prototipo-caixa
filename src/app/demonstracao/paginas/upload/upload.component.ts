@@ -35,6 +35,7 @@ export class UploadComponent implements OnInit {
   ngOnInit(): void {
     // this.clientePesquisado();
     this.populaContratos();
+    this.preventDragDropDefault();
   }
 
   populaContratos(): void {

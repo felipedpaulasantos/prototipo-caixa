@@ -63,7 +63,7 @@ const routes: Routes = [
     loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)
   },
   { 
-    path: 'config/menu', 
+    path: 'config', 
     data: {
       title: 'Configuração do Menu',
       breadcrumb: 'Configuração do Menu',

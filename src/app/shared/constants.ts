@@ -99,12 +99,12 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     name: 'Configurações',
     iconClass: 'fas fa-lg fa-wrench',
     url: '/config',
-    isLink: false,
+    isLink: true,
     enabled: true,
     submenu: [{
       name: 'Menu',
       iconClass: 'fas fa-lg fa-th-large',
-      url: '/config/menu',
+      url: '/config',
       isLink: true,
       enabled: true
     }]
