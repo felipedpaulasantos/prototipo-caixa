@@ -17,7 +17,7 @@ export const mockedSideMenuItems: AccordionMenu[] = [
   },
   {
     name: 'Componentes',
-    url: "componentes",
+    url: "/componentes",
     iconClass: 'fas fa-lg fa-toolbox',
     isLink: true,
     enabled: true,
@@ -34,15 +34,8 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         name: 'Cards',
         iconClass: 'fa fa-lg fa-clipboard',
         url: '/componentes/cards',
-        isLink: false,
-        enabled: true,
-        submenu: [{
-          name: 'Teste',
-          iconClass: 'fa fa-lg fa-clipboard',
-          url: '/componentes/cards',
-          isLink: true,
-          enabled: true
-        }]
+        isLink: true,
+        enabled: true
       },
       {
         name: 'Inputs',
@@ -96,17 +89,55 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     enabled: false
   },
   {
-  name: 'Configurações',
-  iconClass: 'fas fa-lg fa-wrench',
-  url: '/config',
-  isLink: false,
-  enabled: true,
-  submenu: [{
+    name: 'Páginas',
+    iconClass: 'fas fa-lg fa-newspaper',
+    url: '/paginas',
+    isLink: true,
+    enabled: true
+  },
+  {
+    name: 'Configurações',
+    iconClass: 'fas fa-lg fa-wrench',
+    url: '/config',
+    isLink: true,
+    enabled: true,
+    submenu: [{
       name: 'Menu',
       iconClass: 'fas fa-lg fa-th-large',
-      url: '/config/menu',
+      url: '/config',
       isLink: true,
       enabled: true
     }]
+  }
+];
+
+export const mockedSideMenuCaixaItems: AccordionMenu[] = [
+  {
+    name: 'Pessoa Física / Jurídica',
+    iconClass: 'fas fa-lg fa-user-alt',
+    url: '/home',
+    isLink: true,
+    enabled: true
+  },
+  {
+    name: 'Serviços ao Cidadão',
+    iconClass: 'fas fa-lg fa-users',
+    url: '/layout',
+    isLink: true,
+    enabled: false
+  },
+  {
+    name: 'Investimentos',
+    url: "/componentes",
+    iconClass: 'fas fa-lg fa-chart-line',
+    isLink: true,
+    enabled: true,
+  },
+  {
+    name: 'Configurações',
+    iconClass: 'fas fa-lg fa-wrench',
+    url: '/tipografia',
+    isLink: true,
+    enabled: true
   }
 ];

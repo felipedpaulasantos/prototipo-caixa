@@ -1,13 +1,14 @@
-<perfect-scrollbar #menuLateral id="menuLateral" 
-  class="bg-{{ tema.sidemenuBg }} text-{{ tema.sidemenuText }} shadow-sm" [ngClass]="{'reduzido': !isAberto}">
+<perfect-scrollbar #menuLateral id="menuLateral" class="bg-{{ tema.sidemenuBg }} text-{{ tema.sidemenuText }} shadow-sm"
+  [ngClass]="{'reduzido': !isAberto, 'aberto': isAberto}">
 
-<!--   <div id="menuLateralPesquisa" class="py-4 px-3">
+  <!--   <div id="menuLateralPesquisa" class="py-4 px-3">
     <i id="sidemenuSearchIcon" class="fas fa-lg fa-search mr-3"></i>
     <input class="input-base w-75 d-inline" placeholder="Pesquisar...">
   </div> -->
 
   <div id="painelBotaoSipan" class="p-3 text-center">
-    <button id="botaoSipan" class="btn btn-outline-primary text-uppercase" [ngClass]="{'btn-block': isAberto}" title="Portal Negócios.Caixa">
+    <button id="botaoSipan" class="btn btn-outline-primary text-uppercase" [ngClass]="{'btn-block': isAberto}"
+      title="Portal Negócios.Caixa">
       <i class="fa fa-desktop fa-lg "></i>
       <span *ngIf="isAberto" class="ml-2">
         Portal Negócios.Caixa
@@ -15,11 +16,17 @@
     </button>
   </div>
 
+  <div class="menu-item mb-3" role="button" (click)="menuService.abrir()">
+    <span class="menu-item-icon">
+      <i class="fa fa-search fa-lg mr-2"></i>
+    </span>
+    <span class="menu-item-name">
+      <input class="input-caixa text-center mr-2" (input)="filterMenu($event)">
+    </span>
+  </div>
+
   <div id="menuLateralNav">
-    <app-accordion
-      [options]="options"
-      [menus]="menus"
-    ></app-accordion>
+    <app-accordion [options]="options" [menus]="menus"></app-accordion>
   </div>
 
   <div id="menuLateralDinamico" class="mt-5">
@@ -28,5 +35,5 @@
     </ng-container>
   </div>
 
-<!-- </div> -->
+  <!-- </div> -->
 </perfect-scrollbar>

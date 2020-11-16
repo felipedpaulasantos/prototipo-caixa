@@ -9,6 +9,8 @@ export class SpinnerCaixaComponent implements OnInit {
 
   @Input() fullscreen = false;
 
+  @Input() name: string;
+
   constructor() { }
 
   ngOnInit() {

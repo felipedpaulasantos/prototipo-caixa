@@ -31,30 +31,30 @@ body {
   html {
     font-size: $cx-font-13;
   }
-}  */
+} */
 
 /* Headers */
 
 h1, h2, h3, h4, h5, h6 {
   &.header-caixa {
     font-family: $cx-font-family-bold;
-    opacity: $cx-text-opacity-1;
+    // opacity: $cx-text-opacity-1;
     margin-bottom: 1.0rem;
   }
   &.header-subtitulo-caixa {
     @extend .header-caixa;
-    color: $cx-color-primary;
+    color: $cx-color-dark;
   }
   &.header-principal-caixa {
     font-family: $cx-font-family-bold;
-    color: $cx-color-dark-light;
-    opacity: $cx-text-opacity-2;
-    text-transform: uppercase;
+    color: $cx-color-primary;
+    // opacity: $cx-text-opacity-2;
+    // text-transform: uppercase;
   }
 }
 hr.header-line-caixa {
   border-color: $cx-color-light-darkest;
-  opacity: $cx-bg-opacity-1;
+  opacity: $cx-bg-opacity-2;
   border-width: 1px;
   margin-bottom: 1.5rem;
 }
@@ -413,12 +413,12 @@ ul.tab-caixa li a,
 
 .card-caixa {
   box-shadow: $cx-default-box-shadow;
-  transition: all 0.2s ease-in-out;
-  &>.card-header {
+  transition: box-shadow 0.2s ease-in-out;
+  .card-header {
     background-color: inherit;
     border: none;
     vertical-align: center;
-    padding-top: 1.25rem;
+    // padding-top: 1.25rem;
     & h1,
     h2,
     h3,
@@ -428,7 +428,7 @@ ul.tab-caixa li a,
       margin-bottom: 0;
     }
   }
-  &>.card-footer {
+  .card-footer {
     background-color: inherit;
     border-top: 0;
   }
@@ -636,63 +636,6 @@ $value in $cx-text-opacities {
 }
 .shadow-lg-caixa {
   box-shadow: $cx-big-box-shadow !important;
-}
-
-/* 
-  Modo Escuro (não finalizado)
-*/
-#conteudoPrincipal.bg-dark-dark {
-  color: $cx-color-lightest;
-  .btn-dark, .btn-dark-light, .btn-dark-dark,
-  .btn-outline-dark, .btn-outline-dark-light, .btn-outline-dark-dark {
-    color: $cx-color-light;
-  }
-  .btn-caixa {
-    box-shadow: 0 0.2rem 0.2rem 0 rgba(255, 255, 255, 0.15);
-  }
-  .header-principal-caixa,
-  .input-caixa,
-  .table.table-caixa {
-    color: $cx-color-lightest;
-  }
-  .header-subtitulo-caixa {
-    color: $cx-color-info-light;
-  }
-  .card.card-caixa {
-    background-color: $cx-color-dark;
-    color: $cx-color-lightest;
-  }
-  .input-caixa-field,
-  .input-caixa-field input,
-  .input-caixa-field textarea,
-  select+button.input-caixa {
-    color: $cx-color-light-dark;
-    background-color: transparent;
-  }
-  .table-caixa tbody {
-    tr:hover {
-      background-color: $cx-color-dark-light;
-    }
-  }
-  ul.tab-caixa li a {
-    color: $cx-color-light;
-    padding: 1rem 1.5rem;
-    transition: ease-in-out 0.2s;
-    border-bottom: solid 2px transparent;
-  }
-  ul.tab-caixa li a.nav-link-caixa.active,
-  ul.tab-caixa .dropdown-item:active {
-    color: $cx-color-info-light;
-  }
-  .input-caixa-wrapper,
-  .input-caixa,
-  select+button.input-caixa[aria-expanded="true"] {
-    @extend .input-caixa-info;
-    &:disabled,
-    &.disabled {
-      color: $cx-color-dark;
-    }
-  }
 }
 
 /* MENU LATERAL */

@@ -63,7 +63,7 @@ const routes: Routes = [
     loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)
   },
   { 
-    path: 'config/menu', 
+    path: 'config', 
     data: {
       title: 'Configuração do Menu',
       breadcrumb: 'Configuração do Menu',
@@ -71,6 +71,7 @@ const routes: Routes = [
     },
     loadChildren: () => import('./demonstracao/config-menu/config-menu.module').then(m => m.ConfigMenuModule) 
   },
+  { path: 'paginas', loadChildren: () => import('./demonstracao/paginas/paginas.module').then(m => m.PaginasModule) },
   {
     path: '**',
     redirectTo: 'home',

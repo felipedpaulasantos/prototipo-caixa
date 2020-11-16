@@ -158,9 +158,9 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
   }
 
   exibirSpinner() {
-    this.spinner.show();
+    this.spinner.show('global');
     setTimeout(() => {
-      this.spinner.hide();
+      this.spinner.hide('global');
     }, 3000);
   }
 

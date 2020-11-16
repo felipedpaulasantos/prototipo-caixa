@@ -1,6 +1,5 @@
 import {
-  Component, Input, ComponentFactoryResolver, ChangeDetectorRef,
-  ViewChild, ElementRef, ViewContainerRef, Type, ComponentRef,
+  Component, Input, ComponentFactoryResolver, ViewChild, ElementRef, ViewContainerRef, Type, ComponentRef,
   Injector, OnInit, OnDestroy, HostListener
 } from '@angular/core';
 import { SideMenuService } from './side-menu.service';
@@ -10,8 +9,7 @@ import { filter, tap, map, mergeMap } from 'rxjs/operators';
 import { AccordionConfig } from 'src/app/shared/components/accordion/types/accordion-config';
 import { AccordionMenu } from 'src/app/shared/components/accordion/types/accordion-menu';
 import { StyleService, Tema } from 'src/app/guia-caixa/services/style.service';
-import { ToastrService } from 'ngx-toastr';
-import { url } from 'inspector';
+import { mockedSideMenuItems } from 'src/app/shared/constants';
 
 const MENU_ROUTE_PROPERTY = "menuLateral";
 const MOBILE_BREAKPOINT = 991.9;
@@ -27,11 +25,8 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     private componentFactoryResolver: ComponentFactoryResolver,
     private router: Router,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef,
-    private menuService: SideMenuService,
-    public styleService: StyleService,
-    private toastr: ToastrService
-  ) { }
+    public menuService: SideMenuService,
+    public styleService: StyleService) { }
 
   @Input() tema: Tema;
   options: AccordionConfig = { multi: false };
@@ -62,7 +57,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       this.isAberto = isAberto;
     });
 
-    this.menuService.menuItems$.subscribe(menus => this.menus = menus);
+    this.menuService.menuItems$.subscribe(menus => this.menus = [...menus]);
 
     this.verificarContextoMudancaRota();
     this.fecharSeMobile();
@@ -70,7 +65,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
   }
 
   @HostListener("window:resize", ["$event"])
-  onResize(event) {
+  onResize() {
     this.larguraTela = window.innerWidth;
     this.fecharSeMobile();
     this.abrirSeDesktop();
@@ -163,6 +158,19 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       this.componentRef.destroy();
       this.componentRef = null;
     }
+  }
+
+  filterMenu(ev) {
+    console.log(ev);
+    this.menus = JSON.parse(JSON.stringify(mockedSideMenuItems));
+    const text: string = ev.target.value.trim();
+    
+    const filteredMenus = this.menus.filter(function f(menu) {
+      return (menu.name.includes(text) || menu.url.includes(text)) ||
+            (menu.submenu && (menu.submenu = menu.submenu.filter(f)).length)
+    })
+    
+    this.menus = JSON.parse(JSON.stringify(filteredMenus));
   }
 
   ngOnDestroy() {

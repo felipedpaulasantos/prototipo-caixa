@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, Injector, OnInit, ViewContainerRef } from "@angular/core";
+import { Component, ComponentFactoryResolver, ElementRef, Injector, OnInit, Renderer2, ViewContainerRef } from "@angular/core";
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -6,6 +6,8 @@ import { LayoutComponent } from '../demonstracao/layout/layout.component';
 import { TipografiaComponent } from '../demonstracao/tipografia/tipografia.component';
 import { ModalSize } from '../guia-caixa/components/modal/modal-options';
 import { ModalService } from '../guia-caixa/services/modal.service';
+import { AccordionMenu } from '../shared/components/accordion/types/accordion-menu';
+import { mockedSideMenuCaixaItems, mockedSideMenuItems } from '../shared/constants';
 
 interface Resources {
   name: string;
@@ -27,42 +29,10 @@ export class HomeComponent implements OnInit {
     private toastr: ToastrService,
     private modal: ModalService,
     private resolver: ComponentFactoryResolver,
-    private injector: Injector
-  ) {}
+    private injector: Injector  ) {}
 
   rows: any[] = [];
-  resources: Resources[] = [
-    {
-      name: 'Layout',
-      icon: 'fas fa-layer-group',
-      url: '/layout',
-      description: "Temas dos principais componentes de layout",
-    },
-    {
-			name: 'Componentes',
-			url: '/componentes',
-      icon: 'fas fa-toolbox',
-      description: 'Componentes como inputs, botões e tabelas para uso em toda a aplicação'
-    },
-    {
-			name: 'Tipografia',
-			url: '/tipografia',
-      icon: 'fas fa-font',
-      description: 'Fontes e títulos'
-		},
-    {
-      name: "Cores",
-      url: "/cores",
-      icon: "fas fa-palette",
-      description: "Cores temáticas e suas aplicações"
-    },
-    {
-      name: "Chat",
-      url: "/chat",
-      icon: "fas fa-comment",
-      description: "Protótipo de chat"
-    }
-  ];
+  resources: AccordionMenu[] = mockedSideMenuItems;
 
   contratos = [];
 
@@ -72,9 +42,16 @@ export class HomeComponent implements OnInit {
   });
   cliente = null;
 
+  previaSrc: string;
+  uploadedFile: File = null;
+
   ngOnInit() {
     this.rows = this.groupColumns(this.resources);
-    // this.clientePesquisado();
+    this.clientePesquisado();
+    this.populaContratos();
+  }
+
+  populaContratos(): void {
     for (let index = 0; index < 10; index++) {
       const contrato = {
         numero: `4200.160.0150${index}-${index}`,
@@ -86,10 +63,13 @@ export class HomeComponent implements OnInit {
   }
 
   groupColumns(resources: any[]): any[] {
+
+    const filteredResources = this.resources.filter(resource => resource.enabled && resource.isLink);
+
     const newRows = [];
 
-    for (let index = 0; index < resources.length; index += 3) {
-      newRows.push(resources.slice(index, index + 3));
+    for (let index = 0; index < filteredResources.length; index += 3) {
+      newRows.push(filteredResources.slice(index, index + 3));
     }
 
     return newRows;
@@ -101,9 +81,9 @@ export class HomeComponent implements OnInit {
   }
 
   pesquisarCpf(): void {
-    this.spinner.show();
+    this.spinner.show('global');
     setTimeout(() => {
-      this.spinner.hide();
+      this.spinner.hide('global');
       this.toastr.success("Cliente pesquisado com sucesso");
       this.clientePesquisado();
     }, 2000);
@@ -131,4 +111,7 @@ export class HomeComponent implements OnInit {
       titulo: "Detalhamento"
     });
   }
+
+
+
 }
