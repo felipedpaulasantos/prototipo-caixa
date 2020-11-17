@@ -1,3 +1,8 @@
+<h1 class="header-principal-caixa">
+  Páginas
+</h1>
+<hr class="header-line-caixa">
+
 <ng-container>
    <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
      <div class="row">
@@ -35,7 +40,7 @@
              </div>
              <div class="py-2">
                <span class="font-weight-bold">CPF:</span>
-               {{ cliente.cpf }}
+               {{ cliente.cpf | cpf }} | {{ '1659.8455.85625959' | cpf }}
              </div>
              <div class="py-2">
                <span class="font-weight-bold">Nome da mãe:</span>
