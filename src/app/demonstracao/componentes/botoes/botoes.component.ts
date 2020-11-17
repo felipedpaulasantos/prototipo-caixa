@@ -25,7 +25,7 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
   sectionOffset = 0;
   currentSection = "painelBotoes";
 
-  htmlCodeBotoes = `<button class="btn btn-caixa">Botão</button>`.trim();
+  htmlCodeBotoes = `<button class="btn btn-caixa btn-light">Botão</button>`.trim();
 
   htmlCodeBotoesTematicos = `        <button class="btn btn-caixa btn-primary">Primário</button> &nbsp;
 <button class="btn btn-caixa btn-danger-dark">Erro com tom escuro</button> &nbsp;

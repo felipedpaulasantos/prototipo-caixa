@@ -147,5 +147,4 @@ export class UploadComponent implements OnInit {
       e.preventDefault();
     }, false);
   }
-
 }

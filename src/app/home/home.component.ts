@@ -64,10 +64,11 @@ export class HomeComponent implements OnInit {
 
   groupColumns(resources: any[]): any[] {
 
-    const filteredResources = this.resources.filter(resource => resource.enabled && resource.isLink);
-
+    const filteredResources = this.resources.filter(resource => {
+      return (resource.enabled && resource.isLink) &&
+      (resource.name != "Início")
+    });
     const newRows = [];
-
     for (let index = 0; index < filteredResources.length; index += 3) {
       newRows.push(filteredResources.slice(index, index + 3));
     }

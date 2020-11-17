@@ -1,14 +1,6 @@
-<header #navbarTop id="navbarTop" class="bg-{{ tema.toolbarBg }} text-{{ tema.toolbarText }}" appCloseTab>
+<header #navbarTop id="navbarTop" appCloseTab>
 
   <nav id="navToolbar">
-
-    <!--     <div id="btnTrocarMenuLateral" (click)="trocaMenuLateral()" class="px-4 ripple" role="button">
-      <span class="top-menu-item mr-md-3">
-        <i class="fas fa-bars fa-2x"></i>
-      </span>
-      <h5 class="d-none d-md-block mb-0">Menu</h5>
-    </div> -->
-
     <div id="spanLogo" class="h-100"  [ngClass]="{'menu-is-aberto': isMenuAberto}">
       <div class="d-flex align-items-center h-100">
         <img [src]="isMenuAberto ? logoCompletoBranco : logoXBranco" class="img-fluid img-logo rounded mx-auto">
@@ -52,7 +44,7 @@
       </div>
       
       <div class="notification-container">
-        <i role="button" class="fa fa-adjust fa-2x" title="Modo Escuro"></i>
+        <i role="button" class="fa fa-adjust fa-2x" title="Modo Escuro (Experimental)" (click)="changeTheme()"></i>
       </div>
     </div>
 
@@ -62,35 +54,5 @@
         <span class="text-uppercase font-fam-bold">Sair</span>
       </button>
     </div>
-
-<!--     <div *ngIf="user" class="mx-4">
-      <button class="btn btn-caixa btn-flat shadow-none d-flex align-items-center" data-toggle="dropdown">
-        <span class="d-none d-md-block">
-          <i class="fas fa-user-circle fa-2x"></i>
-        </span>
-        <span class="d-block d-md-none">
-          <i class="fas fa-user-circle fa-2x"></i>
-        </span>
-        <h5 class="ml-2 mb-0 d-none d-md-block font-fam-bold">
-          {{ user.nome_completo | titlecase }}
-        </h5>
-        <i class="fas fa-caret-down ml-2"></i>
-      </button>
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <span class="dropdown-item">
-          <i class="fas fa-user fa-lg mr-3"></i>
-          {{ user.nome_completo | uppercase }}
-        </span>
-        <span class="dropdown-item" *ngIf="user.matricula">
-          <i class="fas fa-fingerprint fa-lg mr-3"></i>
-          {{ user.matricula | uppercase }}
-        </span>
-        <a (click)="showLogoutModal()" class="dropdown-item btn btn-outline-danger">
-          <i class="fas fa-sign-out-alt fa-lg mr-3 text-danger"></i>
-          Sair
-        </a>
-      </div>
-    </div> -->
-
   </nav>
 </header>

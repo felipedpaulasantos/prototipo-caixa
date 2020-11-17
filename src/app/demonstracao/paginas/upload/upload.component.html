@@ -2,23 +2,15 @@
    <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
      <div class="row">
        <div class="col-12 col-md-5 col-lg-4">
-         <!--         <cx-input>
-               <label>CPF</label>
-               <input inputCaixa name="cpf" placeholder="Informe o CPF" mask="000.000.000-00">        
-             </cx-input> -->
          <label>CPF</label>
-         <input class="input-caixa-primary" name="cpf" placeholder="Informe o CPF" mask="000.000.000-00"
+         <input class="input-caixa" name="cpf" placeholder="Informe o CPF" mask="000.000.000-00"
            formControlName="cpf">
        </div>
        <div class="col-12 col-md-5 col-lg-4">
-         <!--         <cx-input>
-               <label>NIS</label>
-               <input inputCaixa name="nis" placeholder="Informe o NIS" mask="000.000.000-00">
-             </cx-input> -->
+
          <label>NIS</label>
-         <input class="input-caixa-primary" name="nis" placeholder="Informe o NIS" mask="000.000.000-00"
+         <input class="input-caixa" name="nis" placeholder="Informe o NIS" mask="000.000.000-00"
            formControlName="nis">
- 
        </div>
        <div class="col d-flex align-items-center mt-2 mt-md-0">
          <button type="submit" [disabled]="isCpfNisInvalid"

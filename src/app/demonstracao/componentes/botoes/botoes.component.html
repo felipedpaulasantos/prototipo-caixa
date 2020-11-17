@@ -29,11 +29,11 @@
         [htmlCode]="htmlCodeBotoes">
           <div class="descricao">
             Os botões seguem o padrão do Bootstrap, acrescidos da classe
-            <span class="bg-light border px-1">btn-caixa</span>.
+            <span class="border px-1">btn-caixa</span>.
           </div>
       
           <div class="conteudo">
-            <button class="btn btn-caixa">Botão</button>
+            <button class="btn btn-caixa btn-light">Botão</button>
           </div>
         </app-documentacao-template>
     
@@ -80,7 +80,7 @@
       </section>
     
       <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
-        <div class="position-fixed list-group list-group-caixa bg-white shadow-caixa border-0">
+        <div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
           <a (click)="scrollTo('painelBotoes')" class="list-group-item list-group-item-action"
             [ngClass]="{'active': currentSection == 'painelBotoes'}" role="button">
             Botões</a>
@@ -105,8 +105,8 @@
     [cssTabId]="'cssCodeExemplo'"
     [cssCode]="cssCodeExemplo">
       <div class="descricao">
-        Botões com a classe <span class="bg-light border px-1">flat</span> são transparentes sem borda.<br>
-        A sombra pode ser retirada com a classe do Bootstrap <span class="bg-light border px-1">shadow-none</span>.
+        Botões com a classe <span class="border px-1">flat</span> são transparentes sem borda.<br>
+        A sombra pode ser retirada com a classe do Bootstrap <span class="border px-1">shadow-none</span>.
       </div>
       <div class="conteudo">
         <div class="btn-exemplo">

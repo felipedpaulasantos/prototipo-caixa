@@ -37,6 +37,7 @@ export class TopMenuComponent implements OnInit {
     this.user$ = this.userService.perfil;
     this.sidemenuService.isAberto$.subscribe(isAberto => this.isMenuAberto = isAberto);
     this.showDate();
+    this.setDefaultTheme();
   }
 
   ngOnInit(): void {
@@ -93,6 +94,32 @@ export class TopMenuComponent implements OnInit {
     const ano = data.getFullYear();
 
     this.dataHora = `${hora}h${minutos} - ${dia} ${mes} ${ano}`;
+  }
+
+  changeTheme() {
+    if (document.querySelector('body').classList.contains('dark-theme')) {
+      this.setLightTheme();
+    } else {
+      this.setDarkTheme();
+    }
+  }
+
+  setDarkTheme() {
+    document.querySelector('body').classList.add('dark-theme');
+    localStorage.setItem("theme", "dark");
+  }
+
+  setLightTheme() {
+    document.querySelector('body').classList.remove('dark-theme');
+    localStorage.setItem("theme", "light");
+  }
+
+  setDefaultTheme() {
+    if (localStorage.getItem("theme") === "dark") {
+      this.setDarkTheme();
+    } else {
+      this.setLightTheme();
+    }
   }
 
 }
