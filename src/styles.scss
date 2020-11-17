@@ -30,11 +30,11 @@ body {
 
 .menu-item {
   &.active.has-submenu {
-    color: $cx-color-primary;
+    color: $cx-color-primary !important;
   }
   &.active.is-link {
-    background-color: $cx-color-primary;
-    color: $cx-color-lightest;
+    background-color: $cx-color-primary !important;
+    color: $cx-color-lightest !important;
   }
 }
 
@@ -677,11 +677,11 @@ body.dark-theme {
   }
   .menu-item {
     &.active.has-submenu {
-      color: $cx-color-info-light;
+      color: $cx-color-info-light !important;
     }
     &.active.is-link {
-      background-color: $cx-color-info-dark;
-      color: $cx-color-lightest;
+      background-color: $cx-color-info-dark !important;
+      color: $cx-color-lightest !important;
     }
   }
 
