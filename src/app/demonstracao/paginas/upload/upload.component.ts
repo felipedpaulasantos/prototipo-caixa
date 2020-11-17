@@ -22,8 +22,8 @@ export class UploadComponent implements OnInit {
   ) { }
 
   formCpfNis = this.fb.group({
-    cpf: [null, [Validators.required]],
-    nis: [null, [Validators.required]]
+    cpf: [null, [Validators.required, Validators.minLength(11)]],
+    nis: [null, [Validators.required, Validators.minLength(11)]]
   });
   cliente = null;
 

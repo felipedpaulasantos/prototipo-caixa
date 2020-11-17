@@ -441,7 +441,6 @@ ul.tab-caixa li a,
 .card-caixa {
   box-shadow: $cx-default-box-shadow;
   transition: box-shadow 0.2s ease-in-out;
-  background-color: inherit;
   .card-header {
     background-color: inherit;
     border: none;
@@ -605,13 +604,13 @@ ul.tab-caixa li a,
   @extend .input-caixa-primary;
 }
 cx-input.ng-invalid .input-caixa-wrapper,
-cx-select.ng-invalid .input-caixa-wrapper,
-.input-caixa.ng-dirty.ng-invalid {
+cx-select.ng-invalid .input-caixa-wrapper/* ,
+.input-caixa.ng-dirty.ng-invalid */ {
   @extend .input-caixa-danger;
 }
 cx-input.ng-valid .input-caixa-wrapper,
-cx-select.ng-valid .input-caixa-wrapper,
-.input-caixa.ng-dirty.ng-valid {
+cx-select.ng-valid .input-caixa-wrapper/* ,
+.input-caixa.ng-dirty.ng-valid */ {
   @extend .input-caixa-success;
 }
 .input-caixa-field,
@@ -663,6 +662,172 @@ select + button.input-caixa {
   }
 }
 
+/* MENU LATERAL */
+
+#menuLateral {
+  width: 80%;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  bottom: 0;
+  transition: 0.5s;
+  z-index: 999;
+  max-height: calc(100% - 64px);
+}
+#menuLateral.reduzido {
+  width: 165px;
+  max-width: 165px;
+}
+#menuLateral.escondido {
+  margin-left: -400px;
+  visibility: hidden;
+}
+
+@media (min-width: 768px) {
+  #menuLateral {
+    width: 50%;
+    max-width: 50%;
+  }
+  #menuLateral.escondido {
+    margin-left: -500px;
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 992px) {
+  #menuLateral {
+    max-width: 300px;
+  }
+  #menuLateral.escondido {
+    margin-left: -302px;
+    visibility: hidden;
+  }
+}
+
+#botaoSipan {
+  white-space: nowrap;
+}
+
+.accordion li {
+  max-width: 100%;
+}
+.accordion li i {
+  transition: all 0.3s ease;
+}
+.accordion li.active > .menu-item > .menu-item-caret > i.fa-chevron-down,
+li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  height: 54px;
+  width: 100%;
+  min-height: 54px;
+  transition: 0.2s;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.menu-item.active {
+  box-shadow: 0 0.6rem 0.4rem -0.4rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.aberto {
+  .menu-item-open-icon {
+     display: none;
+  }
+  .menu-item-close-icon {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 100%;
+     flex-grow: 1;
+  }
+  .menu-item-caret,
+  .menu-item-icon {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 100%;
+     width: 40px;
+  }
+  .menu-item-name {
+     display: flex;
+     align-items: center;
+     justify-self: start;
+     height: 100%;
+     width: 50%;
+     flex-grow: 1;
+     word-break: normal;
+  }
+}
+
+.reduzido {
+  .menu-item-name {
+     display: none;
+  }
+  .menu-item-open-icon {
+     display: flex;
+     align-items: center;
+     flex-grow: 1;
+     justify-content: center;
+     height: 100%;
+  }
+  .menu-item-close-icon {
+     display: none;
+  }
+  .menu-item-icon {
+     width: 100%;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+  }
+  .menu-item-caret {
+     width: 0;
+     display: flex;
+     align-items: center;
+     height: 100%;
+  }
+  .item-caret {
+     position: absolute;
+     right: auto;
+     left: 20px;
+  }
+  .item-close-caret {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: absolute;
+     left: auto;
+     right: 1px;
+     height: 100%;
+     width: 40px;
+  }
+}
+
+.menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.submenu {
+  background-color: rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  transition: 0.2s ease;
+  list-style: none;
+  padding-left: 0;
+}
+
+/* 
+  TEMA ESCURO
+*/
+
 body.dark-theme {
   /* BODY */
   background-color: $cx-color-dark !important;
@@ -683,6 +848,13 @@ body.dark-theme {
       background-color: $cx-color-info-dark !important;
       color: $cx-color-lightest !important;
     }
+  }
+  .submenu {
+    background-color: rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    transition: 0.2s ease;
+    list-style: none;
+    padding-left: 0;
   }
 
   /* NAVBAR */
