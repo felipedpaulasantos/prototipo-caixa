@@ -671,6 +671,9 @@ body.dark-theme {
   /* MENU LATERAL */
   #menuLateral {
     background-color: $cx-color-darkest;
+    #botaoSipan {
+      @extend .btn, .btn-info, .text-uppercase
+    }
   }
   .menu-item {
     &.active.has-submenu {
