@@ -164,10 +164,12 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     console.log(ev);
     this.menus = JSON.parse(JSON.stringify(mockedSideMenuItems));
     const text: string = ev.target.value.trim();
-    
+
     const filteredMenus = this.menus.filter(function f(menu) {
-      return (menu.name.includes(text) || menu.url.includes(text)) ||
+      const nameLowercase = menu.name.toLowerCase();
+      const test = (nameLowercase.includes(text.toLowerCase()) || menu.url.includes(text)) ||
             (menu.submenu && (menu.submenu = menu.submenu.filter(f)).length)
+      return test;
     })
     
     this.menus = JSON.parse(JSON.stringify(filteredMenus));
