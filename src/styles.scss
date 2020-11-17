@@ -740,75 +740,75 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 
 .aberto {
   .menu-item-open-icon {
-     display: none;
+    display: none;
   }
   .menu-item-close-icon {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     height: 100%;
-     flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-grow: 1;
   }
   .menu-item-caret,
   .menu-item-icon {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     height: 100%;
-     width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 40px;
   }
   .menu-item-name {
-     display: flex;
-     align-items: center;
-     justify-self: start;
-     height: 100%;
-     width: 50%;
-     flex-grow: 1;
-     word-break: normal;
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    height: 100%;
+    width: 50%;
+    flex-grow: 1;
+    word-break: normal;
   }
 }
 
 .reduzido {
   .menu-item-name {
-     display: none;
+    display: none;
   }
   .menu-item-open-icon {
-     display: flex;
-     align-items: center;
-     flex-grow: 1;
-     justify-content: center;
-     height: 100%;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
+    height: 100%;
   }
   .menu-item-close-icon {
-     display: none;
+    display: none;
   }
   .menu-item-icon {
-     width: 100%;
-     height: 100%;
-     display: flex;
-     align-items: center;
-     justify-content: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .menu-item-caret {
-     width: 0;
-     display: flex;
-     align-items: center;
-     height: 100%;
+    width: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
   .item-caret {
-     position: absolute;
-     right: auto;
-     left: 20px;
+    position: absolute;
+    right: auto;
+    left: 20px;
   }
   .item-close-caret {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     position: absolute;
-     left: auto;
-     right: 1px;
-     height: 100%;
-     width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: auto;
+    right: 1px;
+    height: 100%;
+    width: 40px;
   }
 }
 
@@ -837,7 +837,7 @@ body.dark-theme {
   #menuLateral {
     background-color: $cx-color-darkest;
     #botaoSipan {
-      @extend .btn, .btn-info, .text-uppercase
+      @extend .btn, .btn-info, .text-uppercase;
     }
   }
   .menu-item {
@@ -945,5 +945,10 @@ body.dark-theme {
         background-color: $cx-color-darkest;
       }
     }
+  }
+
+  /* SPINNER */
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.6) !important;
   }
 }
