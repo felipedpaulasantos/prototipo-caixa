@@ -25,7 +25,7 @@
       </ng-container>
    </div>
 
-   <ul *ngIf="menu.submenu" class="submenu border-bottom" #submenuDiv [ngClass]="{'d-none': !menu.active}">
+   <ul *ngIf="menu.submenu" class="submenu" #submenuDiv [ngClass]="{'d-none': !menu.active}">
       <app-menu-item [menus]="menu.submenu" [parentRef]="submenuDiv"></app-menu-item>
    </ul>
 </li>
