@@ -1,28 +1,24 @@
-<app-top-menu [tema]="temaGlobal"></app-top-menu>
+<app-top-menu></app-top-menu>
 
 <cx-spinner [fullscreen]=true [name]="'global'"></cx-spinner>
 
-<main role="main">
-  <app-side-menu [tema]="temaGlobal"></app-side-menu>
+<main>
+  <app-side-menu></app-side-menu>
 
-  <section id="conteudoPrincipal" 
-  [ngClass]="{'sem-menu-lateral': !isMenuAberto}"
-  class="{{ temaGlobal.counteudoPrincipalBg }}">
+  <section id="conteudoPrincipal" [ngClass]="{'sidemenu-hidden': !isMenuAberto}">
 
     <div id="mobileBackdrop"
       (click)="menuService.fechar()"
-      [ngClass]="{'exibindo': isMenuAberto}">
+      [ngClass]="{'sidemenu-shown': isMenuAberto}">
     </div>
 
     <div id="painelConteudoPrincipal">
       <app-breadcrumb></app-breadcrumb>
-      <br>
-      <div [@routeAnimations]="prepareRoute(outlet)" [hidden]="!hasAccount">
+      <div [@routeAnimations]="prepareRoute(outlet)">
         <router-outlet #outlet="outlet"></router-outlet>
       </div>
     </div>
 
-    <!-- <app-footer></app-footer> -->
   </section>
 </main>
 

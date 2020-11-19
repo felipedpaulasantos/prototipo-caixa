@@ -1,7 +1,6 @@
 @use "sass:map";
 
-@import "~highlight.js/styles/github.css";
-
+/* Fontes */
 @import "./assets/fonts/style.css";
 
 /* Overriden Bootstrap variables */
@@ -12,30 +11,20 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 // Dependências externas
-@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
-@import "../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css";
-@import "../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
-@import "../node_modules/ngx-toastr/toastr.css";
+@import "~highlight.js/styles/github.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~bootstrap-select/dist/css/bootstrap-select.min.css";
+@import "~bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
+@import "~ngx-toastr/toastr.css";
 
 // Estilos complementares
-@import "./styles/functions";
-@import "./styles/datatables";
-@import "./styles/animations";
+@import "functions";
+@import "datatables";
+@import "animations";
 
 body {
-  height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-}
-
-.menu-item {
-  &.active.has-submenu {
-    color: $cx-color-primary !important;
-  }
-  &.active.is-link {
-    background-color: $cx-color-primary !important;
-    color: $cx-color-lightest !important;
-  }
 }
 
 #navbarTop {
@@ -43,13 +32,9 @@ body {
   color: $cx-color-lightest;
 }
 
-/* @media (max-width: 1199.98px) { 
-  html {
-    font-size: $cx-font-13;
-  }
-} */
-
-/* Headers */
+/* 
+  HEADERS 
+*/
 
 h1,
 h2,
@@ -59,7 +44,6 @@ h5,
 h6 {
   &.header-caixa {
     font-family: $cx-font-family-bold;
-    // opacity: $cx-text-opacity-1;
     margin-bottom: 1rem;
   }
   &.header-subtitulo-caixa {
@@ -67,10 +51,8 @@ h6 {
     color: $cx-color-dark;
   }
   &.header-principal-caixa {
-    font-family: $cx-font-family-bold;
+    @extend .header-caixa;
     color: $cx-color-primary;
-    // opacity: $cx-text-opacity-2;
-    // text-transform: uppercase;
   }
 }
 hr.header-line-caixa {
@@ -147,27 +129,6 @@ hr.header-line-caixa {
   }
 }
 
-@each $theme, $colors in $cx-colors {
-  .btn-#{$theme},
-  .btn-#{$theme}:disabled,
-  .btn-#{$theme}.disabled,
-  .btn-#{$theme}:focus,
-  .btn-#{$theme}:active,
-  .btn-#{$theme}.active,
-  .btn-#{$theme}:hover {
-    color: nth($list: $colors, $n: 2);
-    @extend .ripple;
-    $ripple-color: set-ripple(
-      nth(
-        $list: $colors,
-        $n: 1,
-      )
-    );
-    &:after {
-      background-image: radial-gradient(circle, $ripple-color 10%, transparent 10.01%);
-    }
-  }
-}
 
 /* Toastr (Mensagens) */
 
@@ -445,7 +406,6 @@ ul.tab-caixa li a,
     background-color: inherit;
     border: none;
     vertical-align: center;
-    // padding-top: 1.25rem;
     & h1,
     h2,
     h3,
@@ -474,21 +434,6 @@ ul.tab-caixa li a,
 .card-caixa.card-hover:hover::after {
   opacity: 1;
 }
-
-/* .card-caixa::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  border-radius: 5px;
-  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
-  transition: opacity 0.3s ease-in-out;
-}
-.card-caixa:hover::after {
-  opacity: 1;
-} */
 
 /* Spinner */
 
@@ -734,8 +679,15 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   -ms-user-select: none;
   user-select: none;
 }
-.menu-item.active {
-  box-shadow: 0 0.6rem 0.4rem -0.4rem rgba(0, 0, 0, 0.1) !important;
+.menu-item {
+  &.active.has-submenu {
+    color: $cx-color-primary !important;
+    box-shadow: 0 0.6rem 0.4rem -0.4rem rgba(0, 0, 0, 0.1) !important;
+  }
+  &.active.is-link {
+    background-color: $cx-color-primary !important;
+    color: $cx-color-lightest !important;
+  }
 }
 
 .aberto {
