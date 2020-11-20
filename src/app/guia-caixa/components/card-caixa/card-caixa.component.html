@@ -1,5 +1,5 @@
 <div class="card-caixa-botoes">
-   <a cx-ripple *ngIf="cardHeaderElement && !isMinimized" (click)="minimizar()"
+   <a *ngIf="cardHeaderElement && !isMinimized" (click)="minimizar()"
    class="btn btn-caixa text-dark-light shadow-none rounded-circle p-2">
       <i class="fa fa-lg fa-caret-down" title="Minimizar"></i>
    </a>
@@ -7,7 +7,7 @@
    class="btn btn-caixa text-dark-light shadow-none rounded-circle p-2">
       <i class="fa fa-lg fa-caret-up" title="Maximizar"></i>
    </a>
-   <a cx-ripple *ngIf="expandable" (click)="toggleFullscreen()"
+   <a *ngIf="expandable" (click)="toggleFullscreen()"
    class="btn btn-caixa text-dark-light shadow-none rounded-circle p-2">
       <i *ngIf="!isFullscreen" class="fa fa-lg fa-expand" title="Tela Cheia"></i>
       <i *ngIf="isFullscreen" class="fa fa-lg fa-compress" title="Sair do modo Tela Cheia"></i>
@@ -15,9 +15,9 @@
    <a cx-ripple (mousedown)="moved()"
    [ngClass]="{'d-none': !draggable || isFullscreen}"
    title="Mover" #moveButton class="btn btn-caixa text-dark-light shadow-none rounded-circle p-2">
-      <i class="fa fa-lg fa-arrows-alt"></i>
+      <i cx-ripple class="fa fa-lg fa-arrows-alt"></i>
    </a>
-   <a cx-ripple *ngIf="draggable && wasMoved" (click)="reset()"
+   <a *ngIf="draggable && wasMoved" (click)="reset()"
    title="Resetar posição" class="btn btn-caixa text-dark-light shadow-none rounded-circle p-2">
       <i class="fa fa-lg fa-undo-alt"></i>
    </a>
