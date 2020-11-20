@@ -501,7 +501,6 @@ ul.tab-caixa li a,
   border-color: $cx-color-light-darkest;
   transition: background-size 0.3s, background-color 0.3s, border-color 0.3s ease-in-out, box-shadow 0.15s ease-in-out;
   &:disabled {
-    // background-color: #eff5f6;
     opacity: 0.5;
     cursor: not-allowed;
   }
@@ -509,23 +508,22 @@ ul.tab-caixa li a,
 @each $theme, $colors in $cx-colors {
   .input-caixa-#{$theme} {
     @extend .input-base;
-    &,
-    &:focus,
-    &:active,
-    &[aria-expanded="true"],
-    &.focused {
-      @if ($theme== "danger" or $theme== "success") {
-        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-          linear-gradient(0deg, nth($colors, 1) 0%, nth($colors, 1) 100%) !important;
-        border-color: nth($colors, 1) !important;
-      } @else {
-        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-          linear-gradient(0deg, nth($colors, 1) 0%, nth($colors, 1) 100%);
-      }
-      background-repeat: no-repeat;
-      background-position: 50% 100%, 50% 100%;
-      background-size: 100% 1px, 0% 1px;
+    @if ($theme== "danger" or $theme== "success") {
+      background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(0deg, nth($colors, 1) 0%, nth($colors, 1) 100%) !important;
+      border-color: nth($colors, 1) !important;
+    } @else {
+      background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(0deg, nth($colors, 1) 0%, nth($colors, 1) 100%);
     }
+    &:hover {
+      background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
+      linear-gradient(0deg, $cx-color-dark-light 0%, $cx-color-dark-light 100%);
+      background-size: 100% 1px, 100% 1px;
+    }
+    background-repeat: no-repeat;
+    background-position: 50% 100%, 50% 100%;
+    background-size: 100% 1px, 0% 1px;
     &:focus,
     &:active,
     &[aria-expanded="true"],
@@ -534,6 +532,8 @@ ul.tab-caixa li a,
       @if ($theme== "danger" or $theme== "success") {
         border-color: nth($colors, 1) !important;
       } @else {
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(0deg, nth($colors, 1) 0%, nth($colors, 1) 100%);
         border-color: nth($colors, 1);
       }
       background-size: 100% 1px, 100% 1px;
@@ -560,11 +560,9 @@ ul.tab-caixa li a,
     box-shadow: none;
   }
   @extend .input-base;
-}
-.input-caixa,
-.input-caixa-wrapper {
   @extend .input-caixa-primary;
 }
+
 cx-input.ng-invalid .input-caixa-wrapper,
 cx-select.ng-invalid .input-caixa-wrapper/* ,
 .input-caixa.ng-dirty.ng-invalid */ {
