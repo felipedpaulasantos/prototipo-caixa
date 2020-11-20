@@ -4,12 +4,12 @@
 <hr class="header-line-caixa">
 
 <ul class="nav nav-pills border-bottom tab-caixa" role="tablist">
-  <li class="nav-item ripple-dark">
+  <li cx-ripple class="nav-item">
     <a class="nav-link text-uppercase active" data-toggle="tab" href="#visaoGeral" role="tab">
       Visão Geral
     </a>
   </li>
-  <li class="nav-item ripple-dark">
+  <li cx-ripple class="nav-item">
     <a class="nav-link text-uppercase" data-toggle="tab" href="#exemplos" role="tab">
       Exemplos
     </a>
@@ -33,7 +33,7 @@
           </div>
       
           <div class="conteudo">
-            <button class="btn btn-caixa btn-light">Botão</button>
+            <button cx-ripple class="btn btn-caixa btn-light">Botão</button>
           </div>
         </app-documentacao-template>
     
@@ -49,10 +49,10 @@
           </div>
       
           <div class="conteudo">
-            <button class="btn btn-caixa btn-primary">Primário</button> &nbsp;
-            <button class="btn btn-caixa btn-danger-dark">Erro com tom escuro</button> &nbsp;
-            <button class="btn btn-caixa btn-apoio-light">Apoio com tom claro</button> &nbsp;
-            <button class="btn btn-caixa btn-outline-info">Info - outline</button>
+            <button cx-ripple class="btn btn-caixa btn-primary">Primário</button> &nbsp;
+            <button cx-ripple class="btn btn-caixa btn-danger-dark">Erro com tom escuro</button> &nbsp;
+            <button cx-ripple class="btn btn-caixa btn-apoio-light">Apoio com tom claro</button> &nbsp;
+            <button cx-ripple class="btn btn-caixa btn-outline-info">Info - outline</button>
           </div>
         </app-documentacao-template>
     
@@ -68,10 +68,10 @@
           </div>
       
           <div class="conteudo">
-            <button class="btn btn-caixa btn-outline-dark btn-sm">Pequeno</button> &nbsp;
-            <button class="btn btn-caixa btn-secondary btn-lg">Grande</button> &nbsp;
-            <button class="btn btn-caixa btn-secondary btn-lg disabled">Grande desabilitado</button> &nbsp;
-            <button class="btn btn-caixa btn-outline-primary">
+            <button cx-ripple class="btn btn-caixa btn-outline-dark btn-sm">Pequeno</button> &nbsp;
+            <button cx-ripple class="btn btn-caixa btn-secondary btn-lg">Grande</button> &nbsp;
+            <button cx-ripple class="btn btn-caixa btn-secondary btn-lg disabled">Grande desabilitado</button> &nbsp;
+            <button cx-ripple class="btn btn-caixa btn-outline-primary">
               <i class="fa fa-edit mr-2"></i>
               Com ícone
             </button>
@@ -110,25 +110,25 @@
       </div>
       <div class="conteudo">
         <div class="btn-exemplo">
-          <button class="btn btn-caixa btn-flat">
+          <button cx-ripple class="btn btn-caixa btn-flat">
             Flat
           </button>
-          <button class="btn btn-caixa btn-flat rounded-circle p-3">
+          <button cx-ripple class="btn btn-caixa btn-flat rounded-circle p-3">
             <i class="fa fa-bars fa-2x"></i>
           </button>
-          <button class="btn btn-caixa btn-flat text-primary rounded-circle p-2">
+          <button cx-ripple class="btn btn-caixa btn-flat text-primary rounded-circle p-2">
             <i class="fa fa-home fa-2x"></i>
           </button>
-          <button class="btn btn-caixa btn-outline-apoio rounded-circle p-2">
+          <button cx-ripple class="btn btn-caixa btn-outline-apoio rounded-circle p-2">
             <i class="fa fa-check fa-lg"></i>
           </button>
-          <button class="btn btn-caixa btn-secondary rounded-circle p-3">
+          <button cx-ripple class="btn btn-caixa btn-secondary rounded-circle p-3">
             <i class="fa fa-play fa-lg"></i>
           </button>
-          <button class="btn btn-caixa btn-outline-danger rounded-circle shadow-none p-4">
+          <button cx-ripple class="btn btn-caixa btn-outline-danger rounded-circle shadow-none p-4">
             <i class="fa fa-trash fa-2x"></i>
           </button>
-          <button class="btn btn-caixa btn-aux shadow-none">
+          <button cx-ripple class="btn btn-caixa btn-aux shadow-none">
             Sem sombra
           </button>
         </div>
@@ -151,12 +151,12 @@
             <tbody>
               <ng-container *ngFor="let tema of temas; let i = index">
                 <tr>
-                  <td><button class="btn btn-caixa btn-{{tema?.name}}">Padrão</button></td>
-                  <td><button class="btn btn-caixa btn-{{tema?.name}}-light">Claro</button></td>
-                  <td><button class="btn btn-caixa btn-{{tema?.name}}-dark">Escuro</button></td>
-                  <td><button class="btn btn-caixa btn-outline-{{tema?.name}}">Outline</button></td>
-                  <td><button class="btn btn-caixa btn-outline-{{tema?.name}}-light">Claro</button></td>
-                  <td><button class="btn btn-caixa btn-outline-{{tema?.name}}-dark">Escuro</button></td>
+                  <td><button cx-ripple class="btn btn-caixa btn-{{tema?.name}}">Padrão</button></td>
+                  <td><button cx-ripple class="btn btn-caixa btn-{{tema?.name}}-light">Claro</button></td>
+                  <td><button cx-ripple class="btn btn-caixa btn-{{tema?.name}}-dark">Escuro</button></td>
+                  <td><button cx-ripple class="btn btn-caixa btn-outline-{{tema?.name}}">Outline</button></td>
+                  <td><button cx-ripple class="btn btn-caixa btn-outline-{{tema?.name}}-light">Claro</button></td>
+                  <td><button cx-ripple class="btn btn-caixa btn-outline-{{tema?.name}}-dark">Escuro</button></td>
                 </tr>
               </ng-container>
             </tbody>
