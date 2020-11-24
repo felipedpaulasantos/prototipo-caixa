@@ -15,9 +15,6 @@ export class UploadComponent implements OnInit {
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
-    private modal: ModalService,
-    private resolver: ComponentFactoryResolver,
-    private injector: Injector,
     private renderer: Renderer2
   ) { }
 

@@ -16,12 +16,12 @@
     </button>
   </div>
 
-  <div class="menu-item mb-3" role="button" (click)="menuService.abrir()">
+  <div class="menu-item mb-3" role="button" (click)="openSearch()">
     <span class="menu-item-icon">
       <i class="fa fa-search fa-lg mr-2"></i>
     </span>
     <span class="menu-item-name">
-      <input class="input-caixa text-center mr-2" (input)="filterMenu($event)">
+      <input #inputSearch class="input-caixa text-center mr-2" (input)="filterMenu($event)">
     </span>
   </div>
 

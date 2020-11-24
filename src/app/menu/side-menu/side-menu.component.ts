@@ -37,6 +37,9 @@ export class SideMenuComponent implements OnInit, OnDestroy {
   @ViewChild("menuTarget", { read: ViewContainerRef })
   menuTargetRef: ViewContainerRef;
 
+  @ViewChild("inputSearch", { read: ElementRef })
+  inputSearch: ElementRef;
+
   larguraTela: number;
   isAberto: boolean;
 
@@ -158,6 +161,14 @@ export class SideMenuComponent implements OnInit, OnDestroy {
       this.componentRef.destroy();
       this.componentRef = null;
     }
+  }
+
+  openSearch() {
+    this.menuService.abrir(); 
+    console.log(this.inputSearch.nativeElement);
+    setTimeout(() => {
+      this.inputSearch.nativeElement.focus();
+    }, 0);
   }
 
   filterMenu(ev) {

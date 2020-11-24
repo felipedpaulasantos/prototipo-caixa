@@ -789,7 +789,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   transition: 0.2s ease;
   list-style: none;
   padding-left: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid $cx-color-light-dark;
 }
 
 /* 
@@ -823,6 +823,7 @@ body.dark-theme {
     transition: 0.2s ease;
     list-style: none;
     padding-left: 0;
+    border-bottom: 1px solid $cx-color-dark;
   }
 
   /* NAVBAR */
