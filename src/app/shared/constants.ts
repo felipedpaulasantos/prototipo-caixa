@@ -8,13 +8,13 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     isLink: true,
     enabled: true
   },
-  {
+/*   {
     name: 'Layout',
     iconClass: 'fas fa-lg fa-layer-group',
     url: '/layout',
     isLink: true,
     enabled: false
-  },
+  }, */
   {
     name: 'Componentes',
     url: "/componentes",
@@ -80,13 +80,13 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     isLink: true,
     enabled: true
   },
-  {
+/*   {
     name: 'Chat',
     iconClass: 'fas fa-lg fa-comment',
     url: '/chat',
     isLink: true,
     enabled: false
-  },
+  }, */
   {
     name: 'Páginas',
     iconClass: 'fas fa-lg fa-newspaper',
