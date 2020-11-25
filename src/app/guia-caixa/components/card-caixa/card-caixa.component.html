@@ -1,4 +1,8 @@
 <div class="card-caixa-botoes">
+   <a *ngIf="draggable && wasMoved" (click)="reset()"
+   title="Resetar posição" class="btn btn-caixa text-dark-light shadow-none rounded-circle p-2">
+      <i class="fa fa-lg fa-undo-alt"></i>
+   </a>
    <a *ngIf="cardHeaderElement && !isMinimized" (click)="minimizar()"
    class="btn btn-caixa text-dark-light shadow-none rounded-circle p-2">
       <i class="fa fa-lg fa-caret-down" title="Minimizar"></i>
@@ -16,10 +20,6 @@
    [ngClass]="{'d-none': !draggable || isFullscreen}"
    title="Mover" #moveButton class="btn btn-caixa text-dark-light shadow-none rounded-circle p-2">
       <i cx-ripple class="fa fa-lg fa-arrows-alt"></i>
-   </a>
-   <a *ngIf="draggable && wasMoved" (click)="reset()"
-   title="Resetar posição" class="btn btn-caixa text-dark-light shadow-none rounded-circle p-2">
-      <i class="fa fa-lg fa-undo-alt"></i>
    </a>
 </div>
 <ng-content></ng-content>

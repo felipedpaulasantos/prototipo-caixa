@@ -3,40 +3,81 @@
 </h1>
 <hr class="header-line-caixa">
 
-<div *ngFor="let cor of cores" class="card card-caixa mb-3">
-	<div class="card-header">
-		<h5 class="header-caixa text-{{ cor.name }}-dark"
-		[ngClass]="{'text-light-darkest': cor.name == 'light'}">
-			{{ cor.name | titlecase }}
-		</h5>
-	</div>
-	<div class="card-body">
-		<div class="row">
-			<ng-container>
-				<div class="col-12 col-xl-6 d-flex align-items-center justify-content-between mb-3">
-					<div class="row no-gutters w-100">
-						<div class="col">
-							<div class="square bg-{{ cor.name }}-light"></div>
-						</div>
-						<div class="col">
-							<div class="square bg-{{ cor.name }}"></div>
-						</div>
-						<div class="col">
-							<div class="square bg-{{ cor.name }}-dark"></div>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-sm-6 col-xl-3 d-flex align-items-center flex-wrap mb-3">
+<div class="table-responsive">
+	<table class="table table-caixa">
+		<thead>
+			<tr>
+				<th>Tema</th>
+				<th>Normal</th>
+				<th>Claro</th>
+				<th>Escuro</th>
+				<th>Texto</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let cor of cores">
+				<td>
+					<h5 class="header-caixa">
+						{{ cor.name }}
+					</h5> 
+				</td>
+				<td>
+					<div class="square bg-{{ cor.name }}"></div>
+				</td>
+				<td>
+					<div class="square bg-{{ cor.name }}-light"></div>
+				</td>
+				<td>
+					<div class="square bg-{{ cor.name }}-dark"></div>
+				</td>
+				<td>
 					<h5 class="text-{{ cor.name }}-light font-fam-bold w-100">Título no tom claro</h5>
 					<h5 class="text-{{ cor.name }} font-fam-bold w-100">Título no tom padrão</h5>
 					<h5 class="text-{{ cor.name }}-dark font-fam-bold w-100">Título no tom escuro</h5>
-				</div>
-				<div class="col-12 col-sm-6 col-xl-3 d-flex align-items-center flex-wrap mb-3">
-					<h5 class="text-{{ cor.name }}-light font-fam-bold header-caixa w-100">Header caixa no tom claro</h5>
-					<h5 class="text-{{ cor.name }} font-fam-bold header-caixa w-100">Header caixa no tom padrão</h5>
-					<h5 class="text-{{ cor.name }}-dark font-fam-bold header-caixa w-100">Header caixa no tom escuro</h5>
-				</div>
-			</ng-container>
-		</div>	<!-- Row -->
-	</div>	<!-- Card Body -->
-</div>	<!-- Card -->
+					<span class="text-{{ cor.name }} mr-2">Texto,</span>
+					<span class="text-{{ cor.name }} font-fam-bold">Negrito</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<ng-container *ngIf="false">
+	<div *ngFor="let cor of cores" class="card card-caixa mb-3">
+		<div class="card-header">
+			<h5 class="header-caixa text-{{ cor.name }}-dark"
+			[ngClass]="{'text-light-darkest': cor.name == 'light'}">
+				{{ cor.name | titlecase }}
+			</h5>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<ng-container>
+					<div class="col-12 col-xl-6 d-flex align-items-center justify-content-between mb-3">
+						<div class="row no-gutters w-100">
+							<div class="col">
+								<div class="square bg-{{ cor.name }}-light"></div>
+							</div>
+							<div class="col">
+								<div class="square bg-{{ cor.name }}"></div>
+							</div>
+							<div class="col">
+								<div class="square bg-{{ cor.name }}-dark"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-sm-6 col-xl-3 d-flex align-items-center flex-wrap mb-3">
+						<h5 class="text-{{ cor.name }}-light font-fam-bold w-100">Título no tom claro</h5>
+						<h5 class="text-{{ cor.name }} font-fam-bold w-100">Título no tom padrão</h5>
+						<h5 class="text-{{ cor.name }}-dark font-fam-bold w-100">Título no tom escuro</h5>
+					</div>
+					<div class="col-12 col-sm-6 col-xl-3 d-flex align-items-center flex-wrap mb-3">
+						<h5 class="text-{{ cor.name }}-light font-fam-bold header-caixa w-100">Header caixa no tom claro</h5>
+						<h5 class="text-{{ cor.name }} font-fam-bold header-caixa w-100">Header caixa no tom padrão</h5>
+						<h5 class="text-{{ cor.name }}-dark font-fam-bold header-caixa w-100">Header caixa no tom escuro</h5>
+					</div>
+				</ng-container>
+			</div>	<!-- Row -->
+		</div>	<!-- Card Body -->
+	</div>	<!-- Card -->
+</ng-container>
