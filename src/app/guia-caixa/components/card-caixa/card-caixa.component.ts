@@ -17,8 +17,8 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   moveButton: ElementRef;
 
   @Input()
-  draggable: boolean = false;
-  wasMoved: boolean = false;
+  draggable = false;
+  wasMoved = false;
   originalTopPosition: string;
   originalLeftPosition: string;
   originalHeight: number;
@@ -29,13 +29,13 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   originalMaxWidth: string;
 
   @Input()
-  expandable: boolean = true;
-  isFullscreen: boolean = false;
+  expandable = true;
+  isFullscreen = false;
 
   @Input()
-  minimizable: boolean = true;
-  isMinimized: boolean = false;
-  
+  minimizable = true;
+  isMinimized = false;
+
   constructor(
     element: ElementRef,
     private renderer: Renderer2
@@ -46,8 +46,8 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   ngOnInit(): void {}
 
   ngAfterContentInit() {
-    if (this.draggable) this.dragElement();
-    if (this.minimizable) this.setChildren();
+    if (this.draggable) { this.dragElement(); }
+    if (this.minimizable) { this.setChildren(); }
   }
 
   setChildren(): void {
@@ -56,15 +56,15 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
 
       for (let index = 0; index < children.length; index++) {
         const child = children[index] as any;
-        if (!child.classList) return;
+        if (!child.classList) { return; }
         if (child.classList.contains("card-header")) {
           this.cardHeaderElement = child;
         }
         if (child.classList.contains("card-body")) {
-          this.cardBodyElement = child
+          this.cardBodyElement = child;
         }
         if (child.classList.contains("card-footer")) {
-          this.cardFooterElement = child
+          this.cardFooterElement = child;
         }
       }
     }
@@ -113,17 +113,17 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   }
 
   reset(): void {
-    this.resetOriginalPosition(); 
-    this.resetOriginalSize()
+    this.resetOriginalPosition();
+    this.resetOriginalSize();
   }
 
   moved(): void {
-    this.wasMoved = true; 
-    this.preventResize(); 
+    this.wasMoved = true;
+    this.preventResize();
   }
 
   toggleFullscreen(): void {
-    if (!this.cardElement) return;
+    if (!this.cardElement) { return; }
     if (this.checkFullscreen()) {
       document.exitFullscreen().then(() => this.isFullscreen = false);
     } else {
@@ -137,10 +137,11 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   checkFullscreen(): boolean {
     if (document.fullscreenElement ||
       document["webkitFullscreenElement"] ||
-      document["mozFullScreenElement"])
+      document["mozFullScreenElement"]) {
       return true;
-    else
+    } else {
       return false;
+    }
   }
 
   dragElement(): void {
@@ -149,7 +150,7 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
 
     const elmnt = this.cardElement;
 
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     if (this.moveButton.nativeElement) {
       // if present, the header is where you move the DIV from:
       this.moveButton.nativeElement.onmousedown = dragMouseDown;
@@ -159,7 +160,6 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
     }
 
     function dragMouseDown(e) {
-      e = e || window.event;
       e.preventDefault();
       // get the mouse cursor position at startup:
       pos3 = e.clientX;
@@ -173,7 +173,6 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
       elmnt.style.position = "absolute";
       elmnt.style.minHeight = this.originalHeight;
       elmnt.style.minWidth = this.originalWidth;
-      e = e || window.event;
       e.preventDefault();
       // calculate the new cursor position:
       pos1 = pos3 - e.clientX;
@@ -193,14 +192,14 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   }
 
   minimizar(): void {
-    if (this.cardBodyElement) this.renderer.addClass(this.cardBodyElement, "d-none");
-    if (this.cardFooterElement) this.renderer.addClass(this.cardFooterElement, "d-none");
+    if (this.cardBodyElement) { this.renderer.addClass(this.cardBodyElement, "d-none"); }
+    if (this.cardFooterElement) { this.renderer.addClass(this.cardFooterElement, "d-none"); }
     this.isMinimized = true;
   }
 
   maximizar(): void {
-    if (this.cardBodyElement) this.renderer.removeClass(this.cardBodyElement, "d-none");
-    if (this.cardFooterElement) this.renderer.removeClass(this.cardFooterElement, "d-none");
+    if (this.cardBodyElement) { this.renderer.removeClass(this.cardBodyElement, "d-none"); }
+    if (this.cardFooterElement) { this.renderer.removeClass(this.cardFooterElement, "d-none"); }
     this.isMinimized = false;
   }
 

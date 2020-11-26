@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { NgxMaskModule } from 'ngx-mask';
 import { GuiaCaixaModule } from 'src/app/guia-caixa/guia-caixa.module';
 import { UploadComponent } from './upload/upload.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [PaginasComponent, UploadComponent],
@@ -16,6 +17,7 @@ import { UploadComponent } from './upload/upload.component';
     CommonModule,
     PaginasRoutingModule,
     SharedModule,
+    DataTablesModule,
     GuiaCaixaModule,
     FormsModule,
     ReactiveFormsModule,

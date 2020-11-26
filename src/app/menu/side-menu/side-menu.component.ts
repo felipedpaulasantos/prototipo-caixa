@@ -164,7 +164,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
   }
 
   openSearch() {
-    this.menuService.abrir(); 
+    this.menuService.abrir();
     console.log(this.inputSearch.nativeElement);
     setTimeout(() => {
       this.inputSearch.nativeElement.focus();
@@ -179,10 +179,10 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     const filteredMenus = this.menus.filter(function f(menu) {
       const nameLowercase = menu.name.toLowerCase();
       const test = (nameLowercase.includes(text.toLowerCase()) || menu.url.includes(text)) ||
-            (menu.submenu && (menu.submenu = menu.submenu.filter(f)).length)
+            (menu.submenu && (menu.submenu = menu.submenu.filter(f)).length);
       return test;
-    })
-    
+    });
+
     this.menus = JSON.parse(JSON.stringify(filteredMenus));
   }
 

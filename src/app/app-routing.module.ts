@@ -62,17 +62,17 @@ const routes: Routes = [
     },
     loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)
   },
-  { 
-    path: 'config/menu', 
+  {
+    path: 'config/menu',
     data: {
       title: 'Configuração do Menu',
       breadcrumb: 'Configuração do Menu',
       animation: 'Config-menu'
     },
-    loadChildren: () => import('./demonstracao/config-menu/config-menu.module').then(m => m.ConfigMenuModule) 
+    loadChildren: () => import('./demonstracao/config-menu/config-menu.module').then(m => m.ConfigMenuModule)
   },
-  { 
-    path: 'paginas', 
+  {
+    path: 'paginas',
     data: {
       title: 'Páginas de teste',
       breadcrumb: 'Páginas',

@@ -41,7 +41,7 @@ export class UploadComponent implements OnInit {
         numero: `4200.160.0150${index}-${index}`,
         valor: 50000 + (index * 1000),
         situacao: "Pago"
-      }
+      };
       this.contratos.push(contrato);
     }
   }
@@ -100,7 +100,7 @@ export class UploadComponent implements OnInit {
           this.uploadedFile = file;
           this.spinner.hide("spinnerUpload");
         }
-      )
+      );
     }, 2000);
   }
 
@@ -136,11 +136,9 @@ export class UploadComponent implements OnInit {
 
   preventDragDropDefault() {
     window.addEventListener("dragover", function(e: any) {
-      e = e || event;
       e.preventDefault();
     }, false);
     window.addEventListener("drop", function(e: any) {
-      e = e || event;
       e.preventDefault();
     }, false);
   }
