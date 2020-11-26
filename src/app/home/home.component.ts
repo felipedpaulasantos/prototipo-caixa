@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
         numero: `4200.160.0150${index}-${index}`,
         valor: 50000 + (index * 1000),
         situacao: "Pago"
-      }
+      };
       this.contratos.push(contrato);
     }
   }
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
 
     const filteredResources = this.resources.filter(resource => {
       return (resource.enabled && resource.isLink) &&
-      (resource.name != "Início")
+      (resource.name != "Início");
     });
     const newRows = [];
     for (let index = 0; index < filteredResources.length; index += 3) {

@@ -86,7 +86,7 @@ export class CardsComponent extends ComponentesInterface {
       <div class="card-body">
         <i class="fa fa-users fa-4x"></i>
       </div>
-    </div>  <!-- Card -->             
+    </div>  <!-- Card -->
   </div>  <!-- Col -->
   <div class="col-6 col-md-4 mb-3">
     <div class="card card-caixa card-hover bg-opacity-2 border border-dark-dark">

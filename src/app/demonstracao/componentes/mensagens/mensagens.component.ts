@@ -69,7 +69,7 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
     exibirAlerta() {
       this.toastr.warning('Alerta!', null, { positionClass: 'toast-top-right', progressBar: false });
     }
-  
+
     exibirInfo() {
       this.toastr.info('Informação!', 'Importante!', { positionClass: 'toast-bottom-right', progressBar: false });
     }

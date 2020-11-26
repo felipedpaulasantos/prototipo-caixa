@@ -48,19 +48,19 @@ export class RippleDirective implements AfterContentInit {
   }
 
   setRippleColor(): string {
-    let hexcolor = window.getComputedStyle
+    const hexcolor = window.getComputedStyle
       ? window.getComputedStyle(this.el.nativeElement, null).getPropertyValue("background-color")
       : this.el.nativeElement.style.backgroundColor;
 
-    let rgb: string[] = hexcolor
+    const rgb: string[] = hexcolor
       .replace("rgba", "").replace("rgb", "").replace("(", "").replace(")", "")
       .split(",");
 
-    let r = parseInt(rgb[0].trim());
-    let g = parseInt(rgb[1].trim());
-    let b = parseInt(rgb[2].trim());
+    const r = parseInt(rgb[0].trim());
+    const g = parseInt(rgb[1].trim());
+    const b = parseInt(rgb[2].trim());
 
-    let yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+    const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
 
     return (yiq >= 128) ? ' rgba(0, 0, 0, 0.2)' : "rgba(255, 255, 255, 0.7)";
   }
