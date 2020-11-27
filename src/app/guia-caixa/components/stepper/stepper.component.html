@@ -1,8 +1,10 @@
 <div class="stepper-wrapper">
-   <ul class="stepper horizontal" [ngClass]="{
+   <ul class="stepper horizontal" 
+   [ngClass]="{
       'previous-step': currentStep == (steps.length - 1), 'nav-guided': !freeNavigation
    }">
-      <li [title]="step" class="step" *ngFor="let step of steps; let index = index; let last = last" [ngClass]="{
+      <li [title]="step" class="step" *ngFor="let step of steps; let index = index; let last = last" 
+      [ngClass]="{
          'current-step': currentStep == index, 
          'prior-step': index == (currentStep - 1),
          'previous-step': index < currentStep, 

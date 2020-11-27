@@ -1,0 +1,219 @@
+@media only screen and (min-width: 520px) {
+   .tabber-wrapper {
+      max-height: 84px;
+   }
+
+   ul.tabber .tab:not(:last-of-type)::after {
+      top: 52px;
+      left: 13.5px;
+   }
+
+   ul.tabber .tab .tab-title {
+      padding: 15.5px 44px 24px 64px;
+   }
+
+   ul.tabber.horizontal {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      overflow: hidden;
+   }
+
+   ul.tabber.horizontal .tab {
+      position: static;
+      padding: 0 !important;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      height: 84px;
+   }
+
+   ul.tabber.horizontal .tab.active:not(:last-of-type)::after,
+   ul.tabber.horizontal .tab:not(:last-of-type)::after {
+      content: "";
+      position: static;
+      display: inline-block;
+      min-width: 10px;
+      width: 100%;
+      height: 1px;
+   }
+
+   ul.tabber.horizontal .tab .tab-title {
+      line-height: 84px;
+      height: 84px;
+      margin: 0;
+      padding: 0 4px 0 48px;
+      display: inline-block;
+      max-width: 245px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-shrink: 0;
+   }
+
+   ul.tabber.horizontal .tab .tab-title::after {
+      top: 15px;
+   }
+
+   ul.tabber.horizontal .tab:last-of-type {
+      width: auto !important;
+   }
+
+   ul.tabber.horizontal.previous-tab {
+      display: flex;
+   }
+}
+
+ul.tabber {
+   counter-reset: section;
+   overflow-y: auto;
+   overflow-x: hidden;
+   padding: 0;
+   margin: 0;
+}
+
+ul.tabber .tab:not(:last-of-type).active {
+   padding-bottom: 36px;
+}
+
+ul.tabber > li:not(:last-of-type) {
+   padding-bottom: 10px;
+}
+
+ul.tabber .tab {
+   position: relative;
+   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+ul.tabber .tab:not(:last-of-type)::after {
+   content: "";
+   position: absolute;
+   top: 44px;
+   left: 22.5px;
+   width: 1px;
+   height: 40%;
+   height: calc(100% - 52px);
+   background-color: gainsboro;
+   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+ul.tabber .tab.active .tab-title {
+   font-weight: 500;
+}
+
+ul.tabber .tab .tab-title {
+   margin: 0 -24px;
+   padding: 0px 10px 0px 30px;
+   display: block;
+}
+
+ul.tabber .tab .tab-title::after {
+   content: attr(data-tab-label);
+   display: block;
+   position: absolute;
+   font-size: 12.8px;
+   font-size: 0.8rem;
+   color: #424242;
+   font-weight: 400;
+}
+
+/* ul.tabber.horizontal .tab .tab-title::before {
+   position: absolute;
+   height: 35px;
+   width: 35px;
+   border-radius: 50%;
+   text-align: center;
+   line-height: 33px;
+   font-size: 17px;
+   left: 1px;
+   top: 26.5px;
+   left: 9px;
+   margin-right: 1px;
+} */
+
+/* ul.tabber.horizontal:not(.nav-guided) .tab .tab-title::before {
+   color: #fff;
+   background-color: gray;
+   font-weight: 400;
+   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+} */
+
+ul.tabber.horizontal.nav-guided .tab:not(.previous-tab) .tab-title::before {
+   color: #fff;
+   background-color: gray;
+   font-weight: 400;
+}
+ul.tabber.horizontal.nav-guided .tab.previous-tab .tab-title::before {
+   content: "\f060";
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   background-color: transparent;
+   color: #008254;
+}
+
+/* ul.tabber.horizontal .tab .tab-title::before {
+   counter-increment: section;
+   content: "";
+} */
+
+ul.tabber.horizontal .tab.current-tab .tab-icon {
+   background-color: #005ca9;
+}
+
+ul.tabber.horizontal .tab.previous-tab .tab-icon {
+   border: 3px grey solid;
+   line-height: 27px;
+}
+
+ul.tabber.horizontal .tab.last-tab .tab-icon {
+   background-color: grey;
+}
+
+ul.tabber.horizontal .tab.previous-tab {
+   width: 90px;
+}
+
+ul.tabber.horizontal.previous-tab {
+   display: inline-flex;
+}
+
+ul.tabber.horizontal.previous-tab .tab {
+   width: 68px;
+}
+
+.cursor-pointer {
+   cursor: pointer;
+}
+
+.waves-effect {
+   position: relative;
+   display: inline-block;
+   overflow: hidden;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   -webkit-tap-highlight-color: transparent;
+   vertical-align: middle;
+   z-index: 1;
+   -webkit-transition: 0.3s ease-out;
+   transition: 0.3s ease-out;
+}
+
+.tab-icon {
+   position: absolute;
+   height: 35px;
+   width: 35px;
+   border-radius: 50%;
+   text-align: center;
+   line-height: 33px;
+   font-size: 17px;
+   left: 1px;
+   top: 26.5px;
+   left: 9px;
+   margin-right: 1px;
+   color: #fff;
+   background-color: gray;
+   font-weight: 400;
+   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
