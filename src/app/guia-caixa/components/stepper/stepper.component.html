@@ -1,16 +1,16 @@
 <div class="stepper-wrapper">
    <ul class="stepper horizontal" [ngClass]="{
-      'previous-step': stepAtual == (steps.length - 1), 'nav-guided': !navegacaoLivre
+      'previous-step': currentStep == (steps.length - 1), 'nav-guided': !freeNavigation
    }">
       <li [title]="step" class="step" *ngFor="let step of steps; let index = index; let last = last" [ngClass]="{
-         'current-step': stepAtual == index, 
-         'prior-step': index == (stepAtual - 1),
-         'previous-step': index < stepAtual, 
-         'last-step': last && stepAtual == index, 
-         'cursor-pointer': (index < stepAtual && stepAtual < (steps.length - 1))
+         'current-step': currentStep == index, 
+         'prior-step': index == (currentStep - 1),
+         'previous-step': index < currentStep, 
+         'last-step': last && currentStep == index, 
+         'cursor-pointer': (index < currentStep && currentStep < (steps.length - 1))
       }">
          <div class="step-title waves-effect waves-dark" (click)="toStep(index)">
-            <span [hidden]="index < stepAtual">{{step}}</span>
+            <span [hidden]="index < currentStep">{{step}}</span>
          </div>
       </li>
    </ul>

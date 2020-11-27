@@ -222,12 +222,6 @@ ul.stepper.horizontal.previous-step .step {
    width: 68px;
 }
 
-.cursor-pointer {
-   cursor: pointer;
-}
-
-/* NAV GUIDED */
-
 ul.stepper.horizontal.nav-guided .step.prior-step {
    visibility: visible;
 }
@@ -235,4 +229,8 @@ ul.stepper.horizontal.nav-guided .step.prior-step {
 ul.stepper.horizontal.nav-guided .step.previous-step:not(.prior-step) {
    visibility: hidden !important;
    width: 0 !important;
+}
+
+.cursor-pointer {
+   cursor: pointer;
 }

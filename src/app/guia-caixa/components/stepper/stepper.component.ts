@@ -1,20 +1,20 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from "@angular/core";
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from "@angular/core";
 
 @Component({
   selector: "cx-stepper",
   templateUrl: "./stepper.component.html",
   styleUrls: ["./stepper.component.css"]
 })
-export class StepperComponent implements OnInit, OnChanges {
+export class StepperComponent implements OnInit {
 
   @Input()
-  navegacaoLivre = true;
+  freeNavigation = true;
 
   @Input()
   steps: string[] = [];
 
   @Input()
-  stepAtual = 0;
+  currentStep = 0;
 
   @Output()
   changeStep: EventEmitter<number> = new EventEmitter();
@@ -27,29 +27,22 @@ export class StepperComponent implements OnInit, OnChanges {
     this.checkMaximumSteps();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['stepAtual'] != null) {
-      const stepAtual = changes['stepAtual'].currentValue;
-      this.stepAtual = Number(stepAtual);
-    }
-  }
-
   toNextStep(): void {
-    if ((this.stepAtual + 1) < this.steps.length) {
-      this.changeStep.emit(this.stepAtual + 1);
+    if ((this.currentStep + 1) < this.steps.length) {
+      this.changeStep.emit(this.currentStep + 1);
     }
   }
 
   toPreviousStep(): void {
-    if ((this.stepAtual - 1) >= 0) {
-      this.changeStep.emit(this.stepAtual - 1);
+    if ((this.currentStep - 1) >= 0) {
+      this.changeStep.emit(this.currentStep - 1);
     }
   }
 
   toStep(index: number): void {
     index = Number(index);
-    if (index < this.stepAtual && this.stepAtual < (this.steps.length - 1)) {
-      this.stepAtual = index;
+    if (index < this.currentStep && this.currentStep < (this.steps.length - 1)) {
+      this.currentStep = index;
       this.changeStep.emit(index);
     }
   }
