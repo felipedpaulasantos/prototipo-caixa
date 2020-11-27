@@ -11,9 +11,9 @@
     <div class="card-body">
       
       <cx-stepper #exemploStepper
-        [navegacaoLivre]="true"
+        [freeNavigation]="true"
         [steps]="steps" 
-        [stepAtual]="passoAtual"
+        [currentStep]="passoAtual"
         (changeStep)="mudarPasso($event)">
       </cx-stepper>
   
@@ -51,9 +51,9 @@
     </div>
     <div class="card-body">
       <cx-stepper 
-      [navegacaoLivre]="false"
+      [freeNavigation]="false"
       [steps]="steps" 
-      [stepAtual]="passoAtual"
+      [currentStep]="passoAtual"
       (changeStep)="mudarPasso($event)">
     </cx-stepper>
   

@@ -1,9 +1,6 @@
 @media only screen and (min-width: 520px) {
-   .card-content ul.stepper.horizontal {
-      margin-left: -24px;
-      margin-right: -24px;
-      padding-left: 24px;
-      padding-right: 24px;
+   .stepper-wrapper {
+      max-height: 84px;
    }
 
    ul.stepper .step:not(:last-of-type)::after {
@@ -67,15 +64,6 @@
    }
 }
 
-.card-content ul.stepper {
-   margin: 1em -24px;
-   padding: 0 24px;
-}
-
-.stepper-wrapper {
-   max-height: 84px;
-}
-
 ul.stepper {
    counter-reset: section;
    overflow-y: auto;
@@ -119,21 +107,6 @@ ul.stepper .step .step-title {
    display: block;
 }
 
-.waves-effect {
-   position: relative;
-   display: inline-block;
-   overflow: hidden;
-   -webkit-user-select: none;
-   -moz-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
-   -webkit-tap-highlight-color: transparent;
-   vertical-align: middle;
-   z-index: 1;
-   -webkit-transition: 0.3s ease-out;
-   transition: 0.3s ease-out;
-}
-
 ul.stepper .step .step-title::after {
    content: attr(data-step-label);
    display: block;
@@ -142,18 +115,6 @@ ul.stepper .step .step-title::after {
    font-size: 0.8rem;
    color: #424242;
    font-weight: 400;
-}
-
-.pl-13 {
-   padding-left: 13px;
-}
-
-.pl-12 {
-   padding-left: 12px;
-}
-
-.pl-11 {
-   padding-left: 11px;
 }
 
 ul.stepper.horizontal .step .step-title::before {
@@ -233,4 +194,19 @@ ul.stepper.horizontal.nav-guided .step.previous-step:not(.prior-step) {
 
 .cursor-pointer {
    cursor: pointer;
+}
+
+.waves-effect {
+   position: relative;
+   display: inline-block;
+   overflow: hidden;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   -webkit-tap-highlight-color: transparent;
+   vertical-align: middle;
+   z-index: 1;
+   -webkit-transition: 0.3s ease-out;
+   transition: 0.3s ease-out;
 }
