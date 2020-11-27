@@ -9,26 +9,36 @@
       <h5 class="header-subtitulo-caixa">Sequencial com navegação livre</h5>
     </div>
     <div class="card-body">
-      <cx-stepper 
-      [navegacaoLivre]="true"
-      [steps]="steps" 
-      [stepAtual]="passoAtual"
-      (changeStep)="mudarPasso($event)">
-    </cx-stepper>
+      
+      <cx-stepper #exemploStepper
+        [navegacaoLivre]="true"
+        [steps]="steps" 
+        [stepAtual]="passoAtual"
+        (changeStep)="mudarPasso($event)">
+      </cx-stepper>
   
-    <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
-      <div *ngIf="passoAtual === i">
-  
-        <h3 class="mb-3">PASSO {{ i + 1 }}</h3>
-  
-        <button *ngIf="i > 0" (click)="passoAtual = i - 1" class="btn btn-light btn-caixa mr-2">
-          VOLTAR
-        </button>
-        <button *ngIf="!last" [ngClass]="{'ml-2': !first}"(click)="passoAtual = i + 1" class="btn btn-primary btn-caixa">
-          AVANÇAR
-        </button>
-      </div>
-    </ng-container>
+      <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
+        <div *ngIf="passoAtual == i">
+    
+          <h3 class="mb-3">PASSO {{ i + 1 }}</h3>
+    
+<!--           <button *ngIf="i > 0" (click)="passoAtual = i - 1" class="btn btn-light btn-caixa mr-2">
+            VOLTAR
+          </button>
+          <button *ngIf="!last" [ngClass]="{'ml-2': !first}"(click)="passoAtual = i + 1" class="btn btn-primary btn-caixa">
+            AVANÇAR
+          </button>
+
+          <br><br> -->
+
+          <button *ngIf="i > 0" (click)="exemploStepper.toPreviousStep()" class="btn btn-light btn-caixa mr-2">
+            VOLTAR
+          </button>
+          <button *ngIf="!last" [ngClass]="{'ml-2': !first}" (click)="exemploStepper.toNextStep()" class="btn btn-primary btn-caixa">
+            AVANÇAR
+          </button>
+        </div>
+      </ng-container>
     </div>
   </div>
 </section>

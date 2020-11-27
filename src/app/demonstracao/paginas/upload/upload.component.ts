@@ -32,11 +32,11 @@ export class UploadComponent implements OnInit {
   passoAtual = 0;
 
   steps = [
-    "Escolha do Tipo de Chave",
-    "Confirmar Solicitação",
-    "Comprovante da Operação",
-    "Escolha do Tipo de Chave",
-    "Escolha do Tipo de Chave"
+    "Um passo aqui",
+    "Um segundo passo agora",
+    "Mais outro passo",
+    "Um quarto passo",
+    "Fim"
   ];
 
   mudarPasso(passo: number) {

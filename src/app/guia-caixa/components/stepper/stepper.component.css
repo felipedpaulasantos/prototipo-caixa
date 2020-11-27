@@ -1,68 +1,69 @@
 @media only screen and (min-width: 520px) {
    .card-content ul.stepper.horizontal {
-       margin-left: -24px;
-       margin-right: -24px;
-       padding-left: 24px;
-       padding-right: 24px;
+      margin-left: -24px;
+      margin-right: -24px;
+      padding-left: 24px;
+      padding-right: 24px;
    }
 
    ul.stepper .step:not(:last-of-type)::after {
-       top: 52px;
-       left: 13.5px;
+      top: 52px;
+      left: 13.5px;
    }
 
    ul.stepper .step .step-title {
-       padding: 15.5px 44px 24px 64px;
+      padding: 15.5px 44px 24px 64px;
    }
 
    ul.stepper.horizontal {
-       position: relative;
-       display: flex;
-       justify-content: space-between;
-       overflow: hidden;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      overflow: hidden;
    }
 
    ul.stepper.horizontal .step {
-       position: static;
-       padding: 0!important;
-       width: 100%;
-       display: flex;
-       align-items: center;
-       height: 84px;
+      position: static;
+      padding: 0 !important;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      height: 84px;
    }
 
-   ul.stepper.horizontal .step.active:not(:last-of-type)::after, ul.stepper.horizontal .step:not(:last-of-type)::after {
-       content: '';
-       position: static;
-       display: inline-block;
-       min-width: 10px;
-       width: 100%;
-       height: 1px;
+   ul.stepper.horizontal .step.active:not(:last-of-type)::after,
+   ul.stepper.horizontal .step:not(:last-of-type)::after {
+      content: "";
+      position: static;
+      display: inline-block;
+      min-width: 10px;
+      width: 100%;
+      height: 1px;
    }
 
    ul.stepper.horizontal .step .step-title {
-       line-height: 84px;
-       height: 84px;
-       margin: 0;
-       padding: 0 4px 0 48px;
-       display: inline-block;
-       max-width: 245px;
-       white-space: nowrap;
-       overflow: hidden;
-       text-overflow: ellipsis;
-       flex-shrink: 0;
+      line-height: 84px;
+      height: 84px;
+      margin: 0;
+      padding: 0 4px 0 48px;
+      display: inline-block;
+      max-width: 245px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-shrink: 0;
    }
 
    ul.stepper.horizontal .step .step-title::after {
-       top: 15px;
+      top: 15px;
    }
 
    ul.stepper.horizontal .step:last-of-type {
-       width: auto!important;
+      width: auto !important;
    }
 
    ul.stepper.horizontal.previous-step {
-       display: flex;
+      display: flex;
    }
 }
 
@@ -87,17 +88,17 @@ ul.stepper .step:not(:last-of-type).active {
    padding-bottom: 36px;
 }
 
-ul.stepper>li:not(:last-of-type) {
+ul.stepper > li:not(:last-of-type) {
    padding-bottom: 10px;
 }
 
 ul.stepper .step {
    position: relative;
-   transition: height .4s cubic-bezier(.4,0,.2,1),padding-bottom .4s cubic-bezier(.4,0,.2,1);
+   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 ul.stepper .step:not(:last-of-type)::after {
-   content: '';
+   content: "";
    position: absolute;
    top: 44px;
    left: 22.5px;
@@ -105,7 +106,7 @@ ul.stepper .step:not(:last-of-type)::after {
    height: 40%;
    height: calc(100% - 52px);
    background-color: gainsboro;
-   transition: height .4s cubic-bezier(.4,0,.2,1);
+   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 ul.stepper .step.active .step-title {
@@ -129,8 +130,8 @@ ul.stepper .step .step-title {
    -webkit-tap-highlight-color: transparent;
    vertical-align: middle;
    z-index: 1;
-   -webkit-transition: .3s ease-out;
-   transition: .3s ease-out;
+   -webkit-transition: 0.3s ease-out;
+   transition: 0.3s ease-out;
 }
 
 ul.stepper .step .step-title::after {
@@ -138,7 +139,7 @@ ul.stepper .step .step-title::after {
    display: block;
    position: absolute;
    font-size: 12.8px;
-   font-size: .8rem;
+   font-size: 0.8rem;
    color: #424242;
    font-weight: 400;
 }
@@ -173,15 +174,15 @@ ul.stepper.horizontal:not(.nav-guided) .step .step-title::before {
    color: #fff;
    background-color: gray;
    font-weight: 400;
-   transition: background-color .4s cubic-bezier(.4,0,.2,1);
+   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-ul.stepper.horizontal.nav-guided .step .step-title:not(.previous-step)::before {
+ul.stepper.horizontal.nav-guided .step:not(.previous-step) .step-title::before {
    color: #fff;
    background-color: gray;
    font-weight: 400;
 }
-ul.stepper.horizontal.nav-guided .step .step-title.previous-step::before {
+ul.stepper.horizontal.nav-guided .step.previous-step .step-title::before {
    content: "\f060";
    font-family: "Font Awesome 5 Free";
    font-weight: 900;
@@ -194,9 +195,9 @@ ul.stepper.horizontal .step .step-title::before {
    content: counter(section);
 }
 
-ul.stepper.horizontal .step .step-title.current-step::before,
-ul.stepper.horizontal.nav-guided .step .step-title.current-step::before {
-   background-color: #005CA9;
+ul.stepper.horizontal .step.current-step .step-title::before,
+ul.stepper.horizontal.nav-guided .step.current-step .step-title::before {
+   background-color: #005ca9;
 }
 
 ul.stepper.horizontal .step.previous-step .step-title::before {
@@ -204,8 +205,8 @@ ul.stepper.horizontal .step.previous-step .step-title::before {
    line-height: 27px;
 }
 
-ul.stepper.horizontal .step .step-title.last-step::before,
-ul.stepper.horizontal.nav-guided .step .step-title.last-step::before {
+ul.stepper.horizontal .step.last-step .step-title::before,
+ul.stepper.horizontal.nav-guided .step.last-step .step-title::before {
    background-color: #008254;
 }
 
