@@ -1,6 +1,6 @@
 <div class="stepper-wrapper">
    <ul class="stepper horizontal" [ngClass]="{
-      'previous-step': stepAtual === (steps.length - 1), 'nav-guided': !isNavFree
+      'previous-step': stepAtual === (steps.length - 1), 'nav-guided': !navegacaoLivre
    }">
       <li [title]="step" class="step" *ngFor="let step of steps; let index = index; let last = last" [ngClass]="{
          'current-step': stepAtual === index, 

@@ -8,7 +8,7 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 export class StepperComponent implements OnChanges {
 
     @Input()
-    isNavFree = false;
+    navegacaoLivre = true;
 
     @Input()
     steps: string[] = [];

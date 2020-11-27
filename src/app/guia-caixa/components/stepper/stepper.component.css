@@ -143,16 +143,6 @@ ul.stepper .step .step-title::after {
    font-weight: 400;
 }
 
-.step-icons {
-   display: inline-grid;
-   background-color: gray;
-   color: white;
-   border-radius: 50%;
-   width: 35px;
-   height: 35px;
-   padding-top: 9px;
-}
-
 .pl-13 {
    padding-left: 13px;
 }
@@ -169,13 +159,9 @@ ul.stepper.horizontal .step .step-title::before {
    position: absolute;
    height: 35px;
    width: 35px;
-   color: #fff;
-   background-color: gray;
    border-radius: 50%;
    text-align: center;
    line-height: 33px;
-   font-weight: 400;
-   transition: background-color .4s cubic-bezier(.4,0,.2,1);
    font-size: 17px;
    left: 1px;
    top: 26.5px;
@@ -183,12 +169,33 @@ ul.stepper.horizontal .step .step-title::before {
    margin-right: 1px;
 }
 
+ul.stepper.horizontal:not(.nav-guided) .step .step-title::before {
+   color: #fff;
+   background-color: gray;
+   font-weight: 400;
+   transition: background-color .4s cubic-bezier(.4,0,.2,1);
+}
+
+ul.stepper.horizontal.nav-guided .step .step-title:not(.previous-step)::before {
+   color: #fff;
+   background-color: gray;
+   font-weight: 400;
+}
+ul.stepper.horizontal.nav-guided .step .step-title.previous-step::before {
+   content: "\f060";
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   background-color: transparent;
+   color: #008254;
+}
+
 ul.stepper.horizontal .step .step-title::before {
    counter-increment: section;
    content: counter(section);
 }
 
-ul.stepper.horizontal .step .step-title.current-step::before {
+ul.stepper.horizontal .step .step-title.current-step::before,
+ul.stepper.horizontal.nav-guided .step .step-title.current-step::before {
    background-color: #005CA9;
 }
 
@@ -197,7 +204,8 @@ ul.stepper.horizontal .step.previous-step .step-title::before {
    line-height: 27px;
 }
 
-ul.stepper.horizontal .step .step-title.last-step::before {
+ul.stepper.horizontal .step .step-title.last-step::before,
+ul.stepper.horizontal.nav-guided .step .step-title.last-step::before {
    background-color: #008254;
 }
 
@@ -218,17 +226,12 @@ ul.stepper.horizontal.previous-step .step {
 }
 
 /* NAV GUIDED */
-ul.nav-guided li.prior-step {
+
+ul.stepper.horizontal.nav-guided .step.prior-step {
    visibility: visible;
 }
-ul.nav-guided li.prior-step div:before{
-   content: "\f060" !important;
-   font-family: "Font Awesome 5 Free" !important;
-   font-weight: 900 !important;
-   background-color: transparent !important;
-   color: #008254 !important;
-}
-ul.nav-guided li.previous-step:not(.prior-step) {
+
+ul.stepper.horizontal.nav-guided .step.previous-step:not(.prior-step) {
    visibility: hidden !important;
    width: 0 !important;
 }

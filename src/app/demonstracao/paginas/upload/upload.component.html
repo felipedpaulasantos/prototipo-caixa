@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
       <cx-stepper 
-      [isNavFree]="true"
+      [navegacaoLivre]="true"
       [steps]="steps" 
       [stepAtual]="passoAtual"
       (changeStep)="mudarPasso($event)">
@@ -41,7 +41,7 @@
     </div>
     <div class="card-body">
       <cx-stepper 
-      [isNavFree]="false"
+      [navegacaoLivre]="false"
       [steps]="steps" 
       [stepAtual]="passoAtual"
       (changeStep)="mudarPasso($event)">
