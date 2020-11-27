@@ -3,7 +3,104 @@
 </h1>
 <hr class="header-line-caixa">
 
-<ng-container>
+<section class="mb-5">
+  <div class="card card-caixa">
+    <div class="card-header">
+      <h5 class="header-subtitulo-caixa">Sequencial com navegação livre</h5>
+    </div>
+    <div class="card-body">
+      <cx-stepper 
+      [isNavFree]="true"
+      [steps]="steps" 
+      [stepAtual]="passoAtual"
+      (changeStep)="mudarPasso($event)">
+    </cx-stepper>
+  
+    <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
+      <div *ngIf="passoAtual === i">
+  
+        <h3 class="mb-3">PASSO {{ i + 1 }}</h3>
+  
+        <button *ngIf="i > 0" (click)="passoAtual = i - 1" class="btn btn-light btn-caixa mr-2">
+          VOLTAR
+        </button>
+        <button *ngIf="!last" [ngClass]="{'ml-2': !first}"(click)="passoAtual = i + 1" class="btn btn-primary btn-caixa">
+          AVANÇAR
+        </button>
+      </div>
+    </ng-container>
+    </div>
+  </div>
+</section>
+
+
+<section class="mb-5">
+  <div class="card card-caixa">
+    <div class="card-header">
+      <h5 class="header-subtitulo-caixa">Sequencial com navegação guiada</h5>
+    </div>
+    <div class="card-body">
+      <cx-stepper 
+      [isNavFree]="false"
+      [steps]="steps" 
+      [stepAtual]="passoAtual"
+      (changeStep)="mudarPasso($event)">
+    </cx-stepper>
+  
+    <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
+      <div *ngIf="passoAtual === i">
+  
+        <h3 class="mb-3">PASSO {{ i + 1 }}</h3>
+  
+        <button *ngIf="i > 0" (click)="passoAtual = i - 1" class="btn btn-light btn-caixa mr-2">
+          VOLTAR
+        </button>
+        <button *ngIf="!last" [ngClass]="{'ml-2': !first}"(click)="passoAtual = i + 1" class="btn btn-primary btn-caixa">
+          AVANÇAR
+        </button>
+      </div>
+    </ng-container>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-container *ngIf="false">
    <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
      <div class="row">
        <div class="col-12 col-md-5 col-lg-4">
@@ -204,3 +301,4 @@
      </section>
    </ng-container>
  </ng-container>
+

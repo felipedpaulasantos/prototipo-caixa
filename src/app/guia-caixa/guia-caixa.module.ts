@@ -8,6 +8,7 @@ import { SpinnerCaixaComponent } from './components/spinner/spinner.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CardCaixaComponent } from './components/card-caixa/card-caixa.component';
+import { StepperComponent } from './components/stepper/stepper.component';
 
 
 
@@ -19,7 +20,8 @@ import { CardCaixaComponent } from './components/card-caixa/card-caixa.component
     SelectCaixaComponent,
     SpinnerCaixaComponent,
 		ModalComponent,
-		CardCaixaComponent
+		CardCaixaComponent,
+		StepperComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { CardCaixaComponent } from './components/card-caixa/card-caixa.component
     SelectCaixaComponent,
     SpinnerCaixaComponent,
     ModalComponent,
-    CardCaixaComponent
+    CardCaixaComponent,
+    StepperComponent
   ]
 })
 export class GuiaCaixaModule { }

@@ -29,6 +29,16 @@ export class UploadComponent implements OnInit {
 
   contratos = [];
 
+  passoAtual = 0;
+
+  steps = [
+    "Escolha do Tipo de Chave", "Confirmar Solicitação", "Comprovante da Operação", "Escolha do Tipo de Chave", "Escolha do Tipo de Chave"
+  ];
+
+  mudarPasso(passo: number) {
+    this.passoAtual = passo;
+  }
+
   ngOnInit(): void {
     this.clientePesquisado();
     this.populaContratos();
