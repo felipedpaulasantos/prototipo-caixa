@@ -1,0 +1,212 @@
+@media only screen and (min-width: 520px) {
+   .stepper-wrapper {
+      max-height: 84px;
+   }
+
+   ul.stepper .step:not(:last-of-type)::after {
+      top: 52px;
+      left: 13.5px;
+   }
+
+   ul.stepper .step .step-title {
+      padding: 15.5px 44px 24px 64px;
+   }
+
+   ul.stepper.horizontal {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      overflow: hidden;
+   }
+
+   ul.stepper.horizontal .step {
+      position: static;
+      padding: 0 !important;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      height: 84px;
+   }
+
+   ul.stepper.horizontal .step.active:not(:last-of-type)::after,
+   ul.stepper.horizontal .step:not(:last-of-type)::after {
+      content: "";
+      position: static;
+      display: inline-block;
+      min-width: 10px;
+      width: 100%;
+      height: 1px;
+   }
+
+   ul.stepper.horizontal .step .step-title {
+      line-height: 84px;
+      height: 84px;
+      margin: 0;
+      padding: 0 4px 0 48px;
+      display: inline-block;
+      max-width: 245px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-shrink: 0;
+   }
+
+   ul.stepper.horizontal .step .step-title::after {
+      top: 15px;
+   }
+
+   ul.stepper.horizontal .step:last-of-type {
+      width: auto !important;
+   }
+
+   ul.stepper.horizontal.previous-step {
+      display: flex;
+   }
+}
+
+ul.stepper {
+   counter-reset: section;
+   overflow-y: auto;
+   overflow-x: hidden;
+   padding: 0;
+   margin: 0;
+}
+
+ul.stepper .step:not(:last-of-type).active {
+   padding-bottom: 36px;
+}
+
+ul.stepper > li:not(:last-of-type) {
+   padding-bottom: 10px;
+}
+
+ul.stepper .step {
+   position: relative;
+   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+ul.stepper .step:not(:last-of-type)::after {
+   content: "";
+   position: absolute;
+   top: 44px;
+   left: 22.5px;
+   width: 1px;
+   height: 40%;
+   height: calc(100% - 52px);
+   background-color: gainsboro;
+   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+ul.stepper .step.active .step-title {
+   font-weight: 500;
+}
+
+ul.stepper .step .step-title {
+   margin: 0 -24px;
+   padding: 0px 10px 0px 30px;
+   display: block;
+}
+
+ul.stepper .step .step-title::after {
+   content: attr(data-step-label);
+   display: block;
+   position: absolute;
+   font-size: 12.8px;
+   font-size: 0.8rem;
+   color: #424242;
+   font-weight: 400;
+}
+
+ul.stepper.horizontal .step .step-title::before {
+   position: absolute;
+   height: 35px;
+   width: 35px;
+   border-radius: 50%;
+   text-align: center;
+   line-height: 33px;
+   font-size: 17px;
+   left: 1px;
+   top: 26.5px;
+   left: 9px;
+   margin-right: 1px;
+}
+
+ul.stepper.horizontal:not(.nav-guided) .step .step-title::before {
+   color: #fff;
+   background-color: gray;
+   font-weight: 400;
+   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+ul.stepper.horizontal.nav-guided .step:not(.previous-step) .step-title::before {
+   color: #fff;
+   background-color: gray;
+   font-weight: 400;
+}
+ul.stepper.horizontal.nav-guided .step.previous-step .step-title::before {
+   content: "\f060";
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   background-color: transparent;
+   color: #008254;
+}
+
+ul.stepper.horizontal .step .step-title::before {
+   counter-increment: section;
+   content: counter(section);
+}
+
+ul.stepper.horizontal .step.current-step .step-title::before,
+ul.stepper.horizontal.nav-guided .step.current-step .step-title::before {
+   background-color: #005ca9;
+}
+
+ul.stepper.horizontal .step.previous-step .step-title::before {
+   border: 3px #008254 solid;
+   line-height: 27px;
+}
+
+ul.stepper.horizontal .step.last-step .step-title::before,
+ul.stepper.horizontal.nav-guided .step.last-step .step-title::before {
+   background-color: #008254;
+}
+
+ul.stepper.horizontal .step.previous-step {
+   width: 90px;
+}
+
+ul.stepper.horizontal.previous-step {
+   display: inline-flex;
+}
+
+ul.stepper.horizontal.previous-step .step {
+   width: 68px;
+}
+
+ul.stepper.horizontal.nav-guided .step.prior-step {
+   visibility: visible;
+}
+
+ul.stepper.horizontal.nav-guided .step.previous-step:not(.prior-step) {
+   visibility: hidden !important;
+   width: 0 !important;
+}
+
+.cursor-pointer {
+   cursor: pointer;
+}
+
+.waves-effect {
+   position: relative;
+   display: inline-block;
+   overflow: hidden;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   -webkit-tap-highlight-color: transparent;
+   vertical-align: middle;
+   z-index: 1;
+   -webkit-transition: 0.3s ease-out;
+   transition: 0.3s ease-out;
+}

@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { TabberItem } from 'src/app/guia-caixa/components/tabber/tabber.component';
 import { ModalService } from 'src/app/guia-caixa/services/modal.service';
 
 @Component({
@@ -28,6 +29,32 @@ export class UploadComponent implements OnInit {
   uploadedFile: File = null;
 
   contratos = [];
+
+  passoAtual = 0;
+  steps = [
+    "Um passo aqui",
+    "Um segundo passo agora",
+    "Mais outro passo",
+    "Um quarto passo",
+    "Fim"
+  ];
+
+  currentTab = 0;
+  tabs: TabberItem[] = [
+    { name: "Home", icon: "fa fa-home" },
+    { name: "Componentes", icon: "fa fa-toolbox" },
+    { name: "Tipografia", icon: "fa fa-font" },
+    { name: "Cores", icon: "fa fa-palette" },
+    { name: "Configurações", icon: "fa fa-wrench" }
+  ];
+
+  mudarPasso(passo: number) {
+    this.passoAtual = passo;
+  }
+
+  mudarTab(tab: number) {
+    this.currentTab = tab;
+  }
 
   ngOnInit(): void {
     this.clientePesquisado();

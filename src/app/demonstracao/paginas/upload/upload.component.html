@@ -3,7 +3,131 @@
 </h1>
 <hr class="header-line-caixa">
 
-<ng-container>
+<section id="tabber" class="mb-5">
+  <div class="card card-caixa">
+    <div class="card-header">
+      <h5 class="header-subtitulo-caixa">Tabber</h5>
+    </div>
+    <div class="card-body">
+      
+      <cx-tabber
+        [tabs]="tabs"
+        [currentTab]="currentTab"
+        (changeTab)="mudarTab($event)"
+      ></cx-tabber>
+  
+      <ng-container *ngFor="let tab of tabs; let i = index; let last = last; let first = first">
+        <div *ngIf="currentTab == i">
+    
+          <h3 class="mb-3">{{ tab.name }}</h3>
+          <button *ngIf="i > 0" (click)="currentTab = i - 1" class="btn btn-light btn-caixa mr-2">
+            VOLTAR
+          </button>
+          <button *ngIf="!last" (click)="currentTab = i + 1" [ngClass]="{'ml-2': !first}" class="btn btn-primary btn-caixa">
+            AVANÇAR
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+
+<section id="stepperLivre" class="mb-5">
+  <div class="card card-caixa">
+    <div class="card-header">
+      <h5 class="header-subtitulo-caixa">Sequencial com navegação livre</h5>
+    </div>
+    <div class="card-body">
+      
+      <cx-stepper #exemploStepper
+        [freeNavigation]="true"
+        [steps]="steps" 
+        [currentStep]="passoAtual"
+        (changeStep)="mudarPasso($event)">
+      </cx-stepper>
+  
+      <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
+        <div *ngIf="passoAtual == i">
+    
+          <h3 class="mb-3">PASSO {{ i + 1 }}</h3>
+          <button *ngIf="i > 0" (click)="exemploStepper.toPreviousStep()" class="btn btn-light btn-caixa mr-2">
+            VOLTAR
+          </button>
+          <button *ngIf="!last" [ngClass]="{'ml-2': !first}" (click)="exemploStepper.toNextStep()" class="btn btn-primary btn-caixa">
+            AVANÇAR
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+
+<section id="stepperGuiado" class="mb-5">
+  <div class="card card-caixa">
+    <div class="card-header">
+      <h5 class="header-subtitulo-caixa">Sequencial com navegação guiada</h5>
+    </div>
+    <div class="card-body">
+      <cx-stepper 
+      [freeNavigation]="false"
+      [steps]="steps" 
+      [currentStep]="passoAtual"
+      (changeStep)="mudarPasso($event)">
+    </cx-stepper>
+  
+    <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
+      <div *ngIf="passoAtual === i">
+  
+        <h3 class="mb-3">PASSO {{ i + 1 }}</h3>
+        <button *ngIf="i > 0" (click)="passoAtual = i - 1" class="btn btn-light btn-caixa mr-2">
+          VOLTAR
+        </button>
+        <button *ngIf="!last" [ngClass]="{'ml-2': !first}"(click)="passoAtual = i + 1" class="btn btn-primary btn-caixa">
+          AVANÇAR
+        </button>
+      </div>
+    </ng-container>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-container *ngIf="false">
    <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
      <div class="row">
        <div class="col-12 col-md-5 col-lg-4">
@@ -204,3 +328,4 @@
      </section>
    </ng-container>
  </ng-container>
+

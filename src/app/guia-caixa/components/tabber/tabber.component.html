@@ -1,0 +1,17 @@
+<div class="tabber-wrapper">
+   <ul class="tabber horizontal">
+      <li [title]="tab.name" class="tab" *ngFor="let tab of tabs; let index = index; let last = last" 
+      [ngClass]="{
+         'current-tab': currentTab == index, 
+         'cursor-pointer': currentTab != index
+      }">
+         <div class="tab-title waves-effect" (click)="toTabByIndex(index)">
+            <div class="tab-icon">
+               <i *ngIf="currentTab == index" class="fa fa-check"></i>
+               <i *ngIf="currentTab != index" class="{{ tab.icon }}"></i>
+            </div>
+            <span>{{ tab.name }}</span>
+         </div>
+      </li>
+   </ul>
+</div>
