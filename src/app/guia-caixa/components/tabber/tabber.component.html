@@ -1,5 +1,8 @@
-<div class="tabber-wrapper">
-   <ul class="tabber horizontal">
+<div class="tabber-wrapper" [ngClass]="{'horizontal': orientation == 0,'vertical': orientation == 1}">
+   <ul class="tabber" [ngClass]="{
+      'horizontal': orientation == 0, 
+      'vertical': orientation == 1
+   }">
       <li [title]="tab.name" class="tab" *ngFor="let tab of tabs; let index = index; let last = last" [ngClass]="{
          'current-tab': currentTab == index, 
          'cursor-pointer': currentTab != index
@@ -21,7 +24,7 @@
  -->
 <ng-container *ngIf="contentInside">
    <ng-container *ngFor="let template of templates; let i = index">
-      <ng-container *ngIf="currentTab == i">
+      <ng-container *ngIf="currentTab == i && i < MAXIMUM_TABS">
          <ng-container [ngTemplateOutlet]="template"></ng-container>
       </ng-container>
    </ng-container>

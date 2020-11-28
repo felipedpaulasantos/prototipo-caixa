@@ -7,6 +7,7 @@ import { MensagensComponent } from './mensagens/mensagens.component';
 import { TabelasComponent } from './tabelas/tabelas.component';
 import { InputsComponent } from './inputs/inputs.component';
 import { SelectComponent } from './select/select.component';
+import { TabberDemonstracaoComponent } from './tabber-demonstracao/tabber-demonstracao.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,15 @@ const routes: Routes = [
       title: "Select",
       breadcrumb: "Select",
       animation: "Select"
+    }
+  },
+  {
+    path: "tabber",
+    component: TabberDemonstracaoComponent,
+    data: {
+      title: "Tabber",
+      breadcrumb: "Tabber",
+      animation: "Tabber"
     }
   },
   {

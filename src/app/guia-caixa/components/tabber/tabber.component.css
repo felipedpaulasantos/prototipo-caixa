@@ -1,6 +1,10 @@
 @media only screen and (min-width: 520px) {
-   .tabber-wrapper {
+   .tabber-wrapper.horizontal {
       max-height: 84px;
+   }
+
+   .tabber-wrapper.vertical {
+      max-width: 100%;
    }
 
    ul.tabber .tab:not(:last-of-type)::after {
@@ -12,11 +16,19 @@
       padding: 15.5px 44px 24px 64px;
    }
 
-   ul.tabber.horizontal {
+   ul.tabber {
       position: relative;
       display: flex;
       justify-content: space-between;
       overflow: hidden;
+   }
+
+   ul.tabber.vertical {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      overflow: hidden;
+      flex-direction: column;
    }
 
    ul.tabber.horizontal .tab {
@@ -38,7 +50,16 @@
       height: 1px;
    }
 
-   ul.tabber.horizontal .tab .tab-title {
+   ul.tabber.vertical .tab.active:not(:last-of-type)::after,
+   ul.tabber.vertical .tab:not(:last-of-type)::after {
+      content: "";
+      display: inline-block;
+      width: 2px;
+      height: 100%;
+   }
+
+   ul.tabber.horizontal .tab .tab-title,
+   ul.tabber.vertical .tab .tab-title {
       line-height: 84px;
       height: 84px;
       margin: 0;
@@ -51,15 +72,18 @@
       flex-shrink: 0;
    }
 
-   ul.tabber.horizontal .tab .tab-title::after {
+   ul.tabber.horizontal .tab .tab-title::after,
+   ul.tabber.vertical .tab .tab-title::after {
       top: 15px;
    }
 
-   ul.tabber.horizontal .tab:last-of-type {
+   ul.tabber.horizontal .tab:last-of-type,
+   ul.tabber.vertical .tab:last-of-type {
       width: auto !important;
    }
 
-   ul.tabber.horizontal.previous-tab {
+   ul.tabber.horizontal.previous-tab,
+   ul.tabber.vertical.previous-tab {
       display: flex;
    }
 }
@@ -117,33 +141,15 @@ ul.tabber .tab .tab-title::after {
    font-weight: 400;
 }
 
-/* ul.tabber.horizontal .tab .tab-title::before {
-   position: absolute;
-   height: 35px;
-   width: 35px;
-   border-radius: 50%;
-   text-align: center;
-   line-height: 33px;
-   font-size: 17px;
-   left: 1px;
-   top: 26.5px;
-   left: 9px;
-   margin-right: 1px;
-} */
 
-/* ul.tabber.horizontal:not(.nav-guided) .tab .tab-title::before {
-   color: #fff;
-   background-color: gray;
-   font-weight: 400;
-   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-} */
-
-ul.tabber.horizontal.nav-guided .tab:not(.previous-tab) .tab-title::before {
+ul.tabber.horizontal.nav-guided .tab:not(.previous-tab) .tab-title::before,
+ul.tabber.vertical.nav-guided .tab:not(.previous-tab) .tab-title::before {
    color: #fff;
    background-color: gray;
    font-weight: 400;
 }
-ul.tabber.horizontal.nav-guided .tab.previous-tab .tab-title::before {
+ul.tabber.horizontal.nav-guided .tab.previous-tab .tab-title::before,
+ul.tabber.vertical.nav-guided .tab.previous-tab .tab-title::before {
    content: "\f060";
    font-family: "Font Awesome 5 Free";
    font-weight: 900;
@@ -156,28 +162,34 @@ ul.tabber.horizontal.nav-guided .tab.previous-tab .tab-title::before {
    content: "";
 } */
 
-ul.tabber.horizontal .tab.current-tab .tab-icon {
+ul.tabber.horizontal .tab.current-tab .tab-icon,
+ul.tabber.vertical .tab.current-tab .tab-icon {
    background-color: #005ca9;
 }
 
-ul.tabber.horizontal .tab.previous-tab .tab-icon {
+ul.tabber.horizontal .tab.previous-tab .tab-icon,
+ul.tabber.vertical .tab.previous-tab .tab-icon {
    border: 3px grey solid;
    line-height: 27px;
 }
 
-ul.tabber.horizontal .tab.last-tab .tab-icon {
+ul.tabber.horizontal .tab.last-tab .tab-icon,
+ul.tabber.vertical .tab.last-tab .tab-icon {
    background-color: grey;
 }
 
-ul.tabber.horizontal .tab.previous-tab {
+ul.tabber.horizontal .tab.previous-tab,
+ul.tabber.vertical .tab.previous-tab {
    width: 90px;
 }
 
-ul.tabber.horizontal.previous-tab {
+ul.tabber.horizontal.previous-tab,
+ul.tabber.vertical.previous-tab {
    display: inline-flex;
 }
 
-ul.tabber.horizontal.previous-tab .tab {
+ul.tabber.horizontal.previous-tab .tab,
+ul.tabber.vertical.previous-tab .tab {
    width: 68px;
 }
 

@@ -58,6 +58,13 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         enabled: true
       },
       {
+        name: 'Tabber',
+        iconClass: 'fa fa-lg fa-ellipsis-h',
+        url: '/componentes/tabber',
+        isLink: true,
+        enabled: true
+      },
+      {
         name: 'Tabelas',
         iconClass: 'fa fa-lg fa-table',
         url: '/componentes/tabelas',

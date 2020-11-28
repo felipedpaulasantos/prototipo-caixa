@@ -16,6 +16,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DocumentacaoTemplateComponent } from './documentacao-template/documentacao-template.component';
 import { SelectComponent } from './select/select.component';
 import { GuiaCaixaModule } from 'src/app/guia-caixa/guia-caixa.module';
+import { TabberDemonstracaoComponent } from './tabber-demonstracao/tabber-demonstracao.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { GuiaCaixaModule } from 'src/app/guia-caixa/guia-caixa.module';
     InputsComponent,
     TabelasComponent,
     DocumentacaoTemplateComponent,
-    SelectComponent
+    SelectComponent,
+    TabberDemonstracaoComponent
   ],
   exports: [
     CardsComponent,

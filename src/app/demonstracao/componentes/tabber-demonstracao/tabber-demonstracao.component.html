@@ -1,0 +1,71 @@
+<h1 class="header-principal-caixa">
+	Tabber
+</h1>
+<hr class="header-line-caixa">
+
+<ul class="nav nav-pills border-bottom tab-caixa" role="tablist">
+  <li class="nav-item">
+    <a cx-ripple class="nav-link text-uppercase active" data-toggle="tab" href="#visaoGeral" role="tab">
+      Visão Geral
+    </a>
+	</li>
+	<li class="nav-item">
+    <a cx-ripple class="nav-link text-uppercase" data-toggle="tab" href="#api" role="tab">
+      API
+    </a>
+  </li>
+  <li class="nav-item">
+    <a cx-ripple class="nav-link text-uppercase" data-toggle="tab" href="#exemplos" role="tab">
+      Exemplos
+    </a>
+  </li>
+</ul>
+
+<br>
+
+<div class="tab-content">
+	<div class="tab-pane fade show active" id="visaoGeral" role="tabpanel">
+		<div class="row no-gutters">
+			<section #scrollElement class="col-12 col-xl-9 pr-2">
+		
+				<app-documentacao-template id="painelTabberPadrao" 
+				[cardTitle]="'Input básico'" 
+				[codeViewId]="'viewInputBasico'"
+				[htmlTabId]="'htmlCodeInputBasico'" 
+				[htmlCode]="htmlCodeInputBasico">
+					<div class="descricao">
+						A diretiva <span class="border px-1">inputCaixa</span> utilizada em conjunto com o componente
+						<span class="border px-1">&#60;cx-input></span> permite a estilização e validação automática do campo.
+					</div>
+		
+					<div class="conteudo">
+						<div class="row">
+							<div class="col-12 col-md-6 col-lg-6">
+								<form>
+									<cx-input>
+										<label>Nome</label>
+										<input inputCaixa placeholder="Digite seu nome aqui..." value="José da Silva">
+									</cx-input>
+								</form>
+							</div>
+						</div> <!-- Row -->
+					</div>
+				</app-documentacao-template>		
+			</section>
+		
+			<nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
+				<div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
+					<a (click)="scrollTo('painelInputBasico')" class="list-group-item list-group-item-action"
+						[ngClass]="{'active': currentSection == 'painelInputBasico'}" role="button">
+						Inputs básicos</a>
+					<a (click)="scrollTo('painelValidadores')" class="list-group-item list-group-item-action"
+						[ngClass]="{'active': currentSection == 'painelValidadores'}" role="button">
+						Validação</a>
+					<a (click)="scrollTo('painelCustomValidadores')" class="list-group-item list-group-item-action"
+						[ngClass]="{'active': currentSection == 'painelCustomValidadores'}" role="button">
+						Validação Customizada</a>
+				</div>
+			</nav>
+		</div>
+	</div>
+</div>

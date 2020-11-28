@@ -1,14 +1,26 @@
-import { Component, OnInit, ChangeDetectionStrategy, EventEmitter, Input, Output, ContentChildren, TemplateRef } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output, ContentChildren,
+  TemplateRef, SimpleChanges, OnChanges, ChangeDetectionStrategy, ChangeDetectorRef, AfterContentInit } from '@angular/core';
 import { TabberDirective } from './tabber-directive';
 import { TabberItem } from './tabber-item';
+
+export enum TabberOrientation {
+  Horizontal = 0,
+  Vertical = 1
+}
 
 /** @class Componente Tabber para organizar conteúdo dinâmico ou estático em abas */
 @Component({
   selector: 'cx-tabber',
   templateUrl: './tabber.component.html',
-  styleUrls: ['./tabber.component.css']
+  styleUrls: ['./tabber.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TabberComponent implements OnInit {
+export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
+
+  /**
+   * Quantidada máxima de abas permitida
+  */
+  readonly MAXIMUM_TABS = 7;
 
   /**
    * Mapeia as templates dinâmicas com a diretiva *tabber, caso seja usada a variante de comportamento contentInside;
@@ -22,6 +34,13 @@ export class TabberComponent implements OnInit {
   */
   @Input()
   contentInside = false;
+
+  /**
+   * Orientação das abas, podendo ser horizontal ou vertical.
+   * @param {TabberOrientation} orientation Enum com valores Horizontal e Vertical.
+  */
+  @Input()
+  orientation = TabberOrientation.Horizontal;
 
   /**
    * Lista das abas, com sua descrição e ícone.
@@ -44,9 +63,31 @@ export class TabberComponent implements OnInit {
   @Output()
   changeTab: EventEmitter<number> = new EventEmitter();
 
-  constructor() { }
+  constructor(private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit(): void { }
+
+  /**
+    Adotando a estratégia OnPush para melhor performance,
+    valida-se o valor informado para a propriedade tabs
+    e apenas atualiza a view caso o valor seja válido
+  */
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['tabs']) {
+      const newTabs: any[] = changes['tabs'].currentValue;
+      if (newTabs.length > this.MAXIMUM_TABS) {
+        this.tabs = newTabs.slice(0, this.MAXIMUM_TABS);
+        this.changeDetector.detectChanges();
+      }
+    }
+  }
+
+  /**
+   * Inicializa os templates
+  */
+  ngAfterContentInit(): void {
+    this.changeDetector.detectChanges();
+  }
 
   /**
    * Salta para a aba de index indicado
@@ -56,6 +97,7 @@ export class TabberComponent implements OnInit {
     if (index != null && index != undefined && index < this.tabs.length) {
       this.currentTab = index;
       this.changeTab.emit(index);
+      this.changeDetector.detectChanges();
     }
   }
 
@@ -66,6 +108,7 @@ export class TabberComponent implements OnInit {
     if ((this.currentTab + 1) < this.tabs.length) {
       this.currentTab += 1;
       this.changeTab.emit(this.currentTab);
+      this.changeDetector.detectChanges();
     }
   }
 
@@ -76,6 +119,7 @@ export class TabberComponent implements OnInit {
     if ((this.currentTab - 1) >= 0) {
       this.currentTab -= 1;
       this.changeTab.emit(this.currentTab);
+      this.changeDetector.detectChanges();
     }
   }
 
@@ -85,6 +129,7 @@ export class TabberComponent implements OnInit {
   first(): void {
     this.currentTab = 0;
     this.changeTab.emit(this.currentTab);
+    this.changeDetector.detectChanges();
   }
 
   /**
@@ -93,6 +138,7 @@ export class TabberComponent implements OnInit {
   last(): void {
     this.currentTab = this.tabs.length - 1;
     this.changeTab.emit(this.currentTab);
+    this.changeDetector.detectChanges();
   }
 
 }

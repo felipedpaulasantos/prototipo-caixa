@@ -6,14 +6,14 @@
 <section id="tabber" class="mb-5">
   <div class="card card-caixa">
     <div class="card-header">
-      <h5 class="header-subtitulo-caixa">Tabber - Conteúdo interior</h5>
+      <h5 class="header-subtitulo-caixa">Tabber - Conteúdo interno</h5>
     </div>
     <div class="card-body">
       
       <cx-tabber [tabs]="tabs" [contentInside]="true" #tabberContentInside>
         <ng-container *ngFor="let tab of tabs; let i = index; let last = last; let first = first">
           <ng-container *tabber>
-            <h1 class="text-center my-3">{{ tab.name }} interior!</h1>
+            <h1 class="text-center my-3">{{ tab.name }} interno!</h1>
 
             <button title="Primeiro" class="btn btn-dark btn-caixa mr-2"
             [disabled]="first" (click)="tabberContentInside.first()">
@@ -42,29 +42,35 @@
 <section id="tabber" class="mb-5">
   <div class="card card-caixa">
     <div class="card-header">
-      <h5 class="header-subtitulo-caixa">Tabber</h5>
+      <h5 class="header-subtitulo-caixa">Tabber - Conteúdo externo</h5>
     </div>
     <div class="card-body">
-      
-      <cx-tabber
-        [tabs]="tabs"
-        [currentTab]="currentTab"
-        (changeTab)="mudarTab($event)"
-      ></cx-tabber>
-  
-      <ng-container *ngFor="let tab of tabs; let i = index; let last = last; let first = first">
-        <div *ngIf="currentTab == i">
-          <h3 class="mb-3">{{ tab.name }}</h3>
 
-          <button [disabled]="i <= 0" (click)="currentTab = i - 1" class="btn btn-light btn-caixa mr-2">
-            VOLTAR
-          </button>
-
-          <button [disabled]="last" (click)="currentTab = i + 1" class="btn btn-primary btn-caixa">
-            AVANÇAR
-          </button>
+      <div class="row">
+        <div class="col">
+          <ng-container *ngFor="let tab of tabs; let i = index; let last = last; let first = first">
+            <div *ngIf="currentTab == i">
+              <h1 class="text-center my-3">{{ tab.name }}</h1>
+    
+              <button [disabled]="i <= 0" (click)="currentTab = i - 1" class="btn btn-light btn-caixa mr-2">
+                VOLTAR
+              </button>
+    
+              <button [disabled]="last" (click)="currentTab = i + 1" class="btn btn-primary btn-caixa">
+                AVANÇAR
+              </button>
+            </div>
+          </ng-container>
         </div>
-      </ng-container>
+        <div class="col-2">
+          <cx-tabber
+            [tabs]="tabs"
+            [currentTab]="currentTab"
+            [orientation]="1"
+            (changeTab)="mudarTab($event)"
+          ></cx-tabber>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -72,7 +78,7 @@
 <section id="stepperLivre" class="mb-5">
   <div class="card card-caixa">
     <div class="card-header">
-      <h5 class="header-subtitulo-caixa">Sequencial com navegação livre</h5>
+      <h5 class="header-subtitulo-caixa">Stepper - Sequencial com navegação livre</h5>
     </div>
     <div class="card-body">
       
@@ -86,7 +92,8 @@
       <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
         <div *ngIf="passoAtual == i">
     
-          <h3 class="mb-3">PASSO {{ i + 1 }}</h3>
+          <h1 class="text-center my-3">PASSO {{ i + 1 }}</h1>
+
           <button [disabled]="i <= 0" (click)="exemploStepper.toPreviousStep()" class="btn btn-light btn-caixa mr-2">
             VOLTAR
           </button>
@@ -102,7 +109,7 @@
 <section id="stepperGuiado" class="mb-5">
   <div class="card card-caixa">
     <div class="card-header">
-      <h5 class="header-subtitulo-caixa">Sequencial com navegação guiada</h5>
+      <h5 class="header-subtitulo-caixa">Stepper - Sequencial com navegação guiada</h5>
     </div>
     <div class="card-body">
       <cx-stepper 
@@ -115,10 +122,12 @@
     <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
       <div *ngIf="passoAtual === i">
   
-        <h3 class="mb-3">PASSO {{ i + 1 }}</h3>
+        <h1 class="text-center my-3">PASSO {{ i + 1 }}</h1>
+
         <button [disabled]="i <= 0" (click)="passoAtual = i - 1" class="btn btn-light btn-caixa mr-2">
           VOLTAR
         </button>
+
         <button [disabled]="last" (click)="passoAtual = i + 1" class="btn btn-primary btn-caixa">
           AVANÇAR
         </button>
