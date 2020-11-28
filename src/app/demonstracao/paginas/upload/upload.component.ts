@@ -3,8 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { TabberItem } from 'src/app/guia-caixa/components/tabber/tabber.component';
-import { ModalService } from 'src/app/guia-caixa/services/modal.service';
+import { TabberItem } from 'src/app/guia-caixa/components/tabber/tabber-item';
 
 @Component({
   templateUrl: './upload.component.html',
@@ -45,7 +44,9 @@ export class UploadComponent implements OnInit {
     { name: "Componentes", icon: "fa fa-toolbox" },
     { name: "Tipografia", icon: "fa fa-font" },
     { name: "Cores", icon: "fa fa-palette" },
-    { name: "Configurações", icon: "fa fa-wrench" }
+    { name: "Configurações", icon: "fa fa-wrench" },
+    { name: "Páginas", icon: "fa fa-newspaper" },
+    { name: "Menu", icon: "fa fa-th-large" }
   ];
 
   mudarPasso(passo: number) {
