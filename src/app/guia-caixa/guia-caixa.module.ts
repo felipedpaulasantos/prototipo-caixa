@@ -10,6 +10,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { CardCaixaComponent } from './components/card-caixa/card-caixa.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { TabberComponent } from './components/tabber/tabber.component';
+import { TabberDirective } from './components/tabber/tabber-directive';
 
 
 
@@ -23,7 +24,8 @@ import { TabberComponent } from './components/tabber/tabber.component';
 		ModalComponent,
 		CardCaixaComponent,
 		StepperComponent,
-		TabberComponent
+    TabberComponent,
+    TabberDirective
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { TabberComponent } from './components/tabber/tabber.component';
     ModalComponent,
     CardCaixaComponent,
     StepperComponent,
-    TabberComponent
+    TabberComponent,
+    TabberDirective
   ]
 })
 export class GuiaCaixaModule { }

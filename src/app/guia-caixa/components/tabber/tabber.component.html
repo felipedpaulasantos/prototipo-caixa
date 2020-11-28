@@ -1,7 +1,6 @@
 <div class="tabber-wrapper">
    <ul class="tabber horizontal">
-      <li [title]="tab.name" class="tab" *ngFor="let tab of tabs; let index = index; let last = last" 
-      [ngClass]="{
+      <li [title]="tab.name" class="tab" *ngFor="let tab of tabs; let index = index; let last = last" [ngClass]="{
          'current-tab': currentTab == index, 
          'cursor-pointer': currentTab != index
       }">
@@ -10,8 +9,20 @@
                <i *ngIf="currentTab == index" class="fa fa-check"></i>
                <i *ngIf="currentTab != index" class="{{ tab.icon }}"></i>
             </div>
-            <span>{{ tab.name }}</span>
+            <span class="tab-name">{{ tab.name }}</span>
          </div>
       </li>
    </ul>
 </div>
+
+<!-- 
+   Na variante contentInside, os templates com a diretiva *tabber são renderizados aqui
+   e o controle de exibição é feito considerando o index do template, comparando-o ao index da aba atual
+ -->
+<ng-container *ngIf="contentInside">
+   <ng-container *ngFor="let template of templates; let i = index">
+      <ng-container *ngIf="currentTab == i">
+         <ng-container [ngTemplateOutlet]="template"></ng-container>
+      </ng-container>
+   </ng-container>
+</ng-container>
