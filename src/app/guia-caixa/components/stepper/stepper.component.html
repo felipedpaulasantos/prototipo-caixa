@@ -8,6 +8,7 @@
          'last-step': last && currentStep == index, 
          'cursor-pointer': (index < currentStep && currentStep < (steps.length - 1))
       }">
+         <div class="step-icon"></div>
          <div class="step-title waves-effect" (click)="toStepByIndex(index)">
             <span [hidden]="index < currentStep">{{step}}</span>
          </div>
