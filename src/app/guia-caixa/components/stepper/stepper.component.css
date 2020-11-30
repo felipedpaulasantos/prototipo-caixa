@@ -1,4 +1,4 @@
-/* STEPPER WRAPPER - div */
+/** STEPPER WRAPPER - div */
 
 .stepper-wrapper.horizontal {
    max-height: 84px;
@@ -8,7 +8,7 @@
    max-width: 100%;
 }
 
-/* STEPPER - ul */
+/** STEPPER - ul */
 
 .stepper-wrapper > .stepper {
    position: relative;
@@ -29,7 +29,7 @@
    display: inline-flex;
 }
 
-/* STEP - li */
+/** STEP - li */
 
 .stepper-wrapper.horizontal > .stepper > .step {
    position: relative;
@@ -68,7 +68,7 @@
    width: auto !important;
 }
 
-/* STEP AFTER - linha */
+/** STEP AFTER - linha */
 
 .stepper > .step:not(:last-of-type)::after {
    content: "";
@@ -92,7 +92,7 @@
    left: 25px;
 }
 
-/* STEP TITLE - span */
+/** STEP TITLE - span */
 
 .stepper-wrapper > .stepper > .step > .step-title {
    line-height: 84px;
@@ -107,11 +107,9 @@
    flex-shrink: 0;
 }
 
-/* STEP TITLE BEFORE - ícone circular */
+/** STEP TITLE ICON - div */
 
 .stepper-wrapper > .stepper > .step > .step-icon {
-   counter-increment: section;
-   content: counter(section);
    z-index: 1;
    position: absolute;
    height: 35px;
@@ -133,21 +131,7 @@
    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.stepper-wrapper > .stepper.nav-guided:not(.complete) .step.previous-step .step-icon {
-   background-color: white;
-   color: #008254;
-}
-
-.stepper-wrapper > .stepper.nav-guided.complete .step.previous-step .step-icon {
-   counter-increment: section;
-   content: counter(section);
-   color: #fff;
-   background-color: gray;
-   font-weight: 400;
-}
-
-.stepper-wrapper > .stepper .step.current-step .step-icon,
-.stepper-wrapper > .stepper.nav-guided .step.current-step .step-icon {
+.stepper-wrapper > .stepper > .step.current-step > .step-icon {
    background-color: #005ca9;
 }
 
@@ -156,8 +140,18 @@
    line-height: 27px;
 }
 
-.stepper-wrapper > .stepper .step.last-step .step-icon,
-.stepper-wrapper > .stepper.nav-guided .step.last-step .step-icon {
+.stepper-wrapper > .stepper.nav-guided:not(.completed) > .step.previous-step > .step-icon {
+   background-color: white;
+   color: #008254;
+}
+
+.stepper-wrapper > .stepper.nav-guided.completed > .step.previous-step > .step-icon {
+   color: #fff;
+   background-color: gray;
+   font-weight: 400;
+}
+
+.stepper-wrapper > .stepper .step.last-step .step-icon {
    background-color: #008254;
 }
 
@@ -178,6 +172,4 @@
    -webkit-tap-highlight-color: transparent;
    vertical-align: middle;
    z-index: 1;
-/*    -webkit-transition: 0.3s ease-out;
-   transition: 0.3s ease-out; */
 }
