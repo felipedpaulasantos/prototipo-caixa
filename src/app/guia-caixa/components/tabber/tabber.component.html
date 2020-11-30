@@ -20,7 +20,5 @@
    e o controle de exibição é feito considerando o index do template, comparando-o ao index da aba atual
  -->
 <ng-container *ngFor="let template of templates; let i = index">
-   <ng-container *ngIf="currentTab == i">
-      <ng-container [ngTemplateOutlet]="template"></ng-container>
-   </ng-container>
+   <ng-container *ngIf="currentTab == i" [ngTemplateOutlet]="template"></ng-container>
 </ng-container>
