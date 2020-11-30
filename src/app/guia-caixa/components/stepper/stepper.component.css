@@ -109,7 +109,7 @@
 
 /** STEP TITLE ICON - div */
 
-.stepper-wrapper > .stepper > .step > .step-icon {
+.stepper-wrapper > .stepper > .step > .step-title > .step-icon {
    z-index: 1;
    position: absolute;
    height: 35px;
@@ -127,31 +127,31 @@
    font-weight: 400;
 }
 
-.stepper-wrapper > .stepper:not(.nav-guided) > .step > .step-icon {
+.stepper-wrapper > .stepper:not(.nav-guided) > .step > .step-title > .step-icon {
    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.stepper-wrapper > .stepper > .step.current-step > .step-icon {
+.stepper-wrapper > .stepper > .step.current-step > .step-title > .step-icon {
    background-color: #005ca9;
 }
 
-.stepper-wrapper > .stepper .step.previous-step .step-icon {
+.stepper-wrapper > .stepper > .step.previous-step > .step-title > .step-icon {
    border: 3px #008254 solid;
    line-height: 27px;
 }
 
-.stepper-wrapper > .stepper.nav-guided:not(.completed) > .step.previous-step > .step-icon {
+.stepper-wrapper > .stepper.nav-guided:not(.completed) > .step.previous-step > .step-title > .step-icon {
    background-color: white;
    color: #008254;
 }
 
-.stepper-wrapper > .stepper.nav-guided.completed > .step.previous-step > .step-icon {
+.stepper-wrapper > .stepper.nav-guided.completed > .step.previous-step > .step-title > .step-icon {
    color: #fff;
    background-color: gray;
    font-weight: 400;
 }
 
-.stepper-wrapper > .stepper .step.last-step .step-icon {
+.stepper-wrapper > .stepper > .step.last-step > .step-title > .step-icon {
    background-color: #008254;
 }
 

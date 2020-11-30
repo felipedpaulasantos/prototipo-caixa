@@ -1,23 +1,24 @@
 <div class="stepper-wrapper" [ngClass]="{'horizontal': orientation == 0,'vertical': orientation == 1}">
    <ul class="stepper" [ngClass]="{'completed': currentStep == (steps.length - 1), 'nav-guided': !freeNavigation}">
-      <li [title]="step" class="step" *ngFor="let step of steps; let index = index; let last = last" 
-      [ngClass]="{
+      <li [title]="step" class="step" *ngFor="let step of steps; let index = index; let last = last" [ngClass]="{
          'current-step': currentStep == index, 
          'prior-step': index == (currentStep - 1),
          'previous-step': index < currentStep, 
          'last-step': last && currentStep == index, 
          'cursor-pointer': (index < currentStep && currentStep < (steps.length - 1))
       }">
-         <div class="step-icon">
+         <div class="step-title waves-effect" (click)="toStepByIndex(index)">
+            <div class="step-icon">
                <ng-container *ngIf="getStepIcon(index) as backIcon else showCounter">
                   <i class="{{ backIcon }}"></i>
-               </ng-container>  
+               </ng-container>
                <ng-template #showCounter>
                   {{ index + 1 }}
-               </ng-template>         
-         </div>
-         <div class="step-title waves-effect" (click)="toStepByIndex(index)">
-            <span [hidden]="index < currentStep">{{step}}</span>
+               </ng-template>
+            </div>
+            <span [hidden]="index < currentStep" class="step-name">
+               {{step}}
+            </span>
          </div>
       </li>
    </ul>
@@ -27,6 +28,6 @@
    Utilizando conteúdo interno, os templates identificados com a diretiva *tabber são renderizados aqui
    e o controle de exibição é feito considerando o index do template, comparando-o ao index do passo atual
  -->
- <ng-container *ngFor="let template of templates; let i = index">
+<ng-container *ngFor="let template of templates; let i = index">
    <ng-container *ngIf="currentStep == i" [ngTemplateOutlet]="template"></ng-container>
 </ng-container>
