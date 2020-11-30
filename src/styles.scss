@@ -88,6 +88,12 @@ hr.header-line-caixa {
   vertical-align: unset;
 }
 
+.btn.caixa.btn-warning,
+.btn-caixa.btn-success,
+.btn-caixa.btn-danger {
+  color: $cx-color-lightest;
+}
+
 .btn-caixa:not(.disabled):not(:disabled).active,
 .btn-caixa:not(.disabled):not(:disabled):active,
 .btn-caixa:not(.disabled):not(:disabled).focus,

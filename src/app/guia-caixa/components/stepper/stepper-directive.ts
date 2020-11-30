@@ -6,7 +6,7 @@ import { Directive, Input } from '@angular/core';
 export class StepperDirective {
 
    @Input('stepper')
-   tabId: any;
+   stepId: any;
 
    constructor() { }
 }

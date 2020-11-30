@@ -53,7 +53,7 @@
    top: 44px;
    left: 25px;
    background-color: gainsboro;
-   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/*    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
 .tabber-wrapper.horizontal > .tabber > .tab:not(:last-of-type)::after {

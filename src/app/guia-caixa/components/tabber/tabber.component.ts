@@ -91,6 +91,7 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   */
   ngAfterContentInit(): void {
     this.changeDetector.detectChanges();
+    console.log("TABBER", this.templates);
   }
 
   /**

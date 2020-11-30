@@ -1,8 +1,9 @@
 import {
   Component, Input, Output, EventEmitter, OnInit, OnChanges,
-  ChangeDetectionStrategy, ContentChildren, TemplateRef, SimpleChanges, ChangeDetectorRef
+  ChangeDetectionStrategy, ContentChildren, TemplateRef, SimpleChanges, ChangeDetectorRef, AfterContentInit
 } from "@angular/core";
 import { TabberDirective } from '../tabber/tabber-directive';
+import { StepperDirective } from './stepper-directive';
 import { StepperOrientation } from './stepper-orientation';
 
 @Component({
@@ -11,7 +12,7 @@ import { StepperOrientation } from './stepper-orientation';
   styleUrls: ["./stepper.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StepperComponent implements OnInit, OnChanges {
+export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
 
   /**
    * Quantidade mínima e máxima de passos permitidos
@@ -20,14 +21,14 @@ export class StepperComponent implements OnInit, OnChanges {
   readonly MAXIMUM_STEPS = 7;
 
   /**
-   * Mapeia as templates dinâmicas com a diretiva *tabber, caso seja usada a variante de comportamento contentInside;
+   * Mapeia as templates dinâmicas com a diretiva *stepper, caso seja usada a variante de comportamento contentInside;
   */
-  @ContentChildren(TabberDirective, { read: TemplateRef })
+  @ContentChildren(StepperDirective, { read: TemplateRef })
   templates: TemplateRef<any>[];
 
   /**
    * Orientação das abas, podendo ser horizontal ou vertical.
-   * @param {TabberOrientation} orientation Enum com valores Horizontal (0) e Vertical (1).
+   * @param {StepperOrientation} orientation Enum com valores Horizontal (0) e Vertical (1).
   */
   @Input()
   orientation = StepperOrientation.Horizontal;
@@ -84,6 +85,14 @@ export class StepperComponent implements OnInit, OnChanges {
         this.changeDetector.detectChanges();
       }
     }
+  }
+
+  /**
+   * Inicializa os templates
+  */
+  ngAfterContentInit(): void {
+    this.changeDetector.detectChanges();
+    console.log("STEPPER", this.templates);
   }
 
   /**
