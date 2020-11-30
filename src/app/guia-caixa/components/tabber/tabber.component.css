@@ -107,7 +107,7 @@ ul.tabber .tab:not(:last-of-type)::after {
    content: "";
    position: absolute;
    top: 44px;
-   left: 22.5px;
+   left: 25px;
    width: 1px;
    height: 40%;
    height: calc(100% - 52px);
