@@ -39,7 +39,7 @@
   </div>
 </section>
 
-<section id="tabber" class="mb-5 d-none">
+<section id="tabber" class="mb-5">
   <div class="card card-caixa">
     <div class="card-header">
       <h5 class="header-subtitulo-caixa">Tabber - Conteúdo externo</h5>
@@ -115,6 +115,38 @@
     <div class="card-body">
       <cx-stepper 
       [freeNavigation]="false"
+      [steps]="steps" 
+      [currentStep]="passoAtual"
+      (changeStep)="mudarPasso($event)">
+    </cx-stepper>
+  
+    <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
+      <div *ngIf="passoAtual === i">
+  
+        <h1 class="text-center my-3">PASSO {{ i + 1 }}</h1>
+
+        <button [disabled]="i <= 0" (click)="passoAtual = i - 1" class="btn btn-light btn-caixa mr-2">
+          VOLTAR
+        </button>
+
+        <button [disabled]="last" (click)="passoAtual = i + 1" class="btn btn-primary btn-caixa">
+          AVANÇAR
+        </button>
+      </div>
+    </ng-container>
+    </div>
+  </div>
+</section>
+
+<section id="stepperGuiado" class="mb-5">
+  <div class="card card-caixa">
+    <div class="card-header">
+      <h5 class="header-subtitulo-caixa">Stepper - Sequencial com navegação guiada</h5>
+    </div>
+    <div class="card-body">
+      <cx-stepper 
+      [freeNavigation]="false"
+      [orientation]=1
       [steps]="steps" 
       [currentStep]="passoAtual"
       (changeStep)="mudarPasso($event)">
