@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
       
-      <cx-tabber [tabs]="tabs" [contentInside]="true" #tabberContentInside>
+      <cx-tabber [tabs]="tabs" #tabberContentInside>
         <ng-container *ngFor="let tab of tabs; let i = index; let last = last; let first = first">
           <ng-container *tabber>
             <h1 class="text-center my-3">{{ tab.name }} interno!</h1>
@@ -64,9 +64,10 @@
         </div>
         <div class="col-2">
           <cx-tabber
+            
             [tabs]="tabs"
             [currentTab]="currentTab"
-            [orientation]="1"
+            [orientation]=1
             (changeTab)="mudarTab($event)"
           ></cx-tabber>
         </div>

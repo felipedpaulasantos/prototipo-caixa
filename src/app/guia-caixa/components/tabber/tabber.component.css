@@ -23,7 +23,7 @@
       overflow: hidden;
    }
 
-   ul.tabber.vertical {
+   .tabber-wrapper.vertical ul.tabber {
       position: relative;
       display: flex;
       justify-content: space-between;
@@ -31,7 +31,7 @@
       flex-direction: column;
    }
 
-   ul.tabber.horizontal .tab {
+   .tabber-wrapper.horizontal > ul.tabber .tab {
       position: static;
       padding: 0 !important;
       width: 100%;
@@ -40,8 +40,8 @@
       height: 84px;
    }
 
-   ul.tabber.horizontal .tab.active:not(:last-of-type)::after,
-   ul.tabber.horizontal .tab:not(:last-of-type)::after {
+   .tabber-wrapper.horizontal > ul.tabber .tab.active:not(:last-of-type)::after,
+   .tabber-wrapper.horizontal > ul.tabber .tab:not(:last-of-type)::after {
       content: "";
       position: static;
       display: inline-block;
@@ -50,16 +50,16 @@
       height: 1px;
    }
 
-   ul.tabber.vertical .tab.active:not(:last-of-type)::after,
-   ul.tabber.vertical .tab:not(:last-of-type)::after {
+   .tabber-wrapper.vertical > ul.tabber .tab.active:not(:last-of-type)::after,
+   .tabber-wrapper.vertical > ul.tabber .tab:not(:last-of-type)::after {
       content: "";
       display: inline-block;
       width: 2px;
       height: 100%;
    }
 
-   ul.tabber.horizontal .tab .tab-title,
-   ul.tabber.vertical .tab .tab-title {
+   .tabber-wrapper.horizontal > ul.tabber .tab .tab-title,
+   .tabber-wrapper.vertical > ul.tabber .tab .tab-title {
       line-height: 84px;
       height: 84px;
       margin: 0;
@@ -72,18 +72,18 @@
       flex-shrink: 0;
    }
 
-   ul.tabber.horizontal .tab .tab-title::after,
-   ul.tabber.vertical .tab .tab-title::after {
+   .tabber-wrapper.horizontal > ul.tabber>.tab .tab-title::after,
+   .tabber-wrapper.vertical > ul.tabber .tab .tab-title::after {
       top: 15px;
    }
 
-   ul.tabber.horizontal .tab:last-of-type,
-   ul.tabber.vertical .tab:last-of-type {
+   .tabber-wrapper.horizontal >ul.tabber .tab:last-of-type,
+   .tabber-wrapper.vertical > ul.tabber .tab:last-of-type {
       width: auto !important;
    }
 
-   ul.tabber.horizontal.previous-tab,
-   ul.tabber.vertical.previous-tab {
+   .tabber-wrapper.horizontal > ul.tabber.previous-tab,
+   .tabber-wrapper.vertical > ul.tabber.previous-tab {
       display: flex;
    }
 }
@@ -141,55 +141,29 @@ ul.tabber .tab .tab-title::after {
    font-weight: 400;
 }
 
-
-ul.tabber.horizontal.nav-guided .tab:not(.previous-tab) .tab-title::before,
-ul.tabber.vertical.nav-guided .tab:not(.previous-tab) .tab-title::before {
-   color: #fff;
-   background-color: gray;
-   font-weight: 400;
-}
-ul.tabber.horizontal.nav-guided .tab.previous-tab .tab-title::before,
-ul.tabber.vertical.nav-guided .tab.previous-tab .tab-title::before {
-   content: "\f060";
-   font-family: "Font Awesome 5 Free";
-   font-weight: 900;
-   background-color: transparent;
-   color: #008254;
-}
-
-/* ul.tabber.horizontal .tab .tab-title::before {
-   counter-increment: section;
-   content: "";
-} */
-
-ul.tabber.horizontal .tab.current-tab .tab-icon,
-ul.tabber.vertical .tab.current-tab .tab-icon {
-   background-color: #005ca9;
-}
-
-ul.tabber.horizontal .tab.previous-tab .tab-icon,
-ul.tabber.vertical .tab.previous-tab .tab-icon {
+.tabber-wrapper.horizontal ul.tabber .tab.previous-tab .tab-icon,
+.tabber-wrapper.vertical ul.tabber .tab.previous-tab .tab-icon {
    border: 3px grey solid;
    line-height: 27px;
 }
 
-ul.tabber.horizontal .tab.last-tab .tab-icon,
-ul.tabber.vertical .tab.last-tab .tab-icon {
+.tabber-wrapper.horizontal ul.tabber .tab.last-tab .tab-icon,
+.tabber-wrapper.vertical ul.tabber .tab.last-tab .tab-icon {
    background-color: grey;
 }
 
-ul.tabber.horizontal .tab.previous-tab,
-ul.tabber.vertical .tab.previous-tab {
+.tabber-wrapper.horizontal ul.tabber .tab.previous-tab,
+.tabber-wrapper.vertical ul.tabber .tab.previous-tab {
    width: 90px;
 }
 
-ul.tabber.horizontal.previous-tab,
-ul.tabber.vertical.previous-tab {
+.tabber-wrapper.horizontal ul.tabber.previous-tab,
+.tabber-wrapper.vertical ul.tabber.previous-tab {
    display: inline-flex;
 }
 
-ul.tabber.horizontal.previous-tab .tab,
-ul.tabber.vertical.previous-tab .tab {
+.tabber-wrapper.horizontal ul.tabber.previous-tab .tab,
+.tabber-wrapper.vertical ul.tabber.previous-tab .tab {
    width: 68px;
 }
 

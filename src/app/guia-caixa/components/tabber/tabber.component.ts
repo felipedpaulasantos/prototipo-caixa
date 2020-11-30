@@ -1,12 +1,11 @@
-import { Component, OnInit, EventEmitter, Input, Output, ContentChildren,
-  TemplateRef, SimpleChanges, OnChanges, ChangeDetectionStrategy, ChangeDetectorRef, AfterContentInit } from '@angular/core';
+import {
+  Component, OnInit, EventEmitter, Input, Output, ContentChildren,
+  TemplateRef, SimpleChanges, OnChanges, ChangeDetectionStrategy,
+  ChangeDetectorRef, AfterContentInit
+} from '@angular/core';
 import { TabberDirective } from './tabber-directive';
 import { TabberItem } from './tabber-item';
-
-export enum TabberOrientation {
-  Horizontal = 0,
-  Vertical = 1
-}
+import { TabberOrientation } from './tabber-orientation';
 
 /** @class Componente Tabber para organizar conteúdo dinâmico ou estático em abas */
 @Component({
@@ -18,8 +17,9 @@ export enum TabberOrientation {
 export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
 
   /**
-   * Quantidada máxima de abas permitida
+   * Quantidada mínima e máxima de abas permitida
   */
+  readonly MINIMUM_TABS = 2;
   readonly MAXIMUM_TABS = 7;
 
   /**
@@ -57,6 +57,14 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   currentTab = 0;
 
   /**
+   * Tema de cor dos ícones
+   * @param {string} theme Nome do tema. Padrão = 'primary'.
+   * Outras opções: 'secondary', 'info', 'warning', 'danger', 'light', 'dark'.
+  */
+  @Input()
+  theme = "primary";
+
+  /**
    * Evento que transmite o index da nova aba atual após ser selecionada.
    * @param {string | number} changeTab Index da nova aba selecionada.
   */
@@ -75,7 +83,7 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tabs']) {
       const newTabs: any[] = changes['tabs'].currentValue;
-      if (newTabs.length > this.MAXIMUM_TABS) {
+      if (newTabs.length >= this.MINIMUM_TABS && newTabs.length > this.MAXIMUM_TABS) {
         this.tabs = newTabs.slice(0, this.MAXIMUM_TABS);
         this.changeDetector.detectChanges();
       }
@@ -139,6 +147,11 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
     this.currentTab = this.tabs.length - 1;
     this.changeTab.emit(this.currentTab);
     this.changeDetector.detectChanges();
+  }
+
+
+  getTema(isActive: boolean) {
+    return isActive ? `bg-${this.theme}` : '';
   }
 
 }
