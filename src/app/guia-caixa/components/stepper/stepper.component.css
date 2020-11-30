@@ -1,4 +1,16 @@
-ul.stepper {
+/* STEPPER WRAPPER - div */
+
+.stepper-wrapper.horizontal {
+   max-height: 84px;
+}
+
+.stepper-wrapper.vertical {
+   max-width: 100%;
+}
+
+/* STEPPER - ul */
+
+.stepper-wrapper > .stepper {
    position: relative;
    display: flex;
    justify-content: space-between;
@@ -9,67 +21,80 @@ ul.stepper {
    margin: 0;
 }
 
-.stepper-wrapper.vertical ul.stepper {
-   position: relative;
-   display: flex;
-   justify-content: space-between;
-   overflow: hidden;
+.stepper-wrapper.vertical > .stepper {
    flex-direction: column;
 }
 
-.stepper-wrapper.horizontal > ul.stepper {
-   position: relative;
-   display: flex;
-   justify-content: space-between;
-   overflow: hidden;
+.stepper-wrapper > .stepper.last-step {
+   display: inline-flex;
 }
 
-.stepper-wrapper.horizontal > ul.stepper .step {
-   position: static;
+/* STEP - li */
+
+.stepper-wrapper.horizontal > .stepper > .step {
+   position: relative;
    padding: 0 !important;
    width: 100%;
    display: flex;
    align-items: center;
    height: 84px;
+   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.stepper-wrapper.horizontal {
-   max-height: 84px;
+.stepper-wrapper.horizontal > .stepper.nav-guided:not(.last-step) > .step.previous-step:not(.prior-step) {
+   visibility: hidden !important;
+   width: 0 !important;
 }
 
-.stepper-wrapper.vertical {
-   max-width: 100%;
+.stepper-wrapper.vertical > .stepper > .step {
+   position: relative;
+   transition: padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-ul.stepper .step:not(:last-of-type)::after {
-   top: 52px;
-   left: 13.5px;
+.stepper-wrapper.vertical > .stepper.nav-guided:not(.last-step) > .step.previous-step:not(.prior-step) {
+   visibility: hidden !important;
+   height: 0 !important;
 }
 
-ul.stepper .step .step-title {
-   padding: 15.5px 44px 24px 64px;
+.stepper-wrapper > .stepper > .step.previous-step {
+   width: 90px;
 }
 
-.stepper-wrapper.horizontal > ul.stepper .step.active:not(:last-of-type)::after,
-.stepper-wrapper.horizontal > ul.stepper .step:not(:last-of-type)::after {
+.stepper-wrapper > .stepper.last-step > .step {
+   width: 68px;
+}
+
+.stepper-wrapper > .stepper > .step:last-of-type {
+   width: auto !important;
+}
+
+/* STEP AFTER - linha */
+
+.stepper > .step:not(:last-of-type)::after {
    content: "";
-   position: static;
+   background-color: gainsboro;
    display: inline-block;
+   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stepper-wrapper.horizontal > .stepper > .step:not(:last-of-type)::after {
+   position: static;
    min-width: 10px;
    width: 100%;
    height: 1px;
 }
 
-.stepper-wrapper.vertical > ul.stepper .step.active:not(:last-of-type)::after,
-.stepper-wrapper.vertical > ul.stepper .step:not(:last-of-type)::after {
-   content: "";
-   display: inline-block;
+.stepper-wrapper.vertical > .stepper > .step:not(:last-of-type)::after {
+   position: absolute;
    width: 2px;
    height: 100%;
+   top: 44px;
+   left: 25px;
 }
 
-.stepper-wrapper.horizontal > ul.stepper .step .step-title,
-.stepper-wrapper.vertical > ul.stepper .step .step-title {
+/* STEP TITLE - span */
+
+.stepper-wrapper > .stepper > .step > .step-title {
    line-height: 84px;
    height: 84px;
    margin: 0;
@@ -82,73 +107,10 @@ ul.stepper .step .step-title {
    flex-shrink: 0;
 }
 
-.stepper-wrapper.horizontal > ul.stepper .step .step-title::after,
-.stepper-wrapper.vertical > ul.stepper .step .step-title::after {
-   top: 15px;
-}
+/* STEP TITLE BEFORE - ícone circular */
 
-.stepper-wrapper.horizontal > ul.stepper .step:last-of-type,
-.stepper-wrapper.vertical > ul.stepper .step:last-of-type {
-   width: auto !important;
-}
-
-.stepper-wrapper.horizontal > ul.stepper.previous-step,
-.stepper-wrapper.vertical > ul.stepper.previous-step {
-   display: flex;
-}
-
-ul.stepper .step:not(:last-of-type).active {
-   padding-bottom: 36px;
-}
-
-ul.stepper > li:not(:last-of-type) {
-   padding-bottom: 10px;
-}
-
-.stepper-wrapper.horizontal ul.stepper .step {
-   position: relative;
-   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.stepper-wrapper.vertical ul.stepper .step {
-   position: relative;
-   transition: padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-ul.stepper .step:not(:last-of-type)::after {
-   content: "";
-   position: absolute;
-   top: 44px;
-   left: 25px;
-   width: 1px;
-   height: 40%;
-   height: calc(100% - 52px);
-   background-color: gainsboro;
-   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-ul.stepper .step.active .step-title {
-   font-weight: 500;
-}
-
-ul.stepper .step .step-title {
-   margin: 0 -24px;
-   padding: 0px 10px 0px 30px;
-   display: block;
-}
-
-ul.stepper .step .step-title::after {
-   content: attr(data-step-label);
-   display: block;
-   position: absolute;
-   font-size: 12.8px;
-   font-size: 0.8rem;
-   color: #424242;
-   font-weight: 400;
-}
-
-.stepper-wrapper.horizontal > ul.stepper .step .step-title::before,
-.stepper-wrapper.vertical > ul.stepper .step .step-title::before {
+.stepper-wrapper.horizontal > .stepper .step .step-title::before,
+.stepper-wrapper.vertical > .stepper .step .step-title::before {
    position: absolute;
    height: 35px;
    width: 35px;
@@ -162,96 +124,68 @@ ul.stepper .step .step-title::after {
    margin-right: 1px;
 }
 
-.stepper-wrapper.horizontal > ul.stepper:not(.nav-guided) .step .step-title::before,
-.stepper-wrapper.vertical > ul.stepper:not(.nav-guided) .step .step-title::before {
+.stepper-wrapper.horizontal > .stepper:not(.nav-guided) .step .step-title::before,
+.stepper-wrapper.vertical > .stepper:not(.nav-guided) .step .step-title::before {
    color: #fff;
    background-color: gray;
    font-weight: 400;
    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.stepper-wrapper.horizontal > ul.stepper.nav-guided .step:not(.previous-step) .step-title::before,
-.stepper-wrapper.vertical > ul.stepper.nav-guided .step:not(.previous-step) .step-title::before {
+.stepper-wrapper.horizontal > .stepper.nav-guided .step:not(.previous-step) .step-title::before,
+.stepper-wrapper.vertical > .stepper.nav-guided .step:not(.previous-step) .step-title::before {
    color: #fff;
    background-color: gray;
    font-weight: 400;
 }
 
-.stepper-wrapper > ul.stepper.nav-guided:not(.last-step) .step.previous-step .step-title::before {
+.stepper-wrapper > .stepper.nav-guided:not(.last-step) .step.previous-step .step-title::before {
    font-family: "Font Awesome 5 Free";
    font-weight: 900;
    background-color: white;
    color: #008254;
 }
-.stepper-wrapper > ul.stepper.nav-guided.last-step .step.previous-step .step-title::before {
+.stepper-wrapper > .stepper.nav-guided.last-step .step.previous-step .step-title::before {
    counter-increment: section;
    content: counter(section);
    color: #fff;
    background-color: gray;
    font-weight: 400;
 }
-.stepper-wrapper.horizontal > ul.stepper.nav-guided:not(.last-step) .step.previous-step .step-title::before {
+.stepper-wrapper.horizontal > .stepper.nav-guided:not(.last-step) .step.previous-step .step-title::before {
    content: "\f060";
 }
-.stepper-wrapper.vertical > ul.stepper.nav-guided:not(.last-step) .step.previous-step .step-title::before {
+.stepper-wrapper.vertical > .stepper.nav-guided:not(.last-step) .step.previous-step .step-title::before {
    content: "\f062";
 }
 
-.stepper-wrapper.horizontal > ul.stepper .step .step-title::before,
-.stepper-wrapper.vertical > ul.stepper .step .step-title::before {
+.stepper-wrapper.horizontal > .stepper .step .step-title::before,
+.stepper-wrapper.vertical > .stepper .step .step-title::before {
    counter-increment: section;
    content: counter(section);
 }
 
-.stepper-wrapper.horizontal > ul.stepper .step.current-step .step-title::before,
-.stepper-wrapper.horizontal > ul.stepper.nav-guided .step.current-step .step-title::before,
-.stepper-wrapper.vertical > ul.stepper .step.current-step .step-title::before,
-.stepper-wrapper.vertical > ul.stepper.nav-guided .step.current-step .step-title::before {
+.stepper-wrapper.horizontal > .stepper .step.current-step .step-title::before,
+.stepper-wrapper.horizontal > .stepper.nav-guided .step.current-step .step-title::before,
+.stepper-wrapper.vertical > .stepper .step.current-step .step-title::before,
+.stepper-wrapper.vertical > .stepper.nav-guided .step.current-step .step-title::before {
    background-color: #005ca9;
 }
 
-.stepper-wrapper.horizontal > ul.stepper .step.previous-step .step-title::before,
-.stepper-wrapper.vertical > ul.stepper .step.previous-step .step-title::before {
+.stepper-wrapper.horizontal > .stepper .step.previous-step .step-title::before,
+.stepper-wrapper.vertical > .stepper .step.previous-step .step-title::before {
    border: 3px #008254 solid;
    line-height: 27px;
 }
 
-.stepper-wrapper.horizontal > ul.stepper .step.last-step .step-title::before,
-.stepper-wrapper.horizontal > ul.stepper.nav-guided .step.last-step .step-title::before,
-.stepper-wrapper.vertical > ul.stepper .step.last-step .step-title::before,
-.stepper-wrapper.vertical > ul.stepper.nav-guided .step.last-step .step-title::before {
+.stepper-wrapper.horizontal > .stepper .step.last-step .step-title::before,
+.stepper-wrapper.horizontal > .stepper.nav-guided .step.last-step .step-title::before,
+.stepper-wrapper.vertical > .stepper .step.last-step .step-title::before,
+.stepper-wrapper.vertical > .stepper.nav-guided .step.last-step .step-title::before {
    background-color: #008254;
 }
 
-.stepper-wrapper.horizontal > ul.stepper .step.previous-step,
-.stepper-wrapper.vertical > ul.stepper .step.previous-step {
-   width: 90px;
-}
-
-.stepper-wrapper.horizontal > ul.stepper.last-step,
-.stepper-wrapper.vertical > ul.stepper.last-step {
-   display: inline-flex;
-}
-
-.stepper-wrapper.horizontal > ul.stepper.last-step .step,
-.stepper-wrapper.vertical > ul.stepper.last-step .step {
-   width: 68px;
-}
-
-.stepper-wrapper.horizontal > ul.stepper.nav-guided .step.prior-step,
-.stepper-wrapper.vertical > ul.stepper.nav-guided .step.prior-step {
-   visibility: visible;
-}
-
-.stepper-wrapper.horizontal > ul.stepper.nav-guided:not(.last-step) .step.previous-step:not(.prior-step) {
-   visibility: hidden !important;
-   width: 0 !important;
-}
-
-.stepper-wrapper.vertical > ul.stepper.nav-guided:not(.last-step) .step.previous-step:not(.prior-step) {
-   visibility: hidden !important;
-   height: 0 !important;
-}
+/* ESTILOS ADICIONAIS */
 
 .cursor-pointer {
    cursor: pointer;
