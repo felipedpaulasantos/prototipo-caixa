@@ -23,7 +23,7 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   readonly MAXIMUM_TABS = 7;
 
   /**
-   * Mapeia as templates dinâmicas com a diretiva *tabber, caso seja usada a variante de comportamento contentInside;
+   * Mapeia as templates dinâmicas com a diretiva *tabber, caso seja inserido conteúdo dentro do componente;
    */
   @ContentChildren(TabberDirective, { read: TemplateRef })
   templates: TemplateRef<any>[];

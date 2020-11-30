@@ -1,4 +1,16 @@
-ul.tabber {
+/** TABBER WRAPPER - div */
+
+.tabber-wrapper.horizontal {
+   max-height: 84px;
+}
+
+.tabber-wrapper.vertical {
+   max-width: 100%;
+}
+
+/** TABBER - ul */
+
+.tabber-wrapper > .tabber {
    position: relative;
    display: flex;
    justify-content: space-between;
@@ -9,16 +21,16 @@ ul.tabber {
    margin: 0;
 }
 
-.tabber-wrapper.vertical ul.tabber {
-   position: relative;
-   display: flex;
-   justify-content: space-between;
+.tabber-wrapper.vertical > .tabber {
    overflow: hidden;
    flex-direction: column;
 }
 
-.tabber-wrapper.horizontal > ul.tabber .tab {
-   position: static;
+/** TAB - li */
+
+.tabber-wrapper > .tabber > .tab {
+   position: relative;
+   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
    padding: 0 !important;
    width: 100%;
    display: flex;
@@ -26,43 +38,40 @@ ul.tabber {
    height: 84px;
 }
 
-.tabber-wrapper.horizontal {
-   max-height: 84px;
+.tabber-wrapper > .tabber > .tab:last-of-type {
+   width: auto !important;
 }
 
-.tabber-wrapper.vertical {
-   max-width: 100%;
-}
+/** TAB AFTER - linha */
 
-ul.tabber .tab:not(:last-of-type)::after {
-   top: 52px;
-   left: 13.5px;
-}
-
-ul.tabber .tab .tab-title {
-   padding: 15.5px 44px 24px 64px;
-}
-
-.tabber-wrapper.horizontal > ul.tabber .tab.active:not(:last-of-type)::after,
-.tabber-wrapper.horizontal > ul.tabber .tab:not(:last-of-type)::after {
-   content: "";
-   position: static;
+.tabber-wrapper > .tabber > .tab::after {
    display: inline-block;
+   content: "";
+}
+
+.tabber-wrapper > .tabber > .tab:not(:last-of-type)::after {
+   top: 44px;
+   left: 25px;
+   background-color: gainsboro;
+   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tabber-wrapper.horizontal > .tabber > .tab:not(:last-of-type)::after {
+   position: static;
    min-width: 10px;
    width: 100%;
    height: 1px;
 }
 
-.tabber-wrapper.vertical > ul.tabber .tab.active:not(:last-of-type)::after,
-.tabber-wrapper.vertical > ul.tabber .tab:not(:last-of-type)::after {
-   content: "";
-   display: inline-block;
+.tabber-wrapper.vertical > .tabber > .tab:not(:last-of-type)::after {
+   position: absolute;
    width: 2px;
    height: 100%;
 }
 
-.tabber-wrapper.horizontal > ul.tabber .tab .tab-title,
-.tabber-wrapper.vertical > ul.tabber .tab .tab-title {
+/** TAB TITLE - div */
+
+.tabber-wrapper > .tabber > .tab > .tab-title {
    line-height: 84px;
    height: 84px;
    margin: 0;
@@ -75,91 +84,27 @@ ul.tabber .tab .tab-title {
    flex-shrink: 0;
 }
 
-.tabber-wrapper.horizontal > ul.tabber > .tab .tab-title::after,
-.tabber-wrapper.vertical > ul.tabber .tab .tab-title::after {
-   top: 15px;
-}
+/** TAB TITLE ICON - div */
 
-.tabber-wrapper.horizontal > ul.tabber .tab:last-of-type,
-.tabber-wrapper.vertical > ul.tabber .tab:last-of-type {
-   width: auto !important;
-}
-
-.tabber-wrapper.horizontal > ul.tabber.previous-tab,
-.tabber-wrapper.vertical > ul.tabber.previous-tab {
-   display: flex;
-}
-
-ul.tabber .tab:not(:last-of-type).active {
-   padding-bottom: 36px;
-}
-
-ul.tabber > li:not(:last-of-type) {
-   padding-bottom: 10px;
-}
-
-ul.tabber .tab {
-   position: relative;
-   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-ul.tabber .tab:not(:last-of-type)::after {
-   content: "";
+.tabber-wrapper > .tabber > .tab > .tab-title > .tab-icon {
    position: absolute;
-   top: 44px;
-   left: 25px;
-   width: 1px;
-   height: 40%;
-   height: calc(100% - 52px);
-   background-color: gainsboro;
-   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-ul.tabber .tab.active .tab-title {
-   font-weight: 500;
-}
-
-ul.tabber .tab .tab-title {
-   margin: 0 -24px;
-   padding: 0px 10px 0px 30px;
-   display: block;
-}
-
-ul.tabber .tab .tab-title::after {
-   content: attr(data-tab-label);
-   display: block;
-   position: absolute;
-   font-size: 12.8px;
-   font-size: 0.8rem;
-   color: #424242;
+   height: 35px;
+   width: 35px;
+   border-radius: 50%;
+   text-align: center;
+   line-height: 33px;
+   font-size: 17px;
+   left: 1px;
+   top: 26.5px;
+   left: 9px;
+   margin-right: 1px;
+   color: #fff;
+   background-color: gray;
    font-weight: 400;
+   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tabber-wrapper.horizontal ul.tabber .tab.previous-tab .tab-icon,
-.tabber-wrapper.vertical ul.tabber .tab.previous-tab .tab-icon {
-   border: 3px grey solid;
-   line-height: 27px;
-}
-
-.tabber-wrapper.horizontal ul.tabber .tab.last-tab .tab-icon,
-.tabber-wrapper.vertical ul.tabber .tab.last-tab .tab-icon {
-   background-color: grey;
-}
-
-.tabber-wrapper.horizontal ul.tabber .tab.previous-tab,
-.tabber-wrapper.vertical ul.tabber .tab.previous-tab {
-   width: 90px;
-}
-
-.tabber-wrapper.horizontal ul.tabber.previous-tab,
-.tabber-wrapper.vertical ul.tabber.previous-tab {
-   display: inline-flex;
-}
-
-.tabber-wrapper.horizontal ul.tabber.previous-tab .tab,
-.tabber-wrapper.vertical ul.tabber.previous-tab .tab {
-   width: 68px;
-}
+/* ESTILOS ADICIONAIS */
 
 .cursor-pointer {
    cursor: pointer;
@@ -178,22 +123,4 @@ ul.tabber .tab .tab-title::after {
    z-index: 1;
    -webkit-transition: 0.3s ease-out;
    transition: 0.3s ease-out;
-}
-
-.tab-icon {
-   position: absolute;
-   height: 35px;
-   width: 35px;
-   border-radius: 50%;
-   text-align: center;
-   line-height: 33px;
-   font-size: 17px;
-   left: 1px;
-   top: 26.5px;
-   left: 9px;
-   margin-right: 1px;
-   color: #fff;
-   background-color: gray;
-   font-weight: 400;
-   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
