@@ -45,10 +45,7 @@ export class UploadComponent implements OnInit {
     { name: "Tipografia", icon: "fa fa-font" },
     { name: "Cores", icon: "fa fa-palette" },
     { name: "Configurações", icon: "fa fa-wrench" },
-    { name: "Páginas", icon: "fa fa-newspaper" },
-    { name: "Menu", icon: "fa fa-th-large" },
-    { name: "Menu", icon: "fa fa-th-large" },
-    { name: "Menu", icon: "fa fa-th-large" }
+    { name: "Páginas", icon: "fa fa-newspaper" }
   ];
 
   mudarPasso(passo: number) {

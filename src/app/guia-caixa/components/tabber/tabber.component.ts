@@ -17,7 +17,7 @@ import { TabberOrientation } from './tabber-orientation';
 export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
 
   /**
-   * Quantidada mínima e máxima de abas permitida
+   * Quantidade mínima e máxima de abas permitidas
   */
   readonly MINIMUM_TABS = 2;
   readonly MAXIMUM_TABS = 7;
@@ -29,15 +29,8 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   templates: TemplateRef<any>[];
 
   /**
-   * Indica se o conteúdo das abas será inserido dentro do componente, ou se estará desacoplado.
-   * @param {boolean} contentInside Verdadeiro para conteúdo interno.
-  */
-  @Input()
-  contentInside = false;
-
-  /**
    * Orientação das abas, podendo ser horizontal ou vertical.
-   * @param {TabberOrientation} orientation Enum com valores Horizontal e Vertical.
+   * @param {TabberOrientation} orientation Enum com valores Horizontal (0) e Vertical (1).
   */
   @Input()
   orientation = TabberOrientation.Horizontal;
@@ -71,6 +64,9 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   @Output()
   changeTab: EventEmitter<number> = new EventEmitter();
 
+  /**
+   * Injeta o serviço ChangeDetectorRef para sinalizar as mudanças ocorridas
+   */
   constructor(private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit(): void { }

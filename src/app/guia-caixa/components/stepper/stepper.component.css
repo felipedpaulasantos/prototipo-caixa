@@ -175,11 +175,11 @@ ul.stepper.horizontal .step.previous-step {
    width: 90px;
 }
 
-ul.stepper.horizontal.previous-step {
+ul.stepper.horizontal.last-step {
    display: inline-flex;
 }
 
-ul.stepper.horizontal.previous-step .step {
+ul.stepper.horizontal.last-step .step {
    width: 68px;
 }
 

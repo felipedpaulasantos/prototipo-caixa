@@ -39,7 +39,7 @@
   </div>
 </section>
 
-<section id="tabber" class="mb-5">
+<section id="tabber" class="mb-5 d-none">
   <div class="card card-caixa">
     <div class="card-header">
       <h5 class="header-subtitulo-caixa">Tabber - Conteúdo externo</h5>
@@ -95,10 +95,10 @@
     
           <h1 class="text-center my-3">PASSO {{ i + 1 }}</h1>
 
-          <button [disabled]="i <= 0" (click)="exemploStepper.toPreviousStep()" class="btn btn-light btn-caixa mr-2">
+          <button [disabled]="i <= 0" (click)="exemploStepper.previous()" class="btn btn-light btn-caixa mr-2">
             VOLTAR
           </button>
-          <button [disabled]="last" (click)="exemploStepper.toNextStep()" class="btn btn-primary btn-caixa">
+          <button [disabled]="last" (click)="exemploStepper.next()" class="btn btn-primary btn-caixa">
             AVANÇAR
           </button>
         </div>

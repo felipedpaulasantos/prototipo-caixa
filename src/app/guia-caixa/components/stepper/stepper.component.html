@@ -1,7 +1,8 @@
-<div class="stepper-wrapper">
+<div class="stepper-wrapper" [ngClass]="{'horizontal': orientation == 0,'vertical': orientation == 1}">
    <ul class="stepper horizontal" 
    [ngClass]="{
-      'previous-step': currentStep == (steps.length - 1), 'nav-guided': !freeNavigation
+      'last-step': currentStep == (steps.length - 1), 
+      'nav-guided': !freeNavigation
    }">
       <li [title]="step" class="step" *ngFor="let step of steps; let index = index; let last = last" 
       [ngClass]="{
@@ -11,9 +12,17 @@
          'last-step': last && currentStep == index, 
          'cursor-pointer': (index < currentStep && currentStep < (steps.length - 1))
       }">
-         <div class="step-title waves-effect" (click)="toStep(index)">
+         <div class="step-title waves-effect" (click)="toStepByIndex(index)">
             <span [hidden]="index < currentStep">{{step}}</span>
          </div>
       </li>
    </ul>
 </div>
+
+<!-- 
+   Utilizando conteúdo interno, os templates identificados com a diretiva *tabber são renderizados aqui
+   e o controle de exibição é feito considerando o index do template, comparando-o ao index do passo atual
+ -->
+ <ng-container *ngFor="let template of templates; let i = index">
+   <ng-container *ngIf="currentStep == i" [ngTemplateOutlet]="template"></ng-container>
+</ng-container>
