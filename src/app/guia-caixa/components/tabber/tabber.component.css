@@ -1,91 +1,89 @@
-@media only screen and (min-width: 520px) {
-   .tabber-wrapper.horizontal {
-      max-height: 84px;
-   }
+ul.tabber {
+   position: relative;
+   display: flex;
+   justify-content: space-between;
+   overflow: hidden;
+}
 
-   .tabber-wrapper.vertical {
-      max-width: 100%;
-   }
+.tabber-wrapper.vertical ul.tabber {
+   position: relative;
+   display: flex;
+   justify-content: space-between;
+   overflow: hidden;
+   flex-direction: column;
+}
 
-   ul.tabber .tab:not(:last-of-type)::after {
-      top: 52px;
-      left: 13.5px;
-   }
+.tabber-wrapper.horizontal > ul.tabber .tab {
+   position: static;
+   padding: 0 !important;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   height: 84px;
+}
 
-   ul.tabber .tab .tab-title {
-      padding: 15.5px 44px 24px 64px;
-   }
+.tabber-wrapper.horizontal {
+   max-height: 84px;
+}
 
-   ul.tabber {
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      overflow: hidden;
-   }
+.tabber-wrapper.vertical {
+   max-width: 100%;
+}
 
-   .tabber-wrapper.vertical ul.tabber {
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      overflow: hidden;
-      flex-direction: column;
-   }
+ul.tabber .tab:not(:last-of-type)::after {
+   top: 52px;
+   left: 13.5px;
+}
 
-   .tabber-wrapper.horizontal > ul.tabber .tab {
-      position: static;
-      padding: 0 !important;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      height: 84px;
-   }
+ul.tabber .tab .tab-title {
+   padding: 15.5px 44px 24px 64px;
+}
 
-   .tabber-wrapper.horizontal > ul.tabber .tab.active:not(:last-of-type)::after,
-   .tabber-wrapper.horizontal > ul.tabber .tab:not(:last-of-type)::after {
-      content: "";
-      position: static;
-      display: inline-block;
-      min-width: 10px;
-      width: 100%;
-      height: 1px;
-   }
+.tabber-wrapper.horizontal > ul.tabber .tab.active:not(:last-of-type)::after,
+.tabber-wrapper.horizontal > ul.tabber .tab:not(:last-of-type)::after {
+   content: "";
+   position: static;
+   display: inline-block;
+   min-width: 10px;
+   width: 100%;
+   height: 1px;
+}
 
-   .tabber-wrapper.vertical > ul.tabber .tab.active:not(:last-of-type)::after,
-   .tabber-wrapper.vertical > ul.tabber .tab:not(:last-of-type)::after {
-      content: "";
-      display: inline-block;
-      width: 2px;
-      height: 100%;
-   }
+.tabber-wrapper.vertical > ul.tabber .tab.active:not(:last-of-type)::after,
+.tabber-wrapper.vertical > ul.tabber .tab:not(:last-of-type)::after {
+   content: "";
+   display: inline-block;
+   width: 2px;
+   height: 100%;
+}
 
-   .tabber-wrapper.horizontal > ul.tabber .tab .tab-title,
-   .tabber-wrapper.vertical > ul.tabber .tab .tab-title {
-      line-height: 84px;
-      height: 84px;
-      margin: 0;
-      padding: 0 4px 0 48px;
-      display: inline-block;
-      max-width: 245px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      flex-shrink: 0;
-   }
+.tabber-wrapper.horizontal > ul.tabber .tab .tab-title,
+.tabber-wrapper.vertical > ul.tabber .tab .tab-title {
+   line-height: 84px;
+   height: 84px;
+   margin: 0;
+   padding: 0 4px 0 48px;
+   display: inline-block;
+   max-width: 245px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   flex-shrink: 0;
+}
 
-   .tabber-wrapper.horizontal > ul.tabber>.tab .tab-title::after,
-   .tabber-wrapper.vertical > ul.tabber .tab .tab-title::after {
-      top: 15px;
-   }
+.tabber-wrapper.horizontal > ul.tabber > .tab .tab-title::after,
+.tabber-wrapper.vertical > ul.tabber .tab .tab-title::after {
+   top: 15px;
+}
 
-   .tabber-wrapper.horizontal >ul.tabber .tab:last-of-type,
-   .tabber-wrapper.vertical > ul.tabber .tab:last-of-type {
-      width: auto !important;
-   }
+.tabber-wrapper.horizontal > ul.tabber .tab:last-of-type,
+.tabber-wrapper.vertical > ul.tabber .tab:last-of-type {
+   width: auto !important;
+}
 
-   .tabber-wrapper.horizontal > ul.tabber.previous-tab,
-   .tabber-wrapper.vertical > ul.tabber.previous-tab {
-      display: flex;
-   }
+.tabber-wrapper.horizontal > ul.tabber.previous-tab,
+.tabber-wrapper.vertical > ul.tabber.previous-tab {
+   display: flex;
 }
 
 ul.tabber {

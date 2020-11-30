@@ -149,8 +149,10 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
     this.changeDetector.detectChanges();
   }
 
-
-  getTema(isActive: boolean) {
+  /**
+   * Salta para a última aba
+  */
+  getActiveTheme(isActive: boolean): string {
     return isActive ? `bg-${this.theme}` : '';
   }
 
