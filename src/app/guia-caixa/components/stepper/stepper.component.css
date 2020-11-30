@@ -25,7 +25,7 @@
    flex-direction: column;
 }
 
-.stepper-wrapper > .stepper.last-step {
+.stepper-wrapper > .stepper.completed {
    display: inline-flex;
 }
 
@@ -41,7 +41,7 @@
    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.stepper-wrapper.horizontal > .stepper.nav-guided:not(.last-step) > .step.previous-step:not(.prior-step) {
+.stepper-wrapper.horizontal > .stepper.nav-guided:not(.completed) > .step.previous-step:not(.prior-step) {
    visibility: hidden !important;
    width: 0 !important;
 }
@@ -51,7 +51,7 @@
    transition: padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.stepper-wrapper.vertical > .stepper.nav-guided:not(.last-step) > .step.previous-step:not(.prior-step) {
+.stepper-wrapper.vertical > .stepper.nav-guided:not(.completed) > .step.previous-step:not(.prior-step) {
    visibility: hidden !important;
    height: 0 !important;
 }
@@ -60,7 +60,7 @@
    width: 90px;
 }
 
-.stepper-wrapper > .stepper.last-step > .step {
+.stepper-wrapper > .stepper.completed > .step {
    width: 68px;
 }
 
@@ -109,8 +109,10 @@
 
 /* STEP TITLE BEFORE - ícone circular */
 
-.stepper-wrapper.horizontal > .stepper .step .step-title::before,
-.stepper-wrapper.vertical > .stepper .step .step-title::before {
+.stepper-wrapper > .stepper > .step > .step-icon {
+   counter-increment: section;
+   content: counter(section);
+   z-index: 1;
    position: absolute;
    height: 35px;
    width: 35px;
@@ -122,66 +124,40 @@
    top: 26.5px;
    left: 9px;
    margin-right: 1px;
-}
-
-.stepper-wrapper.horizontal > .stepper:not(.nav-guided) .step .step-title::before,
-.stepper-wrapper.vertical > .stepper:not(.nav-guided) .step .step-title::before {
    color: #fff;
    background-color: gray;
    font-weight: 400;
+}
+
+.stepper-wrapper > .stepper:not(.nav-guided) > .step > .step-icon {
    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.stepper-wrapper.horizontal > .stepper.nav-guided .step:not(.previous-step) .step-title::before,
-.stepper-wrapper.vertical > .stepper.nav-guided .step:not(.previous-step) .step-title::before {
-   color: #fff;
-   background-color: gray;
-   font-weight: 400;
-}
-
-.stepper-wrapper > .stepper.nav-guided:not(.last-step) .step.previous-step .step-title::before {
-   font-family: "Font Awesome 5 Free";
-   font-weight: 900;
+.stepper-wrapper > .stepper.nav-guided:not(.complete) .step.previous-step .step-icon {
    background-color: white;
    color: #008254;
 }
-.stepper-wrapper > .stepper.nav-guided.last-step .step.previous-step .step-title::before {
+
+.stepper-wrapper > .stepper.nav-guided.complete .step.previous-step .step-icon {
    counter-increment: section;
    content: counter(section);
    color: #fff;
    background-color: gray;
    font-weight: 400;
 }
-.stepper-wrapper.horizontal > .stepper.nav-guided:not(.last-step) .step.previous-step .step-title::before {
-   content: "\f060";
-}
-.stepper-wrapper.vertical > .stepper.nav-guided:not(.last-step) .step.previous-step .step-title::before {
-   content: "\f062";
-}
 
-.stepper-wrapper.horizontal > .stepper .step .step-title::before,
-.stepper-wrapper.vertical > .stepper .step .step-title::before {
-   counter-increment: section;
-   content: counter(section);
-}
-
-.stepper-wrapper.horizontal > .stepper .step.current-step .step-title::before,
-.stepper-wrapper.horizontal > .stepper.nav-guided .step.current-step .step-title::before,
-.stepper-wrapper.vertical > .stepper .step.current-step .step-title::before,
-.stepper-wrapper.vertical > .stepper.nav-guided .step.current-step .step-title::before {
+.stepper-wrapper > .stepper .step.current-step .step-icon,
+.stepper-wrapper > .stepper.nav-guided .step.current-step .step-icon {
    background-color: #005ca9;
 }
 
-.stepper-wrapper.horizontal > .stepper .step.previous-step .step-title::before,
-.stepper-wrapper.vertical > .stepper .step.previous-step .step-title::before {
+.stepper-wrapper > .stepper .step.previous-step .step-icon {
    border: 3px #008254 solid;
    line-height: 27px;
 }
 
-.stepper-wrapper.horizontal > .stepper .step.last-step .step-title::before,
-.stepper-wrapper.horizontal > .stepper.nav-guided .step.last-step .step-title::before,
-.stepper-wrapper.vertical > .stepper .step.last-step .step-title::before,
-.stepper-wrapper.vertical > .stepper.nav-guided .step.last-step .step-title::before {
+.stepper-wrapper > .stepper .step.last-step .step-icon,
+.stepper-wrapper > .stepper.nav-guided .step.last-step .step-icon {
    background-color: #008254;
 }
 

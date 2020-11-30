@@ -1,5 +1,5 @@
 <div class="stepper-wrapper" [ngClass]="{'horizontal': orientation == 0,'vertical': orientation == 1}">
-   <ul class="stepper" [ngClass]="{'last-step': currentStep == (steps.length - 1), 'nav-guided': !freeNavigation}">
+   <ul class="stepper" [ngClass]="{'completed': currentStep == (steps.length - 1), 'nav-guided': !freeNavigation}">
       <li [title]="step" class="step" *ngFor="let step of steps; let index = index; let last = last" 
       [ngClass]="{
          'current-step': currentStep == index, 
@@ -8,7 +8,14 @@
          'last-step': last && currentStep == index, 
          'cursor-pointer': (index < currentStep && currentStep < (steps.length - 1))
       }">
-         <div class="step-icon"></div>
+         <div class="step-icon">
+               <ng-container *ngIf="getStepIcon(index) as backIcon else showCounter">
+                  <i class="{{ backIcon }}"></i>
+               </ng-container>  
+               <ng-template #showCounter>
+                  {{ index + 1 }}
+               </ng-template>         
+         </div>
          <div class="step-title waves-effect" (click)="toStepByIndex(index)">
             <span [hidden]="index < currentStep">{{step}}</span>
          </div>

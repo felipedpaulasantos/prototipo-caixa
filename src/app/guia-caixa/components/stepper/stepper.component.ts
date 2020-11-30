@@ -139,4 +139,20 @@ export class StepperComponent implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * Verifica qual ícone deve ser exibido para cada item
+   * @param index Índice do item a ser analisado
+  */
+  getStepIcon(index: number): string {
+    if (this.freeNavigation) { return null; }
+
+    if (!this.freeNavigation) {
+      if (index == (this.currentStep - 1) && this.currentStep != (this.steps.length - 1)) {
+        return this.orientation == 0 ? 'fa fa-arrow-left' : 'fa fa-arrow-up';
+      } else {
+        return null;
+      }
+    }
+  }
+
 }
