@@ -17,6 +17,7 @@ import { DocumentacaoTemplateComponent } from './documentacao-template/documenta
 import { SelectComponent } from './select/select.component';
 import { GuiaCaixaModule } from 'src/app/guia-caixa/guia-caixa.module';
 import { TabberDemonstracaoComponent } from './tabber-demonstracao/tabber-demonstracao.component';
+import { StepperDemonstracaoComponent } from './stepper-demonstracao/stepper-demonstracao.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { TabberDemonstracaoComponent } from './tabber-demonstracao/tabber-demons
     TabelasComponent,
     DocumentacaoTemplateComponent,
     SelectComponent,
-    TabberDemonstracaoComponent
+    TabberDemonstracaoComponent,
+    StepperDemonstracaoComponent
   ],
   exports: [
     CardsComponent,
