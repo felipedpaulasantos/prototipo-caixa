@@ -29,7 +29,7 @@ export class BootstrapTheme {
 		'DARK', { name: "dark", textColor: "light" });
 
 	static getTemas() {
-		const temas = [];
+		const temas: ColorTheme[] = [];
 		Object.getOwnPropertyNames(BootstrapTheme).forEach((theme: any) => {
 			const tema = BootstrapTheme[theme].value;
 			if (tema) {

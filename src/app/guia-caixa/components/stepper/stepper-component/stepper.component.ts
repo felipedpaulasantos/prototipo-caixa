@@ -193,4 +193,11 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
     return isActive && !isLast ? `bg-${this.theme}` : '';
   }
 
+  /**
+    * Realiza manualmente a atualização do template
+  */
+  update(): void {
+    this.changeDetector.detectChanges();
+  }
+
 }

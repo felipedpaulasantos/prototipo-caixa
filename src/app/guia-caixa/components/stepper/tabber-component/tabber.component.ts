@@ -153,10 +153,17 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   }
 
   /**
-    * Aplica o tema definido no ícone ativo
+    * Retorna o tema definido para o ícone ativo
   */
   getActiveTheme(isActive: boolean): string {
     return isActive ? `bg-${this.theme}` : '';
+  }
+
+  /**
+    * Realiza manualmente a atualização do template
+  */
+  update(): void {
+    this.changeDetector.detectChanges();
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
+import { BootstrapTheme } from 'src/app/guia-caixa/constants/constants';
 
 @Component({
   templateUrl: './stepper-demonstracao.component.html',
@@ -9,7 +10,7 @@ export class StepperDemonstracaoComponent implements OnInit {
 
   passoAtual = 0;
   steps = [
-    "Um primeiro",
+    "Um primeiro passo",
     "Um segundo passo",
     "Mais outro passo",
     "Um quarto passo",
@@ -30,9 +31,12 @@ export class StepperDemonstracaoComponent implements OnInit {
   stepperFreeOrientation = 0;
   stepperGuidedOrientation = 0;
 
+  temas = BootstrapTheme.getTemas();
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.temas);
   }
 
   changeTabberOrientation(value: number) {
