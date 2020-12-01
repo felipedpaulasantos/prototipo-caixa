@@ -799,6 +799,11 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   border-bottom: 1px solid $cx-color-light-dark;
 }
 
+.citation-highlight {
+  @extend .border;
+  @extend .px-1;
+}
+
 /* 
   TEMA ESCURO
 */

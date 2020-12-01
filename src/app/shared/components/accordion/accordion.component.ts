@@ -64,8 +64,6 @@ export class AccordionComponent implements OnInit {
 
   activate(menu: AccordionMenu) {
 
-    console.log("Activate Accordion", menu);
-
     if (menu.isLink) {
       this.navigate(menu.url);
     } else {

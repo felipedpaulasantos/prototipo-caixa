@@ -21,8 +21,6 @@ export class RippleDirective implements AfterContentInit {
   onClick(ev: any) {
     const children = this.el.nativeElement.children;
 
-    console.log(ev);
-
     for (let i = 0; i < children.length; i++) {
       const child = children[i];
       if (child.classList.contains("cx-ripple")) {
