@@ -139,13 +139,9 @@ export class AccordionComponent implements OnInit {
 
   toggle(indexArray: number[], menus: AccordionMenu[]) {
 
-    console.log("TOGGLE START", indexArray, this.indexMap);
-
     indexArray.forEach((indexValue, indexPosition) => {
 
       if (indexPosition == 0) {
-
-        console.log("INSIDE TOGGLE", menus[indexValue]);
 
         menus[indexValue].active = true;
         menus.filter(
@@ -157,7 +153,6 @@ export class AccordionComponent implements OnInit {
 
         let submenus: AccordionMenu[] = menus;
         if (submenus) {
-          console.log("TOGGLE SUBMENUS", submenus);
           for (let index = 0; index < indexPosition; index++) {
             submenus = submenus[indexArray[indexPosition - 1]].submenu;
           }

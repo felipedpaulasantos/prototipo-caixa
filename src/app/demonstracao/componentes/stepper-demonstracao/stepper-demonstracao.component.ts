@@ -1,13 +1,269 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
 import { BootstrapTheme } from 'src/app/guia-caixa/constants/constants';
+import { ComponentesInterface } from '../componentes-interface';
 
 @Component({
   templateUrl: './stepper-demonstracao.component.html',
-  styleUrls: ['./stepper-demonstracao.component.scss']
+  styleUrls: ['./stepper-demonstracao.component.scss'],
+  host: { '(window:scroll)': 'onScroll($event)' }
 })
-export class StepperDemonstracaoComponent implements OnInit {
+export class StepperDemonstracaoComponent extends ComponentesInterface implements OnInit {
 
+  @ViewChild("scrollElement") scrollElement;
+
+  sectionOffset = 0;
+  spiedTags = ['APP-DOCUMENTACAO-TEMPLATE'];
+  currentSection = "painelStepperPadrao";
+
+  showTabsStepperPadrao = false;
+  htmlCodeStepperPadrao = `<cx-stepper [steps]="passos" [currentStep]="passoAtual" (changeStep)="passoAtual = $event"></cx-stepper>
+
+<div *ngFor="let passo of passos; let i = index">
+  <ng-container *ngIf="i == passoAtual">
+    <h2 class="text-center">{{ passo }}</h2>
+
+    <button [disabled]="passoAtual == 0"
+    (click)="passoAtual = passoAtual - 1" class="btn btn-light btn-caixa mx-2">
+        Voltar
+    </button>
+
+    <button [disabled]="passoAtual == passos.length - 1"
+    (click)="passoAtual = passoAtual + 1" class="btn btn-primary btn-caixa mx-2">
+        Avançar
+    </button>
+  </ng-container>
+</div>`.trim();
+
+  tsCodeStepperPadrao = `  import { Component } from '@angular/core';
+
+  @Component({
+      selector: 'app-stepper',
+      templateUrl: './stepper.component.html',
+      styleUrls: ['./stepper.component.scss']
+  })
+  export class StepperComponent {
+
+    constructor() {}
+
+    passoAtual = 0;
+
+    passos = [
+      'Primeiro passo',
+      'Segundo passo',
+      'Terceiro passo',
+      'Quarto passo',
+      'Passo final'
+    ];
+  }
+  `.trimRight();
+
+  htmlCodeStepperGuiado = `<cx-stepper [freeNavigation]="false" [steps]="passos" [currentStep]="passoAtual" (changeStep)="passoAtual = $event"></cx-stepper>
+
+<div *ngFor="let passo of passos; let i = index">
+  <ng-container *ngIf="i == passoAtual">
+    <h2 class="text-center">{{ passo }}</h2>
+
+    <button [disabled]="passoAtual == 0"
+    (click)="passoAtual = passoAtual - 1" class="btn btn-light btn-caixa mx-2">
+        Voltar
+    </button>
+
+    <button [disabled]="passoAtual == passos.length - 1"
+    (click)="passoAtual = passoAtual + 1" class="btn btn-primary btn-caixa mx-2">
+        Avançar
+    </button>
+  </ng-container>
+</div>`.trim();
+
+  tsCodeStepperGuiado = `  import { Component } from '@angular/core';
+
+  @Component({
+      selector: 'app-stepper',
+      templateUrl: './stepper.component.html',
+      styleUrls: ['./stepper.component.scss']
+  })
+  export class StepperComponent {
+
+    constructor() {}
+
+    passoAtual = 0;
+
+    passos = [
+      'Primeiro passo',
+      'Segundo passo',
+      'Terceiro passo',
+      'Quarto passo',
+      'Passo final'
+    ];
+  }
+  `.trimRight();
+
+  htmlCodeStepperTemplate = `<cx-stepper [steps]="passos" #stepperExemplo (changeStep)="passoAtual = $event"></cx-stepper>
+
+  <div *ngFor="let passo of passos; let i = index">
+     <ng-container *ngIf="i == passoAtual">
+        <h2 class="text-center">{{ passo }}</h2>
+     </ng-container>
+  </div>
+
+  <button [disabled]="stepperExemplo.currentStep == 0"
+  (click)="stepperExemplo.first()" class="btn btn-dark btn-caixa mx-2">
+     Primeiro
+  </button>
+
+  <button [disabled]="stepperExemplo.currentStep == 0"
+  (click)="stepperExemplo.previous()" class="btn btn-light btn-caixa mx-2">
+     Voltar
+  </button>
+
+  <button [disabled]="stepperExemplo.currentStep == passos.length - 1"
+  (click)="stepperExemplo.next()" class="btn btn-primary btn-caixa mx-2">
+     Avançar
+  </button>`.trim();
+
+  tsCodeStepperTemplate = `  import { Component } from '@angular/core';
+
+  @Component({
+      selector: 'app-stepper',
+      templateUrl: './stepper.component.html',
+      styleUrls: ['./stepper.component.scss']
+  })
+  export class StepperComponent {
+
+    constructor() {}
+
+    passoAtual = 0;
+
+    passos = [
+      'Primeiro passo',
+      'Segundo passo',
+      'Terceiro passo',
+      'Quarto passo',
+      'Passo final'
+    ];
+  }
+  `.trimRight();
+
+  htmlCodeStepperInterno = `<cx-stepper [steps]="passos" #stepperInterno>
+  <div *cxStepper>
+     <h2 class="text-center">Primeiro conteúdo interno</h2>
+  </div>
+
+  <div *cxStepper>
+     <h2 class="text-center">Segundo conteúdo interno</h2>
+  </div>
+
+  <div *cxStepper>
+     <h2 class="text-center">Terceiro conteúdo interno</h2>
+  </div>
+
+  <div *cxStepper>
+     <h2 class="text-center">Quarto conteúdo interno</h2>
+  </div>
+
+  <div *cxStepper>
+     <h2 class="text-center">Quinto conteúdo interno</h2>
+  </div>
+</cx-stepper>
+
+<button [disabled]="stepperInterno.currentStep == 0"
+(click)="stepperInterno.first()" class="btn btn-dark btn-caixa mx-2">
+  Primeiro
+</button>
+
+<button [disabled]="stepperInterno.currentStep == 0"
+(click)="stepperInterno.previous()" class="btn btn-light btn-caixa mx-2">
+  Voltar
+</button>
+
+<button [disabled]="stepperInterno.currentStep == passos.length - 1"
+(click)="stepperInterno.next()" class="btn btn-primary btn-caixa mx-2">
+  Avançar
+</button>`.trim();
+
+  tsCodeStepperInterno = `  import { Component } from '@angular/core';
+
+  @Component({
+      selector: 'app-stepper',
+      templateUrl: './stepper.component.html',
+      styleUrls: ['./stepper.component.scss']
+  })
+  export class StepperComponent {
+
+    constructor() {}
+
+    passos = [
+      'Primeiro passo',
+      'Segundo passo',
+      'Terceiro passo',
+      'Quarto passo',
+      'Passo final'
+    ];
+
+  }
+  `.trimRight();
+
+  htmlCodeTabber = `<cx-tabber [tabs]="abas" #tabberExemplo>
+  <ng-container *ngFor="let aba of abas">
+     <div *cxStepper>
+        <h2 class="text-center">{{ aba.name }}</h2>
+     </div>
+  </ng-container>
+</cx-tabber>
+
+<button [disabled]="tabberExemplo.currentTab == 0"
+(click)="tabberExemplo.first()" class="btn btn-dark btn-caixa mx-2">
+  Primeiro
+</button>
+
+<button [disabled]="tabberExemplo.currentTab == 0"
+(click)="tabberExemplo.previous()" class="btn btn-light btn-caixa mx-2">
+  Voltar
+</button>
+
+<button [disabled]="tabberExemplo.currentTab == abas.length - 1"
+(click)="tabberExemplo.next()" class="btn btn-primary btn-caixa mx-2">
+  Avançar
+</button>
+
+<button [disabled]="tabberExemplo.currentTab == abas.length - 1"
+(click)="tabberExemplo.last()" class="btn btn-dark btn-caixa mx-2">
+   Último
+</button>`.trim();
+
+  tsCodeTabber = `  import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-stepper',
+    templateUrl: './stepper.component.html',
+    styleUrls: ['./stepper.component.scss']
+})
+export class StepperComponent {
+
+  constructor() {}
+
+  abas: TabberItem[] = [
+    { name: "Home", icon: "fa fa-home" },
+    { name: "Componentes", icon: "fa fa-toolbox" },
+    { name: "Tipografia", icon: "fa fa-font" },
+    { name: "Cores", icon: "fa fa-palette" },
+    { name: "Configurações", icon: "fa fa-wrench" },
+    { name: "Páginas", icon: "fa fa-newspaper" }
+  ];
+  abaAtual = 0;
+
+}
+  `.trimRight();
+
+  passos = [
+    'Primeiro passo',
+    'Segundo passo',
+    'Terceiro passo',
+    'Quarto passo',
+    'Passo final'
+  ];
   passoAtual = 0;
   steps = [
     "Um primeiro passo",
@@ -16,6 +272,16 @@ export class StepperDemonstracaoComponent implements OnInit {
     "Um quarto passo",
     "Fim"
   ];
+
+  abas: TabberItem[] = [
+    { name: "Home", icon: "fa fa-home" },
+    { name: "Componentes", icon: "fa fa-toolbox" },
+    { name: "Tipografia", icon: "fa fa-font" },
+    { name: "Cores", icon: "fa fa-palette" },
+    { name: "Configurações", icon: "fa fa-wrench" },
+    { name: "Páginas", icon: "fa fa-newspaper" }
+  ];
+  abaAtual = 0;
 
   currentTab = 0;
   tabs: TabberItem[] = [
@@ -33,11 +299,13 @@ export class StepperDemonstracaoComponent implements OnInit {
 
   temas = BootstrapTheme.getTemas();
 
-  constructor() { }
-
-  ngOnInit(): void {
-    console.log(this.temas);
+  constructor(
+    public toastr: ToastrService,
+  ) {
+    super(toastr);
   }
+
+  ngOnInit(): void { }
 
   changeTabberOrientation(value: number) {
     this.tabberOrientation = value;

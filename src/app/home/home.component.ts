@@ -101,7 +101,6 @@ export class HomeComponent implements OnInit {
   }
 
   injetarTeste(index: number) {
-    console.log(index);
     const componenteFactory = this.resolver.resolveComponentFactory(TipografiaComponent);
     const componenteRef = componenteFactory.create(this.injector);
     const componente = componenteRef.instance;

@@ -165,14 +165,12 @@ export class SideMenuComponent implements OnInit, OnDestroy {
 
   openSearch() {
     this.menuService.abrir();
-    console.log(this.inputSearch.nativeElement);
     setTimeout(() => {
       this.inputSearch.nativeElement.focus();
     }, 0);
   }
 
   filterMenu(ev) {
-    console.log(ev);
     this.menus = JSON.parse(JSON.stringify(mockedSideMenuItems));
     const text: string = ev.target.value.trim();
 
