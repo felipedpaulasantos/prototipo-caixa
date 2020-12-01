@@ -43,6 +43,12 @@ export class ComponentesComponent implements OnInit {
       description: 'Selects customizados integrando a biblioteca Bootstrap-Select'
     },
     {
+			name: 'Stepper',
+			url: '/componentes/stepper',
+      icon: 'fa fa-shoe-prints fa-lg',
+      description: 'Abas que representam passos lógicos'
+    },
+    {
 			name: 'Tabelas',
 			url: '/componentes/tabelas',
       icon: 'fa fa-table fa-lg',
