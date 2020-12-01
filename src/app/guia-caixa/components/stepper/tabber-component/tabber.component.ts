@@ -3,9 +3,9 @@ import {
   TemplateRef, SimpleChanges, OnChanges, ChangeDetectionStrategy,
   ChangeDetectorRef, AfterContentInit
 } from '@angular/core';
-import { TabberDirective } from './tabber-directive';
+import { StepperDirective } from '../stepper-directive';
+import { StepperOrientation } from '../stepper-orientation';
 import { TabberItem } from './tabber-item';
-import { TabberOrientation } from './tabber-orientation';
 
 /** @class Componente Tabber para organizar conteúdo dinâmico ou estático em abas */
 @Component({
@@ -25,7 +25,7 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   /**
    * Mapeia as templates dinâmicas com a diretiva *tabber, caso seja inserido conteúdo dentro do componente;
    */
-  @ContentChildren(TabberDirective, { read: TemplateRef })
+  @ContentChildren(StepperDirective, { read: TemplateRef })
   templates: TemplateRef<any>[];
 
   /**
@@ -33,7 +33,7 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
    * @param {TabberOrientation} orientation Enum com valores Horizontal (0) e Vertical (1).
   */
   @Input()
-  orientation = TabberOrientation.Horizontal;
+  orientation = StepperOrientation.Horizontal;
 
   /**
    * Lista das abas, com sua descrição e ícone.
@@ -98,7 +98,6 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   */
   ngAfterContentInit(): void {
     this.changeDetector.detectChanges();
-    console.log("TABBER", this.templates);
   }
 
   /**
@@ -156,8 +155,8 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   /**
     * Aplica o tema definido no ícone ativo
   */
-  getActiveTheme(isActive: boolean, isLast: boolean): string {
-    return isActive && !isLast ? `bg-${this.theme}` : '';
+  getActiveTheme(isActive: boolean): string {
+    return isActive ? `bg-${this.theme}` : '';
   }
 
 }

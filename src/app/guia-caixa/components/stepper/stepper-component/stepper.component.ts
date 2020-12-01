@@ -2,8 +2,8 @@ import {
   Component, Input, Output, EventEmitter, OnInit, OnChanges,
   ChangeDetectionStrategy, ContentChildren, TemplateRef, SimpleChanges, ChangeDetectorRef, AfterContentInit
 } from "@angular/core";
-import { StepperDirective } from './stepper-directive';
-import { StepperOrientation } from './stepper-orientation';
+import { StepperDirective } from '../stepper-directive';
+import { StepperOrientation } from '../stepper-orientation';
 
 @Component({
   selector: "cx-stepper",
@@ -113,7 +113,6 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   */
   ngAfterContentInit(): void {
     this.changeDetector.detectChanges();
-    console.log("STEPPER", this.templates);
   }
 
   /**

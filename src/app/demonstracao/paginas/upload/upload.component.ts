@@ -1,10 +1,9 @@
-import { Component, ComponentFactoryResolver, ElementRef, Injector, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { StepperComponent } from 'src/app/guia-caixa/components/stepper/stepper.component';
-import { TabberItem } from 'src/app/guia-caixa/components/tabber/tabber-item';
+import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
 
 @Component({
   templateUrl: './upload.component.html',

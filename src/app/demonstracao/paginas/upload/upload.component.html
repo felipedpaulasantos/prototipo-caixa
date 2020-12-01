@@ -14,7 +14,7 @@
       [orientation]="tabberOrientation" 
       #tabberExemplo>
         <ng-container *ngFor="let tab of tabs; let i = index; let last = last; let first = first">
-          <ng-container *tabber>
+          <ng-container *cxStepper>
             <h1 class="text-center my-3">{{ tab.name }}!</h1>
           </ng-container>
         </ng-container>
@@ -81,7 +81,7 @@
       [orientation]="stepperFreeOrientation" 
       #stepperFree>
         <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
-          <ng-container *stepper>
+          <ng-container *cxStepper>
             <h1 class="text-center my-3">{{ step }}!</h1>
           </ng-container>
         </ng-container>
@@ -149,7 +149,7 @@
       [freeNavigation]="false"
       #stepperGuided>
         <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
-          <ng-container *stepper>
+          <ng-container *cxStepper>
             <h1 class="text-center my-3">{{ step }}!</h1>
           </ng-container>
         </ng-container>
