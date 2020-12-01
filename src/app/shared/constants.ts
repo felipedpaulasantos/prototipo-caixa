@@ -58,9 +58,9 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         enabled: true
       },
       {
-        name: 'Tabber',
-        iconClass: 'fa fa-lg fa-ellipsis-h',
-        url: '/componentes/tabber',
+        name: 'Stepper',
+        iconClass: 'fa fa-lg fa-shoe-prints',
+        url: '/componentes/stepper',
         isLink: true,
         enabled: true
       },

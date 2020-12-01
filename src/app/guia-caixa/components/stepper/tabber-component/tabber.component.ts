@@ -3,9 +3,9 @@ import {
   TemplateRef, SimpleChanges, OnChanges, ChangeDetectionStrategy,
   ChangeDetectorRef, AfterContentInit
 } from '@angular/core';
-import { TabberDirective } from './tabber-directive';
+import { StepperDirective } from '../stepper-directive';
+import { StepperOrientation } from '../stepper-orientation';
 import { TabberItem } from './tabber-item';
-import { TabberOrientation } from './tabber-orientation';
 
 /** @class Componente Tabber para organizar conteúdo dinâmico ou estático em abas */
 @Component({
@@ -25,7 +25,7 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   /**
    * Mapeia as templates dinâmicas com a diretiva *tabber, caso seja inserido conteúdo dentro do componente;
    */
-  @ContentChildren(TabberDirective, { read: TemplateRef })
+  @ContentChildren(StepperDirective, { read: TemplateRef })
   templates: TemplateRef<any>[];
 
   /**
@@ -33,7 +33,7 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
    * @param {TabberOrientation} orientation Enum com valores Horizontal (0) e Vertical (1).
   */
   @Input()
-  orientation = TabberOrientation.Horizontal;
+  orientation = StepperOrientation.Horizontal;
 
   /**
    * Lista das abas, com sua descrição e ícone.
@@ -79,9 +79,16 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tabs']) {
       const newTabs: any[] = changes['tabs'].currentValue;
+
+      /* Verifica se a nova lista possui comprimento válido */
       if (newTabs.length >= this.MINIMUM_TABS && newTabs.length > this.MAXIMUM_TABS) {
         this.tabs = newTabs.slice(0, this.MAXIMUM_TABS);
         this.changeDetector.detectChanges();
+      }
+
+      /* Verifica se a aba atual está em uma posição válida */
+      if (this.currentTab >= newTabs.length) {
+        this.currentTab = newTabs.length - 1;
       }
     }
   }
@@ -91,7 +98,6 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   */
   ngAfterContentInit(): void {
     this.changeDetector.detectChanges();
-    console.log("TABBER", this.templates);
   }
 
   /**
@@ -147,10 +153,17 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   }
 
   /**
-   * Salta para a última aba
+    * Retorna o tema definido para o ícone ativo
   */
   getActiveTheme(isActive: boolean): string {
     return isActive ? `bg-${this.theme}` : '';
+  }
+
+  /**
+    * Realiza manualmente a atualização do template
+  */
+  update(): void {
+    this.changeDetector.detectChanges();
   }
 
 }

@@ -3,255 +3,7 @@
 </h1>
 <hr class="header-line-caixa">
 
-<section id="tabber" class="mb-5">
-  <div class="card card-caixa">
-    <div class="card-header">
-      <h5 class="header-subtitulo-caixa">Tabber</h5>
-    </div>
-    <div class="card-body">
-
-      <cx-tabber 
-      [tabs]="tabs" 
-      [orientation]="tabberOrientation" 
-      #tabberExemplo>
-        <ng-container *ngFor="let tab of tabs; let i = index; let last = last; let first = first">
-          <ng-container *tabber>
-            <h1 class="text-center my-3">{{ tab.name }}!</h1>
-          </ng-container>
-        </ng-container>
-      </cx-tabber>
-    </div>
-    <div class="card-footer">
-      <div class="row">
-        <div class="col d-flex align-items-center">
-          <button title="Primeiro" class="btn btn-dark btn-caixa mr-2" [disabled]="tabberExemplo.currentTab == 0"
-            (click)="tabberExemplo.first()">
-            <i class="fa fa-angle-double-left fa-lg"></i>
-          </button>
-
-          <button [disabled]="tabberExemplo.currentTab <= 0" (click)="tabberExemplo.previous()"
-            class="btn btn-light btn-caixa mr-2">
-            <i class="fa fa-angle-left fa-lg"></i>
-          </button>
-
-          <button [disabled]="tabberExemplo.currentTab == (tabs.length - 1)" (click)="tabberExemplo.next()"
-            class="btn btn-primary btn-caixa">
-            <i class="fa fa-angle-right fa-lg"></i>
-          </button>
-
-          <button title="Último" class="btn btn-dark btn-caixa ml-2"
-            [disabled]="tabberExemplo.currentTab == (tabs.length - 1)" (click)="tabberExemplo.last()">
-            <i class="fa fa-angle-double-right fa-lg"></i>
-          </button>
-
-          <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="tabs.length == 2"
-            (click)="tabs.pop(); tabs = [].concat(tabs)">
-            <i class="fa fa-minus fa-lg"></i>
-          </button>
-
-          <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
-            [disabled]="tabs.length == tabberExemplo.MAXIMUM_TABS" (click)="addTab(inputNovaAba.value); inputNovaAba.value = ''">
-            <i class="fa fa-plus fa-lg"></i>
-          </button>
-
-          <input #inputNovaAba class="input-caixa d-inline w-50 ml-2" placeholder="Nome da nova aba">
-        </div>
-        <div class="col-4">
-          <cx-select class="d-inline">
-            <label>Orientação</label>
-            <select selectCaixa (change)="changeTabberOrientation($event.target.value)">
-              <option value="0">Horizontal</option>
-              <option value="1">Vertical</option>
-            </select>
-          </cx-select>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="stepperNavegacaoLivre" class="mb-5">
-  <div class="card card-caixa">
-    <div class="card-header">
-      <h5 class="header-subtitulo-caixa">Stepper - Navegação Livre</h5>
-    </div>
-    <div class="card-body">
-
-      <cx-stepper 
-      [steps]="steps" 
-      [orientation]="stepperFreeOrientation" 
-      #stepperFree>
-        <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
-          <ng-container *stepper>
-            <h1 class="text-center my-3">{{ step }}!</h1>
-          </ng-container>
-        </ng-container>
-      </cx-stepper>
-    </div>
-    <div class="card-footer">
-      <div class="row">
-        <div class="col d-flex align-items-center">
-          <button title="Primeiro" class="btn btn-dark btn-caixa mr-2" [disabled]="stepperFree.currentStep == 0"
-            (click)="stepperFree.first()">
-            <i class="fa fa-angle-double-left fa-lg"></i>
-          </button>
-
-          <button [disabled]="stepperFree.currentStep <= 0" (click)="stepperFree.previous()"
-            class="btn btn-light btn-caixa mr-2">
-            <i class="fa fa-angle-left fa-lg"></i>
-          </button>
-
-          <button [disabled]="stepperFree.currentStep == (steps.length - 1)" (click)="stepperFree.next()"
-            class="btn btn-primary btn-caixa">
-            <i class="fa fa-angle-right fa-lg"></i>
-          </button>
-
-          <button title="Último" class="btn btn-dark btn-caixa ml-2"
-            [disabled]="stepperFree.currentStep == (steps.length - 1)" (click)="stepperFree.toStepByIndex(steps.length - 1)">
-            <i class="fa fa-angle-double-right fa-lg"></i>
-          </button>
-
-          <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="steps.length == 2"
-            (click)="removeStep(stepperFree.currentStep == (steps.length - 1), stepperFree)">
-            <i class="fa fa-minus fa-lg"></i>
-          </button>
-
-          <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
-            [disabled]="steps.length == stepperFree.MAXIMUM_STEPS" (click)="addStep(inputNovoStepFree.value); inputNovoStepFree.value = ''">
-            <i class="fa fa-plus fa-lg"></i>
-          </button>
-
-          <input #inputNovoStepFree class="input-caixa d-inline w-50 ml-2" placeholder="Nome do novo passo">
-        </div>
-        <div class="col-4">
-          <cx-select class="d-inline">
-            <label>Orientação</label>
-            <select selectCaixa (change)="changeStepperFreeOrientation($event.target.value)">
-              <option value="0">Horizontal</option>
-              <option value="1">Vertical</option>
-            </select>
-          </cx-select>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="stepperNavegacaoLivre" class="mb-5">
-  <div class="card card-caixa">
-    <div class="card-header">
-      <h5 class="header-subtitulo-caixa">Stepper - Navegação Guiada</h5>
-    </div>
-    <div class="card-body">
-
-      <cx-stepper 
-      [steps]="steps" 
-      [orientation]="stepperGuidedOrientation" 
-      [freeNavigation]="false"
-      #stepperGuided>
-        <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
-          <ng-container *stepper>
-            <h1 class="text-center my-3">{{ step }}!</h1>
-          </ng-container>
-        </ng-container>
-      </cx-stepper>
-    </div>
-    <div class="card-footer">
-      <div class="row">
-        <div class="col d-flex align-items-center">
-          <button title="Primeiro" class="btn btn-dark btn-caixa mr-2" [disabled]="stepperGuided.currentStep == 0"
-            (click)="stepperGuided.first()">
-            <i class="fa fa-angle-double-left fa-lg"></i>
-          </button>
-
-          <button [disabled]="stepperGuided.currentStep <= 0" (click)="stepperGuided.previous()"
-            class="btn btn-light btn-caixa mr-2">
-            <i class="fa fa-angle-left fa-lg"></i>
-          </button>
-
-          <button [disabled]="stepperGuided.currentStep == (steps.length - 1)" (click)="stepperGuided.next()"
-            class="btn btn-primary btn-caixa">
-            <i class="fa fa-angle-right fa-lg"></i>
-          </button>
-
-          <button title="Último" class="btn btn-dark btn-caixa ml-2"
-            [disabled]="stepperGuided.currentStep == (steps.length - 1)" (click)="stepperGuided.toStepByIndex(steps.length - 1)">
-            <i class="fa fa-angle-double-right fa-lg"></i>
-          </button>
-
-          <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="steps.length == 2"
-            (click)="removeStep(stepperGuided.currentStep == steps.length - 1, stepperGuided)">
-            <i class="fa fa-minus fa-lg"></i>
-          </button>
-
-          <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
-            [disabled]="steps.length == stepperGuided.MAXIMUM_STEPS" (click)="addStep(inputNovoStepGuided.value); inputNovoStepGuided.value = ''">
-            <i class="fa fa-plus fa-lg"></i>
-          </button>
-
-          <input #inputNovoStepGuided class="input-caixa d-inline w-50 ml-2" placeholder="Nome do novo passo">
-        </div>
-        <div class="col-4">
-          <cx-select class="d-inline">
-            <label>Orientação</label>
-            <select selectCaixa (change)="changeStepperGuidedOrientation($event.target.value)">
-              <option value="0">Horizontal</option>
-              <option value="1">Vertical</option>
-            </select>
-          </cx-select>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ng-container *ngIf="false">
+<ng-container>
   <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
     <div class="row">
       <div class="col-12 col-md-5 col-lg-4">
@@ -275,7 +27,7 @@
   <ng-container *ngIf="cliente">
     <section id="secaoInformacoesPessoais" class="row mt-4">
       <div class="col-12 col-xl-4 mb-3 mb-xl-0">
-        <app-card-caixa [draggable]="true">
+        <cx-card [draggable]="true">
           <div class="card-header">
             <h5 class="header-subtitulo-caixa">Informações Pessoais</h5>
           </div>
@@ -303,7 +55,7 @@
               Editar
             </button>
           </div>
-        </app-card-caixa>
+        </cx-card>
       </div>
     </section> <!-- ROW -->
 
@@ -406,7 +158,7 @@
     </section>
 
     <section id="secaoTabelaContratos" class="mt-5">
-      <app-card-caixa>
+      <cx-card>
         <div class="card-header">
           <h5 class="header-subtitulo-caixa">
             Contratos
@@ -444,7 +196,7 @@
             </table>
           </div>
         </div>
-      </app-card-caixa>
+      </cx-card>
     </section>
   </ng-container>
 </ng-container>

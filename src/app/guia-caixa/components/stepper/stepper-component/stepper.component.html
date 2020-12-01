@@ -8,7 +8,7 @@
          'cursor-pointer': (index < currentStep && currentStep < (steps.length - 1))
       }">
          <div class="step-title waves-effect" (click)="toStepByIndex(index)">
-            <div class="step-icon">
+            <div class="step-icon" [ngClass]="getActiveTheme(currentStep == index, last)">
                <ng-container *ngIf="getStepIcon(index) as backIcon else showCounter">
                   <i class="{{ backIcon }}"></i>
                </ng-container>

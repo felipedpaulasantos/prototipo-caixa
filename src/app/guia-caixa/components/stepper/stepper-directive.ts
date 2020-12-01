@@ -1,11 +1,11 @@
 import { Directive, Input } from '@angular/core';
 
 @Directive({
-   selector: '[stepper]',
+   selector: '[cxStepper]',
 })
 export class StepperDirective {
 
-   @Input('stepper')
+   @Input('cxStepper')
    stepId: any;
 
    constructor() { }

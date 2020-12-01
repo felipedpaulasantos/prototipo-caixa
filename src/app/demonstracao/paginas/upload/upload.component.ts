@@ -1,10 +1,9 @@
-import { Component, ComponentFactoryResolver, ElementRef, Injector, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { StepperComponent } from 'src/app/guia-caixa/components/stepper/stepper.component';
-import { TabberItem } from 'src/app/guia-caixa/components/tabber/tabber-item';
+import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
 
 @Component({
   templateUrl: './upload.component.html',
@@ -52,14 +51,6 @@ export class UploadComponent implements OnInit {
   tabberOrientation = 0;
   stepperFreeOrientation = 0;
   stepperGuidedOrientation = 0;
-
-  mudarPasso(passo: number) {
-    this.passoAtual = passo;
-  }
-
-  mudarTab(tab: number) {
-    this.currentTab = tab;
-  }
 
   ngOnInit(): void {
     this.clientePesquisado();
@@ -173,43 +164,6 @@ export class UploadComponent implements OnInit {
     window.addEventListener("drop", function(e: any) {
       e.preventDefault();
     }, false);
-  }
-
-  changeTabberOrientation(value: number) {
-    this.tabberOrientation = value;
-  }
-
-  changeStepperFreeOrientation(value: number) {
-    this.stepperFreeOrientation = value;
-  }
-
-  changeStepperGuidedOrientation(value: number) {
-    this.stepperGuidedOrientation = value;
-  }
-
-  addTab(nome: string) {
-    const newIndex = this.tabs.length + 1;
-    const newTab: TabberItem = {
-      name: nome ? nome : `Aba ${newIndex}`,
-      icon: "fa fa-plus"
-    };
-    this.tabs.push(newTab);
-    this.tabs = [].concat(this.tabs);
-  }
-
-  addStep(nome: string) {
-    const newIndex = this.steps.length + 1;
-    const newStep = nome ? nome : `Passo ${newIndex}`;
-    this.steps.push(newStep);
-    this.steps = [].concat(this.steps);
-  }
-
-  removeStep(isLast: boolean, stepper: StepperComponent) {
-    this.steps.pop();
-    if (isLast) {
-      stepper.currentStep = this.steps.length - 1;
-    }
-    this.steps = [].concat(this.steps);
   }
 
 }

@@ -7,7 +7,9 @@ import { MensagensComponent } from './mensagens/mensagens.component';
 import { TabelasComponent } from './tabelas/tabelas.component';
 import { InputsComponent } from './inputs/inputs.component';
 import { SelectComponent } from './select/select.component';
-import { TabberDemonstracaoComponent } from './tabber-demonstracao/tabber-demonstracao.component';
+import { StepperOrientation } from 'src/app/guia-caixa/components/stepper/stepper-orientation';
+import { StepperDemonstracaoComponent } from './stepper-demonstracao/stepper-demonstracao.component';
+
 
 const routes: Routes = [
   {
@@ -65,6 +67,15 @@ const routes: Routes = [
     }
   },
   {
+    path: "stepper",
+    component: StepperDemonstracaoComponent,
+    data: {
+      title: "Stepper",
+      breadcrumb: "Stepper",
+      animation: "Stepper"
+    }
+  },
+/*   {
     path: "tabber",
     component: TabberDemonstracaoComponent,
     data: {
@@ -72,7 +83,7 @@ const routes: Routes = [
       breadcrumb: "Tabber",
       animation: "Tabber"
     }
-  },
+  }, */
   {
     path: "tabelas",
     component: TabelasComponent,
