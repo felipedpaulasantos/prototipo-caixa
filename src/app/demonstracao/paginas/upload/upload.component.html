@@ -9,7 +9,6 @@
       <h5 class="header-subtitulo-caixa">Tabber</h5>
     </div>
     <div class="card-body">
-
       <cx-tabber 
       [tabs]="tabs" 
       [orientation]="tabberOrientation" 
@@ -112,7 +111,7 @@
           </button>
 
           <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="steps.length == 2"
-            (click)="removeStep(stepperFree.currentStep == (steps.length - 1), stepperFree)">
+            (click)="removeStep()">
             <i class="fa fa-minus fa-lg"></i>
           </button>
 
@@ -180,7 +179,7 @@
           </button>
 
           <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="steps.length == 2"
-            (click)="removeStep(stepperGuided.currentStep == steps.length - 1, stepperGuided)">
+            (click)="removeStep()">
             <i class="fa fa-minus fa-lg"></i>
           </button>
 
@@ -275,7 +274,7 @@
   <ng-container *ngIf="cliente">
     <section id="secaoInformacoesPessoais" class="row mt-4">
       <div class="col-12 col-xl-4 mb-3 mb-xl-0">
-        <app-card-caixa [draggable]="true">
+        <cx-card [draggable]="true">
           <div class="card-header">
             <h5 class="header-subtitulo-caixa">Informações Pessoais</h5>
           </div>
@@ -303,7 +302,7 @@
               Editar
             </button>
           </div>
-        </app-card-caixa>
+        </cx-card>
       </div>
     </section> <!-- ROW -->
 
@@ -406,7 +405,7 @@
     </section>
 
     <section id="secaoTabelaContratos" class="mt-5">
-      <app-card-caixa>
+      <cx-card>
         <div class="card-header">
           <h5 class="header-subtitulo-caixa">
             Contratos
@@ -444,7 +443,7 @@
             </table>
           </div>
         </div>
-      </app-card-caixa>
+      </cx-card>
     </section>
   </ng-container>
 </ng-container>

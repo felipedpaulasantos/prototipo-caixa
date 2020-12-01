@@ -2,7 +2,6 @@ import {
   Component, Input, Output, EventEmitter, OnInit, OnChanges,
   ChangeDetectionStrategy, ContentChildren, TemplateRef, SimpleChanges, ChangeDetectorRef, AfterContentInit
 } from "@angular/core";
-import { TabberDirective } from '../tabber/tabber-directive';
 import { StepperDirective } from './stepper-directive';
 import { StepperOrientation } from './stepper-orientation';
 
@@ -19,6 +18,12 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   */
   readonly MINIMUM_STEPS = 2;
   readonly MAXIMUM_STEPS = 7;
+
+  /**
+   * Ícones de navegação do Stepper. Apenas na navegação guiada.
+  */
+  readonly BACK_ICON_X = 'fa fa-arrow-left';
+  readonly BACK_ICON_Y = 'fa fa-arrow-up';
 
   /**
    * Mapeia as templates dinâmicas com a diretiva *stepper, caso seja usada a variante de comportamento contentInside;
@@ -59,6 +64,14 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   currentStep = 0;
 
   /**
+   * Tema de cor dos ícones
+   * @param {string} theme Nome do tema. Padrão = 'primary'.
+   * Outras opções: 'secondary', 'info', 'warning', 'danger', 'light', 'dark'.
+  */
+  @Input()
+  theme = "primary";
+
+  /**
    * Evento que transmite o index do novo passo atual após ser selecionado.
    * @param {string | number} changeStep Index do novo passo selecionado.
   */
@@ -80,8 +93,16 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['steps']) {
       const newSteps: any[] = changes['steps'].currentValue;
+
+      /* Verifica se a nova lista possui comprimento válido */
       if (newSteps.length >= this.MINIMUM_STEPS && newSteps.length > this.MAXIMUM_STEPS) {
         this.steps = newSteps.slice(0, this.MAXIMUM_STEPS);
+        this.changeDetector.detectChanges();
+      }
+
+      /* Verifica se o passo atual está em uma posição válida */
+      if (this.currentStep >= newSteps.length) {
+        this.currentStep = newSteps.length - 1;
         this.changeDetector.detectChanges();
       }
     }
@@ -138,7 +159,7 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   }
 
   /**
-    * Salta para a primeira aba, apenas na navegação livre.
+    * Salta para a primeira aba. Apenas na navegação livre.
   */
   first(): void {
     if (this.freeNavigation) {
@@ -157,11 +178,20 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
 
     if (!this.freeNavigation) {
       if (index == (this.currentStep - 1) && this.currentStep != (this.steps.length - 1)) {
-        return this.orientation == 0 ? 'fa fa-arrow-left' : 'fa fa-arrow-up';
+        return this.orientation == StepperOrientation.Horizontal
+          ? this.BACK_ICON_X
+          : this.BACK_ICON_Y;
       } else {
         return null;
       }
     }
+  }
+
+  /**
+    * Aplica o tema definido no ícone ativo
+  */
+  getActiveTheme(isActive: boolean, isLast: boolean): string {
+    return isActive && !isLast ? `bg-${this.theme}` : '';
   }
 
 }

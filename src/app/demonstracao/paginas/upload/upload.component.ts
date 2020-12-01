@@ -204,11 +204,8 @@ export class UploadComponent implements OnInit {
     this.steps = [].concat(this.steps);
   }
 
-  removeStep(isLast: boolean, stepper: StepperComponent) {
+  removeStep() {
     this.steps.pop();
-    if (isLast) {
-      stepper.currentStep = this.steps.length - 1;
-    }
     this.steps = [].concat(this.steps);
   }
 

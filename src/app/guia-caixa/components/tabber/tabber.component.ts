@@ -79,9 +79,16 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tabs']) {
       const newTabs: any[] = changes['tabs'].currentValue;
+
+      /* Verifica se a nova lista possui comprimento válido */
       if (newTabs.length >= this.MINIMUM_TABS && newTabs.length > this.MAXIMUM_TABS) {
         this.tabs = newTabs.slice(0, this.MAXIMUM_TABS);
         this.changeDetector.detectChanges();
+      }
+
+      /* Verifica se a aba atual está em uma posição válida */
+      if (this.currentTab >= newTabs.length) {
+        this.currentTab = newTabs.length - 1;
       }
     }
   }
@@ -147,10 +154,10 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   }
 
   /**
-   * Salta para a última aba
+    * Aplica o tema definido no ícone ativo
   */
-  getActiveTheme(isActive: boolean): string {
-    return isActive ? `bg-${this.theme}` : '';
+  getActiveTheme(isActive: boolean, isLast: boolean): string {
+    return isActive && !isLast ? `bg-${this.theme}` : '';
   }
 
 }

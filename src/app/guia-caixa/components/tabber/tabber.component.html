@@ -5,7 +5,7 @@
          'cursor-pointer': currentTab != index
       }">
          <div class="tab-title waves-effect" (click)="toTabByIndex(index)">
-            <div class="tab-icon" [ngClass]="getActiveTheme(currentTab == index)">
+            <div class="tab-icon" [ngClass]="getActiveTheme(currentTab == index, last)">
                <i *ngIf="currentTab == index" class="fa fa-check"></i>
                <i *ngIf="currentTab != index" class="{{ tab.icon }}"></i>
             </div>

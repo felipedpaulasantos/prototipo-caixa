@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, AfterContentInit, ChangeDetectorRef, ViewChild, Input, Renderer2 } from '@angular/core';
 
 @Component({
-  selector: 'app-card-caixa',
+  selector: 'cx-card',
   templateUrl: './card-caixa.component.html',
   styleUrls: ['./card-caixa.component.scss'],
   host: { 'class': 'card card-caixa' }
