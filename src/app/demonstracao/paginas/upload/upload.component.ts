@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { CardChave } from 'src/app/guia-caixa/components/card-chave/listar-chaves';
 import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
 
 @Component({
@@ -29,33 +30,19 @@ export class UploadComponent implements OnInit {
 
   contratos = [];
 
-  passoAtual = 0;
-  steps = [
-    "Um passo aqui",
-    "Um segundo passo agora",
-    "Mais outro passo",
-    "Um quarto passo",
-    "Fim"
-  ];
-
-  currentTab = 0;
-  tabs: TabberItem[] = [
-    { name: "Home", icon: "fa fa-home" },
-    { name: "Componentes", icon: "fa fa-toolbox" },
-    { name: "Tipografia", icon: "fa fa-font" },
-    { name: "Cores", icon: "fa fa-palette" },
-    { name: "Configurações", icon: "fa fa-wrench" },
-    { name: "Páginas", icon: "fa fa-newspaper" }
-  ];
-
-  tabberOrientation = 0;
-  stepperFreeOrientation = 0;
-  stepperGuidedOrientation = 0;
+  cardConfiguracao: CardChave;
 
   ngOnInit(): void {
     this.clientePesquisado();
     this.populaContratos();
     this.preventDragDropDefault();
+    this.cardConfiguracao = new CardChave("DOCUMENTO", "123.456.789-01", "VISUALIZAR", false, true);
+    this.cardConfiguracao.showCheck = true;
+    this.cardConfiguracao.showTitulo = true;
+    this.cardConfiguracao.icone = 'fa fa-home fa-lg'
+    this.cardConfiguracao.leftLabels.push("123.456.789-01");
+    this.cardConfiguracao.rightLabels.push("Chave: ");
+    this.cardConfiguracao.rightLabels.push("Conta Vinculada: ");
   }
 
   populaContratos(): void {
