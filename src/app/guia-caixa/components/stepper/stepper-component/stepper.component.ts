@@ -13,6 +13,9 @@ import { StepperOrientation } from '../stepper-orientation';
 })
 export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
 
+  readonly DEFAULT_COMPLETED_MESSAGE = "Transação concluída com sucesso!";
+  readonly DEFAULT_COMPLETED_ICON = "fa fa-check-circle fa-lg";
+
   /**
    * Quantidade mínima e máxima de passos permitidos
   */
@@ -71,6 +74,18 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   @Input()
   theme = "primary";
 
+  @Input()
+  completedMessage: string;
+
+  @Input()
+  completedIcon: string;
+
+  @Input()
+  showCompletedMessage: string;
+
+  @Input()
+  hideStepsOnCompleted = true;
+
   /**
    * Evento que transmite o index do novo passo atual após ser selecionado.
    * @param {string | number} changeStep Index do novo passo selecionado.
@@ -93,18 +108,26 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['steps']) {
       const newSteps: any[] = changes['steps'].currentValue;
-
-      /* Verifica se a nova lista possui comprimento válido */
-      if (newSteps.length >= this.MINIMUM_STEPS && newSteps.length > this.MAXIMUM_STEPS) {
-        this.steps = newSteps.slice(0, this.MAXIMUM_STEPS);
+      const isValidLength = this.isValidLength(newSteps);
+      const isCurrentIndexValid = this.isCurrentIndexValid(newSteps);
+      if (isValidLength && isCurrentIndexValid) {
         this.changeDetector.detectChanges();
       }
+    }
+    this.changeDetector.detectChanges();
+  }
 
-      /* Verifica se o passo atual está em uma posição válida */
-      if (this.currentStep >= newSteps.length) {
-        this.currentStep = newSteps.length - 1;
-        this.changeDetector.detectChanges();
-      }
+  private isValidLength(newSteps: string[]): boolean {
+    if (newSteps.length >= this.MINIMUM_STEPS && newSteps.length > this.MAXIMUM_STEPS) {
+      this.steps = newSteps.slice(0, this.MAXIMUM_STEPS);
+      return true;
+    }
+  }
+
+  private isCurrentIndexValid(newSteps: string[]): boolean {
+    if (this.currentStep >= newSteps.length) {
+      this.currentStep = newSteps.length - 1;
+      return true;
     }
   }
 
