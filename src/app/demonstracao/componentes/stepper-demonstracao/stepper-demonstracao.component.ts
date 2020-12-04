@@ -296,12 +296,15 @@ export class StepperComponent {
   tabberOrientation = 0;
   stepperFreeOrientation = 0;
   stepperGuidedOrientation = 0;
+  hideStepsOnCompleted = true;
+  completedMessage = null;
+  completedIcon = null;
+  freeNavigation = true;
+  showCompletedMessage = true;
 
   temas = BootstrapTheme.getTemas();
 
-  constructor(
-    public toastr: ToastrService,
-  ) {
+  constructor(public toastr: ToastrService) {
     super(toastr);
   }
 
@@ -317,6 +320,10 @@ export class StepperComponent {
 
   changeStepperGuidedOrientation(value: number) {
     this.stepperGuidedOrientation = value;
+  }
+
+  changeHideSteps(value: boolean) {
+    this.hideStepsOnCompleted = value;
   }
 
   addTab(nome: string) {

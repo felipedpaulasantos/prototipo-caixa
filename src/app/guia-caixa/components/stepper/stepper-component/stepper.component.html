@@ -1,4 +1,12 @@
-<div class="stepper-wrapper" [ngClass]="{'horizontal': orientation == 0,'vertical': orientation == 1}">
+<cx-stepper-message 
+   [show]="showCompletedMessage && currentStep == steps.length - 1"
+   [message]="completedMessage || DEFAULT_COMPLETED_MESSAGE"
+   [icon]="completedIcon || DEFAULT_COMPLETED_ICON">
+</cx-stepper-message>
+
+<div class="stepper-wrapper" [ngClass]="{
+   'horizontal': orientation == 0, 'vertical': orientation == 1, 'd-none': hideStepsOnCompleted && currentStep == steps.length - 1
+}">
    <ul class="stepper" [ngClass]="{'completed': currentStep == (steps.length - 1), 'nav-guided': !freeNavigation}">
       <li [title]="step" class="step" *ngFor="let step of steps; let index = index; let last = last" [ngClass]="{
          'current-step': currentStep == index, 
