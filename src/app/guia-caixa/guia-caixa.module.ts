@@ -9,8 +9,9 @@ import { ModalComponent } from './components/modal/modal.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CardCaixaComponent } from './components/card-caixa/card-caixa.component';
 import { StepperModule } from './components/stepper/stepper.module';
-import { CardChaveComponent } from './components/card-chave/card-chave.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
+import { CardButtonComponent } from './components/card-chave/card-button.component';
 
 
 
@@ -23,7 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SpinnerCaixaComponent,
 		ModalComponent,
     CardCaixaComponent,
-    CardChaveComponent
+    CardButtonComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SpinnerCaixaComponent,
     ModalComponent,
     CardCaixaComponent,
-    CardChaveComponent,
+    CardButtonComponent,
     StepperModule
   ]
 })

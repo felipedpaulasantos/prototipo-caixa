@@ -4,7 +4,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { CardChave } from 'src/app/guia-caixa/components/card-chave/listar-chaves';
-import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
 
 @Component({
   templateUrl: './upload.component.html',
@@ -29,6 +28,16 @@ export class UploadComponent implements OnInit {
   uploadedFile: File = null;
 
   contratos = [];
+
+
+  passo = 0;
+  passos = [
+    "CDC",
+    "Simulação",
+    "Confirmar Solicitação",
+    "Comprovante de Operação"
+  ];
+
 
   cardConfiguracao: CardChave;
 

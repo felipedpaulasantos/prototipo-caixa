@@ -3,7 +3,7 @@
 </h1>
 <hr class="header-line-caixa">
 
-<ng-container>
+<ng-container *ngIf="false">
   <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
     <div class="row">
       <div class="col-12 col-md-5 col-lg-4">
@@ -201,6 +201,4 @@
   </ng-container>
 </ng-container>
 
-<ng-container *ngIf="false">
-  <cx-card-chave [card]="cardConfiguracao"></cx-card-chave>
-</ng-container>
+<cx-card-button [card]="cardConfiguracao"></cx-card-button>

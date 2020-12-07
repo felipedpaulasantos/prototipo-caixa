@@ -1,0 +1,240 @@
+.container-card {
+    margin: 20px 0px 0px 0px;
+    position: relative;
+}
+
+.card-selecionado::before,
+.card-selecionado::after {
+    content: "";
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+}
+
+.card-selecionado::before {
+    width: 0;
+    height: 0;
+    right: -20px;
+    border-top: 10px solid transparent;
+    border-left: 20px solid #005ca9b3;
+    border-bottom: 10px solid transparent;
+}
+
+.card-selecionado::after {
+    width: 0;
+    height: 0;
+    right: -18px;
+    border-top: 10px solid transparent;
+    border-left: 21px solid #fff;
+    border-bottom: 10px solid transparent;
+}
+
+.max-width {
+    max-width: 500px !important;
+}
+
+.input-valor {
+    border-radius: 0px !important;
+    border: none;
+    border-bottom: 1px solid black;
+    font-family: futura-lt-book;
+    padding: 10px;
+    float: left;
+    position: relative;
+    width: 100%;
+}
+
+.card-main {
+    border-radius: 5px 0px 0px 5px;
+    background-color: #005ca9;
+    height: 100% !important;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center !important;
+    text-align: center;
+}
+.card {
+    padding-left: 0px !important;
+    border-radius: 7px;
+    border: solid 1px rgba(0, 92, 169, 0.7);
+}
+
+.card-reverse {
+    transition: all 0.5s ease;
+    padding-left: 0px !important;
+    border-radius: 7px;
+    border: solid 1px rgba(0, 92, 169, 0.7);
+    background-color: #2e3236;
+}
+
+.card-invalid {
+    transition: all 0.5s ease;
+    border: solid 2px rgba(51, 51, 51, 0.6);
+}
+.card-invalid:hover {
+    border: solid 2px rgba(51, 51, 51, 1);
+    transform: scale(1.05);
+}
+.blue-text {
+    color: #005ca9;
+}
+.valores h3 {
+    margin-top: 10px;
+}
+.labelsInput h3 {
+    margin-top: 15px;
+}
+.antecipacao-indispovivel {
+    background-color: #333333 !important;
+}
+.text-black {
+    color: #333333 !important;
+}
+.lista {
+    margin-bottom: 20px;
+}
+.text-total-valor {
+    margin-top: 10px;
+    margin-bottom: 0px !important;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+.bagde-antecipacao {
+    padding: 7px 10px;
+    border-radius: 18px;
+    font-weight: 300;
+    background: rgba(51, 51, 51, 0.9);
+    transition: all 0.5s ease;
+}
+.bagde-antecipacao:hover {
+    background: rgba(51, 51, 51, 1);
+}
+#reaload-button {
+    border: 1px solid #005ca9;
+    background-color: #005ca9;
+    margin-top: 10px;
+}
+
+.checkbox-container input {
+    display: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: white;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+    left: 4px;
+    top: 0px;
+    width: 9px;
+    height: 13px;
+    border: solid #005ca9;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+form {
+    display: flex;
+    width: 100%;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+@media (max-width: 575px) {
+    .card-main {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .card {
+        padding-right: 0;
+    }
+}
+
+.input-documento {
+    width: 83%;
+}
+
+.card-no-selecionado {
+    background-color: #3a4859;
+}
+
+.card-button-wrapper {
+    position: relative;
+    border: solid 1px #005ca9b3;
+    border-radius: 5px;
+    height: 135px;
+    min-height: 135px;
+    width: 500px;
+    max-width: 500px;
+}
+.checkbox-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.checkbox-wrapper > div > input {
+    display: none;
+}
+.checkbox-wrapper > div > .checkmark {
+    cursor: pointer;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.checkbox-wrapper input:checked .checkmark:after {
+    display: block;
+}
+
+.card-button-wrapper > .row > .col-4 > .label-container {
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.card-button-wrapper > .row > .col-8 > .content-container {
+    margin: 0;
+    padding: 1rem;
+}

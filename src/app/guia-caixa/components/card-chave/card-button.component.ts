@@ -1,14 +1,15 @@
-import {Component, Input, OnInit, OnChanges, ElementRef} from "@angular/core";
-import { FormBuilder, FormControl } from "@angular/forms";
+import {Component, Input, OnInit, OnChanges, ElementRef, ChangeDetectionStrategy} from "@angular/core";
+import { FormBuilder } from "@angular/forms";
 import { FormGroup } from "@angular/forms";
 import { CardChave } from './listar-chaves';
 
 @Component({
-  selector: "cx-card-chave",
-  templateUrl: "./card-chave.component.html",
-  styleUrls: ["./card-chave.component.css"]
+  selector: "cx-card-button",
+  templateUrl: "./card-button.component.html",
+  styleUrls: ["./card-button.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardChaveComponent  implements OnInit, OnChanges {
+export class CardButtonComponent  implements OnInit, OnChanges {
 
   @Input()
   card: CardChave;
@@ -28,9 +29,7 @@ export class CardChaveComponent  implements OnInit, OnChanges {
   ICON_EMAIL = "fas fa-envelope";
 
     constructor(
-      private fb: FormBuilder,
-      el: ElementRef
-    ) {
+      private fb: FormBuilder    ) {
 /*       pixService.changeEmittedAutenticarCliente$.subscribe((card: CardChave) => this.atualizarValorCard()); */
     }
 
