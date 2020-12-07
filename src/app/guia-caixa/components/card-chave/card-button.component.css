@@ -157,12 +157,12 @@
 }
 
 /* Style the checkmark/indicator */
-.checkbox-container .checkmark:after {
+.card-button-left-side .checkbox-wrapper .checkmark:after {
     left: 4px;
     top: 0px;
     width: 9px;
     height: 13px;
-    border: solid #005ca9;
+    border: solid white;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -198,15 +198,54 @@ form {
     background-color: #3a4859;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CARD BUTTON WRAPPER */
 .card-button-wrapper {
     position: relative;
-    border: solid 1px #005ca9b3;
+    border: solid 1px #3a4859;
     border-radius: 5px;
     height: 135px;
     min-height: 135px;
     width: 500px;
     max-width: 500px;
 }
+.card-button-wrapper.checked {
+    border: solid 1px #005ca9b3;
+}
+.card-button-wrapper > .row > .card-button-left-side {
+    background-color: #3a4859;
+    height: 100% !important;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center !important;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+.card-button-wrapper.checked > .row > .card-button-left-side {
+    background-color: #005ca9;
+}
+    
+
 .checkbox-wrapper {
     position: absolute;
     left: 0;
@@ -226,6 +265,9 @@ form {
     display: none;
 }
 .checkbox-wrapper input:checked .checkmark:after {
+    display: block;
+}
+.card-button-wrapper.checked .card-button-left-side .checkmark:after {
     display: block;
 }
 
