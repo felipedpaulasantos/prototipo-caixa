@@ -1,8 +1,5 @@
-import { Component, Input, OnInit, OnChanges, ElementRef, ChangeDetectionStrategy, ContentChild, TemplateRef } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
-import { FormGroup } from "@angular/forms";
-
-import { CardChave } from './listar-chaves';
+import { Component, Input, OnInit, OnChanges, ChangeDetectionStrategy,
+  Output, EventEmitter, SimpleChanges, ChangeDetectorRef } from "@angular/core";
 
 @Component({
   selector: "cx-card-button",
@@ -12,96 +9,32 @@ import { CardChave } from './listar-chaves';
 })
 export class CardButtonComponent implements OnInit, OnChanges {
 
-  @ContentChild("directive", { read: TemplateRef })
-  template: TemplateRef<any>;
-
   @Input()
   isChecked = false;
 
   @Input()
-  card: CardChave;
+  icon = "";
 
   @Input()
-  index: any;
+  label = "";
 
-  formCard: FormGroup;
-  valor: any;
+  @Output()
+  checked: EventEmitter<boolean> = new EventEmitter();
 
-  TITLE_DOCUMENTO = "CPF/CNPJ";
-  TITLE_ALEATORIA = "Chave Aleatória";
-  TITLE_CELULAR = "Número do celular";
-  TITLE_EMAIL = "E-mail do cliente";
+  constructor(private cdr: ChangeDetectorRef) { }
 
-  ICON_DOCUMENTO = "fas fa-user-friends";
-  ICON_ALEATORIA = "fas fa-key";
-  ICON_CELULAR = "fas fa-mobile-alt";
-  ICON_EMAIL = "fas fa-envelope";
+  ngOnInit(): void {}
 
-  constructor(
-    private fb: FormBuilder) {
-    /*       pixService.changeEmittedAutenticarCliente$.subscribe((card: CardChave) => this.atualizarValorCard()); */
-  }
+  ngOnChanges(changes: SimpleChanges): void {}
 
-  ngOnInit(): void {
-
-  }
-
-  ngOnChanges(): void {
-    this.formCard = this.fb.group({
-      selecionado: [this.card.selecionado],
-      valor: [this.card.valor]
-    });
-
-    /*       if (this.card) {
-            switch (this.card.tipo) {
-              case TipoChaveCard.DOCUMENTO:
-              case TipoChave.CPF:
-              case TipoChave.CNPJ:
-                this.card.icone = this.ICON_DOCUMENTO
-                this.card.titulo = this.TITLE_DOCUMENTO
-                break;
-              case TipoChaveCard.ALEATORIA:
-                this.card.icone = this.ICON_ALEATORIA;
-                this.card.titulo = this.TITLE_ALEATORIA
-                break;
-              case TipoChaveCard.CELULAR:
-              case TipoChave.PHONE:
-                this.card.icone = this.ICON_CELULAR;
-                this.card.titulo = this.TITLE_CELULAR
-                break;
-              case TipoChaveCard.EMAIL:
-                this.card.icone = this.ICON_EMAIL;
-                this.card.titulo = this.TITLE_EMAIL
-                break;
-              default:
-                break;
-            }
-          } */
-
-    this.formCard.get("valor").valueChanges.subscribe(() => {
-      this.atualizarValorCard();
-    });
-  }
-
-  atualizarListaTasks() {
-    /*       this.pixService.nextChangeCardSelecionado(this.card); */
-    this.atualizarValorCard();
-  }
-
-  atualizarValorCard() {
-    if (this.card.selecionado) {
-      this.card.valor = this.formCard.get("valor").value;
-      /*           this.pixService.nextChangeCardValor(this.card); */
-    }
-  }
-
-  nextStep() {
-
-  }
-
-  updateChecked(ev: any) {
-    console.log("TESTE", ev);
+  toggleChecked() {
     this.isChecked = !this.isChecked;
+    this.checked.emit(this.isChecked);
+  }
+
+  setChecked(checked: boolean) {
+    this.isChecked = checked;
+    this.cdr.detectChanges();
   }
 
 }

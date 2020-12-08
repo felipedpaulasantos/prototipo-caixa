@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { CardButtonComponent } from 'src/app/guia-caixa/components/card-chave/card-button.component';
 import { CardChave } from 'src/app/guia-caixa/components/card-chave/listar-chaves';
 
 @Component({
@@ -18,6 +19,15 @@ export class UploadComponent implements OnInit {
     private renderer: Renderer2
   ) { }
 
+  @ViewChild("cardHome")
+  cardHome: CardButtonComponent;
+
+  @ViewChild("cardChave")
+  cardChave: CardButtonComponent;
+
+  @ViewChild("cardAlo")
+  cardAlo: CardButtonComponent;
+
   formCpfNis = this.fb.group({
     cpf: [null, [Validators.required, Validators.minLength(11)]],
     nis: [null, [Validators.required, Validators.minLength(11)]]
@@ -29,7 +39,6 @@ export class UploadComponent implements OnInit {
 
   contratos = [];
 
-
   passo = 0;
   passos = [
     "CDC",
@@ -38,20 +47,34 @@ export class UploadComponent implements OnInit {
     "Comprovante de Operação"
   ];
 
+  valor = "";
 
-  cardConfiguracao: CardChave;
+  teste(ev) {
+    console.log(ev);
+  }
+
+  ativar(checked: boolean, cardEl: CardButtonComponent) {
+    const cards = [this.cardHome, this.cardChave, this.cardAlo];
+    if (checked) {
+      this.valor = cardEl.label;
+      cards.forEach(card => {
+        card.setChecked(false);
+      });
+      cardEl.setChecked(true);
+    }
+  }
 
   ngOnInit(): void {
     this.clientePesquisado();
     this.populaContratos();
     this.preventDragDropDefault();
-    this.cardConfiguracao = new CardChave("DOCUMENTO", "123.456.789-01", "VISUALIZAR", false, true);
+/*     this.cardConfiguracao = new CardChave("DOCUMENTO", "123.456.789-01", "VISUALIZAR", false, true);
     this.cardConfiguracao.showCheck = true;
     this.cardConfiguracao.showTitulo = true;
     this.cardConfiguracao.icone = 'fa fa-home fa-lg'
     this.cardConfiguracao.leftLabels.push("123.456.789-01");
     this.cardConfiguracao.rightLabels.push("Chave: ");
-    this.cardConfiguracao.rightLabels.push("Conta Vinculada: ");
+    this.cardConfiguracao.rightLabels.push("Conta Vinculada: "); */
   }
 
   populaContratos(): void {
