@@ -59,7 +59,7 @@
 
                   <div *ngFor="let passo of passos; let i = index">
                      <ng-container *ngIf="i == passoAtual">
-                        <h2 class="text-center">{{ passo }}</h2>
+                        <h2 class="text-center">{{ passo.title }}</h2>
 
                         <button [disabled]="passoAtual == 0" (click)="passoAtual = passoAtual - 1"
                            class="btn btn-light btn-caixa mx-2">
@@ -93,7 +93,7 @@
 
                   <div *ngFor="let passo of passos; let i = index">
                      <ng-container *ngIf="i == passoAtual">
-                        <h2 class="text-center">{{ passo }}</h2>
+                        <h2 class="text-center">{{ passo.title }}</h2>
 
                         <button [disabled]="passoAtual == 0" (click)="passoAtual = passoAtual - 1"
                            class="btn btn-light btn-caixa mx-2">
@@ -127,7 +127,7 @@
 
                   <div *ngFor="let passo of passos; let i = index">
                      <ng-container *ngIf="i == passoAtual">
-                        <h2 class="text-center">{{ passo }}</h2>
+                        <h2 class="text-center">{{ passo.title }}</h2>
                      </ng-container>
                   </div>
 
@@ -541,7 +541,7 @@
                      [freeNavigation]="freeNavigation">
                         <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
                            <ng-container *cxStepper>
-                              <h1 class="text-center my-3">{{ step }}!</h1>
+                              <h1 class="text-center my-3">{{ step.title }}!</h1>
                            </ng-container>
                         </ng-container>
                      </cx-stepper>

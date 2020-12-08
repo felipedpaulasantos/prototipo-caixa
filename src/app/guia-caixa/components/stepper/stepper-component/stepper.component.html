@@ -4,18 +4,16 @@
    [icon]="completedIcon || DEFAULT_COMPLETED_ICON">
 </cx-stepper-message>
 
-<div class="stepper-wrapper" [ngClass]="{
-   'horizontal': orientation == 0, 'vertical': orientation == 1, 'd-none': hideStepsOnCompleted && currentStep == steps.length - 1
-}">
-   <ul class="stepper" [ngClass]="{'completed': currentStep == (steps.length - 1), 'nav-guided': !freeNavigation}">
-      <li [title]="step" class="step" *ngFor="let step of steps; let index = index; let last = last" [ngClass]="{
-         'current-step': currentStep == index, 
+<div class="stepper-wrapper" [ngClass]="{'horizontal': orientation == 0,'vertical': orientation == 1}">
+   <ul class="stepper" [ngClass]="{'completed': currentStep == (steps?.length - 1), 'nav-guided': !freeNavigation}">
+      <li [title]="step?.title" class="step" *ngFor="let step of steps; let index = index; let last = last" [ngClass]="{
+         'current-step': currentStep == index,
          'prior-step': index == (currentStep - 1),
-         'previous-step': index < currentStep, 
-         'last-step': last && currentStep == index, 
-         'cursor-pointer': (index < currentStep && currentStep < (steps.length - 1))
+         'previous-step': index < currentStep,
+         'last-step': last && currentStep == index,
+         'cursor-pointer': clickable && (index < currentStep && currentStep < (steps.length - 1))
       }">
-         <div class="step-title waves-effect" (click)="toStepByIndex(index)">
+         <div class="step-title waves-effect" (click)="clickable ? toStepByIndex(index) : null">
             <div class="step-icon" [ngClass]="getActiveTheme(currentStep == index, last)">
                <ng-container *ngIf="getStepIcon(index) as backIcon else showCounter">
                   <i class="{{ backIcon }}"></i>
@@ -25,7 +23,7 @@
                </ng-template>
             </div>
             <span [hidden]="index < currentStep" class="step-name">
-               {{step}}
+               {{step?.title}}
             </span>
          </div>
       </li>

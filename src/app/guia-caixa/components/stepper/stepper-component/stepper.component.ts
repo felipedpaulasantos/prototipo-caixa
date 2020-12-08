@@ -4,6 +4,7 @@ import {
 } from "@angular/core";
 import { StepperDirective } from '../stepper-directive';
 import { StepperOrientation } from '../stepper-orientation';
+import { StepperItem } from './stepper-item';
 
 @Component({
   selector: "cx-stepper",
@@ -47,24 +48,31 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
    * Na navegação guiada, é possível retornar apenas para o passo
    * imediatamente anterior.
    * @param {boolean} freeNavigation Verdadeiro para navegação livre (padrão),
-   * falso para navegação guiada.
+   * falso para navegação guiada. Padrão: true.
   */
   @Input()
   freeNavigation = true;
 
   /**
-   * Lista dos passos com sua descrição.
-   * @param {string[]} steps Array de string com a descrição dos passos.
+   * Lista dos passos.
+   * @param {StepperItem[]} steps Array de objetos do tipo StepperItem.
   */
   @Input()
-  steps: string[] = [];
+  steps: StepperItem[] = [];
 
   /**
    * Index do passo atual, que pode ser alterado diretamente, pelos métodos de navegação ou clicando nos passos.
-  * @param {string | number} currentStep Index do passo atual.
+  * @param {string | number} currentStep Index do passo atual. Padrão: 0.
    */
   @Input()
   currentStep = 0;
+
+  /**
+   * Define se os ícones dos passos são 'clicáveis'.
+   * @param {boolean} clickable True para tornar clicável. Padrão: true.
+  */
+  @Input()
+  clickable = true;
 
   /**
    * Tema de cor dos ícones
@@ -106,34 +114,22 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
     e apenas atualiza a view caso o valor seja válido
   */
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['steps']) {
-      const newSteps: any[] = changes['steps'].currentValue;
-      const isValidLength = this.isValidLength(newSteps);
-      const isCurrentIndexValid = this.isCurrentIndexValid(newSteps);
-      if (isValidLength && isCurrentIndexValid) {
-        this.changeDetector.detectChanges();
-      }
-    }
-    this.changeDetector.detectChanges();
-  }
-
-  private isValidLength(newSteps: string[]): boolean {
-    if (newSteps.length >= this.MINIMUM_STEPS && newSteps.length > this.MAXIMUM_STEPS) {
-      this.steps = newSteps.slice(0, this.MAXIMUM_STEPS);
-      return true;
+    if (changes.steps && changes.steps.currentValue && changes.steps.currentValue.length) {
+      this.validateStepChanges(changes.steps.currentValue);
     }
   }
 
-  private isCurrentIndexValid(newSteps: string[]): boolean {
-    if (this.currentStep >= newSteps.length) {
-      this.currentStep = newSteps.length - 1;
-      return true;
+  validateStepChanges(newSteps: StepperItem[]) {
+    const isValidLength = this.isValidLength(newSteps);
+    const isCurrentIndexValid = this.isCurrentIndexValid(newSteps);
+    if (isValidLength && isCurrentIndexValid) {
+      this.changeDetector.markForCheck();
     }
   }
 
   /**
-   * Inicializa os templates
-  */
+  * Inicializa os templates
+ */
   ngAfterContentInit(): void {
     this.changeDetector.detectChanges();
   }
@@ -145,16 +141,15 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   */
   toStepByIndex(index: number): void {
     const lastIndex = this.steps.length - 1;
-    const isNotLastIndex = !(this.currentStep == lastIndex);
+    const isNotLastIndex = !(this.currentStep === lastIndex);
     const isPrevious = index < this.currentStep;
-    const isImmediatePrevious = index == this.currentStep - 1;
+    const isImmediatePrevious = index === this.currentStep - 1;
 
     if ((this.freeNavigation && isNotLastIndex && isPrevious)
       || (!this.freeNavigation && isNotLastIndex && isImmediatePrevious)
     ) {
       this.currentStep = index;
       this.changeStep.emit(index);
-      this.changeDetector.detectChanges();
     }
   }
 
@@ -162,10 +157,11 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
    * Salta para o próximo passo
   */
   next(): void {
+    console.log(this.currentStep + 1, this.steps.length);
     if ((this.currentStep + 1) < this.steps.length) {
       this.currentStep += 1;
       this.changeStep.emit(this.currentStep);
-      this.changeDetector.detectChanges();
+      this.changeDetector.markForCheck();
     }
   }
 
@@ -176,7 +172,7 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
     if ((this.currentStep - 1) >= 0) {
       this.currentStep -= 1;
       this.changeStep.emit(this.currentStep);
-      this.changeDetector.detectChanges();
+      this.changeDetector.markForCheck();
     }
   }
 
@@ -187,7 +183,7 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
     if (this.freeNavigation) {
       this.currentStep = 0;
       this.changeStep.emit(this.currentStep);
-      this.changeDetector.detectChanges();
+      this.changeDetector.markForCheck();
     }
   }
 
@@ -199,8 +195,8 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
     if (this.freeNavigation) { return null; }
 
     if (!this.freeNavigation) {
-      if (index == (this.currentStep - 1) && this.currentStep != (this.steps.length - 1)) {
-        return this.orientation == StepperOrientation.Horizontal
+      if (index === (this.currentStep - 1) && this.currentStep !== (this.steps.length - 1)) {
+        return this.orientation === StepperOrientation.Horizontal
           ? this.BACK_ICON_X
           : this.BACK_ICON_Y;
       } else {
@@ -210,17 +206,31 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   }
 
   /**
-    * Aplica o tema definido no ícone ativo
-  */
-  getActiveTheme(isActive: boolean, isLast: boolean): string {
-    return isActive && !isLast ? `bg-${this.theme}` : '';
-  }
-
-  /**
     * Realiza manualmente a atualização do template
   */
   update(): void {
     this.changeDetector.detectChanges();
+  }
+
+  private isValidLength(newSteps: StepperItem[]): boolean {
+    if (newSteps && newSteps.length >= this.MINIMUM_STEPS && newSteps.length > this.MAXIMUM_STEPS) {
+      this.steps = newSteps.slice(0, this.MAXIMUM_STEPS);
+      return true;
+    }
+  }
+
+  private isCurrentIndexValid(newSteps: StepperItem[]): boolean {
+    if (newSteps && this.currentStep >= newSteps.length) {
+      this.currentStep = newSteps.length - 1;
+      return true;
+    }
+  }
+
+  /**
+    * Aplica o tema definido no ícone ativo
+  */
+  getActiveTheme(isActive: boolean, isLast: boolean): string {
+    return isActive && !isLast ? `bg-${this.theme}` : "";
   }
 
 }
