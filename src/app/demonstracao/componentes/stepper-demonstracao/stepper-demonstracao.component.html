@@ -52,6 +52,7 @@
                   <cx-stepper 
                      [steps]="passos" 
                      [currentStep]="passoAtual"
+                     [hideStepsOnCompleted]="false"
                      completedMessage="Passos concluídos!"
                      (changeStep)="passoAtual = $event">
                   </cx-stepper>

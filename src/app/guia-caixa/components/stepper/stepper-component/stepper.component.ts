@@ -81,10 +81,10 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   completedIcon: string;
 
   @Input()
-  showCompletedMessage: string;
+  showCompletedMessage = false;
 
   @Input()
-  hideStepsOnCompleted = true;
+  hideStepsOnCompleted = false;
 
   /**
    * Evento que transmite o index do novo passo atual após ser selecionado.
