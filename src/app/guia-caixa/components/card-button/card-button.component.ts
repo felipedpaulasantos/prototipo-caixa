@@ -27,7 +27,7 @@ export class CardButtonComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {}
 
-  toggleChecked() {
+  updateChecked() {
     this.isChecked = !this.isChecked;
     this.checked.emit(this.isChecked);
   }

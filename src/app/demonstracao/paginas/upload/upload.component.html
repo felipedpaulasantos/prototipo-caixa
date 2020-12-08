@@ -203,20 +203,17 @@
 
 <div class="row">
   <div class="col">
-    <cx-card-button icon="fa fa-home" label="Home" #cardHome
-    (checked)="ativar($event, cardHome)">
-      <div class="d-flex align-items-center">
-        <cx-input>
-          <label>Home</label>
-          <input inputCaixa>
-        </cx-input>
-      </div>
+
+    <cx-card-button icon="fa fa-home" label="Home" #cardHome (checked)="ativar($event, cardHome)">
+      <cx-input>
+        <label>Home</label>
+        <input inputCaixa>
+      </cx-input>
     </cx-card-button>
-    
+
     <br><br>
-    
-    <cx-card-button icon="fa fa-key" #cardChave
-    (checked)="ativar($event, cardChave)">
+
+    <cx-card-button icon="fa fa-key" #cardChave (checked)="ativar($event, cardChave)">
       <div class="d-flex align-items-center">
         <cx-input>
           <label>Chave</label>
@@ -224,11 +221,10 @@
         </cx-input>
       </div>
     </cx-card-button>
-    
+
     <br><br>
-    
-    <cx-card-button label="ALOOO" #cardAlo
-    (checked)="ativar($event, cardAlo)">
+
+    <cx-card-button label="CDC Automático" #cardAlo (checked)="ativar($event, cardAlo)">
       <div class="d-flex align-items-center">
         <cx-input>
           <label>Aloooooo</label>
@@ -242,4 +238,3 @@
     <h1 class="my=5">{{ valor }}</h1>
   </div>
 </div>
-

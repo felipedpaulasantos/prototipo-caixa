@@ -3,8 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { CardButtonComponent } from 'src/app/guia-caixa/components/card-chave/card-button.component';
-import { CardChave } from 'src/app/guia-caixa/components/card-chave/listar-chaves';
+import { CardButtonComponent } from 'src/app/guia-caixa/components/card-button/card-button.component';
 
 @Component({
   templateUrl: './upload.component.html',
@@ -68,13 +67,6 @@ export class UploadComponent implements OnInit {
     this.clientePesquisado();
     this.populaContratos();
     this.preventDragDropDefault();
-/*     this.cardConfiguracao = new CardChave("DOCUMENTO", "123.456.789-01", "VISUALIZAR", false, true);
-    this.cardConfiguracao.showCheck = true;
-    this.cardConfiguracao.showTitulo = true;
-    this.cardConfiguracao.icone = 'fa fa-home fa-lg'
-    this.cardConfiguracao.leftLabels.push("123.456.789-01");
-    this.cardConfiguracao.rightLabels.push("Chave: ");
-    this.cardConfiguracao.rightLabels.push("Conta Vinculada: "); */
   }
 
   populaContratos(): void {

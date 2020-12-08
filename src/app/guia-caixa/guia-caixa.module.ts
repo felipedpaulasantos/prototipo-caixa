@@ -11,7 +11,7 @@ import { CardCaixaComponent } from './components/card-caixa/card-caixa.component
 import { StepperModule } from './components/stepper/stepper.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { CardButtonComponent } from './components/card-chave/card-button.component';
+import { CardButtonComponent } from './components/card-button/card-button.component';
 
 
 

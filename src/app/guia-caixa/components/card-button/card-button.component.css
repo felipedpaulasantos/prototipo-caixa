@@ -7,11 +7,12 @@
     min-height: 135px;
     width: 500px;
     max-width: 500px;
+    transition: box-shadow 0.2s;
     
 }
 .card-button-wrapper.checked {
     border: solid 1px #005ca9b3;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15) !important;
 }
 
 /* CARD BUTTON LEFT SIDE */
@@ -25,7 +26,7 @@
     align-content: center;
     justify-content: center !important;
     text-align: center;
-    transition: background-color 0.2s opacity 0.2;
+    transition: background-color 0.2s;
 }
 .card-button-wrapper.checked > .row > .card-button-left-side {
     background-color: #005ca9;
@@ -34,6 +35,9 @@
 /* CARD BUTTON RIGHT SIDE */
 .card-button-wrapper > .row > .card-button-right-side {
     padding: 0.5rem;
+}
+.card-button-wrapper.checked > .row > .card-button-right-side {
+    color: #005ca9;
 }
     
 /* CHECK BOX WRAPPER */
@@ -61,7 +65,7 @@
 .card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark:after {
     position: absolute;
     content: "";
-    display: none;
+    opacity: 0;
     left: 4px;
     top: 0px;
     width: 9px;
@@ -71,7 +75,8 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+    transition: opacity 0.2s;
 }
 .card-button-wrapper.checked > .row > .card-button-left-side > .checkbox-wrapper > .checkmark:after {
-    display: block;
+    opacity: 1;
 }
