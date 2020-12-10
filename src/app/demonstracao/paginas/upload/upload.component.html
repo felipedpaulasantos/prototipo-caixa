@@ -3,7 +3,7 @@
 </h1>
 <hr class="header-line-caixa">
 
-<ng-container *ngIf="false">
+<div id="painelTestesDiversos" *ngIf="true">
   <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
     <div class="row">
       <div class="col-12 col-md-5 col-lg-4">
@@ -199,38 +199,33 @@
       </cx-card>
     </section>
   </ng-container>
-</ng-container>
+</div>
 
-<div class="row">
+<div id="painelCardButton" class="row" *ngIf="false">
   <div class="col">
 
-    <cx-card-button icon="fa fa-home" label="Home" #cardHome (checked)="ativar($event, cardHome)">
-      <cx-input>
-        <label>Home</label>
-        <input inputCaixa>
-      </cx-input>
+    <cx-card-button cardId="cardHome" icon="fa fa-home" leftLabel="Home" #cardHome (checked)="ativar($event, cardHome)">
+      <h4>Teste</h4>
     </cx-card-button>
 
     <br><br>
 
-    <cx-card-button icon="fa fa-key" #cardChave (checked)="ativar($event, cardChave)">
-      <div class="d-flex align-items-center">
-        <cx-input>
-          <label>Chave</label>
-          <input inputCaixa>
-        </cx-input>
-      </div>
+    <cx-card-button cardId="cardChave" icon="fa fa-key" #cardChave (checked)="ativar($event, cardChave)">
+      <label>Senha</label>
+      <input [disabled]="!cardChave.isChecked" class="input-caixa" (input)="teste($event.target.value, cardChave)">
     </cx-card-button>
 
     <br><br>
 
-    <cx-card-button label="CDC Automático" #cardAlo (checked)="ativar($event, cardAlo)">
-      <div class="d-flex align-items-center">
-        <cx-input>
-          <label>Aloooooo</label>
-          <input inputCaixa>
-        </cx-input>
-      </div>
+    <cx-card-button cardId="cardCDC" icon="fa fa-dollar-sign" leftText="aaaaaaaaaaaaaa" leftLabel="CDC Automático" #cardCDC (checked)="ativar($event, cardCDC)">
+      <h4 class="text-primary">Valor Disponível: R$ 5.100,00</h4>
+      <span>Valor Utilizado: R$ 5.100,00</span>
+    </cx-card-button>
+
+    <br><br>
+
+    <cx-card-button #cardVazio (checked)="ativar($event, cardVazio)">
+
     </cx-card-button>
   </div>
 
@@ -238,3 +233,4 @@
     <h1 class="my=5">{{ valor }}</h1>
   </div>
 </div>
+

@@ -3,7 +3,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { CardButtonCheckEvent } from 'src/app/guia-caixa/components/card-button/card-button-check-event';
 import { CardButtonComponent } from 'src/app/guia-caixa/components/card-button/card-button.component';
+import { StepperItem } from 'src/app/guia-caixa/components/stepper/stepper-component/stepper-item';
+import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
 
 @Component({
   templateUrl: './upload.component.html',
@@ -24,8 +27,8 @@ export class UploadComponent implements OnInit {
   @ViewChild("cardChave")
   cardChave: CardButtonComponent;
 
-  @ViewChild("cardAlo")
-  cardAlo: CardButtonComponent;
+  @ViewChild("cardCDC")
+  cardCDC: CardButtonComponent;
 
   formCpfNis = this.fb.group({
     cpf: [null, [Validators.required, Validators.minLength(11)]],
@@ -38,24 +41,46 @@ export class UploadComponent implements OnInit {
 
   contratos = [];
 
-  passo = 0;
-  passos = [
-    "CDC",
-    "Simulação",
-    "Confirmar Solicitação",
-    "Comprovante de Operação"
+  passoAtual = 0;
+
+  passos: StepperItem[] = [
+    { title: "Passo 1" },
+    { title: "Passo 2" },
+    { title: "Passo 3" },
+    { title: "Passo 4" },
+    { title: "Passo 5" }
+  ];
+
+  abas: TabberItem[] = [
+    { name: "Passo 1", icon: "fa fa-home" },
+    { name: "Passo 2", icon: "fa fa-home" },
+    { name: "Passo 3", icon: "fa fa-home" },
+    { name: "Passo 4", icon: "fa fa-home" },
+    { name: "Passo 5", icon: "fa fa-home" }
   ];
 
   valor = "";
 
-  teste(ev) {
-    console.log(ev);
+  rotas = [
+    { url: "tal-rota" },
+    { url: "tal-rota" },
+    { url: "tal-rota" },
+    { url: "tal-rota" },
+    { url: "tal-rota" },
+  ];
+
+  teste(ev, cardEl: CardButtonComponent) {
+    cardEl.setData(ev);
+    if (ev.length > 5) {
+      cardEl.emitChecked();
+    }
   }
 
-  ativar(checked: boolean, cardEl: CardButtonComponent) {
-    const cards = [this.cardHome, this.cardChave, this.cardAlo];
-    if (checked) {
-      this.valor = cardEl.label;
+  ativar(checkEv: CardButtonCheckEvent, cardEl: CardButtonComponent) {
+    console.log(checkEv);
+    const cards = [this.cardHome, this.cardChave, this.cardCDC];
+    if (checkEv.isChecked) {
+      this.valor = cardEl.leftLabel;
       cards.forEach(card => {
         card.setChecked(false);
       });

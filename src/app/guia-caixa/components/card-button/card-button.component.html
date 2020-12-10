@@ -9,13 +9,19 @@
 
       <i *ngIf="icon" [ngClass]="icon" class="fa-3x my-2" aria-hidden="true"></i>
 
-      <h5 *ngIf="label" class="my-2">
-        {{label}}
+      <h5 *ngIf="leftLabel" class="my-2">
+        {{ leftLabel }}
       </h5>
+
+      <span *ngIf="leftText">
+        {{ leftText }}
+      </span>
     </div>
 
     <div class="col-8 card-button-right-side">
-      <ng-content></ng-content>
+      <div class="content-container">
+        <ng-content></ng-content>
+      </div>
     </div>
   </div>
 </div>

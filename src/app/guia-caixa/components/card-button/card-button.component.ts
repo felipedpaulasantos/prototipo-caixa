@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnChanges, ChangeDetectionStrategy,
   Output, EventEmitter, SimpleChanges, ChangeDetectorRef } from "@angular/core";
+import { CardButtonCheckEvent } from './card-button-check-event';
 
 @Component({
   selector: "cx-card-button",
@@ -13,15 +14,24 @@ export class CardButtonComponent implements OnInit, OnChanges {
   isChecked = false;
 
   @Input()
+  cardId = "";
+
+  @Input()
+  data: any = null;
+
+  @Input()
   icon = "";
 
   @Input()
-  label = "";
+  leftLabel = "";
+
+  @Input()
+  leftText = "";
 
   @Output()
-  checked: EventEmitter<boolean> = new EventEmitter();
+  checked: EventEmitter<CardButtonCheckEvent> = new EventEmitter();
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit(): void {}
 
@@ -29,12 +39,31 @@ export class CardButtonComponent implements OnInit, OnChanges {
 
   updateChecked() {
     this.isChecked = !this.isChecked;
-    this.checked.emit(this.isChecked);
+    this.emitChecked();
   }
 
   setChecked(checked: boolean) {
     this.isChecked = checked;
-    this.cdr.detectChanges();
+    this.changeDetector.detectChanges();
+  }
+
+  setCardId(cardId: string) {
+    this.cardId = cardId;
+    this.changeDetector.detectChanges();
+  }
+
+  setData(data: any) {
+    this.data = data;
+    this.changeDetector.detectChanges();
+  }
+
+  emitChecked() {
+    const checkEvent: CardButtonCheckEvent = {
+      isChecked: this.isChecked,
+      cardId: this.cardId,
+      data: this.data
+    };
+    this.checked.emit(checkEvent);
   }
 
 }

@@ -385,8 +385,7 @@ input[type="number"] {
   Tabs e Navs
 */
 
-ul.tab-caixa li a,
-.nav-link-caixa {
+ul.tab-caixa li a {
   color: $cx-color-dark-light;
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
@@ -510,6 +509,8 @@ ul.tab-caixa li a,
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    background-image: none !important;
+    background-color: $cx-color-light !important;
   }
 }
 @each $theme, $colors in $cx-colors {
