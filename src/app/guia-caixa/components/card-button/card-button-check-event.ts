@@ -1,5 +1,5 @@
+import { CardButtonComponent } from './card-button.component';
+
 export interface CardButtonCheckEvent {
-   isChecked: boolean;
-   cardId: string;
-   data: any;
+   target: CardButtonComponent;
 }

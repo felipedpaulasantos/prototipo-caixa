@@ -3,7 +3,7 @@
 </h1>
 <hr class="header-line-caixa">
 
-<div id="painelTestesDiversos" *ngIf="true">
+<div id="painelTestesDiversos" *ngIf="false">
   <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
     <div class="row">
       <div class="col-12 col-md-5 col-lg-4">
@@ -201,23 +201,26 @@
   </ng-container>
 </div>
 
-<div id="painelCardButton" class="row" *ngIf="false">
+<div id="painelCardButton" class="row" *ngIf="true">
   <div class="col">
 
-    <cx-card-button cardId="cardHome" icon="fa fa-home" leftLabel="Home" #cardHome (checked)="ativar($event, cardHome)">
+    <cx-card-button cardId="cardHome" leftIcon="fa fa-home" leftTitle="Home" #cardHome (checked)="ativar($event, cardHome)">
       <h4>Teste</h4>
     </cx-card-button>
 
     <br><br>
 
-    <cx-card-button cardId="cardChave" icon="fa fa-key" #cardChave (checked)="ativar($event, cardChave)">
+    <cx-card-button cardId="cardChave" leftIcon="fa fa-key" [data]="inputChave.value"
+    leftTitle="Senha"
+    #cardChave (checked)="ativar($event, cardChave)">
       <label>Senha</label>
-      <input [disabled]="!cardChave.isChecked" class="input-caixa" (input)="teste($event.target.value, cardChave)">
+      <input #inputChave [disabled]="!cardChave.value" class="input-caixa" (input)="teste($event.target.value, cardChave)">
     </cx-card-button>
 
     <br><br>
 
-    <cx-card-button cardId="cardCDC" icon="fa fa-dollar-sign" leftText="aaaaaaaaaaaaaa" leftLabel="CDC Automático" #cardCDC (checked)="ativar($event, cardCDC)">
+    <cx-card-button cardId="cardCDC" leftIcon="fa fa-dollar-sign" data="Teste" leftText="aaaaaaaaaaaaaa" leftTitle="CDC Automático" 
+    #cardCDC (checked)="ativar($event, cardCDC)">
       <h4 class="text-primary">Valor Disponível: R$ 5.100,00</h4>
       <span>Valor Utilizado: R$ 5.100,00</span>
     </cx-card-button>
@@ -230,7 +233,7 @@
   </div>
 
   <div class="col">
-    <h1 class="my=5">{{ valor }}</h1>
+    <h1 class="my=5">Label: {{ valor }}</h1>
   </div>
 </div>
 

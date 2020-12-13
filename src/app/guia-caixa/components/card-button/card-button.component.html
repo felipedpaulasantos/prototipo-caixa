@@ -1,16 +1,18 @@
-<div class="card-button-wrapper" [ngClass]="{'checked': isChecked}">
+<div class="card-button-wrapper" [ngClass]="{'checked': value}">
   <div class="row no-gutters h-100">
 
-    <div class="col-4 card-button-left-side" tabindex="0" (click)="updateChecked()" (keyup.enter)="updateChecked()">
+    <div class="col-4 card-button-left-side" tabindex="0" (click)="toggleValue()" (keyup.enter)="toggleValue()">
       <div class="checkbox-wrapper">
         <input class="d-none" type="checkbox">
         <span class="checkmark"></span>
       </div>
 
-      <i *ngIf="icon" [ngClass]="icon" class="fa-3x my-2" aria-hidden="true"></i>
+      <i *ngIf="leftIcon" aria-hidden="false"
+        [ngClass]="leftIcon" class="fa-3x my-2">
+      </i>
 
-      <h5 *ngIf="leftLabel" class="my-2">
-        {{ leftLabel }}
+      <h5 *ngIf="leftTitle" class="my-2">
+        {{ leftTitle }}
       </h5>
 
       <span *ngIf="leftText">

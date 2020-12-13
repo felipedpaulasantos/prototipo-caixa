@@ -30,6 +30,9 @@ export class UploadComponent implements OnInit {
   @ViewChild("cardCDC")
   cardCDC: CardButtonComponent;
 
+  @ViewChild("cardVazio")
+  cardVazio: CardButtonComponent;
+
   formCpfNis = this.fb.group({
     cpf: [null, [Validators.required, Validators.minLength(11)]],
     nis: [null, [Validators.required, Validators.minLength(11)]]
@@ -69,22 +72,26 @@ export class UploadComponent implements OnInit {
     { url: "tal-rota" },
   ];
 
+  testeEv: CardButtonCheckEvent;
+
   teste(ev, cardEl: CardButtonComponent) {
-    cardEl.setData(ev);
+/*     cardEl.setData(ev);
     if (ev.length > 5) {
       cardEl.emitChecked();
-    }
+    } */
+    this.cardVazio.setLeftIcon(ev);
   }
 
   ativar(checkEv: CardButtonCheckEvent, cardEl: CardButtonComponent) {
-    console.log(checkEv);
+    this.testeEv = checkEv;
+    console.log(checkEv.target);
     const cards = [this.cardHome, this.cardChave, this.cardCDC];
-    if (checkEv.isChecked) {
-      this.valor = cardEl.leftLabel;
+    if (checkEv.target.value) {
+      this.valor = cardEl.leftTitle;
       cards.forEach(card => {
-        card.setChecked(false);
+        card.setValue(false);
       });
-      cardEl.setChecked(true);
+      cardEl.setValue(true);
     }
   }
 
