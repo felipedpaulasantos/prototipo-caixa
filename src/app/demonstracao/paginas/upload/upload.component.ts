@@ -34,7 +34,7 @@ export class UploadComponent implements OnInit {
   cardVazio: CardButtonComponent;
 
   formCpfNis = this.fb.group({
-    cpf: [null, [Validators.required, Validators.minLength(11)]],
+    cpf: [{ value: null, disabled: true }, [Validators.required, Validators.minLength(11)]],
     nis: [null, [Validators.required, Validators.minLength(11)]]
   });
   cliente = null;
@@ -85,6 +85,7 @@ export class UploadComponent implements OnInit {
   ativar(checkEv: CardButtonCheckEvent, cardEl: CardButtonComponent) {
     this.testeEv = checkEv;
     console.log(checkEv.target);
+    console.log(this.formCpfNis.value);
     const cards = [this.cardHome, this.cardChave, this.cardCDC];
     if (checkEv.target.value) {
       this.valor = cardEl.leftTitle;
@@ -92,6 +93,11 @@ export class UploadComponent implements OnInit {
         card.setValue(false);
       });
       cardEl.setValue(true);
+    }
+    if (cardEl.cardId == "cardChave" && cardEl.value) {
+      this.formCpfNis.get('cpf').enable();
+    } else {
+      this.formCpfNis.get('cpf').disable();
     }
   }
 

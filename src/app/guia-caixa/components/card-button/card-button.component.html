@@ -3,7 +3,9 @@
 
     <div class="col-4 card-button-left-side" tabindex="0" (click)="toggleValue()" (keyup.enter)="toggleValue()">
       <div class="checkbox-wrapper">
-        <input class="d-none" type="checkbox">
+        <ng-container *ngIf="control">
+          <input [formControl]="control" class="d-none" type="checkbox">
+        </ng-container>
         <span class="checkmark"></span>
       </div>
 

@@ -2,62 +2,92 @@ import {
   Component, Input, OnInit, OnChanges, ChangeDetectionStrategy,
   Output, EventEmitter, SimpleChanges, ChangeDetectorRef
 } from "@angular/core";
-import { CardButtonCheckEvent } from './card-button-check-event';
+import { ControlContainer, FormControl, FormGroupDirective } from '@angular/forms';
+import { CardButtonCheckEvent, CardButtonFormControlData } from './card-button-check-event';
 
 @Component({
   selector: "cx-card-button",
   templateUrl: "./card-button.component.html",
   styleUrls: ["./card-button.component.css"],
+  viewProviders: [{ provide: ControlContainer, useExisting: FormGroupDirective }],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardButtonComponent implements OnInit, OnChanges {
 
   /**
-   * @param {boolean} value Estado do checkbox, se está marcado ou não. Padrão: false
+   * @description Atributo que define o estado atual do componente, se está marcado ou não.
+   * @param value Estado do checkbox, se está marcado ou não. Padrão: false
+   * @type boolean
   */
   @Input()
   value = false;
 
   /**
-   * @param {string} cardId Nome ou identificação opcional para o componente. Padrão: ""
+   * @param cardId Nome ou identificação opcional para o componente. Padrão: ""
+   * @type string
   */
   @Input()
   cardId = "";
 
   /**
-   * @param {any} data Atributo opcional que será emitido internamente no evento CardButtonEventChecked. Padrão: null
+   * @param data Atributo opcional que será emitido internamente no evento CardButtonEventChecked. Padrão: null
+   * @type any
   */
   @Input()
   data: any = null;
 
   /**
-   * @param {string} leftIcon Classe do ícone a ser exibido do lado esquerdo, ex: "fa fa-home". Padrão: ""
+   * @param leftIcon Classe do ícone a ser exibido do lado esquerdo, ex: "fa fa-home". Padrão: ""
+   * @type string
   */
   @Input()
   leftIcon = "";
 
   /**
-   * @param {string} leftTitle Título a ser exibido do lado esquerdo, em uma tag <h5>. Padrão: ""
+   * @param leftTitle Título a ser exibido do lado esquerdo, em uma tag <h5>. Padrão: ""
+   * @type string
   */
   @Input()
   leftTitle = "";
 
   /**
-   * @param {string} leftText Texto a ser exibido do lado esquerdo, em uma tag <span>. Padrão: ""
+   * @param leftText Texto a ser exibido do lado esquerdo, em uma tag <span>. Padrão: ""
+   * @type string
   */
   @Input()
   leftText = "";
 
   /**
-   * @param {CardButtonCheckEvent} checked Evento emitido ao ativar o botão, contendo o próprio componente e seus atributos
+   * @param checkboxControlName Valor da diretiva [formControlName] a ser atribuída ao checkbox do componente. Padrão: ""
+   * @type string
+  */
+  @Input()
+  checkboxControlName = "";
+
+  /**
+   * Instância de [FormControl] a ser vinculada a um [FormGroup] existente no componente pai,
+   * identificada pelo atributo [checkboxControlName].
+   * @type string
+  */
+  control: FormControl;
+
+  /**
+   * @param checked Evento emitido ao ativar o botão, contendo o próprio componente e seus atributos
    * na propriedade (target).
+   * @type CardButtonCheckEvent
   */
   @Output()
   checked: EventEmitter<CardButtonCheckEvent> = new EventEmitter();
 
-  constructor(private changeDetector: ChangeDetectorRef) { }
+  constructor(
+    private formGroupDir: FormGroupDirective,
+    private changeDetector: ChangeDetectorRef) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if (this.formGroupDir && this.checkboxControlName) {
+      this.control = this.formGroupDir.control.get(this.checkboxControlName) as FormControl;
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges): void { }
 
@@ -66,6 +96,7 @@ export class CardButtonComponent implements OnInit, OnChanges {
   */
   toggleValue() {
     this.value = !this.value;
+    if (this.control) { this.control.setValue(this.value); }
     this.emitChecked();
   }
 
@@ -74,6 +105,7 @@ export class CardButtonComponent implements OnInit, OnChanges {
   */
   setValue(checked: boolean) {
     this.value = checked;
+    if (this.control) { this.control.setValue(this.value); }
     this.changeDetector.detectChanges();
   }
 
