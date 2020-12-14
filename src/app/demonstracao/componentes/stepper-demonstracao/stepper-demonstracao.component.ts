@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { StepperItem } from 'src/app/guia-caixa/components/stepper/stepper-component/stepper-item';
 import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
 import { BootstrapTheme } from 'src/app/guia-caixa/constants/constants';
 import { ComponentesInterface } from '../componentes-interface';
@@ -257,20 +258,20 @@ export class StepperComponent {
 }
   `.trimRight();
 
-  passos = [
-    'Primeiro passo',
-    'Segundo passo',
-    'Terceiro passo',
-    'Quarto passo',
-    'Passo final'
+  passos: StepperItem[] = [
+    { title: 'Primeiro passo' },
+    { title: 'Segundo passo' },
+    { title: 'Terceiro passo' },
+    { title: 'Quarto passo' },
+    { title: 'Quinto passo' }
   ];
   passoAtual = 0;
-  steps = [
-    "Um primeiro passo",
-    "Um segundo passo",
-    "Mais outro passo",
-    "Um quarto passo",
-    "Fim"
+  steps: StepperItem[] = [
+    { title: 'Um primeiro passo' },
+    { title: 'Um segundo passo' },
+    { title: 'Um terceiro passo' },
+    { title: 'Um quarto passo' },
+    { title: 'Fim' }
   ];
 
   abas: TabberItem[] = [
@@ -338,7 +339,8 @@ export class StepperComponent {
 
   addStep(nome: string) {
     const newIndex = this.steps.length + 1;
-    const newStep = nome ? nome : `Passo ${newIndex}`;
+    const newStep: StepperItem = { title: '' };
+    newStep.title = nome ? nome : `Passo ${newIndex}`;
     this.steps.push(newStep);
     this.steps = [].concat(this.steps);
   }

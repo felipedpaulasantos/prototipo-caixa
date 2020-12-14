@@ -1,8 +1,0 @@
-export enum StatusReivindicacaoPortabilidadeEnum {
-  OPEN = "OPEN",
-  WAITING_RESOLUTION = "WAITING_RESOLUTION",
-  CONFIRMED = "CONFIRMED",
-  COMPLETED = "COMPLETED",
-  CANCELLED = "CANCELLED"
-}
-

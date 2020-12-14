@@ -1,0 +1,31 @@
+<div class="card-button-wrapper" [ngClass]="{'checked': value}">
+  <div class="row no-gutters h-100">
+
+    <div class="col-4 card-button-left-side" tabindex="0" (click)="toggleValue()" (keyup.enter)="toggleValue()">
+      <div class="checkbox-wrapper">
+        <ng-container *ngIf="control">
+          <input [formControl]="control" class="d-none" type="checkbox">
+        </ng-container>
+        <span class="checkmark"></span>
+      </div>
+
+      <i *ngIf="leftIcon" aria-hidden="false"
+        [ngClass]="leftIcon" class="fa-3x my-2">
+      </i>
+
+      <h5 *ngIf="leftTitle" class="my-2">
+        {{ leftTitle }}
+      </h5>
+
+      <span *ngIf="leftText">
+        {{ leftText }}
+      </span>
+    </div>
+
+    <div class="col-8 card-button-right-side">
+      <div class="content-container">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

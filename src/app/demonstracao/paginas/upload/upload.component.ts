@@ -1,9 +1,11 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { CardChave } from 'src/app/guia-caixa/components/card-chave/listar-chaves';
+import { CardButtonCheckEvent } from 'src/app/guia-caixa/components/card-button/card-button-check-event';
+import { CardButtonComponent } from 'src/app/guia-caixa/components/card-button/card-button.component';
+import { StepperItem } from 'src/app/guia-caixa/components/stepper/stepper-component/stepper-item';
 import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
 
 @Component({
@@ -19,8 +21,20 @@ export class UploadComponent implements OnInit {
     private renderer: Renderer2
   ) { }
 
+  @ViewChild("cardHome")
+  cardHome: CardButtonComponent;
+
+  @ViewChild("cardChave")
+  cardChave: CardButtonComponent;
+
+  @ViewChild("cardCDC")
+  cardCDC: CardButtonComponent;
+
+  @ViewChild("cardVazio")
+  cardVazio: CardButtonComponent;
+
   formCpfNis = this.fb.group({
-    cpf: [null, [Validators.required, Validators.minLength(11)]],
+    cpf: [{ value: null, disabled: true }, [Validators.required, Validators.minLength(11)]],
     nis: [null, [Validators.required, Validators.minLength(11)]]
   });
   cliente = null;
@@ -30,19 +44,67 @@ export class UploadComponent implements OnInit {
 
   contratos = [];
 
-  cardConfiguracao: CardChave;
+  passoAtual = 0;
+
+  passos: StepperItem[] = [
+    { title: "Passo 1" },
+    { title: "Passo 2" },
+    { title: "Passo 3" },
+    { title: "Passo 4" },
+    { title: "Passo 5" }
+  ];
+
+  abas: TabberItem[] = [
+    { name: "Passo 1", icon: "fa fa-home" },
+    { name: "Passo 2", icon: "fa fa-home" },
+    { name: "Passo 3", icon: "fa fa-home" },
+    { name: "Passo 4", icon: "fa fa-home" },
+    { name: "Passo 5", icon: "fa fa-home" }
+  ];
+
+  valor = "";
+
+  rotas = [
+    { url: "tal-rota" },
+    { url: "tal-rota" },
+    { url: "tal-rota" },
+    { url: "tal-rota" },
+    { url: "tal-rota" },
+  ];
+
+  testeEv: CardButtonCheckEvent;
+
+  teste(ev, cardEl: CardButtonComponent) {
+/*     cardEl.setData(ev);
+    if (ev.length > 5) {
+      cardEl.emitChecked();
+    } */
+    this.cardVazio.setLeftIcon(ev);
+  }
+
+  ativar(checkEv: CardButtonCheckEvent, cardEl: CardButtonComponent) {
+    this.testeEv = checkEv;
+    console.log(checkEv.target);
+    console.log(this.formCpfNis.value);
+    const cards = [this.cardHome, this.cardChave, this.cardCDC];
+    if (checkEv.target.value) {
+      this.valor = cardEl.leftTitle;
+      cards.forEach(card => {
+        card.setValue(false);
+      });
+      cardEl.setValue(true);
+    }
+    if (cardEl.cardId == "cardChave" && cardEl.value) {
+      this.formCpfNis.get('cpf').enable();
+    } else {
+      this.formCpfNis.get('cpf').disable();
+    }
+  }
 
   ngOnInit(): void {
     this.clientePesquisado();
     this.populaContratos();
     this.preventDragDropDefault();
-    this.cardConfiguracao = new CardChave("DOCUMENTO", "123.456.789-01", "VISUALIZAR", false, true);
-    this.cardConfiguracao.showCheck = true;
-    this.cardConfiguracao.showTitulo = true;
-    this.cardConfiguracao.icone = 'fa fa-home fa-lg'
-    this.cardConfiguracao.leftLabels.push("123.456.789-01");
-    this.cardConfiguracao.rightLabels.push("Chave: ");
-    this.cardConfiguracao.rightLabels.push("Conta Vinculada: ");
   }
 
   populaContratos(): void {

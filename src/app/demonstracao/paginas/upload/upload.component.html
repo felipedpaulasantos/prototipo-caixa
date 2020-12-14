@@ -3,7 +3,7 @@
 </h1>
 <hr class="header-line-caixa">
 
-<ng-container>
+<div id="painelTestesDiversos" *ngIf="false">
   <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
     <div class="row">
       <div class="col-12 col-md-5 col-lg-4">
@@ -199,8 +199,41 @@
       </cx-card>
     </section>
   </ng-container>
-</ng-container>
+</div>
 
-<ng-container *ngIf="false">
-  <cx-card-chave [card]="cardConfiguracao"></cx-card-chave>
-</ng-container>
+<form [formGroup]="formCpfNis">
+  <div id="painelCardButton" class="row" *ngIf="true">
+    <div class="col">
+
+      <cx-card-button checkboxControlName='nis' cardId="cardHome"
+        leftIcon="fa fa-home" leftTitle="Home" #cardHome (checked)="ativar($event, cardHome)">
+        <h4>Teste</h4>
+      </cx-card-button>
+
+      <br><br>
+
+      <cx-card-button cardId="cardChave" leftIcon="fa fa-key" [data]="formCpfNis.get('cpf').value" leftTitle="CPF"
+        #cardChave (checked)="ativar($event, cardChave)">
+        <label>CPF</label>
+        <input class="input-caixa" formControlName="cpf">
+      </cx-card-button>
+
+      <br><br>
+
+      <cx-card-button cardId="cardCDC" leftIcon="fa fa-dollar-sign" data="Teste" leftText="aaaaaaaaaaaaaa"
+        leftTitle="CDC Automático" #cardCDC (checked)="ativar($event, cardCDC)">
+        <h4 class="text-primary">Valor Disponível: R$ 5.100,00</h4>
+        <span>Valor Utilizado: R$ 5.100,00</span>
+      </cx-card-button>
+
+      <br><br>
+
+      <cx-card-button #cardVazio (checked)="ativar($event, cardVazio)"></cx-card-button>
+    </div>
+
+    <div class="col">
+      <h1 class="my=5">Label: {{ valor }}</h1>
+      <h3> {{ formCpfNis.value | json }} </h3>
+    </div>
+  </div>
+</form>

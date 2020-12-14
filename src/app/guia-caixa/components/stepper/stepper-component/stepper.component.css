@@ -19,14 +19,27 @@
    overflow-x: hidden;
    padding: 0;
    margin: 0;
+   transition: justify-content 0.4s;
+}
+
+.stepper-wrapper > .stepper.completed {
+   justify-content: start;
 }
 
 .stepper-wrapper.vertical > .stepper {
    flex-direction: column;
 }
 
-.stepper-wrapper > .stepper.completed {
+/* .stepper-wrapper > .stepper.completed {
    display: inline-flex;
+} */
+
+.stepper-wrapper > .stepper.completed > .step.last-step {
+   width: 100%;
+}
+
+.stepper-wrapper > .stepper.completed > .step.prior-step {
+   width: 90px;
 }
 
 /** STEP - li */
@@ -38,22 +51,33 @@
    display: flex;
    align-items: center;
    height: 84px;
-   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+   transition: 
+      width 0.4s,
+      visibility 0.4s,
+      opacity 0.4s;
 }
 
 .stepper-wrapper.horizontal > .stepper.nav-guided:not(.completed) > .step.previous-step:not(.prior-step) {
    visibility: hidden !important;
+   opacity: 0;
    width: 0 !important;
 }
 
 .stepper-wrapper.vertical > .stepper > .step {
    position: relative;
-   transition: padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+   max-height: 500px;
+   transition: 
+      max-height 0.4s,
+      width 0.4s,
+      visibility 0.4s,
+      opacity 0.4s;
 }
 
 .stepper-wrapper.vertical > .stepper.nav-guided:not(.completed) > .step.previous-step:not(.prior-step) {
    visibility: hidden !important;
-   height: 0 !important;
+   width: 0 !important;
+   max-height: 0 !important;
+   opacity: 0;
 }
 
 .stepper-wrapper > .stepper > .step.previous-step {

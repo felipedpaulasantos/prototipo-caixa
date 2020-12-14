@@ -1,0 +1,91 @@
+/* CARD BUTTON WRAPPER */
+.card-button-wrapper {
+    position: relative;
+    border: solid 1px #3a4859;
+    border-radius: 5px;
+    height: 135px;
+    min-height: 135px;
+    width: 500px;
+    max-width: 100%;
+    transition: box-shadow 0.2s;
+}
+.card-button-wrapper.checked {
+    border: solid 1px #005ca9b3;
+    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* CARD BUTTON LEFT SIDE */
+.card-button-wrapper > .row > .card-button-left-side {
+    background-color: #3a4859;
+    height: 100% !important;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center !important;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+.card-button-wrapper.checked > .row > .card-button-left-side {
+    background-color: #005ca9;
+}
+
+/* CARD BUTTON RIGHT SIDE */
+.card-button-wrapper > .row > .card-button-right-side {
+    display: flex;
+    max-height: 100%;
+    padding: 0.2rem 0.5rem;
+}
+
+.card-button-wrapper > .row > .card-button-right-side > .content-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+    
+/* CHECK BOX WRAPPER */
+.card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+/* CHECKMARK */
+.card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+/* CHECKMARK AFTER */
+.card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark:after {
+    position: absolute;
+    content: "";
+    opacity: 0;
+    left: 4px;
+    top: 0px;
+    width: 9px;
+    height: 13px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    transition: opacity 0.2s;
+}
+.card-button-wrapper.checked > .row > .card-button-left-side > .checkbox-wrapper > .checkmark:after {
+    opacity: 1;
+}
