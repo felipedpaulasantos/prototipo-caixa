@@ -1,11 +1,8 @@
-<div class="card-button-wrapper" [ngClass]="{'checked': isChecked}">
+<div class="card-button-wrapper" [ngStyle]="styles" [ngClass]="{'checked': isChecked}">
   <div class="row no-gutters h-100">
 
     <div class="col-4 card-button-left-side" tabindex="0" (click)="toggleValue()" (keyup.enter)="toggleValue()">
       <div class="checkbox-wrapper">
-        <ng-container *ngIf="control">
-          <input [formControl]="control" class="d-none" type="checkbox">
-        </ng-container>
         <span class="checkmark"></span>
       </div>
 
@@ -17,9 +14,9 @@
         {{ leftTitle }}
       </h5>
 
-      <span *ngIf="leftText">
+      <small *ngIf="leftText">
         {{ leftText }}
-      </span>
+      </small>
     </div>
 
     <div class="col-8 card-button-right-side">

@@ -64,18 +64,11 @@ export class CardButtonComponent implements OnInit, OnChanges, ControlValueAcces
   leftText = "";
 
   /**
-   * @param checkboxControlName Valor da diretiva [formControlName] a ser atribuída ao checkbox do componente. Padrão: ""
-   * @type string
+   * @param styles Objeto de estilo a ser passado para o card-button-wrapper. Ex: [styles]="{ height: '300px'; font-color: 'blue' }"
+   * @type object
   */
   @Input()
-  checkboxControlName = "";
-
-  /**
-   * Instância de [FormControl] a ser vinculada a um [FormGroup] existente no componente pai,
-   * identificada pelo atributo [checkboxControlName].
-   * @type string
-  */
-  control: FormControl;
+  styles = "";
 
   /**
    * @param checked Evento emitido ao ativar o botão, contendo o próprio componente e seus atributos
@@ -102,7 +95,6 @@ export class CardButtonComponent implements OnInit, OnChanges, ControlValueAcces
   toggleValue() {
     this.isChecked = !this.isChecked;
     this.value = this.isChecked;
-    if (this.control) { this.control.setValue(this.isChecked); }
     this.emitChecked();
   }
 
@@ -112,7 +104,6 @@ export class CardButtonComponent implements OnInit, OnChanges, ControlValueAcces
   setValue(checked: boolean) {
     this.isChecked = checked;
     this.value = this.isChecked;
-    if (this.control) { this.control.setValue(this.isChecked); }
     this.changeDetector.detectChanges();
   }
 
