@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -34,7 +34,8 @@ export class UploadComponent implements OnInit {
   cardVazio: CardButtonComponent;
 
   formCpfNis = this.fb.group({
-    cpf: [{ value: null, disabled: true }, [Validators.required, Validators.minLength(11)]],
+    isCpf: [false],
+    cpf: [null, [Validators.required, Validators.minLength(11)]],
     nis: [null, [Validators.required, Validators.minLength(11)]]
   });
   cliente = null;
@@ -213,6 +214,14 @@ export class UploadComponent implements OnInit {
     window.addEventListener("drop", function(e: any) {
       e.preventDefault();
     }, false);
+  }
+
+
+
+
+
+  exibirEvento(evento: CardButtonCheckEvent) {
+    console.log(evento.target);
   }
 
 }

@@ -205,23 +205,97 @@
 
 
 
-
-
-
-
-
-
-<cx-card-button>
-  Teste
-</cx-card-button>
-
-
-
-
-
-
-
 <form [formGroup]="formCpfNis">
+
+  <cx-card-button 
+  type="radio"
+  name="isCpf"
+  formControlName="isCpf"
+  [leftIcon]="'fa fa-key'" 
+  [leftTitle]="'CPF'" 
+  (checked)="exibirEvento($event)">
+    <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
+  </cx-card-button>
+
+  <br>
+
+  <cx-card-button 
+  type="radio"
+  name="isCpf"
+  formControlName="isCpf"
+  [leftIcon]="'fa fa-key'" 
+  [leftTitle]="'CPF'" 
+  (checked)="exibirEvento($event)">
+    <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
+  </cx-card-button>
+
+  <br>
+  <cx-card-button 
+  type="radio"
+  name="isCpf"
+  formControlName="isCpf"
+  [leftIcon]="'fa fa-key'" 
+  [leftTitle]="'CPF'" 
+  (checked)="exibirEvento($event)">
+    <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
+  </cx-card-button>
+
+  <br>
+  
+</form>
+
+<h1 class="my-3">
+  {{ formCpfNis.value | json }}
+</h1>
+
+
+
+
+<!-- <form [formGroup]="formCpfNis">
+
+  <cx-card-button 
+  formControlName="isCpf"
+  [leftIcon]="'fa fa-key'" 
+  [leftTitle]="'CPF'" 
+  (checked)="exibirEvento($event)">
+    <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
+  </cx-card-button>
+
+  <cx-card-button 
+  formControlName="isCpf"
+  [leftIcon]="'fa fa-key'" 
+  [leftTitle]="'CPF'" 
+  (checked)="exibirEvento($event)">
+    <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
+  </cx-card-button>
+
+  <cx-card-button 
+  formControlName="isCpf"
+  [leftIcon]="'fa fa-key'" 
+  [leftTitle]="'CPF'" 
+  (checked)="exibirEvento($event)">
+    <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
+  </cx-card-button>
+
+</form>
+
+<h1 class="my-3">
+  {{ formCpfNis.value | json }}
+</h1> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form *ngIf="false" [formGroup]="formCpfNis">
   <div id="painelCardButton" class="row" *ngIf="true">
     <div class="col">
 

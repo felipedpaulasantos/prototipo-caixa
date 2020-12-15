@@ -2,7 +2,7 @@ import {
   Component, Input, OnInit, OnChanges, ChangeDetectionStrategy,
   Output, EventEmitter, SimpleChanges, ChangeDetectorRef, forwardRef
 } from "@angular/core";
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CardButtonCheckEvent } from './card-button-check-event';
 
 @Component({
