@@ -87,14 +87,14 @@ export class UploadComponent implements OnInit {
     console.log(checkEv.target);
     console.log(this.formCpfNis.value);
     const cards = [this.cardHome, this.cardChave, this.cardCDC];
-    if (checkEv.target.value) {
+    if (checkEv.target.isChecked) {
       this.valor = cardEl.leftTitle;
       cards.forEach(card => {
         card.setValue(false);
       });
       cardEl.setValue(true);
     }
-    if (cardEl.cardId == "cardChave" && cardEl.value) {
+    if (cardEl.cardId == "cardChave" && cardEl.isChecked) {
       this.formCpfNis.get('cpf').enable();
     } else {
       this.formCpfNis.get('cpf').disable();

@@ -201,11 +201,31 @@
   </ng-container>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+<cx-card-button>
+  Teste
+</cx-card-button>
+
+
+
+
+
+
+
 <form [formGroup]="formCpfNis">
   <div id="painelCardButton" class="row" *ngIf="true">
     <div class="col">
 
-      <cx-card-button checkboxControlName='nis' cardId="cardHome"
+      <cx-card-button formControlName="nis" cardId="cardHome"
         leftIcon="fa fa-home" leftTitle="Home" #cardHome (checked)="ativar($event, cardHome)">
         <h4>Teste</h4>
       </cx-card-button>

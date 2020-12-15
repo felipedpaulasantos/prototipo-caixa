@@ -1,4 +1,4 @@
-<div class="card-button-wrapper" [ngClass]="{'checked': value}">
+<div class="card-button-wrapper" [ngClass]="{'checked': isChecked}">
   <div class="row no-gutters h-100">
 
     <div class="col-4 card-button-left-side" tabindex="0" (click)="toggleValue()" (keyup.enter)="toggleValue()">
