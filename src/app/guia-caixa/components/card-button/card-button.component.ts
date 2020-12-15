@@ -1,24 +1,20 @@
 import {
   Component, Input, OnInit, OnChanges, ChangeDetectionStrategy,
-  Output, EventEmitter, SimpleChanges, ChangeDetectorRef, forwardRef
+  Output, EventEmitter, SimpleChanges, ChangeDetectorRef, Self
 } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { CardButtonCheckEvent } from './card-button-check-event';
 
 @Component({
   selector: "cx-card-button",
   templateUrl: "./card-button.component.html",
   styleUrls: ["./card-button.component.css"],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => CardButtonComponent),
-    }
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardButtonComponent implements OnInit, OnChanges, ControlValueAccessor {
+
+  @Input()
+  value: any;
 
   /**
    * @description Atributo que define o estado atual do componente, se está marcado ou não.
@@ -70,6 +66,14 @@ export class CardButtonComponent implements OnInit, OnChanges, ControlValueAcces
   @Input()
   styles = "";
 
+
+  /**
+   * @param checkMark Define o visual do container de checkbox / radio. Pode ser 'square' ou 'circle'. Padrão: 'square'
+   * @type string
+  */
+  @Input()
+  checkmarkType = "square";
+
   /**
    * @param checked Evento emitido ao ativar o botão, contendo o próprio componente e seus atributos
    * na propriedade (target).
@@ -78,13 +82,23 @@ export class CardButtonComponent implements OnInit, OnChanges, ControlValueAcces
   @Output()
   checked: EventEmitter<CardButtonCheckEvent> = new EventEmitter();
 
+  /**
+   * Propriedade que armazena o valor do ngControl associado ao componente.
+   * @type any
+  */
+  model: any;
+
   constructor(
-    private changeDetector: ChangeDetectorRef) { }
+    private changeDetector: ChangeDetectorRef,
+    @Self() private ngControl: NgControl
+  ) {
+      ngControl.valueAccessor = this;
+  }
 
   ngOnInit(): void {
-    /*     if (this.formGroupDir && this.checkboxControlName) {
-          this.control = this.formGroupDir.control.get(this.checkboxControlName) as FormControl;
-        } */
+    this.ngControl.control.valueChanges.subscribe(value => {
+      this.writeValue(value);
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void { }
@@ -94,7 +108,9 @@ export class CardButtonComponent implements OnInit, OnChanges, ControlValueAcces
   */
   toggleValue() {
     this.isChecked = !this.isChecked;
-    this.value = this.isChecked;
+    this.model = this.model === this.value ? null : this.value;
+    this.onChange(this.model);
+    // this.value = this.isChecked;
     this.emitChecked();
   }
 
@@ -151,13 +167,6 @@ export class CardButtonComponent implements OnInit, OnChanges, ControlValueAcces
 
   /* Implementação da interface ControlValueAccessor */
 
-  set value(val: boolean) {
-    if (val !== undefined) {
-      this.onChange(val);
-      this.onTouch(val);
-    }
-  }
-
   onChange: any = () => { };
 
   onTouch: any = () => { };
@@ -169,6 +178,9 @@ export class CardButtonComponent implements OnInit, OnChanges, ControlValueAcces
     this.onTouch = fn;
   }
 
-  writeValue(input: string) { }
+  writeValue(value: any) {
+    this.model = value;
+    this.changeDetector.detectChanges();
+  }
 
 }

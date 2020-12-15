@@ -1,9 +1,9 @@
-<div class="card-button-wrapper" [ngStyle]="styles" [ngClass]="{'checked': isChecked}">
+<div class="card-button-wrapper" [ngStyle]="styles" [ngClass]="{'checked': model === value}">
   <div class="row no-gutters h-100">
 
     <div class="col-4 card-button-left-side" tabindex="0" (click)="toggleValue()" (keyup.enter)="toggleValue()">
       <div class="checkbox-wrapper">
-        <span class="checkmark"></span>
+        <span class="checkmark" [ngClass]="checkmarkType"></span>
       </div>
 
       <i *ngIf="leftIcon" aria-hidden="false"

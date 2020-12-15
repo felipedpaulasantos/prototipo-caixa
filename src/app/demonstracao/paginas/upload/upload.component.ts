@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -36,7 +36,8 @@ export class UploadComponent implements OnInit {
   formCpfNis = this.fb.group({
     isCpf: [false],
     cpf: [null, [Validators.required, Validators.minLength(11)]],
-    nis: [null, [Validators.required, Validators.minLength(11)]]
+    nis: [null, [Validators.required, Validators.minLength(11)]],
+    radioTeste: [""]
   });
   cliente = null;
 
@@ -74,6 +75,9 @@ export class UploadComponent implements OnInit {
   ];
 
   testeEv: CardButtonCheckEvent;
+
+  checkTeste: any;
+  checkTeste2: any;
 
   teste(ev, cardEl: CardButtonComponent) {
 /*     cardEl.setData(ev);

@@ -69,6 +69,9 @@
     border-radius: 5px;
     margin: 10px;
 }
+.card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark.circle {
+    border-radius: 10px;
+}
 
 /* CHECKMARK AFTER */
 .card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark:after {

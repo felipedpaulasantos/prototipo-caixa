@@ -201,133 +201,48 @@
   </ng-container>
 </div>
 
+<h2>Checkbox</h2>
 
+<cx-card-button 
+[value]="'TESTE'"
+[(ngModel)]="checkTeste"
+[cardId]="'card3'"
+[leftIcon]="'fa fa-key'" 
+[leftTitle]="'CPF'" 
+(checked)="exibirEvento($event)">
+  <input class="input-caixa" placeholder="Informe o número do CPF">
+</cx-card-button>
 
+<br>
 
+<cx-card-button 
+[value]="'ALOOOO'"
+[(ngModel)]="checkTeste2"
+[cardId]="'card4'"
+[leftIcon]="'fa fa-key'" 
+[leftTitle]="'CPF'" 
+(checked)="exibirEvento($event)">
+  <input class="input-caixa" placeholder="Informe o número do CPF">
+</cx-card-button>
+
+<h2>Radio</h2>
 
 <form [formGroup]="formCpfNis">
-
-  <cx-card-button 
-  type="radio"
-  name="isCpf"
-  formControlName="isCpf"
-  [leftIcon]="'fa fa-key'" 
-  [leftTitle]="'CPF'" 
-  (checked)="exibirEvento($event)">
+  <cx-card-button [cardId]="'card1'" [value]="'card1'" formControlName="radioTeste"
+  [leftIcon]="'fa fa-key'" [leftTitle]="'CPF'" (checked)="exibirEvento($event)" [checkmarkType]="'circle'">
     <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
   </cx-card-button>
 
   <br>
 
   <cx-card-button 
-  type="radio"
-  name="isCpf"
-  formControlName="isCpf"
+  [cardId]="'card2'"
+  [value]="'card2'"
+  formControlName="radioTeste"
   [leftIcon]="'fa fa-key'" 
   [leftTitle]="'CPF'" 
-  (checked)="exibirEvento($event)">
+  (checked)="exibirEvento($event)"
+  [checkmarkType]="'circle'">
     <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
-  </cx-card-button>
-
-  <br>
-  <cx-card-button 
-  type="radio"
-  name="isCpf"
-  formControlName="isCpf"
-  [leftIcon]="'fa fa-key'" 
-  [leftTitle]="'CPF'" 
-  (checked)="exibirEvento($event)">
-    <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
-  </cx-card-button>
-
-  <br>
-  
-</form>
-
-<h1 class="my-3">
-  {{ formCpfNis.value | json }}
-</h1>
-
-
-
-
-<!-- <form [formGroup]="formCpfNis">
-
-  <cx-card-button 
-  formControlName="isCpf"
-  [leftIcon]="'fa fa-key'" 
-  [leftTitle]="'CPF'" 
-  (checked)="exibirEvento($event)">
-    <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
-  </cx-card-button>
-
-  <cx-card-button 
-  formControlName="isCpf"
-  [leftIcon]="'fa fa-key'" 
-  [leftTitle]="'CPF'" 
-  (checked)="exibirEvento($event)">
-    <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
-  </cx-card-button>
-
-  <cx-card-button 
-  formControlName="isCpf"
-  [leftIcon]="'fa fa-key'" 
-  [leftTitle]="'CPF'" 
-  (checked)="exibirEvento($event)">
-    <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
-  </cx-card-button>
-
-</form>
-
-<h1 class="my-3">
-  {{ formCpfNis.value | json }}
-</h1> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-<form *ngIf="false" [formGroup]="formCpfNis">
-  <div id="painelCardButton" class="row" *ngIf="true">
-    <div class="col">
-
-      <cx-card-button formControlName="nis" cardId="cardHome"
-        leftIcon="fa fa-home" leftTitle="Home" #cardHome (checked)="ativar($event, cardHome)">
-        <h4>Teste</h4>
-      </cx-card-button>
-
-      <br><br>
-
-      <cx-card-button cardId="cardChave" leftIcon="fa fa-key" [data]="formCpfNis.get('cpf').value" leftTitle="CPF"
-        #cardChave (checked)="ativar($event, cardChave)">
-        <label>CPF</label>
-        <input class="input-caixa" formControlName="cpf">
-      </cx-card-button>
-
-      <br><br>
-
-      <cx-card-button cardId="cardCDC" leftIcon="fa fa-dollar-sign" data="Teste" leftText="aaaaaaaaaaaaaa"
-        leftTitle="CDC Automático" #cardCDC (checked)="ativar($event, cardCDC)">
-        <h4 class="text-primary">Valor Disponível: R$ 5.100,00</h4>
-        <span>Valor Utilizado: R$ 5.100,00</span>
-      </cx-card-button>
-
-      <br><br>
-
-      <cx-card-button #cardVazio (checked)="ativar($event, cardVazio)"></cx-card-button>
-    </div>
-
-    <div class="col">
-      <h1 class="my=5">Label: {{ valor }}</h1>
-      <h3> {{ formCpfNis.value | json }} </h3>
-    </div>
-  </div>
+  </cx-card-button>  
 </form>
