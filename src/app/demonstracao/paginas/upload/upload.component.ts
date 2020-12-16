@@ -33,12 +33,6 @@ export class UploadComponent implements OnInit {
   @ViewChild("cardVazio")
   cardVazio: CardButtonComponent;
 
-  formCpfNis = this.fb.group({
-    isCpf: [false],
-    cpf: [null, [Validators.required, Validators.minLength(11)]],
-    nis: [null, [Validators.required, Validators.minLength(11)]],
-    radioTeste: [""]
-  });
   cliente = null;
 
   previaSrc: string;
@@ -76,8 +70,14 @@ export class UploadComponent implements OnInit {
 
   testeEv: CardButtonCheckEvent;
 
-  checkTeste: any;
-  checkTeste2: any;
+  formCpfNis = this.fb.group({
+    tipoId: [null],
+    cpf: [null],
+    nis: [null]
+  });
+
+  checkHome: any;
+  checkConfig: any;
 
   teste(ev, cardEl: CardButtonComponent) {
 /*     cardEl.setData(ev);
