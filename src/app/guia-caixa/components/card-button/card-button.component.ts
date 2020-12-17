@@ -1,6 +1,6 @@
 import {
   Component, Input, OnInit, ChangeDetectionStrategy,
-  Output, EventEmitter, ChangeDetectorRef, Self
+  Output, EventEmitter, ChangeDetectorRef, Self, Optional
 } from "@angular/core";
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { CardButtonCheckEvent } from './card-button-check-event';
@@ -82,12 +82,15 @@ export class CardButtonComponent implements OnInit, ControlValueAccessor {
 
   constructor(
     private changeDetector: ChangeDetectorRef,
-    @Self() private ngControl: NgControl
+    @Self() @Optional() private ngControl: NgControl
   ) {
-    ngControl.valueAccessor = this;
+    if (ngControl) {
+      ngControl.valueAccessor = this;
+    }
   }
 
   ngOnInit(): void {
+    if (!this.ngControl) { return; }
     this.ngControl.control.valueChanges.subscribe(value => {
       this.writeValue(value);
     });
