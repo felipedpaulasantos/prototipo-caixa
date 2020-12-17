@@ -1,7 +1,7 @@
-<h1 class="header-principal-caixa">
+<!-- <h1 class="header-principal-caixa">
   Páginas
 </h1>
-<hr class="header-line-caixa">
+<hr class="header-line-caixa"> -->
 
 <div id="painelTestesDiversos" *ngIf="false">
   <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
@@ -201,39 +201,53 @@
   </ng-container>
 </div>
 
-<form [formGroup]="formCpfNis">
-  <div id="painelCardButton" class="row" *ngIf="true">
-    <div class="col">
+<cx-card-button (ngModel)="null"></cx-card-button>
 
-      <cx-card-button checkboxControlName='nis' cardId="cardHome"
-        leftIcon="fa fa-home" leftTitle="Home" #cardHome (checked)="ativar($event, cardHome)">
-        <h4>Teste</h4>
-      </cx-card-button>
+<br>
 
-      <br><br>
+<div class="row">
+  <div class="col">
+    <h2>Checkbox</h2>
 
-      <cx-card-button cardId="cardChave" leftIcon="fa fa-key" [data]="formCpfNis.get('cpf').value" leftTitle="CPF"
-        #cardChave (checked)="ativar($event, cardChave)">
-        <label>CPF</label>
-        <input class="input-caixa" formControlName="cpf">
-      </cx-card-button>
+    <cx-card-button [(ngModel)]="checkHome" [leftIcon]="'fa fa-home'" type="checkbox" value="Home">
+      <input value="Home" class="input-caixa">
+    </cx-card-button>
+    
+    <br>
+    
+    <cx-card-button [(ngModel)]="checkConfig" type="checkbox"  value="Configurações"
+    [leftIcon]="'fa fa-wrench'" 
+    (checked)="exibirEvento($event)">
+      <input value="Configurações" class="input-caixa">
+    </cx-card-button>
 
-      <br><br>
+    <br>
 
-      <cx-card-button cardId="cardCDC" leftIcon="fa fa-dollar-sign" data="Teste" leftText="aaaaaaaaaaaaaa"
-        leftTitle="CDC Automático" #cardCDC (checked)="ativar($event, cardCDC)">
-        <h4 class="text-primary">Valor Disponível: R$ 5.100,00</h4>
-        <span>Valor Utilizado: R$ 5.100,00</span>
-      </cx-card-button>
-
-      <br><br>
-
-      <cx-card-button #cardVazio (checked)="ativar($event, cardVazio)"></cx-card-button>
-    </div>
-
-    <div class="col">
-      <h1 class="my=5">Label: {{ valor }}</h1>
-      <h3> {{ formCpfNis.value | json }} </h3>
-    </div>
+    <h3>Checkhome: {{ checkHome }}</h3>
+    <h3>Checkconfig: {{ checkConfig }}</h3>
   </div>
-</form>
+
+
+  <div class="col">
+    <h2>Radio</h2>
+
+    <form [formGroup]="formCpfNis">
+      <cx-card-button #cardCpf formControlName="tipoId" type="radio" value="CPF" [leftTitle]="'CPF'">
+        <input formControlName="cpf" class="input-caixa" placeholder="Informe o número do CPF">
+        {{ cardCpf.model }}, {{ cardCpf.value }}, {{ cardCpf.isChecked() }}
+      </cx-card-button>
+    
+      <br>
+    
+      <cx-card-button #cardNis [value]="'NIS'" formControlName="tipoId" type="radio" [leftTitle]="'NIS'">
+        <input formControlName="nis" class="input-caixa" placeholder="Informe o número do NIS">
+        {{ cardNis.model }}, {{ cardNis.value }}, {{ cardNis.isChecked() }}
+      </cx-card-button>  
+    </form>
+
+    <br>
+
+    <h3>TIPO ID: {{ formCpfNis.get('tipoId').value }}</h3>
+  </div>
+</div>
+

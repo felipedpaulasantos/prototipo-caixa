@@ -1,5 +1,5 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -33,10 +33,6 @@ export class UploadComponent implements OnInit {
   @ViewChild("cardVazio")
   cardVazio: CardButtonComponent;
 
-  formCpfNis = this.fb.group({
-    cpf: [{ value: null, disabled: true }, [Validators.required, Validators.minLength(11)]],
-    nis: [null, [Validators.required, Validators.minLength(11)]]
-  });
   cliente = null;
 
   previaSrc: string;
@@ -74,31 +70,17 @@ export class UploadComponent implements OnInit {
 
   testeEv: CardButtonCheckEvent;
 
-  teste(ev, cardEl: CardButtonComponent) {
-/*     cardEl.setData(ev);
-    if (ev.length > 5) {
-      cardEl.emitChecked();
-    } */
-    this.cardVazio.setLeftIcon(ev);
-  }
+  formCpfNis = this.fb.group({
+    tipoId: [null],
+    cpf: [null],
+    nis: [null]
+  });
 
-  ativar(checkEv: CardButtonCheckEvent, cardEl: CardButtonComponent) {
-    this.testeEv = checkEv;
-    console.log(checkEv.target);
-    console.log(this.formCpfNis.value);
-    const cards = [this.cardHome, this.cardChave, this.cardCDC];
-    if (checkEv.target.value) {
-      this.valor = cardEl.leftTitle;
-      cards.forEach(card => {
-        card.setValue(false);
-      });
-      cardEl.setValue(true);
-    }
-    if (cardEl.cardId == "cardChave" && cardEl.value) {
-      this.formCpfNis.get('cpf').enable();
-    } else {
-      this.formCpfNis.get('cpf').disable();
-    }
+  checkHome: any;
+  checkConfig: any;
+
+  exibirEvento(evento: CardButtonCheckEvent) {
+    console.log(evento);
   }
 
   ngOnInit(): void {
