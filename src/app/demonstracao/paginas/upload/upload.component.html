@@ -248,29 +248,6 @@
     <br>
 
     <h3>TIPO ID: {{ formCpfNis.get('tipoId').value }}</h3>
-
-    <br>
-
-    <h3 *ngIf="formCpfNis.get('tipoId').value">
-      {{ formCpfNis.get('tipoId').value }}:
-
-      <ng-container [ngSwitch]="formCpfNis.get('tipoId').value">
-        <ng-container *ngSwitchCase="'CPF'">
-           {{ formCpfNis.get('cpf').value }}
-        </ng-container>
-        <ng-container *ngSwitchCase="'NIS'">
-          {{ formCpfNis.get('nis').value }}
-        </ng-container>
-        <p *ngSwitchDefault>
-          
-        </p>
-      </ng-container>
-    </h3>
-
-    <br>
-
-    <label>Tipo ID</label>
-    <input class="input-caixa" (input)="formCpfNis.get('tipoId').setValue($event.target.value)">
   </div>
 </div>
 

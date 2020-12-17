@@ -111,15 +111,6 @@ export class CardButtonComponent implements OnInit, ControlValueAccessor {
   }
 
   /**
-   * @param {boolean} checked Define novo valor boleano para o estado atual do componente.
-  */
-  /*   setValue(checked: boolean) {
-          this.isChecked = checked;
-          this.value = this.isChecked;
-          this.changeDetector.detectChanges();
-    } */
-
-  /**
    * @param {string} checked Define novo valor para a propriedade [cardId].
   */
   setCardId(cardId: string) {
