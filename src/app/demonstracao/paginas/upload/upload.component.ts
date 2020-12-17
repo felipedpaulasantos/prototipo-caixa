@@ -79,31 +79,8 @@ export class UploadComponent implements OnInit {
   checkHome: any;
   checkConfig: any;
 
-  teste(ev, cardEl: CardButtonComponent) {
-/*     cardEl.setData(ev);
-    if (ev.length > 5) {
-      cardEl.emitChecked();
-    } */
-    this.cardVazio.setLeftIcon(ev);
-  }
-
-  ativar(checkEv: CardButtonCheckEvent, cardEl: CardButtonComponent) {
-    this.testeEv = checkEv;
-    console.log(checkEv.target);
-    console.log(this.formCpfNis.value);
-    const cards = [this.cardHome, this.cardChave, this.cardCDC];
-    if (checkEv.target.isChecked) {
-      this.valor = cardEl.leftTitle;
-      cards.forEach(card => {
-        card.setValue(false);
-      });
-      cardEl.setValue(true);
-    }
-    if (cardEl.cardId == "cardChave" && cardEl.isChecked) {
-      this.formCpfNis.get('cpf').enable();
-    } else {
-      this.formCpfNis.get('cpf').disable();
-    }
+  exibirEvento(evento: CardButtonCheckEvent) {
+    console.log(evento);
   }
 
   ngOnInit(): void {
@@ -218,14 +195,6 @@ export class UploadComponent implements OnInit {
     window.addEventListener("drop", function(e: any) {
       e.preventDefault();
     }, false);
-  }
-
-
-
-
-
-  exibirEvento(evento: CardButtonCheckEvent) {
-    console.log(evento.target);
   }
 
 }
