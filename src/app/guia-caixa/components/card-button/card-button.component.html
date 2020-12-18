@@ -1,11 +1,14 @@
 <div class="card-button-wrapper" [ngStyle]="styles" [ngClass]="{'checked': !type || model === value}">
-  <div class="row no-gutters h-100">
-    <div class="col-4 card-button-left-side" [ngClass]="{'cursor-pointer': type}" tabindex="0" (click)="toggleValue()" (keyup.enter)="toggleValue()">
+  <div class="row no-gutters">
+
+    <div class="col-4 card-button-left-side" [ngClass]="{'cursor-pointer': type}" tabindex="0" (click)="toggleValue()"
+      (keyup.enter)="toggleValue()">
+
       <div class="checkbox-wrapper">
-        <span *ngIf="type" [ngClass]="type" class="checkmark" ></span>
+        <span *ngIf="type" [ngClass]="type" class="checkmark"></span>
       </div>
 
-      <i *ngIf="leftIcon" aria-hidden="false"
+      <i *ngIf="leftIcon" aria-hidden="false" 
         [ngClass]="leftIcon" class="fa-3x my-2">
       </i>
 

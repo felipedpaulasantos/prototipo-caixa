@@ -1,6 +1,6 @@
 import {
   Component, Input, OnInit, ChangeDetectionStrategy,
-  Output, EventEmitter, ChangeDetectorRef, Self, Optional
+  Output, EventEmitter, ChangeDetectorRef, Self, Optional, SimpleChanges, OnChanges
 } from "@angular/core";
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { CardButtonCheckEvent } from './card-button-check-event';
@@ -11,7 +11,7 @@ import { CardButtonCheckEvent } from './card-button-check-event';
   styleUrls: ["./card-button.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardButtonComponent implements OnInit, ControlValueAccessor {
+export class CardButtonComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   @Input()
   value: any;
@@ -56,7 +56,7 @@ export class CardButtonComponent implements OnInit, ControlValueAccessor {
    * @type object
   */
   @Input()
-  styles = "";
+  styles: { [klass: string]: any; } | string;
 
   /**
    * @param type Define o visual do container de checkbox / radio. Pode ser 'checkbox', 'radio', 
@@ -86,6 +86,12 @@ export class CardButtonComponent implements OnInit, ControlValueAccessor {
   ) {
     if (ngControl) {
       ngControl.valueAccessor = this;
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.styles) {
+      this.changeDetector.detectChanges();
     }
   }
 
