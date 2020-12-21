@@ -805,6 +805,10 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   @extend .px-1;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 /* 
   TEMA ESCURO
 */

@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
-import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { BuscaMenuModule } from './busca-menu/busca-menu.module';
+
+
 
 @NgModule({
   declarations: [
@@ -19,12 +22,14 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
   ],
   imports: [
     CommonModule,
+    BuscaMenuModule,
     RouterModule,
     SharedModule,
     ReactiveFormsModule,
     PerfectScrollbarModule
   ],
   exports: [
+    BuscaMenuModule,
     TopMenuComponent,
     SideMenuComponent,
     FooterComponent,
