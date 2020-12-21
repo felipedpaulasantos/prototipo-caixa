@@ -17,7 +17,7 @@ export class BuscaMenuComponent implements OnInit {
 
   show = false;
 
-  cliente0 = { nome: "Felipe de Paula Santos", cpf: "397.618.378-40", active: false };
+  cliente0 = { nome: "Fernando Fernandes", cpf: "298.110.299-45", active: false };
   cliente1 = { nome: "João da Silva", cpf: "225.845.302-85", active: false };
   cliente2 = { nome: "Maria Joaquina de Jesus", cpf: "008.451.352-89", active: false };
   cliente3 = { nome: "Francisvaldo Almeida", cpf: "058.491.215-00", active: false };

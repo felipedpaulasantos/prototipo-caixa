@@ -53,3 +53,18 @@
    right: 0.5rem;
    opacity: 1;
 }
+
+.overlay {
+   position: fixed;
+   opacity: 0;
+   top: 0;
+   bottom: 0;
+   height: 100%;
+   width: 100%;
+   z-index: 8;
+   background-color: rgba(0,0,0,0.5);
+   transition: opacity 0.4s;
+}
+.overlay.show {
+   opacity: 1;
+}
