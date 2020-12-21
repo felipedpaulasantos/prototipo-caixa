@@ -12,6 +12,7 @@ import { StepperModule } from './components/stepper/stepper.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardButtonModule } from './components/card-button/card-button.module';
+import { TimelineModule } from './components/timeline/timeline.module';
 
 
 
@@ -30,7 +31,8 @@ import { CardButtonModule } from './components/card-button/card-button.module';
     NgxSpinnerModule,
     ReactiveFormsModule,
     StepperModule,
-    CardButtonModule
+    CardButtonModule,
+    TimelineModule
   ],
   exports: [
     InputCaixaComponent,
@@ -41,7 +43,8 @@ import { CardButtonModule } from './components/card-button/card-button.module';
     ModalComponent,
     CardCaixaComponent,
     StepperModule,
-    CardButtonModule
+    CardButtonModule,
+    TimelineModule
   ]
 })
 export class GuiaCaixaModule { }

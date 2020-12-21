@@ -1,0 +1,26 @@
+<div class="timeline-wrapper" [ngClass]="{
+   'horizontal': orientation == timelineOrientation.HORIZONTAL,'vertical': orientation == timelineOrientation.VERTICAL}
+">
+   <ul class="timeline">
+      <li [title]="item?.title" class="timeline-item timeline-item-{{ item.state }}" *ngFor="let item of items; let index = index; let last = last">
+         <div class="timeline-item-title" [title]="getFormattedText(item)">
+            <div class="timeline-item-icon shadow-sm">
+               <ng-container [ngSwitch]="item?.state">
+                  <i *ngSwitchCase="SUCCESS_STATE.state" [class]="SUCCESS_STATE.icon"></i>
+                  <i *ngSwitchCase="INFO_STATE.state" [class]="INFO_STATE.icon"></i>
+                  <i *ngSwitchCase="WARNING_STATE.state" [class]="WARNING_STATE.icon"></i>
+                  <i *ngSwitchCase="ERROR_STATE.state" [class]="ERROR_STATE.icon"></i>
+               </ng-container>
+            </div>
+            <div class="timeline-item-info">
+               <div class="timeline-item-name">
+                  {{ item?.title }}
+               </div>
+               <div class="timeline-item-date">
+                  <small>{{ item?.dateText }}</small>
+               </div>
+            </div>
+         </div>
+      </li>
+   </ul>
+</div>

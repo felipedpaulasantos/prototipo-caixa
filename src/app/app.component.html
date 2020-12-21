@@ -2,11 +2,12 @@
 
 <cx-spinner [fullscreen]=true [name]="'global'"></cx-spinner>
 
+<cx-busca-menu></cx-busca-menu>
+
 <main>
   <app-side-menu></app-side-menu>
 
   <section id="conteudoPrincipal" [ngClass]="{'sidemenu-hidden': !isMenuAberto}">
-
     <div id="mobileBackdrop"
       (click)="menuService.fechar()"
       [ngClass]="{'sidemenu-shown': isMenuAberto}">
@@ -18,7 +19,6 @@
         <router-outlet #outlet="outlet"></router-outlet>
       </div>
     </div>
-
   </section>
 </main>
 

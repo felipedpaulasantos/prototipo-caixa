@@ -1,0 +1,143 @@
+/** TIMELINE WRAPPER - div */
+
+.timeline-wrapper.horizontal {
+   max-height: 84px;
+}
+
+.timeline-wrapper.vertical {
+   max-width: 100%;
+}
+
+/** TIMELINE - ul */
+
+.timeline-wrapper > .timeline {
+   position: relative;
+   list-style: none;
+   display: flex;
+   justify-content: space-between;
+   counter-reset: section;
+   overflow-y: auto;
+   overflow-x: hidden;
+   padding: 0;
+   margin: 0;
+   transition: justify-content 0.4s;
+}
+
+.timeline-wrapper.vertical > .timeline {
+   flex-direction: column;
+}
+
+/** TIMELINE-ITEM - li */
+
+.timeline-wrapper.horizontal > .timeline > .timeline-item {
+   position: relative;
+   padding: 0 !important;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   height: 84px;
+   transition: 
+   width 0.4s,
+   visibility 0.4s,
+   opacity 0.4s;
+}
+
+.timeline-wrapper.vertical > .timeline > .timeline-item {
+   position: relative;
+   max-height: 500px;
+   transition: 
+   max-height 0.4s,
+   width 0.4s,
+   visibility 0.4s,
+   opacity 0.4s;
+}
+
+.timeline-wrapper > .timeline > .timeline-item:last-of-type {
+   width: auto !important;
+}
+
+/** TIMELINE-ITEM AFTER - linha */
+
+.timeline > .timeline-item:not(:last-of-type)::after {
+   content: "";
+   background-color: gainsboro;
+   display: inline-block;
+}
+
+.timeline-wrapper.horizontal > .timeline > .timeline-item::after {
+   position: static;
+   min-width: 10px;
+   width: 100%;
+   height: 1px;
+}
+
+.timeline-wrapper.vertical > .timeline > .timeline-item::after {
+   position: absolute;
+   width: 2px;
+   height: 100%;
+   top: 44px;
+   left: 25px;
+}
+
+/** TIMELINE-ITEM TITLE - span */
+
+.timeline-wrapper > .timeline > .timeline-item > .timeline-item-title {
+   height: 84px;
+   margin: 0;
+   padding: 0 4px 0 48px;
+   display: flex;
+   max-width: 245px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   flex-shrink: 0;
+}
+
+/** TIMELINE-ITEM TITLE ICON - div */
+
+.timeline-wrapper > .timeline > .timeline-item > .timeline-item-title > .timeline-item-icon {
+   z-index: 1;
+   position: absolute;
+   height: 35px;
+   width: 35px;
+   border-radius: 50%;
+   text-align: center;
+   line-height: 33px;
+   font-size: 17px;
+   left: 1px;
+   top: 26.5px;
+   left: 9px;
+   margin-right: 1px;
+   color: #fff;
+   background-color: gray;
+   font-weight: 400;
+}
+
+.timeline-wrapper > .timeline > .timeline-item.timeline-item-success > .timeline-item-title > .timeline-item-icon {
+   background-color: #008254 !important;
+}
+
+.timeline-wrapper > .timeline > .timeline-item.timeline-item-info > .timeline-item-title > .timeline-item-icon {
+   background-color: #143DA6 !important;
+}
+
+.timeline-wrapper > .timeline > .timeline-item.timeline-item-error > .timeline-item-title > .timeline-item-icon {
+   background-color: #900000 !important;
+}
+
+.timeline-wrapper > .timeline > .timeline-item.timeline-item-warning > .timeline-item-title > .timeline-item-icon {
+   background-color: #FFD000 !important;
+   color: inherit !important;
+}
+
+/* TIMELINE-ITEM-INFO */
+
+.timeline-wrapper > .timeline > .timeline-item > .timeline-item-title > .timeline-item-info {
+   margin: auto 0.2rem;
+}
+
+/* ESTILOS ADICIONAIS */
+
+.cursor-pointer {
+   cursor: pointer;
+}
