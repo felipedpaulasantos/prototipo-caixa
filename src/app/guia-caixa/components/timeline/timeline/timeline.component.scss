@@ -114,18 +114,20 @@
 }
 
 .timeline-wrapper > .timeline > .timeline-item.timeline-item-success > .timeline-item-title > .timeline-item-icon {
-   background-color: #008254;
-   color: white;
+   background-color: #008254 !important;
+}
+
+.timeline-wrapper > .timeline > .timeline-item.timeline-item-info > .timeline-item-title > .timeline-item-icon {
+   background-color: #143DA6 !important;
 }
 
 .timeline-wrapper > .timeline > .timeline-item.timeline-item-error > .timeline-item-title > .timeline-item-icon {
-   background-color: #900000;
-   color: white;
+   background-color: #900000 !important;
 }
 
 .timeline-wrapper > .timeline > .timeline-item.timeline-item-warning > .timeline-item-title > .timeline-item-icon {
-   background-color: #FFD000;
-   color: inherit;
+   background-color: #FFD000 !important;
+   color: inherit !important;
 }
 
 /* TIMELINE-ITEM-INFO */

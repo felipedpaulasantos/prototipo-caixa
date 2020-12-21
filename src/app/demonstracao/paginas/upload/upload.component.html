@@ -201,57 +201,8 @@
   </ng-container>
 </div>
 
-<cx-card-button leftIcon="fa fa-birthday-cake fa-4x">
-  <ng-container *ngFor="let passo of passos">
-    <h1>{{ passo.title }}</h1>
-  </ng-container>
-</cx-card-button>
+<cx-timeline [items]="timelineItems"></cx-timeline>
 
 <br>
 
-<div class="row">
-  <div class="col">
-    <h2>Checkbox</h2>
-
-    <cx-card-button #cardHome [(ngModel)]="checkHome" [leftIcon]="'fa fa-home'" type="checkbox" value="Home">
-      <input value="Home" class="form-control" (input)="cardHome.setLeftTitle($event.target.value)">
-    </cx-card-button>
-    
-    <br>
-    
-    <cx-card-button #cardConfig [(ngModel)]="checkConfig" type="checkbox"  value="Configurações"
-    [leftIcon]="'fa fa-wrench'" 
-    (checked)="exibirEvento($event)">
-      <input value="Configurações" class="form-control" (input)="cardConfig.setLeftTitle($event.target.value)">
-    </cx-card-button>
-
-    <br>
-
-    <h3>Checkhome: {{ checkHome }}</h3>
-    <h3>Checkconfig: {{ checkConfig }}</h3>
-  </div>
-
-
-  <div class="col">
-    <h2>Radio</h2>
-
-    <form [formGroup]="formCpfNis">
-      <cx-card-button  formControlName="tipoId" type="radio" value="CPF" [leftTitle]="'CPF'">
-        <input formControlName="cpf" class="form-control" placeholder="Informe o número do CPF">
-      </cx-card-button>
-    
-      <br>
-    
-      <cx-card-button #cardNis [value]="'NIS'" formControlName="tipoId" type="radio" [leftTitle]="'NIS'">
-        <input formControlName="nis" class="form-control" placeholder="Informe o número do NIS">
-      </cx-card-button>  
-    </form>
-
-    <br>
-
-    <h3>TIPO ID: {{ formCpfNis.get('tipoId').value }}</h3>
-    <ng-container *ngIf="formCpfNis.get('tipoId').value == 'CPF'">CPF: {{ formCpfNis.get('cpf').value }}</ng-container>
-    <ng-container *ngIf="formCpfNis.get('tipoId').value == 'NIS'">NIS: {{ formCpfNis.get('nis').value }}</ng-container>
-  </div>
-</div>
-
+<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timeline>
