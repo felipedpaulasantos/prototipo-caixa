@@ -201,8 +201,65 @@
   </ng-container>
 </div>
 
-<cx-timeline [items]="timelineItems"></cx-timeline>
+<div class="row">
+  <div class="col">
+    <cx-timeline [items]="timelineItems"></cx-timeline>
+  </div>
+  <div class="col">
+    HTML
+    <pre><code [highlight]="code1Html"></code></pre>
+
+    TS
+    <pre><code [highlight]="code1Ts"></code></pre>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col">
+    <cx-timeline [items]="timelineItems" [styles]="{ height: '250px' }"></cx-timeline>
+  </div>
+  <div class="col">
+    HTML
+    <pre><code [highlight]="code2Html"></code></pre>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col">
+    <cx-timeline [items]="timelineItems" [styles]="{ width: 'auto', height: '350px' }"></cx-timeline>
+  </div>
+  <div class="col">
+    HTML
+    <pre><code [highlight]="code3Html"></code></pre>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <cx-timeline [items]="timelineItems" [styles]="{ height: '350px' }"></cx-timeline>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    HTML
+    <pre><code [highlight]="code4Html"></code></pre>
+  </div>
+</div>
+
+<hr>
+
+
+<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timeline>
 
 <br>
 
-<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timeline>
+HTML
+<pre><code [highlight]="code6Html"></code></pre>

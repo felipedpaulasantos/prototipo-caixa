@@ -85,6 +85,42 @@ export class UploadComponent implements OnInit {
     nis: [null]
   });
 
+  code1Html = `<cx-timeline [items]="timelineItems"></cx-timeline>
+
+<cx-timeline [items]="timelineItems" [styles]="{ height: '250px' }"></cx-timeline>
+
+<cx-timeline [items]="timelineItems" [styles]="{ height: '350px' }"></cx-timeline>
+`;
+  code1Ts = `timelineItems: TimelineItem[] = [
+  { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
+  { title: "Item warning", state: "warning", date: new Date(), dateFormat: "full" },
+  { title: "Item warning-stop", state: "warning-stop", dateString: "05/12/2020" },
+  { title: "Item erro", state: "error", dateString: "03/12/2020" },
+  { title: "Item info", state: "info", dateString: "06/12/2020" }
+];`;
+
+
+
+  code2Html = `<cx-timeline [items]="timelineItems" [styles]="{ height: '250px' }"></cx-timeline>
+`;
+
+
+
+code3Html = `<cx-timeline [items]="timelineItems" [styles]="{ width: 'auto', height: '350px' }"></cx-timeline>
+`;
+
+
+code4Html = `<div class="card">
+  <div class="card-body">
+    <cx-timeline [items]="timelineItems" [styles]="{ height: '350px' }"></cx-timeline>
+  </div>
+</div>`;
+
+
+
+code6Html = `<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timeline>
+`;
+
   checkHome: any;
   checkConfig: any;
 

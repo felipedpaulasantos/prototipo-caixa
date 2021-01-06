@@ -422,7 +422,7 @@ ul.tab-caixa li a {
 
 /* Cards */
 
-.card-caixa {
+.card {
   box-shadow: $cx-default-box-shadow;
   transition: box-shadow 0.2s ease-in-out;
   .card-header {
@@ -443,7 +443,7 @@ ul.tab-caixa li a {
     border-top: 0;
   }
 }
-.card-caixa.card-hover::after {
+.card.card-hover::after {
   content: "";
   position: absolute;
   z-index: 9;
@@ -454,7 +454,7 @@ ul.tab-caixa li a {
   box-shadow: $cx-big-box-shadow;
   transition: opacity 0.3s ease-in-out;
 }
-.card-caixa.card-hover:hover::after {
+.card.card-hover:hover::after {
   opacity: 1;
 }
 
@@ -849,7 +849,7 @@ body.dark-theme {
   }
 
   /* CARDS */
-  .card-caixa {
+  .card {
     background-color: $cx-color-darkest;
   }
 
