@@ -6,6 +6,7 @@
 
 .timeline-wrapper.vertical {
    max-width: 100%;
+   max-height: 100%;
 }
 
 /** TIMELINE - ul */
@@ -96,6 +97,9 @@
 /** TIMELINE-ITEM TITLE ICON - div */
 
 .timeline-wrapper > .timeline > .timeline-item > .timeline-item-title > .timeline-item-icon {
+   display: flex;
+   align-items: center;
+   justify-content: center;
    z-index: 1;
    position: absolute;
    height: 35px;
@@ -130,10 +134,16 @@
    color: inherit !important;
 }
 
+.timeline-wrapper > .timeline > .timeline-item.timeline-item-warning-stop > .timeline-item-title > .timeline-item-icon {
+   background-color: #FFD000 !important;
+   color: inherit !important;
+}
+
 /* TIMELINE-ITEM-INFO */
 
 .timeline-wrapper > .timeline > .timeline-item > .timeline-item-title > .timeline-item-info {
    margin: auto 0.2rem;
+   white-space: normal;
 }
 
 /* ESTILOS ADICIONAIS */

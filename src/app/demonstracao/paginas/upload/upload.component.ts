@@ -7,7 +7,7 @@ import { CardButtonCheckEvent } from 'src/app/guia-caixa/components/card-button/
 import { CardButtonComponent } from 'src/app/guia-caixa/components/card-button/card-button.component';
 import { StepperItem } from 'src/app/guia-caixa/components/stepper/stepper-component/stepper-item';
 import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
-import { TimelineItem, TimelineState } from 'src/app/guia-caixa/components/timeline/timeline/timeline-item';
+import { TimelineItem, TimelineOrientation, TimelineState } from 'src/app/guia-caixa/components/timeline/timeline/timeline-item';
 
 @Component({
   templateUrl: './upload.component.html',
@@ -60,12 +60,11 @@ export class UploadComponent implements OnInit {
   ];
 
   timelineItems: TimelineItem[] = [
-    { title: "Item sucesso", state: TimelineState.SUCCESS, dateText: "01/12/2020" },
-    { title: "Item warning", state: "warning", dateText: "02/12/2020" },
-    { title: "Item erro", state: "error", dateText: "03/12/2020" },
-    { title: "Item sucesso", state: "success", dateText: "04/12/2020" },
-    { title: "Item none", state: "", dateText: "05/12/2020" },
-    { title: "Item info", state: "info", dateText: "06/12/2020" }
+    { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
+    { title: "Item warning", state: "warning", date: new Date(), dateFormat: "full" },
+    { title: "Item warning-stop", state: "warning-stop", dateString: "05/12/2020" },
+    { title: "Item erro", state: "error", dateString: "03/12/2020" },
+    { title: "Item info", state: "info", dateString: "06/12/2020" }
   ];
 
   valor = "";
