@@ -3,27 +3,27 @@
     position: relative;
     border: solid 1px #3a4859;
     border-radius: 5px;
-    height: 135px;
+    height: 125px;
     min-height: 100px;
     width: 500px;
     max-width: 100%;
     max-height: 100%;
     transition: box-shadow 0.2s;
-}
-.card-button-wrapper.checked {
+  }
+  .card-button-wrapper.checked {
     border: solid 1px #005ca9b3;
     box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15) !important;
-}
-
-/* ROW */
-.card-button-wrapper > .row {
+  }
+  
+  /* ROW */
+  .card-button-wrapper > .row {
     height: 100%;
     min-height: 100%;
     max-height: 100%;
-}
-
-/* CARD BUTTON LEFT SIDE */
-.card-button-wrapper > .row > .card-button-left-side {
+  }
+  
+  /* CARD BUTTON LEFT SIDE */
+  .card-button-wrapper > .row > .card-button-left-side {
     background-color: #3a4859;
     color: white;
     display: flex;
@@ -32,21 +32,22 @@
     justify-content: center !important;
     text-align: center;
     transition: background-color 0.2s;
+    padding: 0.2rem 0.3rem;
     min-height: 100%;
     max-height: 100%;
-}
-.card-button-wrapper.checked > .row > .card-button-left-side {
+  }
+  .card-button-wrapper.checked > .row > .card-button-left-side {
     background-color: #005ca9;
-}
-
-/* CARD BUTTON RIGHT SIDE */
-.card-button-wrapper > .row > .card-button-right-side {
+  }
+  
+  /* CARD BUTTON RIGHT SIDE */
+  .card-button-wrapper > .row > .card-button-right-side {
     display: flex;
     padding: 0.2rem 0.5rem;
     min-height: 100%;
     max-height: 100%;
-}
-.card-button-wrapper > .row > .card-button-right-side > .content-container {
+  }
+  .card-button-wrapper > .row > .card-button-right-side > .content-container {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -55,18 +56,18 @@
     overflow-x: hidden;
     margin-top: auto;
     margin-bottom: auto;
-}
-
-/* CHECK BOX WRAPPER */
-.card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper {
+  }
+  
+  /* CHECK BOX WRAPPER */
+  .card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper {
     position: absolute;
     left: 0;
     top: 0;
     z-index: 1;
-}
-
-/* CHECKMARK */
-.card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark {
+  }
+  
+  /* CHECKMARK */
+  .card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark {
     position: absolute;
     top: 0;
     left: 0;
@@ -75,16 +76,16 @@
     background-color: transparent;
     margin: 10px;
     border: 2px solid white;
-}
-.card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark.checkbox {
+  }
+  .card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark.checkbox {
     border-radius: 5px;
-}
-.card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark.radio {
+  }
+  .card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark.radio {
     border-radius: 10px;
-}
-
-/* CHECKMARK AFTER */
-.card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark:after {
+  }
+  
+  /* CHECKMARK AFTER */
+  .card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark:after {
     position: absolute;
     content: "";
     opacity: 0;
@@ -98,8 +99,8 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     transition: opacity 0.2s;
-}
-.card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark.checkbox:after {
+  }
+  .card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark.checkbox:after {
     left: 4px;
     top: 0px;
     width: 9px;
@@ -109,8 +110,8 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-}
-.card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark.radio:after {
+  }
+  .card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark.radio:after {
     left: 3px;
     top: 3px;
     width: 10px;
@@ -118,11 +119,12 @@
     border: solid 2px white;
     border-radius: 10px;
     background-color: white;
-}
-.card-button-wrapper.checked > .row > .card-button-left-side > .checkbox-wrapper > .checkmark:after {
+  }
+  .card-button-wrapper.checked > .row > .card-button-left-side > .checkbox-wrapper > .checkmark:after {
     opacity: 1;
-}
-
-.cursor-pointer {
+  }
+  
+  .cursor-pointer {
     cursor: pointer;
-}
+  }
+  
