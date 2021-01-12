@@ -168,18 +168,8 @@
             </app-documentacao-template>
          </section>
 
-         <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
-            <div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
-               <a (click)="scrollTo('painelStepperPadrao')" class="list-group-item list-group-item-action"
-                  [ngClass]="{'active': currentSection == 'painelStepperPadrao'}" role="button">
-                  Stepper - Navegação livre</a>
-               <a (click)="scrollTo('painelStepperGuiado')" class="list-group-item list-group-item-action"
-                  [ngClass]="{'active': currentSection == 'painelStepperGuiado'}" role="button">
-                  Stepper - Navegação guiada</a>
-               <a (click)="scrollTo('painelStepperInterno')" class="list-group-item list-group-item-action"
-                  [ngClass]="{'active': currentSection == 'painelStepperInterno'}" role="button">
-                  Stepper - Conteúdo Interno</a>
-            </div>
+         <nav id="navSection" class="d-none col-3 d-xl-flex pl-4">
+            <app-code-fixed-nav [items]="navItems" [currentSection]="currentSection"></app-code-fixed-nav>
          </nav>
       </div>
    </div> <!-- Tab Pane Visão Geral -->

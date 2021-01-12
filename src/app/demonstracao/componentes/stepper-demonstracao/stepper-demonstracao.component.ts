@@ -3,6 +3,7 @@ import { ToastrService } from "ngx-toastr";
 import { StepperItem } from "src/app/guia-caixa/components/stepper/stepper-component/stepper-item";
 import { TabberItem } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
 import { BootstrapTheme } from "src/app/guia-caixa/constants/constants";
+import { CodeFixedNavComponent, CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 import { ComponentesInterface } from "../componentes-interface";
 
 @Component({
@@ -17,6 +18,12 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
   sectionOffset = 0;
   spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   currentSection = "painelStepperPadrao";
+
+  navItems: CodeFixedNavItem[] = [
+    { id: "painelStepperPadrao", name: "Stepper - Navegação livre" },
+    { id: "painelStepperGuiado", name: "Stepper - Navegação guiada" },
+    { id: "painelStepperInterno", name: "Stepper - Conteúdo Interno" }
+  ];
 
   showTabsStepperPadrao = false;
   htmlCodeStepperPadrao = `<cx-stepper [steps]="passos" [currentStep]="passoAtual" (changeStep)="passoAtual = $event"></cx-stepper>

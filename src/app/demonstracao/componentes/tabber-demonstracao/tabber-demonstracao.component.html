@@ -75,14 +75,10 @@
                </div>
             </app-documentacao-template>
 			</section>
-		
-			<nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
-				<div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
-               <a (click)="scrollTo('painelTabber')" class="list-group-item list-group-item-action"
-                  [ngClass]="{'active': currentSection == 'painelTabber'}" role="button">
-                  Tabber</a>
-				</div>
-			</nav>
+
+			<nav id="navSection" class="d-none col-3 d-xl-flex pl-4">
+            <app-code-fixed-nav [items]="[{ id: 'painelTabber', name: 'Tabber - Visão Geral' }]" [currentSection]="currentSection"></app-code-fixed-nav>
+         </nav>
 		</div>
 	</div>
 
