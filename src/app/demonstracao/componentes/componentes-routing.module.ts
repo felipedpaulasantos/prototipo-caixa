@@ -1,14 +1,15 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { ComponentesComponent } from './componentes.component';
-import { CardsComponent } from './cards/cards.component';
-import { BotoesComponent } from './botoes/botoes.component';
-import { MensagensComponent } from './mensagens/mensagens.component';
-import { TabelasComponent } from './tabelas/tabelas.component';
-import { InputsComponent } from './inputs/inputs.component';
-import { SelectComponent } from './select/select.component';
-import { StepperOrientation } from 'src/app/guia-caixa/components/stepper/stepper-orientation';
-import { StepperDemonstracaoComponent } from './stepper-demonstracao/stepper-demonstracao.component';
+import { ComponentesComponent } from "./componentes.component";
+import { CardsComponent } from "./cards/cards.component";
+import { BotoesComponent } from "./botoes/botoes.component";
+import { MensagensComponent } from "./mensagens/mensagens.component";
+import { TabelasComponent } from "./tabelas/tabelas.component";
+import { InputsComponent } from "./inputs/inputs.component";
+import { SelectComponent } from "./select/select.component";
+import { StepperOrientation } from "src/app/guia-caixa/components/stepper/stepper-orientation";
+import { StepperDemonstracaoComponent } from "./stepper-demonstracao/stepper-demonstracao.component";
+import { TabberDemonstracaoComponent } from "./tabber-demonstracao/tabber-demonstracao.component";
 
 
 const routes: Routes = [
@@ -75,7 +76,7 @@ const routes: Routes = [
       animation: "Stepper"
     }
   },
-/*   {
+  {
     path: "tabber",
     component: TabberDemonstracaoComponent,
     data: {
@@ -83,7 +84,7 @@ const routes: Routes = [
       breadcrumb: "Tabber",
       animation: "Tabber"
     }
-  }, */
+  },
   {
     path: "tabelas",
     component: TabelasComponent,

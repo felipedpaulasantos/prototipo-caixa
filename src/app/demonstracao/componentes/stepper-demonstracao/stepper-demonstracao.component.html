@@ -166,56 +166,6 @@
                   </button>
                </div>
             </app-documentacao-template>
-
-            <br class="my-3">
-
-            <app-documentacao-template id="painelTabber" [cardTitle]="'Tabber'" [codeViewId]="'viewTabber'"
-               [htmlTabId]="'htmlCodeTabber'" [htmlCode]="htmlCodeTabber" [tsTabId]="'tsCodeTabber'"
-               [tsCode]="tsCodeTabber">
-               <div class="descricao">
-                  <p>O componente alternativo Tabber <span class="citation-highlight">cx-tabber</span> difere do Stepper
-                     ao não implementar qualquer relação de sequência entre as etapas, apenas organizando o conteúdo
-                     em abas.</p>
-
-                  <p>O atributo <span class="citation-highlight">tabs</span> recebe uma lista de objetos do tipo <span
-                        class="citation-highlight">TabberItem</span>,
-                     com as propriedades "name" e "icon".
-                  </p>
-
-                  <p>Todas as funcionalidades de navegação do Stepper estão presentes também neste componente.
-                  </p>
-               </div>
-
-               <div class="conteudo">
-                  <cx-tabber [tabs]="abas" #tabberExemplo>
-                     <ng-container *ngFor="let aba of abas">
-                        <div *cxStepper>
-                           <h2 class="text-center">{{ aba.name }}</h2>
-                        </div>
-                     </ng-container>
-                  </cx-tabber>
-
-                  <button [disabled]="tabberExemplo.currentTab == 0" (click)="tabberExemplo.first()"
-                     class="btn btn-dark btn-caixa mx-2">
-                     Primeiro
-                  </button>
-
-                  <button [disabled]="tabberExemplo.currentTab == 0" (click)="tabberExemplo.previous()"
-                     class="btn btn-light btn-caixa mx-2">
-                     Voltar
-                  </button>
-
-                  <button [disabled]="tabberExemplo.currentTab == abas.length - 1" (click)="tabberExemplo.next()"
-                     class="btn btn-primary btn-caixa mx-2">
-                     Avançar
-                  </button>
-
-                  <button [disabled]="tabberExemplo.currentTab == abas.length - 1" (click)="tabberExemplo.last()"
-                     class="btn btn-dark btn-caixa mx-2">
-                     Último
-                  </button>
-               </div>
-            </app-documentacao-template>
          </section>
 
          <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
@@ -229,9 +179,6 @@
                <a (click)="scrollTo('painelStepperInterno')" class="list-group-item list-group-item-action"
                   [ngClass]="{'active': currentSection == 'painelStepperInterno'}" role="button">
                   Stepper - Conteúdo Interno</a>
-               <a (click)="scrollTo('painelTabber')" class="list-group-item list-group-item-action"
-                  [ngClass]="{'active': currentSection == 'painelTabber'}" role="button">
-                  Tabber</a>
             </div>
          </nav>
       </div>
@@ -358,267 +305,84 @@
                </div> <!-- Table-responsive -->
             </div>
 
-            <div class="my-4">
-               <h5 class="header-subtitulo-caixa">Cx-Tabber</h5>
-               <p>
-                  Componente de exibição de abas que pode ou não englobar o conteúdo que será exibido em cada aba.
-               </p>
-               <p>Usar como: <span class="citation-highlight">cx-tabber</span></p>
-
-               <h6 class="header-subtitulo-caixa">Propriedades</h6>
-               <div class="table-responsive">
-                  <table class="table table-bordered table-caixa">
-                     <thead class="bg-light border-top">
-                        <tr>
-                           <th>Nome</th>
-                           <th>Descrição</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-                           <td>readonly MINIMUM_TABS</td>
-                           <td>
-                              Quantidade mínima de abas.<br>
-                              Valor: 2
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>readonly MAXIMUM_TABS</td>
-                           <td>
-                              Quantidade máxima de abas.<br>
-                              Valor: 7
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>@Input( )<br>tabs: TabberItem[]</td>
-                           <td>
-                              Atributo obrigatório com a lista de abas,
-                              contendo sua descrição e ícone.<br>
-                              Padrão: []
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>@Input( )<br>currentTab: string | number</td>
-                           <td>
-                              Índice da aba atual.<br>
-                              Padrão: 0
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>@Input( )<br>orientation: enum StepperOrientation</td>
-                           <td>
-                              Orientação do componente, que pode ser horizontal (StepperOrientation.horizontal | "0")
-                              ou vertical (StepperOrientation.vertical | "1").<br>
-                              Padrão: StepperOrientation.horizontal | "0"
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>@Input( )<br>theme: string</td>
-                           <td>
-                              Tema de cor do ícone ativo.<br>
-                              Padrão: 'primary'
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>@Output( )<br>changeTab: EventEmitter&#60;number></td>
-                           <td>
-                              Evento disparado sempre que um ícone válido é clicado, transmitindo o
-                              índice deste ícone.
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>next( ): void</td>
-                           <td>
-                              Avança para a próxima aba.
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>previous( ): void</td>
-                           <td>
-                              Retorna para a aba anterior.
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>first( ): void</td>
-                           <td>
-                              Retorna para a primeira aba.
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>last( ): void</td>
-                           <td>
-                              Avança para a última aba.
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>update( ): void</td>
-                           <td>
-                              Atualiza manualmente o template do componente cx-tabber.
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div> <!-- Table-responsive -->
-            </div>
-
          </div> <!-- Col -->
       </div> <!-- Row -->
    </div> <!-- TAB API -->
 
    <div class="tab-pane fade" id="exemplos" role="tabpanel">
 
-      <ul class="nav nav-pills border-bottom tab-caixa" role="tablist">
-         <li class="nav-item">
-            <a cx-ripple class="nav-link text-uppercase active" data-toggle="tab" href="#stepperSandbox" role="tab">
-               Stepper
-            </a>
-         </li>
-         <li class="nav-item">
-            <a cx-ripple class="nav-link text-uppercase" data-toggle="tab" href="#tabberSandbox" role="tab">
-               Tabber
-            </a>
-         </li>
-      </ul>
+      <section id="stepperSandbox" class="mb-5">
+         <cx-stepper #stepperFree [steps]="steps" [orientation]="stepperFreeOrientation"
+            [freeNavigation]="freeNavigation">
+            <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
+               <ng-container *cxStepper>
+                  <h1 class="text-center my-4">{{ step.title }}!</h1>
+               </ng-container>
+            </ng-container>
+         </cx-stepper>
 
-      <div class="tab-content">
-         <div class="tab-pane fade show active" id="stepperSandbox" role="tabpanel">
-            <section id="stepperSandbox" class="mb-5">
-
-               <cx-stepper #stepperFree [steps]="steps" [orientation]="stepperFreeOrientation"
-               [freeNavigation]="freeNavigation">
-                  <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
-                     <ng-container *cxStepper>
-                        <h1 class="text-center my-4">{{ step.title }}!</h1>
-                     </ng-container>
-                  </ng-container>
-               </cx-stepper>
-
-               <div class="card card-caixa">
-                  <div class="card-body">
-                     <div class="row">
-                        <div class="col">
-                           <div class="custom-control custom-checkbox">
-                              <input [checked]="freeNavigation" (change)="freeNavigation = ($event.target.checked)"
-                                 type="checkbox" class="custom-control-input" id="checkFreeNavigation">
-                              <label class="custom-control-label" for="checkFreeNavigation">
-                                 Navegação Livre
-                              </label>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col d-flex align-items-center">
-                           <button title="Primeiro" class="btn btn-dark btn-caixa mr-2"
-                              [disabled]="stepperFree.currentStep == 0" (click)="stepperFree.first()">
-                              <i class="fa fa-angle-double-left fa-lg"></i>
-                           </button>
-
-                           <button [disabled]="stepperFree.currentStep <= 0" (click)="stepperFree.previous()"
-                              class="btn btn-light btn-caixa mr-2">
-                              <i class="fa fa-angle-left fa-lg"></i>
-                           </button>
-
-                           <button [disabled]="stepperFree.currentStep == (steps.length - 1)"
-                              (click)="stepperFree.next()" class="btn btn-primary btn-caixa">
-                              <i class="fa fa-angle-right fa-lg"></i>
-                           </button>
-
-                           <button title="Último" class="btn btn-dark btn-caixa ml-2"
-                              [disabled]="stepperFree.currentStep == (steps.length - 1)"
-                              (click)="stepperFree.toStepByIndex(steps.length - 1)">
-                              <i class="fa fa-angle-double-right fa-lg"></i>
-                           </button>
-
-                           <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="steps.length == 2"
-                              (click)="removeStep()">
-                              <i class="fa fa-minus fa-lg"></i>
-                           </button>
-
-                           <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
-                              [disabled]="steps.length == stepperFree.MAXIMUM_STEPS"
-                              (click)="addStep(inputNovoStepFree.value); inputNovoStepFree.value = ''">
-                              <i class="fa fa-plus fa-lg"></i>
-                           </button>
-
-                           <input #inputNovoStepFree class="input-caixa d-inline w-50 ml-2"
-                              placeholder="Nome do novo passo">
-                        </div>
-                        <div class="col-5">
-                           <cx-select>
-                              <label>Orientação</label>
-                              <select selectCaixa (change)="stepperFreeOrientation = $event.target.value">
-                                 <option value="0">Horizontal</option>
-                                 <option value="1">Vertical</option>
-                              </select>
-                           </cx-select>
-                        </div>
+         <div class="card card-caixa">
+            <div class="card-body">
+               <div class="row">
+                  <div class="col">
+                     <div class="custom-control custom-checkbox">
+                        <input [checked]="freeNavigation" (change)="freeNavigation = ($event.target.checked)"
+                           type="checkbox" class="custom-control-input" id="checkFreeNavigation">
+                        <label class="custom-control-label" for="checkFreeNavigation">
+                           Navegação Livre
+                        </label>
                      </div>
                   </div>
                </div>
-            </section>
-         </div>
-         <div class="tab-pane fade" id="tabberSandbox" role="tabpanel">
-            <section id="tabberSandbox" class="mb-5">
+               <div class="row">
+                  <div class="col d-flex align-items-center">
+                     <button title="Primeiro" class="btn btn-dark btn-caixa mr-2"
+                        [disabled]="stepperFree.currentStep == 0" (click)="stepperFree.first()">
+                        <i class="fa fa-angle-double-left fa-lg"></i>
+                     </button>
 
-               <cx-tabber [tabs]="tabs" [orientation]="tabberOrientation" #tabberExemplo>
-                  <ng-container *ngFor="let tab of tabs; let i = index; let last = last; let first = first">
-                     <ng-container *cxStepper>
-                        <h1 class="text-center my-4">{{ tab.name }}!</h1>
-                     </ng-container>
-                  </ng-container>
-               </cx-tabber>
+                     <button [disabled]="stepperFree.currentStep <= 0" (click)="stepperFree.previous()"
+                        class="btn btn-light btn-caixa mr-2">
+                        <i class="fa fa-angle-left fa-lg"></i>
+                     </button>
 
-               <div class="card card-caixa">
-                  <div class="card-body">
-                     <div class="row">
-                        <div class="col d-flex align-items-center">
-                           <button title="Primeiro" class="btn btn-dark btn-caixa mr-2"
-                              [disabled]="tabberExemplo.currentTab == 0" (click)="tabberExemplo.first()">
-                              <i class="fa fa-angle-double-left fa-lg"></i>
-                           </button>
+                     <button [disabled]="stepperFree.currentStep == (steps.length - 1)" (click)="stepperFree.next()"
+                        class="btn btn-primary btn-caixa">
+                        <i class="fa fa-angle-right fa-lg"></i>
+                     </button>
 
-                           <button [disabled]="tabberExemplo.currentTab <= 0" (click)="tabberExemplo.previous()"
-                              class="btn btn-light btn-caixa mr-2">
-                              <i class="fa fa-angle-left fa-lg"></i>
-                           </button>
+                     <button title="Último" class="btn btn-dark btn-caixa ml-2"
+                        [disabled]="stepperFree.currentStep == (steps.length - 1)"
+                        (click)="stepperFree.toStepByIndex(steps.length - 1)">
+                        <i class="fa fa-angle-double-right fa-lg"></i>
+                     </button>
 
-                           <button [disabled]="tabberExemplo.currentTab == (tabs.length - 1)"
-                              (click)="tabberExemplo.next()" class="btn btn-primary btn-caixa">
-                              <i class="fa fa-angle-right fa-lg"></i>
-                           </button>
+                     <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="steps.length == 2"
+                        (click)="removeStep()">
+                        <i class="fa fa-minus fa-lg"></i>
+                     </button>
 
-                           <button title="Último" class="btn btn-dark btn-caixa ml-2"
-                              [disabled]="tabberExemplo.currentTab == (tabs.length - 1)" (click)="tabberExemplo.last()">
-                              <i class="fa fa-angle-double-right fa-lg"></i>
-                           </button>
+                     <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
+                        [disabled]="steps.length == stepperFree.MAXIMUM_STEPS"
+                        (click)="addStep(inputNovoStepFree.value); inputNovoStepFree.value = ''">
+                        <i class="fa fa-plus fa-lg"></i>
+                     </button>
 
-                           <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="tabs.length == 2"
-                              (click)="tabs.pop(); tabs = [].concat(tabs)">
-                              <i class="fa fa-minus fa-lg"></i>
-                           </button>
-
-                           <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
-                              [disabled]="tabs.length == tabberExemplo.MAXIMUM_TABS"
-                              (click)="addTab(inputNovaAba.value); inputNovaAba.value = ''">
-                              <i class="fa fa-plus fa-lg"></i>
-                           </button>
-
-                           <input #inputNovaAba class="input-caixa d-inline w-50 ml-2" placeholder="Nome da nova aba">
-                        </div>
-                        <div class="col-4">
-                           <cx-select>
-                              <label>Orientação</label>
-                              <select selectCaixa (change)="changeTabberOrientation($event.target.value)">
-                                 <option value="0">Horizontal</option>
-                                 <option value="1">Vertical</option>
-                              </select>
-                           </cx-select>
-                        </div>
-                     </div>
+                     <input #inputNovoStepFree class="input-caixa d-inline w-50 ml-2" placeholder="Nome do novo passo">
+                  </div>
+                  <div class="col-5">
+                     <cx-select>
+                        <label>Orientação</label>
+                        <select selectCaixa (change)="stepperFreeOrientation = $event.target.value">
+                           <option value="0">Horizontal</option>
+                           <option value="1">Vertical</option>
+                        </select>
+                     </cx-select>
                   </div>
                </div>
-            </section>
+            </div>
          </div>
-      </div>
+      </section>
+
    </div>
 </div>
