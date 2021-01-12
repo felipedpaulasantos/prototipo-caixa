@@ -86,10 +86,6 @@ export class UploadComponent implements OnInit {
   });
 
   code1Html = `<cx-timeline [items]="timelineItems"></cx-timeline>
-
-<cx-timeline [items]="timelineItems" [styles]="{ height: '250px' }"></cx-timeline>
-
-<cx-timeline [items]="timelineItems" [styles]="{ height: '350px' }"></cx-timeline>
 `;
   code1Ts = `timelineItems: TimelineItem[] = [
   { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
