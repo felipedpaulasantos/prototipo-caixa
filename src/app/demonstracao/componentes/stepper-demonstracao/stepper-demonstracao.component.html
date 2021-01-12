@@ -107,45 +107,6 @@
 
             <br class="my-3">
 
-            <app-documentacao-template id="painelStepperTemplate"
-               [cardTitle]="'Stepper - Controle de navegação por template string'" [codeViewId]="'viewStepperTemplate'"
-               [htmlTabId]="'htmlCodeStepperTemplate'" [htmlCode]="htmlCodeStepperTemplate"
-               [tsTabId]="'tsCodeStepperTemplate'" [tsCode]="tsCodeStepperTemplate">
-               <div class="descricao">
-                  <p>O controle do Stepper também pode ser feito de maneira mais direta, identificando
-                     o componente com uma <span class="citation-highlight">#templateString</span> e acessando
-                     seus atributos e métodos diretamente.
-                  </p>
-               </div>
-
-               <div class="conteudo">
-                  <cx-stepper [steps]="passos" #stepperExemplo (changeStep)="passoAtual = $event"></cx-stepper>
-
-                  <div *ngFor="let passo of passos; let i = index">
-                     <ng-container *ngIf="i == passoAtual">
-                        <h2 class="text-center">{{ passo.title }}</h2>
-                     </ng-container>
-                  </div>
-
-                  <button [disabled]="stepperExemplo.currentStep == 0" (click)="stepperExemplo.first()"
-                     class="btn btn-dark btn-caixa mx-2">
-                     Primeiro
-                  </button>
-
-                  <button [disabled]="stepperExemplo.currentStep == 0" (click)="stepperExemplo.previous()"
-                     class="btn btn-light btn-caixa mx-2">
-                     Voltar
-                  </button>
-
-                  <button [disabled]="stepperExemplo.currentStep == passos.length - 1" (click)="stepperExemplo.next()"
-                     class="btn btn-primary btn-caixa mx-2">
-                     Avançar
-                  </button>
-               </div>
-            </app-documentacao-template>
-
-            <br class="my-3">
-
             <app-documentacao-template id="painelStepperInterno" [cardTitle]="'Stepper - Conteúdo dentro do componente'"
                [codeViewId]="'viewStepperInterno'" [htmlTabId]="'htmlCodeStepperInterno'"
                [htmlCode]="htmlCodeStepperInterno" [tsTabId]="'tsCodeStepperInterno'" [tsCode]="tsCodeStepperInterno">
@@ -265,9 +226,6 @@
                <a (click)="scrollTo('painelStepperGuiado')" class="list-group-item list-group-item-action"
                   [ngClass]="{'active': currentSection == 'painelStepperGuiado'}" role="button">
                   Stepper - Navegação guiada</a>
-               <a (click)="scrollTo('painelStepperTemplate')" class="list-group-item list-group-item-action"
-                  [ngClass]="{'active': currentSection == 'painelStepperTemplate'}" role="button">
-                  Stepper - Acesso por template string</a>
                <a (click)="scrollTo('painelStepperInterno')" class="list-group-item list-group-item-action"
                   [ngClass]="{'active': currentSection == 'painelStepperInterno'}" role="button">
                   Stepper - Conteúdo Interno</a>
