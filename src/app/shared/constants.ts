@@ -22,41 +22,41 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     isLink: true,
     enabled: true,
     submenu: [
-      {
+/*       {
         name: 'Botões',
         iconClass: 'fa fa-lg fa-dot-circle',
         url: '/componentes/botoes',
         isLink: true,
         enabled: true
-      },
-      {
+      }, */
+/*       {
         name: 'Cards',
         iconClass: 'fa fa-lg fa-clipboard',
         url: '/componentes/cards',
         isLink: true,
         enabled: true
-      },
-      {
+      }, */
+/*       {
         name: 'Inputs',
         iconClass: 'fa fa-lg fa-keyboard',
         url: '/componentes/inputs',
         isLink: true,
         enabled: true
-      },
-      {
+      }, */
+/*       {
         name: 'Mensagens',
         iconClass: 'fa fa-lg fa-comment',
         url: '/componentes/mensagens',
         isLink: true,
         enabled: true
-      },
-      {
+      }, */
+/*       {
         name: 'Select',
         iconClass: 'fa fa-lg fa-hand-pointer',
         url: '/componentes/select',
         isLink: true,
         enabled: true
-      },
+      }, */
       {
         name: 'Stepper',
         iconClass: 'fa fa-lg fa-shoe-prints',
@@ -64,13 +64,13 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         isLink: true,
         enabled: true
       },
-      {
+/*       {
         name: 'Tabelas',
         iconClass: 'fa fa-lg fa-table',
         url: '/componentes/tabelas',
         isLink: true,
         enabled: true
-      }
+      } */
     ]
   },
   {
@@ -94,14 +94,14 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     isLink: true,
     enabled: false
   }, */
-  {
+/*   {
     name: 'Páginas',
     iconClass: 'fas fa-lg fa-newspaper',
     url: '/paginas',
     isLink: true,
     enabled: true
-  },
-  {
+  }, */
+/*   {
     name: 'Configurações',
     iconClass: 'fas fa-lg fa-wrench',
     url: '/config',
@@ -114,7 +114,7 @@ export const mockedSideMenuItems: AccordionMenu[] = [
       isLink: true,
       enabled: true
     }]
-  }
+  } */
 ];
 
 export const mockedSideMenuCaixaItems: AccordionMenu[] = [
