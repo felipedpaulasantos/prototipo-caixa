@@ -87,6 +87,9 @@
 /** TAB TITLE ICON - div */
 
 .tabber-wrapper > .tabber > .tab > .tab-title > .tab-icon {
+   display: flex;
+   align-items: center;
+   justify-content: center;
    position: absolute;
    height: 35px;
    width: 35px;

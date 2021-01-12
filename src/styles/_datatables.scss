@@ -11,7 +11,7 @@
   width: 50%;
   label {
     width: 100%;
-    color: cx-variables.$cx-color-light-darkest;
+    color: cx-variables.$cx-color-cinza-darker;
   }
   select {
     @extend .form-control,
@@ -38,7 +38,7 @@
     display: flex;
     align-items: center;
     margin-left: auto;
-    color: cx-variables.$cx-color-light-darkest;
+    color: cx-variables.$cx-color-cinza-darker;
   }
   input {
     @extend .input-caixa;
@@ -88,14 +88,14 @@
     @extend .btn,
     .btn-caixa,
     .btn-sm,
-    .btn-light;
+    .btn-cinza;
   }
 }
 
 .dt-button-collection {
   position: absolute;
   z-index: 999;
-  border: solid 1px $cx-color-light;
+  border: solid 1px $cx-color-cinza;
   background-color: white;
   width: auto;
   top: 0;

@@ -31,12 +31,12 @@ export class TabberDemonstracaoComponent  extends ComponentesInterface {
 </cx-tabber>
 
 <button [disabled]="tabberExemplo.currentTab == 0"
-(click)="tabberExemplo.first()" class="btn btn-dark btn-caixa mx-2">
+(click)="tabberExemplo.first()" class="btn btn-grafite btn-caixa mx-2">
   Primeiro
 </button>
 
 <button [disabled]="tabberExemplo.currentTab == 0"
-(click)="tabberExemplo.previous()" class="btn btn-light btn-caixa mx-2">
+(click)="tabberExemplo.previous()" class="btn btn-cinza btn-caixa mx-2">
   Voltar
 </button>
 
@@ -46,7 +46,7 @@ export class TabberDemonstracaoComponent  extends ComponentesInterface {
 </button>
 
 <button [disabled]="tabberExemplo.currentTab == abas.length - 1"
-(click)="tabberExemplo.last()" class="btn btn-dark btn-caixa mx-2">
+(click)="tabberExemplo.last()" class="btn btn-grafite btn-caixa mx-2">
    Último
 </button>`.trim();
 

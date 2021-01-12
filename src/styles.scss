@@ -29,7 +29,7 @@ body {
 
 #navbarTop {
   background: $cx-color-primary;
-  color: $cx-color-lightest;
+  color: $cx-color-cinza-lighter;
 }
 
 /* 
@@ -48,7 +48,7 @@ h6 {
   }
   &.header-subtitulo-caixa {
     @extend .header-caixa;
-    color: $cx-color-dark;
+    color: $cx-color-grafite;
   }
   &.header-principal-caixa {
     @extend .header-caixa;
@@ -56,7 +56,7 @@ h6 {
   }
 }
 hr.header-line-caixa {
-  border-color: $cx-color-light-darkest;
+  border-color: $cx-color-cinza-darker;
   opacity: $cx-bg-opacity-2;
   border-width: 1px;
   margin-bottom: 1.5rem;
@@ -92,7 +92,7 @@ hr.header-line-caixa {
 .btn.caixa.btn-warning,
 .btn-caixa.btn-success,
 .btn-caixa.btn-danger {
-  color: $cx-color-lightest;
+  color: $cx-color-cinza-lighter;
 }
 
 .btn-caixa:not(.disabled):not(:disabled).active,
@@ -158,11 +158,11 @@ hr.header-line-caixa {
 
 .toast-container {
   font-family: $cx-font-family-normal;
-  color: $cx-color-lightest;
+  color: $cx-color-cinza-lighter;
   > div {
     background-image: none !important;
     padding: 15px 15px 15px 50px;
-    background-color: $cx-color-dark;
+    background-color: $cx-color-grafite;
     pointer-events: auto;
     border-radius: 5px !important;
     transition: box-shadow 0.2s, border-bottom 0.3s, box-shadow 0.3s ease-in-out;
@@ -218,7 +218,7 @@ hr.header-line-caixa {
       }
     }
     &:hover {
-      box-shadow: $cx-big-box-shadow !important;
+      box-shadow: $cx-lg-box-shadow !important;
       transition: opacity 0.3s ease-in-out;
     }
     div.toast-title {
@@ -227,7 +227,7 @@ hr.header-line-caixa {
       margin-bottom: 0.3rem;
     }
     div.toast-message {
-      color: $cx-color-light !important;
+      color: $cx-color-cinza !important;
     }
     div .toast-progress {
       opacity: 0.9;
@@ -253,7 +253,7 @@ label {
   height: 1.2rem;
 }
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
-  border-color: $cx-color-dark-light;
+  border-color: $cx-color-grafite-light;
 }
 .custom-control-input:focus ~ .custom-control-label::before {
   box-shadow: none;
@@ -296,7 +296,7 @@ th.th-sorting {
   font-weight: 900;
   font-family: "Font Awesome 5 Free";
   float: right;
-  color: $cx-color-dark;
+  color: $cx-color-grafite;
   transition: 0.5s;
   @extend .header-caixa;
 }
@@ -304,7 +304,7 @@ th.th-sorting {
   border-bottom: none !important;
   thead th {
     font-family: $cx-font-family-bold;
-    color: $cx-color-light-darkest;
+    color: $cx-color-cinza-darker;
     border-top: 0;
     border-bottom: 0 !important;
     font-weight: 400 !important;
@@ -329,7 +329,7 @@ th.th-sorting {
   }
   tbody {
     /*     tr:hover {
-      background-color: $cx-color-light;
+      background-color: $cx-color-cinza;
     } */
     td {
       vertical-align: middle;
@@ -378,7 +378,7 @@ input[type="number"] {
 .dropdown-item.active,
 .dropdown-item:active {
   color: $cx-color-primary;
-  background-color: $cx-color-light;
+  background-color: $cx-color-cinza;
 }
 
 /* 
@@ -386,7 +386,7 @@ input[type="number"] {
 */
 
 ul.tab-caixa li a {
-  color: $cx-color-dark-light;
+  color: $cx-color-grafite-light;
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
   opacity: $cx-text-opacity-1;
@@ -396,7 +396,7 @@ ul.tab-caixa li a {
   &.active,
   &:active {
     color: $cx-color-primary !important;
-    background-color: $cx-color-lightest !important;
+    background-color: $cx-color-cinza-lighter !important;
     border-bottom: solid 2px $cx-color-primary;
     border-radius: 50;
     border-bottom-right-radius: 0;
@@ -451,7 +451,7 @@ ul.tab-caixa li a {
   height: 100%;
   opacity: 0;
   border-radius: 5px;
-  box-shadow: $cx-big-box-shadow;
+  box-shadow: $cx-lg-box-shadow;
   transition: opacity 0.3s ease-in-out;
 }
 .card.card-hover:hover::after {
@@ -504,13 +504,13 @@ ul.tab-caixa li a {
   border-bottom: solid 1px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-color: $cx-color-light-darkest;
+  border-color: $cx-color-cinza-darker;
   transition: background-size 0.3s, background-color 0.3s, border-color 0.3s ease-in-out, box-shadow 0.15s ease-in-out;
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     background-image: none !important;
-    background-color: $cx-color-light !important;
+    background-color: $cx-color-cinza !important;
   }
 }
 @each $theme, $colors in $cx-colors {
@@ -526,7 +526,7 @@ ul.tab-caixa li a {
     }
 /*     &:hover {
       background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-      linear-gradient(0deg, $cx-color-dark-light 0%, $cx-color-dark-light 100%);
+      linear-gradient(0deg, $cx-color-grafite-light 0%, $cx-color-grafite-light 100%);
       background-size: 100% 1px, 100% 1px;
     } */
     background-repeat: no-repeat;
@@ -616,7 +616,7 @@ select + button.input-caixa {
   box-shadow: $cx-default-box-shadow !important;
 }
 .shadow-lg-caixa {
-  box-shadow: $cx-big-box-shadow !important;
+  box-shadow: $cx-lg-box-shadow !important;
 }
 
 .list-group-caixa .list-group-item {
@@ -709,7 +709,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
   &.active.is-link {
     background-color: $cx-color-primary !important;
-    color: $cx-color-lightest !important;
+    color: $cx-color-cinza-lighter !important;
   }
 }
 
@@ -797,7 +797,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   transition: 0.2s ease;
   list-style: none;
   padding-left: 0;
-  border-bottom: 1px solid $cx-color-light-dark;
+  border-bottom: 1px solid $cx-color-cinza-dark;
 }
 
 .citation-highlight {
@@ -815,12 +815,12 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 
 body.dark-theme {
   /* BODY */
-  background-color: $cx-color-dark !important;
-  color: $cx-color-lightest;
+  background-color: $cx-color-grafite !important;
+  color: $cx-color-cinza-lighter;
 
   /* MENU LATERAL */
   #menuLateral {
-    background-color: $cx-color-darkest;
+    background-color: $cx-color-grafite-darker;
     #botaoSipan {
       @extend .btn, .btn-info, .text-uppercase;
     }
@@ -831,7 +831,7 @@ body.dark-theme {
     }
     &.active.is-link {
       background-color: $cx-color-info-dark !important;
-      color: $cx-color-lightest !important;
+      color: $cx-color-cinza-lighter !important;
     }
   }
   .submenu {
@@ -840,22 +840,22 @@ body.dark-theme {
     transition: 0.2s ease;
     list-style: none;
     padding-left: 0;
-    border-bottom: 1px solid $cx-color-dark;
+    border-bottom: 1px solid $cx-color-grafite;
   }
 
   /* NAVBAR */
   #navbarTop {
-    background: $cx-color-darkest !important;
+    background: $cx-color-grafite-darker !important;
   }
 
   /* CARDS */
   .card {
-    background-color: $cx-color-darkest;
+    background-color: $cx-color-grafite-darker;
   }
 
   /* TABELAS */
   .table-caixa {
-    color: $cx-color-lightest;
+    color: $cx-color-cinza-lighter;
   }
 
   /* HEADERS */
@@ -863,12 +863,12 @@ body.dark-theme {
     color: $cx-color-info;
   }
   .header-subtitulo-caixa {
-    color: $cx-color-light;
+    color: $cx-color-cinza;
   }
 
   /* TAB-CAIXA */
   ul.tab-caixa li a {
-    color: $cx-color-lightest;
+    color: $cx-color-cinza-lighter;
     &.active,
     &:active {
       color: $cx-color-info-light !important;
@@ -892,42 +892,42 @@ body.dark-theme {
   /* INPUTS */
   input,
   .input-caixa-field > .bootstrap-select > button {
-    color: $cx-color-light;
+    color: $cx-color-cinza;
     background-color: transparent;
   }
   .input-caixa,
   .input-caixa-wrapper {
     @extend .input-caixa-info-light;
-    color: $cx-color-light;
+    color: $cx-color-cinza;
   }
   @include placeholder {
-    color: $cx-color-light-dark;
+    color: $cx-color-cinza-dark;
   }
 
   /* TOASTR (MENSAGENS) */
   .toast-container {
-    color: $cx-color-dark;
+    color: $cx-color-grafite;
     > div {
-      background-color: $cx-color-light;
+      background-color: $cx-color-cinza;
       div.toast-title {
-        color: $cx-color-dark;
+        color: $cx-color-grafite;
       }
       div.toast-message {
-        color: $cx-color-dark !important;
+        color: $cx-color-grafite !important;
       }
     }
   }
 
   /* DROPDOWN */
   .dropdown-menu {
-    background-color: $cx-color-dark;
+    background-color: $cx-color-grafite;
     .dropdown-item {
-      color: $cx-color-lightest;
+      color: $cx-color-cinza-lighter;
       &:hover {
-        background-color: $cx-color-darkest;
+        background-color: $cx-color-grafite-darker;
       }
       &.active {
-        background-color: $cx-color-darkest;
+        background-color: $cx-color-grafite-darker;
       }
     }
   }

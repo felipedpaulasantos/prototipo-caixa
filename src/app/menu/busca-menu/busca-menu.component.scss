@@ -39,7 +39,7 @@
    transition: background-color 0.2s;
 }
 .consultados-container > .list-group > .list-group-item:not(.active):hover {
-   background-color: cx-variables.$cx-color-light;
+   background-color: cx-variables.$cx-color-cinza;
 }
 
 .consultados-container > .list-group > .list-group-item > .icon-remove-cliente-consultado {

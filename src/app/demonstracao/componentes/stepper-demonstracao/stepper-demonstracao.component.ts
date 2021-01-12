@@ -26,7 +26,7 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
     <h2 class="text-center">{{ passo }}</h2>
 
     <button [disabled]="passoAtual == 0"
-    (click)="passoAtual = passoAtual - 1" class="btn btn-light btn-caixa mx-2">
+    (click)="passoAtual = passoAtual - 1" class="btn btn-cinza btn-caixa mx-2">
         Voltar
     </button>
 
@@ -67,7 +67,7 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
     <h2 class="text-center">{{ passo }}</h2>
 
     <button [disabled]="passoAtual == 0"
-    (click)="passoAtual = passoAtual - 1" class="btn btn-light btn-caixa mx-2">
+    (click)="passoAtual = passoAtual - 1" class="btn btn-cinza btn-caixa mx-2">
         Voltar
     </button>
 
@@ -110,12 +110,12 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
   </div>
 
   <button [disabled]="stepperExemplo.currentStep == 0"
-  (click)="stepperExemplo.first()" class="btn btn-dark btn-caixa mx-2">
+  (click)="stepperExemplo.first()" class="btn btn-grafite btn-caixa mx-2">
      Primeiro
   </button>
 
   <button [disabled]="stepperExemplo.currentStep == 0"
-  (click)="stepperExemplo.previous()" class="btn btn-light btn-caixa mx-2">
+  (click)="stepperExemplo.previous()" class="btn btn-cinza btn-caixa mx-2">
      Voltar
   </button>
 
@@ -170,12 +170,12 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
 </cx-stepper>
 
 <button [disabled]="stepperInterno.currentStep == 0"
-(click)="stepperInterno.first()" class="btn btn-dark btn-caixa mx-2">
+(click)="stepperInterno.first()" class="btn btn-grafite btn-caixa mx-2">
   Primeiro
 </button>
 
 <button [disabled]="stepperInterno.currentStep == 0"
-(click)="stepperInterno.previous()" class="btn btn-light btn-caixa mx-2">
+(click)="stepperInterno.previous()" class="btn btn-cinza btn-caixa mx-2">
   Voltar
 </button>
 

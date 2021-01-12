@@ -18,7 +18,7 @@
     <h1 class="text-center my-3">{{message || ""}}</h1> -->
   
   <div id="chatDiv">
-    <span class="d-block w-100 p-3" [ngClass]="{'bg-light': i % 2}" *ngFor="let msg of messages; let i = index">
+    <span class="d-block w-100 p-3" [ngClass]="{'bg-cinza': i % 2}" *ngFor="let msg of messages; let i = index">
       {{ msg }}
     </span>
   </div>

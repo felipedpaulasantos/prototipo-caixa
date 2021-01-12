@@ -3,94 +3,176 @@
 /* Colors */
 
 $cx-color-primary: #005CA9;
-$cx-color-primary-light:#0071CF;
-$cx-color-primary-dark:#004C8C;
+$cx-color-primary-light:#0077DB;
+$cx-color-primary-lighter:#0F92FF;
+$cx-color-primary-dark:#004075;
+$cx-color-primary-darker:#002442;
 
 $cx-color-secondary: #F39200;
-$cx-color-secondary-light:#FEB21E;
-$cx-color-secondary-dark:#EC7500;
+$cx-color-secondary-light:#FFA829;
+$cx-color-secondary-lighter:#FFBD5C;
+$cx-color-secondary-dark:#C27300;
+$cx-color-secondary-darker:#8F5500;
 
-$cx-color-success: #AFCA0B;
-$cx-color-success-light:#C2DC26;
-$cx-color-success-dark:#A1B911;
+$cx-color-turquesa: #54BBAB;
+$cx-color-turquesa-light:#78C9BD;
+$cx-color-turquesa-lighter:#9CD8CF;
+$cx-color-turquesa-dark:#3E9D8E;
+$cx-color-turquesa-darker:#30786D;
 
-$cx-color-danger: #F9765E;
-$cx-color-danger-light:#FC8A76;
-$cx-color-danger-dark:#E26650;
+$cx-color-success: #008254;
+$cx-color-success-light:#00B273;
+$cx-color-success-lighter:#00E594;
+$cx-color-success-dark:#004D31;
+$cx-color-success-darker:#001A10;
 
-$cx-color-info: #00B5E5;
-$cx-color-info-light:#32D4FF;
-$cx-color-info-dark:#00A2CD;
+$cx-color-danger: #900000;
+$cx-color-danger-light:#C20000;
+$cx-color-danger-lighter:#F50000;
+$cx-color-danger-dark:#5C0000;
+$cx-color-danger-darker:#290000;
 
-$cx-color-warning: #F9B000;
-$cx-color-warning-light:#FFC230;
-$cx-color-warning-dark:#F99E00;
+$cx-color-info: #143DA6;
+$cx-color-info-light:#194DD1;
+$cx-color-info-lighter:#3768E7;
+$cx-color-info-dark:#0E2B76;
+$cx-color-info-darker:#091B49;
 
-$cx-color-apoio: #54BBAB;
-$cx-color-apoio-light:#66CFBF;
-$cx-color-apoio-dark:#40A797;
+$cx-color-warning: #FFD000;
+$cx-color-warning-light:#FFD933;
+$cx-color-warning-lighter:#FFE366;
+$cx-color-warning-dark:#CCA600;
+$cx-color-warning-darker:#997D00;
 
-$cx-color-aux:#B26F9B;
-$cx-color-aux-light: #BC8DAC;
-$cx-color-aux-dark:#9F4D83;
+$cx-color-limao: #B2CB0B;
+$cx-color-limao-light:#D6F217;
+$cx-color-limao-lighter:#DEF547;
+$cx-color-limao-dark:#889B08;
+$cx-color-limao-darker:#5D6A06;
 
-$cx-color-light: #EFF5F6;
-$cx-color-lightest:#FFFFFF;
-$cx-color-light-dark:#D0E0E3;
-$cx-color-light-darkest:#B3C7CB;
+$cx-color-goiaba: #EF755D;
+$cx-color-goiaba-light:#F49C8B;
+$cx-color-goiaba-lighter:#F8C4B9;
+$cx-color-goiaba-dark:#EA4D2E;
+$cx-color-goiaba-darker:#D13415;
 
-$cx-color-dark: #48586C;
-$cx-color-dark-light:#5F758F;
-$cx-color-darkest:#3A4859;
+$cx-color-ceu: #00B4E6;
+$cx-color-ceu-light:#1ACDFF;
+$cx-color-ceu-lighter:#4DD8FF;
+$cx-color-ceu-dark:#008CB2;
+$cx-color-ceu-darker:#006480;
+
+$cx-color-tangerina: #FAAF00;
+$cx-color-tangerina-light:#FFC02E;
+$cx-color-tangerina-lighter:#FFD061;
+$cx-color-tangerina-dark:#C78B00;
+$cx-color-tangerina-darker:#946800;
+
+$cx-color-uva:#B2709B;
+$cx-color-uva-light: #C492B3;
+$cx-color-uva-lighter: #D6B3CA;
+$cx-color-uva-dark:#9C5483;
+$cx-color-uva-darker: #7B4267;
+
+$cx-color-cinza: #D0E0E3;
+$cx-color-cinza-light: #EFF4F5;
+$cx-color-cinza-lighter:#FFFFFF;
+$cx-color-cinza-dark:#AFCACF;
+$cx-color-cinza-darker:#8FB5BC;
+
+$cx-color-grafite: #3A4859;
+$cx-color-grafite-light: #4E6178;
+$cx-color-grafite-lighter:#637A97;
+$cx-color-grafite-dark:#262F3B;
+$cx-color-grafite-darker:#12161C;
 
 $cx-color-placeholder: #999;
 
-/* 
-	Mapa
-	COR DE FUNDO / COR DO TEXTO / COR ATIVA / REALCE / RIPPLE
-*/
+$cx-colors: (
+  "primary": $cx-color-primary,
+  "primary-light": $cx-color-primary-light,
+  "primary-lighter": $cx-color-primary-lighter,
+  "primary-dark": $cx-color-primary-dark,
+  "primary-darker": $cx-color-primary-darker,
 
-$cx-main-colors: (
-	"primary": ($cx-color-primary, $cx-color-lightest, $cx-color-secondary, $cx-color-primary-light, "secondary"),
-	"secondary": ($cx-color-secondary, $cx-color-lightest, $cx-color-primary, $cx-color-secondary-light, "primary"),
-	"success": ($cx-color-success, $cx-color-lightest, $cx-color-primary, $cx-color-success-light, "primary"),
-	"danger": ($cx-color-danger, $cx-color-lightest, $cx-color-primary, $cx-color-danger-light, "primary"),
-	"info": ($cx-color-info, $cx-color-lightest, $cx-color-primary, $cx-color-info-light, "primary"),
-	"warning": ($cx-color-warning, $cx-color-lightest, $cx-color-primary, $cx-color-warning-light, "primary"),
-	"apoio": ($cx-color-apoio, $cx-color-lightest, $cx-color-primary, $cx-color-apoio-light, "primary"),
-	"aux": ($cx-color-aux, $cx-color-lightest, $cx-color-info-light, $cx-color-aux-light, "info-light"),
-	"light": ($cx-color-light, $cx-color-dark, $cx-color-primary, $cx-color-light-dark, "primary"),
-	"dark": ($cx-color-dark, $cx-color-lightest, $cx-color-secondary, $cx-color-dark-light, "secondary")
+  "secondary": $cx-color-secondary,
+  "secondary-light": $cx-color-secondary-light,
+  "secondary-lighter": $cx-color-secondary-lighter,
+  "secondary-dark": $cx-color-secondary-dark,
+  "secondary-darker": $cx-color-secondary-darker,
+
+  "turquesa": $cx-color-turquesa,
+  "turquesa-light": $cx-color-turquesa-light,
+  "turquesa-lighter": $cx-color-turquesa-lighter,
+  "turquesa-dark": $cx-color-turquesa-dark,
+  "turquesa-darker": $cx-color-turquesa-darker,
+
+  "success": $cx-color-success,
+  "success-light": $cx-color-success-light,
+  "success-lighter": $cx-color-success-lighter,
+  "success-dark": $cx-color-success-dark,
+  "success-darker": $cx-color-success-darker,
+
+  "danger": $cx-color-danger,
+  "danger-light": $cx-color-danger-light,
+  "danger-lighter": $cx-color-danger-lighter,
+  "danger-dark": $cx-color-danger-dark,
+  "danger-darker": $cx-color-danger-darker,
+
+  "info": $cx-color-info,
+  "info-light": $cx-color-info-light,
+  "info-lighter": $cx-color-info-lighter,
+  "info-dark": $cx-color-info-dark,
+  "info-darker": $cx-color-info-darker,
+
+  "warning": $cx-color-warning,
+  "warning-light": $cx-color-warning-light,
+  "warning-lighter": $cx-color-warning-lighter,
+  "warning-dark": $cx-color-warning-dark,
+  "warning-darker": $cx-color-warning-darker,
+
+  "limao": $cx-color-limao,
+  "limao-light": $cx-color-limao-light,
+  "limao-lighter": $cx-color-limao-lighter,
+  "limao-dark": $cx-color-limao-dark,
+  "limao-darker": $cx-color-limao-darker,
+
+  "goiaba": $cx-color-goiaba,
+  "goiaba-light": $cx-color-goiaba-light,
+  "goiaba-lighter": $cx-color-goiaba-lighter,
+  "goiaba-dark": $cx-color-goiaba-dark,
+  "goiaba-darker": $cx-color-goiaba-darker,
+
+  "ceu": $cx-color-ceu,
+  "ceu-light": $cx-color-ceu-light,
+  "ceu-lighter": $cx-color-ceu-lighter,
+  "ceu-dark": $cx-color-ceu-dark,
+  "ceu-darker": $cx-color-ceu-darker,
+
+  "tangerina": $cx-color-tangerina,
+  "tangerina-light": $cx-color-tangerina-light,
+  "tangerina-lighter": $cx-color-tangerina-lighter,
+  "tangerina-dark": $cx-color-tangerina-dark,
+  "tangerina-darker": $cx-color-tangerina-darker,
+
+  "uva": $cx-color-uva,
+  "uva-light": $cx-color-uva-light,
+  "uva-lighter": $cx-color-uva-lighter,
+  "uva-dark": $cx-color-uva-dark,
+  "uva-darker": $cx-color-uva-darker,
+
+  "cinza": $cx-color-cinza,
+  "cinza-light": $cx-color-cinza-light,
+  "cinza-lighter": $cx-color-cinza-lighter,
+  "cinza-dark": $cx-color-cinza-dark,
+  "cinza-darker": $cx-color-cinza-darker,
+
+  "grafite": $cx-color-grafite,
+  "grafite-light": $cx-color-grafite-light,
+  "grafite-lighter": $cx-color-grafite-lighter,
+  "grafite-dark": $cx-color-grafite-dark,
+  "grafite-darker": $cx-color-grafite-darker
 );
-
-$cx-light-colors: (
-	"primary-light": ($cx-color-primary-light, $cx-color-lightest, $cx-color-secondary, $cx-color-primary, "secondary"),
-	"secondary-light": ($cx-color-secondary-light, $cx-color-dark, $cx-color-primary, $cx-color-secondary, "primary-dark"),
-	"success-light": ($cx-color-success-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-success, "primary-dark"),
-	"danger-light": ($cx-color-danger-light, $cx-color-lightest, $cx-color-primary-dark, $cx-color-danger, "primary-dark"),
-	"info-light": ($cx-color-info-light, $cx-color-lightest, $cx-color-primary-dark, $cx-color-info, "primary-dark"),
-	"warning-light": ($cx-color-warning-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-warning, "primary-dark"),
-	"apoio-light": ($cx-color-apoio-light, $cx-color-dark, $cx-color-primary-dark, $cx-color-apoio, "primary-dark"),
-	"aux-light": ($cx-color-aux-light, $cx-color-lightest, $cx-color-info-light, $cx-color-aux, "info-light"),
-	"light-light": ($cx-color-lightest, $cx-color-dark, $cx-color-primary, $cx-color-light, "primary"),
-	"dark-light": ($cx-color-dark-light, $cx-color-light, $cx-color-secondary, $cx-color-dark, "secondary")
-);
-
-$cx-dark-colors: (
-	"primary-dark": ($cx-color-primary-dark, $cx-color-lightest, $cx-color-secondary, $cx-color-primary, "secondary"),
-	"secondary-dark": ($cx-color-secondary-dark, $cx-color-lightest, $cx-color-primary, $cx-color-secondary, "primary"),
-	"success-dark": ($cx-color-success-dark, $cx-color-lightest, $cx-color-primary, $cx-color-success, "primary"),
-	"danger-dark": ($cx-color-danger-dark, $cx-color-lightest, $cx-color-primary, $cx-color-danger, "primary"),
-	"info-dark": ($cx-color-info-dark, $cx-color-lightest, $cx-color-primary, $cx-color-info, "primary"),
-	"warning-dark": ($cx-color-warning-dark, $cx-color-lightest, $cx-color-primary, $cx-color-warning, "primary"),
-	"apoio-dark": ($cx-color-apoio-dark, $cx-color-lightest, $cx-color-primary, $cx-color-apoio, "primary"),
-	"aux-dark": ($cx-color-aux-dark, $cx-color-lightest, $cx-color-info-light, $cx-color-aux, "info-light"),
-	"light-dark": ($cx-color-light-dark, $cx-color-dark, $cx-color-primary, $cx-color-light, "primary"),
-	"light-darkest": ($cx-color-light-darkest, $cx-color-dark, $cx-color-primary, $cx-color-light-dark, "primary"),
-	"dark-dark": ($cx-color-darkest, $cx-color-lightest, $cx-color-secondary, $cx-color-dark, "secondary"),
-);
-
-$cx-colors: map.merge(map.merge($cx-main-colors, $cx-light-colors), $cx-dark-colors);
 
 /* Logo */
 
@@ -117,20 +199,32 @@ $cx-h6-font-size: $cx-font-size-base;
 
 /* Gradiente */
 
-$cx-gradient-primary: linear-gradient(150deg, $cx-color-primary 10%, $cx-color-apoio 100%);
-$cx-gradient-sky: linear-gradient(150deg, $cx-color-primary 10%, $cx-color-info 100%);
-$cx-gradient-aux: linear-gradient(150deg, $cx-color-primary 10%, $cx-color-aux 100%);
-$cx-gradient-success: linear-gradient(150deg, $cx-color-primary 10%, rgba(175,202,11,1) 100%);
-$cx-gradient-light: linear-gradient(150deg, $cx-color-light-dark 10%, $cx-color-lightest 100%);
-$cx-gradient-dark: linear-gradient(150deg, $cx-color-darkest 10%, $cx-color-dark-light 100%);
+$cx-gradient-oceano: linear-gradient(90deg, $cx-color-primary 70%, $cx-color-turquesa 100%);
+$cx-gradient-gelo: linear-gradient(90deg, $cx-color-cinza-lighter 70%, $cx-color-cinza 100%);
+$cx-gradient-tangerina: linear-gradient(90deg, $cx-color-primary 40%, $cx-color-turquesa 70%, $cx-color-tangerina 100%);
+$cx-gradient-limao: linear-gradient(90deg, $cx-color-primary 40%, $cx-color-turquesa 70%, $cx-color-limao 100%);
+$cx-gradient-ceu: linear-gradient(90deg, $cx-color-primary 40%, $cx-color-turquesa 70%, $cx-color-ceu 100%);
+$cx-gradient-uva: linear-gradient(90deg, $cx-color-primary 40%, $cx-color-turquesa 70%, $cx-color-uva 100%);
+$cx-gradient-goiaba: linear-gradient(90deg, $cx-color-primary 40%, $cx-color-turquesa 70%, $cx-color-goiaba 100%);
+
+$cx-gradient-verao: linear-gradient(90deg, $cx-color-turquesa 70%, $cx-color-tangerina 100%);
+$cx-gradient-outono: linear-gradient(90deg, $cx-color-turquesa 70%, $cx-color-goiaba 100%);
+$cx-gradient-agua: linear-gradient(90deg, $cx-color-turquesa 70%, $cx-color-ceu 100%);
+$cx-gradient-primavera: linear-gradient(90deg, $cx-color-turquesa 70%, $cx-color-uva 100%);
+$cx-gradient-inverno: linear-gradient(90deg, $cx-color-turquesa 70%, $cx-color-limao 100%);
 
 $cx-gradient-themes: (
-	"primary": $cx-gradient-primary,
-	"sky": $cx-gradient-sky,
-	"aux": $cx-gradient-aux,
-	"success": $cx-gradient-success,
-	"light": $cx-gradient-light,
-	"dark": $cx-gradient-dark
+  "oceano": $cx-gradient-oceano,
+  "gelo": $cx-gradient-gelo,
+  "tangerina": $cx-gradient-tangerina,
+  "limao": $cx-gradient-limao,
+  "ceu": $cx-gradient-ceu,
+  "uva": $cx-gradient-uva,
+  "goiaba": $cx-gradient-goiaba,
+  "verao": $cx-gradient-verao,
+  "agua": $cx-gradient-agua,
+  "primavera": $cx-gradient-primavera,
+  "inverno": $cx-gradient-inverno
 );
 
 /* Opacidade */
@@ -157,5 +251,6 @@ $cx-text-opacities: (
 
 /* Box shadow */
 
+$cx-sm-box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
 $cx-default-box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
-$cx-big-box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+$cx-lg-box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);

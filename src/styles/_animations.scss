@@ -57,7 +57,7 @@
   top: 0;
   left: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle, cx-variables.$cx-color-lightest 10%, transparent 10.01%);
+  background-image: radial-gradient(circle, cx-variables.$cx-color-cinza-lighter 10%, transparent 10.01%);
   background-repeat: no-repeat;
   background-position: 50%;
   transform: scale(10, 10);
@@ -70,7 +70,7 @@
 }
 
 .ripple-dark:not(.disabled):after {
-  background-image: radial-gradient(circle, cx-variables.$cx-color-darkest 10%, transparent 10.01%) !important;
+  background-image: radial-gradient(circle, cx-variables.$cx-color-grafite-darker 10%, transparent 10.01%) !important;
 }
 
 .ripple:active:after {
@@ -81,11 +81,11 @@
 
 @function set-ripple($color) {
   @if lightness($color) <=50 {
-    @return $cx-color-lightest;
+    @return $cx-color-cinza-lighter;
   }
 
   @else {
-    @return $cx-color-darkest;
+    @return $cx-color-grafite-darker;
   }
 }
 
