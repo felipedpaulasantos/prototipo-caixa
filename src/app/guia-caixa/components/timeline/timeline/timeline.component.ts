@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, ViewChild, ElementRef, AfterViewInit, SimpleChanges, OnChanges } from '@angular/core';
+import { PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 import { TimelineItem, TimelineOrientation } from './timeline-item';
 
 interface StateIcon {
@@ -9,47 +10,82 @@ interface StateIcon {
 @Component({
   selector: 'cx-timeline',
   templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.scss'],
+  styleUrls: ['./timeline.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TimelineComponent implements OnInit {
+export class TimelineComponent implements OnInit, OnChanges, AfterViewInit {
+
+  @ViewChild('perfectScroll')
+  perfectScroll: PerfectScrollbarComponent;
 
   readonly SUCCESS_STATE: StateIcon = { state: "success", icon: "fa fa-check" };
   readonly INFO_STATE: StateIcon = { state: "info", icon: "fa fa-info" };
   readonly WARNING_STATE: StateIcon = { state: "warning", icon: "fa fa-exclamation" };
-  readonly ERROR_STATE: StateIcon = { state: "error", icon: "fa fa-times" };
-  readonly NONE_STATE: StateIcon = { state: "none", icon: "fa fa-question" };
+  readonly WARNING_STOP_STATE: StateIcon = { state: "warning-stop", icon: "fa fa-ban fa-lg" };
+  readonly ERROR_STATE: StateIcon = { state: "error", icon: "fa fa-ban fa-lg" };
+
+  readonly DATEPIPE_DEFAULT_FORMAT = "dd/MM/yyyy - HH:mm";
 
   readonly timelineOrientation = TimelineOrientation;
 
   constructor() { }
 
   /**
-   * Array de objetos do tipo TimelineItem com os seguintes atributos:
+   * Lista dos itens com os seguintes atributos:
    * - title (string): Título do item
-   * - state (string | TimelineState): Estado visual do item, podendo ser 'success', 'info', 'warning' ou 'error'
-   * - dateText (string): Texto representando a data de ocorrência do item
-   * - onClick (function) - Atributo opcional que define uma ação a ser executada ao clicar no item
+   * - state (TimelineState | string): Estado visual do item, podendo ser 'success', 'info', 'warning', 'warning-stop' ou 'error'
+   * - date (Date): Objeto do tipo Date que será formatado no template. Informar este atributo OU [dateString]
+   * - dateString (string): Texto representando a data de ocorrência do item. Informar este atributo OU [date]
+   * - dateFormat (string): Caso seja informado o atributo [date],
+   *    este atributo opcional pode alterar a formatação padrão (dd/MM/yyyy - HH:mm).
+   *    Os formatos possíveis são os mesmos do DatePipe: https://angular.io/api/common/DatePipe
+   * @type TimelineItem[]
   */
   @Input()
   items: TimelineItem[] = [];
 
   /**
-   * Orientação da timeline, podendo ser horizontal ou vertical.
-   * Padrão: Vertical / 1
+   * Orientação da timeline, podendo ser horizontal (0) ou vertical (1).
+   * - Padrão: Vertical / 1
+   * - Tipo: (TimelineOrientation | number)
+   * @type TimelineOrientation | number
   */
   @Input()
   orientation: TimelineOrientation = TimelineOrientation.VERTICAL;
 
+  /**
+   * Objeto de estilo a ser passado para o timeline-wrapper.
+   * - Ex: [styles]="{ height: '300px'; font-color: 'blue' }"
+   * @type object | string
+  */
+  @Input()
+  styles: { [klass: string]: any; } | string;
+
   ngOnInit(): void { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.perfectScroll) {
+      this.perfectScroll.directiveRef.update();
+    }
+  }
+
+  ngAfterViewInit() {
+    if (this.perfectScroll) {
+      console.log(this.perfectScroll);
+      this.perfectScroll.directiveRef.update();
+      this.perfectScroll.directiveRef.scrollToBottom();
+      
+    }
+  }
 
   /**
    * Formata o texto a ser exibido no atributo [title] do timeline-item
   */
   getFormattedText(item: TimelineItem): string {
-    if (!item || !item.title || !item.dateText) { return ""; }
+    const itemDate = item.dateString || item.date;
+    if (!item || !item.title || !itemDate ) { return ""; }
 
-    return `${item.title} - ${item.dateText}`;
+    return `${item.title} - ${itemDate}`;
   }
 
 }

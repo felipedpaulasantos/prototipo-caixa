@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { loremIpsumPlaceHolder, BootstrapTheme } from 'src/app/guia-caixa/constants/constants';
+import { Component, OnInit } from "@angular/core";
+import { loremIpsumPlaceHolder, BootstrapTheme } from "src/app/guia-caixa/constants/constants";
 
 
 @Component({
-  selector: 'app-cores',
-  templateUrl: './cores.component.html',
-  styleUrls: ['./cores.component.scss']
+  selector: "app-cores",
+  templateUrl: "./cores.component.html",
+  styleUrls: ["./cores.component.scss"]
 })
 export class CoresComponent implements OnInit {
 

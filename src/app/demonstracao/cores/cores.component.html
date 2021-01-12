@@ -46,7 +46,7 @@
 	<div *ngFor="let cor of cores" class="card card-caixa mb-3">
 		<div class="card-header">
 			<h5 class="header-caixa text-{{ cor.name }}-dark"
-			[ngClass]="{'text-light-darkest': cor.name == 'light'}">
+			[ngClass]="{'text-cinza-darkest': cor.name == 'light'}">
 				{{ cor.name | titlecase }}
 			</h5>
 		</div>

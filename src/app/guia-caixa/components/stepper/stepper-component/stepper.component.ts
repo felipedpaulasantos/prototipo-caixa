@@ -2,20 +2,18 @@ import {
   Component, Input, Output, EventEmitter, OnInit, OnChanges,
   ChangeDetectionStrategy, ContentChildren, TemplateRef, SimpleChanges, ChangeDetectorRef, AfterContentInit
 } from "@angular/core";
-import { StepperDirective } from '../stepper-directive';
-import { StepperOrientation } from '../stepper-orientation';
-import { StepperItem } from './stepper-item';
+import { StepperDirective } from "../stepper-directive";
+import { StepperOrientation } from "../stepper-orientation";
+import { StepperItem } from "./stepper-item";
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: "cx-stepper",
   templateUrl: "./stepper.component.html",
   styleUrls: ["./stepper.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
-
-  readonly DEFAULT_COMPLETED_MESSAGE = "Transação concluída com sucesso!";
-  readonly DEFAULT_COMPLETED_ICON = "fa fa-check-circle fa-lg";
 
   /**
    * Quantidade mínima e máxima de passos permitidos
@@ -26,8 +24,8 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   /**
    * Ícones de navegação do Stepper. Apenas na navegação guiada.
   */
-  readonly BACK_ICON_X = 'fa fa-arrow-left';
-  readonly BACK_ICON_Y = 'fa fa-arrow-up';
+  readonly BACK_ICON_X = "fa fa-arrow-left";
+  readonly BACK_ICON_Y = "fa fa-arrow-up";
 
   /**
    * Mapeia as templates dinâmicas com a diretiva *stepper, caso seja usada a variante de comportamento contentInside;
@@ -37,7 +35,7 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
 
   /**
    * Orientação das abas, podendo ser horizontal ou vertical.
-   * @param {StepperOrientation} orientation Enum com valores Horizontal (0) e Vertical (1).
+   * @param {StepperOrientation} orientation Enum com valores Horizontal (0) e Vertical (1). Padrão = 0.
   */
   @Input()
   orientation = StepperOrientation.Horizontal;
@@ -48,7 +46,7 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
    * Na navegação guiada, é possível retornar apenas para o passo
    * imediatamente anterior.
    * @param {boolean} freeNavigation Verdadeiro para navegação livre (padrão),
-   * falso para navegação guiada. Padrão: true.
+   * falso para navegação guiada.
   */
   @Input()
   freeNavigation = true;
@@ -61,15 +59,15 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   steps: StepperItem[] = [];
 
   /**
-   * Index do passo atual, que pode ser alterado diretamente, pelos métodos de navegação ou clicando nos passos.
-  * @param {string | number} currentStep Index do passo atual. Padrão: 0.
-   */
+    * Index do passo atual, que pode ser alterado diretamente, pelos métodos de navegação ou clicando nos passos.
+    * @param {string | number} currentStep Index do passo atual. Padrão = 0.
+  */
   @Input()
   currentStep = 0;
 
   /**
    * Define se os ícones dos passos são 'clicáveis'.
-   * @param {boolean} clickable True para tornar clicável. Padrão: true.
+   * @param {boolean} clickable True para tornar clicável. Padrão = true.
   */
   @Input()
   clickable = true;
@@ -80,19 +78,8 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
    * Outras opções: 'secondary', 'info', 'warning', 'danger', 'light', 'dark'.
   */
   @Input()
-  theme = "primary";
-
-  @Input()
-  completedMessage: string;
-
-  @Input()
-  completedIcon: string;
-
-  @Input()
-  showCompletedMessage = false;
-
-  @Input()
-  hideStepsOnCompleted = false;
+  // theme = "primary";
+  theme = "";
 
   /**
    * Evento que transmite o index do novo passo atual após ser selecionado.
@@ -110,7 +97,7 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
 
   /**
     Adotando a estratégia OnPush para melhor performance,
-    valida-se o valor informado para a propriedade tabs
+    valida-se o valor informado para a propriedade steps
     e apenas atualiza a view caso o valor seja válido
   */
   ngOnChanges(changes: SimpleChanges): void {
@@ -119,7 +106,7 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
     }
   }
 
-  validateStepChanges(newSteps: StepperItem[]) {
+  validateStepChanges(newSteps: StepperItem[]): void {
     const isValidLength = this.isValidLength(newSteps);
     const isCurrentIndexValid = this.isCurrentIndexValid(newSteps);
     if (isValidLength && isCurrentIndexValid) {
@@ -128,8 +115,8 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   }
 
   /**
-  * Inicializa os templates
- */
+   * Inicializa os templates
+  */
   ngAfterContentInit(): void {
     this.changeDetector.detectChanges();
   }
@@ -150,6 +137,7 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
     ) {
       this.currentStep = index;
       this.changeStep.emit(index);
+      this.changeDetector.markForCheck();
     }
   }
 
@@ -157,7 +145,6 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
    * Salta para o próximo passo
   */
   next(): void {
-    console.log(this.currentStep + 1, this.steps.length);
     if ((this.currentStep + 1) < this.steps.length) {
       this.currentStep += 1;
       this.changeStep.emit(this.currentStep);
@@ -212,6 +199,13 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
     this.changeDetector.detectChanges();
   }
 
+  /**
+    * Aplica o tema definido no ícone ativo
+  */
+  getActiveTheme(isActive: boolean, isLast: boolean): string {
+    return isActive && !isLast ? `bg-${ this.theme }` : "";
+  }
+
   private isValidLength(newSteps: StepperItem[]): boolean {
     if (newSteps && newSteps.length >= this.MINIMUM_STEPS && newSteps.length > this.MAXIMUM_STEPS) {
       this.steps = newSteps.slice(0, this.MAXIMUM_STEPS);
@@ -224,13 +218,6 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
       this.currentStep = newSteps.length - 1;
       return true;
     }
-  }
-
-  /**
-    * Aplica o tema definido no ícone ativo
-  */
-  getActiveTheme(isActive: boolean, isLast: boolean): string {
-    return isActive && !isLast ? `bg-${this.theme}` : "";
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SideMenuService } from 'src/app/menu/side-menu/side-menu.service';
 
 @Component({
   selector: 'app-componentes',
@@ -7,57 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComponentesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private menuService: SideMenuService
+  ) { }
 
   rows: any[] = [];
 
-  resources = [
-    {
-      name: "Botões",
-      url: "/componentes/botoes",
-      icon: "fa fa-dot-circle fa-lg",
-      description: "Botões com estilo complementar ao framework Bootstrap"
-    },
-    {
-      name: "Cards",
-      url: "/componentes/cards",
-      icon: "fa fa-clipboard fa-lg",
-      description: "Cards flexíveis para exibição de qualquer tipo de conteúdo"
-    },
-    {
-			name: 'Inputs',
-			url: '/componentes/inputs',
-      icon: 'fa fa-keyboard fa-lg',
-      description: 'Inputs e validação de erros automática'
-    },
-    {
-			name: 'Mensagens',
-			url: '/componentes/mensagens',
-      icon: 'fa fa-comment fa-lg',
-      description: 'Notificações, tela de carregamento e modais'
-    },
-    {
-			name: 'Select',
-			url: '/componentes/select',
-      icon: 'fa fa-hand-pointer fa-lg',
-      description: 'Selects customizados integrando a biblioteca Bootstrap-Select'
-    },
-    {
-			name: 'Stepper',
-			url: '/componentes/stepper',
-      icon: 'fa fa-shoe-prints fa-lg',
-      description: 'Abas que representam passos lógicos'
-    },
-    {
-			name: 'Tabelas',
-			url: '/componentes/tabelas',
-      icon: 'fa fa-table fa-lg',
-      description: 'Tabelas com filtros, botões e paginação embutidas'
-		}
-  ];
+  resources = [];
 
   ngOnInit() {
-    this.rows = this.groupColumns(this.resources);
+    this.menuService.menuItems$.subscribe(items => {
+      const componentes = items.find((item) => item.name === "Componentes").submenu;
+      componentes.forEach(item => {
+        this.resources.push(item);
+      });
+      this.resources = [].concat(this.resources);
+      this.rows = this.groupColumns(this.resources);
+    });
   }
 
   groupColumns(resources: any[]): any[] {

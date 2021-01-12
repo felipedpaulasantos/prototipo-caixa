@@ -36,7 +36,7 @@ export class CardsComponent extends ComponentesInterface {
 
   htmlCodeCardsTematicos = `            <div class="row">
   <div class="col-12 col-md-6 my-2">
-    <div class="card card-caixa bg-dark text-light">
+    <div class="card card-caixa bg-grafite text-cinza">
       <div class="card-header">
         <h4 class="header-caixa">Título</h4>
       </div>
@@ -51,7 +51,7 @@ export class CardsComponent extends ComponentesInterface {
   </div>  <!-- Coluna -->
 
   <div class="col my-2">
-    <div class="card card-caixa bg-primary text-light">
+    <div class="card card-caixa bg-primary text-cinza">
       <div class="card-header">
         <h4 class="header-caixa">Título</h4>
       </div>

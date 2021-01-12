@@ -54,7 +54,7 @@ export class TopMenuComponent implements OnInit {
       btnOkClass: "btn btn-caixa btn-danger",
       btnCancelarClass: "btn btn-caixa btn-outline-dark",
       btCancelarTexto: "Cancelar",
-      modalBodyClass: "bg-danger-dark text-light-light"
+      modalBodyClass: "bg-danger-dark text-cinza-light"
     });
 
     this.modalService.btOKEvent.subscribe(() => {
