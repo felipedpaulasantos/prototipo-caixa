@@ -1,9 +1,3 @@
-<cx-stepper-message 
-   [show]="showCompletedMessage && currentStep == steps.length - 1"
-   [message]="completedMessage || DEFAULT_COMPLETED_MESSAGE"
-   [icon]="completedIcon || DEFAULT_COMPLETED_ICON">
-</cx-stepper-message>
-
 <div class="stepper-wrapper" [ngClass]="{'horizontal': orientation == 0,'vertical': orientation == 1}">
    <ul class="stepper" [ngClass]="{'completed': currentStep == (steps?.length - 1), 'nav-guided': !freeNavigation}">
       <li [title]="step?.title" class="step" *ngFor="let step of steps; let index = index; let last = last" [ngClass]="{
@@ -30,7 +24,7 @@
    </ul>
 </div>
 
-<!-- 
+<!--
    Utilizando conteúdo interno, os templates identificados com a diretiva *stepper são renderizados aqui
    e o controle de exibição é feito considerando o index do template, comparando-o ao index do passo atual
  -->

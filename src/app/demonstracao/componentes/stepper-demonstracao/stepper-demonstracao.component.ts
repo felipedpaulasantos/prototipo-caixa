@@ -1,21 +1,21 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { StepperItem } from 'src/app/guia-caixa/components/stepper/stepper-component/stepper-item';
-import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
-import { BootstrapTheme } from 'src/app/guia-caixa/constants/constants';
-import { ComponentesInterface } from '../componentes-interface';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
+import { StepperItem } from "src/app/guia-caixa/components/stepper/stepper-component/stepper-item";
+import { TabberItem } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
+import { BootstrapTheme } from "src/app/guia-caixa/constants/constants";
+import { ComponentesInterface } from "../componentes-interface";
 
 @Component({
-  templateUrl: './stepper-demonstracao.component.html',
-  styleUrls: ['./stepper-demonstracao.component.scss'],
-  host: { '(window:scroll)': 'onScroll($event)' }
+  templateUrl: "./stepper-demonstracao.component.html",
+  styleUrls: ["./stepper-demonstracao.component.scss"],
+  host: { "(window:scroll)": "onScroll($event)" }
 })
 export class StepperDemonstracaoComponent extends ComponentesInterface implements OnInit {
 
   @ViewChild("scrollElement") scrollElement;
 
   sectionOffset = 0;
-  spiedTags = ['APP-DOCUMENTACAO-TEMPLATE'];
+  spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   currentSection = "painelStepperPadrao";
 
   showTabsStepperPadrao = false;
@@ -259,19 +259,19 @@ export class StepperComponent {
   `.trimRight();
 
   passos: StepperItem[] = [
-    { title: 'Primeiro passo' },
-    { title: 'Segundo passo' },
-    { title: 'Terceiro passo' },
-    { title: 'Quarto passo' },
-    { title: 'Quinto passo' }
+    { title: "Primeiro passo" },
+    { title: "Segundo passo" },
+    { title: "Terceiro passo" },
+    { title: "Quarto passo" },
+    { title: "Quinto passo" }
   ];
   passoAtual = 0;
   steps: StepperItem[] = [
-    { title: 'Um primeiro passo' },
-    { title: 'Um segundo passo' },
-    { title: 'Um terceiro passo' },
-    { title: 'Um quarto passo' },
-    { title: 'Fim' }
+    { title: "Um primeiro passo" },
+    { title: "Um segundo passo" },
+    { title: "Um terceiro passo" },
+    { title: "Um quarto passo" },
+    { title: "Fim" }
   ];
 
   abas: TabberItem[] = [
@@ -339,7 +339,7 @@ export class StepperComponent {
 
   addStep(nome: string) {
     const newIndex = this.steps.length + 1;
-    const newStep: StepperItem = { title: '' };
+    const newStep: StepperItem = { title: "" };
     newStep.title = nome ? nome : `Passo ${newIndex}`;
     this.steps.push(newStep);
     this.steps = [].concat(this.steps);

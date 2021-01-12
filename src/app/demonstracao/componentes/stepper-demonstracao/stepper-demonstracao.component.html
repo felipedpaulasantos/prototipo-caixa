@@ -49,11 +49,7 @@
                </div>
 
                <div class="conteudo">
-                  <cx-stepper 
-                     [steps]="passos" 
-                     [currentStep]="passoAtual"
-                     [hideStepsOnCompleted]="false"
-                     completedMessage="Passos concluídos!"
+                  <cx-stepper [steps]="passos" [currentStep]="passoAtual" completedMessage="Passos concluídos!"
                      (changeStep)="passoAtual = $event">
                   </cx-stepper>
 
@@ -288,9 +284,10 @@
          <div class="col col-md-8">
             <h5 class="header-subtitulo-caixa">*cxStepper</h5>
             <p>
-               Diretiva que permite a inclusão de conteúdo dinâmico dentro do componente Stepper. 
-               O asterisco é necessário por se tratar de uma 
-               <a class="text-info" href="https://angular.io/guide/structural-directives" target="blank">diretiva estrutural</a>.
+               Diretiva que permite a inclusão de conteúdo dinâmico dentro do componente Stepper.
+               O asterisco é necessário por se tratar de uma
+               <a class="text-info" href="https://angular.io/guide/structural-directives" target="blank">diretiva
+                  estrutural</a>.
             </p>
             <p>Usar como: <span class="citation-highlight">*cxStepper</span> no elemento a ser exibido</p>
 
@@ -299,11 +296,11 @@
             <div class="my-4">
                <h5 class="header-subtitulo-caixa">Cx-Stepper</h5>
                <p>
-                  Componente de exibição de passos em sequência 
+                  Componente de exibição de passos em sequência
                   que pode ou não englobar o conteúdo que será exibido em cada passo.
                </p>
                <p>Usar como: <span class="citation-highlight">cx-stepper</span></p>
-   
+
                <h6 class="header-subtitulo-caixa">Propriedades</h6>
                <div class="table-responsive">
                   <table class="table table-bordered table-caixa">
@@ -331,7 +328,7 @@
                         <tr>
                            <td>@Input( )<br>steps: string[ ]</td>
                            <td>
-                              Atributo obrigatório com a lista de 'descrições' dos passos, 
+                              Atributo obrigatório com a lista de 'descrições' dos passos,
                               que serão exibidos ao lado dos ícones.<br>
                               Padrão: [ ]
                            </td>
@@ -346,7 +343,7 @@
                         <tr>
                            <td>@Input( )<br>orientation: enum StepperOrientation | string | number</td>
                            <td>
-                              Orientação do componente, que pode ser horizontal (StepperOrientation.horizontal | "0") 
+                              Orientação do componente, que pode ser horizontal (StepperOrientation.horizontal | "0")
                               ou vertical (StepperOrientation.vertical | "1").<br>
                               Padrão: StepperOrientation.horizontal | "0"
                            </td>
@@ -370,7 +367,7 @@
                         <tr>
                            <td>@Output( )<br>changeStep: EventEmitter&#60;number></td>
                            <td>
-                              Evento disparado sempre que um ícone válido é clicado, transmitindo o 
+                              Evento disparado sempre que um ícone válido é clicado, transmitindo o
                               índice deste ícone.
                            </td>
                         </tr>
@@ -409,7 +406,7 @@
                   Componente de exibição de abas que pode ou não englobar o conteúdo que será exibido em cada aba.
                </p>
                <p>Usar como: <span class="citation-highlight">cx-tabber</span></p>
-   
+
                <h6 class="header-subtitulo-caixa">Propriedades</h6>
                <div class="table-responsive">
                   <table class="table table-bordered table-caixa">
@@ -452,7 +449,7 @@
                         <tr>
                            <td>@Input( )<br>orientation: enum StepperOrientation</td>
                            <td>
-                              Orientação do componente, que pode ser horizontal (StepperOrientation.horizontal | "0") 
+                              Orientação do componente, que pode ser horizontal (StepperOrientation.horizontal | "0")
                               ou vertical (StepperOrientation.vertical | "1").<br>
                               Padrão: StepperOrientation.horizontal | "0"
                            </td>
@@ -467,7 +464,7 @@
                         <tr>
                            <td>@Output( )<br>changeTab: EventEmitter&#60;number></td>
                            <td>
-                              Evento disparado sempre que um ícone válido é clicado, transmitindo o 
+                              Evento disparado sempre que um ícone válido é clicado, transmitindo o
                               índice deste ícone.
                            </td>
                         </tr>
@@ -528,34 +525,27 @@
       <div class="tab-content">
          <div class="tab-pane fade show active" id="stepperSandbox" role="tabpanel">
             <section id="stepperSandbox" class="mb-5">
+
+               <cx-stepper #stepperFree [steps]="steps" [orientation]="stepperFreeOrientation"
+               [freeNavigation]="freeNavigation">
+                  <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
+                     <ng-container *cxStepper>
+                        <h1 class="text-center my-4">{{ step.title }}!</h1>
+                     </ng-container>
+                  </ng-container>
+               </cx-stepper>
+
                <div class="card card-caixa">
                   <div class="card-body">
-      
-                     <cx-stepper #stepperFree
-                     [steps]="steps" 
-                     [orientation]="stepperFreeOrientation"
-                     [hideStepsOnCompleted]="hideStepsOnCompleted"
-                     [showCompletedMessage]="showCompletedMessage"
-                     [completedMessage]="completedMessage"
-                     [completedIcon]="completedIcon"
-                     [freeNavigation]="freeNavigation">
-                        <ng-container *ngFor="let step of steps; let i = index; let last = last; let first = first">
-                           <ng-container *cxStepper>
-                              <h1 class="text-center my-3">{{ step.title }}!</h1>
-                           </ng-container>
-                        </ng-container>
-                     </cx-stepper>
-                  </div>
-                  <div class="card-footer">
                      <div class="row">
                         <div class="col">
                            <div class="custom-control custom-checkbox">
-                              <input [checked]="freeNavigation" (change)="freeNavigation = ($event.target.checked)" 
-                              type="checkbox" class="custom-control-input" id="checkFreeNavigation">
+                              <input [checked]="freeNavigation" (change)="freeNavigation = ($event.target.checked)"
+                                 type="checkbox" class="custom-control-input" id="checkFreeNavigation">
                               <label class="custom-control-label" for="checkFreeNavigation">
                                  Navegação Livre
                               </label>
-                            </div>
+                           </div>
                         </div>
                      </div>
                      <div class="row">
@@ -564,35 +554,36 @@
                               [disabled]="stepperFree.currentStep == 0" (click)="stepperFree.first()">
                               <i class="fa fa-angle-double-left fa-lg"></i>
                            </button>
-      
+
                            <button [disabled]="stepperFree.currentStep <= 0" (click)="stepperFree.previous()"
                               class="btn btn-light btn-caixa mr-2">
                               <i class="fa fa-angle-left fa-lg"></i>
                            </button>
-      
-                           <button [disabled]="stepperFree.currentStep == (steps.length - 1)" (click)="stepperFree.next()"
-                              class="btn btn-primary btn-caixa">
+
+                           <button [disabled]="stepperFree.currentStep == (steps.length - 1)"
+                              (click)="stepperFree.next()" class="btn btn-primary btn-caixa">
                               <i class="fa fa-angle-right fa-lg"></i>
                            </button>
-      
+
                            <button title="Último" class="btn btn-dark btn-caixa ml-2"
                               [disabled]="stepperFree.currentStep == (steps.length - 1)"
                               (click)="stepperFree.toStepByIndex(steps.length - 1)">
                               <i class="fa fa-angle-double-right fa-lg"></i>
                            </button>
-      
+
                            <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="steps.length == 2"
                               (click)="removeStep()">
                               <i class="fa fa-minus fa-lg"></i>
                            </button>
-      
+
                            <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
                               [disabled]="steps.length == stepperFree.MAXIMUM_STEPS"
                               (click)="addStep(inputNovoStepFree.value); inputNovoStepFree.value = ''">
                               <i class="fa fa-plus fa-lg"></i>
                            </button>
-      
-                           <input #inputNovoStepFree class="input-caixa d-inline w-50 ml-2" placeholder="Nome do novo passo">
+
+                           <input #inputNovoStepFree class="input-caixa d-inline w-50 ml-2"
+                              placeholder="Nome do novo passo">
                         </div>
                         <div class="col-5">
                            <cx-select>
@@ -604,94 +595,56 @@
                            </cx-select>
                         </div>
                      </div>
-                     <div class="row align-items-center">
-                        <div class="col">
-                           <div class="custom-control custom-checkbox">
-                              <input [checked]="hideStepsOnCompleted" (change)="hideStepsOnCompleted = ($event.target.checked)" 
-                              type="checkbox" class="custom-control-input" id="checkHideSteps">
-                              <label class="custom-control-label" for="checkHideSteps">
-                                 Esconder ícones ao finalizar
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                           <div class="custom-control custom-checkbox">
-                              <input [checked]="showCompletedMessage" (change)="showCompletedMessage = ($event.target.checked)" 
-                              type="checkbox" class="custom-control-input" id="checkShowMessage">
-                              <label class="custom-control-label" for="checkShowMessage">
-                                 Exibir mensagem ao finalizar
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                           <cx-input>
-                              <label>Mensagem de sucesso</label>
-                              <input [placeholder]="stepperFree.DEFAULT_COMPLETED_MESSAGE"
-                               inputCaixa (input)="completedMessage = $event.target.value">
-                           </cx-input>
-                        </div>
-                        <div class="col">
-                           <cx-select>
-                              <label>Ícone de sucesso</label>
-                              <select selectCaixa (change)="completedIcon = $event.target.value">
-                                 <option value="fa fa-check-circle fa-lg">Visto - círculo</option>
-                                 <option value="fa fa-check-square fa-lg">Visto - quadrado</option>
-                                 <option value="fa fa-check fa-lg">Visto</option>
-                                 <option value="fa fa-thumbs-up fa-lg">Jóia</option>
-                              </select>
-                           </cx-select>
-                        </div>
-                     </div>
                   </div>
                </div>
             </section>
          </div>
          <div class="tab-pane fade" id="tabberSandbox" role="tabpanel">
             <section id="tabberSandbox" class="mb-5">
+
+               <cx-tabber [tabs]="tabs" [orientation]="tabberOrientation" #tabberExemplo>
+                  <ng-container *ngFor="let tab of tabs; let i = index; let last = last; let first = first">
+                     <ng-container *cxStepper>
+                        <h1 class="text-center my-4">{{ tab.name }}!</h1>
+                     </ng-container>
+                  </ng-container>
+               </cx-tabber>
+
                <div class="card card-caixa">
                   <div class="card-body">
-                     <cx-tabber [tabs]="tabs" [orientation]="tabberOrientation" #tabberExemplo>
-                        <ng-container *ngFor="let tab of tabs; let i = index; let last = last; let first = first">
-                           <ng-container *cxStepper>
-                              <h1 class="text-center my-3">{{ tab.name }}!</h1>
-                           </ng-container>
-                        </ng-container>
-                     </cx-tabber>
-                  </div>
-                  <div class="card-footer">
                      <div class="row">
                         <div class="col d-flex align-items-center">
                            <button title="Primeiro" class="btn btn-dark btn-caixa mr-2"
                               [disabled]="tabberExemplo.currentTab == 0" (click)="tabberExemplo.first()">
                               <i class="fa fa-angle-double-left fa-lg"></i>
                            </button>
-      
+
                            <button [disabled]="tabberExemplo.currentTab <= 0" (click)="tabberExemplo.previous()"
                               class="btn btn-light btn-caixa mr-2">
                               <i class="fa fa-angle-left fa-lg"></i>
                            </button>
-      
-                           <button [disabled]="tabberExemplo.currentTab == (tabs.length - 1)" (click)="tabberExemplo.next()"
-                              class="btn btn-primary btn-caixa">
+
+                           <button [disabled]="tabberExemplo.currentTab == (tabs.length - 1)"
+                              (click)="tabberExemplo.next()" class="btn btn-primary btn-caixa">
                               <i class="fa fa-angle-right fa-lg"></i>
                            </button>
-      
+
                            <button title="Último" class="btn btn-dark btn-caixa ml-2"
                               [disabled]="tabberExemplo.currentTab == (tabs.length - 1)" (click)="tabberExemplo.last()">
                               <i class="fa fa-angle-double-right fa-lg"></i>
                            </button>
-      
+
                            <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="tabs.length == 2"
                               (click)="tabs.pop(); tabs = [].concat(tabs)">
                               <i class="fa fa-minus fa-lg"></i>
                            </button>
-      
+
                            <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
                               [disabled]="tabs.length == tabberExemplo.MAXIMUM_TABS"
                               (click)="addTab(inputNovaAba.value); inputNovaAba.value = ''">
                               <i class="fa fa-plus fa-lg"></i>
                            </button>
-      
+
                            <input #inputNovaAba class="input-caixa d-inline w-50 ml-2" placeholder="Nome da nova aba">
                         </div>
                         <div class="col-4">
