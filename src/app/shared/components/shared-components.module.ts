@@ -13,6 +13,7 @@ import { AccordionComponent } from './accordion/accordion.component';
 import { CodeViewComponent } from './code-view/code-view.component';
 import { MenuItemComponent } from './accordion/menu-item/menu-item.component';
 import { StepperModule } from '../../guia-caixa/components/stepper/stepper.module';
+import { CodeFixedNavComponent } from './code-fixed-nav/code-fixed-nav.component';
 
 @NgModule({
 	declarations: [
@@ -21,7 +22,8 @@ import { StepperModule } from '../../guia-caixa/components/stepper/stepper.modul
 		BackButtonComponent,
 		AccordionComponent,
 		CodeViewComponent,
-		MenuItemComponent
+		MenuItemComponent,
+		CodeFixedNavComponent
 	],
 	imports: [
 		CommonModule,
@@ -37,7 +39,8 @@ import { StepperModule } from '../../guia-caixa/components/stepper/stepper.modul
 		TooltipIconComponent,
 		BackButtonComponent,
 		AccordionComponent,
-		CodeViewComponent
+		CodeViewComponent,
+		CodeFixedNavComponent
 	]
 })
 export class SharedComponentsModule { }

@@ -1,17 +1,18 @@
 import {
   Component, Input, OnInit, ChangeDetectionStrategy,
-  Output, EventEmitter, ChangeDetectorRef, Self, Optional, SimpleChanges, OnChanges
+  Output, EventEmitter, ChangeDetectorRef, Self, Optional
 } from "@angular/core";
-import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { CardButtonCheckEvent } from './card-button-check-event';
+import { ControlValueAccessor, NgControl } from "@angular/forms";
+import { CardButtonCheckEvent } from "./card-button-check-event";
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: "cx-card-button",
   templateUrl: "./card-button.component.html",
   styleUrls: ["./card-button.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardButtonComponent implements OnInit, OnChanges, ControlValueAccessor {
+export class CardButtonComponent implements OnInit, ControlValueAccessor {
 
   @Input()
   value: any;
@@ -52,15 +53,15 @@ export class CardButtonComponent implements OnInit, OnChanges, ControlValueAcces
   leftText = "";
 
   /**
-   * @param styles Objeto de estilo a ser passado para o card-button-wrapper. Ex: [styles]="{ height: '300px'; font-color: 'blue' }"
+   * @param styles Objeto de estilo a ser passado para o card-button-wrapper. Ex: [styles]="{ height: '300px'; color: 'blue' }"
    * @type object
   */
   @Input()
   styles: { [klass: string]: any; } | string;
 
   /**
-   * @param type Define o visual do container de checkbox / radio. Pode ser 'checkbox', 'radio', 
-   * ou algum valor falso (null / false / '') para não exibir o container.. Padrão: ''
+   * @param type Define o visual do container de checkbox / radio. Pode ser 'checkbox', 'radio',
+   * ou algum valor falso (null / false / '') para não exibir o container. Padrão: ''
    * @type string
   */
   @Input()
@@ -86,12 +87,6 @@ export class CardButtonComponent implements OnInit, OnChanges, ControlValueAcces
   ) {
     if (ngControl) {
       ngControl.valueAccessor = this;
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.styles) {
-      this.changeDetector.detectChanges();
     }
   }
 

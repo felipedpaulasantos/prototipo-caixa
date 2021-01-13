@@ -7,9 +7,9 @@ import { MensagensComponent } from "./mensagens/mensagens.component";
 import { TabelasComponent } from "./tabelas/tabelas.component";
 import { InputsComponent } from "./inputs/inputs.component";
 import { SelectComponent } from "./select/select.component";
-import { StepperOrientation } from "src/app/guia-caixa/components/stepper/stepper-orientation";
 import { StepperDemonstracaoComponent } from "./stepper-demonstracao/stepper-demonstracao.component";
 import { TabberDemonstracaoComponent } from "./tabber-demonstracao/tabber-demonstracao.component";
+import { CardButtonDemonstracaoComponent } from "./card-button-demonstracao/card-button-demonstracao.component";
 
 
 const routes: Routes = [
@@ -83,6 +83,15 @@ const routes: Routes = [
       title: "Tabber",
       breadcrumb: "Tabber",
       animation: "Tabber"
+    }
+  },
+  {
+    path: "card-button",
+    component: CardButtonDemonstracaoComponent,
+    data: {
+      title: "Card-button",
+      breadcrumb: "Card-button",
+      animation: "Card-button"
     }
   },
   {

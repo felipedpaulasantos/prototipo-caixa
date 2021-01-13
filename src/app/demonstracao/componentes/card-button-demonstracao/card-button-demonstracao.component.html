@@ -1,0 +1,278 @@
+<h1 class="header-principal-caixa">
+   Card Button
+</h1>
+<hr class="header-line-caixa">
+
+<ul class="nav nav-pills border-bottom tab-caixa" role="tablist">
+   <li class="nav-item">
+      <a cx-ripple class="nav-link text-uppercase active" data-toggle="tab" href="#visaoGeral" role="tab">
+         Visão Geral
+      </a>
+   </li>
+   <li class="nav-item">
+      <a cx-ripple class="nav-link text-uppercase" data-toggle="tab" href="#api" role="tab">
+         API
+      </a>
+   </li>
+   <li class="nav-item">
+      <a cx-ripple class="nav-link text-uppercase" data-toggle="tab" href="#exemplos" role="tab">
+         Exemplos
+      </a>
+   </li>
+</ul>
+
+<br>
+
+<div class="tab-content">
+   <div class="tab-pane fade show active" id="visaoGeral" role="tabpanel">
+      <div class="row no-gutters">
+
+         <section #scrollElement class="col-12 col-xl-9 pr-2">
+            <app-documentacao-template id="painelCardButton" [cardTitle]="'Card Button'" [codeViewId]="'viewCardButton'"
+               [htmlTabId]="'htmlCodeCardButton'" [htmlCode]="htmlCodeCardButton">
+               <div class="descricao">
+                  <p>O componente Card-button <span class="citation-highlight">cx-card-button</span> oferece
+                     um layout semelhante a um card porém com a funcionalidade de um checkbox ou radio.
+                     À esquerda pode ser exibido um ícone, título ou texto de descrição.
+                     Seu conteúdo a direita é totalmente dinâmico.
+                  </p>
+
+                  <p>Os atributos iniciados com left, como <span class="citation-highlight">leftIcon</span> recebem
+                     os elementos a serem exibidos do lado esquerdo.
+                  </p>
+
+                  <p>Qualquer conteúdo colocado dentro do componente será exibido do lado direito.
+                  </p>
+               </div>
+
+               <div class="conteudo">
+                  <cx-card-button leftIcon="fa fa-home">
+                     <h5>Lorem Ipsum</h5>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint perspiciatis soluta
+                     saepe est nam, sunt accusantium.
+                  </cx-card-button>
+               </div>
+            </app-documentacao-template>
+
+            <br>
+
+            <app-documentacao-template id="painelCardButtonCheckbox" [cardTitle]="'Card Button - Checkbox'"
+               [codeViewId]="'viewCardCheckbox'" [htmlTabId]="'htmlCodeCardCheckbox'" [htmlCode]="htmlCodeCardCheckbox"
+               [tsTabId]="'tsCodeCardCheckbox'" [tsCode]="tsCodeCardCheckbox">
+               <div class="descricao">
+                  <p>A funcionalidade de checkbox/radio é ativada ao:
+                  </p>
+
+                  <p>- Informar o atributo <span class="citation-highlight">type</span> como "checkbox" ou "radio"</p>
+
+                  <p>- Atribuir uma das diretivas de formulário do Angular, seja do TemplateForms (ngModel) ou
+                     ReactiveForms (formControlName)</p>
+               </div>
+
+               <div class="conteudo">
+                  <cx-card-button type="checkbox" [(ngModel)]="user" value="user" leftIcon="fa fa-user">
+                     <label>Usuário</label>
+                     <input [disabled]="!user" value="Fulano" class="input-caixa">
+                  </cx-card-button>
+
+                  <br>
+
+                  <cx-card-button type="checkbox" [(ngModel)]="email" value="email" leftIcon="fa fa-at">
+                     <label>E-mail</label>
+                     <input [disabled]="!email" value="fulano@email.com" class="input-caixa">
+                  </cx-card-button>
+               </div>
+            </app-documentacao-template>
+
+            <br>
+
+            <app-documentacao-template id="painelCardButtonRadio" [cardTitle]="'Card Button - Radio'"
+               [codeViewId]="'viewCardRadio'" [htmlTabId]="'htmlCodeCardRadio'" [htmlCode]="htmlCodeCardRadio"
+               [tsTabId]="'tsCodeCardRadio'" [tsCode]="tsCodeCardRadio">
+               <div class="descricao">
+                  <p>Informando o mesmo <span class="citation-highlight">model</span> ao componente,
+                     ele passa a se comportar como um radio.
+                  </p>
+
+                  <p>O valor "checkbox" para o atributo <span class="citation-highlight">type</span> adapta o visual do
+                     card.</p>
+               </div>
+
+               <div class="conteudo">
+                  <form [formGroup]="formFone">
+                     <cx-card-button type="radio" formControlName="tipoFone" value="fixo" leftIcon="fa fa-phone-alt">
+                        <label>Fixo</label>
+                        <input [disabled]="formFone.get('tipoFone').value !== 'fixo'" class="input-caixa"
+                           placeholder="(00) 0000-0000">
+                     </cx-card-button>
+
+                     <br>
+
+                     <cx-card-button type="radio" formControlName="tipoFone" value="celular"
+                        leftIcon="fa fa-mobile-alt">
+                        <label>Celular</label>
+                        <input [disabled]="formFone.get('tipoFone').value !== 'celular'" class="input-caixa"
+                           placeholder="(00) 00000-0000">
+                     </cx-card-button>
+                  </form>
+               </div>
+            </app-documentacao-template>
+         </section>
+
+         <nav id="navSection" class="d-none col-3 d-xl-flex pl-4">
+            <app-code-fixed-nav [items]="navItems" [currentSection]="currentSection">
+            </app-code-fixed-nav>
+         </nav>
+      </div>
+   </div>
+
+   <div class="tab-pane fade" id="api" role="tabpanel">
+      <div class="mb-4">
+         <h5 class="header-subtitulo-caixa">Cx-Card-Button</h5>
+         <p>
+            Componente de exibição ou interação com funcionalidade de checkbox ou radio.
+         </p>
+         <p>Usar como: <span class="citation-highlight">cx-card-button</span></p>
+
+         <h6 class="header-subtitulo-caixa">Propriedades</h6>
+         <div class="table-responsive">
+            <table class="table table-bordered table-caixa">
+               <thead class="bg-cinza-light border-top">
+                  <tr>
+                     <th>Nome</th>
+                     <th>Descrição</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>@Input( )<br>cardId: string</td>
+                     <td>
+                        Nome ou identificação opcional para o componente.<br>
+                        Valor: ""
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>@Input( )<br>data: any</td>
+                     <td>
+                        Atributo opcional que será emitido internamente no evento CardButtonEventChecked.<br>
+                        Valor: null
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>@Input( )<br>leftIcon: string</td>
+                     <td>
+                        Classe do ícone a ser exibido no lado esquerdo, ex: "fa fa-home".<br>
+                        Padrão: ""
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>@Input( )<br>leftTitle: string | number</td>
+                     <td>
+                        Título a ser exibido do lado esquerdo, em uma tag 'h5'.<br>
+                        Padrão: ""
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>@Input( )<br>leftText: string</td>
+                     <td>
+                        Texto a ser exibido do lado esquerdo, em uma tag 'span'.<br>
+                        Padrão: ""
+                     </td>
+                  </tr>
+                  <!--                   <tr>
+                     <td>@Input( )<br>styles: { [class: string]: any } | string</td>
+                     <td>
+                        Objeto de estilo a ser passado para o card-button-wrapper.<br>
+                        Ex: styles="{ height: '300px'; color: 'blue' }"
+                     </td>
+                  </tr> -->
+                  <tr>
+                     <td>@Input( )<br>type: string</td>
+                     <td>
+                        Define o visual do container de checkbox / radio. Pode ser 'checkbox', 'radio',
+                        ou algum valor falso (null / false / '') para não exibir o container.<br>
+                        Padrão: ''
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>@Output( )<br>checked: EventEmitter&#60;CardButtonCheckEvent></td>
+                     <td>
+                        Evento emitido ao ativar o botão, contendo o próprio componente e seus atributos
+                        na propriedade (target).
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>isChecked( ): boolean</td>
+                     <td>
+                        Retorna o estado atual do componente, se está marcado ou não.
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>toggleValue( ): void</td>
+                     <td>
+                        Troca o estado atual do componente.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div> <!-- Table-responsive -->
+
+         <br>
+
+         <table class="table table-bordered table-caixa">
+            <thead class="bg-cinza-light">
+               <th>CardButtonEventChecked</th>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>
+                     target: CardButtonComponent<br>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+
+      </div>
+   </div>
+
+   <div class="tab-pane fade" id="exemplos" role="tabpanel">
+      <section id="cardButtonSandbox" class="mb-5">
+
+         <div class="row">
+            <div class="col">
+               <cx-card-button leftTitle="Largura: 100%" [styles]="{ width: '100%' }"></cx-card-button>
+            </div>
+            <div class="col">
+               HTML
+               <pre><code [highlight]="cardWidth"></code></pre>
+            </div>
+         </div>
+
+         <hr>
+
+         <div class="row">
+            <div class="col">
+               <cx-card-button leftIcon="fa fa-user" leftTitle="Altura: auto" leftText="Conteúdo extenso"
+               [styles]="{ height: 'auto' }">
+                  <div class="py-3">
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, deserunt enim aspernatur suscipit
+                     doloribus eius deleniti porro, qui tempore totam officiis 
+                     nemo distinctio dolore perspiciatis ratione
+                     voluptas non maxime doloremque!
+                     <br><br>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, deserunt enim aspernatur suscipit
+                     doloribus eius deleniti porro, qui tempore totam officiis 
+                     nemo distinctio dolore perspiciatis ratione
+                     voluptas non maxime doloremque!
+                  </div>
+               </cx-card-button>
+            </div>
+            <div class="col">
+               HTML
+               <pre><code [highlight]="cardHeight"></code></pre>
+            </div>
+         </div>
+
+      </section>
+   </div>
+</div>

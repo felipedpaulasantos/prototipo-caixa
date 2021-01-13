@@ -71,6 +71,13 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         isLink: true,
         enabled: true
       },
+      {
+        name: "Card-button",
+        iconClass: "fa fa-lg fa-dot-circle",
+        url: "/componentes/card-button",
+        isLink: true,
+        enabled: true
+      },
 /*       {
         name: 'Tabelas',
         iconClass: 'fa fa-lg fa-table',

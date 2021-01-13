@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { Injectable } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
 
 const TOOLBAR_HEIGHT = 64;
 
@@ -17,7 +17,7 @@ export abstract class ComponentesInterface {
 
 	scrollTo(section) {
     window.scrollBy({ top: - TOOLBAR_HEIGHT });
- 		document.querySelector('#' + section)
+ 		document.querySelector("#" + section)
       .scrollIntoView({ behavior: "smooth" });
 	}
 
@@ -26,18 +26,18 @@ export abstract class ComponentesInterface {
   }
 
 	copiarConteudo(val: string): void {
-    const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
+    const selBox = document.createElement("textarea");
+    selBox.style.position = "fixed";
+    selBox.style.left = "0";
+    selBox.style.top = "0";
+    selBox.style.opacity = "0";
     selBox.value = val;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(selBox);
-    this.toastr.info('Conteúdo copiado!');
+    this.toastr.info("Conteúdo copiado!");
 	}
 
 	setSectionOffset() {

@@ -1,17 +1,17 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from "@angular/core";
+import { FormBuilder, FormControl, Validators } from "@angular/forms";
 
-import { NgxSpinnerService } from 'ngx-spinner';
-import { ToastrService } from 'ngx-toastr';
-import { CardButtonCheckEvent } from 'src/app/guia-caixa/components/card-button/card-button-check-event';
-import { CardButtonComponent } from 'src/app/guia-caixa/components/card-button/card-button.component';
-import { StepperItem } from 'src/app/guia-caixa/components/stepper/stepper-component/stepper-item';
-import { TabberItem } from 'src/app/guia-caixa/components/stepper/tabber-component/tabber-item';
-import { TimelineItem, TimelineOrientation, TimelineState } from 'src/app/guia-caixa/components/timeline/timeline/timeline-item';
+import { NgxSpinnerService } from "ngx-spinner";
+import { ToastrService } from "ngx-toastr";
+import { CardButtonCheckEvent } from "src/app/guia-caixa/components/card-button/card-button-check-event";
+import { CardButtonComponent } from "src/app/guia-caixa/components/card-button/card-button.component";
+import { StepperItem } from "src/app/guia-caixa/components/stepper/stepper-component/stepper-item";
+import { TabberItem } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
+import { TimelineItem, TimelineOrientation, TimelineState } from "src/app/guia-caixa/components/timeline/timeline/timeline-item";
 
 @Component({
-  templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.scss']
+  templateUrl: "./upload.component.html",
+  styleUrls: ["./upload.component.scss"]
 })
 export class UploadComponent implements OnInit {
 
@@ -142,14 +142,14 @@ code6Html = `<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timelin
   }
 
   get isCpfNisInvalid(): boolean {
-    return (this.formCpfNis.get('cpf').invalid && this.formCpfNis.get('nis').invalid)
-    || (this.formCpfNis.get('cpf').valid && this.formCpfNis.get('nis').valid);
+    return (this.formCpfNis.get("cpf").invalid && this.formCpfNis.get("nis").invalid)
+    || (this.formCpfNis.get("cpf").valid && this.formCpfNis.get("nis").valid);
   }
 
   pesquisarCpf(): void {
-    this.spinner.show('global');
+    this.spinner.show("global");
     setTimeout(() => {
-      this.spinner.hide('global');
+      this.spinner.hide("global");
       this.toastr.success("Cliente pesquisado com sucesso");
       this.clientePesquisado();
     }, 2000);
@@ -158,8 +158,8 @@ code6Html = `<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timelin
   clientePesquisado() {
     this.cliente = {
       nome: "Fulano da Silva",
-      cpf: this.formCpfNis.get('cpf').value || this.formCpfNis.get('nis').value || "111.111.111-11",
-      nis: this.formCpfNis.get('nis').value || "",
+      cpf: this.formCpfNis.get("cpf").value || this.formCpfNis.get("nis").value || "111.111.111-11",
+      nis: this.formCpfNis.get("nis").value || "",
       dataNascimento: "01/01/1920",
       nomeMae: "Ciclana da Silva"
     };
