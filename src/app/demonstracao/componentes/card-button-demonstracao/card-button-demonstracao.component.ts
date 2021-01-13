@@ -112,14 +112,18 @@ export class CardButtonExemplo {
 ></cx-card-button>`.trim();
 
   cardHeight = `<cx-card-button leftIcon="fa fa-user" leftTitle="Altura: auto" leftText="Conteúdo extenso"
-  [styles]="{ height: 'auto' }">
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, deserunt enim aspernatur suscipit
-  doloribus eius deleniti porro, qui tempore totam officiis nemo distinctio dolore perspiciatis ratione
-  voluptas non maxime doloremque!
-  <br>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, deserunt enim aspernatur suscipit
-  doloribus eius deleniti porro, qui tempore totam officiis nemo distinctio dolore perspiciatis ratione
-  voluptas non maxime doloremque!
+[styles]="{ height: 'auto' }">
+    <div class="py-3">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, deserunt enim aspernatur suscipit
+      doloribus eius deleniti porro, qui tempore totam officiis 
+      nemo distinctio dolore perspiciatis ratione
+      voluptas non maxime doloremque!
+      <br><br>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, deserunt enim aspernatur suscipit
+      doloribus eius deleniti porro, qui tempore totam officiis 
+      nemo distinctio dolore perspiciatis ratione
+      voluptas non maxime doloremque!
+    </div>
 </cx-card-button>`.trim();
 
 }
