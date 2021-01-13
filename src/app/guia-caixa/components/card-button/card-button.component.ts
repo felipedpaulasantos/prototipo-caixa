@@ -53,7 +53,7 @@ export class CardButtonComponent implements OnInit, ControlValueAccessor {
   leftText = "";
 
   /**
-   * @param styles Objeto de estilo a ser passado para o card-button-wrapper. Ex: [styles]="{ height: '300px'; font-color: 'blue' }"
+   * @param styles Objeto de estilo a ser passado para o card-button-wrapper. Ex: [styles]="{ height: '300px'; color: 'blue' }"
    * @type object
   */
   @Input()

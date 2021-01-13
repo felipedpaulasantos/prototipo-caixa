@@ -4,21 +4,21 @@
 <hr class="header-line-caixa">
 
 <ul class="nav nav-pills border-bottom tab-caixa" role="tablist">
-  <li class="nav-item">
-    <a cx-ripple class="nav-link text-uppercase active" data-toggle="tab" href="#visaoGeral" role="tab">
-      Visão Geral
-    </a>
+	<li class="nav-item">
+		<a cx-ripple class="nav-link text-uppercase active" data-toggle="tab" href="#visaoGeral" role="tab">
+			Visão Geral
+		</a>
 	</li>
 	<li class="nav-item">
-    <a cx-ripple class="nav-link text-uppercase" data-toggle="tab" href="#api" role="tab">
-      API
-    </a>
-  </li>
-  <li class="nav-item">
-    <a cx-ripple class="nav-link text-uppercase" data-toggle="tab" href="#exemplos" role="tab">
-      Exemplos
-    </a>
-  </li>
+		<a cx-ripple class="nav-link text-uppercase" data-toggle="tab" href="#api" role="tab">
+			API
+		</a>
+	</li>
+	<li class="nav-item">
+		<a cx-ripple class="nav-link text-uppercase" data-toggle="tab" href="#exemplos" role="tab">
+			Exemplos
+		</a>
+	</li>
 </ul>
 
 <br>
@@ -27,58 +27,59 @@
 	<div class="tab-pane fade show active" id="visaoGeral" role="tabpanel">
 		<div class="row no-gutters">
 			<section #scrollElement class="col-12 col-xl-9 pr-2">
-            <app-documentacao-template id="painelTabber" [cardTitle]="'Tabber'" [codeViewId]="'viewTabber'"
-               [htmlTabId]="'htmlCodeTabber'" [htmlCode]="htmlCodeTabber" [tsTabId]="'tsCodeTabber'"
-               [tsCode]="tsCodeTabber">
-               <div class="descricao">
-                  <p>O componente alternativo Tabber <span class="citation-highlight">cx-tabber</span> difere do Stepper
-                     ao não implementar qualquer relação de sequência entre as etapas, apenas organizando o conteúdo
-                     em abas.</p>
+				<app-documentacao-template id="painelTabber" [cardTitle]="'Tabber'" [codeViewId]="'viewTabber'"
+					[htmlTabId]="'htmlCodeTabber'" [htmlCode]="htmlCodeTabber" [tsTabId]="'tsCodeTabber'"
+					[tsCode]="tsCodeTabber">
+					<div class="descricao">
+						<p>O componente alternativo Tabber <span class="citation-highlight">cx-tabber</span> difere do Stepper
+							ao não implementar qualquer relação de sequência entre as etapas, apenas organizando o conteúdo
+							em abas.</p>
 
-                  <p>O atributo <span class="citation-highlight">tabs</span> recebe uma lista de objetos do tipo <span
-                        class="citation-highlight">TabberItem</span>,
-                     com as propriedades "name" e "icon".
-                  </p>
+						<p>O atributo <span class="citation-highlight">tabs</span> recebe uma lista de objetos do tipo <span
+								class="citation-highlight">TabberItem</span>,
+							com as propriedades "name" e "icon".
+						</p>
 
-                  <p>Todas as funcionalidades de navegação do Stepper estão presentes também neste componente.
-                  </p>
-               </div>
+						<p>Todas as funcionalidades de navegação do Stepper estão presentes também neste componente.
+						</p>
+					</div>
 
-               <div class="conteudo">
-                  <cx-tabber [tabs]="abas" #tabberVisaoGeral>
-                     <ng-container *ngFor="let aba of abas">
-                        <div *cxStepper>
-                           <h2 class="text-center">{{ aba.name }}</h2>
-                        </div>
-                     </ng-container>
-                  </cx-tabber>
+					<div class="conteudo">
+						<cx-tabber [tabs]="abas" #tabberVisaoGeral>
+							<ng-container *ngFor="let aba of abas">
+								<div *cxStepper>
+									<h2 class="text-center">{{ aba.name }}</h2>
+								</div>
+							</ng-container>
+						</cx-tabber>
 
-                  <button [disabled]="tabberVisaoGeral.currentTab == 0" (click)="tabberVisaoGeral.first()"
-                     class="btn btn-grafite btn-caixa mx-2">
-                     Primeiro
-                  </button>
+						<button [disabled]="tabberVisaoGeral.currentTab == 0" (click)="tabberVisaoGeral.first()"
+							class="btn btn-grafite btn-caixa mx-2">
+							Primeiro
+						</button>
 
-                  <button [disabled]="tabberVisaoGeral.currentTab == 0" (click)="tabberVisaoGeral.previous()"
-                     class="btn btn-cinza btn-caixa mx-2">
-                     Voltar
-                  </button>
+						<button [disabled]="tabberVisaoGeral.currentTab == 0" (click)="tabberVisaoGeral.previous()"
+							class="btn btn-cinza btn-caixa mx-2">
+							Voltar
+						</button>
 
-                  <button [disabled]="tabberVisaoGeral.currentTab == abas.length - 1" (click)="tabberVisaoGeral.next()"
-                     class="btn btn-primary btn-caixa mx-2">
-                     Avançar
-                  </button>
+						<button [disabled]="tabberVisaoGeral.currentTab == abas.length - 1" (click)="tabberVisaoGeral.next()"
+							class="btn btn-primary btn-caixa mx-2">
+							Avançar
+						</button>
 
-                  <button [disabled]="tabberVisaoGeral.currentTab == abas.length - 1" (click)="tabberVisaoGeral.last()"
-                     class="btn btn-grafite btn-caixa mx-2">
-                     Último
-                  </button>
-               </div>
-            </app-documentacao-template>
+						<button [disabled]="tabberVisaoGeral.currentTab == abas.length - 1" (click)="tabberVisaoGeral.last()"
+							class="btn btn-grafite btn-caixa mx-2">
+							Último
+						</button>
+					</div>
+				</app-documentacao-template>
 			</section>
 
 			<nav id="navSection" class="d-none col-3 d-xl-flex pl-4">
-            <app-code-fixed-nav [items]="[{ id: 'painelTabber', name: 'Tabber - Visão Geral' }]" [currentSection]="currentSection"></app-code-fixed-nav>
-         </nav>
+				<app-code-fixed-nav [items]="[{ id: 'painelTabber', name: 'Tabber - Visão Geral' }]"
+					[currentSection]="currentSection"></app-code-fixed-nav>
+			</nav>
 		</div>
 	</div>
 
@@ -211,28 +212,30 @@
 
 			<div class="card card-caixa">
 				<div class="card-body">
+					<div class="d-flex justify-content-center">
+						<button title="Primeiro" class="btn btn-grafite btn-caixa mr-2"
+							[disabled]="tabberExemplo.currentTab == 0" (click)="tabberExemplo.first()">
+							<i class="fa fa-angle-double-left fa-lg"></i>
+						</button>
+
+						<button [disabled]="tabberExemplo.currentTab <= 0" (click)="tabberExemplo.previous()"
+							class="btn btn-cinza btn-caixa mr-2">
+							<i class="fa fa-angle-left fa-lg"></i>
+						</button>
+
+						<button [disabled]="tabberExemplo.currentTab == (tabs.length - 1)" (click)="tabberExemplo.next()"
+							class="btn btn-primary btn-caixa">
+							<i class="fa fa-angle-right fa-lg"></i>
+						</button>
+
+						<button title="Último" class="btn btn-grafite btn-caixa ml-2"
+							[disabled]="tabberExemplo.currentTab == (tabs.length - 1)" (click)="tabberExemplo.last()">
+							<i class="fa fa-angle-double-right fa-lg"></i>
+						</button>
+					</div>
+
 					<div class="row">
 						<div class="col d-flex align-items-center">
-							<button title="Primeiro" class="btn btn-grafite btn-caixa mr-2"
-								[disabled]="tabberExemplo.currentTab == 0" (click)="tabberExemplo.first()">
-								<i class="fa fa-angle-double-left fa-lg"></i>
-							</button>
-
-							<button [disabled]="tabberExemplo.currentTab <= 0" (click)="tabberExemplo.previous()"
-								class="btn btn-cinza btn-caixa mr-2">
-								<i class="fa fa-angle-left fa-lg"></i>
-							</button>
-
-							<button [disabled]="tabberExemplo.currentTab == (tabs.length - 1)"
-								(click)="tabberExemplo.next()" class="btn btn-primary btn-caixa">
-								<i class="fa fa-angle-right fa-lg"></i>
-							</button>
-
-							<button title="Último" class="btn btn-grafite btn-caixa ml-2"
-								[disabled]="tabberExemplo.currentTab == (tabs.length - 1)" (click)="tabberExemplo.last()">
-								<i class="fa fa-angle-double-right fa-lg"></i>
-							</button>
-
 							<button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="tabs.length == 2"
 								(click)="tabs.pop(); tabs = [].concat(tabs)">
 								<i class="fa fa-minus fa-lg"></i>

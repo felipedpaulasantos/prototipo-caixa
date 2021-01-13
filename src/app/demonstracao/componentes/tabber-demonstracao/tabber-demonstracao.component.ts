@@ -8,7 +8,7 @@ import { ComponentesInterface } from "../componentes-interface";
   styleUrls: ["./tabber-demonstracao.component.scss"],
   host: { "(window:scroll)": "onScroll($event)" }
 })
-export class TabberDemonstracaoComponent  extends ComponentesInterface {
+export class TabberDemonstracaoComponent extends ComponentesInterface {
 
   constructor(
     public toastr: ToastrService,

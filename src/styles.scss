@@ -184,37 +184,37 @@ hr.header-line-caixa {
     &.toast-success {
       &:before {
         content: "\f00c";
-        color: $cx-color-success;
+        color: $cx-color-limao;
       }
       .toast-progress {
-        background-color: $cx-color-success-light;
+        background-color: $cx-color-limao-light;
       }
     }
     &.toast-error {
       &:before {
         content: "\f00d";
-        color: $cx-color-danger;
+        color: $cx-color-goiaba;
       }
       .toast-progress {
-        background-color: $cx-color-danger-light;
+        background-color: $cx-color-goiaba-light;
       }
     }
     &.toast-info {
       &:before {
         content: "\f129";
-        color: $cx-color-info;
+        color: $cx-color-ceu;
       }
       .toast-progress {
-        background-color: $cx-color-info-light;
+        background-color: $cx-color-ceu-light;
       }
     }
     &.toast-warning {
       &:before {
         content: "\f12a";
-        color: $cx-color-warning;
+        color: $cx-color-tangerina;
       }
       .toast-progress {
-        background-color: $cx-color-warning-light;
+        background-color: $cx-color-tangerina-light;
       }
     }
     &:hover {
