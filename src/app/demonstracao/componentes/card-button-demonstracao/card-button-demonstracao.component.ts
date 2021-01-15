@@ -6,7 +6,8 @@ import { ComponentesInterface } from "../componentes-interface";
 
 @Component({
   templateUrl: "./card-button-demonstracao.component.html",
-  styleUrls: ["./card-button-demonstracao.component.scss"]
+  styleUrls: ["./card-button-demonstracao.component.scss"],
+  host: { "(window:scroll)": "onScroll($event)" }
 })
 export class CardButtonDemonstracaoComponent extends ComponentesInterface {
 
@@ -35,6 +36,8 @@ export class CardButtonDemonstracaoComponent extends ComponentesInterface {
 
   user;
   email;
+
+  stylesExample = "styles='{ height: '300px'; }'";
 
   htmlCodeCardButton = `<cx-card-button leftIcon="fa fa-home">
   <h5>Lorem Ipsum</h5>

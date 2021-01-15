@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 import { StepperItem } from "src/app/guia-caixa/components/stepper/stepper-component/stepper-item";
-import { TabberItem } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
 import { BootstrapTheme } from "src/app/guia-caixa/constants/constants";
-import { CodeFixedNavComponent, CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
+import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 import { ComponentesInterface } from "../componentes-interface";
 
 @Component({
@@ -12,6 +11,10 @@ import { ComponentesInterface } from "../componentes-interface";
   host: { "(window:scroll)": "onScroll($event)" }
 })
 export class StepperDemonstracaoComponent extends ComponentesInterface implements OnInit {
+
+  constructor(public toastr: ToastrService) {
+    super(toastr);
+  }
 
   @ViewChild("scrollElement") scrollElement;
 
@@ -24,6 +27,8 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
     { id: "painelStepperGuiado", name: "Stepper - Navegação guiada" },
     { id: "painelStepperInterno", name: "Stepper - Conteúdo Interno" }
   ];
+
+  stylesExample = "styles='{ height: '300px'; }'";
 
   showTabsStepperPadrao = false;
   htmlCodeStepperPadrao = `<cx-stepper [steps]="passos" [currentStep]="passoAtual" (changeStep)="passoAtual = $event"></cx-stepper>
@@ -240,10 +245,6 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
   showCompletedMessage = true;
 
   temas = BootstrapTheme.getTemas();
-
-  constructor(public toastr: ToastrService) {
-    super(toastr);
-  }
 
   ngOnInit(): void { }
 

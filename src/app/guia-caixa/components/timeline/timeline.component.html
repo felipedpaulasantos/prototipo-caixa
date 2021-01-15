@@ -3,7 +3,7 @@
 ">
    <perfect-scrollbar #perfectScroll>
       <ul class="timeline">
-         <li [title]="item?.title" class="timeline-item timeline-item-{{ item.state }}" *ngFor="let item of items; let index = index; let last = last">
+         <li class="timeline-item timeline-item-{{ item.state }}" *ngFor="let item of items; let index = index; let last = last">
             <div class="timeline-item-title" [title]="getFormattedText(item)">
                <div class="timeline-item-icon">
                   <ng-container [ngSwitch]="item?.state">

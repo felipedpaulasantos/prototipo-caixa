@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TimelineComponent } from './timeline/timeline.component';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { TimelineComponent } from "./timeline.component";
+import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 
 
 

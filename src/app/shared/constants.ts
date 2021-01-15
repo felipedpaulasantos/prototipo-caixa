@@ -78,6 +78,13 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         isLink: true,
         enabled: true
       },
+      {
+        name: "Timeline",
+        iconClass: "fa fa-lg fa-calendar-alt",
+        url: "/componentes/timeline",
+        isLink: true,
+        enabled: true
+      }
 /*       {
         name: 'Tabelas',
         iconClass: 'fa fa-lg fa-table',

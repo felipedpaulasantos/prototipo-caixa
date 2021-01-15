@@ -22,6 +22,8 @@ export class TabberDemonstracaoComponent extends ComponentesInterface {
   spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   currentSection = "painelTabber";
 
+  stylesExample = "styles='{ height: '300px'; }'";
+
   htmlCodeTabber = `<cx-tabber [tabs]="abas" #tabberExemplo>
   <ng-container *ngFor="let aba of abas">
      <div *cxStepper>
