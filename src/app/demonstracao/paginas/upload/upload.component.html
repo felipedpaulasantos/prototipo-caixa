@@ -50,7 +50,7 @@
             </div>
           </div>
           <div class="card-footer text-right">
-            <button class="btn btn-caixa btn-primary">
+            <button class="btn btn-caixa btn-principal">
               <i class="fa fa-edit"></i>
               Editar
             </button>
@@ -81,7 +81,7 @@
                     <input #inputUploadDocIdentidade name="arquivo" type="file"
                       accept=".pdf, .tiff, .jpg, .jpeg, .png, .gif" class="d-none"
                       (change)="uploadArquivo($event.target.files)">
-                    <button class="btn btn-outline-primary btn-caixa mx-auto d-flex align-items-center"
+                    <button class="btn btn-outline-principal btn-caixa mx-auto d-flex align-items-center"
                       (click)="inputUploadDocIdentidade.click();" title="Upload de arquivo">
                       <i class="fas fa-file-upload fa-2x mr-2"></i>
                       Selecione um arquivo para upload...
@@ -181,7 +181,7 @@
                   <td>{{ contrato.situacao }}</td>
                   <td>{{ contrato.valor | currency: 'R$' }}</td>
                   <td>
-                    <button class="btn btn-caixa btn-sm btn-outline-primary mr-2" title="Detalhar">
+                    <button class="btn btn-caixa btn-sm btn-outline-principal mr-2" title="Detalhar">
                       <i class="fa fa-search"></i>
                     </button>
                     <button class="btn btn-caixa btn-sm btn-outline-danger mr-2" title="Excluir">

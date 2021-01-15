@@ -58,12 +58,12 @@
                         <h2 class="text-center">{{ passo.title }}</h2>
 
                         <button [disabled]="passoAtual == 0" (click)="passoAtual = passoAtual - 1"
-                           class="btn btn-cinza btn-caixa mx-2">
+                           class="btn btn-cancel btn-caixa mx-2">
                            Voltar
                         </button>
 
                         <button [disabled]="passoAtual == passos.length - 1" (click)="passoAtual = passoAtual + 1"
-                           class="btn btn-primary btn-caixa mx-2">
+                           class="btn btn-principal btn-caixa mx-2">
                            Avançar
                         </button>
                      </ng-container>
@@ -92,12 +92,12 @@
                         <h2 class="text-center">{{ passo.title }}</h2>
 
                         <button [disabled]="passoAtual == 0" (click)="passoAtual = passoAtual - 1"
-                           class="btn btn-cinza btn-caixa mx-2">
+                           class="btn btn-cancel btn-caixa mx-2">
                            Voltar
                         </button>
 
                         <button [disabled]="passoAtual == passos.length - 1" (click)="passoAtual = passoAtual + 1"
-                           class="btn btn-primary btn-caixa mx-2">
+                           class="btn btn-principal btn-caixa mx-2">
                            Avançar
                         </button>
                      </ng-container>
@@ -151,17 +151,17 @@
                   </cx-stepper>
 
                   <button [disabled]="stepperInterno.currentStep == 0" (click)="stepperInterno.first()"
-                     class="btn btn-grafite btn-caixa mx-2">
+                     class="btn btn-aux btn-caixa mx-2">
                      Primeiro
                   </button>
 
                   <button [disabled]="stepperInterno.currentStep == 0" (click)="stepperInterno.previous()"
-                     class="btn btn-cinza btn-caixa mx-2">
+                     class="btn btn-cancel btn-caixa mx-2">
                      Voltar
                   </button>
 
                   <button [disabled]="stepperInterno.currentStep == passos.length - 1" (click)="stepperInterno.next()"
-                     class="btn btn-primary btn-caixa mx-2">
+                     class="btn btn-principal btn-caixa mx-2">
                      Avançar
                   </button>
                </div>
@@ -181,7 +181,7 @@
             <p>
                Diretiva que permite a inclusão de conteúdo dinâmico dentro do componente Stepper.
                O asterisco é necessário por se tratar de uma
-               <a class="text-info" href="https://angular.io/guide/structural-directives" target="blank">diretiva
+               <a class="text-link" href="https://angular.io/guide/structural-directives" target="blank">diretiva
                   estrutural</a>.
             </p>
             <p>Usar como: <span class="citation-highlight">*cxStepper</span> no elemento a ser exibido</p>
@@ -325,22 +325,22 @@
                   </div>
                </div>
                <div class="d-flex justify-content-center">
-                  <button title="Primeiro" class="btn btn-grafite btn-caixa mr-2"
+                  <button title="Primeiro" class="btn btn-aux btn-caixa mr-2"
                      [disabled]="stepperFree.currentStep == 0" (click)="stepperFree.first()">
                      <i class="fa fa-angle-double-left fa-lg"></i>
                   </button>
 
                   <button [disabled]="stepperFree.currentStep <= 0" (click)="stepperFree.previous()"
-                     class="btn btn-cinza btn-caixa mr-2">
+                     class="btn btn-cancel btn-caixa mr-2">
                      <i class="fa fa-angle-left fa-lg"></i>
                   </button>
 
                   <button [disabled]="stepperFree.currentStep == (steps.length - 1)" (click)="stepperFree.next()"
-                     class="btn btn-primary btn-caixa">
+                     class="btn btn-principal btn-caixa">
                      <i class="fa fa-angle-right fa-lg"></i>
                   </button>
 
-                  <button title="Último" class="btn btn-grafite btn-caixa ml-2"
+                  <button title="Último" class="btn btn-aux btn-caixa ml-2"
                      [disabled]="true"
                      (click)="stepperFree.toStepByIndex(steps.length - 1)">
                      <i class="fa fa-angle-double-right fa-lg"></i>

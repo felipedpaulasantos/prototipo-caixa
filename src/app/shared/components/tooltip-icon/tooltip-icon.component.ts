@@ -3,7 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 @Component({
   selector: 'app-tooltip-icon',
   template: `<span
-    class="text-info-dark ml-2"
+    class="text-link-dark ml-2"
     role="button"
     onmouseenter="$(this).tooltip('show')"
     data-toggle="top"

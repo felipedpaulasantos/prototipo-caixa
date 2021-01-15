@@ -10,7 +10,7 @@ import { StepperItem } from "./stepper-item";
   // tslint:disable-next-line:component-selector
   selector: "cx-stepper",
   templateUrl: "./stepper.component.html",
-  styleUrls: ["./stepper.component.css"],
+  styleUrls: ["./stepper.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StepperComponent implements OnInit, OnChanges, AfterContentInit {

@@ -57,9 +57,9 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   public showCancelar = false;
 
-  public classTitulo = "text-primary";
+  public classTitulo = "text-principal";
 
-  public btnOkClass = 'btn btn-primary btn-caixa';
+  public btnOkClass = 'btn btn-principal btn-caixa';
   public btnCancelarClass = 'btn btn-secondary btn-caixa';
 
   public modalDialogClass = "modal-lg";

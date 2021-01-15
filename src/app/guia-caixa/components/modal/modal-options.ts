@@ -12,7 +12,7 @@ export const defaultModalOptions: ModalOptions = {
   btCancelarTexto: "Fechar",
   showCancelar: false,
   classTitulo: "header-principal-caixa",
-  btnOkClass: 'btn btn-primary btn-caixa',
+  btnOkClass: 'btn btn-principal btn-caixa',
   btnCancelarClass: 'btn btn-secondary btn-caixa',
   modalBodyClass: "",
   modalHeaderClass: "",
