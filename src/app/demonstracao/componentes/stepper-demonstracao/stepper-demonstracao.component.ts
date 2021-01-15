@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 import { StepperItem } from "src/app/guia-caixa/components/stepper/stepper-component/stepper-item";
-import { TabberItem } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
 import { BootstrapTheme } from "src/app/guia-caixa/constants/constants";
-import { CodeFixedNavComponent, CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
+import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 import { ComponentesInterface } from "../componentes-interface";
 
 @Component({
@@ -12,6 +11,10 @@ import { ComponentesInterface } from "../componentes-interface";
   host: { "(window:scroll)": "onScroll($event)" }
 })
 export class StepperDemonstracaoComponent extends ComponentesInterface implements OnInit {
+
+  constructor(public toastr: ToastrService) {
+    super(toastr);
+  }
 
   @ViewChild("scrollElement") scrollElement;
 
@@ -25,6 +28,8 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
     { id: "painelStepperInterno", name: "Stepper - Conteúdo Interno" }
   ];
 
+  stylesExample = "styles='{ height: '300px'; }'";
+
   showTabsStepperPadrao = false;
   htmlCodeStepperPadrao = `<cx-stepper [steps]="passos" [currentStep]="passoAtual" (changeStep)="passoAtual = $event"></cx-stepper>
 
@@ -33,12 +38,12 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
     <h2 class="text-center">{{ passo }}</h2>
 
     <button [disabled]="passoAtual == 0"
-    (click)="passoAtual = passoAtual - 1" class="btn btn-cinza btn-caixa mx-2">
+    (click)="passoAtual = passoAtual - 1" class="btn btn-cancel btn-caixa mx-2">
         Voltar
     </button>
 
     <button [disabled]="passoAtual == passos.length - 1"
-    (click)="passoAtual = passoAtual + 1" class="btn btn-primary btn-caixa mx-2">
+    (click)="passoAtual = passoAtual + 1" class="btn btn-principal btn-caixa mx-2">
         Avançar
     </button>
   </ng-container>
@@ -74,12 +79,12 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
     <h2 class="text-center">{{ passo }}</h2>
 
     <button [disabled]="passoAtual == 0"
-    (click)="passoAtual = passoAtual - 1" class="btn btn-cinza btn-caixa mx-2">
+    (click)="passoAtual = passoAtual - 1" class="btn btn-cancel btn-caixa mx-2">
         Voltar
     </button>
 
     <button [disabled]="passoAtual == passos.length - 1"
-    (click)="passoAtual = passoAtual + 1" class="btn btn-primary btn-caixa mx-2">
+    (click)="passoAtual = passoAtual + 1" class="btn btn-principal btn-caixa mx-2">
         Avançar
     </button>
   </ng-container>
@@ -117,17 +122,17 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
   </div>
 
   <button [disabled]="stepperExemplo.currentStep == 0"
-  (click)="stepperExemplo.first()" class="btn btn-grafite btn-caixa mx-2">
+  (click)="stepperExemplo.first()" class="btn btn-aux btn-caixa mx-2">
      Primeiro
   </button>
 
   <button [disabled]="stepperExemplo.currentStep == 0"
-  (click)="stepperExemplo.previous()" class="btn btn-cinza btn-caixa mx-2">
+  (click)="stepperExemplo.previous()" class="btn btn-cancel btn-caixa mx-2">
      Voltar
   </button>
 
   <button [disabled]="stepperExemplo.currentStep == passos.length - 1"
-  (click)="stepperExemplo.next()" class="btn btn-primary btn-caixa mx-2">
+  (click)="stepperExemplo.next()" class="btn btn-principal btn-caixa mx-2">
      Avançar
   </button>`.trim();
 
@@ -177,17 +182,17 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
 </cx-stepper>
 
 <button [disabled]="stepperInterno.currentStep == 0"
-(click)="stepperInterno.first()" class="btn btn-grafite btn-caixa mx-2">
+(click)="stepperInterno.first()" class="btn btn-aux btn-caixa mx-2">
   Primeiro
 </button>
 
 <button [disabled]="stepperInterno.currentStep == 0"
-(click)="stepperInterno.previous()" class="btn btn-cinza btn-caixa mx-2">
+(click)="stepperInterno.previous()" class="btn btn-cancel btn-caixa mx-2">
   Voltar
 </button>
 
 <button [disabled]="stepperInterno.currentStep == passos.length - 1"
-(click)="stepperInterno.next()" class="btn btn-primary btn-caixa mx-2">
+(click)="stepperInterno.next()" class="btn btn-principal btn-caixa mx-2">
   Avançar
 </button>`.trim();
 
@@ -240,10 +245,6 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
   showCompletedMessage = true;
 
   temas = BootstrapTheme.getTemas();
-
-  constructor(public toastr: ToastrService) {
-    super(toastr);
-  }
 
   ngOnInit(): void { }
 

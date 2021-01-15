@@ -235,6 +235,7 @@ hr.header-line-caixa {
   }
 }
 
+
 /* Inputs */
 
 label {
@@ -389,10 +390,9 @@ ul.tab-caixa li a {
   color: $cx-color-grafite-light;
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
-  opacity: $cx-text-opacity-1;
   font-family: $cx-font-family-bold;
   border-bottom: solid 2px transparent;
-  @extend .ripple-dark;
+/*   @extend .ripple-dark; */
   &.active,
   &:active {
     color: $cx-color-primary !important;
@@ -505,7 +505,12 @@ ul.tab-caixa li a {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-color: $cx-color-cinza-darker;
-  transition: background-size 0.3s, background-color 0.3s, border-color 0.3s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: 
+    background-size 0.3s, 
+    background-color 0.3s, 
+    border-color 0.3s ease-in-out, 
+    box-shadow 0.15s ease-in-out,
+    opacity 0.3s;
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -621,12 +626,15 @@ select + button.input-caixa {
 
 .list-group-caixa .list-group-item {
   background-color: transparent !important;
+  border-top: transparent !important;
+  border-right: transparent !important;
+  border-bottom: transparent !important;
   border: solid 2px transparent !important;
   border-radius: 0 !important;
-  @extend .ripple-dark;
+/*   @extend .ripple-dark; */
   &.active {
     color: $cx-color-primary;
-    border-left: solid 2px $cx-color-primary !important;
+/*     border-left: solid 2px $cx-color-primary !important; */
   }
 }
 
@@ -704,12 +712,12 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 .menu-item {
   &.active.has-submenu {
-    color: $cx-color-primary !important;
-    box-shadow: 0 0.6rem 0.4rem -0.4rem rgba(0, 0, 0, 0.1) !important;
+    color: $cx-color-primary;
+    box-shadow: 0 0.6rem 0.4rem -0.4rem rgba(0, 0, 0, 0.1);
   }
   &.active.is-link {
-    background-color: $cx-color-primary !important;
-    color: $cx-color-cinza-lighter !important;
+    background-color: $cx-color-primary;
+    color: $cx-color-cinza-lighter;
   }
 }
 
@@ -809,131 +817,182 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   cursor: pointer;
 }
 
-/* 
-  TEMA ESCURO
-*/
 
-body.dark-theme {
-  /* BODY */
-  background-color: $cx-color-grafite !important;
-  color: $cx-color-cinza-lighter;
 
-  /* MENU LATERAL */
-  #menuLateral {
-    background-color: $cx-color-grafite-darker;
-    #botaoSipan {
-      @extend .btn, .btn-info, .text-uppercase;
-    }
-  }
-  .menu-item {
-    &.active.has-submenu {
-      color: $cx-color-info-light !important;
-    }
-    &.active.is-link {
-      background-color: $cx-color-info-dark !important;
-      color: $cx-color-cinza-lighter !important;
-    }
-  }
-  .submenu {
-    background-color: rgba(0, 0, 0, 0.07);
-    overflow: hidden;
-    transition: 0.2s ease;
-    list-style: none;
-    padding-left: 0;
-    border-bottom: 1px solid $cx-color-grafite;
-  }
 
-  /* NAVBAR */
+
+
+body.tema-claro {
+
+  @extend .bg-white;
+  @extend .text-grafite;
+
   #navbarTop {
-    background: $cx-color-grafite-darker !important;
+    @extend .bg-primary;
+    @extend .text-white;
   }
 
-  /* CARDS */
-  .card {
-    background-color: $cx-color-grafite-darker;
+  input {
+    @extend .text-grafite;
   }
 
-  /* TABELAS */
-  .table-caixa {
-    color: $cx-color-cinza-lighter;
-  }
-
-  /* HEADERS */
   .header-principal-caixa {
-    color: $cx-color-info;
+    @extend .text-primary;
   }
   .header-subtitulo-caixa {
-    color: $cx-color-cinza;
+    @extend .text-grafite;
   }
 
-  /* TAB-CAIXA */
+  .text-primary {
+    @extend .text-primary;
+  }
+  .text-link {
+    @extend .text-primary;
+  }
+
+  .btn-principal {
+    @extend .btn, .btn-caixa, .btn-primary;
+  }
+  .btn-outline-principal {
+    @extend .btn, .btn-caixa, .btn-outline-primary;
+  }
+  .btn-aux {
+    @extend .btn, .btn-caixa, .btn-grafite;
+  }
+  .btn-outline-aux {
+    @extend .btn, .btn-caixa, .btn-outline-grafite;
+  }
+  .btn-cancel {
+    @extend .btn, .btn-caixa, .btn-cinza;
+  }
+  .btn-outline-cancel {
+    @extend .btn, .btn-caixa, .btn-outline-cinza;
+  }
+
+  .card {
+    @extend .bg-white;
+    @extend .text-grafite;
+    @extend .border-cinza;
+  }
+
+  .menu-item.has-submenu.active {
+    @extend .text-primary;
+  }
+  .menu-item.is-link.active {
+    @extend .bg-primary;
+    @extend .text-white;
+  }
+
+  .list-group-item.active {
+    @extend .text-white;
+    @extend .bg-primary;
+  }
+
   ul.tab-caixa li a {
-    color: $cx-color-cinza-lighter;
-    &.active,
-    &:active {
-      color: $cx-color-info-light !important;
-      background-color: transparent !important;
-      border-bottom: solid 2px $cx-color-info-light;
-    }
-    &.disabled,
-    &:disabled {
-      opacity: $cx-text-opacity-3;
-    }
+    @extend .text-grafite;
   }
 
-  /* LIST GROUP */
-  .list-group-caixa .list-group-item {
-    &.active {
-      color: $cx-color-info-light;
-      border-left: solid 2px $cx-color-info-light !important;
-    }
+  ul.tab-caixa li a.active {
+    @extend .bg-white;
+    @extend .text-primary;
+    @extend .border-primary;
   }
 
-  /* INPUTS */
-  input,
-  .input-caixa-field > .bootstrap-select > button {
-    color: $cx-color-cinza;
-    background-color: transparent;
-  }
-  .input-caixa,
-  .input-caixa-wrapper {
-    @extend .input-caixa-info-light;
-    color: $cx-color-cinza;
-  }
-  @include placeholder {
-    color: $cx-color-cinza-dark;
+  .border-bottom {
+    @extend .border-cinza;
   }
 
-  /* TOASTR (MENSAGENS) */
-  .toast-container {
-    color: $cx-color-grafite;
-    > div {
-      background-color: $cx-color-cinza;
-      div.toast-title {
-        color: $cx-color-grafite;
-      }
-      div.toast-message {
-        color: $cx-color-grafite !important;
-      }
-    }
+  .table {
+    @extend .text-grafite;
   }
 
-  /* DROPDOWN */
-  .dropdown-menu {
-    background-color: $cx-color-grafite;
-    .dropdown-item {
-      color: $cx-color-cinza-lighter;
-      &:hover {
-        background-color: $cx-color-grafite-darker;
-      }
-      &.active {
-        background-color: $cx-color-grafite-darker;
-      }
-    }
+}
+
+
+
+
+body.tema-escuro {
+
+  @extend .bg-grafite-dark;
+  @extend .text-white;
+
+  #navbarTop {
+    @extend .bg-grafite-darker;
+    @extend .text-white;
   }
 
-  /* SPINNER */
-  .overlay {
-    background-color: rgba(0, 0, 0, 0.6) !important;
+  input {
+    @extend .text-white;
   }
+
+  .header-principal-caixa {
+    @extend .text-ceu;
+  }
+  .header-subtitulo-caixa {
+    @extend .text-white;
+  }
+
+  .text-primary {
+    @extend .text-ceu;
+  }
+  .text-link {
+    @extend .text-ceu;
+  }
+
+  .btn-principal {
+    @extend .btn, .btn-caixa, .btn-ceu;
+  }
+  .btn-outline-principal {
+    @extend .btn, .btn-caixa, .btn-outline-ceu;
+  }
+  .btn-aux {
+    @extend .btn, .btn-caixa, .btn-cinza;
+  }
+  .btn-outline-aux {
+    @extend .btn, .btn-caixa, .btn-outline-cinza;
+  }
+  .btn-cancel {
+    @extend .btn, .btn-caixa, .btn-grafite-light;
+  }
+  .btn-outline-cancel {
+    @extend .btn, .btn-caixa, .btn-outline-grafite-light;
+  }
+
+  .card {
+    @extend .bg-grafite-dark;
+    @extend .text-white;
+    @extend .border-grafite-light;
+  }
+
+  .menu-item.active.has-submenu {
+    @extend .text-ceu;
+  }
+  .menu-item.active.is-link {
+    @extend .bg-ceu;
+    @extend .text-white;
+  }
+
+  .list-group-item.active {
+    @extend .text-white;
+    @extend .bg-ceu;
+  }
+
+  ul.tab-caixa li a {
+    @extend .text-white;
+  }
+
+  ul.tab-caixa li a.active {
+    @extend .bg-grafite-dark;
+    @extend .text-ceu;
+    @extend .border-ceu;
+  }
+
+  .border-bottom {
+    @extend .border-grafite-light;
+  }
+
+  .table {
+    @extend .text-white;
+  }
+
 }

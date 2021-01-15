@@ -22,6 +22,8 @@ export class TabberDemonstracaoComponent extends ComponentesInterface {
   spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   currentSection = "painelTabber";
 
+  stylesExample = "styles='{ height: '300px'; }'";
+
   htmlCodeTabber = `<cx-tabber [tabs]="abas" #tabberExemplo>
   <ng-container *ngFor="let aba of abas">
      <div *cxStepper>
@@ -31,22 +33,22 @@ export class TabberDemonstracaoComponent extends ComponentesInterface {
 </cx-tabber>
 
 <button [disabled]="tabberExemplo.currentTab == 0"
-(click)="tabberExemplo.first()" class="btn btn-grafite btn-caixa mx-2">
+(click)="tabberExemplo.first()" class="btn btn-aux btn-caixa mx-2">
   Primeiro
 </button>
 
 <button [disabled]="tabberExemplo.currentTab == 0"
-(click)="tabberExemplo.previous()" class="btn btn-cinza btn-caixa mx-2">
+(click)="tabberExemplo.previous()" class="btn btn-cancel btn-caixa mx-2">
   Voltar
 </button>
 
 <button [disabled]="tabberExemplo.currentTab == abas.length - 1"
-(click)="tabberExemplo.next()" class="btn btn-primary btn-caixa mx-2">
+(click)="tabberExemplo.next()" class="btn btn-principal btn-caixa mx-2">
   Avançar
 </button>
 
 <button [disabled]="tabberExemplo.currentTab == abas.length - 1"
-(click)="tabberExemplo.last()" class="btn btn-grafite btn-caixa mx-2">
+(click)="tabberExemplo.last()" class="btn btn-aux btn-caixa mx-2">
    Último
 </button>`.trim();
 

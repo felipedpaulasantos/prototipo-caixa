@@ -7,7 +7,8 @@ import { CardButtonCheckEvent } from "src/app/guia-caixa/components/card-button/
 import { CardButtonComponent } from "src/app/guia-caixa/components/card-button/card-button.component";
 import { StepperItem } from "src/app/guia-caixa/components/stepper/stepper-component/stepper-item";
 import { TabberItem } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
-import { TimelineItem, TimelineOrientation, TimelineState } from "src/app/guia-caixa/components/timeline/timeline/timeline-item";
+import { TimelineItem, TimelineState } from "src/app/guia-caixa/components/timeline/timeline-item";
+
 
 @Component({
   templateUrl: "./upload.component.html",

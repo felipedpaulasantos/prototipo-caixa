@@ -22,6 +22,28 @@
     </div>
 
     <div id="painelIconesUsuario" class="ml-auto ml-lg-0">
+
+      <div class="notification-container mr-2">
+        <div class="dropdown">
+          <button class="btn btn-caixa shadow-none border-0 dropdown-toggle text-white" 
+          data-toggle="dropdown" title="Modo Escuro (Experimental)">
+            <i role="button" class="fa fa-palette mr-2 fa-2x"></i>
+          </button>
+          <div class="dropdown-menu">
+            <div (click)="setDarkTheme()" class="dropdown-item">
+              <div class="border rounded bg-grafite square mr-2"></div>
+              Tema escuro
+            </div>
+            <div (click)="setLightTheme()" class="dropdown-item">
+              <div class="border rounded bg-white square mr-2"></div>
+              Tema claro
+            </div>
+          </div>
+        </div>
+
+        
+      </div> 
+
       <div class="notification-container mr-4" data-toggle="dropdown" role="button">
         <i role="button" class="fa fa-bell fa-2x" title="Notificações"></i>
         <span class="notification-badge">2</span>
@@ -41,10 +63,6 @@
           Você tem 5 mensagens
         </span>
       </div>
-      
-<!--       <div class="notification-container">
-        <i role="button" class="fa fa-adjust fa-2x" title="Modo Escuro (Experimental)" (click)="changeTheme()"></i>
-      </div> -->
     </div>
 
     <div class="mx-4">

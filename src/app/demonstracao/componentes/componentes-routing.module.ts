@@ -10,6 +10,7 @@ import { SelectComponent } from "./select/select.component";
 import { StepperDemonstracaoComponent } from "./stepper-demonstracao/stepper-demonstracao.component";
 import { TabberDemonstracaoComponent } from "./tabber-demonstracao/tabber-demonstracao.component";
 import { CardButtonDemonstracaoComponent } from "./card-button-demonstracao/card-button-demonstracao.component";
+import { TimelineDemonstracaoComponent } from "./timeline-demonstracao/timeline-demonstracao.component";
 
 
 const routes: Routes = [
@@ -92,6 +93,15 @@ const routes: Routes = [
       title: "Card-button",
       breadcrumb: "Card-button",
       animation: "Card-button"
+    }
+  },
+  {
+    path: "timeline",
+    component: TimelineDemonstracaoComponent,
+    data: {
+      title: "Timeline",
+      breadcrumb: "Timeline",
+      animation: "Timeline"
     }
   },
   {

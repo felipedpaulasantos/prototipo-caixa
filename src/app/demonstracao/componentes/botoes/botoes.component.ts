@@ -25,9 +25,9 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
   sectionOffset = 0;
   currentSection = "painelBotoes";
 
-  htmlCodeBotoes = `<button class="btn btn-caixa btn-cinza">Botão</button>`.trim();
+  htmlCodeBotoes = `<button class="btn btn-caixa btn-cancel">Botão</button>`.trim();
 
-  htmlCodeBotoesTematicos = `        <button class="btn btn-caixa btn-primary">Primário</button> &nbsp;
+  htmlCodeBotoesTematicos = `        <button class="btn btn-caixa btn-principal">Primário</button> &nbsp;
 <button class="btn btn-caixa btn-danger-dark">Erro com tom escuro</button> &nbsp;
 <button class="btn btn-caixa btn-apoio-light">Apoio com tom claro</button> &nbsp;
 <button class="btn btn-caixa btn-outline-info">Info - outline</button>`.trim();
@@ -35,7 +35,7 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
   htmlCodeBotoesTamanho = `        <button class="btn btn-caixa btn-outline-dark btn-sm">Pequeno</button> &nbsp;
 <button class="btn btn-caixa btn-secondary btn-lg">Grande</button> &nbsp;
 <button class="btn btn-caixa btn-secondary btn-lg disabled">Grande desabilitado</button> &nbsp;
-<button class="btn btn-caixa btn-outline-primary">
+<button class="btn btn-caixa btn-outline-principal">
   <i class="fa fa-edit mr-2"></i>
   Com ícone
 </button>`.trim();
@@ -46,7 +46,7 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
 <button class="btn btn-caixa btn-flat rounded-circle p-3">
   <i class="fa fa-bars fa-2x"></i>
 </button>
-<button class="btn btn-caixa btn-flat text-primary rounded-circle p-2">
+<button class="btn btn-caixa btn-flat text-principal rounded-circle p-2">
   <i class="fa fa-home fa-2x"></i>
 </button>
 <button class="btn btn-caixa btn-outline-apoio rounded-circle p-2">

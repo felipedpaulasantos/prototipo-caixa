@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, ViewChild, ElementRef, AfterViewInit, SimpleChanges, OnChanges } from '@angular/core';
-import { PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
-import { TimelineItem, TimelineOrientation } from './timeline-item';
+import { Component, OnInit, ChangeDetectionStrategy, Input, ViewChild, AfterViewInit, SimpleChanges, OnChanges } from "@angular/core";
+import { PerfectScrollbarComponent } from "ngx-perfect-scrollbar";
+import { TimelineItem, TimelineOrientation } from "./timeline-item";
 
 interface StateIcon {
   state: string;
@@ -8,14 +8,15 @@ interface StateIcon {
 }
 
 @Component({
-  selector: 'cx-timeline',
-  templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.css'],
+  // tslint:disable-next-line:component-selector
+  selector: "cx-timeline",
+  templateUrl: "./timeline.component.html",
+  styleUrls: ["./timeline.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TimelineComponent implements OnInit, OnChanges, AfterViewInit {
 
-  @ViewChild('perfectScroll')
+  @ViewChild("perfectScroll", { static: false })
   perfectScroll: PerfectScrollbarComponent;
 
   readonly SUCCESS_STATE: StateIcon = { state: "success", icon: "fa fa-check" };
@@ -74,7 +75,6 @@ export class TimelineComponent implements OnInit, OnChanges, AfterViewInit {
       console.log(this.perfectScroll);
       this.perfectScroll.directiveRef.update();
       this.perfectScroll.directiveRef.scrollToBottom();
-      
     }
   }
 
