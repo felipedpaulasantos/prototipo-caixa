@@ -926,24 +926,24 @@ body.tema-escuro {
   }
 
   .header-principal-caixa {
-    @extend .text-ceu;
+    @extend .text-secondary;
   }
   .header-subtitulo-caixa {
     @extend .text-white;
   }
 
   .text-primary {
-    @extend .text-ceu;
+    @extend .text-secondary;
   }
   .text-link {
-    @extend .text-ceu;
+    @extend .text-secondary;
   }
 
   .btn-principal {
-    @extend .btn, .btn-caixa, .btn-ceu;
+    @extend .btn, .btn-caixa, .btn-secondary;
   }
   .btn-outline-principal {
-    @extend .btn, .btn-caixa, .btn-outline-ceu;
+    @extend .btn, .btn-caixa, .btn-outline-secondary;
   }
   .btn-aux {
     @extend .btn, .btn-caixa, .btn-cinza;
@@ -965,16 +965,16 @@ body.tema-escuro {
   }
 
   .menu-item.active.has-submenu {
-    @extend .text-ceu;
+    @extend .text-secondary;
   }
   .menu-item.active.is-link {
-    @extend .bg-ceu;
+    @extend .bg-secondary;
     @extend .text-white;
   }
 
   .list-group-item.active {
     @extend .text-white;
-    @extend .bg-ceu;
+    @extend .bg-secondary;
   }
 
   ul.tab-caixa li a {
@@ -983,8 +983,8 @@ body.tema-escuro {
 
   ul.tab-caixa li a.active {
     @extend .bg-grafite-dark;
-    @extend .text-ceu;
-    @extend .border-ceu;
+    @extend .text-secondary;
+    @extend .border-secondary;
   }
 
   .border-bottom {
