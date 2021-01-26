@@ -16,7 +16,13 @@
       <i *ngIf="!isFullscreen" class="fa fa-lg fa-expand" title="Tela Cheia"></i>
       <i *ngIf="isFullscreen" class="fa fa-lg fa-compress" title="Sair do modo Tela Cheia"></i>
    </a>
+   <a cx-ripple (click)="destruir()"
+   [ngClass]="{'d-none': !draggable || isFullscreen}"
+   title="Destruir" class="btn btn-caixa text-grafite-light shadow-none rounded-circle p-2">
+      <i cx-ripple class="fa fa-lg fa-times"></i>
+   </a>
    <a cx-ripple (mousedown)="moved()"
+   (mouseup)="onMouseUp($event)"
    [ngClass]="{'d-none': !draggable || isFullscreen}"
    title="Mover" #moveButton class="btn btn-caixa text-grafite-light shadow-none rounded-circle p-2">
       <i cx-ripple class="fa fa-lg fa-arrows-alt"></i>

@@ -1,23 +1,23 @@
 import {
   Component, Input, ComponentFactoryResolver, ViewChild, ElementRef, ViewContainerRef, Type, ComponentRef,
   Injector, OnInit, OnDestroy, HostListener
-} from '@angular/core';
-import { SideMenuService } from './side-menu.service';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { filter, tap, map, mergeMap } from 'rxjs/operators';
-import { AccordionConfig } from 'src/app/shared/components/accordion/types/accordion-config';
-import { AccordionMenu } from 'src/app/shared/components/accordion/types/accordion-menu';
-import { StyleService, Tema } from 'src/app/guia-caixa/services/style.service';
-import { mockedSideMenuItems } from 'src/app/shared/constants';
+} from "@angular/core";
+import { SideMenuService } from "./side-menu.service";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
+import { Subscription } from "rxjs";
+import { filter, tap, map, mergeMap } from "rxjs/operators";
+import { AccordionConfig } from "src/app/shared/components/accordion/types/accordion-config";
+import { AccordionMenu } from "src/app/shared/components/accordion/types/accordion-menu";
+import { StyleService, Tema } from "src/app/guia-caixa/services/style.service";
+import { mockedSideMenuItems } from "src/app/shared/constants";
 
 const MENU_ROUTE_PROPERTY = "menuLateral";
 const MOBILE_BREAKPOINT = 991.9;
 
 @Component({
-  selector: 'app-side-menu',
-  templateUrl: './side-menu.component.html',
-  styleUrls: ['./side-menu.component.scss']
+  selector: "app-side-menu",
+  templateUrl: "./side-menu.component.html",
+  styleUrls: ["./side-menu.component.scss"]
 })
 export class SideMenuComponent implements OnInit, OnDestroy {
 

@@ -1,17 +1,20 @@
-import { Component, OnInit, ElementRef, AfterContentInit, ChangeDetectorRef, ViewChild, Input, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterContentInit, ViewChild,
+  Input, Renderer2, OnDestroy, ViewContainerRef, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'cx-card',
-  templateUrl: './card-caixa.component.html',
-  styleUrls: ['./card-caixa.component.scss'],
-  host: { 'class': 'card card-caixa' }
+  selector: "cx-card",
+  templateUrl: "./card-caixa.component.html",
+  styleUrls: ["./card-caixa.component.scss"],
+  host: { "class": "card card-caixa" }
 })
-export class CardCaixaComponent implements OnInit, AfterContentInit {
+export class CardCaixaComponent implements OnInit, AfterContentInit, OnDestroy {
 
   cardElement: any;
   cardHeaderElement: any;
   cardBodyElement: any;
   cardFooterElement: any;
+
+  close = new EventEmitter<boolean>();
 
   @ViewChild("moveButton", { static: true })
   moveButton: ElementRef;
@@ -36,10 +39,12 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   minimizable = true;
   isMinimized = false;
 
+  isClosed = false;
+
   constructor(
     element: ElementRef,
-    private renderer: Renderer2
-  ) {
+    private renderer: Renderer2,
+    public vcRef: ViewContainerRef  ) {
     this.cardElement = element.nativeElement;
   }
 
@@ -86,11 +91,11 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
 
     this.renderer.setStyle(this.cardElement, "minHeight", stringHeight);
     this.renderer.setStyle(this.cardElement, "height", stringHeight);
-    this.renderer.setStyle(this.cardElement, "maxHeight", stringHeight);
+/*     this.renderer.setStyle(this.cardElement, "maxHeight", stringHeight); */
 
     this.renderer.setStyle(this.cardElement, "minWidth", stringWidth);
     this.renderer.setStyle(this.cardElement, "width", stringWidth);
-    this.renderer.setStyle(this.cardElement, "maxWidth", stringWidth);
+/*     this.renderer.setStyle(this.cardElement, "maxWidth", stringWidth); */
   }
 
   resetOriginalPosition(): void {
@@ -120,6 +125,12 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
   moved(): void {
     this.wasMoved = true;
     this.preventResize();
+  }
+
+  onMouseUp(ev) {}
+
+  setPosition(position: string) {
+    this.renderer.setStyle(this.cardElement, "position", position);
   }
 
   toggleFullscreen(): void {
@@ -202,5 +213,12 @@ export class CardCaixaComponent implements OnInit, AfterContentInit {
     if (this.cardFooterElement) { this.renderer.removeClass(this.cardFooterElement, "d-none"); }
     this.isMinimized = false;
   }
+
+  destruir() {
+    this.close.emit(true);
+    this.isClosed = true;
+  }
+
+  ngOnDestroy(): void { }
 
 }
