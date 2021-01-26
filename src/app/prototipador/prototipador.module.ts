@@ -6,10 +6,11 @@ import { PrototipadorComponent } from "./prototipador.component";
 import { SharedModule } from "../shared/shared.module";
 import { GuiaCaixaModule } from "../guia-caixa/guia-caixa.module";
 import { ResizableModule } from "angular-resizable-element";
+import { MenuElementosComponent } from './menu-elementos/menu-elementos.component';
 
 
 @NgModule({
-  declarations: [PrototipadorComponent],
+  declarations: [PrototipadorComponent, MenuElementosComponent],
   imports: [
     CommonModule,
     PrototipadorRoutingModule,
