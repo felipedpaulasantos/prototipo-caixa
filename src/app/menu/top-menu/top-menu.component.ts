@@ -6,8 +6,9 @@ import { UserService } from "../../authentication/users/user.service";
 import { User } from "../../authentication/users/user";
 import { ModalService } from "src/app/guia-caixa/services/modal.service";
 import { SideMenuService } from "../side-menu/side-menu.service";
-import { StyleService, Tema } from "src/app/guia-caixa/services/style.service";
+import { GuiaCaixaStyleService, Tema } from "src/app/guia-caixa/services/style-guia-caixa.service";
 import { LOGO_CAIXA_BRANCO_SRC, LOGO_COMPLETO_BRANCO_SRC, Meses } from "src/app/guia-caixa/constants/constants";
+import { StyleService } from "src/app/shared/services/style.service";
 
 @Component({
   selector: "app-top-menu",
@@ -32,7 +33,7 @@ export class TopMenuComponent implements OnInit {
     private userService: UserService,
     private modalService: ModalService,
     private sidemenuService: SideMenuService,
-    public styleService: StyleService,
+    private styleService: StyleService,
     private renderer: Renderer2
   ) {
     this.user$ = this.userService.perfil;
@@ -97,37 +98,16 @@ export class TopMenuComponent implements OnInit {
     this.dataHora = `${hora}h${minutos} - ${dia} ${mes} ${ano}`;
   }
 
-  changeTheme() {
-    if (document.querySelector("body").classList.contains("dark-theme")) {
-      this.setLightTheme();
-    } else {
-      this.setDarkTheme();
-    }
-  }
-
-  setDarkTheme() {
-    document.querySelector("body").classList.remove("tema-claro");
-    document.querySelector("body").classList.add("tema-escuro");
-    localStorage.setItem("theme", "dark");
-  }
-
-  setLightTheme() {
-    document.querySelector("body").classList.remove("tema-escuro");
-    document.querySelector("body").classList.add("tema-claro");
-    localStorage.setItem("theme", "light");
-  }
-
-  setDefaultTheme() {
-    if (localStorage.getItem("theme") === "dark") {
-      this.setDarkTheme();
-    } else {
-      this.setLightTheme();
-    }
+  setFontSize(fontSize: string): void {
+    this.styleService.setFontSize(fontSize);
   }
 
   setTheme(tema: string) {
-    this.renderer.removeClass(document.body, "tema-claro tema-escuro");
-    this.renderer.addClass(document.body, tema);
+    this.styleService.setGlobalTheme(tema);
+  }
+
+  setDefaultTheme() {
+    this.styleService.setDefaultStyle();
   }
 
 }

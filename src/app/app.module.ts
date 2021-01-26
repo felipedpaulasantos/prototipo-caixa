@@ -71,7 +71,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
  	providers: [
 		{ provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
  		{ provide: HTTP_INTERCEPTORS,	useClass: LoaderInterceptor, multi: true },
-		{ provide: LOCALE_ID, useValue: "pt" }
+    { provide: LOCALE_ID, useValue: "pt" }
 	],
 	bootstrap: [ AppComponent ]
 })

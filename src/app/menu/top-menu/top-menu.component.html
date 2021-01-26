@@ -23,25 +23,42 @@
 
     <div id="painelIconesUsuario" class="ml-auto ml-lg-0">
 
-      <div class="notification-container mr-2">
+      <div class="notification-container mx-2">
+        <div class="dropdown">
+          <button class="btn btn-caixa shadow-none border-0 dropdown-toggle text-white" 
+          data-toggle="dropdown" title="Modo Escuro (Experimental)">
+            <i role="button" class="fa fa-font mr-2 fa-2x"></i>
+          </button>
+          <div class="dropdown-menu">
+            <div (click)="setFontSize('13px')" class="dropdown-item">
+              <div class="border rounded bg-grafite square mr-2"></div>
+              13pc
+            </div>
+            <div (click)="setFontSize('14px')" class="dropdown-item">
+              <div class="border rounded bg-white square mr-2"></div>
+              14px
+            </div>
+          </div>
+        </div>
+      </div> 
+
+      <div class="notification-container mx-2">
         <div class="dropdown">
           <button class="btn btn-caixa shadow-none border-0 dropdown-toggle text-white" 
           data-toggle="dropdown" title="Modo Escuro (Experimental)">
             <i role="button" class="fa fa-palette mr-2 fa-2x"></i>
           </button>
           <div class="dropdown-menu">
-            <div (click)="setDarkTheme()" class="dropdown-item">
+            <div (click)="setTheme('darkTheme')" class="dropdown-item">
               <div class="border rounded bg-grafite square mr-2"></div>
               Tema escuro
             </div>
-            <div (click)="setLightTheme()" class="dropdown-item">
+            <div (click)="setTheme('lightTheme')" class="dropdown-item">
               <div class="border rounded bg-white square mr-2"></div>
               Tema claro
             </div>
           </div>
         </div>
-
-        
       </div> 
 
       <div class="notification-container mr-4" data-toggle="dropdown" role="button">
