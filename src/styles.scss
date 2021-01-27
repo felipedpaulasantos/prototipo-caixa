@@ -538,6 +538,9 @@ input[type="number"] {
 .bootstrap-select > select.mobile-device:focus + .dropdown-toggle {
   outline: none !important;
 }
+.bootstrap-select .btn.dropdown-toggle {
+  box-shadow: none;
+}
 .bs-searchbox {
   padding: 0.8rem 0.5rem !important;
 }

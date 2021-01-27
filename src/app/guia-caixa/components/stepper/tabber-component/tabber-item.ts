@@ -1,5 +1,11 @@
 export interface TabberItem {
    name: string;
    icon: string;
-   hasError?: boolean;
+   state?: TabberItemState | string;
+}
+
+export enum TabberItemState {
+   SUCCESS = "success",
+   WARNING = "warning",
+   ERROR = "error"
 }

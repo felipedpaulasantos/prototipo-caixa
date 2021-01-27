@@ -5,7 +5,7 @@ import {
 } from "@angular/core";
 import { StepperDirective } from "../stepper-directive";
 import { StepperOrientation } from "../stepper-orientation";
-import { TabberItem } from "./tabber-item";
+import { TabberItem, TabberItemState } from "./tabber-item";
 
 /** @class Componente Tabber para organizar conteúdo dinâmico ou estático em abas */
 @Component({
@@ -21,6 +21,8 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   */
   readonly MINIMUM_TABS = 2;
   readonly MAXIMUM_TABS = 7;
+
+  readonly tabberState = TabberItemState;
 
   /**
    * Mapeia as templates dinâmicas com a diretiva *tabber, caso seja inserido conteúdo dentro do componente;
