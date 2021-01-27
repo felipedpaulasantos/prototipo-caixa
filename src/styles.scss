@@ -121,7 +121,7 @@ hr.header-line-caixa {
   cursor: pointer;
 }
 
-.btn-caixa {
+.btn {
   padding-top: 0.6em;
   padding-bottom: 0.6em;
   padding-left: 1.5em;
@@ -133,26 +133,26 @@ hr.header-line-caixa {
   vertical-align: unset;
 }
 
-.btn-caixa.btn-primario,
-.btn.caixa.btn-warning,
-.btn-caixa.btn-success,
-.btn-caixa.btn-danger,
-.btn-caixa.btn-principal {
+.btn.btn-primario,
+.btn.btn-warning,
+.btn.btn-success,
+.btn.btn-danger,
+.btn.btn-principal {
   color: $cx-color-cinza-lighter;
 }
 
-.btn-caixa:not(.disabled):not(:disabled).active,
-.btn-caixa:not(.disabled):not(:disabled):active,
-.btn-caixa:not(.disabled):not(:disabled).focus,
-.btn-caixa:not(.disabled):not(:disabled):focus {
+.btn:not(.disabled):not(:disabled).active,
+.btn:not(.disabled):not(:disabled):active,
+.btn:not(.disabled):not(:disabled).focus,
+.btn:not(.disabled):not(:disabled):focus {
   outline: 0 !important;
   outline-offset: 0 !important;
   background-image: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
-.btn-caixa:disabled,
-.btn-caixa.disabled {
+.btn:disabled,
+.btn.disabled {
   cursor: not-allowed !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -172,7 +172,7 @@ hr.header-line-caixa {
 }
 
 .btn-flat {
-  @extend .btn-caixa;
+  @extend .btn;
   transition: 0.3s;
   background: transparent;
   box-shadow: none;
@@ -432,8 +432,8 @@ input[type="number"] {
   Tabs e Navs
 */
 
-ul.tab-caixa li a {
-  color: $cx-color-grafite-light;
+.nav.nav-pills li a {
+  color: var(--contrast);
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
   font-family: $cx-font-family-bold;
@@ -442,7 +442,7 @@ ul.tab-caixa li a {
   &.active,
   &:active {
     color: var(--secundario) !important;
-    background-color: $cx-color-cinza-lighter !important;
+    background-color: var(--base) !important;
     border-bottom: solid 2px var(--secundario);
     border-radius: 50;
     border-bottom-right-radius: 0;
@@ -864,6 +864,27 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+/* CLASSES TEMATICAS */
+
+.bg-principal {
+  background-color: var(--principal);
+}
+.bg-secundario {
+  background-color: var(--secundario);
+}
+.bg-base {
+  background-color: var(--base);
+}
+.bg-contrast {
+  background-color: var(--contrast);
+}
+.bg-cancel {
+  background-color: var(--cancel);
+}
+.bg-aux {
+  background-color: var(--aux);
 }
 
 

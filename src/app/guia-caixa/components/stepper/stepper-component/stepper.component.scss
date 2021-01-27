@@ -3,7 +3,7 @@
 /** STEPPER WRAPPER - div */
 
 .stepper-wrapper.horizontal {
-   max-height: 84px;
+   max-height: 6.5rem;
  }
  
  .stepper-wrapper.vertical {
@@ -41,7 +41,7 @@
  }
  
  .stepper-wrapper > .stepper.completed > .step.prior-step {
-   width: 90px;
+   width: 6.9rem;
  }
  
  /** STEP - li */
@@ -52,7 +52,7 @@
    width: 100%;
    display: flex;
    align-items: center;
-   height: 84px;
+   height: 6.5rem;
    transition:
       width 0.4s,
       visibility 0.4s,
@@ -67,7 +67,7 @@
  
  .stepper-wrapper.vertical > .stepper > .step {
    position: relative;
-   max-height: 500px;
+   max-height: 38.5rem;
    transition:
       max-height 0.4s,
       width 0.4s,
@@ -83,7 +83,7 @@
  }
  
  .stepper-wrapper > .stepper > .step.previous-step {
-   width: 90px;
+   width: 6.9rem;
  }
  
  .stepper-wrapper > .stepper.completed > .step {
@@ -98,35 +98,35 @@
  
  .stepper > .step:not(:last-of-type)::after {
    content: "";
-   background-color: gainsboro;
+   background-color: var(--cancel);
    display: inline-block;
  /*    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
  }
  
  .stepper-wrapper.horizontal > .stepper > .step:not(:last-of-type)::after {
    position: static;
-   min-width: 10px;
+   min-width: 0.77rem;
    width: 100%;
-   height: 1px;
+   height: 0.07rem;
  }
  
  .stepper-wrapper.vertical > .stepper > .step:not(:last-of-type)::after {
    position: absolute;
-   width: 2px;
+   width: 0.15rem;
    height: 100%;
-   top: 44px;
-   left: 25px;
+   top: 3.39rem;
+   left: 1.92rem;
  }
  
  /** STEP TITLE - span */
  
  .stepper-wrapper > .stepper > .step > .step-title {
-   line-height: 84px;
-   height: 84px;
+   line-height: 6.5rem;
+   height: 6.5rem;
    margin: 0;
-   padding: 0 4px 0 48px;
+   padding: 0 0.3rem 0 3.69rem;
    display: inline-block;
-   max-width: 245px;
+   max-width: 18.8rem;
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
@@ -136,20 +136,22 @@
  /** STEP TITLE ICON - div */
  
  .stepper-wrapper > .stepper > .step > .step-title > .step-icon {
+   display: flex;
+   align-items: center;
+   justify-content: center;
    z-index: 1;
    position: absolute;
-   height: 35px;
-   width: 35px;
+   height: 2.69rem;
+   width: 2.69rem;
    border-radius: 50%;
    text-align: center;
-   line-height: 33px;
-   font-size: 17px;
-   left: 1px;
-   top: 26.5px;
-   left: 9px;
-   margin-right: 1px;
-   color: #fff;
-   background-color: gray;
+   line-height: 2.5rem;
+   font-size: 1.3rem;
+   top: 2.03rem;
+   left: 0.69rem;
+   margin-right: 0.07rem;
+   color: var(--contrast);
+   background-color: var(--cancel);
    font-weight: 400;
  }
  
@@ -158,27 +160,28 @@
  }
  
  .stepper-wrapper > .stepper > .step.current-step > .step-title > .step-icon {
-   background-color: cx-variables.$cx-color-primary;
+   background-color: var(--secundario);
+   color: var(--cinza-lighter);
  }
  
  .stepper-wrapper > .stepper > .step.previous-step > .step-title > .step-icon {
-   border: 3px #008254 solid;
-   line-height: 27px;
+   border: 0.23rem var(--sucesso) solid;
+   line-height: 2.07rem;
  }
  
  .stepper-wrapper > .stepper.nav-guided:not(.completed) > .step.previous-step > .step-title > .step-icon {
-   background-color: white;
-   color: #008254;
+   background-color: var(--base);
+   color: var(--sucesso);
  }
  
  .stepper-wrapper > .stepper.nav-guided.completed > .step.previous-step > .step-title > .step-icon {
-   color: #fff;
-   background-color: gray;
+   color: var(--contrast);
+   background-color: var(--cancel);
    font-weight: 400;
  }
  
  .stepper-wrapper > .stepper > .step.last-step > .step-title > .step-icon {
-   background-color: #008254;
+   background-color: var(--sucesso);
  }
  
  /* ESTILOS ADICIONAIS */

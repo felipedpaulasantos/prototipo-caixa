@@ -58,7 +58,6 @@
   >a.paginate_button {
     margin-left: 0.5rem;
     @extend .btn,
-    .btn-caixa,
     .btn-flat,
     .btn-sm;
     &:not(.disabled) {
@@ -71,7 +70,6 @@
   }
   span a {
     @extend .btn,
-    .btn-caixa,
     .btn-sm,
     .btn-outline-primary;
     margin-left: 0.5rem;
@@ -86,7 +84,6 @@
   margin-bottom: 1rem;
   button.dt-button {
     @extend .btn,
-    .btn-caixa,
     .btn-sm,
     .btn-cinza;
   }

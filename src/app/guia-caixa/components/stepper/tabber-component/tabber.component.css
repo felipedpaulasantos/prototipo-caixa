@@ -1,7 +1,7 @@
 /** TABBER WRAPPER - div */
 
 .tabber-wrapper.horizontal {
-   max-height: 84px;
+   max-height: 6.5rem;
 }
 
 .tabber-wrapper.vertical {
@@ -35,7 +35,7 @@
    width: 100%;
    display: flex;
    align-items: center;
-   height: 84px;
+   height: 6.5rem;
 }
 
 .tabber-wrapper > .tabber > .tab:last-of-type {
@@ -50,32 +50,32 @@
 }
 
 .tabber-wrapper > .tabber > .tab:not(:last-of-type)::after {
-   top: 44px;
-   left: 25px;
-   background-color: gainsboro;
+   top: 3.39rem;
+   left: 1.92rem;
+   background-color: var(--cancel);
    /*    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
 .tabber-wrapper.horizontal > .tabber > .tab:not(:last-of-type)::after {
    position: static;
-   min-width: 10px;
+   min-width: 0.77rem;
    width: 100%;
-   height: 1px;
+   height: 0.07rem;
 }
 
 .tabber-wrapper.vertical > .tabber > .tab:not(:last-of-type)::after {
    position: absolute;
-   width: 2px;
+   width: 0.15rem;
    height: 100%;
 }
 
 /** TAB TITLE - div */
 
 .tabber-wrapper > .tabber > .tab > .tab-title {
-   line-height: 84px;
-   height: 84px;
+   line-height: 6.5rem;
+   height: 6.5rem;
    margin: 0;
-   padding: 0 4px 0 48px;
+   padding: 0 0.3rem 0 3.69rem;
    display: inline-block;
    max-width: 245px;
    white-space: nowrap;
@@ -91,38 +91,38 @@
    align-items: center;
    justify-content: center;
    position: absolute;
-   height: 35px;
-   width: 35px;
+   height: 2.69rem;
+   width: 2.69rem;
    border-radius: 50%;
    text-align: center;
-   line-height: 33px;
-   font-size: 17px;
-   left: 1px;
-   top: 26.5px;
-   left: 9px;
-   margin-right: 1px;
-   color: #fff;
-   background-color: gray;
+   line-height: 2.5rem;
+   font-size: 1.3rem;
+   top: 2.03rem;
+   left: 0.69rem;
+   margin-right: 0.07rem;
+   color: var(--contrast);
+   background-color: var(--cancel);
    font-weight: 400;
    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .tabber-wrapper > .tabber > .tab.current-tab > .tab-title > .tab-icon {
    background-color: var(--secundario);
+   color: var(--cinza-lighter);
 }
 
 .tabber-wrapper > .tabber > .tab > .tab-title > .tab-icon > .has-error-icon {
    display: flex;
    align-items: center;
+   justify-content: center;
    position: absolute;
-   right: -5px;
-   top: -5px;
-   border-radius: 10px;
-   padding: 3px;
+   right: -0.38rem;
+   top: -0.38rem;
+   border-radius: 0.77rem;
+   padding: 0.23rem;
    font-size: 0.7rem;
    width: 1.2rem;
    height: 1.2rem;
    margin: auto;
-   justify-content: center;
 }
 
 /* ESTILOS ADICIONAIS */
