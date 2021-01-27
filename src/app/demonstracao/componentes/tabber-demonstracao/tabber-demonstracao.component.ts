@@ -43,7 +43,7 @@ export class TabberDemonstracaoComponent extends ComponentesInterface {
 </button>
 
 <button [disabled]="tabberExemplo.currentTab == abas.length - 1"
-(click)="tabberExemplo.next()" class="btn btn-principal btn-caixa mx-2">
+(click)="tabberExemplo.next()" class="btn btn-secundario btn-caixa mx-2">
   Avançar
 </button>
 
@@ -80,9 +80,9 @@ export class StepperComponent {
 
   abas: TabberItem[] = [
     { name: "Home", icon: "fa fa-home" },
-    { name: "Componentes", icon: "fa fa-toolbox" },
+    { name: "Componentes", icon: "fa fa-toolbox", hasError: true },
     { name: "Tipografia", icon: "fa fa-font" },
-    { name: "Cores", icon: "fa fa-palette" },
+    { name: "Cores", icon: "fa fa-palette", hasError: false },
     { name: "Configurações", icon: "fa fa-wrench" },
     { name: "Páginas", icon: "fa fa-newspaper" }
   ];

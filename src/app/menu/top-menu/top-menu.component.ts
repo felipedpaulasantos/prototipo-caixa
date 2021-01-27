@@ -42,6 +42,12 @@ export class TopMenuComponent implements OnInit {
     this.setDefaultTheme();
   }
 
+  fontSizes = [
+    { name: "Médio", value: "13px" },
+    { name: "Grande", value: "14px" },
+    { name: "Extra Grande", value: "15px" }
+  ];
+
   ngOnInit(): void {
     this.user = this.setMockUser();
   }

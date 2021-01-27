@@ -6,8 +6,10 @@
       }">
          <div class="tab-title waves-effect" (click)="toTabByIndex(index)">
             <div class="tab-icon" [ngClass]="getActiveTheme(currentTab == index)">
-               <i *ngIf="currentTab == index" class="fa fa-check"></i>
+               <i *ngIf="currentTab == index" class="fa fa-arrow-down"></i>
                <i *ngIf="currentTab != index" class="{{ tab.icon }}"></i>
+               <i *ngIf="tab.hasError === true" class="fa fa-exclamation bg-warning text-dark has-error-icon"></i>
+               <i *ngIf="tab.hasError === false" class="fa fa-check bg-success text-white has-error-icon"></i>
             </div>
             <span class="tab-name">{{ tab.name }}</span>
          </div>

@@ -8,7 +8,7 @@ import { Subscription } from "rxjs";
 import { filter, tap, map, mergeMap } from "rxjs/operators";
 import { AccordionConfig } from "src/app/shared/components/accordion/types/accordion-config";
 import { AccordionMenu } from "src/app/shared/components/accordion/types/accordion-menu";
-import { StyleService, Tema } from "src/app/guia-caixa/services/style.service";
+import { GuiaCaixaStyleService, Tema } from "src/app/guia-caixa/services/style-guia-caixa.service";
 import { mockedSideMenuItems } from "src/app/shared/constants";
 
 const MENU_ROUTE_PROPERTY = "menuLateral";
@@ -26,7 +26,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     public menuService: SideMenuService,
-    public styleService: StyleService) { }
+    public styleService: GuiaCaixaStyleService) { }
 
   @Input() tema: Tema;
   options: AccordionConfig = { multi: false };

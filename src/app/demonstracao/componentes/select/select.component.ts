@@ -130,7 +130,7 @@ export class SelectComponent extends ComponentesInterface implements OnInit {
     </select>
   </cx-select>
 
-  <button (click)="atualizaOpcoes()" class="btn btn-caixa btn-secondary">
+  <button (click)="atualizaOpcoes()" class="btn btn-caixa btn-primario">
     <i class="fa fa-sync mr-2"></i>
     Atualizar opções
   </button>

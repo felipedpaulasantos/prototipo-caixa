@@ -43,7 +43,7 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
     </button>
 
     <button [disabled]="passoAtual == passos.length - 1"
-    (click)="passoAtual = passoAtual + 1" class="btn btn-principal btn-caixa mx-2">
+    (click)="passoAtual = passoAtual + 1" class="btn btn-secundario btn-caixa mx-2">
         Avançar
     </button>
   </ng-container>
@@ -84,7 +84,7 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
     </button>
 
     <button [disabled]="passoAtual == passos.length - 1"
-    (click)="passoAtual = passoAtual + 1" class="btn btn-principal btn-caixa mx-2">
+    (click)="passoAtual = passoAtual + 1" class="btn btn-secundario btn-caixa mx-2">
         Avançar
     </button>
   </ng-container>
@@ -132,7 +132,7 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
   </button>
 
   <button [disabled]="stepperExemplo.currentStep == passos.length - 1"
-  (click)="stepperExemplo.next()" class="btn btn-principal btn-caixa mx-2">
+  (click)="stepperExemplo.next()" class="btn btn-secundario btn-caixa mx-2">
      Avançar
   </button>`.trim();
 
@@ -192,7 +192,7 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
 </button>
 
 <button [disabled]="stepperInterno.currentStep == passos.length - 1"
-(click)="stepperInterno.next()" class="btn btn-principal btn-caixa mx-2">
+(click)="stepperInterno.next()" class="btn btn-secundario btn-caixa mx-2">
   Avançar
 </button>`.trim();
 
