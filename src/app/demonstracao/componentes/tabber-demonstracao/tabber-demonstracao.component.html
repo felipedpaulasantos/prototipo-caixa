@@ -64,7 +64,7 @@
 						</button>
 
 						<button [disabled]="tabberVisaoGeral.currentTab == abas.length - 1" (click)="tabberVisaoGeral.next()"
-							class="btn btn-principal btn-caixa mx-2">
+							class="btn btn-secundario btn-caixa mx-2">
 							Avançar
 						</button>
 
@@ -74,10 +74,57 @@
 						</button>
 					</div>
 				</app-documentacao-template>
+
+				<br>
+
+				<app-documentacao-template id="painelTabberState" [cardTitle]="'Tabber Estado'" [codeViewId]="'viewTabberState'"
+					[htmlTabId]="'htmlCodeTabberState'" [htmlCode]="htmlCodeTabberState" [tsTabId]="'tsCodeTabberState'"
+					[tsCode]="tsCodeTabberState">
+					<div class="descricao">
+						<p>O atributo opcional <span class="citation-highlight">state</span> pode receber um dos valores da enum
+							<span class="citation-highlight">TabberItemState</span>('success', 'warning' ou 'error'), acrescentando um pequeno ícone que representa
+							sua situação atual.
+						</p>
+					</div>
+
+					<div class="conteudo">
+						<cx-tabber [tabs]="abasComEstado" #tabberExemploState>
+							<ng-container *ngFor="let aba of abasComEstado">
+								<div *cxStepper class="text-center">
+									<h2>{{ aba.name }}</h2>
+									<h4 *ngIf="!aba.state">Conteúdo sem validação</h4>
+									<h4 *ngIf="aba.state === tabberState.SUCCESS">Conteúdo OK</h4>
+									<h4 *ngIf="aba.state === tabberState.WARNING">Conteúdo com erro não impeditivo</h4>
+									<h4 *ngIf="aba.state === 'error'">Conteúdo com erro impeditivo</h4>
+								</div>
+							</ng-container>
+						</cx-tabber>
+
+						<button [disabled]="tabberExemploState.currentTab == 0" (click)="tabberExemploState.first()"
+							class="btn btn-aux btn-caixa mt-3 mx-2">
+							Primeiro
+						</button>
+
+						<button [disabled]="tabberExemploState.currentTab == 0" (click)="tabberExemploState.previous()"
+							class="btn btn-cancel btn-caixa mx-2">
+							Voltar
+						</button>
+
+						<button [disabled]="tabberExemploState.currentTab == abas.length - 1" (click)="tabberExemploState.next()"
+							class="btn btn-secundario btn-caixa mx-2">
+							Avançar
+						</button>
+
+						<button [disabled]="tabberExemploState.currentTab == abas.length - 1" (click)="tabberExemploState.last()"
+							class="btn btn-aux btn-caixa mx-2">
+							Último
+						</button>
+					</div>
+				</app-documentacao-template>
 			</section>
 
 			<nav id="navSection" class="d-none col-3 d-xl-flex pl-4">
-				<app-code-fixed-nav [items]="[{ id: 'painelTabber', name: 'Tabber - Visão Geral' }]"
+				<app-code-fixed-nav [items]="navItems"
 					[currentSection]="currentSection"></app-code-fixed-nav>
 			</nav>
 		</div>
@@ -149,13 +196,13 @@
 								Padrão: StepperOrientation.horizontal | "0"
 							</td>
 						</tr>
-                  <tr>
-                     <td>@Input( )<br>styles: [class: string]: any | string</td>
-                     <td>
-                        Objeto de estilo a ser passado para o card-button-wrapper.<br>
-                        <pre><code [highlight]="stylesExample"></code></pre>
-                     </td>
-                  </tr>
+						<tr>
+							<td>@Input( )<br>styles: [class: string]: any | string</td>
+							<td>
+								Objeto de estilo a ser passado para o card-button-wrapper.<br>
+								<pre><code [highlight]="stylesExample"></code></pre>
+							</td>
+						</tr>
 						<tr>
 							<td>@Output( )<br>changeTab: EventEmitter&#60;number></td>
 							<td>
@@ -213,8 +260,8 @@
 			<div class="card card-caixa">
 				<div class="card-body">
 					<div class="d-flex justify-content-center">
-						<button title="Primeiro" class="btn btn-aux btn-caixa mr-2"
-							[disabled]="tabberExemplo.currentTab == 0" (click)="tabberExemplo.first()">
+						<button title="Primeiro" class="btn btn-aux btn-caixa mr-2" [disabled]="tabberExemplo.currentTab == 0"
+							(click)="tabberExemplo.first()">
 							<i class="fa fa-angle-double-left fa-lg"></i>
 						</button>
 
@@ -224,7 +271,7 @@
 						</button>
 
 						<button [disabled]="tabberExemplo.currentTab == (tabs.length - 1)" (click)="tabberExemplo.next()"
-							class="btn btn-principal btn-caixa">
+							class="btn btn-secundario btn-caixa">
 							<i class="fa fa-angle-right fa-lg"></i>
 						</button>
 

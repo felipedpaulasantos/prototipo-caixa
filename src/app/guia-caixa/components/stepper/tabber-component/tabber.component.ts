@@ -2,16 +2,16 @@ import {
   Component, OnInit, EventEmitter, Input, Output, ContentChildren,
   TemplateRef, SimpleChanges, OnChanges, ChangeDetectionStrategy,
   ChangeDetectorRef, AfterContentInit
-} from '@angular/core';
-import { StepperDirective } from '../stepper-directive';
-import { StepperOrientation } from '../stepper-orientation';
-import { TabberItem } from './tabber-item';
+} from "@angular/core";
+import { StepperDirective } from "../stepper-directive";
+import { StepperOrientation } from "../stepper-orientation";
+import { TabberItem, TabberItemState } from "./tabber-item";
 
 /** @class Componente Tabber para organizar conteúdo dinâmico ou estático em abas */
 @Component({
-  selector: 'cx-tabber',
-  templateUrl: './tabber.component.html',
-  styleUrls: ['./tabber.component.css'],
+  selector: "cx-tabber",
+  templateUrl: "./tabber.component.html",
+  styleUrls: ["./tabber.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
@@ -21,6 +21,8 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
   */
   readonly MINIMUM_TABS = 2;
   readonly MAXIMUM_TABS = 7;
+
+  readonly tabberState = TabberItemState;
 
   /**
    * Mapeia as templates dinâmicas com a diretiva *tabber, caso seja inserido conteúdo dentro do componente;
@@ -55,7 +57,7 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
    * Outras opções: 'secondary', 'info', 'warning', 'danger', 'light', 'dark'.
   */
   @Input()
-  theme = "primary";
+  theme = "secundario";
 
   /**
    * Evento que transmite o index da nova aba atual após ser selecionada.
@@ -77,8 +79,8 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
     e apenas atualiza a view caso o valor seja válido
   */
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['tabs']) {
-      const newTabs: any[] = changes['tabs'].currentValue;
+    if (changes["tabs"]) {
+      const newTabs: any[] = changes["tabs"].currentValue;
 
       /* Verifica se a nova lista possui comprimento válido */
       if (newTabs.length >= this.MINIMUM_TABS && newTabs.length > this.MAXIMUM_TABS) {
@@ -156,7 +158,7 @@ export class TabberComponent implements OnInit, OnChanges, AfterContentInit {
     * Retorna o tema definido para o ícone ativo
   */
   getActiveTheme(isActive: boolean): string {
-    return isActive ? `bg-${this.theme}` : '';
+    return isActive ? `bg-${this.theme}` : "";
   }
 
   /**

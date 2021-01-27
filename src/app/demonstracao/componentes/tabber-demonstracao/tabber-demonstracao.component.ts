@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
-import { TabberItem } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
+import { TabberItem, TabberItemState } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
+import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 import { ComponentesInterface } from "../componentes-interface";
 
 @Component({
@@ -43,7 +44,7 @@ export class TabberDemonstracaoComponent extends ComponentesInterface {
 </button>
 
 <button [disabled]="tabberExemplo.currentTab == abas.length - 1"
-(click)="tabberExemplo.next()" class="btn btn-principal btn-caixa mx-2">
+(click)="tabberExemplo.next()" class="btn btn-secundario btn-caixa mx-2">
   Avançar
 </button>
 
@@ -76,6 +77,71 @@ export class StepperComponent {
 }
   `.trimRight();
 
+
+  htmlCodeTabberState = `<cx-tabber [tabs]="abasComEstado" #tabberExemploState>
+  <ng-container *ngFor="let aba of abasComEstado">
+    <div *cxStepper class="text-center">
+      <h2>{{ aba.name }}</h2>
+      <h4 *ngIf="!aba.state">Conteúdo sem validação</h4>
+      <h4 *ngIf="aba.state === tabberState.SUCCESS">Conteúdo OK</h4>
+      <h4 *ngIf="aba.state === tabberState.WARNING">Conteúdo com erro não impeditivo</h4>
+      <h4 *ngIf="aba.state === 'error'">Conteúdo com erro impeditivo</h4>
+    </div>
+  </ng-container>
+</cx-tabber>
+
+<button [disabled]="tabberExemploState.currentTab == 0" (click)="tabberExemploState.first()"
+  class="btn btn-aux btn-caixa mt-3 mx-2">
+  Primeiro
+</button>
+
+<button [disabled]="tabberExemploState.currentTab == 0" (click)="tabberExemploState.previous()"
+  class="btn btn-cancel btn-caixa mx-2">
+  Voltar
+</button>
+
+<button [disabled]="tabberExemploState.currentTab == abas.length - 1" (click)="tabberExemploState.next()"
+  class="btn btn-secundario btn-caixa mx-2">
+  Avançar
+</button>
+
+<button [disabled]="tabberExemploState.currentTab == abas.length - 1" (click)="tabberExemploState.last()"
+  class="btn btn-aux btn-caixa mx-2">
+  Último
+</button>`.trim();
+
+  tsCodeTabberState = `import { Component } from '@angular/core';
+import { TabberItem, TabberItemState } from "../stepper/tabber-component/tabber-item";
+
+@Component({
+    selector: 'app-stepper',
+    templateUrl: './stepper.component.html',
+    styleUrls: ['./stepper.component.scss']
+})
+export class StepperComponent {
+
+  constructor() {}
+
+  tabberState = TabberItemState;
+
+  abasComEstado: TabberItem[] = [
+    { name: "Home", icon: "fa fa-home", state: "success" },
+    { name: "Componentes", icon: "fa fa-toolbox", state: "warning" },
+    { name: "Tipografia", icon: "fa fa-font", state: "success" },
+    { name: "Cores", icon: "fa fa-palette", state: "error" },
+    { name: "Configurações", icon: "fa fa-wrench" },
+    { name: "Páginas", icon: "fa fa-newspaper", state: "error" }
+  ];
+  abaComEstadoAtual = 0;
+
+}
+  `.trimRight();
+
+  navItems: CodeFixedNavItem[] = [
+    { id: "painelTabber", name: "Tabber - Visão Geral" },
+    { id: "painelTabberState", name: "Tabber - Estado" }
+  ];
+
   tabberOrientation = 0;
 
   abas: TabberItem[] = [
@@ -87,6 +153,18 @@ export class StepperComponent {
     { name: "Páginas", icon: "fa fa-newspaper" }
   ];
   abaAtual = 0;
+
+  tabberState = TabberItemState;
+
+  abasComEstado: TabberItem[] = [
+    { name: "Home", icon: "fa fa-home", state: "success" },
+    { name: "Componentes", icon: "fa fa-toolbox", state: "warning" },
+    { name: "Tipografia", icon: "fa fa-font", state: "success" },
+    { name: "Cores", icon: "fa fa-palette", state: "error" },
+    { name: "Configurações", icon: "fa fa-wrench" },
+    { name: "Páginas", icon: "fa fa-newspaper", state: "error" }
+  ];
+  abaComEstadoAtual = 0;
 
   currentTab = 0;
   tabs: TabberItem[] = [

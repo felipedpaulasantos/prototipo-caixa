@@ -1,95 +1,103 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from "./home/home.component";
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: "",
+    redirectTo: "home",
+    pathMatch: "full"
   },
   {
-    path: 'home',
+    path: "home",
     component: HomeComponent,
     data: {
-      title: 'Início',
-      animation: 'Home'
+      title: "Início",
+      animation: "Home"
     }
   },
   {
-    path: 'cores',
+    path: "cores",
     data: {
-      title: 'Cores',
-      breadcrumb: 'Cores',
-      animation: 'Cores'
+      title: "Cores",
+      breadcrumb: "Cores",
+      animation: "Cores"
     },
-    loadChildren: () => import('./demonstracao/cores/cores.module').then(m => m.CoresModule)
+    loadChildren: () => import("./demonstracao/cores/cores.module").then(m => m.CoresModule)
   },
   {
-    path: 'layout',
+    path: "layout",
     data: {
-      title: 'Layout',
-      breadcrumb: 'Layout',
-      animation: 'Layout'
+      title: "Layout",
+      breadcrumb: "Layout",
+      animation: "Layout"
     },
-    loadChildren: () => import('./demonstracao/layout/layout.module').then(m => m.LayoutModule)
+    loadChildren: () => import("./demonstracao/layout/layout.module").then(m => m.LayoutModule)
   },
   {
-    path: 'componentes',
+    path: "componentes",
     data: {
-      title: 'Componentes',
-      breadcrumb: 'Componentes',
-      animation: 'Componentes'
+      title: "Componentes",
+      breadcrumb: "Componentes",
+      animation: "Componentes"
     },
-    loadChildren: () => import('./demonstracao/componentes/componentes.module').then(m => m.ComponentesModule)
+    loadChildren: () => import("./demonstracao/componentes/componentes.module").then(m => m.ComponentesModule)
   },
   {
-    path: 'tipografia',
+    path: "tipografia",
     data: {
-      title: 'Tipografia',
-      breadcrumb: 'Tipografia',
-      animation: 'Tipografia'
+      title: "Tipografia",
+      breadcrumb: "Tipografia",
+      animation: "Tipografia"
     },
-    loadChildren: () => import('./demonstracao/tipografia/tipografia.module').then(m => m.TipografiaModule)
+    loadChildren: () => import("./demonstracao/tipografia/tipografia.module").then(m => m.TipografiaModule)
   },
   {
-    path: 'chat',
+    path: "chat",
     data: {
-      title: 'Chat',
-      breadcrumb: 'Chat',
-      animation: 'Chat'
+      title: "Chat",
+      breadcrumb: "Chat",
+      animation: "Chat"
     },
-    loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)
+    loadChildren: () => import("./chat/chat.module").then(m => m.ChatModule)
   },
   {
-    path: 'config/menu',
+    path: "config/menu",
     data: {
-      title: 'Configuração do Menu',
-      breadcrumb: 'Configuração do Menu',
-      animation: 'Config-menu'
+      title: "Configuração do Menu",
+      breadcrumb: "Configuração do Menu",
+      animation: "Config-menu"
     },
-    loadChildren: () => import('./demonstracao/config-menu/config-menu.module').then(m => m.ConfigMenuModule)
+    loadChildren: () => import("./demonstracao/config-menu/config-menu.module").then(m => m.ConfigMenuModule)
   },
   {
-    path: 'paginas',
+    path: "paginas",
     data: {
-      title: 'Páginas de teste',
-      breadcrumb: 'Páginas',
-      animation: 'Paginas'
+      title: "Páginas de teste",
+      breadcrumb: "Páginas",
+      animation: "Paginas"
     },
-    loadChildren: () => import('./demonstracao/paginas/paginas.module').then(m => m.PaginasModule) },
+    loadChildren: () => import("./demonstracao/paginas/paginas.module").then(m => m.PaginasModule) },
   {
-    path: '**',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: "prototipador",
+    data: {
+      title: "Prototipador",
+      breadcrumb: "Prototipador",
+      animation: "Prototipador"
+    },
+    loadChildren: () => import("./prototipador/prototipador.module").then(m => m.PrototipadorModule) },
+  {
+    path: "**",
+    redirectTo: "home",
+    pathMatch: "full"
   }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      scrollPositionRestoration: 'enabled',
+      scrollPositionRestoration: "enabled",
       useHash: true,
       initialNavigation: true
     })

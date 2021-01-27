@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { LOGO_CAIXA_BRANCO_SRC, LOGO_CAIXA_SRC, LOGO_COMPLETO_SRC, LOGO_COMPLETO_BRANCO_SRC, BootstrapTheme, GradientTheme } from 'src/app/guia-caixa/constants/constants';
-import { StyleService, Tema } from 'src/app/guia-caixa/services/style.service';
+import { GuiaCaixaStyleService, Tema } from 'src/app/guia-caixa/services/style-guia-caixa.service';
 
 
 
@@ -18,7 +18,7 @@ export class LayoutComponent implements OnInit {
   logoCompletoBranco = LOGO_COMPLETO_BRANCO_SRC;
 
   constructor(
-    public styleService: StyleService,
+    public styleService: GuiaCaixaStyleService,
     private fb: FormBuilder
   ) { }
 

@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { LOGO_CAIXA_BRANCO_SRC } from '../constants/constants';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+import { LOGO_CAIXA_BRANCO_SRC } from "../constants/constants";
 
 
 export interface Tema {
@@ -13,9 +13,9 @@ export interface Tema {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
-export class StyleService {
+export class GuiaCaixaStyleService {
 
   constructor() { }
 

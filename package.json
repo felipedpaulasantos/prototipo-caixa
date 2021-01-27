@@ -27,6 +27,7 @@
     "angular-cli-ghpages": "^0.6.2",
     "angular-datatables": "^9.0.2",
     "angular-oauth2-oidc": "^9.2.2",
+    "angular-resizable-element": "^3.3.4",
     "bootstrap": "^4.5.0",
     "bootstrap-datepicker": "^1.9.0",
     "bootstrap-select": "^1.13.17",

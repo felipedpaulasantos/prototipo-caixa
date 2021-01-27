@@ -12,7 +12,7 @@ import { Label, BaseChartDirective, Colors } from "ng2-charts";
 import * as pluginDataLabels from "chartjs-plugin-datalabels";
 
 import { CustomChartData } from "../custom-chart-data";
-import { StyleService } from 'src/app/guia-caixa/services/style.service';
+import { GuiaCaixaStyleService } from 'src/app/guia-caixa/services/style-guia-caixa.service';
 
 declare var Chart: any;
 
@@ -27,7 +27,7 @@ export class CustomChartComponent implements OnChanges, OnInit {
 
   constructor(
     private cdRef: ChangeDetectorRef,
-    private styleService: StyleService
+    private styleService: GuiaCaixaStyleService
   ) { }
 
   textColor = DARK_COLOR;

@@ -22,13 +22,58 @@
 @import "datatables";
 @import "animations";
 
+:root {
+  --body-font-size: $cx-font-13;
+
+  --principal: $cx-color-secondary;
+  --secundario: $cx-color-primary;
+  --aux: $cx-color-grafite;
+  --cancel: $cx-color-cinza;
+  --sucesso: $cx-color-success;
+  --perigo: $cx-color-danger;
+  --alerta: $cx-color-warning;
+  --info: $cx-color-info;
+  --base: $cx-color-white;
+  --contrast: $cx-color-grafite-dark;
+
+  --transparentBase025: rgba(255, 255, 255, 0.025);
+  --transparentBase050: rgba(255, 255, 255, 0.025);
+  --transparentBase075: rgba(255, 255, 255, 0.025);
+  --transparentBase25: rgba(255, 255, 255, 0.025);
+  --transparentBase50: rgba(255, 255, 255, 0.025);
+  --transparentBase75: rgba(255, 255, 255, 0.025);
+  --transparentContrast025: rgba(0, 0, 0, 0.025);
+  --transparentContrast050: rgba(0, 0, 0, 0.05);
+  --transparentContrast075: rgba(0, 0, 0, 0.075);
+  --transparentContrast25: rgba(0, 0, 0, 0.25);
+  --transparentContrast50: rgba(0, 0, 0, 0.5);
+
+  --shadow-caixa-dark-sm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+  --shadow-caixa-dark: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+  --shadow-caixa-dark-lg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+
+  --shadow-caixa-light-sm: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
+  --shadow-caixa-light: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
+  --shadow-caixa-light-lg: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
+
+  --shadowCaixaSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+  --shadowCaixa: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+  --shadowCaixaLg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+}
+
+html {
+  font-size: var(--body-font-size);
+}
+
 body {
   overflow-y: scroll;
   overflow-x: hidden;
+  background-color: var(--base);
+  color: var(--contrast);
 }
 
 #navbarTop {
-  background: $cx-color-primary;
+  background: var(--secundario);
   color: $cx-color-cinza-lighter;
 }
 
@@ -48,11 +93,11 @@ h6 {
   }
   &.header-subtitulo-caixa {
     @extend .header-caixa;
-    color: $cx-color-grafite;
+    color: var(--contrast);
   }
   &.header-principal-caixa {
     @extend .header-caixa;
-    color: $cx-color-primary;
+    color: var(--secundario);
   }
 }
 hr.header-line-caixa {
@@ -76,7 +121,7 @@ hr.header-line-caixa {
   cursor: pointer;
 }
 
-.btn-caixa {
+.btn {
   padding-top: 0.6em;
   padding-bottom: 0.6em;
   padding-left: 1.5em;
@@ -88,25 +133,26 @@ hr.header-line-caixa {
   vertical-align: unset;
 }
 
-.btn-caixa.btn-secondary,
-.btn.caixa.btn-warning,
-.btn-caixa.btn-success,
-.btn-caixa.btn-danger {
+.btn.btn-primario,
+.btn.btn-warning,
+.btn.btn-success,
+.btn.btn-danger,
+.btn.btn-principal {
   color: $cx-color-cinza-lighter;
 }
 
-.btn-caixa:not(.disabled):not(:disabled).active,
-.btn-caixa:not(.disabled):not(:disabled):active,
-.btn-caixa:not(.disabled):not(:disabled).focus,
-.btn-caixa:not(.disabled):not(:disabled):focus {
+.btn:not(.disabled):not(:disabled).active,
+.btn:not(.disabled):not(:disabled):active,
+.btn:not(.disabled):not(:disabled).focus,
+.btn:not(.disabled):not(:disabled):focus {
   outline: 0 !important;
   outline-offset: 0 !important;
   background-image: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
-.btn-caixa:disabled,
-.btn-caixa.disabled {
+.btn:disabled,
+.btn.disabled {
   cursor: not-allowed !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -126,7 +172,7 @@ hr.header-line-caixa {
 }
 
 .btn-flat {
-  @extend .btn-caixa;
+  @extend .btn;
   transition: 0.3s;
   background: transparent;
   box-shadow: none;
@@ -378,7 +424,7 @@ input[type="number"] {
 }
 .dropdown-item.active,
 .dropdown-item:active {
-  color: $cx-color-primary;
+  color: var(--secundario);
   background-color: $cx-color-cinza;
 }
 
@@ -386,8 +432,8 @@ input[type="number"] {
   Tabs e Navs
 */
 
-ul.tab-caixa li a {
-  color: $cx-color-grafite-light;
+.nav.nav-pills li a {
+  color: var(--contrast);
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
   font-family: $cx-font-family-bold;
@@ -395,9 +441,9 @@ ul.tab-caixa li a {
 /*   @extend .ripple-dark; */
   &.active,
   &:active {
-    color: $cx-color-primary !important;
-    background-color: $cx-color-cinza-lighter !important;
-    border-bottom: solid 2px $cx-color-primary;
+    color: var(--secundario) !important;
+    background-color: var(--base) !important;
+    border-bottom: solid 2px var(--secundario);
     border-radius: 50;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -425,6 +471,9 @@ ul.tab-caixa li a {
 .card {
   box-shadow: $cx-default-box-shadow;
   transition: box-shadow 0.2s ease-in-out;
+  background-color: var(--base);
+  color: var(--contrast);
+  border-color: var(--cancel);
   .card-header {
     background-color: inherit;
     border: none;
@@ -488,6 +537,9 @@ ul.tab-caixa li a {
 .bootstrap-select .dropdown-toggle:focus,
 .bootstrap-select > select.mobile-device:focus + .dropdown-toggle {
   outline: none !important;
+}
+.bootstrap-select .btn.dropdown-toggle {
+  box-shadow: none;
 }
 .bs-searchbox {
   padding: 0.8rem 0.5rem !important;
@@ -633,8 +685,8 @@ select + button.input-caixa {
   border-radius: 0 !important;
 /*   @extend .ripple-dark; */
   &.active {
-    color: $cx-color-primary;
-/*     border-left: solid 2px $cx-color-primary !important; */
+    color: var(--secundario);
+/*     border-left: solid 2px var(--secundario) !important; */
   }
 }
 
@@ -712,11 +764,11 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 .menu-item {
   &.active.has-submenu {
-    color: $cx-color-primary;
+    color: var(--secundario);
     box-shadow: 0 0.6rem 0.4rem -0.4rem rgba(0, 0, 0, 0.1);
   }
   &.active.is-link {
-    background-color: $cx-color-primary;
+    background-color: var(--secundario);
     color: $cx-color-cinza-lighter;
   }
 }
@@ -817,70 +869,119 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   cursor: pointer;
 }
 
+/* CLASSES TEMATICAS */
+
+.bg-principal {
+  background-color: var(--principal);
+}
+.bg-secundario {
+  background-color: var(--secundario);
+}
+.bg-base {
+  background-color: var(--base);
+}
+.bg-contrast {
+  background-color: var(--contrast);
+}
+.bg-cancel {
+  background-color: var(--cancel);
+}
+.bg-aux {
+  background-color: var(--aux);
+}
 
 
+/* TEMAS */
 
-
+/* TEMA CLARO */
 
 body.tema-claro {
 
-  @extend .bg-white;
-  @extend .text-grafite;
-
+  #wrapperBreadcrumb,
+  #tabClienteGlobalWrapper,
+  #menuLateral {
+    @extend .bg-white;
+    @extend .text-grafite;
+  }
+  #menuLateral {
+    @extend .border-left;
+    @extend .border-cinza;
+  }
   #navbarTop {
     @extend .bg-primary;
     @extend .text-white;
   }
-
-  input {
-    @extend .text-grafite;
+  #wrapperConteudoPrincipal {
+    @extend .bg-light;
   }
 
-  .header-principal-caixa {
+  .logo-azul {
+    display: block;
+  }
+  .logo-branco {
+    display: none;
+  }
+
+  .text-principal {
+    @extend .text-secondary;
+  }
+  .text-secundario {
     @extend .text-primary;
   }
-  .header-subtitulo-caixa {
-    @extend .text-grafite;
+  .text-sucesso {
+    @extend .text-success;
   }
-
-  .text-primary {
-    @extend .text-primary;
+  .text-perigo {
+    @extend .text-danger;
+  }
+  .text-info {
+    @extend .text-info;
+  }
+  .text-alerta {
+    @extend .text-warning;
   }
   .text-link {
     @extend .text-primary;
   }
 
   .btn-principal {
-    @extend .btn, .btn-caixa, .btn-primary;
+    @extend .btn, .btn-secondary;
   }
   .btn-outline-principal {
-    @extend .btn, .btn-caixa, .btn-outline-primary;
+    @extend .btn, .btn-outline-secondary;
+  }
+  .btn-secundario {
+    @extend .btn, .btn-primary;
+  }
+  .btn-outline-secundario {
+    @extend .btn, .btn-outline-primary;
   }
   .btn-aux {
-    @extend .btn, .btn-caixa, .btn-grafite;
+    @extend .btn, .btn-grafite;
   }
   .btn-outline-aux {
-    @extend .btn, .btn-caixa, .btn-outline-grafite;
+    @extend .btn, .btn-outline-grafite;
   }
   .btn-cancel {
-    @extend .btn, .btn-caixa, .btn-cinza;
+    @extend .btn, .btn-cinza;
   }
   .btn-outline-cancel {
-    @extend .btn, .btn-caixa, .btn-outline-cinza;
+    @extend .btn, .btn-outline-cinza;
   }
-
-  .card {
-    @extend .bg-white;
-    @extend .text-grafite;
-    @extend .border-cinza;
+  .btn-perigo {
+    @extend .btn-danger;
   }
-
-  .menu-item.has-submenu.active {
-    @extend .text-primary;
+  .btn-base {
+    @extend .btn-cinza-lighter;
   }
-  .menu-item.is-link.active {
-    @extend .bg-primary;
-    @extend .text-white;
+  .btn-outline-base {
+    @extend .btn-outline-cinza-lighter;
+  }
+  .btn-contrast {
+    @extend .btn-grafite-dark;
+  }
+  .btn-outline-contrast {
+    @extend .btn-outline-grafite-dark;
   }
 
   .list-group-item.active {
@@ -888,111 +989,107 @@ body.tema-claro {
     @extend .bg-primary;
   }
 
-  ul.tab-caixa li a {
-    @extend .text-grafite;
-  }
-
-  ul.tab-caixa li a.active {
-    @extend .bg-white;
-    @extend .text-primary;
+  .border-secundario {
     @extend .border-primary;
   }
-
   .border-bottom {
     @extend .border-cinza;
-  }
-
-  .table {
-    @extend .text-grafite;
   }
 
 }
 
-
-
+/* TEMA ESCURO */
 
 body.tema-escuro {
 
-  @extend .bg-grafite-dark;
-  @extend .text-white;
-
+  #wrapperBreadcrumb,
+  #tabClienteGlobalWrapper,
+  #menuLateral {
+    @extend .bg-grafite-dark;
+    @extend .text-white;
+  }
+  #menuLateral {
+    @extend .border-left;
+    @extend .border-grafite;
+  }
   #navbarTop {
     @extend .bg-grafite-darker;
     @extend .text-white;
   }
-
-  input {
-    @extend .text-white;
+  #wrapperConteudoPrincipal {
+    @extend .bg-grafite;
   }
 
-  .header-principal-caixa {
+  .logo-azul {
+    display: none;
+  }
+  .logo-branco {
+    display: block;
+  }
+
+  .text-principal {
+    @extend .text-secondary;
+  }
+  .text-secundario {
     @extend .text-ceu;
   }
-  .header-subtitulo-caixa {
-    @extend .text-white;
+  .text-sucesso {
+    @extend .text-success-lighter;
   }
-
-  .text-primary {
-    @extend .text-ceu;
+  .text-perigo {
+    @extend .text-goiaba-light;
+  }
+  .text-info {
+    @extend .text-info-lighter;
+  }
+  .text-alerta {
+    @extend .text-warning-lighter;
   }
   .text-link {
     @extend .text-ceu;
   }
 
   .btn-principal {
-    @extend .btn, .btn-caixa, .btn-ceu;
+    @extend .btn, .btn-ceu;
   }
   .btn-outline-principal {
-    @extend .btn, .btn-caixa, .btn-outline-ceu;
+    @extend .btn, .btn-outline-ceu;
+  }
+  .btn-secundario {
+    @extend .btn, .btn-ceu;
+  }
+  .btn-outline-secundario {
+    @extend .btn, .btn-outline-ceu;
   }
   .btn-aux {
-    @extend .btn, .btn-caixa, .btn-cinza;
+    @extend .btn, .btn-cinza;
   }
   .btn-outline-aux {
-    @extend .btn, .btn-caixa, .btn-outline-cinza;
+    @extend .btn, .btn-outline-cinza;
   }
   .btn-cancel {
-    @extend .btn, .btn-caixa, .btn-grafite-light;
+    @extend .btn, .btn-grafite-light;
   }
   .btn-outline-cancel {
-    @extend .btn, .btn-caixa, .btn-outline-grafite-light;
+    @extend .btn, .btn-outline-grafite-light;
   }
-
-  .card {
-    @extend .bg-grafite-dark;
-    @extend .text-white;
-    @extend .border-grafite-light;
+  .btn-perigo {
+    @extend .btn-goiaba-light;
   }
-
-  .menu-item.active.has-submenu {
-    @extend .text-ceu;
+  .btn-base {
+    @extend .btn-grafite-dark;
   }
-  .menu-item.active.is-link {
-    @extend .bg-ceu;
-    @extend .text-white;
+  .btn-outline-base {
+    @extend .btn-outline-grafite-dark;
   }
-
-  .list-group-item.active {
-    @extend .text-white;
-    @extend .bg-ceu;
+  .btn-contrast {
+    @extend .btn-cinza-lighter;
   }
-
-  ul.tab-caixa li a {
-    @extend .text-white;
-  }
-
-  ul.tab-caixa li a.active {
-    @extend .bg-grafite-dark;
-    @extend .text-ceu;
-    @extend .border-ceu;
+  .btn-outline-contrast {
+    @extend .btn-outline-cinza-lighter;
   }
 
   .border-bottom {
-    @extend .border-grafite-light;
+    @extend .border-grafite;
   }
-
-  .table {
-    @extend .text-white;
-  }
-
 }

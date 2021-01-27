@@ -109,6 +109,13 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     enabled: true
   },
 /*   {
+    name: "Prototipador",
+    iconClass: "fa fa-lg fa-puzzle-piece",
+    url: "/prototipador",
+    isLink: true,
+    enabled: true
+  }, */
+/*   {
     name: 'Chat',
     iconClass: 'fas fa-lg fa-comment',
     url: '/chat',

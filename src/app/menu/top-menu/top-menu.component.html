@@ -23,30 +23,44 @@
 
     <div id="painelIconesUsuario" class="ml-auto ml-lg-0">
 
-      <div class="notification-container mr-2">
+      <div class="notification-container">
         <div class="dropdown">
-          <button class="btn btn-caixa shadow-none border-0 dropdown-toggle text-white" 
+          <button class="btn btn-caixa btn-sm shadow-none border-0 dropdown-toggle text-white" 
+          data-toggle="dropdown" title="Modo Escuro (Experimental)">
+            <i role="button" class="fa fa-font mr-2 fa-2x"></i>
+          </button>
+          <div class="dropdown-menu">
+            <div *ngFor="let font of fontSizes" (click)="setFontSize(font.value)" class="dropdown-item d-flex align-items-center">
+              <span [style.fontSize]="font.value" class="font-fam-bold mr-2">A</span>
+              {{font.name}} ({{font.value}})
+            </div>
+          </div>
+        </div>
+      </div> 
+
+      <div class="notification-container">
+        <div class="dropdown">
+          <button class="btn btn-caixa btn-sm shadow-none border-0 dropdown-toggle text-white" 
           data-toggle="dropdown" title="Modo Escuro (Experimental)">
             <i role="button" class="fa fa-palette mr-2 fa-2x"></i>
           </button>
           <div class="dropdown-menu">
-            <div (click)="setDarkTheme()" class="dropdown-item">
+            <div (click)="setTheme('darkTheme')" class="dropdown-item">
               <div class="border rounded bg-grafite square mr-2"></div>
               Tema escuro
             </div>
-            <div (click)="setLightTheme()" class="dropdown-item">
+            <div (click)="setTheme('lightTheme')" class="dropdown-item">
               <div class="border rounded bg-white square mr-2"></div>
               Tema claro
             </div>
           </div>
         </div>
-
-        
       </div> 
 
-      <div class="notification-container mr-4" data-toggle="dropdown" role="button">
-        <i role="button" class="fa fa-bell fa-2x" title="Notificações"></i>
-        <span class="notification-badge">2</span>
+      <div class="notification-container" data-toggle="dropdown" role="button">
+        <button class="btn btn-caixa btn-sm shadow-none border-0 text-white">
+          <i role="button" class="fa fa-bell fa-2x" title="Notificações"></i>
+        </button>
       </div>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <span class="dropdown-item">
@@ -54,9 +68,10 @@
         </span>
       </div>
 
-      <div class="notification-container mr-4" role="button" data-toggle="dropdown">
-        <i role="button" class="fa fa-envelope fa-2x" title="Mensagens"></i>
-        <span class="notification-badge">5</span>
+      <div class="notification-container" role="button" data-toggle="dropdown">
+        <button class="btn btn-caixa btn-sm shadow-none border-0 text-white">
+          <i role="button" class="fa fa-envelope fa-2x" title="Mensagens"></i>
+        </button>
       </div>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <span class="dropdown-item">
