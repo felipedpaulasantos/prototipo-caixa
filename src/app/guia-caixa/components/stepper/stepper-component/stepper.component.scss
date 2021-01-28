@@ -98,7 +98,7 @@
  
  .stepper > .step:not(:last-of-type)::after {
    content: "";
-   background-color: var(--cancel);
+   background-color: var(--cxCancel);
    display: inline-block;
  /*    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
  }
@@ -150,8 +150,8 @@
    top: 2.03rem;
    left: 0.69rem;
    margin-right: 0.07rem;
-   color: var(--contrast);
-   background-color: var(--cancel);
+   color: var(--cxContrast);
+   background-color: var(--cxCancel);
    font-weight: 400;
  }
  
@@ -160,28 +160,28 @@
  }
  
  .stepper-wrapper > .stepper > .step.current-step > .step-title > .step-icon {
-   background-color: var(--secundario);
+   background-color: var(--cxSecundario);
    color: var(--cinza-lighter);
  }
  
  .stepper-wrapper > .stepper > .step.previous-step > .step-title > .step-icon {
-   border: 0.23rem var(--sucesso) solid;
+   border: 0.23rem var(--cxSucesso) solid;
    line-height: 2.07rem;
  }
  
  .stepper-wrapper > .stepper.nav-guided:not(.completed) > .step.previous-step > .step-title > .step-icon {
-   background-color: var(--base);
-   color: var(--sucesso);
+   background-color: var(--cxBase);
+   color: var(--cxSucesso);
  }
  
  .stepper-wrapper > .stepper.nav-guided.completed > .step.previous-step > .step-title > .step-icon {
-   color: var(--contrast);
-   background-color: var(--cancel);
+   color: var(--cxContrast);
+   background-color: var(--cxCancel);
    font-weight: 400;
  }
  
  .stepper-wrapper > .stepper > .step.last-step > .step-title > .step-icon {
-   background-color: var(--sucesso);
+   background-color: var(--cxSucesso);
  }
  
  /* ESTILOS ADICIONAIS */

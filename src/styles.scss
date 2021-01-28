@@ -23,60 +23,61 @@
 @import "animations";
 
 :root {
-  --body-font-size: $cx-font-13;
+  --cxBodyFontSize: $cx-font-13;
 
-  --font-family-normal: "Futura LT Book";
-  --font-family-bold: "Futura LT Bold";
+  --cxFontFamilyNormal: "Futura LT Book";
+  --cxFontFamilyBold: "Futura LT Bold";
 
-  --principal: $cx-color-secondary;
-  --secundario: $cx-color-primary;
-  --aux: $cx-color-grafite;
-  --cancel: $cx-color-cinza;
-  --sucesso: $cx-color-success;
-  --perigo: $cx-color-danger;
-  --alerta: $cx-color-warning;
-  --info: $cx-color-info;
-  --base: $cx-color-white;
-  --contrast: $cx-color-grafite-dark;
+  --cxPrincipal: $cx-color-secondary;
+  --cxSecundario: $cx-color-primary;
+  --cxAux: $cx-color-grafite;
+  --cxCancel: $cx-color-cinza;
+  --cxSucesso: $cx-color-success;
+  --cxPerigo: $cx-color-danger;
+  --cxAlerta: $cx-color-warning;
+  --cxInfo: $cx-color-info;
+  --cxBase: $cx-color-white;
+  --cxContrast: $cx-color-grafite-dark;
 
-  --transparentBase025: rgba(255, 255, 255, 0.025);
-  --transparentBase050: rgba(255, 255, 255, 0.025);
-  --transparentBase075: rgba(255, 255, 255, 0.025);
-  --transparentBase25: rgba(255, 255, 255, 0.025);
-  --transparentBase50: rgba(255, 255, 255, 0.025);
-  --transparentBase75: rgba(255, 255, 255, 0.025);
-  --transparentContrast025: rgba(0, 0, 0, 0.025);
-  --transparentContrast050: rgba(0, 0, 0, 0.05);
-  --transparentContrast075: rgba(0, 0, 0, 0.075);
-  --transparentContrast25: rgba(0, 0, 0, 0.25);
-  --transparentContrast50: rgba(0, 0, 0, 0.5);
+  --cxTransparentBase025: rgba(255, 255, 255, 0.025);
+  --cxTransparentBase050: rgba(255, 255, 255, 0.025);
+  --cxTransparentBase075: rgba(255, 255, 255, 0.025);
+  --cxTransparentBase25: rgba(255, 255, 255, 0.025);
+  --cxTransparentBase50: rgba(255, 255, 255, 0.025);
+  --cxTransparentBase75: rgba(255, 255, 255, 0.025);
+  --cxTransparentContrast025: rgba(0, 0, 0, 0.025);
+  --cxTransparentContrast050: rgba(0, 0, 0, 0.05);
+  --cxTransparentContrast075: rgba(0, 0, 0, 0.075);
+  --cxTransparentContrast25: rgba(0, 0, 0, 0.25);
+  --cxTransparentContrast50: rgba(0, 0, 0, 0.5);
+  --cxTransparentContrast75: rgba(0, 0, 0, 0.75);
 
-  --shadow-caixa-dark-sm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
-  --shadow-caixa-dark: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
-  --shadow-caixa-dark-lg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+  --cxShadowCaixaDarkSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadowCaixaDark: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadowCaixaDarkLg: 0 0.3rem 0.8rem rgba(8, 1, 1, 0.15);
 
-  --shadow-caixa-light-sm: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
-  --shadow-caixa-light: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
-  --shadow-caixa-light-lg: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
+  --cxShadowCaixaLightSm: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
+  --cxShadowCaixaLight: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
+  --cxShadowCaixaLightLg: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
 
-  --shadowCaixaSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
-  --shadowCaixa: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
-  --shadowCaixaLg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+  --cxShadowCaixaSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadowCaixa: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadowCaixaLg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
 }
 
 html {
-  font-size: var(--body-font-size);
+  font-size: var(--cxBodyFontSize);
 }
 
 body {
   overflow-y: scroll;
   overflow-x: hidden;
-  background-color: var(--base);
-  color: var(--contrast);
+  background-color: var(--cxBase);
+  color: var(--cxContrast);
 }
 
 #navbarTop {
-  background: var(--secundario);
+  background: var(--cxSecundario);
   color: $cx-color-cinza-lighter;
 }
 
@@ -91,20 +92,20 @@ h4,
 h5,
 h6 {
   &.header-caixa {
-    font-family: $cx-font-family-bold;
+    font-family: var(--cxFontFamilyBold);
     margin-bottom: 1rem;
   }
   &.header-subtitulo-caixa {
     @extend .header-caixa;
-    color: var(--contrast);
+    color: var(--cxContrast);
   }
   &.header-principal-caixa {
     @extend .header-caixa;
-    color: var(--secundario);
+    color: var(--cxSecundario);
   }
 }
 hr.header-line-caixa {
-  border-color: var(--aux);
+  border-color: var(--cxAux);
   opacity: $cx-bg-opacity-2;
   border-width: 1px;
   margin-bottom: 1.5rem;
@@ -129,8 +130,8 @@ hr.header-line-caixa {
   padding-bottom: 0.6em;
   padding-left: 1.5em;
   padding-right: 1.5em;
-  font-family: $cx-font-family-bold;
-  box-shadow: $cx-default-box-shadow;
+  font-family: var(--cxFontFamilyBold);
+  box-shadow: var(--cxShadowCaixa);
   position: relative;
   overflow: hidden;
   vertical-align: unset;
@@ -141,7 +142,7 @@ hr.header-line-caixa {
 .btn.btn-success,
 .btn.btn-danger,
 .btn.btn-principal {
-  color: $cx-color-cinza-lighter;
+  color: var(--cinza-lighter);
 }
 
 .btn:not(.disabled):not(:disabled).active,
@@ -206,14 +207,14 @@ hr.header-line-caixa {
 /* Toastr (Mensagens) */
 
 .toast-container {
-  font-family: $cx-font-family-normal;
-  color: $cx-color-cinza-lighter;
+  font-family: var(--cxFontFamilyNormal);
+  color: var(--cinza-lighter);
   > div {
     background-image: none !important;
-    padding: 15px 15px 15px 50px;
+    padding: 1.15rem 1.15rem 1.15rem 3.846rem;
     background-color: $cx-color-grafite;
     pointer-events: auto;
-    border-radius: 5px !important;
+    border-radius: 0.384rem !important;
     transition: box-shadow 0.2s, border-bottom 0.3s, box-shadow 0.3s ease-in-out;
     box-shadow: none !important;
     &:before {
@@ -225,7 +226,7 @@ hr.header-line-caixa {
       align-items: center;
       font-family: "Font Awesome 5 Free";
       font-size: 1.4rem;
-      line-height: 18px;
+      line-height: 1.384rem;
       float: left;
       font-weight: 900;
       padding-left: 1rem;
@@ -233,50 +234,50 @@ hr.header-line-caixa {
     &.toast-success {
       &:before {
         content: "\f00c";
-        color: $cx-color-limao;
+        color: var(--cxSucesso);
       }
       .toast-progress {
-        background-color: $cx-color-limao-light;
+        background-color: var(--cxSucesso);
       }
     }
     &.toast-error {
       &:before {
         content: "\f00d";
-        color: $cx-color-goiaba;
+        color: var(--cxPerigo);
       }
       .toast-progress {
-        background-color: $cx-color-goiaba-light;
+        background-color: var(--cxPerigo);
       }
     }
     &.toast-info {
       &:before {
         content: "\f129";
-        color: $cx-color-ceu;
+        color: var(--cxInfo);
       }
       .toast-progress {
-        background-color: $cx-color-ceu-light;
+        background-color: var(--cxInfo);
       }
     }
     &.toast-warning {
       &:before {
         content: "\f12a";
-        color: $cx-color-tangerina;
+        color: var(--cxAlerta);
       }
       .toast-progress {
-        background-color: $cx-color-tangerina-light;
+        background-color: var(--cxAlerta);
       }
     }
     &:hover {
-      box-shadow: $cx-lg-box-shadow !important;
+      box-shadow: var(--cxShadowCaixaLg) !important;
       transition: opacity 0.3s ease-in-out;
     }
     div.toast-title {
-      font-family: $cx-font-family-bold;
+      font-family: var(--cxFontFamilyBold);
       font-weight: 400;
       margin-bottom: 0.3rem;
     }
     div.toast-message {
-      color: $cx-color-cinza !important;
+      color: var(--cxContrast) !important;
     }
     div .toast-progress {
       opacity: 0.9;
@@ -289,7 +290,7 @@ hr.header-line-caixa {
 
 label {
   font-size: 0.9rem;
-  font-family: $cx-font-family-bold;
+  font-family: var(--cxFontFamilyBold);
   margin-bottom: 0.2rem;
   transition: 0.2s;
 }
@@ -303,7 +304,7 @@ label {
   height: 1.2rem;
 }
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
-  border-color: $cx-color-grafite-light;
+  border-color: var(--cxCancel);
 }
 .custom-control-input:focus ~ .custom-control-label::before {
   box-shadow: none;
@@ -312,22 +313,22 @@ label {
   padding-left: 0.3em;
 }
 .custom-checkbox .custom-control-input.ng-dirty.ng-valid:checked ~ .custom-control-label::before {
-  background-color: $cx-color-success;
-  border-color: $cx-color-success-dark;
+  background-color: var(--cxSucesso);
+  border-color: var(--cxSucesso);
 }
 .custom-control-input.ng-dirty.ng-valid:checked ~ .custom-control-label::before {
-  color: #fff;
-  background-color: $cx-color-success;
-  border-color: $cx-color-success-dark;
+  color: var(--cinza-lighter);
+  background-color: var(--cxSucesso);
+  border-color: var(--cxSucesso);
 }
 .custom-checkbox .custom-control-input.ng-dirty.ng-invalid:checked ~ .custom-control-label::before {
-  background-color: $cx-color-danger;
-  border-color: $cx-color-danger-dark;
+  background-color: var(--cxPerigo);
+  border-color: var(--cxPerigo);
 }
 .custom-control-input.ng-dirty.ng-invalid:checked ~ .custom-control-label::before {
-  color: #fff;
-  background-color: $cx-color-danger;
-  border-color: $cx-color-danger-dark;
+  color: var(--cinza-lighter);
+  background-color: var(--cxPerigo);
+  border-color: var(--cxPerigo);
 }
 [type="range"]:hover {
   cursor: pointer;
@@ -345,15 +346,15 @@ th.th-sorting {
   font-weight: 900;
   font-family: "Font Awesome 5 Free";
   float: right;
-  color: $cx-color-grafite;
+  color: var(--cxContrast);
   transition: 0.5s;
-  @extend .header-caixa;
+  font-family: var(--cxFontFamilyBold);
 }
 .table-caixa {
   border-bottom: none !important;
   thead th {
-    font-family: $cx-font-family-bold;
-    color: var(--aux);
+    font-family: var(--cxFontFamilyBold);
+    color: var(--cxAux);
     border-top: 0;
     border-bottom: 0 !important;
     font-weight: 400 !important;
@@ -408,7 +409,7 @@ input[type="number"] {
   Dropdown item 
 */
 .dropdown-menu {
-  box-shadow: $cx-default-box-shadow;
+  box-shadow: var(--cxShadowCaixa);
 }
 .dropdown-item {
   padding: 1rem 1.3rem;
@@ -426,7 +427,7 @@ input[type="number"] {
 }
 .dropdown-item.active,
 .dropdown-item:active {
-  color: var(--secundario);
+  color: var(--cxSecundario);
   background-color: $cx-color-cinza;
 }
 
@@ -435,17 +436,17 @@ input[type="number"] {
 */
 
 .nav.nav-pills li a {
-  color: var(--contrast);
+  color: var(--cxContrast);
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
-  font-family: $cx-font-family-bold;
-  border-bottom: solid 2px transparent;
+  font-family: var(--cxFontFamilyBold);
+  border-bottom: solid 0.153rem transparent;
 /*   @extend .ripple-dark; */
   &.active,
   &:active {
-    color: var(--secundario) !important;
-    background-color: var(--base) !important;
-    border-bottom: solid 2px var(--secundario);
+    color: var(--cxSecundario) !important;
+    background-color: var(--cxBase) !important;
+    border-bottom: solid 0.153rem var(--cxSecundario);
     border-radius: 50;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -471,11 +472,11 @@ input[type="number"] {
 /* Cards */
 
 .card {
-  box-shadow: $cx-default-box-shadow;
+  box-shadow: var(--cxShadowCaixa);
   transition: box-shadow 0.2s ease-in-out;
-  background-color: var(--base);
-  color: var(--contrast);
-  border-color: var(--cancel);
+  background-color: var(--cxBase);
+  color: var(--cxContrast);
+  border-color: var(--cxCancel);
   .card-header {
     background-color: inherit;
     border: none;
@@ -501,7 +502,7 @@ input[type="number"] {
   width: 100%;
   height: 100%;
   opacity: 0;
-  border-radius: 5px;
+  border-radius: 0.384rem;
   box-shadow: $cx-lg-box-shadow;
   transition: opacity 0.3s ease-in-out;
 }
@@ -516,8 +517,8 @@ input[type="number"] {
   align-items: center;
   justify-content: center;
   > div {
-    max-height: 50px !important;
-    max-width: 50px !important;
+    max-height: 3.846rem !important;
+    max-width: 3.846rem !important;
   }
 }
 
@@ -550,7 +551,7 @@ input[type="number"] {
 /* INPUT */
 
 .form-control {
-  color: var(--contrast);
+  color: var(--cxContrast);
   width: 100%;
   padding: 0.375rem 0.5rem;
   border-top: none;
@@ -559,7 +560,7 @@ input[type="number"] {
   border-bottom: solid 1px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-color: var(--aux);
+  border-color: var(--cxAux);
   box-shadow: none !important;
   transition: 
     background-size 0.3s, 
@@ -571,8 +572,8 @@ input[type="number"] {
     opacity: 0.5;
     cursor: not-allowed;
     background-image: none !important;
-    background-color: var(--cancel) !important;
-    color: var(--aux)
+    background-color: var(--cxCancel) !important;
+    color: var(--cxAux)
   }
 }
 @each $theme, $colors in $cx-colors {
@@ -670,7 +671,7 @@ select + button.input-caixa {
   margin-bottom: 1.5rem;
 }
 .shadow-caixa {
-  box-shadow: $cx-default-box-shadow !important;
+  box-shadow: var(--cxShadowCaixa) !important;
 }
 .shadow-lg-caixa {
   box-shadow: $cx-lg-box-shadow !important;
@@ -685,8 +686,8 @@ select + button.input-caixa {
   border-radius: 0 !important;
 /*   @extend .ripple-dark; */
   &.active {
-    color: var(--secundario);
-/*     border-left: solid 2px var(--secundario) !important; */
+    color: var(--cxSecundario);
+/*     border-left: solid 0.153rem var(--cxSecundario) !important; */
   }
 }
 
@@ -750,9 +751,9 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 .menu-item {
   display: flex;
   align-items: center;
-  height: 54px;
+  height: 4.153rem;
   width: 100%;
-  min-height: 54px;
+  min-height: 4.153rem;
   transition: 0.2s;
 
   -webkit-touch-callout: none;
@@ -764,11 +765,11 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 .menu-item {
   &.active.has-submenu {
-    color: var(--secundario);
-    box-shadow: 0 0.6rem 0.4rem -0.4rem rgba(0, 0, 0, 0.1);
+    color: var(--cxSecundario);
+    box-shadow: 0 0.6rem 0.4rem -0.4rem var(--cxTransparentContrast025);
   }
   &.active.is-link {
-    background-color: var(--secundario);
+    background-color: var(--cxSecundario);
     color: $cx-color-cinza-lighter;
   }
 }
@@ -848,16 +849,16 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 
 .menu-item:hover {
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: var(--cxTransparentContrast025);
 }
 
 .submenu {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: var(--cxTransparentContrast025);
   overflow: hidden;
   transition: 0.2s ease;
   list-style: none;
   padding-left: 0;
-  border-bottom: 1px solid $cx-color-cinza-dark;
+  border-bottom: 1px solid var(--cxCancel);
 }
 
 .citation-highlight {
@@ -872,22 +873,22 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 /* CLASSES TEMATICAS */
 
 .bg-principal {
-  background-color: var(--principal);
+  background-color: var(--cxPrincipal);
 }
 .bg-secundario {
-  background-color: var(--secundario);
+  background-color: var(--cxSecundario);
 }
 .bg-base {
-  background-color: var(--base);
+  background-color: var(--cxBase);
 }
 .bg-contrast {
-  background-color: var(--contrast);
+  background-color: var(--cxContrast);
 }
 .bg-cancel {
-  background-color: var(--cancel);
+  background-color: var(--cxCancel);
 }
 .bg-aux {
-  background-color: var(--aux);
+  background-color: var(--cxAux);
 }
 
 

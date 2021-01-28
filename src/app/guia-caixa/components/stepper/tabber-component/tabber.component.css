@@ -52,7 +52,7 @@
 .tabber-wrapper > .tabber > .tab:not(:last-of-type)::after {
    top: 3.39rem;
    left: 1.92rem;
-   background-color: var(--cancel);
+   background-color: var(--cxCancel);
    /*    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
@@ -100,13 +100,13 @@
    top: 2.03rem;
    left: 0.69rem;
    margin-right: 0.07rem;
-   color: var(--contrast);
-   background-color: var(--cancel);
+   color: var(--cxContrast);
+   background-color: var(--cxCancel);
    font-weight: 400;
    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .tabber-wrapper > .tabber > .tab.current-tab > .tab-title > .tab-icon {
-   background-color: var(--secundario);
+   background-color: var(--cxSecundario);
    color: var(--cinza-lighter);
 }
 
