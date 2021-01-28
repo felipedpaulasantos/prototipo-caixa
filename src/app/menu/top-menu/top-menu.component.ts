@@ -9,6 +9,7 @@ import { SideMenuService } from "../side-menu/side-menu.service";
 import { GuiaCaixaStyleService, Tema } from "src/app/guia-caixa/services/style-guia-caixa.service";
 import { LOGO_CAIXA_BRANCO_SRC, LOGO_COMPLETO_BRANCO_SRC, Meses } from "src/app/guia-caixa/constants/constants";
 import { StyleService } from "src/app/shared/services/style.service";
+import { GlobalThemeVariables, GlobalThemes, GlobalTheme } from "src/app/shared/model/global-style";
 
 @Component({
   selector: "app-top-menu",
@@ -28,6 +29,9 @@ export class TopMenuComponent implements OnInit {
   isMenuAberto: boolean;
   dataHora: string;
 
+  currentFontSize: string;
+  currentTheme: GlobalThemes;
+
   constructor(
     private oauthService: OAuthService,
     private userService: UserService,
@@ -38,6 +42,8 @@ export class TopMenuComponent implements OnInit {
   ) {
     this.user$ = this.userService.perfil;
     this.sidemenuService.isAberto$.subscribe(isAberto => this.isMenuAberto = isAberto);
+    this.styleService.currentFontSize$.subscribe(fontSize => this.currentFontSize = fontSize);
+    this.styleService.currentGlobalStyle$.subscribe(theme => this.currentTheme = theme);
     this.showDate();
     this.setDefaultTheme();
   }
@@ -48,8 +54,11 @@ export class TopMenuComponent implements OnInit {
     { name: "Extra Grande", value: "15px" }
   ];
 
+  themes: GlobalThemes[] = [];
+
   ngOnInit(): void {
     this.user = this.setMockUser();
+    this.themes = GlobalThemes.getThemes();
   }
 
   showLogoutModal() {

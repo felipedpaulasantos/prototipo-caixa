@@ -1,4 +1,4 @@
-export interface GlobalTheme {
+export interface GlobalThemeVariables {
    cxBodyBgColor: string;
    cxBodyTextColor: string;
    cxShadowCaixa: string;
@@ -28,7 +28,7 @@ export interface GlobalTheme {
    cxTransparentContrast75: string;
 }
 
-export const lightTheme: GlobalTheme = {
+export const lightTheme: GlobalThemeVariables = {
    cxBodyBgColor: "--white",
    cxBodyTextColor: "--grafite",
    cxShadowCaixa: "--shadow-caixa-dark",
@@ -58,7 +58,7 @@ export const lightTheme: GlobalTheme = {
    cxTransparentContrast75: "rgba(0, 0, 0, 0.75)"
 };
 
-export const darkTheme: GlobalTheme = {
+export const darkTheme: GlobalThemeVariables = {
    cxBodyBgColor: "--grafite-dark",
    cxBodyTextColor: "--white",
    cxShadowCaixa: "--shadow-caixa-light",
@@ -88,15 +88,39 @@ export const darkTheme: GlobalTheme = {
    cxTransparentContrast75: "rgba(255, 255, 255, 0.75)"
 };
 
+export interface GlobalTheme {
+   name: string;
+   className: string;
+   theme: GlobalThemeVariables;
+}
+
 export class GlobalThemes {
 
    private constructor(
-      public readonly themeName: string,
-      public readonly className: string,
-      public readonly theme: GlobalTheme
+      public readonly key: string,
+      public readonly value: GlobalTheme
    ) { }
 
-   static readonly lightTheme = new GlobalThemes("lightTheme", "tema-claro", lightTheme);
-   static readonly darkTheme = new GlobalThemes("darkTheme", "tema-escuro", darkTheme);
+   static readonly lightTheme = new GlobalThemes(
+      "Tema Claro", { name: "lightTheme", className: "tema-claro", theme: lightTheme }
+   );
 
+   static readonly darkTheme = new GlobalThemes(
+      "Tema Escuro", { name: "darkTheme", className: "tema-escuro", theme: darkTheme }
+   );
+
+   static getThemes(): GlobalThemes[] {
+		const temas: GlobalThemes[] = [];
+		Object.getOwnPropertyNames(GlobalThemes).forEach((theme: any) => {
+         const tema = GlobalThemes[theme];
+			if (tema && tema.value) {
+				temas.push(tema);
+			}
+		});
+		return temas;
+   }
+
+   toString(): string {
+      return this.key;
+   }
 }
