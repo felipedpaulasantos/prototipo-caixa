@@ -8,12 +8,12 @@
     <div class="row">
       <div class="col-12 col-md-5 col-lg-4">
         <label>CPF</label>
-        <input class="input-caixa" name="cpf" placeholder="Informe o CPF" mask="000.000.000-00" formControlName="cpf">
+        <input class="form-control" name="cpf" placeholder="Informe o CPF" mask="000.000.000-00" formControlName="cpf">
       </div>
       <div class="col-12 col-md-5 col-lg-4">
 
         <label>NIS</label>
-        <input class="input-caixa" name="nis" placeholder="Informe o NIS" mask="000.000.000-00" formControlName="nis">
+        <input class="form-control" name="nis" placeholder="Informe o NIS" mask="000.000.000-00" formControlName="nis">
       </div>
       <div class="col d-flex align-items-center mt-2 mt-md-0">
         <button type="submit" [disabled]="isCpfNisInvalid"

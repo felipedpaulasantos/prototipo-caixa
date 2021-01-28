@@ -73,7 +73,7 @@ export class InputsComponent extends ComponentesInterface {
   showTabsInputClasse = false;
   htmlCodeInputClasse = `<form>
   <label>Input Caixa (Padrão)</label>
-  <input class="input-caixa">
+  <input class="form-control">
 
   <br><br>
 
@@ -83,12 +83,12 @@ export class InputsComponent extends ComponentesInterface {
   <br><br>
 
   <label>Input Info</label>
-  <input class="input-caixa-info">
+  <input class="form-control-info">
 
   <br><br>
 
   <label>Input Aux Dark</label>
-  <input class="input-caixa-aux-dark">
+  <input class="form-control-aux-dark">
 </form>
   `.trim();
 

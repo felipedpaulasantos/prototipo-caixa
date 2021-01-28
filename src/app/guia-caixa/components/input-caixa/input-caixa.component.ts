@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges, Renderer2,
-  ViewChild, ElementRef, ContentChild, HostBinding, AfterContentInit } from '@angular/core';
-import { AbstractControl, NgControl, FormControlName } from '@angular/forms';
+  ViewChild, ElementRef, ContentChild, HostBinding, AfterContentInit } from "@angular/core";
+import { AbstractControl, NgControl, FormControlName } from "@angular/forms";
 
-import { InputCaixaDirective } from './input-caixa.directive';
+import { InputCaixaDirective } from "./input-caixa.directive";
 
 @Component({
-  selector: 'cx-input',
-  templateUrl: './input-caixa.component.html',
-  styleUrls: ['./input-caixa.component.scss']
+  selector: "cx-input",
+  templateUrl: "./input-caixa.component.html",
+  styleUrls: ["./input-caixa.component.scss"]
 })
 export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit {
 
@@ -64,7 +64,7 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
     if (Array.isArray(this.customErrors)) {
       return this.parsedOptionalErrors = this.customErrors;
     }
-    if (typeof this.customErrors === 'string') {
+    if (typeof this.customErrors === "string") {
       parsedErrors = JSON.parse(this.customErrors.trim());
     }
     this.parsedOptionalErrors.push(parsedErrors);
@@ -77,10 +77,10 @@ export class InputCaixaComponent implements OnInit, OnChanges, AfterContentInit 
         return true;
       }
     }
-    if (abstractControl && abstractControl['controls']) {
-      for (const controlName in abstractControl['controls']) {
-        if (abstractControl['controls'][controlName]) {
-          if (this.isFieldRequired(abstractControl['controls'][controlName])) {
+    if (abstractControl && abstractControl["controls"]) {
+      for (const controlName in abstractControl["controls"]) {
+        if (abstractControl["controls"][controlName]) {
+          if (this.isFieldRequired(abstractControl["controls"][controlName])) {
             return true;
           }
         }
