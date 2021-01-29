@@ -140,12 +140,12 @@
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-warning > .timeline-item-title > .timeline-item-icon {
    background-color: #FFD000 !important;
-   color: inherit !important;
+   color: var(--grafite) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-warning-stop > .timeline-item-title > .timeline-item-icon {
    background-color: #FFD000 !important;
-   color: inherit !important;
+   color: var(--grafite) !important;
 }
 
 /* TIMELINE-ITEM-INFO */
