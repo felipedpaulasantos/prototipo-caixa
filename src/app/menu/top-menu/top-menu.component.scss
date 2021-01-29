@@ -30,7 +30,7 @@
     font-size: 1.5rem;
 }
 
-#navbarTop {
+#headerGeral {
   height: 64px !important;
   position: fixed;
   top: 0;
@@ -39,7 +39,7 @@
   z-index: 9;
   width: 100%;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
-  #navToolbar {
+  #headerNav {
     display: flex;
     align-items: center;
     height: 100%;

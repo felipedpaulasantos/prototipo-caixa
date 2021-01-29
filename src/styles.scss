@@ -76,7 +76,7 @@ body {
   color: var(--cxContrast);
 }
 
-#navbarTop {
+#headerGeral {
   background: var(--cxSecundario);
   color: $cx-color-cinza-lighter;
 }
@@ -691,7 +691,7 @@ select + button.input-caixa {
   border-radius: 0 !important;
   &.active {
     background-color: var(--cxSecundario) !important;
-    color: var(--cinza-lighter);
+    color: var(--cinza-lighter) !important;
   }
 }
 
@@ -912,7 +912,7 @@ body.tema-claro {
     @extend .border-right;
     @extend .border-cinza;
   }
-  #navbarTop {
+  #headerGeral {
     @extend .bg-primary;
     @extend .text-white;
   }
@@ -998,7 +998,7 @@ body.tema-escuro {
     @extend .border-left;
     @extend .border-grafite;
   }
-  #navbarTop {
+  #headerGeral {
     @extend .bg-grafite-darker;
     @extend .text-white;
   }

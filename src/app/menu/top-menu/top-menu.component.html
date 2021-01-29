@@ -1,6 +1,6 @@
-<header #navbarTop id="navbarTop" appCloseTab>
+<header #headerGeral id="headerGeral">
 
-  <nav id="navToolbar">
+  <nav id="headerNav">
     <div id="spanLogo" class="h-100"  [ngClass]="{'menu-is-aberto': isMenuAberto}">
       <div class="d-flex align-items-center h-100">
         <img [src]="isMenuAberto ? logoCompletoBranco : logoXBranco" class="img-fluid img-logo rounded mx-auto">
@@ -49,14 +49,6 @@
             (click)="setTheme(tema.value.name)">
               {{ tema.toString() }}
             </div>
-<!--             <div (click)="setTheme('darkTheme')" class="dropdown-item" [ngClass]="{'active': currentTheme === null}">
-              <div class="border rounded bg-grafite square mr-2"></div>
-              Tema escuro
-            </div>
-            <div (click)="setTheme('lightTheme')" class="dropdown-item">
-              <div class="border rounded bg-white square mr-2"></div>
-              Tema claro
-            </div> -->
           </div>
         </div>
       </div> 
@@ -84,11 +76,10 @@
       </div>
     </div>
 
-    <div class="mx-4">
-      <button class="btn btn-outline-light">
-        <i class="fa fa-sign-out-alt fa-lg mr-2"></i>
-        <span class="text-uppercase font-fam-bold">Sair</span>
-      </button>
-    </div>
+    <button class="btn btn-outline-light mx-4">
+      <i class="fa fa-sign-out-alt fa-lg mr-2"></i>
+      <span class="text-uppercase font-fam-bold">Sair</span>
+    </button>
+
   </nav>
 </header>

@@ -21,7 +21,7 @@ export class TopMenuComponent implements OnInit {
   logoXBranco = LOGO_CAIXA_BRANCO_SRC;
   logoCompletoBranco = LOGO_COMPLETO_BRANCO_SRC;
 
-  @ViewChild("navbarTop") navbarTop: ElementRef;
+  @ViewChild("headerGeral") headerGeral: ElementRef;
   @Input() tema: Tema;
   @Input() resources;
   user$ = new Observable<User>(null);
