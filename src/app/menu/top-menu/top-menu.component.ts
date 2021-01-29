@@ -60,12 +60,12 @@ export class TopMenuComponent implements OnInit {
     this.user = this.setMockUser();
     const themes = GlobalThemes.getThemes();
     themes.forEach(theme => {
-      const base = theme.value.theme.cxBase;
+      const body = theme.value.theme.cxBodyBgColor;
       const secundario = theme.value.theme.cxSecundario;
       const style = getComputedStyle(document.body);
-      const colorBase = style.getPropertyValue(base);
+      const colorBody = style.getPropertyValue(body);
       const colorSecundario = style.getPropertyValue(secundario);
-      theme["background"] = `linear-gradient(-45deg, ${colorSecundario}, ${colorSecundario} 49%, white 49%, white 51%, ${colorBase} 51%)`;
+      theme["background"] = `linear-gradient(-45deg, ${colorSecundario}, ${colorSecundario} 49%, white 49%, white 51%, ${colorBody} 51%)`;
     });
     this.themes = themes;
   }
@@ -77,7 +77,7 @@ export class TopMenuComponent implements OnInit {
       classTitulo: "header-caixa text-danger-dark",
       mensagem: "Deseja realmente sair?",
       btOkTexto: "Sair",
-      btnOkClass: "btn btn-caixa btn-danger",
+      btnOkClass: "btn btn-caixa btn-perigo",
       btnCancelarClass: "btn btn-caixa btn-outline-dark",
       btCancelarTexto: "Cancelar",
       modalBodyClass: "bg-danger-dark text-cinza-light"

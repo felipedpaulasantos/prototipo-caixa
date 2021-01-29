@@ -111,7 +111,9 @@
    box-shadow: var(--cxShadowCaixa);
 }
 
-.tabber-wrapper > .tabber > .tab > .tab-title > .tab-icon > .has-error-icon {
+/* STATE ICON */
+
+.tabber-wrapper > .tabber > .tab > .tab-title > .tab-icon > .state-icon {
    display: flex;
    align-items: center;
    justify-content: center;

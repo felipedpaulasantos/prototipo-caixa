@@ -32,10 +32,16 @@
   --cxSecundario: $cx-color-primary;
   --cxAux: $cx-color-grafite;
   --cxCancel: $cx-color-cinza;
+
   --cxSucesso: $cx-color-success;
+  --cxSucessoContrast: $cx-color-success-lighter;
   --cxPerigo: $cx-color-danger;
+  --cxPerigoContrast: $cx-color-goiaba-light;
   --cxAlerta: $cx-color-warning;
+  --cxAlertaContrast: $cx-color-warning-lighter;
   --cxInfo: $cx-color-info;
+  --cxInfoContrast: $cx-color-info-light;
+
   --cxBase: $cx-color-white;
   --cxContrast: $cx-color-grafite-dark;
 
@@ -72,13 +78,13 @@ html {
 body {
   overflow-y: scroll;
   overflow-x: hidden;
-  background-color: var(--cxBase);
+  background-color: var(--cxBodyBgColor);
   color: var(--cxContrast);
 }
 
 #headerGeral {
-  background: var(--cxSecundario);
-  color: $cx-color-cinza-lighter;
+  background: var(--cxHeaderBgColor);
+  color: var(--cxHeaderTextColor);
 }
 
 /* 
@@ -210,16 +216,17 @@ hr.header-line-caixa {
 
 .toast-container {
   font-family: var(--cxFontFamilyNormal);
-  color: var(--cinza-lighter);
-  > div {
+  > div.ngx-toastr {
+    background-color: var(--cxContrast);
     background-image: none !important;
+    box-shadow: var(--cxShadowCaixaSm) !important;
     padding: 1.15rem 1.15rem 1.15rem 3.846rem;
-    background-color: $cx-color-grafite;
     pointer-events: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--cxAux);
     border-radius: 0.384rem !important;
     transition: box-shadow 0.2s, border-bottom 0.3s, box-shadow 0.3s ease-in-out;
-    box-shadow: none !important;
-    color: var(--cinza-lighter) !important;
     &:before {
       position: absolute;
       left: 0;
@@ -235,52 +242,63 @@ hr.header-line-caixa {
       padding-left: 1rem;
     }
     &.toast-success {
+      border-left: solid 4px var(--cxSucessoContrast);
       &:before {
         content: "\f00c";
-        color: var(--cxSucesso);
+        color: var(--cxSucessoContrast);
       }
       .toast-progress {
-        background-color: var(--cxSucesso);
+        background-color: var(--cxSucessoContrast);
       }
     }
     &.toast-error {
+      border-left: solid 4px var(--cxPerigoContrast);
       &:before {
         content: "\f00d";
-        color: var(--cxPerigo);
+        color: var(--cxPerigoContrast);
       }
       .toast-progress {
-        background-color: var(--cxPerigo);
+        background-color: var(--cxPerigoContrast);
       }
     }
     &.toast-info {
+      border-left: solid 4px var(--cxInfoContrast);
       &:before {
         content: "\f129";
-        color: var(--cxInfo);
+        color: var(--cxInfoContrast);
       }
       .toast-progress {
-        background-color: var(--cxInfo);
+        background-color: var(--cxInfoContrast);
       }
     }
     &.toast-warning {
+      border-left: solid 4px var(--cxAlertaContrast);
       &:before {
         content: "\f12a";
-        color: var(--cxAlerta);
+        color: var(--cxAlertaContrast);
       }
       .toast-progress {
-        background-color: var(--cxAlerta);
+        background-color: var(--cxAlertaContrast);
       }
     }
     &:hover {
       box-shadow: var(--cxShadowCaixaLg) !important;
       transition: opacity 0.3s ease-in-out;
     }
+    .toast-close-button {
+      color: var(--cxBase);
+      position: absolute;
+      right: 1rem;
+      top: 0;
+    }
     div.toast-title {
+      color: var(--cxBase);
       font-family: var(--cxFontFamilyBold);
       font-weight: 400;
       margin-bottom: 0.3rem;
     }
     div.toast-message {
-      color: var(--cxContrast) !important;
+      color: var(--cxBase) !important;
     }
     div .toast-progress {
       opacity: 0.9;
@@ -353,14 +371,16 @@ th.th-sorting {
   transition: 0.5s;
   font-family: var(--cxFontFamilyBold);
 }
-.table-caixa {
+.table {
   border-bottom: none !important;
+  border-color: var(--cxCancel);
+  color: var(--cxContrast);
   thead th {
     font-family: var(--cxFontFamilyBold);
-    color: var(--cxAux);
-    border-top: 0;
+    /* border-top: 0; */
     border-bottom: 0 !important;
     font-weight: 400 !important;
+    border-color: var(--cxCancel);
     &.sorting,
     &.sorting_asc,
     &.sorting_desc {
@@ -381,12 +401,10 @@ th.th-sorting {
     }
   }
   tbody {
-    /*     tr:hover {
-      background-color: $cx-color-cinza;
-    } */
     td {
       vertical-align: middle;
       padding: 0.75rem !important;
+      border-color: var(--cxCancel);
     }
   }
 }
@@ -700,6 +718,8 @@ select + button.input-caixa {
 /* MENU LATERAL */
 
 #menuLateral {
+  background-color: var(--cxSidemenuBgColor);
+  color: var(--cxSidemenuTextColor);
   width: 80%;
   position: fixed;
   top: 64px;
@@ -771,12 +791,13 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 .menu-item {
   &.active.has-submenu {
-    color: var(--cxSecundario);
+    color: var(--cxSidemenuActiveBgColor);
+    font-family: var(--cxFontFamilyBold);
     box-shadow: 0 0.6rem 0.4rem -0.4rem var(--cxTransparentContrast025);
   }
   &.active.is-link {
-    background-color: var(--cxSecundario);
-    color: var(--cinza-lighter);
+    background-color: var(--cxSidemenuActiveBgColor);
+    color: var(--cxSidemenuActiveTextColor);
   }
 }
 
@@ -878,6 +899,28 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 
 /* CLASSES TEMATICAS */
 
+.text-principal {
+  color: var(--cxPrincipal);
+}
+.text-secundario {
+  color: var(--cxSecundario);
+}
+.text-sucesso {
+  color: var(--cxSucesso);
+}
+.text-perigo {
+  color: var(--cxPerigo);
+}
+.text-info {
+  color: var(--cxInfo);
+}
+.text-alerta {
+  color: var(--cxAlerta);
+}
+.text-link {
+  color: var(--cxSecundario);
+}
+
 .bg-principal {
   background-color: var(--cxPrincipal);
 }
@@ -896,6 +939,18 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 .bg-aux {
   background-color: var(--cxAux);
 }
+.bg-sucesso {
+  background-color: var(--cxSucesso);
+}
+.bg-perigo {
+  background-color: var(--cxPerigo);
+}
+.bg-alerta {
+  background-color: var(--cxAlerta);
+}
+.bg-info {
+  background-color: var(--cxInfo);
+}
 
 
 /* TEMAS */
@@ -904,44 +959,20 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 
 body.tema-claro {
 
-  #wrapperBreadcrumb,
-  #tabClienteGlobalWrapper,
-  #menuLateral {
-    @extend .bg-white;
-    @extend .text-grafite;
+
+
+  .btn-base {
+    @extend .btn-cinza-lighter;
   }
-  #menuLateral {
-    @extend .border-right;
-    @extend .border-cinza;
-  }
-  #headerGeral {
-    @extend .bg-primary;
-    @extend .text-white;
-  }
-  #wrapperConteudoPrincipal {
-    @extend .bg-light;
+  .btn-outline-base {
+    @extend .btn-outline-cinza-lighter;
   }
 
-  .text-principal {
-    @extend .text-secondary;
+  .btn-contrast {
+    @extend .btn-grafite-dark;
   }
-  .text-secundario {
-    @extend .text-primary;
-  }
-  .text-sucesso {
-    @extend .text-success;
-  }
-  .text-perigo {
-    @extend .text-danger;
-  }
-  .text-info {
-    @extend .text-info;
-  }
-  .text-alerta {
-    @extend .text-warning;
-  }
-  .text-link {
-    @extend .text-primary;
+  .btn-outline-contrast {
+    @extend .btn-outline-grafite-dark;
   }
 
   .btn-principal {
@@ -950,38 +981,47 @@ body.tema-claro {
   .btn-outline-principal {
     @extend .btn, .btn-outline-secondary;
   }
+
   .btn-secundario {
     @extend .btn, .btn-primary;
   }
   .btn-outline-secundario {
     @extend .btn, .btn-outline-primary;
   }
+
   .btn-aux {
     @extend .btn, .btn-grafite;
   }
   .btn-outline-aux {
     @extend .btn, .btn-outline-grafite;
   }
+
   .btn-cancel {
     @extend .btn, .btn-cinza;
   }
   .btn-outline-cancel {
     @extend .btn, .btn-outline-cinza;
   }
+
   .btn-perigo {
     @extend .btn-danger;
   }
-  .btn-base {
-    @extend .btn-cinza-lighter;
+  .btn-outline-perigo {
+    @extend .btn-outline-danger;
   }
-  .btn-outline-base {
-    @extend .btn-outline-cinza-lighter;
+
+  .btn-sucesso {
+    @extend .btn-success;
   }
-  .btn-contrast {
-    @extend .btn-grafite-dark;
+  .btn-outline-sucesso {
+    @extend .btn-outline-success;
   }
-  .btn-outline-contrast {
-    @extend .btn-outline-grafite-dark;
+
+  .btn-alerta {
+    @extend .btn-warning;
+  }
+  .btn-outline-alerta {
+    @extend .btn-outline-warning;
   }
 
 }
@@ -989,24 +1029,6 @@ body.tema-claro {
 /* TEMA ESCURO */
 
 body.tema-escuro {
-
-  #wrapperBreadcrumb,
-  #tabClienteGlobalWrapper,
-  #menuLateral {
-    @extend .bg-grafite-dark;
-    @extend .text-white;
-  }
-  #menuLateral {
-    @extend .border-left;
-    @extend .border-grafite;
-  }
-  #headerGeral {
-    @extend .bg-grafite-darker;
-    @extend .text-white;
-  }
-  #wrapperConteudoPrincipal {
-    @extend .bg-grafite;
-  }
 
   .text-principal {
     @extend .text-secondary;
@@ -1026,8 +1048,19 @@ body.tema-escuro {
   .text-alerta {
     @extend .text-warning-lighter;
   }
-  .text-link {
-    @extend .text-ceu;
+
+  .btn-base {
+    @extend .btn-grafite-dark;
+  }
+  .btn-outline-base {
+    @extend .btn-outline-grafite-dark;
+  }
+
+  .btn-contrast {
+    @extend .btn-cinza-lighter;
+  }
+  .btn-outline-contrast {
+    @extend .btn-outline-cinza-lighter;
   }
 
   .btn-principal {
@@ -1036,38 +1069,53 @@ body.tema-escuro {
   .btn-outline-principal {
     @extend .btn, .btn-outline-ceu;
   }
+
   .btn-secundario {
     @extend .btn, .btn-ceu;
   }
   .btn-outline-secundario {
     @extend .btn, .btn-outline-ceu;
   }
+
   .btn-aux {
     @extend .btn, .btn-cinza;
   }
   .btn-outline-aux {
     @extend .btn, .btn-outline-cinza;
   }
+
   .btn-cancel {
     @extend .btn, .btn-grafite-light;
   }
   .btn-outline-cancel {
     @extend .btn, .btn-outline-grafite-light;
   }
+
   .btn-perigo {
     @extend .btn-goiaba-light;
   }
-  .btn-base {
-    @extend .btn-grafite-dark;
-  }
-  .btn-outline-base {
-    @extend .btn-outline-grafite-dark;
-  }
-  .btn-contrast {
-    @extend .btn-cinza-lighter;
-  }
-  .btn-outline-contrast {
-    @extend .btn-outline-cinza-lighter;
+  .btn-outline-perigo {
+    @extend .btn-outline-goiaba-light;
   }
 
+  .btn-sucesso {
+    @extend .btn-success-lighter;
+  }
+  .btn-outline-sucesso {
+    @extend .btn-outline-success-lighter;
+  }
+
+  .btn-alerta {
+    @extend .btn-warning-lighter;
+  }
+  .btn-outline-alerta {
+    @extend .btn-outline-warning-lighter;
+  }
+
+  .btn-info {
+    @extend .btn-info-light;
+  }
+  .btn-outline-info {
+    @extend .btn-outline-info-light;
+  }
 }

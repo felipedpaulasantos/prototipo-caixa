@@ -3,7 +3,7 @@
 </h1>
 
 
-<ul class="nav nav-pills text-uppercase border-bottom tab-caixa" role="tablist">
+<ul class="nav nav-pills text-uppercase tab-caixa" role="tablist">
   <li class="nav-item">
     <a cx-ripple class="nav-link active" data-toggle="tab" href="#visaoGeral" role="tab">
       Visão Geral
@@ -32,15 +32,15 @@
           </div>
 
           <div class="conteudo">
-            <button class="btn btn-caixa btn-success" (click)="exibirSucesso()">
+            <button class="btn btn-caixa btn-sucesso" (click)="exibirSucesso()">
               Sucesso!
             </button> &nbsp;
 
-            <button class="btn btn-caixa btn-danger" (click)="exibirErro()">
+            <button class="btn btn-caixa btn-perigo" (click)="exibirErro()">
               Erro!
             </button> &nbsp;
 
-            <button class="btn btn-caixa btn-warning" (click)="exibirAlerta()">
+            <button class="btn btn-caixa btn-alerta" (click)="exibirAlerta()">
               Alerta!
             </button> &nbsp;
 
@@ -86,22 +86,6 @@
         </app-documentacao-template>
       </section>
 
-      <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
-        <div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
-          <a (click)="scrollTo('painelMensagens')" class="list-group-item list-group-item-action"
-            [ngClass]="{'active': currentSection == 'painelMensagens'}" role="button">
-            Notificações</a>
-          <a (click)="scrollTo('painelSpinner')" class="list-group-item list-group-item-action"
-            [ngClass]="{'active': currentSection == 'painelSpinner'}" role="button">
-            Spinner</a>
-          <a (click)="scrollTo('painelModal')" class="list-group-item list-group-item-action"
-            [ngClass]="{'active': currentSection == 'painelModal'}" role="button">
-            Modal</a>
-        </div>
-      </nav>
-    </div>
-
-    <div class="row no-gutters">
       <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
         <div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
           <a (click)="scrollTo('painelMensagens')" class="list-group-item list-group-item-action"
@@ -222,29 +206,29 @@
 
     <div class="row">
       <div class="col-md-6 my-3">
-        <button class="btn btn-caixa my-2 my-md-0 btn-success mr-3" (click)="toastr.success('Sucesso!')">
+        <button class="btn btn-caixa my-2 my-md-0 btn-sucesso mr-3" (click)="toastr.success('Sucesso!')">
           Sucesso!
         </button>
-        <button class="btn btn-caixa my-2 my-md-0 btn-success mr-3"
+        <button class="btn btn-caixa my-2 my-md-0 btn-sucesso mr-3"
           (click)="toastr.success('Um texto de apoio!', 'Sucesso', { 'positionClass': 'toast-bottom-center' })">
           Sucesso com título!
         </button>
       </div>
 
       <div class="col-md-6 my-3">
-        <button class="btn btn-caixa my-2 my-md-0 btn-danger mr-3" (click)="toastr.error('Erro!')">
+        <button class="btn btn-caixa my-2 my-md-0 btn-perigo mr-3" (click)="toastr.error('Erro!')">
           Erro!
         </button>
-        <button class="btn btn-caixa my-2 my-md-0 btn-danger mr-3" (click)="toastr.error('Um texto de apoio!', 'Erro')">
+        <button class="btn btn-caixa my-2 my-md-0 btn-perigo mr-3" (click)="toastr.error('Um texto de apoio!', 'Erro')">
           Erro com título!
         </button>
       </div>
 
       <div class="col-md-6 my-3">
-        <button class="btn btn-caixa my-2 my-md-0 btn-warning mr-3" (click)="toastr.warning('Atenção!')">
+        <button class="btn btn-caixa my-2 my-md-0 btn-alerta mr-3" (click)="toastr.warning('Atenção!')">
           Atenção!
         </button>
-        <button class="btn btn-caixa my-2 my-md-0 btn-warning mr-3"
+        <button class="btn btn-caixa my-2 my-md-0 btn-alerta mr-3"
           (click)="toastr.warning('Um texto de apoio!', 'Atenção')">
           Atenção com título!
         </button>

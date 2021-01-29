@@ -1,16 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { ModalService } from 'src/app/guia-caixa/services/modal.service';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
+import { ModalService } from "src/app/guia-caixa/services/modal.service";
 
-import { ComponentesInterface } from '../componentes-interface';
-import { ModalSize } from 'src/app/guia-caixa/components/modal/modal-options';
+import { ComponentesInterface } from "../componentes-interface";
+import { ModalSize } from "src/app/guia-caixa/components/modal/modal-options";
 
 @Component({
-  selector: 'app-mensagens',
-  templateUrl: './mensagens.component.html',
-  styleUrls: ['./mensagens.component.css'],
-  host: { '(window:scroll)': 'onScroll($event)' }
+  selector: "app-mensagens",
+  templateUrl: "./mensagens.component.html",
+  styleUrls: ["./mensagens.component.css"],
+  host: { "(window:scroll)": "onScroll($event)" }
 })
 export class MensagensComponent extends ComponentesInterface implements OnInit {
 
@@ -25,19 +25,19 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
   }
 
   @ViewChild("scrollElement") scrollElement;
-  spiedTags = ['APP-DOCUMENTACAO-TEMPLATE'];
+  spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   sectionOffset = 0;
   currentSection = "painelMensagens";
 
-  htmlCodeMensagens = `        <button class="btn btn-caixa btn-success" (click)="exibirSucesso()">
+  htmlCodeMensagens = `        <button class="btn btn-caixa btn-sucesso" (click)="exibirSucesso()">
   Sucesso!
 </button> &nbsp;
 
-<button class="btn btn-caixa btn-danger" (click)="exibirErro()">
+<button class="btn btn-caixa btn-perigo" (click)="exibirErro()">
   Erro!
 </button> &nbsp;
 
-<button class="btn btn-caixa btn-warning" (click)="exibirAlerta()">
+<button class="btn btn-caixa btn-alerta" (click)="exibirAlerta()">
   Alerta!
 </button> &nbsp;
 
@@ -142,25 +142,25 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
   }
 
   exibirSucesso() {
-    this.toastr.success('Sucesso!');
+    this.toastr.success("Sucesso!", "", { disableTimeOut: true });
   }
 
   exibirErro() {
-    this.toastr.error('Ocorreu um erro!', 'Erro!');
+    this.toastr.error("Ocorreu um erro!", "Erro!", { disableTimeOut: true });
   }
 
   exibirAlerta() {
-    this.toastr.warning('Alerta!', null, { positionClass: 'toast-top-right', progressBar: false });
+    this.toastr.warning("Alerta!", null, { positionClass: "toast-top-right", progressBar: false, disableTimeOut: true });
   }
 
   exibirInfo() {
-    this.toastr.info('Informação!', 'Importante!', { positionClass: 'toast-bottom-right', progressBar: false });
+    this.toastr.info("Informação!", "Importante!", { positionClass: "toast-bottom-right", progressBar: false, disableTimeOut: true });
   }
 
   exibirSpinner() {
-    this.spinner.show('global');
+    this.spinner.show("global");
     setTimeout(() => {
-      this.spinner.hide('global');
+      this.spinner.hide("global");
     }, 3000);
   }
 
