@@ -1,10 +1,10 @@
 import {
   Component, OnInit, Input, AfterViewInit, ContentChild,
   ViewChild, ElementRef, HostBinding, Renderer2, AfterContentInit, SimpleChanges, OnChanges, AfterContentChecked, HostListener
-} from '@angular/core';
-import { SelectCaixaDirective } from './select-caixa.directive';
-import { AbstractControl, NgControl, FormControlName } from '@angular/forms';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+} from "@angular/core";
+import { SelectCaixaDirective } from "./select-caixa.directive";
+import { AbstractControl, NgControl, FormControlName } from "@angular/forms";
+import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
 declare let $: any;
 
@@ -33,28 +33,28 @@ interface BootstrapSelectOptions {
 }
 
 const defaultOptions: BootstrapSelectOptions = {
-  bootstrapVersion: '4',
+  bootstrapVersion: "4",
   actionsBox: false,
   container: false,
-  deselectAllText: 'Remover seleção',
+  deselectAllText: "Remover seleção",
   liveSearch: false,
   liveSearchNormalize: false,
   liveSearchPlaceholder: null,
   liveSearchStyle: LiveSearchStyle.contains,
   mobile: true,
-  multipleSeparator: ', ',
-  noneSelectedText: 'Nenhuma opção selecionada',
-  noneResultsText: 'Nenhum resultado encontrado',
-  selectAllText: 'Selecionar todos',
-  style: '',
-  tickIcon: 'fa fa-check',
+  multipleSeparator: ", ",
+  noneSelectedText: "Nenhuma opção selecionada",
+  noneResultsText: "Nenhum resultado encontrado",
+  selectAllText: "Selecionar todos",
+  style: "",
+  tickIcon: "fa fa-check",
   width: false
 };
 
 @Component({
-  selector: 'cx-select',
-  templateUrl: './select-caixa.component.html',
-  styleUrls: ['./select-caixa.component.scss']
+  selector: "cx-select",
+  templateUrl: "./select-caixa.component.html",
+  styleUrls: ["./select-caixa.component.scss"]
 })
 export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, AfterContentInit, AfterContentChecked {
 
@@ -158,7 +158,7 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
   initialize() {
     if (this.nativeElement) {
       $(this.nativeElement).selectpicker(this.options);
-      $(this.nativeElement).selectpicker('refresh');
+      $(this.nativeElement).selectpicker("refresh");
     }
   }
 
@@ -177,10 +177,10 @@ export class SelectCaixaComponent implements OnInit, OnChanges, AfterViewInit, A
         return true;
       }
     }
-    if (abstractControl && abstractControl['controls']) {
-      for (const controlName in abstractControl['controls']) {
-        if (abstractControl['controls'][controlName]) {
-          if (this.isFieldRequired(abstractControl['controls'][controlName])) {
+    if (abstractControl && abstractControl["controls"]) {
+      for (const controlName in abstractControl["controls"]) {
+        if (abstractControl["controls"][controlName]) {
+          if (this.isFieldRequired(abstractControl["controls"][controlName])) {
             return true;
           }
         }

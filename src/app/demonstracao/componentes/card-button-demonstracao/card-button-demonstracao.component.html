@@ -1,9 +1,9 @@
 <h1 class="header-principal-caixa">
    Card Button
 </h1>
-<hr class="header-line-caixa">
 
-<ul class="nav nav-pills border-bottom tab-caixa" role="tablist">
+
+<ul class="nav nav-pills tab-caixa" role="tablist">
    <li class="nav-item">
       <a cx-ripple class="nav-link text-uppercase active" data-toggle="tab" href="#visaoGeral" role="tab">
          Visão Geral
@@ -46,7 +46,7 @@
                </div>
 
                <div class="conteudo">
-                  <cx-card-button leftIcon="fa fa-home">
+                  <cx-card-button leftIcon="fa fa-home" class="">
                      <h5>Lorem Ipsum</h5>
                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sint perspiciatis soluta
                      saepe est nam, sunt accusantium.
@@ -70,16 +70,16 @@
                </div>
 
                <div class="conteudo">
-                  <cx-card-button type="checkbox" [(ngModel)]="user" value="user" leftIcon="fa fa-user">
+                  <cx-card-button type="checkbox" [(ngModel)]="user" value="user" leftIcon="fa fa-user" class="mb-3">
                      <label>Usuário</label>
-                     <input [disabled]="!user" value="Fulano" class="input-caixa">
+                     <input [disabled]="!user" value="Fulano" class="form-control">
                   </cx-card-button>
 
                   <br>
 
                   <cx-card-button type="checkbox" [(ngModel)]="email" value="email" leftIcon="fa fa-at">
                      <label>E-mail</label>
-                     <input [disabled]="!email" value="fulano@email.com" class="input-caixa">
+                     <input [disabled]="!email" value="fulano@email.com" class="form-control">
                   </cx-card-button>
                </div>
             </app-documentacao-template>
@@ -102,7 +102,7 @@
                   <form [formGroup]="formFone">
                      <cx-card-button type="radio" formControlName="tipoFone" value="fixo" leftIcon="fa fa-phone-alt">
                         <label>Fixo</label>
-                        <input [disabled]="formFone.get('tipoFone').value !== 'fixo'" class="input-caixa"
+                        <input [disabled]="formFone.get('tipoFone').value !== 'fixo'" class="form-control"
                            placeholder="(00) 0000-0000">
                      </cx-card-button>
 
@@ -111,7 +111,7 @@
                      <cx-card-button type="radio" formControlName="tipoFone" value="celular"
                         leftIcon="fa fa-mobile-alt">
                         <label>Celular</label>
-                        <input [disabled]="formFone.get('tipoFone').value !== 'celular'" class="input-caixa"
+                        <input [disabled]="formFone.get('tipoFone').value !== 'celular'" class="form-control"
                            placeholder="(00) 00000-0000">
                      </cx-card-button>
                   </form>
@@ -137,7 +137,7 @@
          <h6 class="header-subtitulo-caixa">Propriedades</h6>
          <div class="table-responsive">
             <table class="table table-bordered table-caixa">
-               <thead class="bg-cinza-light border-top">
+               <thead>
                   <tr>
                      <th>Nome</th>
                      <th>Descrição</th>
@@ -220,7 +220,7 @@
          <br>
 
          <table class="table table-bordered table-caixa">
-            <thead class="bg-cinza-light">
+            <thead>
                <th>CardButtonEventChecked</th>
             </thead>
             <tbody>

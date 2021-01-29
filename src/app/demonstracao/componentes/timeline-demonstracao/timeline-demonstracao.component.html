@@ -1,7 +1,7 @@
 <h1 class="header-principal-caixa">
    Timeline
 </h1>
-<hr class="header-line-caixa">
+
 
 <div class="my-4">
    <p>O componente Timeline apresenta uma linha do tempo simples com ícones e cores que indicam a natureza de cada
@@ -9,7 +9,7 @@
    <p>O atributo <span class="citation-highlight">items</span> deve sempre receber uma lista de TimelineItem.</p>
 </div>
 
-<ul class="nav nav-pills border-bottom tab-caixa" role="tablist">
+<ul class="nav nav-pills tab-caixa" role="tablist">
    <li class="nav-item">
       <a cx-ripple class="nav-link text-uppercase active" data-toggle="tab" href="#visaoGeral" role="tab">
          Visão Geral
@@ -104,7 +104,7 @@
          <h6 class="header-subtitulo-caixa">Propriedades</h6>
          <div class="table-responsive">
             <table class="table table-bordered table-caixa">
-               <thead class="border-top">
+               <thead>
                   <tr>
                      <th>Nome</th>
                      <th>Descrição</th>
@@ -151,22 +151,22 @@
    
                      <div class="col-3">
                         <label>Título</label>
-                        <input formControlName="title" class="input-caixa">
+                        <input formControlName="title" class="form-control">
                      </div>
    
                      <div class="col-2">
                         <label>Data - Texto</label>
-                        <input formControlName="dateString" class="input-caixa">
+                        <input formControlName="dateString" class="form-control">
                      </div>
 
                      <div class="col-2">
                         <label>Data - objeto</label>
-                        <input formControlName="date" class="input-caixa" type="date">
+                        <input formControlName="date" class="form-control" type="date">
                      </div>
 
                      <div class="col-2">
                         <label>Formato</label>
-                        <input formControlName="formato" class="input-caixa" type="text">
+                        <input formControlName="formato" class="form-control" type="text">
                      </div>
    
                      <div class="col-2">
@@ -183,12 +183,12 @@
                      </div>
    
                      <div class="col-3 d-flex align-items-center">
-                        <button title="Remover" class="btn btn-danger btn-caixa ml-2"
+                        <button title="Remover" class="btn btn-perigo btn-caixa ml-2"
                            [disabled]="sandboxTimelineItems.length == 2" (click)="removeItem()">
                            <i class="fa fa-minus fa-lg"></i>
                         </button>
    
-                        <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
+                        <button title="Adicionar" class="btn btn-sucesso btn-caixa ml-2"
                         [disabled]="!sandboxForm.valid"
                         (click)="addItem()">
                            <i class="fa fa-plus fa-lg"></i>

@@ -9,6 +9,7 @@ import { SideMenuService } from "../side-menu/side-menu.service";
 import { GuiaCaixaStyleService, Tema } from "src/app/guia-caixa/services/style-guia-caixa.service";
 import { LOGO_CAIXA_BRANCO_SRC, LOGO_COMPLETO_BRANCO_SRC, Meses } from "src/app/guia-caixa/constants/constants";
 import { StyleService } from "src/app/shared/services/style.service";
+import { GlobalThemeVariables, GlobalThemes, GlobalTheme } from "src/app/shared/model/global-style";
 
 @Component({
   selector: "app-top-menu",
@@ -20,13 +21,16 @@ export class TopMenuComponent implements OnInit {
   logoXBranco = LOGO_CAIXA_BRANCO_SRC;
   logoCompletoBranco = LOGO_COMPLETO_BRANCO_SRC;
 
-  @ViewChild("navbarTop") navbarTop: ElementRef;
+  @ViewChild("headerGeral") headerGeral: ElementRef;
   @Input() tema: Tema;
   @Input() resources;
   user$ = new Observable<User>(null);
   user: User;
   isMenuAberto: boolean;
   dataHora: string;
+
+  currentFontSize: string;
+  currentTheme: GlobalThemes;
 
   constructor(
     private oauthService: OAuthService,
@@ -38,6 +42,8 @@ export class TopMenuComponent implements OnInit {
   ) {
     this.user$ = this.userService.perfil;
     this.sidemenuService.isAberto$.subscribe(isAberto => this.isMenuAberto = isAberto);
+    this.styleService.currentFontSize$.subscribe(fontSize => this.currentFontSize = fontSize);
+    this.styleService.currentGlobalStyle$.subscribe(theme => this.currentTheme = theme);
     this.showDate();
     this.setDefaultTheme();
   }
@@ -48,8 +54,20 @@ export class TopMenuComponent implements OnInit {
     { name: "Extra Grande", value: "15px" }
   ];
 
+  themes: GlobalThemes[] = [];
+
   ngOnInit(): void {
     this.user = this.setMockUser();
+    const themes = GlobalThemes.getThemes();
+    themes.forEach(theme => {
+      const body = theme.value.theme.cxBodyBgColor;
+      const secundario = theme.value.theme.cxSecundario;
+      const style = getComputedStyle(document.body);
+      const colorBody = style.getPropertyValue(body);
+      const colorSecundario = style.getPropertyValue(secundario);
+      theme["background"] = `linear-gradient(-45deg, ${colorSecundario}, ${colorSecundario} 49%, white 49%, white 51%, ${colorBody} 51%)`;
+    });
+    this.themes = themes;
   }
 
   showLogoutModal() {
@@ -59,7 +77,7 @@ export class TopMenuComponent implements OnInit {
       classTitulo: "header-caixa text-danger-dark",
       mensagem: "Deseja realmente sair?",
       btOkTexto: "Sair",
-      btnOkClass: "btn btn-caixa btn-danger",
+      btnOkClass: "btn btn-caixa btn-perigo",
       btnCancelarClass: "btn btn-caixa btn-outline-dark",
       btCancelarTexto: "Cancelar",
       modalBodyClass: "bg-danger-dark text-cinza-light"

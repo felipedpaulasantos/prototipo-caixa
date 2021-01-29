@@ -1,7 +1,7 @@
 <h1 class="header-principal-caixa">
    Stepper
 </h1>
-<hr class="header-line-caixa">
+
 
 <div class="my-4">
    <p>O componente Stepper apresenta um fluxo visual simples que representa os passos de algum processo lógico.</p>
@@ -10,7 +10,7 @@
 </div>
 
 
-<ul class="nav nav-pills border-bottom tab-caixa" role="tablist">
+<ul class="nav nav-pills tab-caixa" role="tablist">
    <li class="nav-item">
       <a cx-ripple class="nav-link text-uppercase active" data-toggle="tab" href="#visaoGeral" role="tab">
          Visão Geral
@@ -199,7 +199,7 @@
                <h6 class="header-subtitulo-caixa">Propriedades</h6>
                <div class="table-responsive">
                   <table class="table table-bordered table-caixa">
-                     <thead class="bg-cinza border-top">
+                     <thead>
                         <tr>
                            <th>Nome</th>
                            <th>Descrição</th>
@@ -348,18 +348,18 @@
                </div>
                <div class="row">
                   <div class="col d-flex align-items-center">
-                     <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="steps.length == 2"
+                     <button title="Remover" class="btn btn-perigo btn-caixa ml-2" [disabled]="steps.length == 2"
                         (click)="removeStep()">
                         <i class="fa fa-minus fa-lg"></i>
                      </button>
 
-                     <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
+                     <button title="Adicionar" class="btn btn-sucesso btn-caixa ml-2"
                         [disabled]="steps.length == stepperFree.MAXIMUM_STEPS"
                         (click)="addStep(inputNovoStepFree.value); inputNovoStepFree.value = ''">
                         <i class="fa fa-plus fa-lg"></i>
                      </button>
 
-                     <input #inputNovoStepFree class="input-caixa d-inline w-50 ml-2" placeholder="Nome do novo passo">
+                     <input #inputNovoStepFree class="form-control d-inline w-50 ml-2" placeholder="Nome do novo passo">
                   </div>
                   <div class="col-5">
                      <cx-select>

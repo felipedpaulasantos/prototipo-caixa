@@ -64,6 +64,8 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
         timeOut: 5000,
         progressBar: false,
         positionClass: "toast-bottom-center",
+        closeButton: true,
+        tapToDismiss: false,
         preventDuplicates: true,
         enableHtml: true
       })

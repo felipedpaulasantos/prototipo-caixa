@@ -18,12 +18,12 @@ export class StyleService {
   }
 
   readonly BODY_FONT_SIZE = "bodyFontSize";
-  readonly BODY_FONT_SIZE_CSS = "--body-font-size";
+  readonly BODY_FONT_SIZE_CSS = "--cxBodyFontSize";
   readonly DEFAULT_BODY_FONT_SIZE = "13px";
   readonly BODY_BG_COLOR = "bodyBgColor";
   readonly BODY_TEXT_COLOR = "bodyTextColor";
   readonly GLOBAL_THEME = "globalTheme";
-  readonly DEFAULT_GLOBAL_THEME_NAME = GlobalThemes.lightTheme.themeName;
+  readonly DEFAULT_GLOBAL_THEME_NAME = GlobalThemes.lightTheme.value.name;
 
   private currentGlobalStyleSource = new BehaviorSubject<GlobalThemes>(null);
   public currentGlobalStyle$ = this.currentGlobalStyleSource.asObservable();
@@ -54,7 +54,7 @@ export class StyleService {
   public setGlobalTheme(tema: string) {
     const body = this.document.body;
     const globalTheme: GlobalThemes = GlobalThemes[tema];
-    const theme = globalTheme.theme;
+    const theme = globalTheme.value.theme;
     let color = "";
     for (const prop in theme) {
       if (theme.hasOwnProperty(prop)) {
@@ -67,7 +67,7 @@ export class StyleService {
         this.setCssVariable(`--${prop}`, color);
       }
     }
-    this.renderer.setAttribute(body, "class", globalTheme.className);
+    this.renderer.setAttribute(body, "class", globalTheme.value.className);
     this.setLocalStorageValue(this.GLOBAL_THEME, tema);
     this.currentGlobalStyleSource.next(globalTheme);
   }

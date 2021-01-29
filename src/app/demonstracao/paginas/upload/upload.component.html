@@ -1,19 +1,19 @@
 <!-- <h1 class="header-principal-caixa">
   Páginas
 </h1>
-<hr class="header-line-caixa"> -->
+ -->
 
-<div id="painelTestesDiversos" *ngIf="false">
+<div id="painelTestesDiversos">
   <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
     <div class="row">
       <div class="col-12 col-md-5 col-lg-4">
         <label>CPF</label>
-        <input class="input-caixa" name="cpf" placeholder="Informe o CPF" mask="000.000.000-00" formControlName="cpf">
+        <input class="form-control" name="cpf" placeholder="Informe o CPF" mask="000.000.000-00" formControlName="cpf">
       </div>
       <div class="col-12 col-md-5 col-lg-4">
 
         <label>NIS</label>
-        <input class="input-caixa" name="nis" placeholder="Informe o NIS" mask="000.000.000-00" formControlName="nis">
+        <input class="form-control" name="nis" placeholder="Informe o NIS" mask="000.000.000-00" formControlName="nis">
       </div>
       <div class="col d-flex align-items-center mt-2 mt-md-0">
         <button type="submit" [disabled]="isCpfNisInvalid"
@@ -63,7 +63,7 @@
       <h4 class="header-subtitulo-caixa">
         Novo documento
       </h4>
-      <hr class="header-line-caixa">
+      
       <div class="row">
         <div class="col-5">
 
@@ -145,7 +145,7 @@
             </div> <!-- CARD BODY -->
             <div class="card-footer">
               <div class="d-flex">
-                <button (click)="addDocumento()" *ngIf="uploadedFile" class="btn btn-caixa btn-success ml-auto">
+                <button (click)="addDocumento()" *ngIf="uploadedFile" class="btn btn-caixa btn-sucesso ml-auto">
                   <i class="fa fa-plus fa-lg mr-2"></i>
                   Adicionar Documento
                 </button>
@@ -184,10 +184,10 @@
                     <button class="btn btn-caixa btn-sm btn-outline-secundario mr-2" title="Detalhar">
                       <i class="fa fa-search"></i>
                     </button>
-                    <button class="btn btn-caixa btn-sm btn-outline-danger mr-2" title="Excluir">
+                    <button class="btn btn-caixa btn-sm btn-outline-perigo mr-2" title="Excluir">
                       <i class="fa fa-trash"></i>
                     </button>
-                    <button class="btn btn-caixa btn-sm btn-outline-success" title="Confirmar">
+                    <button class="btn btn-caixa btn-sm btn-outline-sucesso" title="Confirmar">
                       <i class="fa fa-check"></i>
                     </button>
                   </td>
@@ -200,66 +200,3 @@
     </section>
   </ng-container>
 </div>
-
-<div class="row">
-  <div class="col">
-    <cx-timeline [items]="timelineItems"></cx-timeline>
-  </div>
-  <div class="col">
-    HTML
-    <pre><code [highlight]="code1Html"></code></pre>
-
-    TS
-    <pre><code [highlight]="code1Ts"></code></pre>
-  </div>
-</div>
-
-<hr>
-
-<div class="row">
-  <div class="col">
-    <cx-timeline [items]="timelineItems" [styles]="{ height: '250px' }"></cx-timeline>
-  </div>
-  <div class="col">
-    HTML
-    <pre><code [highlight]="code2Html"></code></pre>
-  </div>
-</div>
-
-<hr>
-
-<div class="row">
-  <div class="col">
-    <cx-timeline [items]="timelineItems" [styles]="{ width: 'auto', height: '350px' }"></cx-timeline>
-  </div>
-  <div class="col">
-    HTML
-    <pre><code [highlight]="code3Html"></code></pre>
-  </div>
-</div>
-
-<hr>
-
-<div class="row">
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <cx-timeline [items]="timelineItems" [styles]="{ height: '350px' }"></cx-timeline>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    HTML
-    <pre><code [highlight]="code4Html"></code></pre>
-  </div>
-</div>
-
-<hr>
-
-
-<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timeline>
-
-<br>
-
-HTML
-<pre><code [highlight]="code6Html"></code></pre>

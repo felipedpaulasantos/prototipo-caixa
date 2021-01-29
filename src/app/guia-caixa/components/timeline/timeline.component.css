@@ -5,7 +5,7 @@
 }
 
 .timeline-wrapper.horizontal {
-   max-height: 84px;
+   max-height: 6.5rem;
    overflow-y: hidden;
    overflow-x: auto;
 }
@@ -45,7 +45,7 @@
    width: 100%;
    display: flex;
    align-items: center;
-   height: 84px;
+   height: 6.5rem;
    transition: 
    width 0.4s,
    visibility 0.4s,
@@ -54,7 +54,7 @@
 
 .timeline-wrapper.vertical .timeline > .timeline-item {
    position: relative;
-   max-height: 500px;
+   max-height: 38.46rem;
    transition: 
    max-height 0.4s,
    width 0.4s,
@@ -70,13 +70,13 @@
 
 .timeline > .timeline-item:not(:last-of-type)::after {
    content: "";
-   background-color: gainsboro;
+   background-color: var(--cxCancel);
    display: inline-block;
 }
 
 .timeline-wrapper.horizontal .timeline > .timeline-item::after {
    position: static;
-   min-width: 10px;
+   min-width: 0.77rem;
    width: 100%;
    height: 1px;
 }
@@ -85,16 +85,16 @@
    position: absolute;
    width: 2px;
    height: 100%;
-   top: 44px;
-   left: 25px;
+   top: 3.39rem;
+   left: 1.92rem;
 }
 
 /** TIMELINE-ITEM TITLE - span */
 
 .timeline-wrapper .timeline > .timeline-item > .timeline-item-title {
-   height: 84px;
+   height: 6.5rem;
    margin: 0;
-   padding: 0 4px 0 48px;
+   padding: 0 0.3rem 0 3.69rem;
    display: flex;
    max-width: 245px;
    white-space: nowrap;
@@ -111,41 +111,42 @@
    justify-content: center;
    z-index: 1;
    position: absolute;
-   height: 35px;
-   width: 35px;
+   height: 2.69rem;
+   width: 2.69rem;
    border-radius: 50%;
    text-align: center;
-   line-height: 33px;
-   font-size: 17px;
+   line-height: 2.5rem;
+   font-size: 1.3rem;
    left: 1px;
-   top: 26.5px;
-   left: 9px;
+   top: 2.03rem;
+   left: 0.69rem;
    margin-right: 1px;
-   color: #fff;
-   background-color: gray;
+   color: var(--cinza-lighter);
+   background-color:var(--cxCancel);
    font-weight: 400;
+   box-shadow: var(--cxShadowCaixaSm);
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-success > .timeline-item-title > .timeline-item-icon {
-   background-color: #008254 !important;
+   background-color: var(--cxSucesso) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-info > .timeline-item-title > .timeline-item-icon {
-   background-color: #143DA6 !important;
+   background-color: var(--cxInfo) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-error > .timeline-item-title > .timeline-item-icon {
-   background-color: #900000 !important;
+   background-color: var(--cxPerigo) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-warning > .timeline-item-title > .timeline-item-icon {
-   background-color: #FFD000 !important;
-   color: inherit !important;
+   background-color: var(--cxAlerta) !important;
+   color: var(--grafite) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-warning-stop > .timeline-item-title > .timeline-item-icon {
-   background-color: #FFD000 !important;
-   color: inherit !important;
+   background-color: var(--cxAlerta) !important;
+   color: var(--grafite) !important;
 }
 
 /* TIMELINE-ITEM-INFO */

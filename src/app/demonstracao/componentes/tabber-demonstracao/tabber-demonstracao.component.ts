@@ -127,10 +127,10 @@ export class StepperComponent {
   abasComEstado: TabberItem[] = [
     { name: "Home", icon: "fa fa-home", state: "success" },
     { name: "Componentes", icon: "fa fa-toolbox", state: "warning" },
-    { name: "Tipografia", icon: "fa fa-font", state: "success" },
+    { name: "Tipografia", icon: "fa fa-font", state: this.tabberState.SUCCESS },
     { name: "Cores", icon: "fa fa-palette", state: "error" },
     { name: "Configurações", icon: "fa fa-wrench" },
-    { name: "Páginas", icon: "fa fa-newspaper", state: "error" }
+    { name: "Páginas", icon: "fa fa-newspaper", state: this.tabberState.ERROR }
   ];
   abaComEstadoAtual = 0;
 
@@ -159,10 +159,10 @@ export class StepperComponent {
   abasComEstado: TabberItem[] = [
     { name: "Home", icon: "fa fa-home", state: "success" },
     { name: "Componentes", icon: "fa fa-toolbox", state: "warning" },
-    { name: "Tipografia", icon: "fa fa-font", state: "success" },
+    { name: "Tipografia", icon: "fa fa-font", state: this.tabberState.SUCCESS },
     { name: "Cores", icon: "fa fa-palette", state: "error" },
     { name: "Configurações", icon: "fa fa-wrench" },
-    { name: "Páginas", icon: "fa fa-newspaper", state: "error" }
+    { name: "Páginas", icon: "fa fa-newspaper", state: this.tabberState.ERROR }
   ];
   abaComEstadoAtual = 0;
 

@@ -1,10 +1,10 @@
-<header #navbarTop id="navbarTop" appCloseTab>
+<header #headerGeral id="headerGeral">
 
-  <nav id="navToolbar">
+  <nav id="headerNav">
     <div id="spanLogo" class="h-100"  [ngClass]="{'menu-is-aberto': isMenuAberto}">
       <div class="d-flex align-items-center h-100">
         <img [src]="isMenuAberto ? logoCompletoBranco : logoXBranco" class="img-fluid img-logo rounded mx-auto">
-        <span class="p-4 h-100" role="button" (click)="trocaMenuLateral()">
+        <span class="d-flex align-items-center p-4 h-100" role="button" (click)="trocaMenuLateral()">
           <i *ngIf="isMenuAberto" class="fa fa-angle-double-left fa-lg"></i>
           <i *ngIf="!isMenuAberto" class="fas fa-bars fa-lg"></i>
         </span>
@@ -25,13 +25,13 @@
 
       <div class="notification-container">
         <div class="dropdown">
-          <button class="btn btn-caixa btn-sm shadow-none border-0 dropdown-toggle text-white" 
+          <button class="btn btn-flat btn-sm shadow-none border-0 dropdown-toggle" 
           data-toggle="dropdown" title="Modo Escuro (Experimental)">
             <i role="button" class="fa fa-font mr-2 fa-2x"></i>
           </button>
           <div class="dropdown-menu">
-            <div *ngFor="let font of fontSizes" (click)="setFontSize(font.value)" class="dropdown-item d-flex align-items-center">
-              <span [style.fontSize]="font.value" class="font-fam-bold mr-2">A</span>
+            <div *ngFor="let font of fontSizes" (click)="setFontSize(font.value)" [ngClass]="{'active': currentFontSize === font.value}" 
+            class="dropdown-item cursor-pointer d-flex align-items-center" [style.fontSize]="font.value">
               {{font.name}} ({{font.value}})
             </div>
           </div>
@@ -40,25 +40,22 @@
 
       <div class="notification-container">
         <div class="dropdown">
-          <button class="btn btn-caixa btn-sm shadow-none border-0 dropdown-toggle text-white" 
+          <button class="btn btn-flat btn-sm shadow-none border-0 dropdown-toggle" 
           data-toggle="dropdown" title="Modo Escuro (Experimental)">
             <i role="button" class="fa fa-palette mr-2 fa-2x"></i>
           </button>
           <div class="dropdown-menu">
-            <div (click)="setTheme('darkTheme')" class="dropdown-item">
-              <div class="border rounded bg-grafite square mr-2"></div>
-              Tema escuro
-            </div>
-            <div (click)="setTheme('lightTheme')" class="dropdown-item">
-              <div class="border rounded bg-white square mr-2"></div>
-              Tema claro
+            <div *ngFor="let tema of themes" class="dropdown-item cursor-pointer" [ngClass]="{'active': currentTheme.value.name === tema.value.name}"
+            (click)="setTheme(tema.value.name)">
+              <div class="theme-example mr-2" [style.background]="tema['background']"></div>
+              {{ tema.toString() }}
             </div>
           </div>
         </div>
       </div> 
 
       <div class="notification-container" data-toggle="dropdown" role="button">
-        <button class="btn btn-caixa btn-sm shadow-none border-0 text-white">
+        <button class="btn btn-flat btn-sm shadow-none border-0">
           <i role="button" class="fa fa-bell fa-2x" title="Notificações"></i>
         </button>
       </div>
@@ -69,7 +66,7 @@
       </div>
 
       <div class="notification-container" role="button" data-toggle="dropdown">
-        <button class="btn btn-caixa btn-sm shadow-none border-0 text-white">
+        <button class="btn btn-flat btn-sm shadow-none border-0">
           <i role="button" class="fa fa-envelope fa-2x" title="Mensagens"></i>
         </button>
       </div>
@@ -80,11 +77,10 @@
       </div>
     </div>
 
-    <div class="mx-4">
-      <button class="btn btn-outline-light">
-        <i class="fa fa-sign-out-alt fa-lg mr-2"></i>
-        <span class="text-uppercase font-fam-bold">Sair</span>
-      </button>
-    </div>
+    <button class="btn btn-flat border mx-4">
+      <i class="fa fa-sign-out-alt fa-lg mr-2"></i>
+      <span class="text-uppercase font-fam-bold">Sair</span>
+    </button>
+
   </nav>
 </header>

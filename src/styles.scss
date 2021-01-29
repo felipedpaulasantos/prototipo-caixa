@@ -23,58 +23,68 @@
 @import "animations";
 
 :root {
-  --body-font-size: $cx-font-13;
+  --cxBodyFontSize: $cx-font-13;
 
-  --principal: $cx-color-secondary;
-  --secundario: $cx-color-primary;
-  --aux: $cx-color-grafite;
-  --cancel: $cx-color-cinza;
-  --sucesso: $cx-color-success;
-  --perigo: $cx-color-danger;
-  --alerta: $cx-color-warning;
-  --info: $cx-color-info;
-  --base: $cx-color-white;
-  --contrast: $cx-color-grafite-dark;
+  --cxFontFamilyNormal: "Futura LT Book";
+  --cxFontFamilyBold: "Futura LT Bold";
 
-  --transparentBase025: rgba(255, 255, 255, 0.025);
-  --transparentBase050: rgba(255, 255, 255, 0.025);
-  --transparentBase075: rgba(255, 255, 255, 0.025);
-  --transparentBase25: rgba(255, 255, 255, 0.025);
-  --transparentBase50: rgba(255, 255, 255, 0.025);
-  --transparentBase75: rgba(255, 255, 255, 0.025);
-  --transparentContrast025: rgba(0, 0, 0, 0.025);
-  --transparentContrast050: rgba(0, 0, 0, 0.05);
-  --transparentContrast075: rgba(0, 0, 0, 0.075);
-  --transparentContrast25: rgba(0, 0, 0, 0.25);
-  --transparentContrast50: rgba(0, 0, 0, 0.5);
+  --cxPrincipal: $cx-color-secondary;
+  --cxSecundario: $cx-color-primary;
+  --cxAux: $cx-color-grafite;
+  --cxCancel: $cx-color-cinza;
 
-  --shadow-caixa-dark-sm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
-  --shadow-caixa-dark: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
-  --shadow-caixa-dark-lg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+  --cxSucesso: $cx-color-success;
+  --cxSucessoContrast: $cx-color-success-lighter;
+  --cxPerigo: $cx-color-danger;
+  --cxPerigoContrast: $cx-color-goiaba-light;
+  --cxAlerta: $cx-color-warning;
+  --cxAlertaContrast: $cx-color-warning-lighter;
+  --cxInfo: $cx-color-info;
+  --cxInfoContrast: $cx-color-info-light;
 
-  --shadow-caixa-light-sm: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
-  --shadow-caixa-light: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
-  --shadow-caixa-light-lg: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
+  --cxBase: $cx-color-white;
+  --cxContrast: $cx-color-grafite-dark;
 
-  --shadowCaixaSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
-  --shadowCaixa: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
-  --shadowCaixaLg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+  --cxTransparentBase025: rgba(255, 255, 255, 0.025);
+  --cxTransparentBase050: rgba(255, 255, 255, 0.025);
+  --cxTransparentBase075: rgba(255, 255, 255, 0.025);
+  --cxTransparentBase25: rgba(255, 255, 255, 0.025);
+  --cxTransparentBase50: rgba(255, 255, 255, 0.025);
+  --cxTransparentBase75: rgba(255, 255, 255, 0.025);
+  --cxTransparentContrast025: rgba(0, 0, 0, 0.025);
+  --cxTransparentContrast050: rgba(0, 0, 0, 0.05);
+  --cxTransparentContrast075: rgba(0, 0, 0, 0.075);
+  --cxTransparentContrast25: rgba(0, 0, 0, 0.25);
+  --cxTransparentContrast50: rgba(0, 0, 0, 0.5);
+  --cxTransparentContrast75: rgba(0, 0, 0, 0.75);
+
+  --cxShadowCaixaDarkSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadowCaixaDark: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadowCaixaDarkLg: 0 0.3rem 0.8rem rgba(8, 1, 1, 0.15);
+
+  --cxShadowCaixaLightSm: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
+  --cxShadowCaixaLight: 0 0.2rem 0.2rem rgba(255, 255, 255, 0.15);
+  --cxShadowCaixaLightLg: 0 0.3rem 0.8rem rgba(255, 255, 255, 0.15);
+
+  --cxShadowCaixaSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadowCaixa: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadowCaixaLg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
 }
 
 html {
-  font-size: var(--body-font-size);
+  font-size: var(--cxBodyFontSize);
 }
 
 body {
   overflow-y: scroll;
   overflow-x: hidden;
-  background-color: var(--base);
-  color: var(--contrast);
+  background-color: var(--cxBodyBgColor);
+  color: var(--cxContrast);
 }
 
-#navbarTop {
-  background: var(--secundario);
-  color: $cx-color-cinza-lighter;
+#headerGeral {
+  background: var(--cxHeaderBgColor);
+  color: var(--cxHeaderTextColor);
 }
 
 /* 
@@ -87,21 +97,22 @@ h3,
 h4,
 h5,
 h6 {
-  &.header-caixa {
-    font-family: $cx-font-family-bold;
+  &.header-caixa,
+  &.header-subtitulo-caixa,
+  &.header-principal-caixa {
+    font-family: var(--cxFontFamilyBold);
     margin-bottom: 1rem;
   }
   &.header-subtitulo-caixa {
-    @extend .header-caixa;
-    color: var(--contrast);
+    color: var(--cxContrast);
   }
   &.header-principal-caixa {
-    @extend .header-caixa;
-    color: var(--secundario);
+    color: var(--cxSecundario);
+    margin-bottom: 2rem;
   }
 }
 hr.header-line-caixa {
-  border-color: $cx-color-cinza-darker;
+  border-color: var(--cxAux);
   opacity: $cx-bg-opacity-2;
   border-width: 1px;
   margin-bottom: 1.5rem;
@@ -126,8 +137,8 @@ hr.header-line-caixa {
   padding-bottom: 0.6em;
   padding-left: 1.5em;
   padding-right: 1.5em;
-  font-family: $cx-font-family-bold;
-  box-shadow: $cx-default-box-shadow;
+  font-family: var(--cxFontFamilyBold);
+  box-shadow: var(--cxShadowCaixa);
   position: relative;
   overflow: hidden;
   vertical-align: unset;
@@ -138,7 +149,7 @@ hr.header-line-caixa {
 .btn.btn-success,
 .btn.btn-danger,
 .btn.btn-principal {
-  color: $cx-color-cinza-lighter;
+  color: var(--cinza-lighter);
 }
 
 .btn:not(.disabled):not(:disabled).active,
@@ -165,10 +176,11 @@ hr.header-line-caixa {
 }
 
 .btn-sm {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-top: 0.5em !important;
+  padding-bottom: 0.5em !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+  font-size: 0.875rem !important;
 }
 
 .btn-flat {
@@ -203,16 +215,18 @@ hr.header-line-caixa {
 /* Toastr (Mensagens) */
 
 .toast-container {
-  font-family: $cx-font-family-normal;
-  color: $cx-color-cinza-lighter;
-  > div {
+  font-family: var(--cxFontFamilyNormal);
+  > div.ngx-toastr {
+    background-color: var(--cxContrast);
     background-image: none !important;
-    padding: 15px 15px 15px 50px;
-    background-color: $cx-color-grafite;
+    box-shadow: var(--cxShadowCaixaSm) !important;
+    padding: 1.15rem 1.15rem 1.15rem 3.846rem;
     pointer-events: auto;
-    border-radius: 5px !important;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--cxAux);
+    border-radius: 0.384rem !important;
     transition: box-shadow 0.2s, border-bottom 0.3s, box-shadow 0.3s ease-in-out;
-    box-shadow: none !important;
     &:before {
       position: absolute;
       left: 0;
@@ -222,58 +236,69 @@ hr.header-line-caixa {
       align-items: center;
       font-family: "Font Awesome 5 Free";
       font-size: 1.4rem;
-      line-height: 18px;
+      line-height: 1.384rem;
       float: left;
       font-weight: 900;
       padding-left: 1rem;
     }
     &.toast-success {
+      border-left: solid 4px var(--cxSucessoContrast);
       &:before {
         content: "\f00c";
-        color: $cx-color-limao;
+        color: var(--cxSucessoContrast);
       }
       .toast-progress {
-        background-color: $cx-color-limao-light;
+        background-color: var(--cxSucessoContrast);
       }
     }
     &.toast-error {
+      border-left: solid 4px var(--cxPerigoContrast);
       &:before {
         content: "\f00d";
-        color: $cx-color-goiaba;
+        color: var(--cxPerigoContrast);
       }
       .toast-progress {
-        background-color: $cx-color-goiaba-light;
+        background-color: var(--cxPerigoContrast);
       }
     }
     &.toast-info {
+      border-left: solid 4px var(--cxInfoContrast);
       &:before {
         content: "\f129";
-        color: $cx-color-ceu;
+        color: var(--cxInfoContrast);
       }
       .toast-progress {
-        background-color: $cx-color-ceu-light;
+        background-color: var(--cxInfoContrast);
       }
     }
     &.toast-warning {
+      border-left: solid 4px var(--cxAlertaContrast);
       &:before {
         content: "\f12a";
-        color: $cx-color-tangerina;
+        color: var(--cxAlertaContrast);
       }
       .toast-progress {
-        background-color: $cx-color-tangerina-light;
+        background-color: var(--cxAlertaContrast);
       }
     }
     &:hover {
-      box-shadow: $cx-lg-box-shadow !important;
+      box-shadow: var(--cxShadowCaixaLg) !important;
       transition: opacity 0.3s ease-in-out;
     }
+    .toast-close-button {
+      color: var(--cxBase);
+      position: absolute;
+      right: 1rem;
+      top: 0;
+    }
     div.toast-title {
-      font-family: $cx-font-family-bold;
+      color: var(--cxBase);
+      font-family: var(--cxFontFamilyBold);
       font-weight: 400;
       margin-bottom: 0.3rem;
     }
     div.toast-message {
-      color: $cx-color-cinza !important;
+      color: var(--cxBase) !important;
     }
     div .toast-progress {
       opacity: 0.9;
@@ -285,8 +310,8 @@ hr.header-line-caixa {
 /* Inputs */
 
 label {
-  font-size: 0.8rem;
-  font-family: $cx-font-family-bold;
+  font-size: 0.9rem;
+  font-family: var(--cxFontFamilyBold);
   margin-bottom: 0.2rem;
   transition: 0.2s;
 }
@@ -300,7 +325,7 @@ label {
   height: 1.2rem;
 }
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
-  border-color: $cx-color-grafite-light;
+  border-color: var(--cxCancel);
 }
 .custom-control-input:focus ~ .custom-control-label::before {
   box-shadow: none;
@@ -309,22 +334,22 @@ label {
   padding-left: 0.3em;
 }
 .custom-checkbox .custom-control-input.ng-dirty.ng-valid:checked ~ .custom-control-label::before {
-  background-color: $cx-color-success;
-  border-color: $cx-color-success-dark;
+  background-color: var(--cxSucesso);
+  border-color: var(--cxSucesso);
 }
 .custom-control-input.ng-dirty.ng-valid:checked ~ .custom-control-label::before {
-  color: #fff;
-  background-color: $cx-color-success;
-  border-color: $cx-color-success-dark;
+  color: var(--cinza-lighter);
+  background-color: var(--cxSucesso);
+  border-color: var(--cxSucesso);
 }
 .custom-checkbox .custom-control-input.ng-dirty.ng-invalid:checked ~ .custom-control-label::before {
-  background-color: $cx-color-danger;
-  border-color: $cx-color-danger-dark;
+  background-color: var(--cxPerigo);
+  border-color: var(--cxPerigo);
 }
 .custom-control-input.ng-dirty.ng-invalid:checked ~ .custom-control-label::before {
-  color: #fff;
-  background-color: $cx-color-danger;
-  border-color: $cx-color-danger-dark;
+  color: var(--cinza-lighter);
+  background-color: var(--cxPerigo);
+  border-color: var(--cxPerigo);
 }
 [type="range"]:hover {
   cursor: pointer;
@@ -333,7 +358,6 @@ label {
 /* Bootstrap-select */
 
 .bs-searchbox input.form-control {
-  @extend .input-caixa;
   box-shadow: none !important;
 }
 
@@ -343,18 +367,20 @@ th.th-sorting {
   font-weight: 900;
   font-family: "Font Awesome 5 Free";
   float: right;
-  color: $cx-color-grafite;
+  color: var(--cxContrast);
   transition: 0.5s;
-  @extend .header-caixa;
+  font-family: var(--cxFontFamilyBold);
 }
-.table-caixa {
+.table {
   border-bottom: none !important;
+  border-color: var(--cxCancel);
+  color: var(--cxContrast);
   thead th {
-    font-family: $cx-font-family-bold;
-    color: $cx-color-cinza-darker;
-    border-top: 0;
+    font-family: var(--cxFontFamilyBold);
+    /* border-top: 0; */
     border-bottom: 0 !important;
     font-weight: 400 !important;
+    border-color: var(--cxCancel);
     &.sorting,
     &.sorting_asc,
     &.sorting_desc {
@@ -375,12 +401,10 @@ th.th-sorting {
     }
   }
   tbody {
-    /*     tr:hover {
-      background-color: $cx-color-cinza;
-    } */
     td {
       vertical-align: middle;
       padding: 0.75rem !important;
+      border-color: var(--cxCancel);
     }
   }
 }
@@ -406,13 +430,22 @@ input[type="number"] {
   Dropdown item 
 */
 .dropdown-menu {
-  box-shadow: $cx-default-box-shadow;
+  box-shadow: var(--cxShadowCaixa);
+  background-color: var(--cxBase);
 }
 .dropdown-item {
   padding: 1rem 1.3rem;
   vertical-align: middle;
   display: flex;
   align-items: center;
+  color: var(--cxContrast) !important;
+  &:hover {
+    background-color: var(--cxTransparentContrast025);
+  }
+  &:active, &.active {
+    color: var(--cinza-lighter) !important;
+    background-color: var(--cxSecundario);
+  }
   &.selected {
     .check-mark {
       display: flex;
@@ -422,28 +455,23 @@ input[type="number"] {
     }
   }
 }
-.dropdown-item.active,
-.dropdown-item:active {
-  color: var(--secundario);
-  background-color: $cx-color-cinza;
-}
 
 /* 
   Tabs e Navs
 */
 
 .nav.nav-pills li a {
-  color: var(--contrast);
+  color: var(--cxContrast);
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
-  font-family: $cx-font-family-bold;
-  border-bottom: solid 2px transparent;
+  font-family: var(--cxFontFamilyBold);
+  border-bottom: solid 0.153rem transparent;
 /*   @extend .ripple-dark; */
   &.active,
   &:active {
-    color: var(--secundario) !important;
-    background-color: var(--base) !important;
-    border-bottom: solid 2px var(--secundario);
+    color: var(--cxSecundario) !important;
+    background-color: var(--cxBase) !important;
+    border-bottom: solid 0.153rem var(--cxSecundario);
     border-radius: 50;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -469,11 +497,11 @@ input[type="number"] {
 /* Cards */
 
 .card {
-  box-shadow: $cx-default-box-shadow;
+  box-shadow: var(--cxShadowCaixa);
   transition: box-shadow 0.2s ease-in-out;
-  background-color: var(--base);
-  color: var(--contrast);
-  border-color: var(--cancel);
+  background-color: var(--cxBase);
+  color: var(--cxContrast);
+  border-color: var(--cxCancel);
   .card-header {
     background-color: inherit;
     border: none;
@@ -499,7 +527,7 @@ input[type="number"] {
   width: 100%;
   height: 100%;
   opacity: 0;
-  border-radius: 5px;
+  border-radius: 0.384rem;
   box-shadow: $cx-lg-box-shadow;
   transition: opacity 0.3s ease-in-out;
 }
@@ -514,8 +542,8 @@ input[type="number"] {
   align-items: center;
   justify-content: center;
   > div {
-    max-height: 50px !important;
-    max-width: 50px !important;
+    max-height: 3.846rem !important;
+    max-width: 3.846rem !important;
   }
 }
 
@@ -547,7 +575,8 @@ input[type="number"] {
 
 /* INPUT */
 
-.input-base {
+.form-control {
+  color: var(--cxContrast);
   width: 100%;
   padding: 0.375rem 0.5rem;
   border-top: none;
@@ -556,7 +585,8 @@ input[type="number"] {
   border-bottom: solid 1px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-color: $cx-color-cinza-darker;
+  border-color: var(--cxAux);
+  box-shadow: none !important;
   transition: 
     background-size 0.3s, 
     background-color 0.3s, 
@@ -567,12 +597,13 @@ input[type="number"] {
     opacity: 0.5;
     cursor: not-allowed;
     background-image: none !important;
-    background-color: $cx-color-cinza !important;
+    background-color: var(--cxCancel) !important;
+    color: var(--cxAux)
   }
 }
 @each $theme, $colors in $cx-colors {
   .input-caixa-#{$theme} {
-    @extend .input-base;
+    @extend .form-control;
     @if ($theme== "danger" or $theme== "success") {
       background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
         linear-gradient(0deg, nth($colors, 1) 0%, nth($colors, 1) 100%) !important;
@@ -581,11 +612,6 @@ input[type="number"] {
       background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
         linear-gradient(0deg, nth($colors, 1) 0%, nth($colors, 1) 100%);
     }
-/*     &:hover {
-      background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%),
-      linear-gradient(0deg, $cx-color-grafite-light 0%, $cx-color-grafite-light 100%);
-      background-size: 100% 1px, 100% 1px;
-    } */
     background-repeat: no-repeat;
     background-position: 50% 100%, 50% 100%;
     background-size: 100% 1px, 0% 1px;
@@ -609,10 +635,10 @@ input[type="number"] {
     }
   }
 }
-.input-caixa {
+.form-control {
   box-shadow: none;
   background-color: transparent;
-  @extend .input-base;
+  @extend .form-control;
   @extend .input-caixa-primary;
 }
 .input-caixa-wrapper {
@@ -624,7 +650,7 @@ input[type="number"] {
   input {
     box-shadow: none;
   }
-  @extend .input-base;
+  @extend .form-control;
   @extend .input-caixa-primary;
 }
 
@@ -670,29 +696,30 @@ select + button.input-caixa {
   margin-bottom: 1.5rem;
 }
 .shadow-caixa {
-  box-shadow: $cx-default-box-shadow !important;
+  box-shadow: var(--cxShadowCaixa) !important;
 }
 .shadow-lg-caixa {
   box-shadow: $cx-lg-box-shadow !important;
 }
 
-.list-group-caixa .list-group-item {
+.list-group-item {
   background-color: transparent !important;
   border-top: transparent !important;
   border-right: transparent !important;
   border-bottom: transparent !important;
   border: solid 2px transparent !important;
   border-radius: 0 !important;
-/*   @extend .ripple-dark; */
   &.active {
-    color: var(--secundario);
-/*     border-left: solid 2px var(--secundario) !important; */
+    background-color: var(--cxSecundario) !important;
+    color: var(--cinza-lighter) !important;
   }
 }
 
 /* MENU LATERAL */
 
 #menuLateral {
+  background-color: var(--cxSidemenuBgColor);
+  color: var(--cxSidemenuTextColor);
   width: 80%;
   position: fixed;
   top: 64px;
@@ -750,9 +777,9 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 .menu-item {
   display: flex;
   align-items: center;
-  height: 54px;
+  height: 4.153rem;
   width: 100%;
-  min-height: 54px;
+  min-height: 4.153rem;
   transition: 0.2s;
 
   -webkit-touch-callout: none;
@@ -764,12 +791,13 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 .menu-item {
   &.active.has-submenu {
-    color: var(--secundario);
-    box-shadow: 0 0.6rem 0.4rem -0.4rem rgba(0, 0, 0, 0.1);
+    color: var(--cxSidemenuActiveBgColor);
+    font-family: var(--cxFontFamilyBold);
+    box-shadow: 0 0.6rem 0.4rem -0.4rem var(--cxTransparentContrast025);
   }
   &.active.is-link {
-    background-color: var(--secundario);
-    color: $cx-color-cinza-lighter;
+    background-color: var(--cxSidemenuActiveBgColor);
+    color: var(--cxSidemenuActiveTextColor);
   }
 }
 
@@ -848,16 +876,16 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 
 .menu-item:hover {
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: var(--cxTransparentContrast025);
 }
 
 .submenu {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: var(--cxTransparentContrast025);
   overflow: hidden;
   transition: 0.2s ease;
   list-style: none;
   padding-left: 0;
-  border-bottom: 1px solid $cx-color-cinza-dark;
+  border-bottom: 1px solid var(--cxCancel);
 }
 
 .citation-highlight {
@@ -871,23 +899,57 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 
 /* CLASSES TEMATICAS */
 
+.text-principal {
+  color: var(--cxPrincipal);
+}
+.text-secundario {
+  color: var(--cxSecundario);
+}
+.text-sucesso {
+  color: var(--cxSucesso);
+}
+.text-perigo {
+  color: var(--cxPerigo);
+}
+.text-info {
+  color: var(--cxInfo);
+}
+.text-alerta {
+  color: var(--cxAlerta);
+}
+.text-link {
+  color: var(--cxSecundario);
+}
+
 .bg-principal {
-  background-color: var(--principal);
+  background-color: var(--cxPrincipal);
 }
 .bg-secundario {
-  background-color: var(--secundario);
+  background-color: var(--cxSecundario);
 }
 .bg-base {
-  background-color: var(--base);
+  background-color: var(--cxBase);
 }
 .bg-contrast {
-  background-color: var(--contrast);
+  background-color: var(--cxContrast);
 }
 .bg-cancel {
-  background-color: var(--cancel);
+  background-color: var(--cxCancel);
 }
 .bg-aux {
-  background-color: var(--aux);
+  background-color: var(--cxAux);
+}
+.bg-sucesso {
+  background-color: var(--cxSucesso);
+}
+.bg-perigo {
+  background-color: var(--cxPerigo);
+}
+.bg-alerta {
+  background-color: var(--cxAlerta);
+}
+.bg-info {
+  background-color: var(--cxInfo);
 }
 
 
@@ -897,51 +959,20 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 
 body.tema-claro {
 
-  #wrapperBreadcrumb,
-  #tabClienteGlobalWrapper,
-  #menuLateral {
-    @extend .bg-white;
-    @extend .text-grafite;
+
+
+  .btn-base {
+    @extend .btn-cinza-lighter;
   }
-  #menuLateral {
-    @extend .border-left;
-    @extend .border-cinza;
-  }
-  #navbarTop {
-    @extend .bg-primary;
-    @extend .text-white;
-  }
-  #wrapperConteudoPrincipal {
-    @extend .bg-light;
+  .btn-outline-base {
+    @extend .btn-outline-cinza-lighter;
   }
 
-  .logo-azul {
-    display: block;
+  .btn-contrast {
+    @extend .btn-grafite-dark;
   }
-  .logo-branco {
-    display: none;
-  }
-
-  .text-principal {
-    @extend .text-secondary;
-  }
-  .text-secundario {
-    @extend .text-primary;
-  }
-  .text-sucesso {
-    @extend .text-success;
-  }
-  .text-perigo {
-    @extend .text-danger;
-  }
-  .text-info {
-    @extend .text-info;
-  }
-  .text-alerta {
-    @extend .text-warning;
-  }
-  .text-link {
-    @extend .text-primary;
+  .btn-outline-contrast {
+    @extend .btn-outline-grafite-dark;
   }
 
   .btn-principal {
@@ -950,50 +981,47 @@ body.tema-claro {
   .btn-outline-principal {
     @extend .btn, .btn-outline-secondary;
   }
+
   .btn-secundario {
     @extend .btn, .btn-primary;
   }
   .btn-outline-secundario {
     @extend .btn, .btn-outline-primary;
   }
+
   .btn-aux {
     @extend .btn, .btn-grafite;
   }
   .btn-outline-aux {
     @extend .btn, .btn-outline-grafite;
   }
+
   .btn-cancel {
     @extend .btn, .btn-cinza;
   }
   .btn-outline-cancel {
     @extend .btn, .btn-outline-cinza;
   }
+
   .btn-perigo {
     @extend .btn-danger;
   }
-  .btn-base {
-    @extend .btn-cinza-lighter;
-  }
-  .btn-outline-base {
-    @extend .btn-outline-cinza-lighter;
-  }
-  .btn-contrast {
-    @extend .btn-grafite-dark;
-  }
-  .btn-outline-contrast {
-    @extend .btn-outline-grafite-dark;
+  .btn-outline-perigo {
+    @extend .btn-outline-danger;
   }
 
-  .list-group-item.active {
-    @extend .text-white;
-    @extend .bg-primary;
+  .btn-sucesso {
+    @extend .btn-success;
+  }
+  .btn-outline-sucesso {
+    @extend .btn-outline-success;
   }
 
-  .border-secundario {
-    @extend .border-primary;
+  .btn-alerta {
+    @extend .btn-warning;
   }
-  .border-bottom {
-    @extend .border-cinza;
+  .btn-outline-alerta {
+    @extend .btn-outline-warning;
   }
 
 }
@@ -1001,31 +1029,6 @@ body.tema-claro {
 /* TEMA ESCURO */
 
 body.tema-escuro {
-
-  #wrapperBreadcrumb,
-  #tabClienteGlobalWrapper,
-  #menuLateral {
-    @extend .bg-grafite-dark;
-    @extend .text-white;
-  }
-  #menuLateral {
-    @extend .border-left;
-    @extend .border-grafite;
-  }
-  #navbarTop {
-    @extend .bg-grafite-darker;
-    @extend .text-white;
-  }
-  #wrapperConteudoPrincipal {
-    @extend .bg-grafite;
-  }
-
-  .logo-azul {
-    display: none;
-  }
-  .logo-branco {
-    display: block;
-  }
 
   .text-principal {
     @extend .text-secondary;
@@ -1045,8 +1048,19 @@ body.tema-escuro {
   .text-alerta {
     @extend .text-warning-lighter;
   }
-  .text-link {
-    @extend .text-ceu;
+
+  .btn-base {
+    @extend .btn-grafite-dark;
+  }
+  .btn-outline-base {
+    @extend .btn-outline-grafite-dark;
+  }
+
+  .btn-contrast {
+    @extend .btn-cinza-lighter;
+  }
+  .btn-outline-contrast {
+    @extend .btn-outline-cinza-lighter;
   }
 
   .btn-principal {
@@ -1055,41 +1069,53 @@ body.tema-escuro {
   .btn-outline-principal {
     @extend .btn, .btn-outline-ceu;
   }
+
   .btn-secundario {
     @extend .btn, .btn-ceu;
   }
   .btn-outline-secundario {
     @extend .btn, .btn-outline-ceu;
   }
+
   .btn-aux {
     @extend .btn, .btn-cinza;
   }
   .btn-outline-aux {
     @extend .btn, .btn-outline-cinza;
   }
+
   .btn-cancel {
     @extend .btn, .btn-grafite-light;
   }
   .btn-outline-cancel {
     @extend .btn, .btn-outline-grafite-light;
   }
+
   .btn-perigo {
     @extend .btn-goiaba-light;
   }
-  .btn-base {
-    @extend .btn-grafite-dark;
-  }
-  .btn-outline-base {
-    @extend .btn-outline-grafite-dark;
-  }
-  .btn-contrast {
-    @extend .btn-cinza-lighter;
-  }
-  .btn-outline-contrast {
-    @extend .btn-outline-cinza-lighter;
+  .btn-outline-perigo {
+    @extend .btn-outline-goiaba-light;
   }
 
-  .border-bottom {
-    @extend .border-grafite;
+  .btn-sucesso {
+    @extend .btn-success-lighter;
+  }
+  .btn-outline-sucesso {
+    @extend .btn-outline-success-lighter;
+  }
+
+  .btn-alerta {
+    @extend .btn-warning-lighter;
+  }
+  .btn-outline-alerta {
+    @extend .btn-outline-warning-lighter;
+  }
+
+  .btn-info {
+    @extend .btn-info-light;
+  }
+  .btn-outline-info {
+    @extend .btn-outline-info-light;
   }
 }

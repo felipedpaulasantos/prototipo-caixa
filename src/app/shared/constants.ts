@@ -16,7 +16,7 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     enabled: false
   }, */
   {
-    name: "Componentes",
+    name: "Componentes Caixa",
     url: "/componentes",
     iconClass: "fas fa-lg fa-toolbox",
     isLink: true,
