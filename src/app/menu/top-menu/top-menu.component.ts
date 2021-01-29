@@ -58,7 +58,16 @@ export class TopMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.setMockUser();
-    this.themes = GlobalThemes.getThemes();
+    const themes = GlobalThemes.getThemes();
+    themes.forEach(theme => {
+      const base = theme.value.theme.cxBase;
+      const secundario = theme.value.theme.cxSecundario;
+      const style = getComputedStyle(document.body);
+      const colorBase = style.getPropertyValue(base);
+      const colorSecundario = style.getPropertyValue(secundario);
+      theme["background"] = `linear-gradient(-45deg, ${colorSecundario}, ${colorSecundario} 49%, white 49%, white 51%, ${colorBase} 51%)`;
+    });
+    this.themes = themes;
   }
 
   showLogoutModal() {

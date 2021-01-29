@@ -74,3 +74,10 @@
   height: 20px;
   width: 20px
 }
+
+.theme-example {
+  border: solid 2px var(--cxContrast);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}

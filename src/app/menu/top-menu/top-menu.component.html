@@ -47,6 +47,7 @@
           <div class="dropdown-menu">
             <div *ngFor="let tema of themes" class="dropdown-item" [ngClass]="{'active': currentTheme.value.name === tema.value.name}"
             (click)="setTheme(tema.value.name)">
+              <div class="theme-example mr-2" [style.background]="tema['background']"></div>
               {{ tema.toString() }}
             </div>
           </div>
