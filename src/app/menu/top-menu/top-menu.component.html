@@ -30,8 +30,8 @@
             <i role="button" class="fa fa-font mr-2 fa-2x"></i>
           </button>
           <div class="dropdown-menu">
-            <div *ngFor="let font of fontSizes" (click)="setFontSize(font.value)" [ngClass]="{'active': currentFontSize === font.value}" class="dropdown-item d-flex align-items-center">
-              <span [style.fontSize]="font.value" class="font-fam-bold mr-2">A</span>
+            <div *ngFor="let font of fontSizes" (click)="setFontSize(font.value)" [ngClass]="{'active': currentFontSize === font.value}" 
+            class="dropdown-item cursor-pointer d-flex align-items-center" [style.fontSize]="font.value">
               {{font.name}} ({{font.value}})
             </div>
           </div>
@@ -45,7 +45,7 @@
             <i role="button" class="fa fa-palette mr-2 fa-2x"></i>
           </button>
           <div class="dropdown-menu">
-            <div *ngFor="let tema of themes" class="dropdown-item" [ngClass]="{'active': currentTheme.value.name === tema.value.name}"
+            <div *ngFor="let tema of themes" class="dropdown-item cursor-pointer" [ngClass]="{'active': currentTheme.value.name === tema.value.name}"
             (click)="setTheme(tema.value.name)">
               <div class="theme-example mr-2" [style.background]="tema['background']"></div>
               {{ tema.toString() }}

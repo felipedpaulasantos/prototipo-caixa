@@ -170,10 +170,11 @@ hr.header-line-caixa {
 }
 
 .btn-sm {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-top: 0.5em !important;
+  padding-bottom: 0.5em !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+  font-size: 0.875rem !important;
 }
 
 .btn-flat {
@@ -218,6 +219,7 @@ hr.header-line-caixa {
     border-radius: 0.384rem !important;
     transition: box-shadow 0.2s, border-bottom 0.3s, box-shadow 0.3s ease-in-out;
     box-shadow: none !important;
+    color: var(--cinza-lighter) !important;
     &:before {
       position: absolute;
       left: 0;

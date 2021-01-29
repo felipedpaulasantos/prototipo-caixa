@@ -108,6 +108,7 @@
 .tabber-wrapper > .tabber > .tab.current-tab > .tab-title > .tab-icon {
    background-color: var(--cxSecundario);
    color: var(--cinza-lighter);
+   box-shadow: var(--cxShadowCaixa);
 }
 
 .tabber-wrapper > .tabber > .tab > .tab-title > .tab-icon > .has-error-icon {

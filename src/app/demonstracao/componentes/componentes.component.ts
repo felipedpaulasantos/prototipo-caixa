@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { SideMenuService } from 'src/app/menu/side-menu/side-menu.service';
+import { Component, OnInit } from "@angular/core";
+import { SideMenuService } from "src/app/menu/side-menu/side-menu.service";
 
 @Component({
-  selector: 'app-componentes',
-  templateUrl: './componentes.component.html',
-  styleUrls: ['./componentes.component.css']
+  selector: "app-componentes",
+  templateUrl: "./componentes.component.html",
+  styleUrls: ["./componentes.component.css"]
 })
 export class ComponentesComponent implements OnInit {
 
@@ -18,7 +18,7 @@ export class ComponentesComponent implements OnInit {
 
   ngOnInit() {
     this.menuService.menuItems$.subscribe(items => {
-      const componentes = items.find((item) => item.name === "Componentes").submenu;
+      const componentes = items.find((item) => item.url === "/componentes").submenu;
       componentes.forEach(item => {
         this.resources.push(item);
       });
