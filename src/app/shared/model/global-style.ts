@@ -255,21 +255,21 @@ export class GlobalThemes {
       "Tema Claro", { name: "lightTheme", className: "tema-claro", theme: lightTheme }
    );
 
-   static readonly lightBlueTheme = new GlobalThemes(
+/*    static readonly lightBlueTheme = new GlobalThemes(
       "Tema Cinza", { name: "lightBlueTheme", className: "tema-claro", theme: lightBlueTheme }
    );
 
    static readonly purpleTheme = new GlobalThemes(
       "Tema Roxo", { name: "purpleTheme", className: "tema-claro", theme: purpleTheme }
-   );
+   ); */
 
    static readonly darkTheme = new GlobalThemes(
       "Tema Escuro", { name: "darkTheme", className: "tema-escuro", theme: darkTheme }
    );
 
-   static readonly darkThemeInverted = new GlobalThemes(
+/*    static readonly darkThemeInverted = new GlobalThemes(
       "Tema Escuro Invertido", { name: "darkThemeInverted", className: "tema-escuro", theme: darkThemeInverted }
-   );
+   ); */
 
    static getThemes(): GlobalThemes[] {
 		const temas: GlobalThemes[] = [];
