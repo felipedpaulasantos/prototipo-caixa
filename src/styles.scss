@@ -27,6 +27,7 @@
 
   --cxFontFamilyNormal: "Futura LT Book";
   --cxFontFamilyBold: "Futura LT Bold";
+  --cxFontFaIcon: "Font Awesome 5 Free";
 
   --cxPrincipal: $cx-color-secondary;
   --cxSecundario: $cx-color-primary;
@@ -235,7 +236,7 @@ hr.header-line-caixa {
       bottom: 0;
       display: flex;
       align-items: center;
-      font-family: "Font Awesome 5 Free";
+      font-family: var(--cxFontFaIcon);
       font-size: 1.4rem;
       line-height: 1.384rem;
       float: left;
@@ -367,7 +368,7 @@ label {
 
 th.th-sorting {
   font-weight: 900;
-  font-family: "Font Awesome 5 Free";
+  font-family: var(--cxFontFaIcon) !important;
   float: right;
   color: var(--cxContrast);
   transition: 0.5s;
@@ -379,7 +380,7 @@ th.th-sorting {
   color: var(--cxContrast);
   thead th {
     font-family: var(--cxFontFamilyBold);
-    /* border-top: 0; */
+    border-top: 0;
     border-bottom: 0 !important;
     font-weight: 400 !important;
     border-color: var(--cxCancel);
@@ -654,6 +655,22 @@ input[type="number"] {
   }
   @extend .form-control;
   @extend .input-caixa-primary;
+}
+
+.custom-select {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: var(--cxAux);
+  box-shadow: none !important;
+  &.active, &:active, &:focus {
+    border-color: var(--cxSecundario);
+  }
+  option {
+    font-family: var(--cxFontFamilyNormal);
+  }
 }
 
 cx-input.ng-invalid .input-caixa-wrapper,

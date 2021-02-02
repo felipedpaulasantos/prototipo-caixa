@@ -1,8 +1,8 @@
 enum DatatableDefaultButtons {
-    COLVIS = 'colvis',
-    COPY = 'copy',
-    PRINT = 'print',
-    EXCEL = 'excel'
+    COLVIS = "colvis",
+    COPY = "copy",
+    PRINT = "print",
+    EXCEL = "excel"
 }
 
 export interface DatatableSettings extends DataTables.Settings {
@@ -23,17 +23,17 @@ export interface CustomDatatableConfig {
 
 export const dtLanguageDefinitionPt = {
     buttons: {
-        copy: '<i class="fas fa-lg fa-copy mr-2"></i>Copiar',
-        copyTitle: 'Copiado',
+        copy: "<i class=\"fas fa-lg fa-copy mr-2\"></i>Copiar",
+        copyTitle: "Copiado",
         copySuccess: {
-            _: 'Copiados %d registros',
-            1: 'Copiado 1 registro'
+            _: "Copiados %d registros",
+            1: "Copiado 1 registro"
         },
-        pdf: '<i class="fa fa-lg fa-file-pdf mr-2"></i>PDF',
-        print: '<i class="fa fa-lg fa-print mr-2"></i>Imprimir',
-        excel: '<i class="fa fa-lg fa-file-excel mr-2"></i>Planilha do Excel',
-        colvis: '<i class="fa fa-lg fa-columns mr-2"></i>Colunas visíveis',
-        pageLength: '<i class="fa fa-lg fa-bars mr-2"></i>Mostrar <b>%d</b> linhas'
+        pdf: "<i class=\"fa fa-lg fa-file-pdf mr-2\"></i>PDF",
+        print: "<i class=\"fa fa-lg fa-print mr-2\"></i>Imprimir",
+        excel: "<i class=\"fa fa-lg fa-file-excel mr-2\"></i>Planilha do Excel",
+        colvis: "<i class=\"fa fa-lg fa-columns mr-2\"></i>Colunas visíveis",
+        pageLength: "<i class=\"fa fa-lg fa-bars mr-2\"></i>Mostrar <b>%d</b> linhas"
     },
     processing: "Processando...",
     search: "Buscar:",
@@ -103,7 +103,6 @@ export class DatatableConfig {
     });
 
     static CONFIG_FILTRO: DatatableSettings = DatatableConfig.getDatatableConfig({
-        buttons: [],
         showFilter: true
     });
 

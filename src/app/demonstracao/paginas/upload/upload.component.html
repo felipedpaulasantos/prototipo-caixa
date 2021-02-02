@@ -3,6 +3,113 @@
 </h1>
  -->
 
+<div class="mb-3">
+  <button class="btn btn-primary mr-3" (click)="updateConfig(configCompleta)">
+    Completa
+  </button>
+
+  <button class="btn btn-primary mr-3" (click)="updateConfig(configCompletaSemBotoes)">
+    Completa sem botões
+  </button>
+
+  <button class="btn btn-primary mr-3" (click)="updateConfig(configFilter)">
+    Com filtro geral
+  </button>
+
+  <button class="btn btn-primary mr-3" (click)="updateConfig(configInfo)">
+    Com info e paginação
+  </button>
+
+  <button class="btn btn-primary mr-3" (click)="updateConfig(configSimples)">
+    Simples
+  </button>
+</div>
+
+<div class="row mb-3">
+
+  <div class="col-3">
+    <div class="custom-control custom-checkbox">
+      <input (change)="updateConfigOption('buttons', $event.target.checked)" type="checkbox"
+        class="custom-control-input" id="checkBotoes" name="checkBotoes">
+      <label class="custom-control-label" for="checkBotoes">
+        Botões
+      </label>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="custom-control custom-checkbox">
+      <input (change)="updateConfigOption('filter', $event.target.checked)" type="checkbox"
+        class="custom-control-input" id="checkFiltro" name="checkFiltro">
+      <label class="custom-control-label" for="checkFiltro">
+        Filtro
+      </label>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="custom-control custom-checkbox">
+      <input (change)="updateConfigOption('pagination', $event.target.checked)" type="checkbox"
+        class="custom-control-input" id="checkPaging" name="checkPaging">
+      <label class="custom-control-label" for="checkPaging">
+        Paginação
+      </label>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="custom-control custom-checkbox">
+      <input (change)="updateConfigOption('length', $event.target.checked)" type="checkbox"
+        class="custom-control-input" id="checkLength" name="checkLength">
+      <label class="custom-control-label" for="checkLength">
+        Comprimento
+      </label>
+    </div>
+  </div>
+
+  <div class="col-3 my-3">
+    <label>Filtro por coluna</label>
+    <select (change)="updateConfigOption('columnFilter', $event.target.value)" class="custom-select">
+      <option value="">Nenhum</option>
+      <option value="input">Campo simples</option>
+      <option value="select">Campo select</option>
+    </select>
+  </div>
+
+</div>
+
+<div class="card my-3">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table datatable [dtTrigger]="dtTrigger" class="table">
+        <thead>
+          <tr>
+            <th>Coluna 1</th>
+            <th>Coluna 2</th>
+            <th>Coluna 3</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td><input class="form-control" type="text" placeholder="Filtro" name="search-id" /></td>
+            <td><input class="form-control" type="text" placeholder="Filtro" name="search-first-name" /></td>
+            <td><input class="form-control" type="text" placeholder="Filtro" name="search-last-name" /></td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr *ngFor="let row of rows">
+            <td>{{ row }}</td>
+            <td>{{ row }}</td>
+            <td>{{ row }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
 <div id="painelTestesDiversos">
   <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
     <div class="row">
@@ -63,7 +170,7 @@
       <h4 class="header-subtitulo-caixa">
         Novo documento
       </h4>
-      
+
       <div class="row">
         <div class="col-5">
 
