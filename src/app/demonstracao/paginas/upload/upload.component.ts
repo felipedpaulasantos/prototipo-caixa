@@ -319,6 +319,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
   }
 
   drawColumnFilters(dtInstance: DataTables.Api, table, thead, tfoot) {
+
     if (!this.config["columnFilter"]) {
       dtInstance.columns().every(function () {
         $(this.footer()).remove();
@@ -327,13 +328,18 @@ export class UploadComponent implements OnInit, AfterViewInit {
     } else if (!tfoot) {
       let tfootHtml = "";
       for (let index = 0; index < dtInstance.columns()[0].length; index++) {
-        tfootHtml += `<td><input class="form-control" type="text" placeholder="Filtro"></td>`;
+        tfootHtml += `<td></td>`;
       }
-      let filterCss = "";
-      filterCss = this.filterPosition === "top" ? `display: table-row-group` : "";
-      tfootHtml = `<tfoot style="${filterCss}"><tr>${tfootHtml}</tr></tfoot>`;
+      tfootHtml = `<tfoot><tr>${tfootHtml}</tr></tfoot>`;
       $(tfootHtml).insertAfter(thead);
     }
+
+    if (tfoot && this.filterPosition === "top") {
+      $(tfoot).addClass("d-table-row-group");
+    } else if (tfoot && this.filterPosition === "bottom") {
+      $(tfoot).removeClass("d-table-row-group");
+    }
+
 
     if (this.config["columnFilter"] === "input") {
       dtInstance.columns().every(function () {

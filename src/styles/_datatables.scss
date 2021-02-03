@@ -72,7 +72,7 @@
   span a {
     @extend .btn,
     .btn-sm,
-    .btn-outline-primary;
+    .btn-outline-secundario;
     margin-left: 0.5rem;
     &.current {
       @extend .active;

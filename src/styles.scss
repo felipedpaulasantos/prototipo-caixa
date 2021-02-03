@@ -328,6 +328,10 @@ label {
   height: 1.2rem;
   top: 0.1rem;
 }
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: var(--cxSecundario);
+  border-color: var(--cxSecundario);
+}
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
   border-color: var(--cxCancel);
 }
@@ -666,6 +670,8 @@ input[type="number"] {
   border-bottom-right-radius: 0;
   border-color: var(--cxAux);
   box-shadow: none !important;
+  background-color: var(--cxBase);
+  color: var(--cxContrast);
   &.active, &:active, &:focus {
     border-color: var(--cxSecundario);
   }
@@ -915,6 +921,10 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.d-table-row-group {
+  display: table-row-group;
 }
 
 /* CLASSES TEMATICAS */
