@@ -5,6 +5,13 @@ enum DatatableDefaultButtons {
     EXCEL = "excel"
 }
 
+export const DatatableDefaultButtonsList = [
+    DatatableDefaultButtons.COLVIS,
+    DatatableDefaultButtons.COPY,
+    DatatableDefaultButtons.PRINT,
+    DatatableDefaultButtons.EXCEL
+];
+
 export interface DatatableSettings extends DataTables.Settings {
     buttons?: any;
 }
@@ -19,6 +26,7 @@ export interface CustomDatatableConfig {
     showPagination?: boolean;
     menuLength?: number[];
     buttons?: any[];
+    searching?: boolean;
 }
 
 export const dtLanguageDefinitionPt = {
@@ -77,12 +85,8 @@ export class DatatableConfig {
     static DEFAULT_BUTTONS = DatatableDefaultButtons;
 
     static CONFIG_COMPLETA: DatatableSettings = DatatableConfig.getDatatableConfig({
-        buttons: [
-            DatatableDefaultButtons.COLVIS,
-            DatatableDefaultButtons.COPY,
-            DatatableDefaultButtons.PRINT,
-            DatatableDefaultButtons.EXCEL
-        ],
+        buttons: DatatableDefaultButtonsList,
+        searching: true,
         showFilter: true,
         showLength: true,
         showButtons: true,
@@ -93,9 +97,10 @@ export class DatatableConfig {
     });
 
     static CONFIG_COMPLETA_SEM_BOTOES: DatatableSettings = DatatableConfig.getDatatableConfig({
+        searching: true,
         showFilter: true,
         showLength: true,
-        showButtons: true,
+        showButtons: false,
         showTable: true,
         showInfo: true,
         showProcessing: true,
@@ -103,6 +108,7 @@ export class DatatableConfig {
     });
 
     static CONFIG_FILTRO: DatatableSettings = DatatableConfig.getDatatableConfig({
+        searching: true,
         showFilter: true
     });
 
@@ -132,8 +138,12 @@ export class DatatableConfig {
         if (options.showButtons || (options.buttons && options.buttons.length > 0)) {
             preTableElements = preTableElements += this.SHOW_BUTTONS;
         }
-        if (options.showLength) { preTableElements = preTableElements += this.SHOW_LENGTH; }
-        if (options.showFilter) { preTableElements = preTableElements += this.SHOW_FILTER; }
+        if (options.showLength) {
+            preTableElements = preTableElements += this.SHOW_LENGTH;
+        }
+        if (options.showFilter) {
+            preTableElements = preTableElements += this.SHOW_FILTER;
+        }
         if (options.showProcessing) { preTableElements = preTableElements += this.SHOW_PROCESSING; }
 
         if (options.showInfo) { postTableElements = postTableElements += this.SHOW_INFO; }
@@ -153,6 +163,7 @@ export class DatatableConfig {
         const dtDom = preTableElements + this.SHOW_TABLE + postTableElements;
         customConfig.dom = dtDom;
         customConfig.paging = paging;
+        customConfig.searching = options.searching;
         return customConfig;
     }
 

@@ -4,23 +4,23 @@
  -->
 
 <div class="mb-3">
-  <button class="btn btn-primary mr-3" (click)="updateConfig(configCompleta)">
+  <button class="btn btn-secundario mr-3" (click)="updateConfig(configCompleta)">
     Completa
   </button>
 
-  <button class="btn btn-primary mr-3" (click)="updateConfig(configCompletaSemBotoes)">
+  <button class="btn btn-secundario mr-3" (click)="updateConfig(configCompletaSemBotoes)">
     Completa sem botões
   </button>
 
-  <button class="btn btn-primary mr-3" (click)="updateConfig(configFilter)">
+  <button class="btn btn-secundario mr-3" (click)="updateConfig(configFilter)">
     Com filtro geral
   </button>
 
-  <button class="btn btn-primary mr-3" (click)="updateConfig(configInfo)">
+  <button class="btn btn-secundario mr-3" (click)="updateConfig(configInfo)">
     Com info e paginação
   </button>
 
-  <button class="btn btn-primary mr-3" (click)="updateConfig(configSimples)">
+  <button class="btn btn-secundario mr-3" (click)="updateConfig(configSimples)">
     Simples
   </button>
 </div>
@@ -29,7 +29,7 @@
 
   <div class="col-3">
     <div class="custom-control custom-checkbox">
-      <input (change)="updateConfigOption('buttons', $event.target.checked)" type="checkbox"
+      <input [disabled]="!config['buttons']" [checked]="config['buttons'] && config['buttons'].length > 0" (change)="updateConfigOption('buttons', $event.target.checked)" type="checkbox"
         class="custom-control-input" id="checkBotoes" name="checkBotoes">
       <label class="custom-control-label" for="checkBotoes">
         Botões
@@ -39,7 +39,7 @@
 
   <div class="col-3">
     <div class="custom-control custom-checkbox">
-      <input (change)="updateConfigOption('filter', $event.target.checked)" type="checkbox"
+      <input [disabled]="!config.searching" [checked]="config.searching" (change)="updateConfigOption('filter', $event.target.checked)" type="checkbox"
         class="custom-control-input" id="checkFiltro" name="checkFiltro">
       <label class="custom-control-label" for="checkFiltro">
         Filtro
@@ -49,7 +49,7 @@
 
   <div class="col-3">
     <div class="custom-control custom-checkbox">
-      <input (change)="updateConfigOption('pagination', $event.target.checked)" type="checkbox"
+      <input [disabled]="!config.paging" [checked]="config.paging" (change)="updateConfigOption('pagination', $event.target.checked)" type="checkbox"
         class="custom-control-input" id="checkPaging" name="checkPaging">
       <label class="custom-control-label" for="checkPaging">
         Paginação
@@ -59,7 +59,7 @@
 
   <div class="col-3">
     <div class="custom-control custom-checkbox">
-      <input (change)="updateConfigOption('length', $event.target.checked)" type="checkbox"
+      <input [checked]="config.lengthChange" (change)="updateConfigOption('length', $event.target.checked)" type="checkbox"
         class="custom-control-input" id="checkLength" name="checkLength">
       <label class="custom-control-label" for="checkLength">
         Comprimento
@@ -69,10 +69,18 @@
 
   <div class="col-3 my-3">
     <label>Filtro por coluna</label>
-    <select (change)="updateConfigOption('columnFilter', $event.target.value)" class="custom-select">
+    <select [value]="config['columnFilter']" (change)="updateConfigOption('columnFilter', $event.target.value)" class="custom-select">
       <option value="">Nenhum</option>
       <option value="input">Campo simples</option>
       <option value="select">Campo select</option>
+    </select>
+  </div>
+
+  <div class="col-3 my-3">
+    <label>Posição do filtro</label>
+    <select [value]="filterPosition" (change)="filterPosition = $event.target.value; updateTable()" class="custom-select">
+      <option value="top">Topo</option>
+      <option value="bottom">Rodapé</option>
     </select>
   </div>
 
@@ -89,13 +97,13 @@
             <th>Coluna 3</th>
           </tr>
         </thead>
-        <tfoot>
+<!--         <tfoot>
           <tr>
-            <td><input class="form-control" type="text" placeholder="Filtro" name="search-id" /></td>
-            <td><input class="form-control" type="text" placeholder="Filtro" name="search-first-name" /></td>
-            <td><input class="form-control" type="text" placeholder="Filtro" name="search-last-name" /></td>
+            <td *ngFor="let item of [].constructor(cols)">
+              <input class="form-control" type="text" placeholder="Filtro"/>
+            </td>
           </tr>
-        </tfoot>
+        </tfoot> -->
         <tbody>
           <tr *ngFor="let row of rows">
             <td>{{ row }}</td>

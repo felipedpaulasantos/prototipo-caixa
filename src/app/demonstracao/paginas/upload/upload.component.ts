@@ -10,7 +10,7 @@ import { CardButtonComponent } from "src/app/guia-caixa/components/card-button/c
 import { StepperItem } from "src/app/guia-caixa/components/stepper/stepper-component/stepper-item";
 import { TabberItem } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
 import { TimelineItem, TimelineState } from "src/app/guia-caixa/components/timeline/timeline-item";
-import { DatatableConfig } from "src/app/guia-caixa/constants/datatable-definitions";
+import { DatatableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/constants/datatable-definitions";
 
 
 @Component({
@@ -136,6 +136,10 @@ export class UploadComponent implements OnInit, AfterViewInit {
   configSimples = DatatableConfig.CONFIG_SIMPLES;
   dtTrigger: Subject<any> = new Subject();
 
+  filterPosition = "";
+
+  cols = 0;
+
 
   exibirEvento(evento: CardButtonCheckEvent) {
     console.log(evento);
@@ -145,6 +149,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
     this.clientePesquisado();
     this.populaContratos();
     this.preventDragDropDefault();
+    this.cols = 3;
     for (let index = 0; index < 100; index++) {
       const element = `Linha ${index + 1}`;
       this.rows.push(element);
@@ -262,79 +267,24 @@ export class UploadComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    console.log("CONFIG", this.config);
     this.dtTrigger.next();
     this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
 
-      if (!this.config["columnFilter"]) {
-        dtInstance.columns().every(function () {
-          const that = this;
-          $(this.footer()).remove();
-        });
-      }
+      const table = dtInstance["context"][0]["nTable"];
+      const thead = $(table).children("thead")[0];
+      const tfoot = $(table).children("tfoot")[0];
 
-/*       if (this.config["columnFilter"] === "input") {
-        dtInstance.columns().every(function () {
-          const that = this;
-          $("input", this.footer()).on("keyup change", function () {
-            if (that.search() !== this["value"]) {
-              that
-                .search(this["value"])
-                .draw();
-            }
-          });
-        });
-      } */
+      console.log("TABLE", table);
+      console.log("THEAD", thead);
+      console.log("TFOOT", tfoot);
 
-      if (this.config["columnFilter"] === "input") {
-        dtInstance.columns().every(function () {
-          const column = this;
-
-/*           if (!$(column.footer())) {
-            $(column).insertAfter("");
-          } */
-
-          const input = $(`<input class='form-control' placeholder='Filtro'>`)
-            .appendTo($(column.footer()).empty())
-            .on("keyup change", function () {
-              if (column.search() !== this["value"]) {
-                column
-                  .search(this["value"])
-                  .draw();
-              }
-            });
-        });
-      }
-
-      if (this.config["columnFilter"] === "select") {
-        dtInstance.columns().every(function () {
-          const column = this;
-
-/*           if (!$(column.footer())) {
-            $(column).insertAfter("<td></td>");
-          } */
-
-          const select = $(`<select class='custom-select'><option value=\"\">Filtro</option></select>`)
-            .appendTo($(column.footer()).empty())
-            .on("change", function () {
-              const val = $.fn.dataTable.util.escapeRegex(
-                String($(this).val())
-              );
-
-              column
-                .search(val ? "^" + val + "$" : "", true, false)
-                .draw();
-            });
-
-          column.data().unique().sort().each(function (d, j) {
-            select.append("<option value=\"" + d + "\">" + d + "</option>");
-          });
-        });
-      }
-
+      this.drawColumnFilters(dtInstance, table, thead, tfoot);
     });
   }
 
   updateConfig(newConfig: DatatableConfig) {
+    console.log("NEW CONFIG", newConfig);
     this.config = JSON.parse(JSON.stringify(newConfig));
     this.updateTable();
   }
@@ -342,7 +292,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
   updateConfigOption(option: string, value: boolean) {
     switch (option) {
       case "buttons":
-        this.config["buttons"] = value ? value : [];
+        this.config["buttons"] = value ? DatatableDefaultButtonsList : [];
         break;
       case "filter":
         this.config.searching = value;
@@ -365,8 +315,59 @@ export class UploadComponent implements OnInit, AfterViewInit {
     this.datatableElement.dtInstance.then((dtInstance) => {
       dtInstance.destroy();
       this.ngAfterViewInit();
-      /*       this.dtTrigger.next(); */
     });
+  }
+
+  drawColumnFilters(dtInstance: DataTables.Api, table, thead, tfoot) {
+    if (!this.config["columnFilter"]) {
+      dtInstance.columns().every(function () {
+        $(this.footer()).remove();
+      });
+
+    } else if (!tfoot) {
+      let tfootHtml = "";
+      for (let index = 0; index < dtInstance.columns()[0].length; index++) {
+        tfootHtml += `<td><input class="form-control" type="text" placeholder="Filtro"></td>`;
+      }
+      let filterCss = "";
+      filterCss = this.filterPosition === "top" ? `display: table-row-group` : "";
+      tfootHtml = `<tfoot style="${filterCss}"><tr>${tfootHtml}</tr></tfoot>`;
+      $(tfootHtml).insertAfter(thead);
+    }
+
+    if (this.config["columnFilter"] === "input") {
+      dtInstance.columns().every(function () {
+        const column = this;
+        const input = $(`<input class='form-control' placeholder='Filtro'>`)
+          .appendTo($(column.footer()).empty())
+          .on("keyup change", function () {
+            if (column.search() !== this["value"]) {
+              column
+                .search(this["value"])
+                .draw();
+            }
+          });
+      });
+    }
+
+    if (this.config["columnFilter"] === "select") {
+      dtInstance.columns().every(function () {
+        const column = this;
+        const select = $(`<select class='custom-select'><option value=\"\">Filtro</option></select>`)
+          .appendTo($(column.footer()).empty())
+          .on("change", function () {
+            const val = $.fn.dataTable.util.escapeRegex(
+              String($(this).val())
+            );
+            column
+              .search(val ? "^" + val + "$" : "", true, false)
+              .draw();
+          });
+        column.data().unique().sort().each(function (d, j) {
+          select.append("<option value=\"" + d + "\">" + d + "</option>");
+        });
+      });
+    }
   }
 
 }
