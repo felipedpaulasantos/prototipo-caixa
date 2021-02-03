@@ -84,14 +84,14 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         url: "/componentes/timeline",
         isLink: true,
         enabled: true
-      }
-/*       {
-        name: 'Tabelas',
-        iconClass: 'fa fa-lg fa-table',
-        url: '/componentes/tabelas',
+      },
+      {
+        name: "Tabelas",
+        iconClass: "fa fa-lg fa-table",
+        url: "/componentes/tabelas",
         isLink: true,
         enabled: true
-      } */
+      }
     ]
   },
   {

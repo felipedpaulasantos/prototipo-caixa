@@ -2,8 +2,121 @@
 	Tabelas
 </h1>
 
+<div class="card d-inline-block w-auto mb-4">
+	<div class="card-body">
+		<i class="fa fa-exclamation-triangle fa-lg text-alerta mr-2"></i> Em desenvolvimento
+	</div>
+</div>
 
-<div class="row no-gutters">
+
+<section id="tabelaSandbox" class="mb-5">
+	<div id="cardFiltros" class="card mb-4">
+		<div class="card-body">
+			<form [formGroup]="formDTConfig">
+				<div class="row align-items-center mb-3">
+					<div class="col-2">
+						<div class="custom-control custom-checkbox">
+							<input formControlName="showButtons" type="checkbox" (change)="getTableConfig()"
+								class="custom-control-input" id="checkBotoes">
+							<label class="custom-control-label" for="checkBotoes">
+								Botões
+							</label>
+						</div>
+					</div>
+
+					<div class="col-2">
+						<div class="custom-control custom-checkbox">
+							<input formControlName="showFilter" type="checkbox" (change)="getTableConfig()"
+								class="custom-control-input" id="checkFiltro">
+							<label class="custom-control-label" for="checkFiltro">
+								Filtro Geral
+							</label>
+						</div>
+					</div>
+
+					<div class="col-2">
+						<div class="custom-control custom-checkbox">
+							<input formControlName="showPagination" type="checkbox" (change)="getTableConfig()"
+								class="custom-control-input" id="checkPaging">
+							<label class="custom-control-label" for="checkPaging">
+								Paginação
+							</label>
+						</div>
+					</div>
+
+					<div class="col-2">
+						<div class="custom-control custom-checkbox">
+							<input formControlName="showInfo" type="checkbox" (change)="getTableConfig()"
+								class="custom-control-input" id="checkInfo">
+							<label class="custom-control-label" for="checkInfo">
+								Informativo
+							</label>
+						</div>
+					</div>
+
+					<div class="col-2">
+						<div class="custom-control custom-checkbox">
+							<input formControlName="showLength" type="checkbox" (change)="getTableConfig()"
+								class="custom-control-input" id="checkLength">
+							<label class="custom-control-label" for="checkLength">
+								Linhas por página
+							</label>
+						</div>
+					</div>
+
+				</div>
+				<div class="row">
+
+					<div class="col-3 my-3">
+						<label>Filtro por coluna</label>
+						<select [value]="config['columnFilter']"
+							(change)="updateConfigOption('columnFilter', $event.target.value)" class="custom-select">
+							<option value="">Nenhum</option>
+							<option value="input">Campo simples</option>
+							<option value="select">Campo select</option>
+						</select>
+					</div>
+
+					<div class="col-3 my-3">
+						<label>Posição do filtro</label>
+						<select [value]="filterPosition" (change)="filterPosition = $event.target.value; updateTable()"
+							class="custom-select">
+							<option value="top">Topo</option>
+							<option value="bottom">Rodapé</option>
+						</select>
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="cardTabelaSandbox" class="card my-3">
+		<div class="card-body">
+			<div class="table-responsive">
+				<table datatable [dtTrigger]="dtTrigger" class="table">
+					<thead>
+						<tr>
+							<th>Coluna 1</th>
+							<th>Coluna 2</th>
+							<th>Coluna 3</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let row of rows">
+							<td>{{ row }}</td>
+							<td>{{ row }}</td>
+							<td>{{ row }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- <div class="row no-gutters">
 	<section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
 		<app-documentacao-template id="painelTabelaDatatable" [cardTitle]="'Datatable'" [codeViewId]="'viewDatatable'"
 			[htmlTabId]="'htmlCodeDatatable'" [htmlCode]="htmlCodeDatatable" [tsTabId]="'tsCodeDatatable'"
@@ -248,4 +361,4 @@
 	</div>
 
 
-</section>
+</section> -->
