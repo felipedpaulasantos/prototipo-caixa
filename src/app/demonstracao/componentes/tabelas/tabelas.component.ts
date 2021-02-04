@@ -6,6 +6,7 @@ import { ComponentesInterface } from "../componentes-interface";
 import { ToastrService } from "ngx-toastr";
 import { DatatableSettings, DatatableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/constants/datatable-definitions";
 import { FormBuilder } from "@angular/forms";
+import { DatatableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
 
 @Component({
   selector: "app-tabelas",
@@ -36,6 +37,9 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, Af
 
   @ViewChild(DataTableDirective)
   datatableElement: DataTableDirective;
+
+  @ViewChild("tabela")
+  table: DatatableComponent;
 
   @ViewChild("scrollElement") scrollElement;
   spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
@@ -209,6 +213,7 @@ constructor() {
 `.trimRight();
 
   ngOnInit() {
+    console.log("INIT - TABLES", this.datatableElement);
     this.dtSimpleOptions = DatatableConfig.CONFIG_SIMPLES;
     this.dtCompleteOptions = DatatableConfig.CONFIG_COMPLETA;
     this.dtCustomOptions = DatatableConfig.getDatatableConfig({
@@ -241,9 +246,8 @@ constructor() {
   }
 
 
-
   ngAfterViewInit(): void {
-    console.log("CONFIG", this.config);
+/*     console.log("AFTER INIT - TABLES", this.datatableElement);
     this.dtTrigger.next();
     this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
 
@@ -256,11 +260,10 @@ constructor() {
       console.log("TFOOT", tfoot);
 
       this.drawColumnFilters(dtInstance, table, thead, tfoot);
-    });
+    }); */
   }
 
   updateConfig(newConfig: DatatableConfig) {
-    console.log("NEW CONFIG", newConfig);
     this.config = JSON.parse(JSON.stringify(newConfig));
     this.updateTable();
   }
@@ -287,11 +290,12 @@ constructor() {
   }
 
   updateTable() {
-    this.datatableElement.dtOptions = this.config;
+
+/*  this.datatableElement.dtOptions = this.config;
     this.datatableElement.dtInstance.then((dtInstance) => {
       dtInstance.destroy();
       this.ngAfterViewInit();
-    });
+    }); */
   }
 
   drawColumnFilters(dtInstance: DataTables.Api, table, thead, tfoot) {
@@ -360,13 +364,19 @@ constructor() {
     }
     const newConfig = DatatableConfig.getDatatableConfig(this.formDTConfig.value);
     this.config = JSON.parse(JSON.stringify(newConfig));
-    this.updateTable();
+    this.table.setConfig(this.config);
   }
 
   printConfig(): any {
     const configPrint = JSON.parse(JSON.stringify(this.config));
     configPrint["language"] = null;
     return configPrint;
+  }
+
+  atualizar() {
+    // this.getTableConfig();
+    this.config = DatatableConfig.CONFIG_INFO_PAGINACAO;
+    this.table.reloadTable();
   }
 
 }

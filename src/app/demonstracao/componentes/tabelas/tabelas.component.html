@@ -9,7 +9,8 @@
 </div>
 
 
-<section id="tabelaSandbox" class="mb-5">
+<section id="tabelaSandbox" class="mb-5" #scrollElement>
+
 	<div id="cardFiltros" class="card mb-4">
 		<div class="card-body">
 			<form [formGroup]="formDTConfig">
@@ -87,6 +88,8 @@
 					</div>
 
 				</div>
+
+				<button class="btn btn-secundario" (click)="atualizar()">Atualizar</button>
 			</form>
 		</div>
 	</div>
@@ -94,29 +97,31 @@
 	<div id="cardTabelaSandbox" class="card my-3">
 		<div class="card-body">
 			<div class="table-responsive">
-				<table datatable [dtTrigger]="dtTrigger" class="table">
-					<thead>
-						<tr>
-							<th>Coluna 1</th>
-							<th>Coluna 2</th>
-							<th>Coluna 3</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let row of rows">
-							<td>{{ row }}</td>
-							<td>{{ row }}</td>
-							<td>{{ row }}</td>
-						</tr>
-					</tbody>
-				</table>
+				<cx-datatable #tabela>
+					<table datatable class="table">
+						<thead>
+							<tr>
+								<th>Coluna 1</th>
+								<th>Coluna 2</th>
+								<th>Coluna 3</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let row of rows">
+								<td>{{ row }}</td>
+								<td>{{ row }}</td>
+								<td>{{ row }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</cx-datatable>
 			</div>
 		</div>
 	</div>
 </section>
 
 
-<!-- <div class="row no-gutters">
+<div class="row no-gutters" *ngIf="false">
 	<section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
 		<app-documentacao-template id="painelTabelaDatatable" [cardTitle]="'Datatable'" [codeViewId]="'viewDatatable'"
 			[htmlTabId]="'htmlCodeDatatable'" [htmlCode]="htmlCodeDatatable" [tsTabId]="'tsCodeDatatable'"
@@ -361,4 +366,4 @@
 	</div>
 
 
-</section> -->
+</section>
