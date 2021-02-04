@@ -1,4 +1,4 @@
-import { Injectable } from "../../../../node_modules/@angular/core";
+import { Inject, Injectable, Injector } from "../../../../node_modules/@angular/core";
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from "../../../../node_modules/@angular/common/http";
 import { NgxSpinnerService } from "../../../../node_modules/ngx-spinner";
 import { Observable } from "../../../../node_modules/rxjs";
@@ -10,11 +10,15 @@ export class LoaderInterceptor implements HttpInterceptor {
 
     private totalRequests = 0;
 
-    constructor(public spinner: NgxSpinnerService) {}
+    constructor(
+        private injector: Injector,
+        public spinner: NgxSpinnerService
+    ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         this.totalRequests++;
-        this.spinner.show('global');
+        const spinner = this.injector.get(NgxSpinnerService);
+        spinner.show("global");
         return next.handle(req).pipe(
             tap(res => {
                 if (res instanceof HttpResponse) {
@@ -28,10 +32,11 @@ export class LoaderInterceptor implements HttpInterceptor {
         );
     }
 
-    private decreaseRequests() {
+    decreaseRequests() {
+        const spinner = this.injector.get(NgxSpinnerService);
         this.totalRequests--;
         if (this.totalRequests === 0) {
-            this.spinner.hide('global');
+            spinner.hide("global");
         }
     }
 }

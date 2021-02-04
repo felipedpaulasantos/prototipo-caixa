@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild } from "@angular/core";
+import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
 import { DataTableDirective } from "angular-datatables";
 import { Subject } from "rxjs";
 
@@ -8,17 +8,23 @@ import { DatatableSettings, DatatableConfig, DatatableDefaultButtonsList } from 
 import { FormBuilder } from "@angular/forms";
 import { DatatableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
 
+import { RandomDataFood } from "src/app/shared/model/random-data-food";
+import { RandomDataService } from "src/app/demonstracao/componentes/tabelas/random-data.service";
+import { NgxSpinnerService } from "ngx-spinner";
+
 @Component({
   selector: "app-tabelas",
   templateUrl: "./tabelas.component.html",
   styleUrls: ["./tabelas.component.scss"],
   host: { "(window:scroll)": "onScroll($event)" }
 })
-export class TabelasComponent extends ComponentesInterface implements OnInit, AfterViewInit, OnDestroy {
+export class TabelasComponent extends ComponentesInterface implements OnInit, OnDestroy {
 
-  constructor(
+  constructor (
     public toastr: ToastrService,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    public randomDataService: RandomDataService,
+    public spinner: NgxSpinnerService
   ) {
     super(toastr);
   }
@@ -213,7 +219,6 @@ constructor() {
 `.trimRight();
 
   ngOnInit() {
-    console.log("INIT - TABLES", this.datatableElement);
     this.dtSimpleOptions = DatatableConfig.CONFIG_SIMPLES;
     this.dtCompleteOptions = DatatableConfig.CONFIG_COMPLETA;
     this.dtCustomOptions = DatatableConfig.getDatatableConfig({
@@ -223,11 +228,8 @@ constructor() {
       showPagination: true,
       menuLength: [5, 10, 50]
     });
-    for (let index = 0; index < 100; index++) {
-      const element = `Linha ${index + 1}`;
-      this.rows.push(element);
-    }
-    this.rows = [].concat(this.rows);
+
+    this.fetchData();
   }
 
   ngOnDestroy(): void {
@@ -245,27 +247,8 @@ constructor() {
     }
   }
 
-
-  ngAfterViewInit(): void {
-/*     console.log("AFTER INIT - TABLES", this.datatableElement);
-    this.dtTrigger.next();
-    this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
-
-      const table = dtInstance["context"][0]["nTable"];
-      const thead = $(table).children("thead")[0];
-      const tfoot = $(table).children("tfoot")[0];
-
-      console.log("TABLE", table);
-      console.log("THEAD", thead);
-      console.log("TFOOT", tfoot);
-
-      this.drawColumnFilters(dtInstance, table, thead, tfoot);
-    }); */
-  }
-
   updateConfig(newConfig: DatatableConfig) {
     this.config = JSON.parse(JSON.stringify(newConfig));
-    this.updateTable();
   }
 
   updateConfigOption(option: string, value: boolean) {
@@ -286,74 +269,7 @@ constructor() {
         this.config["columnFilter"] = value;
         break;
     }
-    this.updateTable();
-  }
-
-  updateTable() {
-
-/*  this.datatableElement.dtOptions = this.config;
-    this.datatableElement.dtInstance.then((dtInstance) => {
-      dtInstance.destroy();
-      this.ngAfterViewInit();
-    }); */
-  }
-
-  drawColumnFilters(dtInstance: DataTables.Api, table, thead, tfoot) {
-
-    if (!this.config["columnFilter"]) {
-      dtInstance.columns().every(function () {
-        $(this.footer()).remove();
-      });
-
-    } else if (!tfoot) {
-      let tfootHtml = "";
-      for (let index = 0; index < dtInstance.columns()[0].length; index++) {
-        tfootHtml += `<td></td>`;
-      }
-      tfootHtml = `<tfoot><tr>${tfootHtml}</tr></tfoot>`;
-      $(tfootHtml).insertAfter(thead);
-    }
-
-    if (tfoot && this.filterPosition === "top") {
-      $(tfoot).addClass("d-table-row-group");
-    } else if (tfoot && this.filterPosition === "bottom") {
-      $(tfoot).removeClass("d-table-row-group");
-    }
-
-
-    if (this.config["columnFilter"] === "input") {
-      dtInstance.columns().every(function () {
-        const column = this;
-        const input = $(`<input class='form-control' placeholder='Filtro'>`)
-          .appendTo($(column.footer()).empty())
-          .on("keyup change", function () {
-            if (column.search() !== this["value"]) {
-              column
-                .search(this["value"])
-                .draw();
-            }
-          });
-      });
-    }
-
-    if (this.config["columnFilter"] === "select") {
-      dtInstance.columns().every(function () {
-        const column = this;
-        const select = $(`<select class='custom-select'><option value=\"\">Filtro</option></select>`)
-          .appendTo($(column.footer()).empty())
-          .on("change", function () {
-            const val = $.fn.dataTable.util.escapeRegex(
-              String($(this).val())
-            );
-            column
-              .search(val ? "^" + val + "$" : "", true, false)
-              .draw();
-          });
-        column.data().unique().sort().each(function (d, j) {
-          select.append("<option value=\"" + d + "\">" + d + "</option>");
-        });
-      });
-    }
+    this.table.setConfig(this.config);
   }
 
   getTableConfig() {
@@ -371,6 +287,19 @@ constructor() {
     const configPrint = JSON.parse(JSON.stringify(this.config));
     configPrint["language"] = null;
     return configPrint;
+  }
+
+  setFilterPosition(position: string) {
+    this.table.setFilterColumnPosition(position);
+  }
+
+  fetchData() {
+    this.spinner.show("global");
+    this.randomDataService.getFoodData(100).subscribe((foodArray: RandomDataFood[]) => {
+      this.rows = foodArray;
+      this.table.reloadTable();
+      this.spinner.hide("global");
+    });
   }
 
   atualizar() {

@@ -69,7 +69,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
       $(tfootHtml).insertAfter(thead);
     }
 
-    if (tfoot && this.filterPosition === "top") {
+    if (tfoot && (this.filterPosition === "top" || !this.filterPosition)) {
       $(tfoot).addClass("d-table-row-group");
     } else if (tfoot && this.filterPosition === "bottom") {
       $(tfoot).removeClass("d-table-row-group");
@@ -78,13 +78,25 @@ export class DatatableComponent implements OnInit, AfterViewInit {
 
     if (this.config["columnFilter"] === "input") {
       dtInstance.columns().every(function () {
+        const column = this;
+        const columnText = column.header().innerHTML;
+        const input = $(`<input class='form-control' placeholder='Filtre ${columnText}'>`)
+          .appendTo($(column.footer()).empty())
+          .on("keyup change", function () {
+            if (column.search() !== this["value"]) {
+              column
+                .search(this["value"])
+                .draw();
+            }
+          });
       });
     }
 
     if (this.config["columnFilter"] === "select") {
       dtInstance.columns().every(function () {
         const column = this;
-        const select = $(`<select class='custom-select'><option value=\"\">Filtro</option></select>`)
+        const columnText = column.header().innerHTML;
+        const select = $(`<select class='custom-select'><option value=\"\">Filtre ${columnText}</option></select>`)
           .appendTo($(column.footer()).empty())
           .on("change", function () {
             const val = $.fn.dataTable.util.escapeRegex(
@@ -99,13 +111,16 @@ export class DatatableComponent implements OnInit, AfterViewInit {
         });
       });
     }
-    this.datatableElement.dtInstance.then(instance => {
-      instance.init();
-    });
+
   }
 
   setConfig(config: DatatableSettings) {
     this.config = config;
+    this.reloadTable();
+  }
+
+  setFilterColumnPosition(position: string) {
+    this.filterPosition = position;
     this.reloadTable();
   }
 

@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: 'cx-spinner',
-  templateUrl: './spinner.component.html',
-  styleUrls: ['spinner.component.css']
+  selector: "cx-spinner",
+  templateUrl: "./spinner.component.html",
+  styleUrls: ["spinner.component.css"]
 })
 export class SpinnerCaixaComponent implements OnInit {
 

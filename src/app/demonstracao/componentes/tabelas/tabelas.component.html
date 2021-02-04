@@ -80,7 +80,7 @@
 
 					<div class="col-3 my-3">
 						<label>Posição do filtro</label>
-						<select [value]="filterPosition" (change)="filterPosition = $event.target.value; updateTable()"
+						<select [value]="filterPosition" (change)="setFilterPosition($event.target.value)"
 							class="custom-select">
 							<option value="top">Topo</option>
 							<option value="bottom">Rodapé</option>
@@ -89,7 +89,7 @@
 
 				</div>
 
-				<button class="btn btn-secundario" (click)="atualizar()">Atualizar</button>
+				<button class="btn btn-secundario" (click)="fetchData()">Buscar novos dados</button>
 			</form>
 		</div>
 	</div>
@@ -97,24 +97,32 @@
 	<div id="cardTabelaSandbox" class="card my-3">
 		<div class="card-body">
 			<div class="table-responsive">
-				<cx-datatable #tabela>
+ 				<cx-datatable #tabela>
 					<table datatable class="table">
 						<thead>
 							<tr>
-								<th>Coluna 1</th>
-								<th>Coluna 2</th>
-								<th>Coluna 3</th>
+								<th>ID</th>
+								<th>Prato</th>
+								<th>Descrição</th>
+								<th>Ingrediente</th>
+								<th>Medida</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr *ngFor="let row of rows">
-								<td>{{ row }}</td>
-								<td>{{ row }}</td>
-								<td>{{ row }}</td>
+								<td>{{ row.id }}</td>
+								<td>{{ row.dish }}</td>
+								<td>{{ row.description }}</td>
+								<td>{{ row.ingredient }}</td>
+								<td>{{ row.measurement }}</td>
 							</tr>
 						</tbody>
 					</table>
 				</cx-datatable>
+
+<!-- 				<cx-datatable #tabela>
+					<table datatable class="table"></table>
+				</cx-datatable> -->
 			</div>
 		</div>
 	</div>

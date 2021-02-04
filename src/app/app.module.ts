@@ -32,6 +32,7 @@ import { GuiaCaixaModule } from "./guia-caixa/guia-caixa.module";
 import { CoresModule } from "./demonstracao/cores/cores.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ResizableModule } from "angular-resizable-element";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -58,6 +59,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       DataTablesModule,
       GuiaCaixaModule,
       ResizableModule,
+      NgxSpinnerModule,
       NgxMaskModule.forRoot(),
       OAuthModule.forRoot(),
       ToastrModule.forRoot({
@@ -72,7 +74,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
    ],
  	providers: [
 		{ provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
- 		{ provide: HTTP_INTERCEPTORS,	useClass: LoaderInterceptor, multi: true },
+/*  		{ provide: HTTP_INTERCEPTORS,	useClass: LoaderInterceptor, multi: true }, */
     { provide: LOCALE_ID, useValue: "pt" }
 	],
 	bootstrap: [ AppComponent ]

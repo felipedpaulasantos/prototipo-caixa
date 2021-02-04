@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { Router, ActivatedRoute, NavigationEnd, RouterOutlet } from '@angular/router';
-import { switchMap, map, filter } from 'rxjs/operators';
+import { Component, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
+import { Router, ActivatedRoute, NavigationEnd, RouterOutlet } from "@angular/router";
+import { switchMap, map, filter } from "rxjs/operators";
 
-import { fadeInAnimation } from './shared/animations/simple-fade.animation';
-import { UserService } from './authentication/users/user.service';
-import { SideMenuService } from './menu/side-menu/side-menu.service';
-import { GuiaCaixaStyleService } from './guia-caixa/services/style-guia-caixa.service';
-import { DatatableConfig } from './guia-caixa/constants/datatable-definitions';
+import { fadeInAnimation } from "./shared/animations/simple-fade.animation";
+import { UserService } from "./authentication/users/user.service";
+import { SideMenuService } from "./menu/side-menu/side-menu.service";
+import { GuiaCaixaStyleService } from "./guia-caixa/services/style-guia-caixa.service";
+import { DatatableConfig } from "./guia-caixa/constants/datatable-definitions";
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
   animations: [fadeInAnimation]
 })
 export class AppComponent implements OnInit {
@@ -65,6 +65,6 @@ export class AppComponent implements OnInit {
   }
 
   prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData["animation"];
   }
 }
