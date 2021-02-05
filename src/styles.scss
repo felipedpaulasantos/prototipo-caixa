@@ -473,13 +473,13 @@ input[type="number"] {
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
   font-family: var(--cxFontFamilyBold);
-  border-bottom: solid 0.153rem transparent;
+  border-bottom: solid 2px transparent;
 /*   @extend .ripple-dark; */
   &.active,
   &:active {
     color: var(--cxSecundario) !important;
-    background-color: var(--cxBase) !important;
-    border-bottom: solid 0.153rem var(--cxSecundario);
+    background-color: var(--cxTransparentContrast050) !important;
+    border-bottom: solid 2px var(--cxSecundario);
     border-radius: 50;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;

@@ -47,6 +47,9 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
   @ViewChild("tabela")
   table: DatatableComponent;
 
+  @ViewChild("tabela2")
+  table2: DatatableComponent;
+
   @ViewChild("scrollElement") scrollElement;
   spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   sectionOffset = 0;
@@ -298,6 +301,7 @@ constructor() {
     this.randomDataService.getFoodData(100).subscribe((foodArray: RandomDataFood[]) => {
       this.rows = foodArray;
       this.table.reloadTable();
+      this.table2.reloadTable();
       this.spinner.hide("global");
     });
   }

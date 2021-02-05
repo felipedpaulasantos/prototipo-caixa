@@ -67,6 +67,7 @@ export class TimelineDemonstracaoComponent extends ComponentesInterface implemen
   htmlCodeTimelinePadrao = `<cx-timeline [items]="timelineItems"></cx-timeline>`.trim();
 
   tsCodeTimelinePadrao = `import { Component } from '@angular/core';
+import { TimelineItem, TimelineState } from "./timeline/timeline-item";
 
 @Component({
     selector: 'app-timeline',
@@ -92,6 +93,7 @@ export class TimelineDemonstracaoComponent {
 htmlCodeTimelineExtenso = `<cx-timeline [styles]="{ height: '350px', width: 'auto' }" [items]="timelineItemsExtenso"></cx-timeline>`.trim();
 
 tsCodeTimelineExtenso = `import { Component } from '@angular/core';
+import { TimelineItem, TimelineState } from "./timeline/timeline-item";
 
 @Component({
   selector: 'app-timeline',

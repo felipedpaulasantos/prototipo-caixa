@@ -120,6 +120,33 @@
 			</cx-datatable>
 		</div>
 	</div>
+
+	<div id="cardTabelaSandbox2" class="card my-3">
+		<div class="card-body">
+			<cx-datatable [columnFilterType]="'select'" [columnFilterPosition]="'top'" #tabela2>
+				<table datatable class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Prato</th>
+							<!-- <th>Descrição</th> -->
+							<th>Ingrediente</th>
+							<th>Medida</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let row of rows">
+							<td>{{ row.id }}</td>
+							<td>{{ row.dish }}</td>
+					<!-- 		<td>{{ row.description }}</td> -->
+							<td>{{ row.ingredient }}</td>
+							<td>{{ row.measurement }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</cx-datatable>
+		</div>
+	</div>
 </section>
 
 
