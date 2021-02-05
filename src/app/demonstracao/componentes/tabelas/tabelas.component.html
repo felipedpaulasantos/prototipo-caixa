@@ -11,87 +11,87 @@
 
 <section id="tabelaSandbox" class="mb-5" #scrollElement>
 
-	<div id="cardFiltros" class="card mb-4">
-		<div class="card-body">
-			<form [formGroup]="formDTConfig">
-				<div class="row align-items-center mb-3">
-					<div class="col-2">
-						<div class="custom-control custom-checkbox">
-							<input formControlName="showButtons" type="checkbox" (change)="getTableConfig()"
-								class="custom-control-input" id="checkBotoes">
-							<label class="custom-control-label" for="checkBotoes">
-								Botões
-							</label>
-						</div>
+	<div id="cardFiltros" class="card border-0 shadow-none mb-4">
+		<form [formGroup]="formDTConfig">
+			<div class="row align-items-center mb-3">
+				<div class="col-2">
+					<div class="custom-control custom-checkbox">
+						<input formControlName="showButtons" type="checkbox" (change)="getTableConfig()"
+							class="custom-control-input" id="checkBotoes">
+						<label class="custom-control-label" for="checkBotoes">
+							Botões
+						</label>
 					</div>
-
-					<div class="col-2">
-						<div class="custom-control custom-checkbox">
-							<input formControlName="showFilter" type="checkbox" (change)="getTableConfig()"
-								class="custom-control-input" id="checkFiltro">
-							<label class="custom-control-label" for="checkFiltro">
-								Filtro Geral
-							</label>
-						</div>
-					</div>
-
-					<div class="col-2">
-						<div class="custom-control custom-checkbox">
-							<input formControlName="showPagination" type="checkbox" (change)="getTableConfig()"
-								class="custom-control-input" id="checkPaging">
-							<label class="custom-control-label" for="checkPaging">
-								Paginação
-							</label>
-						</div>
-					</div>
-
-					<div class="col-2">
-						<div class="custom-control custom-checkbox">
-							<input formControlName="showInfo" type="checkbox" (change)="getTableConfig()"
-								class="custom-control-input" id="checkInfo">
-							<label class="custom-control-label" for="checkInfo">
-								Informativo
-							</label>
-						</div>
-					</div>
-
-					<div class="col-2">
-						<div class="custom-control custom-checkbox">
-							<input formControlName="showLength" type="checkbox" (change)="getTableConfig()"
-								class="custom-control-input" id="checkLength">
-							<label class="custom-control-label" for="checkLength">
-								Linhas por página
-							</label>
-						</div>
-					</div>
-
-				</div>
-				<div class="row">
-
-					<div class="col-3 my-3">
-						<label>Filtro por coluna</label>
-						<select [value]="table?.columnFilterType"
-							(change)="updateConfigOption('columnFilter', $event.target.value)" class="custom-select">
-							<option value="">Nenhum</option>
-							<option value="input">Campo simples</option>
-							<option value="select">Campo select</option>
-						</select>
-					</div>
-
-					<div class="col-3 my-3">
-						<label>Posição do filtro</label>
-						<select [value]="table?.columnFilterPosition" (change)="setFilterPosition($event.target.value)"
-							class="custom-select">
-							<option value="top">Topo</option>
-							<option value="bottom">Rodapé</option>
-						</select>
-					</div>
-
 				</div>
 
-				<button class="btn btn-secundario" (click)="fetchData()">Buscar novos dados</button>
-			</form>
-		</div>
+				<div class="col-2">
+					<div class="custom-control custom-checkbox">
+						<input formControlName="showFilter" type="checkbox" (change)="getTableConfig()"
+							class="custom-control-input" id="checkFiltro">
+						<label class="custom-control-label" for="checkFiltro">
+							Filtro Geral
+						</label>
+					</div>
+				</div>
+
+				<div class="col-2">
+					<div class="custom-control custom-checkbox">
+						<input formControlName="showPagination" type="checkbox" (change)="getTableConfig()"
+							class="custom-control-input" id="checkPaging">
+						<label class="custom-control-label" for="checkPaging">
+							Paginação
+						</label>
+					</div>
+				</div>
+
+				<div class="col-2">
+					<div class="custom-control custom-checkbox">
+						<input formControlName="showInfo" type="checkbox" (change)="getTableConfig()"
+							class="custom-control-input" id="checkInfo">
+						<label class="custom-control-label" for="checkInfo">
+							Informativo
+						</label>
+					</div>
+				</div>
+
+				<div class="col-2">
+					<div class="custom-control custom-checkbox">
+						<input formControlName="showLength" type="checkbox" (change)="getTableConfig()"
+							class="custom-control-input" id="checkLength">
+						<label class="custom-control-label" for="checkLength">
+							Linhas por página
+						</label>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+
+				<div class="col-3 my-3">
+					<label>Filtro por coluna</label>
+					<select [value]="table?.columnFilterType"
+						(change)="updateConfigOption('columnFilter', $event.target.value)" class="custom-select">
+						<option value="">Nenhum</option>
+						<option value="input">Campo simples</option>
+						<option value="select">Campo select</option>
+					</select>
+				</div>
+
+				<div class="col-3 my-3">
+					<label>Posição do filtro</label>
+					<select [value]="table?.columnFilterPosition" (change)="setFilterPosition($event.target.value)"
+						class="custom-select">
+						<option value="top">Topo</option>
+						<option value="bottom">Rodapé</option>
+						<option value="both">Ambos</option>
+					</select>
+				</div>
+
+				<div class="col-3 my-3">
+					<button class="btn btn-secundario" (click)="fetchData()">Buscar novos dados</button>
+				</div>
+			</div>
+		</form>
 	</div>
 
 	<div id="cardTabelaSandbox" class="card my-3">
@@ -102,7 +102,6 @@
 						<tr>
 							<th>ID</th>
 							<th>Prato</th>
-							<!-- <th>Descrição</th> -->
 							<th>Ingrediente</th>
 							<th>Medida</th>
 						</tr>
@@ -111,7 +110,6 @@
 						<tr *ngFor="let row of rows">
 							<td>{{ row.id }}</td>
 							<td>{{ row.dish }}</td>
-					<!-- 		<td>{{ row.description }}</td> -->
 							<td>{{ row.ingredient }}</td>
 							<td>{{ row.measurement }}</td>
 						</tr>
@@ -121,7 +119,7 @@
 		</div>
 	</div>
 
-	<div id="cardTabelaSandbox2" class="card my-3">
+	<!-- 	<div id="cardTabelaSandbox2" class="card my-3">
 		<div class="card-body">
 			<cx-datatable [columnFilterType]="'select'" [columnFilterPosition]="'top'" #tabela2>
 				<table datatable class="table">
@@ -129,7 +127,7 @@
 						<tr>
 							<th>ID</th>
 							<th>Prato</th>
-							<!-- <th>Descrição</th> -->
+
 							<th>Ingrediente</th>
 							<th>Medida</th>
 						</tr>
@@ -138,7 +136,7 @@
 						<tr *ngFor="let row of rows">
 							<td>{{ row.id }}</td>
 							<td>{{ row.dish }}</td>
-					<!-- 		<td>{{ row.description }}</td> -->
+			
 							<td>{{ row.ingredient }}</td>
 							<td>{{ row.measurement }}</td>
 						</tr>
@@ -146,7 +144,7 @@
 				</table>
 			</cx-datatable>
 		</div>
-	</div>
+	</div> -->
 </section>
 
 
@@ -396,4 +394,3 @@
 
 
 </section>
-

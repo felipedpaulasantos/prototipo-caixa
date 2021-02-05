@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterViewInit, ContentChild, OnChanges, ElementRef, Input } from "@angular/core";
-import { DataTableDirective, DataTablesModule } from "angular-datatables";
-import { config, Subject } from "rxjs";
+import { Component, OnInit, AfterViewInit, ContentChild, Input } from "@angular/core";
+import { DataTableDirective } from "angular-datatables";
+import { Subject } from "rxjs";
 import { DatatableConfig, DatatableSettings, dtLanguageDefinitionPt } from "../../constants/datatable-definitions";
 import { DataTableColumnFilterPosition, DataTableColumnFilterType } from "./datatable-constants";
 
@@ -30,6 +30,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
   private tableElement: any;
   private theadElement: any;
   private tfootElement: any;
+  private tbodyElement: any;
 
   constructor() {}
 
@@ -44,10 +45,11 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     this.tableElement = this.dtElement["el"];
     this.theadElement = this.tableElement.nativeElement.querySelector("thead");
     this.tfootElement = this.tableElement.nativeElement.querySelector("tfoot");
+    this.tbodyElement = this.tableElement.nativeElement.querySelector("tbody");
 
     if (!this.dtElement.dtInstance) { return; }
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      this.drawColumnFilters(dtInstance, this.theadElement, this.tfootElement);
+      this.drawColumnFilters(dtInstance, this.theadElement, this.tfootElement, this.tbodyElement);
     });
   }
 
@@ -69,15 +71,14 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     this.reloadTable();
   }
 
-  setDefaultLanguage() {
+  private setDefaultLanguage() {
     $.extend($.fn.dataTable.defaults, {
       language: dtLanguageDefinitionPt
     });
   }
 
-  drawColumnFilters(dtInstance: DataTables.Api, thead, tfoot) {
+  private drawColumnFilters(dtInstance: DataTables.Api, thead, tfoot, tbody) {
 
-    const that = this;
     const columnFilter = this.config["columnFilter"];
 
     if (!columnFilter) {
@@ -85,7 +86,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
         $(this.footer()).remove();
       });
     } else if (!tfoot) {
-      this.drawFooter(dtInstance, thead);
+      this.drawFooter(dtInstance, thead, tbody);
     }
 
     if (tfoot && (this.columnFilterPosition === DataTableColumnFilterPosition.TOP || !this.columnFilterPosition)) {
@@ -95,50 +96,60 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     }
 
     if (columnFilter === DataTableColumnFilterType.INPUT) {
-      dtInstance.columns().every(function () {
-        const column = this;
-        const columnText = column.header().innerHTML;
-        const input = $(`<input class='${that.FILTER_INPUT_CLASS}' placeholder='Filtre ${columnText}'>`)
-          .appendTo($(column.footer()).empty())
-          .on("keyup change", function () {
-            if (column.search() !== this["value"]) {
-              column
-                .search(this["value"])
-                .draw();
-            }
-          });
-      });
+      this.drawInputColumnFilter(dtInstance);
     }
 
     if (columnFilter === DataTableColumnFilterType.SELECT) {
-      dtInstance.columns().every(function () {
-        const column = this;
-        const columnText = column.header().innerHTML;
-        const select = $(`<select class='${that.FILTER_SELECT_CLASS}'><option value=\"\">Filtre ${columnText}</option></select>`)
-          .appendTo($(column.footer()).empty())
-          .on("change", function () {
-            const val = $.fn.dataTable.util.escapeRegex(
-              String($(this).val())
-            );
-            column
-              .search(val ? "^" + val + "$" : "", true, false)
-              .draw();
-          });
-        column.data().unique().sort().each(function (d) {
-          select.append("<option value=\"" + d + "\">" + d + "</option>");
-        });
-      });
+      this.drawSelectColumnFilter(dtInstance);
     }
 
   }
 
-  drawFooter(dtInstance: DataTables.Api, thead: any) {
+  private drawFooter(dtInstance: DataTables.Api, thead: any, tbody: any) {
     let tfootHtml = "";
     for (let index = 0; index < dtInstance.columns()[0].length; index++) {
       tfootHtml += `<td></td>`;
     }
     tfootHtml = `<tfoot><tr>${tfootHtml}</tr></tfoot>`;
     $(tfootHtml).insertAfter(thead);
+  }
+
+  private drawInputColumnFilter(dtInstance: DataTables.Api) {
+    const that = this;
+    dtInstance.columns().every(function () {
+      const column = this;
+      const columnText = column.header().innerHTML;
+      $(`<input class='${that.FILTER_INPUT_CLASS}' placeholder='Filtre ${columnText}'>`)
+        .appendTo($(column.footer()).empty())
+        .on("keyup change", function () {
+          if (column.search() !== this["value"]) {
+            column
+              .search(this["value"])
+              .draw();
+          }
+        });
+    });
+  }
+
+  private drawSelectColumnFilter(dtInstance: DataTables.Api): void {
+    const that = this;
+    dtInstance.columns().every(function () {
+      const column = this;
+      const columnText = column.header().innerHTML;
+      const select = $(`<select class='${that.FILTER_SELECT_CLASS}'><option value=\"\">Filtre ${columnText}</option></select>`)
+        .appendTo($(column.footer()).empty())
+        .on("change", function () {
+          const val = $.fn.dataTable.util.escapeRegex(
+            String($(this).val())
+          );
+          column
+            .search(val ? "^" + val + "$" : "", true, false)
+            .draw();
+        });
+      column.data().unique().sort().each(function (d) {
+        select.append("<option value=\"" + d + "\">" + d + "</option>");
+      });
+    });
   }
 
 }

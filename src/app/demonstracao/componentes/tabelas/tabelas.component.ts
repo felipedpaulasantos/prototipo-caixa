@@ -301,7 +301,7 @@ constructor() {
     this.randomDataService.getFoodData(100).subscribe((foodArray: RandomDataFood[]) => {
       this.rows = foodArray;
       this.table.reloadTable();
-      this.table2.reloadTable();
+/*       this.table2.reloadTable(); */
       this.spinner.hide("global");
     });
   }

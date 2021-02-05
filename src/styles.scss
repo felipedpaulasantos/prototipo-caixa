@@ -468,7 +468,11 @@ input[type="number"] {
   Tabs e Navs
 */
 
-.nav.nav-pills li a {
+ul.nav.nav-pills {
+  border-bottom: solid 1px var(--cxCancel);
+}
+
+ul.nav.nav-pills li a {
   color: var(--cxContrast);
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
