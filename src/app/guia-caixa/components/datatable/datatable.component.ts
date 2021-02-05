@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ContentChild, Input } from "@angular/core";
+import { Component, OnInit, AfterViewInit, ContentChild, Input, ChangeDetectionStrategy } from "@angular/core";
 import { DataTableDirective } from "angular-datatables";
 import { Subject } from "rxjs";
 import { DatatableConfig, DatatableSettings, dtLanguageDefinitionPt } from "../../constants/datatable-definitions";
@@ -7,7 +7,8 @@ import { DataTableColumnFilterPosition, DataTableColumnFilterType } from "./data
 @Component({
   selector: "cx-datatable",
   templateUrl: "./datatable.component.html",
-  styleUrls: ["./datatable.component.scss"]
+  styleUrls: ["./datatable.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatatableComponent implements OnInit, AfterViewInit {
 
