@@ -70,7 +70,7 @@
 
 					<div class="col-3 my-3">
 						<label>Filtro por coluna</label>
-						<select [value]="config['columnFilter']"
+						<select [value]="table?.columnFilterType"
 							(change)="updateConfigOption('columnFilter', $event.target.value)" class="custom-select">
 							<option value="">Nenhum</option>
 							<option value="input">Campo simples</option>
@@ -80,7 +80,7 @@
 
 					<div class="col-3 my-3">
 						<label>Posição do filtro</label>
-						<select [value]="filterPosition" (change)="setFilterPosition($event.target.value)"
+						<select [value]="table?.columnFilterPosition" (change)="setFilterPosition($event.target.value)"
 							class="custom-select">
 							<option value="top">Topo</option>
 							<option value="bottom">Rodapé</option>
@@ -96,34 +96,28 @@
 
 	<div id="cardTabelaSandbox" class="card my-3">
 		<div class="card-body">
-			<div class="table-responsive">
- 				<cx-datatable #tabela>
-					<table datatable class="table">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Prato</th>
-								<th>Descrição</th>
-								<th>Ingrediente</th>
-								<th>Medida</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let row of rows">
-								<td>{{ row.id }}</td>
-								<td>{{ row.dish }}</td>
-								<td>{{ row.description }}</td>
-								<td>{{ row.ingredient }}</td>
-								<td>{{ row.measurement }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</cx-datatable>
-
-<!-- 				<cx-datatable #tabela>
-					<table datatable class="table"></table>
-				</cx-datatable> -->
-			</div>
+			<cx-datatable #tabela>
+				<table datatable class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Prato</th>
+							<!-- <th>Descrição</th> -->
+							<th>Ingrediente</th>
+							<th>Medida</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let row of rows">
+							<td>{{ row.id }}</td>
+							<td>{{ row.dish }}</td>
+					<!-- 		<td>{{ row.description }}</td> -->
+							<td>{{ row.ingredient }}</td>
+							<td>{{ row.measurement }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</cx-datatable>
 		</div>
 	</div>
 </section>
@@ -154,7 +148,7 @@
 						<tbody>
 							<tr *ngFor="let row of rows">
 								<td>Linha {{ row }}</td>
-								<td>Linha {{ row  }}</td>
+								<td>Linha {{ row }}</td>
 								<td>Linha {{ row }}</td>
 								<td>Linha {{ row }}</td>
 								<td>Linha {{ row }}</td>
@@ -190,7 +184,7 @@
 						<tbody>
 							<tr *ngFor="let row of rows | slice:0:5; let i = index">
 								<td>Linha {{ row }}</td>
-								<td>Linha {{ row  }}</td>
+								<td>Linha {{ row }}</td>
 								<td>Linha {{ row }}</td>
 							</tr>
 						</tbody>
@@ -210,7 +204,7 @@
 						<tbody>
 							<tr *ngFor="let row of rows | slice:0:5; let i = index">
 								<td>Linha {{ row }}</td>
-								<td>Linha {{ row  }}</td>
+								<td>Linha {{ row }}</td>
 								<td>Linha {{ row }}</td>
 							</tr>
 						</tbody>
@@ -221,9 +215,9 @@
 
 		<br class="my-3">
 
-		<app-documentacao-template id="painelTabelasSimples" [cardTitle]="'Tabelas Simples'"
-			[codeViewId]="'viewTabelas'" [htmlTabId]="'htmlCodeTabelas'" [htmlCode]="htmlCodeTabelasSimples"
-			[tsTabId]="'tsCodeTabelasSimples'" [tsCode]="tsCodeTabelasSimples">
+		<app-documentacao-template id="painelTabelasSimples" [cardTitle]="'Tabelas Simples'" [codeViewId]="'viewTabelas'"
+			[htmlTabId]="'htmlCodeTabelas'" [htmlCode]="htmlCodeTabelasSimples" [tsTabId]="'tsCodeTabelasSimples'"
+			[tsCode]="tsCodeTabelasSimples">
 			<div class="descricao">
 				A classe <span class="citation-highlight">table</span> do Bootstrap acrescida da classe
 				<span class="citation-highlight">table-caixa</span> aplica o estilo básico de tabelas, sem recursos
@@ -247,7 +241,7 @@
 						<tbody>
 							<tr *ngFor="let row of rows | slice:0:5; let i = index">
 								<td>Linha {{ row }}</td>
-								<td>Linha {{ row  }}</td>
+								<td>Linha {{ row }}</td>
 								<td>Linha {{ row }}</td>
 							</tr>
 						</tbody>
@@ -375,3 +369,4 @@
 
 
 </section>
+

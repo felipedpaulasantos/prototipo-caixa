@@ -40,7 +40,6 @@ export class AppComponent implements OnInit {
       this.isMenuAberto = isAberto;
     });
     this.styleService.globalTheme$.subscribe(tema => this.temaGlobal = tema);
-    DatatableConfig.setIdiomaDefault();
   }
 
   updateAccount(account: Account) {

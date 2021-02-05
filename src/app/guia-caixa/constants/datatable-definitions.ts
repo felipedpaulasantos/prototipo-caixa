@@ -166,10 +166,4 @@ export class DatatableConfig {
         customConfig.searching = options.searching;
         return customConfig;
     }
-
-    static setIdiomaDefault() {
-        $.extend($.fn.dataTable.defaults, {
-            language: dtLanguageDefinitionPt
-        });
-    }
 }

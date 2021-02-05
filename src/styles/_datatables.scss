@@ -3,6 +3,8 @@
 .dataTables_wrapper {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  overflow-x: auto;
   .table.dataTable {
     width: 100% !important;
   }
