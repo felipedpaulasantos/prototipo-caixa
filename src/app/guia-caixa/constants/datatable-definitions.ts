@@ -1,9 +1,16 @@
 enum DatatableDefaultButtons {
-    COLVIS = 'colvis',
-    COPY = 'copy',
-    PRINT = 'print',
-    EXCEL = 'excel'
+    COLVIS = "colvis",
+    COPY = "copy",
+    PRINT = "print",
+    EXCEL = "excel"
 }
+
+export const DatatableDefaultButtonsList = [
+    DatatableDefaultButtons.COLVIS,
+    DatatableDefaultButtons.COPY,
+    DatatableDefaultButtons.PRINT,
+    DatatableDefaultButtons.EXCEL
+];
 
 export interface DatatableSettings extends DataTables.Settings {
     buttons?: any;
@@ -19,21 +26,22 @@ export interface CustomDatatableConfig {
     showPagination?: boolean;
     menuLength?: number[];
     buttons?: any[];
+    searching?: boolean;
 }
 
 export const dtLanguageDefinitionPt = {
     buttons: {
-        copy: '<i class="fas fa-lg fa-copy mr-2"></i>Copiar',
-        copyTitle: 'Copiado',
+        copy: "<i class=\"fas fa-lg fa-copy mr-2\"></i>Copiar",
+        copyTitle: "Copiado",
         copySuccess: {
-            _: 'Copiados %d registros',
-            1: 'Copiado 1 registro'
+            _: "Copiados %d registros",
+            1: "Copiado 1 registro"
         },
-        pdf: '<i class="fa fa-lg fa-file-pdf mr-2"></i>PDF',
-        print: '<i class="fa fa-lg fa-print mr-2"></i>Imprimir',
-        excel: '<i class="fa fa-lg fa-file-excel mr-2"></i>Planilha do Excel',
-        colvis: '<i class="fa fa-lg fa-columns mr-2"></i>Colunas visíveis',
-        pageLength: '<i class="fa fa-lg fa-bars mr-2"></i>Mostrar <b>%d</b> linhas'
+        pdf: "<i class=\"fa fa-lg fa-file-pdf mr-2\"></i>PDF",
+        print: "<i class=\"fa fa-lg fa-print mr-2\"></i>Imprimir",
+        excel: "<i class=\"fa fa-lg fa-file-excel mr-2\"></i>Planilha do Excel",
+        colvis: "<i class=\"fa fa-lg fa-columns mr-2\"></i>Colunas visíveis",
+        pageLength: "<i class=\"fa fa-lg fa-bars mr-2\"></i>Mostrar <b>%d</b> linhas"
     },
     processing: "Processando...",
     search: "Buscar:",
@@ -77,12 +85,8 @@ export class DatatableConfig {
     static DEFAULT_BUTTONS = DatatableDefaultButtons;
 
     static CONFIG_COMPLETA: DatatableSettings = DatatableConfig.getDatatableConfig({
-        buttons: [
-            DatatableDefaultButtons.COLVIS,
-            DatatableDefaultButtons.COPY,
-            DatatableDefaultButtons.PRINT,
-            DatatableDefaultButtons.EXCEL
-        ],
+        buttons: DatatableDefaultButtonsList,
+        searching: true,
         showFilter: true,
         showLength: true,
         showButtons: true,
@@ -93,9 +97,10 @@ export class DatatableConfig {
     });
 
     static CONFIG_COMPLETA_SEM_BOTOES: DatatableSettings = DatatableConfig.getDatatableConfig({
+        searching: true,
         showFilter: true,
         showLength: true,
-        showButtons: true,
+        showButtons: false,
         showTable: true,
         showInfo: true,
         showProcessing: true,
@@ -103,7 +108,7 @@ export class DatatableConfig {
     });
 
     static CONFIG_FILTRO: DatatableSettings = DatatableConfig.getDatatableConfig({
-        buttons: [],
+        searching: true,
         showFilter: true
     });
 
@@ -133,8 +138,12 @@ export class DatatableConfig {
         if (options.showButtons || (options.buttons && options.buttons.length > 0)) {
             preTableElements = preTableElements += this.SHOW_BUTTONS;
         }
-        if (options.showLength) { preTableElements = preTableElements += this.SHOW_LENGTH; }
-        if (options.showFilter) { preTableElements = preTableElements += this.SHOW_FILTER; }
+        if (options.showLength) {
+            preTableElements = preTableElements += this.SHOW_LENGTH;
+        }
+        if (options.showFilter) {
+            preTableElements = preTableElements += this.SHOW_FILTER;
+        }
         if (options.showProcessing) { preTableElements = preTableElements += this.SHOW_PROCESSING; }
 
         if (options.showInfo) { postTableElements = postTableElements += this.SHOW_INFO; }
@@ -154,12 +163,7 @@ export class DatatableConfig {
         const dtDom = preTableElements + this.SHOW_TABLE + postTableElements;
         customConfig.dom = dtDom;
         customConfig.paging = paging;
+        customConfig.searching = options.searching;
         return customConfig;
-    }
-
-    static setIdiomaDefault() {
-        $.extend($.fn.dataTable.defaults, {
-            language: dtLanguageDefinitionPt
-        });
     }
 }

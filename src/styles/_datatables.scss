@@ -3,6 +3,11 @@
 .dataTables_wrapper {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  overflow-x: auto;
+  .table.dataTable {
+    width: 100% !important;
+  }
 }
 
 .dataTables_length {
@@ -14,14 +19,12 @@
     color: cx-variables.$cx-color-cinza-darker;
   }
   select {
-    @extend .form-control,
-    .custom-select,
+    @extend .custom-select,
     .border-top-0,
     .border-left-0,
-    .border-right-0,
-    .input-caixa;
+    .border-right-0;
     display: inline-block;
-    width: 25% !important;
+    width: 10rem !important;
     text-align: center;
     box-shadow: none !important;
     border-bottom-left-radius: 0;
@@ -32,7 +35,7 @@
 .dataTables_filter {
   display: block;
   margin-bottom: 1rem;
-  width: 50%;
+  width: 30rem;
   margin-left: auto;
   label {
     display: flex;
@@ -41,7 +44,7 @@
     color: cx-variables.$cx-color-cinza-darker;
   }
   input {
-    @extend .input-caixa;
+    @extend .form-control;
     margin-left: 0.5rem;
     font-family: $cx-font-family-normal;
     width: 100% !important;
@@ -71,7 +74,7 @@
   span a {
     @extend .btn,
     .btn-sm,
-    .btn-outline-primary;
+    .btn-outline-secundario;
     margin-left: 0.5rem;
     &.current {
       @extend .active;
@@ -85,7 +88,10 @@
   button.dt-button {
     @extend .btn,
     .btn-sm,
-    .btn-cinza;
+    .btn-flat;
+    &.active {
+      @extend .btn-secundario;
+    }
   }
 }
 
@@ -104,4 +110,9 @@
 
 .dt-button-background {
   display: none !important;
+}
+
+.dt-button-info {
+  opacity: 1;
+  display: block;
 }

@@ -3,7 +3,6 @@ import { ToastrService } from "ngx-toastr";
 
 const TOOLBAR_HEIGHT = 64;
 
-@Injectable()
 export abstract class ComponentesInterface {
 
   constructor(

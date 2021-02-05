@@ -1,39 +1,73 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
-import { DataTableDirective } from 'angular-datatables';
-import { Subject } from 'rxjs';
+import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
+import { DataTableDirective } from "angular-datatables";
+import { Subject } from "rxjs";
 
-import { ComponentesInterface } from '../componentes-interface';
-import { ToastrService } from 'ngx-toastr';
-import { DatatableSettings, DatatableConfig } from 'src/app/guia-caixa/constants/datatable-definitions';
+import { ComponentesInterface } from "../componentes-interface";
+import { ToastrService } from "ngx-toastr";
+import { DatatableSettings, DatatableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/constants/datatable-definitions";
+import { FormBuilder } from "@angular/forms";
+import { DatatableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
+
+import { RandomDataFood } from "src/app/shared/model/random-data-food";
+import { RandomDataService } from "src/app/demonstracao/componentes/tabelas/random-data.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
-  selector: 'app-tabelas',
-  templateUrl: './tabelas.component.html',
-  styleUrls: ['./tabelas.component.scss'],
-  host: { '(window:scroll)': 'onScroll($event)' }
+  selector: "app-tabelas",
+  templateUrl: "./tabelas.component.html",
+  styleUrls: ["./tabelas.component.scss"],
+  host: { "(window:scroll)": "onScroll($event)" }
 })
-export class TabelasComponent extends ComponentesInterface implements OnInit, AfterViewInit, OnDestroy {
+export class TabelasComponent extends ComponentesInterface implements OnInit, OnDestroy {
+
+  constructor (
+    public toastr: ToastrService,
+    public fb: FormBuilder,
+    public randomDataService: RandomDataService,
+    public spinner: NgxSpinnerService
+  ) {
+    super(toastr);
+  }
+
+  formDTConfig = this.fb.group({
+    buttons: true,
+    searching: true,
+    showFilter: true,
+    showLength: true,
+    showButtons: true,
+    showTable: true,
+    showInfo: true,
+    showProcessing: true,
+    showPagination: true
+  });
 
   @ViewChild(DataTableDirective)
-  dtElement: DataTableDirective;
+  datatableElement: DataTableDirective;
 
-  dtTrigger: Subject<any> = new Subject();
+  @ViewChild("tabela")
+  table: DatatableComponent;
+
+  @ViewChild("scrollElement") scrollElement;
+  spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
+  sectionOffset = 0;
+  currentSection = "painelTabelaDatatable";
 
   rows = [];
   dtCompleteOptions: DatatableSettings = {};
   dtCustomOptions: DatatableSettings = {};
   dtSimpleOptions: DatatableSettings = {};
 
-  @ViewChild("scrollElement") scrollElement;
-  spiedTags = ['APP-DOCUMENTACAO-TEMPLATE'];
-  sectionOffset = 0;
-  currentSection = "painelTabelaDatatable";
+  config: DataTables.Settings = DatatableConfig.CONFIG_COMPLETA;
+  configCompleta = DatatableConfig.CONFIG_COMPLETA;
+  configCompletaSemBotoes = DatatableConfig.CONFIG_COMPLETA_SEM_BOTOES;
+  configFilter = DatatableConfig.CONFIG_FILTRO;
+  configInfo = DatatableConfig.CONFIG_INFO_PAGINACAO;
+  configSimples = DatatableConfig.CONFIG_SIMPLES;
+  dtTrigger: Subject<any> = new Subject();
 
-  constructor(
-    public toastr: ToastrService
-  ) {
-    super(toastr);
-  }
+  filterPosition = "";
+
+  cols = 0;
 
   htmlCodeDatatable = `				<div class="table-responsive">
   <table datatable class="table table-caixa">
@@ -185,9 +219,6 @@ constructor() {
 `.trimRight();
 
   ngOnInit() {
-    for (let index = 1; index <= 15; index++) {
-      this.rows[index - 1] = index;
-    }
     this.dtSimpleOptions = DatatableConfig.CONFIG_SIMPLES;
     this.dtCompleteOptions = DatatableConfig.CONFIG_COMPLETA;
     this.dtCustomOptions = DatatableConfig.getDatatableConfig({
@@ -197,10 +228,8 @@ constructor() {
       showPagination: true,
       menuLength: [5, 10, 50]
     });
-  }
 
-  ngAfterViewInit(): void {
-    this.dtTrigger.next();
+    this.fetchData();
   }
 
   ngOnDestroy(): void {
@@ -208,14 +237,75 @@ constructor() {
   }
 
   rerender(): void {
-    if (this.dtElement && this.dtElement.dtInstance) {
-      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+    if (this.datatableElement && this.datatableElement.dtInstance) {
+      this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
         // Destroy the table first
         dtInstance.destroy();
         // Call the dtTrigger to rerender again
         this.dtTrigger.next();
       });
     }
+  }
+
+  updateConfig(newConfig: DatatableConfig) {
+    this.config = JSON.parse(JSON.stringify(newConfig));
+  }
+
+  updateConfigOption(option: string, value: boolean) {
+    switch (option) {
+      case "buttons":
+        this.config["buttons"] = value ? DatatableDefaultButtonsList : [];
+        break;
+      case "filter":
+        this.config.searching = value;
+        break;
+      case "pagination":
+        this.config.paging = value;
+        break;
+      case "length":
+        this.config.lengthChange = value;
+        break;
+      case "columnFilter":
+        this.config["columnFilter"] = value;
+        break;
+    }
+    this.table.setConfig(this.config);
+  }
+
+  getTableConfig() {
+    if (this.formDTConfig.get("showButtons").value) {
+      this.formDTConfig.get("buttons").setValue(DatatableDefaultButtonsList);
+    } else {
+      this.formDTConfig.get("buttons").setValue([]);
+    }
+    const newConfig = DatatableConfig.getDatatableConfig(this.formDTConfig.value);
+    this.config = JSON.parse(JSON.stringify(newConfig));
+    this.table.setConfig(this.config);
+  }
+
+  printConfig(): any {
+    const configPrint = JSON.parse(JSON.stringify(this.config));
+    configPrint["language"] = null;
+    return configPrint;
+  }
+
+  setFilterPosition(position: string) {
+    this.table.setFilterColumnPosition(position);
+  }
+
+  fetchData() {
+    this.spinner.show("global");
+    this.randomDataService.getFoodData(100).subscribe((foodArray: RandomDataFood[]) => {
+      this.rows = foodArray;
+      this.table.reloadTable();
+      this.spinner.hide("global");
+    });
+  }
+
+  atualizar() {
+    // this.getTableConfig();
+    this.config = DatatableConfig.CONFIG_INFO_PAGINACAO;
+    this.table.reloadTable();
   }
 
 }

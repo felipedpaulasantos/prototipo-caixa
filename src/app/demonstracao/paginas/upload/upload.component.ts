@@ -1,20 +1,23 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
+import { DataTableDirective } from "angular-datatables";
 
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from "ngx-toastr";
+import { Subject } from "rxjs";
 import { CardButtonCheckEvent } from "src/app/guia-caixa/components/card-button/card-button-check-event";
 import { CardButtonComponent } from "src/app/guia-caixa/components/card-button/card-button.component";
 import { StepperItem } from "src/app/guia-caixa/components/stepper/stepper-component/stepper-item";
 import { TabberItem } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
 import { TimelineItem, TimelineState } from "src/app/guia-caixa/components/timeline/timeline-item";
+import { DatatableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/constants/datatable-definitions";
 
 
 @Component({
   templateUrl: "./upload.component.html",
   styleUrls: ["./upload.component.scss"]
 })
-export class UploadComponent implements OnInit {
+export class UploadComponent implements OnInit, AfterViewInit {
 
   constructor(
     private fb: FormBuilder,
@@ -34,6 +37,9 @@ export class UploadComponent implements OnInit {
 
   @ViewChild("cardVazio")
   cardVazio: CardButtonComponent;
+
+  @ViewChild(DataTableDirective, { static: false })
+  datatableElement: DataTableDirective;
 
   cliente = null;
 
@@ -61,7 +67,7 @@ export class UploadComponent implements OnInit {
   ];
 
   timelineItems: TimelineItem[] = [
-    { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
+    { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date() },
     { title: "Item warning", state: "warning", date: new Date(), dateFormat: "full" },
     { title: "Item warning-stop", state: "warning-stop", dateString: "05/12/2020" },
     { title: "Item erro", state: "error", dateString: "03/12/2020" },
@@ -103,11 +109,11 @@ export class UploadComponent implements OnInit {
 
 
 
-code3Html = `<cx-timeline [items]="timelineItems" [styles]="{ width: 'auto', height: '350px' }"></cx-timeline>
+  code3Html = `<cx-timeline [items]="timelineItems" [styles]="{ width: 'auto', height: '350px' }"></cx-timeline>
 `;
 
 
-code4Html = `<div class="card">
+  code4Html = `<div class="card">
   <div class="card-body">
     <cx-timeline [items]="timelineItems" [styles]="{ height: '350px' }"></cx-timeline>
   </div>
@@ -115,11 +121,25 @@ code4Html = `<div class="card">
 
 
 
-code6Html = `<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timeline>
+  code6Html = `<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timeline>
 `;
 
   checkHome: any;
   checkConfig: any;
+
+  rows = [];
+  config: DataTables.Settings = DatatableConfig.CONFIG_COMPLETA;
+  configCompleta = DatatableConfig.CONFIG_COMPLETA;
+  configCompletaSemBotoes = DatatableConfig.CONFIG_COMPLETA_SEM_BOTOES;
+  configFilter = DatatableConfig.CONFIG_FILTRO;
+  configInfo = DatatableConfig.CONFIG_INFO_PAGINACAO;
+  configSimples = DatatableConfig.CONFIG_SIMPLES;
+  dtTrigger: Subject<any> = new Subject();
+
+  filterPosition = "";
+
+  cols = 0;
+
 
   exibirEvento(evento: CardButtonCheckEvent) {
     console.log(evento);
@@ -129,6 +149,13 @@ code6Html = `<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timelin
     this.clientePesquisado();
     this.populaContratos();
     this.preventDragDropDefault();
+    this.cols = 3;
+    for (let index = 0; index < 100; index++) {
+      const element = `Linha ${index + 1}`;
+      this.rows.push(element);
+    }
+    this.rows = [].concat(this.rows);
+
   }
 
   populaContratos(): void {
@@ -144,7 +171,7 @@ code6Html = `<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timelin
 
   get isCpfNisInvalid(): boolean {
     return (this.formCpfNis.get("cpf").invalid && this.formCpfNis.get("nis").invalid)
-    || (this.formCpfNis.get("cpf").valid && this.formCpfNis.get("nis").valid);
+      || (this.formCpfNis.get("cpf").valid && this.formCpfNis.get("nis").valid);
   }
 
   pesquisarCpf(): void {
@@ -231,12 +258,122 @@ code6Html = `<cx-timeline [items]="timelineItems" [orientation]="0"></cx-timelin
   }
 
   preventDragDropDefault() {
-    window.addEventListener("dragover", function(e: any) {
+    window.addEventListener("dragover", function (e: any) {
       e.preventDefault();
     }, false);
-    window.addEventListener("drop", function(e: any) {
+    window.addEventListener("drop", function (e: any) {
       e.preventDefault();
     }, false);
+  }
+
+  ngAfterViewInit(): void {
+    console.log("CONFIG", this.config);
+    this.dtTrigger.next();
+    this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
+
+      const table = dtInstance["context"][0]["nTable"];
+      const thead = $(table).children("thead")[0];
+      const tfoot = $(table).children("tfoot")[0];
+
+      console.log("TABLE", table);
+      console.log("THEAD", thead);
+      console.log("TFOOT", tfoot);
+
+      this.drawColumnFilters(dtInstance, table, thead, tfoot);
+    });
+  }
+
+  updateConfig(newConfig: DatatableConfig) {
+    console.log("NEW CONFIG", newConfig);
+    this.config = JSON.parse(JSON.stringify(newConfig));
+    this.updateTable();
+  }
+
+  updateConfigOption(option: string, value: boolean) {
+    switch (option) {
+      case "buttons":
+        this.config["buttons"] = value ? DatatableDefaultButtonsList : [];
+        break;
+      case "filter":
+        this.config.searching = value;
+        break;
+      case "pagination":
+        this.config.paging = value;
+        break;
+      case "length":
+        this.config.lengthChange = value;
+        break;
+      case "columnFilter":
+        this.config["columnFilter"] = value;
+        break;
+    }
+    this.updateTable();
+  }
+
+  updateTable() {
+    this.datatableElement.dtOptions = this.config;
+    this.datatableElement.dtInstance.then((dtInstance) => {
+      dtInstance.destroy();
+      this.ngAfterViewInit();
+    });
+  }
+
+  drawColumnFilters(dtInstance: DataTables.Api, table, thead, tfoot) {
+
+    if (!this.config["columnFilter"]) {
+      dtInstance.columns().every(function () {
+        $(this.footer()).remove();
+      });
+
+    } else if (!tfoot) {
+      let tfootHtml = "";
+      for (let index = 0; index < dtInstance.columns()[0].length; index++) {
+        tfootHtml += `<td></td>`;
+      }
+      tfootHtml = `<tfoot><tr>${tfootHtml}</tr></tfoot>`;
+      $(tfootHtml).insertAfter(thead);
+    }
+
+    if (tfoot && this.filterPosition === "top") {
+      $(tfoot).addClass("d-table-row-group");
+    } else if (tfoot && this.filterPosition === "bottom") {
+      $(tfoot).removeClass("d-table-row-group");
+    }
+
+
+    if (this.config["columnFilter"] === "input") {
+      dtInstance.columns().every(function () {
+        const column = this;
+        const input = $(`<input class='form-control' placeholder='Filtro'>`)
+          .appendTo($(column.footer()).empty())
+          .on("keyup change", function () {
+            if (column.search() !== this["value"]) {
+              column
+                .search(this["value"])
+                .draw();
+            }
+          });
+      });
+    }
+
+    if (this.config["columnFilter"] === "select") {
+      dtInstance.columns().every(function () {
+        const column = this;
+        const select = $(`<select class='custom-select'><option value=\"\">Filtro</option></select>`)
+          .appendTo($(column.footer()).empty())
+          .on("change", function () {
+            const val = $.fn.dataTable.util.escapeRegex(
+              String($(this).val())
+            );
+            column
+              .search(val ? "^" + val + "$" : "", true, false)
+              .draw();
+          });
+        column.data().unique().sort().each(function (d, j) {
+          select.append("<option value=\"" + d + "\">" + d + "</option>");
+        });
+      });
+    }
   }
 
 }
