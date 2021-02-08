@@ -1,17 +1,19 @@
-<h1 class="header-principal-caixa">
-	Tabelas
-</h1>
+<div class="d-flex align-items-center mb-5">
+	<h1 class="header-principal-caixa mb-0">
+		Tabelas
+	</h1>
 
-<div class="card d-inline-block w-auto mb-4">
-	<div class="card-body">
-		<i class="fa fa-exclamation-triangle fa-lg text-alerta mr-2"></i> Em desenvolvimento
+	<div class="card d-inline-block w-auto ml-5">
+		<div class="card-body">
+			<i class="fa fa-exclamation-triangle fa-lg text-alerta mr-2"></i> Em desenvolvimento
+		</div>
 	</div>
 </div>
 
 
 <section id="tabelaSandbox" class="mb-5" #scrollElement>
 
-	<div id="cardFiltros" class="card border-0 shadow-none mb-4">
+	<div id="cardFiltros" class="mb-4">
 		<form [formGroup]="formDTConfig">
 			<div class="row align-items-center mb-3">
 				<div class="col-2">
@@ -94,29 +96,29 @@
 		</form>
 	</div>
 
-	<div id="cardTabelaSandbox" class="card my-3">
-		<div class="card-body">
-			<cx-datatable #tabela>
-				<table datatable class="table">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Prato</th>
-							<th>Ingrediente</th>
-							<th>Medida</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let row of rows">
-							<td>{{ row.id }}</td>
-							<td>{{ row.dish }}</td>
-							<td>{{ row.ingredient }}</td>
-							<td>{{ row.measurement }}</td>
-						</tr>
-					</tbody>
-				</table>
-			</cx-datatable>
-		</div>
+	<hr class="my-5">
+
+	<div id="cardTabelaSandbox" class="my-3">
+		<cx-datatable #tabela>
+			<table datatable class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Prato</th>
+						<th>Ingrediente</th>
+						<th>Medida</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let row of rows">
+						<td>{{ row.id }}</td>
+						<td>{{ row.dish }}</td>
+						<td>{{ row.ingredient }}</td>
+						<td>{{ row.measurement }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</cx-datatable>
 	</div>
 
 	<!-- 	<div id="cardTabelaSandbox2" class="card my-3">

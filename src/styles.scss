@@ -33,7 +33,7 @@
   --cxContrast: $cx-color-grafite-dark;
   --cxPrincipal: $cx-color-secondary;
   --cxSecundario: $cx-color-primary;
-  --cxAux: $cx-color-grafite;
+  --cxAux: $cx-color-grafite-light;
   --cxCancel: $cx-color-cinza;
 
   --cxSucesso: $cx-color-success;
@@ -410,7 +410,7 @@ th.th-sorting {
   tbody {
     td {
       vertical-align: middle;
-      padding: 0.75rem !important;
+      padding: 0.75rem;
       border-color: var(--cxCancel);
     }
   }
@@ -937,6 +937,12 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 .text-secundario {
   color: var(--cxSecundario);
+}
+.text-base {
+  color: var(--cxBase);
+}
+.text-contrast {
+  color: var(--cxContrast);
 }
 .text-cancel {
   color: var(--cxCancel);

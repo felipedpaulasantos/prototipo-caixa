@@ -52,7 +52,7 @@ export const lightTheme: GlobalThemeVariables = {
    cxShadowCaixaLg: "--cxShadowCaixaDarkLg",
    cxPrincipal: "--secondary",
    cxSecundario: "--primary",
-   cxAux: "--grafite",
+   cxAux: "--grafite-light",
    cxCancel: "--cinza",
    cxSucesso: "--success",
    cxSucessoContrast: "--success-lighter",

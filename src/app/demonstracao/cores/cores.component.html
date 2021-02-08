@@ -18,7 +18,7 @@
 <div class="tab-content">
 	<div class="tab-pane fade show active p-2" id="coresVariaveis" role="tabpanel">
 		<cx-datatable [config]="dtConfig" #table>
-			<table datatable class="table table-borderless">
+			<table id="tabelaCores" datatable class="table">
 				<thead>
 					<tr>
 						<th>Nome</th>
@@ -38,7 +38,7 @@
 							<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
 						</td>
 						<td><div class="square bg-{{ cor.classe }}"></div></td>
-						<td class="w-50">{{ cor.utilizacao }}</td>
+						<td [innerHTML]="cor.utilizacao" class="w-50"></td>
 					</tr>
 				</tbody>
 			</table>
