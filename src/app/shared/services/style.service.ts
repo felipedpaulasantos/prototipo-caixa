@@ -72,6 +72,11 @@ export class StyleService {
     this.currentGlobalStyleSource.next(globalTheme);
   }
 
+  public getCssVariableValue(name: string) {
+    const style = getComputedStyle(document.body);
+    return style.getPropertyValue(name);
+  }
+
   private setCssVariable(name: string, value: string): void {
     const root = this.document.documentElement;
     root.style.setProperty(name, value);

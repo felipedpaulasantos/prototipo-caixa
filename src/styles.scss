@@ -29,6 +29,8 @@
   --cxFontFamilyBold: "Futura LT Bold";
   --cxFontFaIcon: "Font Awesome 5 Free";
 
+  --cxBase: $cx-color-white;
+  --cxContrast: $cx-color-grafite-dark;
   --cxPrincipal: $cx-color-secondary;
   --cxSecundario: $cx-color-primary;
   --cxAux: $cx-color-grafite;
@@ -42,9 +44,6 @@
   --cxAlertaContrast: $cx-color-warning-lighter;
   --cxInfo: $cx-color-info;
   --cxInfoContrast: $cx-color-info-light;
-
-  --cxBase: $cx-color-white;
-  --cxContrast: $cx-color-grafite-dark;
 
   --cxTransparentBase025: rgba(255, 255, 255, 0.025);
   --cxTransparentBase050: rgba(255, 255, 255, 0.025);
@@ -938,6 +937,9 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 .text-secundario {
   color: var(--cxSecundario);
+}
+.text-cancel {
+  color: var(--cxCancel);
 }
 .text-sucesso {
   color: var(--cxSucesso);

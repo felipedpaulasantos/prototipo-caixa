@@ -39,6 +39,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     this.setDefaultLanguage();
     if (!this.dtElement.dtTrigger) {this.dtElement.dtTrigger = new Subject(); }
     this.config["columnFilter"] = this.columnFilterType;
+    this.dtElement.dtOptions = this.config;
   }
 
   ngAfterViewInit(): void {
@@ -55,6 +56,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
   }
 
   reloadTable() {
+    if (!this.dtElement.dtInstance) { return; }
     this.dtElement.dtOptions = this.config;
     this.dtElement.dtInstance.then((dtInstance) => {
       dtInstance.destroy();
