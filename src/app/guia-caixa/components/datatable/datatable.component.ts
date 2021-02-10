@@ -64,7 +64,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     this.dtElement.dtOptions = this.config;
     this.dtElement.dtInstance.then((dtInstance) => {
       dtInstance.destroy();
-      this.ngAfterViewInit();
+      this.drawTable();
     });
   }
 
