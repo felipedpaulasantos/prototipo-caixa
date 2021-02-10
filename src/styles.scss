@@ -757,6 +757,7 @@ select + button.input-caixa {
   transition: 0.5s;
   z-index: 999;
   max-height: calc(100% - 64px);
+  border-right: solid 1px var(--cxCancel);
 }
 #menuLateral.reduzido {
   width: 165px;
