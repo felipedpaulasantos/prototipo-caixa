@@ -128,12 +128,12 @@ export class UploadComponent implements OnInit, AfterViewInit {
   checkConfig: any;
 
   rows = [];
-  config: DataTables.Settings = DatatableConfig.CONFIG_COMPLETA;
-  configCompleta = DatatableConfig.CONFIG_COMPLETA;
-  configCompletaSemBotoes = DatatableConfig.CONFIG_COMPLETA_SEM_BOTOES;
-  configFilter = DatatableConfig.CONFIG_FILTRO;
-  configInfo = DatatableConfig.CONFIG_INFO_PAGINACAO;
-  configSimples = DatatableConfig.CONFIG_SIMPLES;
+  config: DataTables.Settings = DatatableConfig.COMPLETE_CONFIG;
+  configCompleta = DatatableConfig.COMPLETE_CONFIG;
+  configCompletaSemBotoes = DatatableConfig.COMPLETE_NO_BUTTON_CONFIG;
+  configFilter = DatatableConfig.FILTER_CONFIG;
+  configInfo = DatatableConfig.PAGINATION_INFO_CONFIG;
+  configSimples = DatatableConfig.SIMPLE_CONFIG;
   dtTrigger: Subject<any> = new Subject();
 
   filterPosition = "";

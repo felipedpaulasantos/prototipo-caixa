@@ -84,7 +84,18 @@ export class DatatableConfig {
     static SHOW_PAGINATION = "p";
     static DEFAULT_BUTTONS = DatatableDefaultButtons;
 
-    static CONFIG_COMPLETA: DatatableSettings = DatatableConfig.getDatatableConfig({
+    static DEFAULT_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
+        searching: true,
+        showFilter: true,
+        showLength: false,
+        showButtons: false,
+        showTable: true,
+        showInfo: true,
+        showProcessing: true,
+        showPagination: true
+    });
+
+    static COMPLETE_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
         buttons: DatatableDefaultButtonsList,
         searching: true,
         showFilter: true,
@@ -96,7 +107,7 @@ export class DatatableConfig {
         showPagination: true
     });
 
-    static CONFIG_COMPLETA_SEM_BOTOES: DatatableSettings = DatatableConfig.getDatatableConfig({
+    static COMPLETE_NO_BUTTON_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
         searching: true,
         showFilter: true,
         showLength: true,
@@ -107,21 +118,21 @@ export class DatatableConfig {
         showPagination: true
     });
 
-    static CONFIG_FILTRO: DatatableSettings = DatatableConfig.getDatatableConfig({
+    static FILTER_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
         searching: true,
         showFilter: true
     });
 
-    static CONFIG_PAGINACAO: DatatableSettings = DatatableConfig.getDatatableConfig({
+    static PAGINATION_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
         showPagination: true
     });
 
-    static CONFIG_INFO_PAGINACAO: DatatableSettings = DatatableConfig.getDatatableConfig({
+    static PAGINATION_INFO_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
         showInfo: true,
         showPagination: true
     });
 
-    static CONFIG_SIMPLES: DatatableSettings = DatatableConfig.getDatatableConfig({});
+    static SIMPLE_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({});
 
     static getDatatableConfig(options: CustomDatatableConfig): DatatableSettings {
 
@@ -138,11 +149,11 @@ export class DatatableConfig {
         if (options.showButtons || (options.buttons && options.buttons.length > 0)) {
             preTableElements = preTableElements += this.SHOW_BUTTONS;
         }
-        if (options.showLength) {
-            preTableElements = preTableElements += this.SHOW_LENGTH;
-        }
         if (options.showFilter) {
             preTableElements = preTableElements += this.SHOW_FILTER;
+        }
+        if (options.showLength) {
+            preTableElements = preTableElements += this.SHOW_LENGTH;
         }
         if (options.showProcessing) { preTableElements = preTableElements += this.SHOW_PROCESSING; }
 

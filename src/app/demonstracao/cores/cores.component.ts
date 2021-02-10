@@ -19,7 +19,7 @@ export class CoresComponent implements OnInit {
 
   cores: any[] = [];
   coresGradiente: any[] = [];
-  dtConfig = DatatableConfig.CONFIG_FILTRO;
+  dtConfig = DatatableConfig.FILTER_CONFIG;
 
   coresVariaveis: any[] = [];
 

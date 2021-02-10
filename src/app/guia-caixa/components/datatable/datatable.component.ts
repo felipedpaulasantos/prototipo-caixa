@@ -20,13 +20,13 @@ export class DatatableComponent implements OnInit, AfterViewInit {
   dtElement: DataTableDirective;
 
   @Input()
-  config: DataTables.Settings = DatatableConfig.CONFIG_COMPLETA;
+  config: DataTables.Settings = DatatableConfig.DEFAULT_CONFIG;
 
   @Input()
-  columnFilterType: DataTableColumnFilterType | string;
+  columnFilterType: DataTableColumnFilterType | string = DataTableColumnFilterType.INPUT;
 
   @Input()
-  columnFilterPosition: DataTableColumnFilterPosition | string;
+  columnFilterPosition: DataTableColumnFilterPosition | string = DataTableColumnFilterPosition.TOP;
 
   private tableElement: any;
   private theadElement: any;
@@ -43,6 +43,10 @@ export class DatatableComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.drawTable();
+  }
+
+  private drawTable(): void {
     this.dtElement.dtTrigger.next();
     this.tableElement = this.dtElement["el"];
     this.theadElement = this.tableElement.nativeElement.querySelector("thead");
@@ -55,7 +59,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     });
   }
 
-  reloadTable() {
+  public reloadTable(): void {
     if (!this.dtElement.dtInstance) { return; }
     this.dtElement.dtOptions = this.config;
     this.dtElement.dtInstance.then((dtInstance) => {
@@ -64,23 +68,23 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     });
   }
 
-  setConfig(newConfig: DatatableSettings) {
+  public setConfig(newConfig: DatatableSettings): void {
     this.config = newConfig;
     this.reloadTable();
   }
 
-  setFilterColumnPosition(position: string) {
+  public setFilterColumnPosition(position: string): void {
     this.columnFilterPosition = position;
     this.reloadTable();
   }
 
-  private setDefaultLanguage() {
+  private setDefaultLanguage(): void {
     $.extend($.fn.dataTable.defaults, {
       language: dtLanguageDefinitionPt
     });
   }
 
-  private drawColumnFilters(dtInstance: DataTables.Api, thead, tfoot, tbody) {
+  private drawColumnFilters(dtInstance: DataTables.Api, thead, tfoot, tbody): void {
 
     const columnFilter = this.config["columnFilter"];
 
@@ -108,7 +112,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
 
   }
 
-  private drawFooter(dtInstance: DataTables.Api, thead: any, tbody: any) {
+  private drawFooter(dtInstance: DataTables.Api, thead: any, tbody: any): void {
     let tfootHtml = "";
     for (let index = 0; index < dtInstance.columns()[0].length; index++) {
       tfootHtml += `<td></td>`;
@@ -117,7 +121,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     $(tfootHtml).insertAfter(thead);
   }
 
-  private drawInputColumnFilter(dtInstance: DataTables.Api) {
+  private drawInputColumnFilter(dtInstance: DataTables.Api): void {
     const that = this;
     dtInstance.columns().every(function () {
       const column = this;
