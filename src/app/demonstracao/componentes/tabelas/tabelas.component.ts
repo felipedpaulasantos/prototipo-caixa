@@ -60,12 +60,12 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
   dtCustomOptions: DataTableSettings = {};
   dtSimpleOptions: DataTableSettings = {};
 
-  config: DataTables.Settings = DataTableConfig.COMPLETE_CONFIG;
-  configCompleta = DataTableConfig.COMPLETE_CONFIG;
+  config: DataTables.Settings = DataTableConfig.COMPLETE_SETTINGS;
+  configCompleta = DataTableConfig.COMPLETE_SETTINGS;
   configCompletaSemBotoes = DataTableConfig.COMPLETE_NO_BUTTON_SETTINGS;
   configFilter = DataTableConfig.FILTER_SETTINGS;
   configInfo = DataTableConfig.PAGINATION_INFO_SETTINGS;
-  configSimples = DataTableConfig.SIMPLE_CONFIG;
+  configSimples = DataTableConfig.SIMPLE_SETTINGS;
   dtTrigger: Subject<any> = new Subject();
 
   filterPosition = "";
@@ -74,7 +74,7 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
 
   trigger = new Subject();
 
-  showTable = false;
+  showTable = true;
 
   htmlCodeDatatable = `				<div class="table-responsive">
   <table datatable class="table table-caixa">
@@ -226,8 +226,8 @@ constructor() {
 `.trimRight();
 
   ngOnInit() {
-    this.dtSimpleOptions = DataTableConfig.SIMPLE_CONFIG;
-    this.dtCompleteOptions = DataTableConfig.COMPLETE_CONFIG;
+    this.dtSimpleOptions = DataTableConfig.SIMPLE_SETTINGS;
+    this.dtCompleteOptions = DataTableConfig.COMPLETE_SETTINGS;
     this.dtCustomOptions = DataTableConfig.getDataTableSettings({
       buttons: [DataTableConfig.DEFAULT_BUTTONS.EXCEL],
       showInfo: true,
@@ -276,7 +276,7 @@ constructor() {
         this.config["columnFilter"] = value;
         break;
     }
-    this.table.setConfig(this.config);
+    this.table.updateSettings(this.config);
   }
 
   getTableConfig() {
@@ -287,7 +287,7 @@ constructor() {
     }
     const newConfig = DataTableConfig.getDataTableSettings(this.formDTConfig.value);
     this.config = JSON.parse(JSON.stringify(newConfig));
-    this.table.setConfig(this.config);
+    this.table.updateSettings(this.config);
   }
 
   printConfig(): any {
@@ -297,7 +297,7 @@ constructor() {
   }
 
   setFilterPosition(position: string) {
-    this.table.setFilterColumnPosition(position);
+    this.table.updateFilterColumnPosition(position);
   }
 
   fetchData() {

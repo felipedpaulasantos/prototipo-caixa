@@ -19,7 +19,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   dtElement: DataTableDirective;
 
   @Input()
-  config: DataTables.Settings = DataTableConfig.DEFAULT_CONFIG;
+  settings: DataTables.Settings = DataTableConfig.DEFAULT_SETTINGS;
 
   @Input()
   columnFilterType: DataTableColumnFilterType | string = DataTableColumnFilterType.INPUT;
@@ -40,8 +40,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.setDefaultLanguage();
     if (!this.dtElement.dtTrigger) {this.dtElement.dtTrigger = new Subject(); }
-    this.config["columnFilter"] = this.columnFilterType;
-    this.dtElement.dtOptions = this.config;
+    this.settings["columnFilter"] = this.columnFilterType;
+    this.dtElement.dtOptions = this.settings;
     this.trigger.subscribe(() => this.reloadTable());
   }
 
@@ -64,19 +64,19 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   public reloadTable(): void {
     if (!this.dtElement.dtInstance) { return; }
-    this.dtElement.dtOptions = this.config;
+    this.dtElement.dtOptions = this.settings;
     this.dtElement.dtInstance.then((dtInstance) => {
       dtInstance.destroy();
       this.drawTable();
     });
   }
 
-  public setConfig(newConfig: DataTableSettings): void {
-    this.config = newConfig;
+  public updateSettings(newSettings: DataTableSettings): void {
+    this.settings = newSettings;
     this.reloadTable();
   }
 
-  public setFilterColumnPosition(position: string): void {
+  public updateFilterColumnPosition(position: string): void {
     this.columnFilterPosition = position;
     this.reloadTable();
   }
@@ -89,7 +89,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   private drawColumnFilters(dtInstance: DataTables.Api, thead, tfoot, tbody, isInitialDraw): void {
 
-    const columnFilter = this.config["columnFilter"];
+    const columnFilter = this.settings["columnFilter"];
 
     if (!columnFilter) {
       dtInstance.columns().every(function () {

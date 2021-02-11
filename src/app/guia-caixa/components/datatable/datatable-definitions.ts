@@ -93,7 +93,7 @@ export class DataTableConfig {
     static SHOW_PAGINATION = "p";
     static DEFAULT_BUTTONS = DataTableButtons;
 
-    static DEFAULT_CONFIG: DataTableSettings = DataTableConfig.getDataTableSettings({
+    static DEFAULT_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({
         searching: true,
         showFilter: true,
         showLength: false,
@@ -105,7 +105,7 @@ export class DataTableConfig {
         columnFilter: DataTableColumnFilterType.INPUT
     });
 
-    static COMPLETE_CONFIG: DataTableSettings = DataTableConfig.getDataTableSettings({
+    static COMPLETE_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({
         buttons: DatatableDefaultButtonsList,
         searching: true,
         showFilter: true,
@@ -142,11 +142,11 @@ export class DataTableConfig {
         showPagination: true
     });
 
-    static SIMPLE_CONFIG: DataTableSettings = DataTableConfig.getDataTableSettings({});
+    static SIMPLE_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({});
 
     static getDataTableSettings(options: DataTableConfigOptions): DataTableSettings {
 
-        const customConfig: DataTableSettings = {
+        const customSettings: DataTableSettings = {
             dom: this.SHOW_TABLE,
             buttons: [],
             language: dtLanguageDefinitionPt,
@@ -174,15 +174,15 @@ export class DataTableConfig {
             postTableElements = postTableElements += this.SHOW_PAGINATION;
         }
         if (options.buttons && options.buttons.length > 0) {
-            customConfig.buttons = options.buttons;
+            customSettings.buttons = options.buttons;
         }
         if (options.menuLength && options.menuLength.length > 0) {
-            customConfig.lengthMenu = options.menuLength;
+            customSettings.lengthMenu = options.menuLength;
         }
         const dtDom = preTableElements + this.SHOW_TABLE + postTableElements;
-        customConfig.dom = dtDom;
-        customConfig.paging = paging || true;
-        customConfig.searching = options.searching || true;
-        return customConfig;
+        customSettings.dom = dtDom;
+        customSettings.paging = paging || true;
+        customSettings.searching = options.searching || true;
+        return customSettings;
     }
 }

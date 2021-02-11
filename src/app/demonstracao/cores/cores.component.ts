@@ -19,7 +19,13 @@ export class CoresComponent implements OnInit {
 
   cores: any[] = [];
   coresGradiente: any[] = [];
-  dtConfig = DataTableConfig.FILTER_SETTINGS;
+
+  dtSettings = DataTableConfig.getDataTableSettings({
+    columnFilter: "top",
+    showFilter: false,
+    showInfo: true,
+    showPagination: false
+  });
 
   coresVariaveis: any[] = [];
 
@@ -42,7 +48,7 @@ export class CoresComponent implements OnInit {
 
     this.cores = BootstrapTheme.getTemas();
     this.coresGradiente = BootstrapTheme.getTemas();
-    this.dtConfig.order = [[4, "asc"]];
+    this.dtSettings.order = [[4, "asc"]];
   }
 
   ngOnInit() {
