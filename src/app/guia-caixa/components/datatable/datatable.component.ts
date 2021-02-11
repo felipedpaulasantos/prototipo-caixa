@@ -1,8 +1,7 @@
 import { Component, OnInit, AfterViewInit, ContentChild, Input, ChangeDetectionStrategy } from "@angular/core";
 import { DataTableDirective } from "angular-datatables";
 import { Subject } from "rxjs";
-import { DataTableConfig, DataTableSettings, dtLanguageDefinitionPt } from "./datatable-definitions";
-import { DataTableColumnFilterPosition, DataTableColumnFilterType } from "./datatable-constants";
+import { DataTableColumnFilterPosition, DataTableColumnFilterType, DataTableConfig, DataTableSettings, dtLanguageDefinitionPt } from "./datatable-definitions";
 
 @Component({
   selector: "cx-datatable",

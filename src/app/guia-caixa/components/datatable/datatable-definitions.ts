@@ -1,10 +1,18 @@
-import { DataTableColumnFilterType } from "./datatable-constants";
-
 enum DataTableButtons {
     COLVIS = "colvis",
     COPY = "copy",
     PRINT = "print",
     EXCEL = "excel"
+}
+
+export enum DataTableColumnFilterPosition {
+    TOP = "top",
+    BOTTOM = "bottom",
+}
+
+export enum DataTableColumnFilterType {
+    INPUT = "input",
+    SELECT = "select"
 }
 
 export const DatatableDefaultButtonsList = [
@@ -159,7 +167,7 @@ export class DataTableConfig {
         }
         if (options.showProcessing) { preTableElements = preTableElements += this.SHOW_PROCESSING; }
         if (options.showInfo) {
-            postTableElements = postTableElements += this.SHOW_INFO; 
+            postTableElements = postTableElements += this.SHOW_INFO;
         }
         if (options.showPagination) {
             paging = true;
