@@ -3,7 +3,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { DataTableDirective } from "angular-datatables";
 import { DataTableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
 import { loremIpsumPlaceHolder, BootstrapTheme } from "src/app/guia-caixa/constants/constants";
-import { DataTableConfig } from "src/app/guia-caixa/constants/datatable-definitions";
+import { DataTableConfig } from "src/app/guia-caixa/components/datatable/datatable-definitions";
 import { StyleService } from "src/app/shared/services/style.service";
 
 

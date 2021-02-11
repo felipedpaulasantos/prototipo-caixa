@@ -10,7 +10,7 @@ import { CardButtonComponent } from "src/app/guia-caixa/components/card-button/c
 import { StepperItem } from "src/app/guia-caixa/components/stepper/stepper-component/stepper-item";
 import { TabberItem } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
 import { TimelineItem, TimelineState } from "src/app/guia-caixa/components/timeline/timeline-item";
-import { DataTableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/constants/datatable-definitions";
+import { DataTableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/components/datatable/datatable-definitions";
 
 
 @Component({

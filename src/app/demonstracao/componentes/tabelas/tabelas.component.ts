@@ -4,7 +4,7 @@ import { Subject } from "rxjs";
 
 import { ComponentesInterface } from "../componentes-interface";
 import { ToastrService } from "ngx-toastr";
-import { DataTableSettings, DataTableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/constants/datatable-definitions";
+import { DataTableSettings, DataTableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/components/datatable/datatable-definitions";
 import { FormBuilder } from "@angular/forms";
 import { DataTableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
 

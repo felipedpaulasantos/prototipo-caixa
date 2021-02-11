@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ContentChild, Input, ChangeDetectionStrategy } from "@angular/core";
 import { DataTableDirective } from "angular-datatables";
 import { Subject } from "rxjs";
-import { DataTableConfig, DataTableSettings, dtLanguageDefinitionPt } from "../../constants/datatable-definitions";
+import { DataTableConfig, DataTableSettings, dtLanguageDefinitionPt } from "./datatable-definitions";
 import { DataTableColumnFilterPosition, DataTableColumnFilterType } from "./datatable-constants";
 
 @Component({

@@ -1,4 +1,4 @@
-import { DataTableColumnFilterType } from "../components/datatable/datatable-constants";
+import { DataTableColumnFilterType } from "./datatable-constants";
 
 enum DataTableButtons {
     COLVIS = "colvis",
