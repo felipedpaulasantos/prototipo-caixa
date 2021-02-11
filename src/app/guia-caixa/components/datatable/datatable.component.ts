@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ContentChild, Input, ChangeDetectionStrategy } from "@angular/core";
 import { DataTableDirective } from "angular-datatables";
 import { Subject } from "rxjs";
-import { DatatableConfig, DatatableSettings, dtLanguageDefinitionPt } from "../../constants/datatable-definitions";
+import { DataTableConfig, DataTableSettings, dtLanguageDefinitionPt } from "../../constants/datatable-definitions";
 import { DataTableColumnFilterPosition, DataTableColumnFilterType } from "./datatable-constants";
 
 @Component({
@@ -10,7 +10,7 @@ import { DataTableColumnFilterPosition, DataTableColumnFilterType } from "./data
   styleUrls: ["./datatable.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DatatableComponent implements OnInit, AfterViewInit {
+export class DataTableComponent implements OnInit, AfterViewInit {
 
   private readonly TOP_FILTER_CLASS = "d-table-row-group";
   private readonly FILTER_INPUT_CLASS = "form-control";
@@ -20,13 +20,16 @@ export class DatatableComponent implements OnInit, AfterViewInit {
   dtElement: DataTableDirective;
 
   @Input()
-  config: DataTables.Settings = DatatableConfig.DEFAULT_CONFIG;
+  config: DataTables.Settings = DataTableConfig.DEFAULT_CONFIG;
 
   @Input()
   columnFilterType: DataTableColumnFilterType | string = DataTableColumnFilterType.INPUT;
 
   @Input()
   columnFilterPosition: DataTableColumnFilterPosition | string = DataTableColumnFilterPosition.TOP;
+
+  @Input()
+  trigger: Subject<any> = new Subject();
 
   private tableElement: any;
   private theadElement: any;
@@ -40,13 +43,14 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     if (!this.dtElement.dtTrigger) {this.dtElement.dtTrigger = new Subject(); }
     this.config["columnFilter"] = this.columnFilterType;
     this.dtElement.dtOptions = this.config;
+    this.trigger.subscribe(() => this.reloadTable());
   }
 
   ngAfterViewInit(): void {
-    this.drawTable();
+    this.drawTable(true);
   }
 
-  private drawTable(): void {
+  private drawTable(isInitialDraw = false): void {
     this.dtElement.dtTrigger.next();
     this.tableElement = this.dtElement["el"];
     this.theadElement = this.tableElement.nativeElement.querySelector("thead");
@@ -55,7 +59,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
 
     if (!this.dtElement.dtInstance) { return; }
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      this.drawColumnFilters(dtInstance, this.theadElement, this.tfootElement, this.tbodyElement);
+      this.drawColumnFilters(dtInstance, this.theadElement, this.tfootElement, this.tbodyElement, isInitialDraw);
     });
   }
 
@@ -68,7 +72,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     });
   }
 
-  public setConfig(newConfig: DatatableSettings): void {
+  public setConfig(newConfig: DataTableSettings): void {
     this.config = newConfig;
     this.reloadTable();
   }
@@ -84,7 +88,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     });
   }
 
-  private drawColumnFilters(dtInstance: DataTables.Api, thead, tfoot, tbody): void {
+  private drawColumnFilters(dtInstance: DataTables.Api, thead, tfoot, tbody, isInitialDraw): void {
 
     const columnFilter = this.config["columnFilter"];
 
@@ -93,7 +97,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
         $(this.footer()).remove();
       });
     } else if (!tfoot) {
-      this.drawFooter(dtInstance, thead, tbody);
+      tfoot = this.drawFooter(dtInstance, thead, tbody);
     }
 
     if (tfoot && (this.columnFilterPosition === DataTableColumnFilterPosition.TOP || !this.columnFilterPosition)) {
@@ -110,15 +114,20 @@ export class DatatableComponent implements OnInit, AfterViewInit {
       this.drawSelectColumnFilter(dtInstance);
     }
 
+    if (isInitialDraw) {
+      this.reloadTable();
+    }
   }
 
-  private drawFooter(dtInstance: DataTables.Api, thead: any, tbody: any): void {
+  private drawFooter(dtInstance: DataTables.Api, thead: any, tbody: any): any {
     let tfootHtml = "";
     for (let index = 0; index < dtInstance.columns()[0].length; index++) {
       tfootHtml += `<td></td>`;
     }
     tfootHtml = `<tfoot><tr>${tfootHtml}</tr></tfoot>`;
     $(tfootHtml).insertAfter(thead);
+    this.tfootElement = this.tableElement.nativeElement.querySelector("tfoot");
+    return this.tfootElement;
   }
 
   private drawInputColumnFilter(dtInstance: DataTables.Api): void {

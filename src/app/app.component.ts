@@ -7,7 +7,7 @@ import { fadeInAnimation } from "./shared/animations/simple-fade.animation";
 import { UserService } from "./authentication/users/user.service";
 import { SideMenuService } from "./menu/side-menu/side-menu.service";
 import { GuiaCaixaStyleService } from "./guia-caixa/services/style-guia-caixa.service";
-import { DatatableConfig } from "./guia-caixa/constants/datatable-definitions";
+import { DataTableConfig } from "./guia-caixa/constants/datatable-definitions";
 
 
 @Component({

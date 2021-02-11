@@ -1,4 +1,6 @@
-enum DatatableDefaultButtons {
+import { DataTableColumnFilterType } from "../components/datatable/datatable-constants";
+
+enum DataTableButtons {
     COLVIS = "colvis",
     COPY = "copy",
     PRINT = "print",
@@ -6,17 +8,15 @@ enum DatatableDefaultButtons {
 }
 
 export const DatatableDefaultButtonsList = [
-    DatatableDefaultButtons.COLVIS,
-    DatatableDefaultButtons.COPY,
-    DatatableDefaultButtons.PRINT,
-    DatatableDefaultButtons.EXCEL
+    DataTableButtons.PRINT,
+    DataTableButtons.EXCEL
 ];
 
-export interface DatatableSettings extends DataTables.Settings {
+export interface DataTableSettings extends DataTables.Settings {
     buttons?: any;
 }
 
-export interface CustomDatatableConfig {
+export interface DataTableConfigOptions {
     showFilter?: boolean;
     showLength?: boolean;
     showButtons?: boolean;
@@ -27,6 +27,7 @@ export interface CustomDatatableConfig {
     menuLength?: number[];
     buttons?: any[];
     searching?: boolean;
+    columnFilter?: DataTableColumnFilterType | string;
 }
 
 export const dtLanguageDefinitionPt = {
@@ -72,7 +73,7 @@ export const dtLanguageDefinitionPt = {
     }
 };
 
-export class DatatableConfig {
+export class DataTableConfig {
 
     static BTN_CLASS = "btn btn-sm btn-outline-dark-light btn-caixa";
     static SHOW_FILTER = "f";
@@ -82,9 +83,9 @@ export class DatatableConfig {
     static SHOW_INFO = "i";
     static SHOW_PROCESSING = "r";
     static SHOW_PAGINATION = "p";
-    static DEFAULT_BUTTONS = DatatableDefaultButtons;
+    static DEFAULT_BUTTONS = DataTableButtons;
 
-    static DEFAULT_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
+    static DEFAULT_CONFIG: DataTableSettings = DataTableConfig.getDataTableSettings({
         searching: true,
         showFilter: true,
         showLength: false,
@@ -92,10 +93,11 @@ export class DatatableConfig {
         showTable: true,
         showInfo: true,
         showProcessing: true,
-        showPagination: true
+        showPagination: true,
+        columnFilter: DataTableColumnFilterType.INPUT
     });
 
-    static COMPLETE_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
+    static COMPLETE_CONFIG: DataTableSettings = DataTableConfig.getDataTableSettings({
         buttons: DatatableDefaultButtonsList,
         searching: true,
         showFilter: true,
@@ -107,7 +109,7 @@ export class DatatableConfig {
         showPagination: true
     });
 
-    static COMPLETE_NO_BUTTON_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
+    static COMPLETE_NO_BUTTON_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({
         searching: true,
         showFilter: true,
         showLength: true,
@@ -118,25 +120,25 @@ export class DatatableConfig {
         showPagination: true
     });
 
-    static FILTER_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
+    static FILTER_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({
         searching: true,
         showFilter: true
     });
 
-    static PAGINATION_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
+    static PAGINATION_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({
         showPagination: true
     });
 
-    static PAGINATION_INFO_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({
+    static PAGINATION_INFO_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({
         showInfo: true,
         showPagination: true
     });
 
-    static SIMPLE_CONFIG: DatatableSettings = DatatableConfig.getDatatableConfig({});
+    static SIMPLE_CONFIG: DataTableSettings = DataTableConfig.getDataTableSettings({});
 
-    static getDatatableConfig(options: CustomDatatableConfig): DatatableSettings {
+    static getDataTableSettings(options: DataTableConfigOptions): DataTableSettings {
 
-        const customConfig: DatatableSettings = {
+        const customConfig: DataTableSettings = {
             dom: this.SHOW_TABLE,
             buttons: [],
             language: dtLanguageDefinitionPt,
@@ -156,25 +158,23 @@ export class DatatableConfig {
             preTableElements = preTableElements += this.SHOW_LENGTH;
         }
         if (options.showProcessing) { preTableElements = preTableElements += this.SHOW_PROCESSING; }
-
-        if (options.showInfo) { postTableElements = postTableElements += this.SHOW_INFO; }
+        if (options.showInfo) {
+            postTableElements = postTableElements += this.SHOW_INFO; 
+        }
         if (options.showPagination) {
             paging = true;
             postTableElements = postTableElements += this.SHOW_PAGINATION;
         }
-
         if (options.buttons && options.buttons.length > 0) {
             customConfig.buttons = options.buttons;
         }
-
         if (options.menuLength && options.menuLength.length > 0) {
             customConfig.lengthMenu = options.menuLength;
         }
-
         const dtDom = preTableElements + this.SHOW_TABLE + postTableElements;
         customConfig.dom = dtDom;
-        customConfig.paging = paging;
-        customConfig.searching = options.searching;
+        customConfig.paging = paging || true;
+        customConfig.searching = options.searching || true;
         return customConfig;
     }
 }

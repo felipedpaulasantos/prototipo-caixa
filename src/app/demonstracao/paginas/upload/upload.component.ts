@@ -10,7 +10,7 @@ import { CardButtonComponent } from "src/app/guia-caixa/components/card-button/c
 import { StepperItem } from "src/app/guia-caixa/components/stepper/stepper-component/stepper-item";
 import { TabberItem } from "src/app/guia-caixa/components/stepper/tabber-component/tabber-item";
 import { TimelineItem, TimelineState } from "src/app/guia-caixa/components/timeline/timeline-item";
-import { DatatableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/constants/datatable-definitions";
+import { DataTableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/constants/datatable-definitions";
 
 
 @Component({
@@ -128,12 +128,12 @@ export class UploadComponent implements OnInit, AfterViewInit {
   checkConfig: any;
 
   rows = [];
-  config: DataTables.Settings = DatatableConfig.COMPLETE_CONFIG;
-  configCompleta = DatatableConfig.COMPLETE_CONFIG;
-  configCompletaSemBotoes = DatatableConfig.COMPLETE_NO_BUTTON_CONFIG;
-  configFilter = DatatableConfig.FILTER_CONFIG;
-  configInfo = DatatableConfig.PAGINATION_INFO_CONFIG;
-  configSimples = DatatableConfig.SIMPLE_CONFIG;
+  config: DataTables.Settings = DataTableConfig.COMPLETE_CONFIG;
+  configCompleta = DataTableConfig.COMPLETE_CONFIG;
+  configCompletaSemBotoes = DataTableConfig.COMPLETE_NO_BUTTON_SETTINGS;
+  configFilter = DataTableConfig.FILTER_SETTINGS;
+  configInfo = DataTableConfig.PAGINATION_INFO_SETTINGS;
+  configSimples = DataTableConfig.SIMPLE_CONFIG;
   dtTrigger: Subject<any> = new Subject();
 
   filterPosition = "";
@@ -283,7 +283,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
     });
   }
 
-  updateConfig(newConfig: DatatableConfig) {
+  updateConfig(newConfig: DataTableConfig) {
     console.log("NEW CONFIG", newConfig);
     this.config = JSON.parse(JSON.stringify(newConfig));
     this.updateTable();

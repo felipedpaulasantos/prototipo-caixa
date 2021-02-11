@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { DataTableDirective } from "angular-datatables";
-import { DatatableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
+import { DataTableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
 import { loremIpsumPlaceHolder, BootstrapTheme } from "src/app/guia-caixa/constants/constants";
-import { DatatableConfig } from "src/app/guia-caixa/constants/datatable-definitions";
+import { DataTableConfig } from "src/app/guia-caixa/constants/datatable-definitions";
 import { StyleService } from "src/app/shared/services/style.service";
 
 
@@ -15,11 +15,11 @@ import { StyleService } from "src/app/shared/services/style.service";
 export class CoresComponent implements OnInit {
 
   @ViewChild("table", { static: true })
-  table: DatatableComponent;
+  table: DataTableComponent;
 
   cores: any[] = [];
   coresGradiente: any[] = [];
-  dtConfig = DatatableConfig.FILTER_CONFIG;
+  dtConfig = DataTableConfig.FILTER_SETTINGS;
 
   coresVariaveis: any[] = [];
 

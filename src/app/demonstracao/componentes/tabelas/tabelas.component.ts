@@ -4,9 +4,9 @@ import { Subject } from "rxjs";
 
 import { ComponentesInterface } from "../componentes-interface";
 import { ToastrService } from "ngx-toastr";
-import { DatatableSettings, DatatableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/constants/datatable-definitions";
+import { DataTableSettings, DataTableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/constants/datatable-definitions";
 import { FormBuilder } from "@angular/forms";
-import { DatatableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
+import { DataTableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
 
 import { RandomDataFood } from "src/app/shared/model/random-data-food";
 import { RandomDataService } from "src/app/demonstracao/componentes/tabelas/random-data.service";
@@ -45,10 +45,10 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
   datatableElement: DataTableDirective;
 
   @ViewChild("tabela")
-  table: DatatableComponent;
+  table: DataTableComponent;
 
   @ViewChild("tabela2")
-  table2: DatatableComponent;
+  table2: DataTableComponent;
 
   @ViewChild("scrollElement") scrollElement;
   spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
@@ -56,21 +56,25 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
   currentSection = "painelTabelaDatatable";
 
   rows = [];
-  dtCompleteOptions: DatatableSettings = {};
-  dtCustomOptions: DatatableSettings = {};
-  dtSimpleOptions: DatatableSettings = {};
+  dtCompleteOptions: DataTableSettings = {};
+  dtCustomOptions: DataTableSettings = {};
+  dtSimpleOptions: DataTableSettings = {};
 
-  config: DataTables.Settings = DatatableConfig.COMPLETE_CONFIG;
-  configCompleta = DatatableConfig.COMPLETE_CONFIG;
-  configCompletaSemBotoes = DatatableConfig.COMPLETE_NO_BUTTON_CONFIG;
-  configFilter = DatatableConfig.FILTER_CONFIG;
-  configInfo = DatatableConfig.PAGINATION_INFO_CONFIG;
-  configSimples = DatatableConfig.SIMPLE_CONFIG;
+  config: DataTables.Settings = DataTableConfig.COMPLETE_CONFIG;
+  configCompleta = DataTableConfig.COMPLETE_CONFIG;
+  configCompletaSemBotoes = DataTableConfig.COMPLETE_NO_BUTTON_SETTINGS;
+  configFilter = DataTableConfig.FILTER_SETTINGS;
+  configInfo = DataTableConfig.PAGINATION_INFO_SETTINGS;
+  configSimples = DataTableConfig.SIMPLE_CONFIG;
   dtTrigger: Subject<any> = new Subject();
 
   filterPosition = "";
 
   cols = 0;
+
+  trigger = new Subject();
+
+  showTable = false;
 
   htmlCodeDatatable = `				<div class="table-responsive">
   <table datatable class="table table-caixa">
@@ -222,10 +226,10 @@ constructor() {
 `.trimRight();
 
   ngOnInit() {
-    this.dtSimpleOptions = DatatableConfig.SIMPLE_CONFIG;
-    this.dtCompleteOptions = DatatableConfig.COMPLETE_CONFIG;
-    this.dtCustomOptions = DatatableConfig.getDatatableConfig({
-      buttons: [DatatableConfig.DEFAULT_BUTTONS.EXCEL],
+    this.dtSimpleOptions = DataTableConfig.SIMPLE_CONFIG;
+    this.dtCompleteOptions = DataTableConfig.COMPLETE_CONFIG;
+    this.dtCustomOptions = DataTableConfig.getDataTableSettings({
+      buttons: [DataTableConfig.DEFAULT_BUTTONS.EXCEL],
       showInfo: true,
       showFilter: true,
       showPagination: true,
@@ -250,7 +254,7 @@ constructor() {
     }
   }
 
-  updateConfig(newConfig: DatatableConfig) {
+  updateConfig(newConfig: DataTableConfig) {
     this.config = JSON.parse(JSON.stringify(newConfig));
   }
 
@@ -281,7 +285,7 @@ constructor() {
     } else {
       this.formDTConfig.get("buttons").setValue([]);
     }
-    const newConfig = DatatableConfig.getDatatableConfig(this.formDTConfig.value);
+    const newConfig = DataTableConfig.getDataTableSettings(this.formDTConfig.value);
     this.config = JSON.parse(JSON.stringify(newConfig));
     this.table.setConfig(this.config);
   }
@@ -300,7 +304,9 @@ constructor() {
     this.spinner.show("global");
     this.randomDataService.getFoodData(100).subscribe((foodArray: RandomDataFood[]) => {
       this.rows = foodArray;
-      this.table.reloadTable();
+      if (this.table) {
+        this.table.reloadTable();
+      }
 /*       this.table2.reloadTable(); */
       this.spinner.hide("global");
     });
@@ -308,7 +314,7 @@ constructor() {
 
   atualizar() {
     // this.getTableConfig();
-    this.config = DatatableConfig.PAGINATION_INFO_CONFIG;
+    this.config = DataTableConfig.PAGINATION_INFO_SETTINGS;
     this.table.reloadTable();
   }
 

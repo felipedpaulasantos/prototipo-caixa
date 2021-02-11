@@ -13,7 +13,7 @@ import { CardCaixaComponent } from "./components/card-caixa/card-caixa.component
 import { StepperModule } from "./components/stepper/stepper.module";
 import { CardButtonModule } from "./components/card-button/card-button.module";
 import { TimelineModule } from "./components/timeline/timeline.module";
-import { DatatableComponent } from "./components/datatable/datatable.component";
+import { DataTableComponent } from "./components/datatable/datatable.component";
 
 
 
@@ -26,7 +26,7 @@ import { DatatableComponent } from "./components/datatable/datatable.component";
     SpinnerCaixaComponent,
 		ModalComponent,
     CardCaixaComponent,
-    DatatableComponent
+    DataTableComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +47,7 @@ import { DatatableComponent } from "./components/datatable/datatable.component";
     StepperModule,
     CardButtonModule,
     TimelineModule,
-    DatatableComponent
+    DataTableComponent
   ]
 })
 export class GuiaCaixaModule { }

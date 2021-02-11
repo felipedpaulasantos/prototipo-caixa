@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { DatatableConfig } from 'src/app/guia-caixa/constants/datatable-definitions';
+import { DataTableConfig } from 'src/app/guia-caixa/constants/datatable-definitions';
 import { SideMenuService } from 'src/app/menu/side-menu/side-menu.service';
 import { AccordionMenu } from 'src/app/shared/components/accordion/types/accordion-menu';
 
@@ -16,7 +16,7 @@ export class ConfigMenuComponent implements OnInit {
   ) { }
 
   menus: AccordionMenu[];
-  config = DatatableConfig.getDatatableConfig({
+  config = DataTableConfig.getDataTableSettings({
     showPagination: true,
     showFilter: true,
     showInfo: true

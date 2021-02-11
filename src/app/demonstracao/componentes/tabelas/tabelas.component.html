@@ -72,26 +72,27 @@
 
 				<div class="col-3 my-3">
 					<label>Filtro por coluna</label>
-					<select [value]="table?.columnFilterType"
-						(change)="updateConfigOption('columnFilter', $event.target.value)" class="custom-select">
+					<select (change)="updateConfigOption('columnFilter', $event.target.value)" class="custom-select">
 						<option value="">Nenhum</option>
-						<option value="input">Campo simples</option>
+						<option value="input" selected>Campo simples</option>
 						<option value="select">Campo select</option>
 					</select>
 				</div>
 
 				<div class="col-3 my-3">
 					<label>Posição do filtro</label>
-					<select [value]="table?.columnFilterPosition" (change)="setFilterPosition($event.target.value)"
-						class="custom-select">
-						<option value="top">Topo</option>
+					<select (change)="setFilterPosition($event.target.value)" class="custom-select">
+						<option value="top" selected>Topo</option>
 						<option value="bottom">Rodapé</option>
-						<option value="both">Ambos</option>
 					</select>
 				</div>
 
 				<div class="col-3 my-3">
 					<button class="btn btn-secundario" (click)="fetchData()">Buscar novos dados</button>
+				</div>
+
+				<div class="col-3 my-3">
+					<button class="btn btn-secundario" (click)="showTable = !showTable">Exibir / Ocultar</button>
 				</div>
 			</div>
 		</form>
@@ -99,7 +100,7 @@
 
 	<hr class="my-5">
 
-	<div id="cardTabelaSandbox" class="my-3">
+	<div id="cardTabelaSandbox" class="my-3" *ngIf="showTable">
 		<h5 class="header-caixa mb-4">Tabela</h5>
 		<cx-datatable #tabela>
 			<table datatable class="table">
