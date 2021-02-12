@@ -5,14 +5,16 @@ enum DataTableButtons {
     EXCEL = "excel"
 }
 
+export enum DataTableColumnFilterType {
+    INPUT = "input",
+    SELECT = "select",
+    NONE = "none"
+}
+
 export enum DataTableColumnFilterPosition {
     TOP = "top",
     BOTTOM = "bottom",
-}
-
-export enum DataTableColumnFilterType {
-    INPUT = "input",
-    SELECT = "select"
+    NONE = "none"
 }
 
 export const DatatableDefaultButtonsList = [

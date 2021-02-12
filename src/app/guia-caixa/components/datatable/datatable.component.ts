@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ContentChild, Input, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit, AfterViewInit, ContentChild, Input, ChangeDetectionStrategy, ElementRef } from "@angular/core";
 import { DataTableDirective } from "angular-datatables";
 import { Subject } from "rxjs";
 import { DataTableColumnFilterPosition, DataTableColumnFilterType, DataTableConfig, DataTableSettings, dtLanguageDefinitionPt } from "./datatable-definitions";
@@ -22,25 +22,26 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   settings: DataTables.Settings = DataTableConfig.DEFAULT_SETTINGS;
 
   @Input()
-  columnFilterType: DataTableColumnFilterType | string = DataTableColumnFilterType.INPUT;
+  filterType: DataTableColumnFilterType | string = DataTableColumnFilterType.NONE;
 
   @Input()
-  columnFilterPosition: DataTableColumnFilterPosition | string = DataTableColumnFilterPosition.TOP;
+  filterPosition: DataTableColumnFilterPosition | string = DataTableColumnFilterPosition.NONE;
 
   @Input()
   trigger: Subject<any> = new Subject();
 
-  private tableElement: any;
-  private theadElement: any;
-  private tfootElement: any;
-  private tbodyElement: any;
+  private tableElementRef: ElementRef;
+  private tableElement: HTMLElement;
+  private theadElement: HTMLElement;
+  private tfootElement: HTMLElement;
+  private tbodyElement: HTMLElement;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     this.setDefaultLanguage();
-    if (!this.dtElement.dtTrigger) {this.dtElement.dtTrigger = new Subject(); }
-    this.settings["columnFilter"] = this.columnFilterType;
+    if (!this.dtElement.dtTrigger) { this.dtElement.dtTrigger = new Subject(); }
+    this.settings["columnFilterType"] = this.filterType;
     this.dtElement.dtOptions = this.settings;
     this.trigger.subscribe(() => this.reloadTable());
   }
@@ -51,10 +52,11 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   private drawTable(isInitialDraw = false): void {
     this.dtElement.dtTrigger.next();
-    this.tableElement = this.dtElement["el"];
-    this.theadElement = this.tableElement.nativeElement.querySelector("thead");
-    this.tfootElement = this.tableElement.nativeElement.querySelector("tfoot");
-    this.tbodyElement = this.tableElement.nativeElement.querySelector("tbody");
+    this.tableElementRef = this.dtElement["el"];
+    this.tableElement = this.tableElementRef.nativeElement;
+    this.theadElement = this.tableElement.querySelector("thead");
+    this.tfootElement = this.tableElement.querySelector("tfoot");
+    this.tbodyElement = this.tableElement.querySelector("tbody");
 
     if (!this.dtElement.dtInstance) { return; }
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
@@ -77,7 +79,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   public updateFilterColumnPosition(position: string): void {
-    this.columnFilterPosition = position;
+    this.filterPosition = position;
     this.reloadTable();
   }
 
@@ -88,82 +90,81 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   private drawColumnFilters(dtInstance: DataTables.Api, thead, tfoot, tbody, isInitialDraw): void {
+    const columnFilterType = this.settings["columnFilterType"];
 
-    const columnFilter = this.settings["columnFilter"];
-
-    if (!columnFilter) {
-      dtInstance.columns().every(function () {
-        $(this.footer()).remove();
-      });
-    } else if (!tfoot) {
-      tfoot = this.drawFooter(dtInstance, thead, tbody);
+    if (!columnFilterType) {
+      dtInstance.columns().every(function() { $(this.footer()).remove(); });
+    } else if (!tfoot && (this.filterPosition !== DataTableColumnFilterPosition.NONE)) {
+      tfoot = this.drawFooter(dtInstance, thead);
     }
 
-    if (tfoot && (this.columnFilterPosition === DataTableColumnFilterPosition.TOP || !this.columnFilterPosition)) {
-      $(tfoot).addClass(this.TOP_FILTER_CLASS);
-    } else if (tfoot && this.columnFilterPosition === DataTableColumnFilterPosition.BOTTOM) {
-      $(tfoot).removeClass(this.TOP_FILTER_CLASS);
-    }
+    this.setFooterClass(tfoot);
+    this.drawInputColumnFilter(dtInstance, columnFilterType);
+    this.drawSelectColumnFilter(dtInstance, columnFilterType);
 
-    if (columnFilter === DataTableColumnFilterType.INPUT) {
-      this.drawInputColumnFilter(dtInstance);
-    }
-
-    if (columnFilter === DataTableColumnFilterType.SELECT) {
-      this.drawSelectColumnFilter(dtInstance);
-    }
-
-    if (isInitialDraw) {
-      this.reloadTable();
-    }
+    if (isInitialDraw) { this.reloadTable(); }
   }
 
-  private drawFooter(dtInstance: DataTables.Api, thead: any, tbody: any): any {
+  private drawFooter(dtInstance: DataTables.Api, thead: any): any {
     let tfootHtml = "";
     for (let index = 0; index < dtInstance.columns()[0].length; index++) {
       tfootHtml += `<td></td>`;
     }
     tfootHtml = `<tfoot><tr>${tfootHtml}</tr></tfoot>`;
     $(tfootHtml).insertAfter(thead);
-    this.tfootElement = this.tableElement.nativeElement.querySelector("tfoot");
+    this.tfootElement = this.tableElement.querySelector("tfoot");
     return this.tfootElement;
   }
 
-  private drawInputColumnFilter(dtInstance: DataTables.Api): void {
-    const that = this;
+  private setFooterClass(tfoot: any): void {
+    if (tfoot && (this.filterPosition === DataTableColumnFilterPosition.TOP || !this.filterPosition)) {
+      $(tfoot).addClass(this.TOP_FILTER_CLASS);
+    } else if (tfoot && this.filterPosition === DataTableColumnFilterPosition.BOTTOM) {
+      $(tfoot).removeClass(this.TOP_FILTER_CLASS);
+    }
+  }
+
+  private drawInputColumnFilter(dtInstance: DataTables.Api, columnFilterType: DataTableColumnFilterType | string): void {
+    const filterInputClass = this.FILTER_INPUT_CLASS;
+
     dtInstance.columns().every(function () {
       const column = this;
-      const columnText = column.header().innerHTML;
-      $(`<input class='${that.FILTER_INPUT_CLASS}' placeholder='Filtre ${columnText}'>`)
-        .appendTo($(column.footer()).empty())
-        .on("keyup change", function () {
-          if (column.search() !== this["value"]) {
-            column
-              .search(this["value"])
-              .draw();
-          }
-        });
+      if (columnFilterType === DataTableColumnFilterType.INPUT || column.header().dataset.filter === DataTableColumnFilterType.INPUT) {
+        const columnText = column.header().innerHTML;
+        $(`<input class='${filterInputClass}' placeholder='Filtre ${columnText}'>`)
+          .appendTo($(column.footer()).empty())
+          .on("keyup change", function () {
+            if (column.search() !== this["value"]) {
+              column
+                .search(this["value"])
+                .draw();
+            }
+          });
+      }
     });
   }
 
-  private drawSelectColumnFilter(dtInstance: DataTables.Api): void {
-    const that = this;
+  private drawSelectColumnFilter(dtInstance: DataTables.Api, columnFilterType: DataTableColumnFilterType | string): void {
+    const filterSelectClass = this.FILTER_SELECT_CLASS;
+
     dtInstance.columns().every(function () {
       const column = this;
-      const columnText = column.header().innerHTML;
-      const select = $(`<select class='${that.FILTER_SELECT_CLASS}'><option value=\"\">Filtre ${columnText}</option></select>`)
-        .appendTo($(column.footer()).empty())
-        .on("change", function () {
-          const val = $.fn.dataTable.util.escapeRegex(
-            String($(this).val())
-          );
-          column
-            .search(val ? "^" + val + "$" : "", true, false)
-            .draw();
+      if (columnFilterType === DataTableColumnFilterType.SELECT || column.header().dataset.filter === DataTableColumnFilterType.SELECT) {
+        const columnText = column.header().innerHTML;
+        const select = $(`<select class='${filterSelectClass}'><option value=\"\">Filtre ${columnText}</option></select>`)
+          .appendTo($(column.footer()).empty())
+          .on("change", function () {
+            const val = $.fn.dataTable.util.escapeRegex(
+              String($(this).val())
+            );
+            column
+              .search(val ? "^" + val + "$" : "", true, false)
+              .draw();
+          });
+        column.data().unique().sort().each(function (d) {
+          select.append("<option value=\"" + d + "\">" + d + "</option>");
         });
-      column.data().unique().sort().each(function (d) {
-        select.append("<option value=\"" + d + "\">" + d + "</option>");
-      });
+      }
     });
   }
 
