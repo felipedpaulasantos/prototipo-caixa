@@ -1,13 +1,17 @@
-import { Component, OnInit, AfterViewInit, ContentChild, Input, ChangeDetectionStrategy, ElementRef } from "@angular/core";
+import { Component, OnInit, AfterViewInit, ContentChild, Input, ChangeDetectionStrategy, ElementRef, ViewEncapsulation } from "@angular/core";
 import { DataTableDirective } from "angular-datatables";
 import { Subject } from "rxjs";
 import { DataTableColumnFilterPosition, DataTableColumnFilterType, DataTableConfig, DataTableSettings, dtLanguageDefinitionPt } from "./datatable-definitions";
 
+declare var $: any;
+
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: "cx-datatable",
   templateUrl: "./datatable.component.html",
   styleUrls: ["./datatable.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
 
@@ -22,13 +26,13 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   settings: DataTables.Settings = DataTableConfig.DEFAULT_SETTINGS;
 
   @Input()
-  filterType: DataTableColumnFilterType | string = DataTableColumnFilterType.NONE;
+  columnFilterType: DataTableColumnFilterType | string = DataTableColumnFilterType.NONE;
 
   @Input()
-  filterPosition: DataTableColumnFilterPosition | string = DataTableColumnFilterPosition.NONE;
+  columnFilterPosition: DataTableColumnFilterPosition | string = DataTableColumnFilterPosition.NONE;
 
   @Input()
-  trigger: Subject<any> = new Subject();
+  trigger = new Subject<any>();
 
   private tableElementRef: ElementRef;
   private tableElement: HTMLElement;
@@ -40,8 +44,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.setDefaultLanguage();
-    if (!this.dtElement.dtTrigger) { this.dtElement.dtTrigger = new Subject(); }
-    this.settings["columnFilterType"] = this.filterType;
+    this.setDefaultClasses();
+    if (!this.dtElement.dtTrigger) { this.dtElement.dtTrigger = new Subject<any>() as any; }
+    this.settings["columnFilterType"] = this.columnFilterType;
     this.dtElement.dtOptions = this.settings;
     this.trigger.subscribe(() => this.reloadTable());
   }
@@ -79,7 +84,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   public updateFilterColumnPosition(position: string): void {
-    this.filterPosition = position;
+    this.columnFilterPosition = position;
     this.reloadTable();
   }
 
@@ -89,13 +94,23 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     });
   }
 
+  private setDefaultClasses(): void {
+    $.fn.dataTable.ext.classes.sPageButton = "btn btn-sm ml-1";
+    $.fn.dataTable.ext.classes.sPageButtonActive = "btn-primary text-base";
+
+    $.fn.dataTable.ext.classes.sLengthSelect = "custom-select";
+    $.fn.dataTable.ext.classes.sFilterInput = "form-control";
+  }
+
   private drawColumnFilters(dtInstance: DataTables.Api, thead, tfoot, tbody, isInitialDraw): void {
     const columnFilterType = this.settings["columnFilterType"];
 
     if (!columnFilterType) {
-      dtInstance.columns().every(function() { $(this.footer()).remove(); });
-    } else if (!tfoot && (this.filterPosition !== DataTableColumnFilterPosition.NONE)) {
-      tfoot = this.drawFooter(dtInstance, thead);
+      dtInstance.columns().every(function () {
+        $(this.footer()).remove();
+      });
+    } else if (!tfoot) {
+      tfoot = this.drawFooter(dtInstance, thead, tbody);
     }
 
     this.setFooterClass(tfoot);
@@ -105,7 +120,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     if (isInitialDraw) { this.reloadTable(); }
   }
 
-  private drawFooter(dtInstance: DataTables.Api, thead: any): any {
+  private drawFooter(dtInstance: DataTables.Api, thead: any, tbody: any): any {
     let tfootHtml = "";
     for (let index = 0; index < dtInstance.columns()[0].length; index++) {
       tfootHtml += `<td></td>`;
@@ -117,9 +132,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   private setFooterClass(tfoot: any): void {
-    if (tfoot && (this.filterPosition === DataTableColumnFilterPosition.TOP || !this.filterPosition)) {
+    if (tfoot && (this.columnFilterPosition === DataTableColumnFilterPosition.TOP || !this.columnFilterPosition)) {
       $(tfoot).addClass(this.TOP_FILTER_CLASS);
-    } else if (tfoot && this.filterPosition === DataTableColumnFilterPosition.BOTTOM) {
+    } else if (tfoot && this.columnFilterPosition === DataTableColumnFilterPosition.BOTTOM) {
       $(tfoot).removeClass(this.TOP_FILTER_CLASS);
     }
   }

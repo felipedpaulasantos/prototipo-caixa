@@ -19,7 +19,6 @@
 
 // Estilos complementares
 @import "functions";
-@import "datatables";
 @import "animations";
 
 :root {
@@ -933,65 +932,65 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 /* CLASSES TEMATICAS */
 
 .text-principal {
-  color: var(--cxPrincipal);
+  color: var(--cxPrincipal) !important;
 }
 .text-secundario {
-  color: var(--cxSecundario);
+  color: var(--cxSecundario) !important;
 }
 .text-base {
-  color: var(--cxBase);
+  color: var(--cxBase) !important;
 }
 .text-contrast {
-  color: var(--cxContrast);
+  color: var(--cxContrast) !important;
 }
 .text-cancel {
-  color: var(--cxCancel);
+  color: var(--cxCancel) !important;
 }
 .text-sucesso {
-  color: var(--cxSucesso);
+  color: var(--cxSucesso) !important;
 }
 .text-perigo {
-  color: var(--cxPerigo);
+  color: var(--cxPerigo) !important;
 }
 .text-info {
-  color: var(--cxInfo);
+  color: var(--cxInfo) !important;
 }
 .text-alerta {
-  color: var(--cxAlerta);
+  color: var(--cxAlerta) !important;
 }
 .text-link {
-  color: var(--cxSecundario);
+  color: var(--cxSecundario) !important;
 }
 
 .bg-principal {
-  background-color: var(--cxPrincipal);
+  background-color: var(--cxPrincipal) !important;
 }
 .bg-secundario {
-  background-color: var(--cxSecundario);
+  background-color: var(--cxSecundario) !important;
 }
 .bg-base {
-  background-color: var(--cxBase);
+  background-color: var(--cxBase) !important;
 }
 .bg-contrast {
-  background-color: var(--cxContrast);
+  background-color: var(--cxContrast) !important;
 }
 .bg-cancel {
-  background-color: var(--cxCancel);
+  background-color: var(--cxCancel) !important;
 }
 .bg-aux {
-  background-color: var(--cxAux);
+  background-color: var(--cxAux) !important;
 }
 .bg-sucesso {
-  background-color: var(--cxSucesso);
+  background-color: var(--cxSucesso) !important;
 }
 .bg-perigo {
-  background-color: var(--cxPerigo);
+  background-color: var(--cxPerigo) !important;
 }
 .bg-alerta {
-  background-color: var(--cxAlerta);
+  background-color: var(--cxAlerta) !important;
 }
 .bg-info {
-  background-color: var(--cxInfo);
+  background-color: var(--cxInfo) !important;
 }
 
 

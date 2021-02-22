@@ -18,8 +18,8 @@ export enum DataTableColumnFilterPosition {
 }
 
 export const DatatableDefaultButtonsList = [
-    DataTableButtons.PRINT,
-    DataTableButtons.EXCEL
+    { extend: "print", className: "btn btn-sm btn-outline-secundario" },
+    { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
 ];
 
 export interface DataTableSettings extends DataTables.Settings {
@@ -48,11 +48,11 @@ export const dtLanguageDefinitionPt = {
             _: "Copiados %d registros",
             1: "Copiado 1 registro"
         },
-        pdf: "<i class=\"fa fa-lg fa-file-pdf mr-2\"></i>PDF",
-        print: "<i class=\"fa fa-lg fa-print mr-2\"></i>Imprimir",
-        excel: "<i class=\"fa fa-lg fa-file-excel mr-2\"></i>Planilha do Excel",
-        colvis: "<i class=\"fa fa-lg fa-columns mr-2\"></i>Colunas visíveis",
-        pageLength: "<i class=\"fa fa-lg fa-bars mr-2\"></i>Mostrar <b>%d</b> linhas"
+        pdf: "<i class=\"fa fa-file-pdf mr-2\"></i>PDF",
+        print: "<i class=\"fa fa-print mr-2\"></i>Imprimir",
+        excel: "<i class=\"fa fa-file-excel mr-2\"></i>Planilha do Excel",
+        colvis: "<i class=\"fa fa-columns mr-2\"></i>Colunas visíveis",
+        pageLength: "<i class=\"fa fa-bars mr-2\"></i>Mostrar <b>%d</b> linhas"
     },
     processing: "Processando...",
     search: "Buscar:",

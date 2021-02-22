@@ -102,7 +102,7 @@
 
 	<div id="cardTabelaSandbox" class="my-3" *ngIf="showTable">
 		<h5 class="header-caixa mb-4">Tabela</h5>
-		<cx-datatable [filterPosition]="'top'" filterType="input" #tabela>
+		<cx-datatable [settings]="configCompleta" [columnFilterPosition]="'top'" columnFilterType="input" #tabela>
 			<table datatable class="table">
 				<thead>
 					<tr>
