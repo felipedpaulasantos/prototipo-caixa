@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
-import { TopMenuComponent } from './top-menu/top-menu.component';
+import { HeaderComponent } from './top-menu/header.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { SharedModule } from '../shared/shared.module';
 import { FooterComponent } from './footer/footer.component';
@@ -15,7 +15,7 @@ import { BuscaMenuModule } from './busca-menu/busca-menu.module';
 
 @NgModule({
   declarations: [
-    TopMenuComponent,
+    HeaderComponent,
     SideMenuComponent,
     FooterComponent,
     BreadcrumbComponent
@@ -30,7 +30,7 @@ import { BuscaMenuModule } from './busca-menu/busca-menu.module';
   ],
   exports: [
     BuscaMenuModule,
-    TopMenuComponent,
+    HeaderComponent,
     SideMenuComponent,
     FooterComponent,
     BreadcrumbComponent

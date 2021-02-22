@@ -12,11 +12,11 @@ import { StyleService } from "src/app/shared/services/style.service";
 import { GlobalThemeVariables, GlobalThemes, GlobalTheme } from "src/app/shared/model/global-style";
 
 @Component({
-  selector: "app-top-menu",
-  templateUrl: "./top-menu.component.html",
-  styleUrls: ["./top-menu.component.scss"]
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"]
 })
-export class TopMenuComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
   logoXBranco = LOGO_CAIXA_BRANCO_SRC;
   logoCompletoBranco = LOGO_COMPLETO_BRANCO_SRC;
