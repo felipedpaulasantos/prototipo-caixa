@@ -37,7 +37,6 @@ export interface DataTableConfigOptions {
     menuLength?: number[];
     buttons?: any[];
     searching?: boolean;
-    columnFilter?: DataTableColumnFilterType | string;
 }
 
 export const dtLanguageDefinitionPt = {
@@ -103,8 +102,7 @@ export class DataTableConfig {
         showTable: true,
         showInfo: true,
         showProcessing: true,
-        showPagination: true,
-        columnFilter: DataTableColumnFilterType.INPUT
+        showPagination: true
     });
 
     static COMPLETE_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({

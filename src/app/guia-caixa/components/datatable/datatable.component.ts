@@ -57,6 +57,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   private drawTable(isInitialDraw = false): void {
+    if (!this.dtElement) { return; }
     this.dtElement.dtTrigger.next();
     this.tableElementRef = this.dtElement["el"];
     this.tableElement = this.tableElementRef.nativeElement;
@@ -71,7 +72,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   public reloadTable(): void {
-    if (!this.dtElement.dtInstance) { return; }
+    if (!this.dtElement || !this.dtElement.dtInstance) { return; }
     this.dtElement.dtOptions = this.settings;
     this.dtElement.dtInstance.then((dtInstance) => {
       dtInstance.destroy();
@@ -81,7 +82,6 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   public updateSettings(newSettings: DataTableSettings): void {
     this.settings = newSettings;
-    console.log(this.settings);
     this.reloadTable();
   }
 
@@ -112,7 +112,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
         $(this.footer()).remove();
       });
     } else if (!tfoot) {
-      tfoot = this.drawFooter(dtInstance, thead, tbody);
+      tfoot = this.drawFooter(dtInstance, thead);
     }
 
     this.setFooterClass(tfoot);
@@ -122,7 +122,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     if (isInitialDraw) { this.reloadTable(); }
   }
 
-  private drawFooter(dtInstance: DataTables.Api, thead: any, tbody: any): any {
+  private drawFooter(dtInstance: DataTables.Api, thead: any): any {
     let tfootHtml = "";
     for (let index = 0; index < dtInstance.columns()[0].length; index++) {
       tfootHtml += `<td></td>`;
@@ -147,7 +147,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     dtInstance.columns().every(function () {
       const column = this;
       if (columnFilterType === DataTableColumnFilterType.INPUT || column.header().dataset.filter === DataTableColumnFilterType.INPUT) {
-        const columnText = column.header().innerHTML;
+        const columnText = column.header().innerText;
         $(`<input class='${filterInputClass}' placeholder='Filtre ${columnText}'>`)
           .appendTo($(column.footer()).empty())
           .on("keyup change", function () {
@@ -164,12 +164,10 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   private drawSelectColumnFilter(dtInstance: DataTables.Api, columnFilterType: DataTableColumnFilterType | string): void {
     const filterSelectClass = this.FILTER_SELECT_CLASS;
 
-    console.log(columnFilterType);
-
     dtInstance.columns().every(function () {
       const column = this;
       if (columnFilterType === DataTableColumnFilterType.SELECT || column.header().dataset.filter === DataTableColumnFilterType.SELECT) {
-        const columnText = column.header().innerHTML;
+        const columnText = column.header().innerText;
         const select = $(`<select class='${filterSelectClass}'><option value=\"\">Filtre ${columnText}</option></select>`)
           .appendTo($(column.footer()).empty())
           .on("change", function () {

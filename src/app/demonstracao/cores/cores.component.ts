@@ -21,7 +21,6 @@ export class CoresComponent implements OnInit {
   coresGradiente: any[] = [];
 
   dtSettings = DataTableConfig.getDataTableSettings({
-    columnFilter: "top",
     showFilter: false,
     showInfo: true,
     showPagination: false

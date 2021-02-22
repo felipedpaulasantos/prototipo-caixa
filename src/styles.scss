@@ -1105,10 +1105,10 @@ body.tema-escuro {
   }
 
   .btn-principal {
-    @extend .btn, .btn-ceu;
+    @extend .btn, .btn-secondary;
   }
   .btn-outline-principal {
-    @extend .btn, .btn-outline-ceu;
+    @extend .btn, .btn-outline-secondary;
   }
 
   .btn-secundario {
