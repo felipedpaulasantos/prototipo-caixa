@@ -17,8 +17,8 @@
 
 <div class="tab-content">
 	<div class="tab-pane fade show active p-2" id="coresVariaveis" role="tabpanel">
-		<cx-datatable [settings]="dtSettings" #table>
-			<table id="tabelaCores" datatable class="table">
+		<cx-datatable [settings]="dtSettings" columnFilterPosition="top" columnFilterType="input" #table>
+			<table id="tabelaCores" datatable class="table table-borderless">
 				<thead>
 					<tr>
 						<th>Nome</th>
