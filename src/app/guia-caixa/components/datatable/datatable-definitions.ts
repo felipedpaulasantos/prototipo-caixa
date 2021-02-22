@@ -1,8 +1,23 @@
-enum DataTableButtons {
-    COLVIS = "colvis",
-    COPY = "copy",
-    PRINT = "print",
-    EXCEL = "excel"
+export class DataTableButtons {
+
+    // private to disallow creating other instances of this type
+    private constructor(public readonly value: any) {}
+
+    static readonly PRINT = new DataTableButtons(
+        { extend: "print", className: "btn btn-sm btn-outline-secundario" }
+    );
+
+    static readonly EXCEL = new DataTableButtons(
+        { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
+    );
+
+    static readonly COPY = new DataTableButtons(
+        { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
+    );
+
+    static readonly COLVIS = new DataTableButtons(
+        { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
+    );
 }
 
 export enum DataTableColumnFilterType {
@@ -18,8 +33,8 @@ export enum DataTableColumnFilterPosition {
 }
 
 export const DatatableDefaultButtonsList = [
-    { extend: "print", className: "btn btn-sm btn-outline-secundario" },
-    { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
+    DataTableButtons.PRINT,
+    DataTableButtons.EXCEL
 ];
 
 export interface DataTableSettings extends DataTables.Settings {
