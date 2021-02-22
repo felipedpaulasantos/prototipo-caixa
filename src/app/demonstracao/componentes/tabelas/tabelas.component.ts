@@ -272,8 +272,8 @@ constructor() {
       case "length":
         this.config.lengthChange = value;
         break;
-      case "columnFilter":
-        this.config["columnFilter"] = value;
+      case "columnFilterType":
+        this.config["columnFilterType"] = value;
         break;
     }
     this.table.updateSettings(this.config);
