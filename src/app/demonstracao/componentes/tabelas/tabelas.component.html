@@ -72,7 +72,7 @@
 
 				<div class="col-3 my-3">
 					<label>Filtro por coluna</label>
-					<select (change)="updateConfigOption('columnFilter', $event.target.value)" class="custom-select">
+					<select (change)="updateConfigOption('columnFilterType', $event.target.value)" class="custom-select">
 						<option value="">Nenhum</option>
 						<option value="input" selected>Campo simples</option>
 						<option value="select">Campo select</option>
@@ -102,7 +102,7 @@
 
 	<div id="cardTabelaSandbox" class="my-3" *ngIf="showTable">
 		<h5 class="header-caixa mb-4">Tabela</h5>
-		<cx-datatable [settings]="configCompleta" [columnFilterPosition]="'top'" columnFilterType="input" #tabela>
+		<cx-datatable [settings]="configCompleta" #tabela>
 			<table datatable class="table">
 				<thead>
 					<tr>

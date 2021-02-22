@@ -8,7 +8,7 @@ declare var $: any;
 @Component({
   // tslint:disable-next-line:component-selector
   selector: "cx-datatable",
-  templateUrl: "./datatable.component.html",
+  template: `<ng-content></ng-content>`,
   styleUrls: ["./datatable.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
@@ -47,6 +47,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     this.setDefaultClasses();
     if (!this.dtElement.dtTrigger) { this.dtElement.dtTrigger = new Subject<any>() as any; }
     this.settings["columnFilterType"] = this.columnFilterType;
+    this.settings["columnFilterPosition"] = this.columnFilterPosition;
     this.dtElement.dtOptions = this.settings;
     this.trigger.subscribe(() => this.reloadTable());
   }
@@ -80,6 +81,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   public updateSettings(newSettings: DataTableSettings): void {
     this.settings = newSettings;
+    console.log(this.settings);
     this.reloadTable();
   }
 
@@ -161,6 +163,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   private drawSelectColumnFilter(dtInstance: DataTables.Api, columnFilterType: DataTableColumnFilterType | string): void {
     const filterSelectClass = this.FILTER_SELECT_CLASS;
+
+    console.log(columnFilterType);
 
     dtInstance.columns().every(function () {
       const column = this;
