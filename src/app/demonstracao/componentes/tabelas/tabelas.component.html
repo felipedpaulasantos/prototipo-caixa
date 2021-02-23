@@ -1,138 +1,302 @@
-<div class="d-flex align-items-center mb-5">
+<h1 class="header-principal-caixa mb-0">
+	DataTable (Tabela aprimorada)
+</h1>
+
+<div class="my-5">
+	<p>O componente <span class="citation-highlight">cx-datatable</span> em conjunto com a diretiva <span
+		class="citation-highlight">datatable</span>
+	adiciona funcionalidades especiais a tabelas comuns como filtro, organização, paginação, exportação
+	em .xls e impressão.</p>
+	
+	<p>O componente implementa a biblioteca <a class="text-secundario" target="_blank"
+			href="https://www.npmjs.com/package/angular-datatables">
+			Angular + Datatables</a>.</p>
+</div>
+
+<!-- <div class="d-flex align-items-center mb-5">
 	<h1 class="header-principal-caixa mb-0">
-		Tabelas
+		DataTable (Tabela aprimorada)
 	</h1>
+
+	<p>O componente <span class="citation-highlight">cx-datatable</span> em conjunto com a diretiva <span
+		class="citation-highlight">datatable</span>
+	adiciona funcionalidades especiais a tabelas comuns como filtro, organização, paginação, exportação
+	em .xls e impressão.</p>
+
+	<p>O componente implementa a biblioteca <a class="text-secundario" target="_blank"
+			href="https://www.npmjs.com/package/angular-datatables">
+			Angular + Datatables</a>.</p>
 
 	<div class="card d-inline-block w-auto ml-5">
 		<div class="card-body">
 			<i class="fa fa-exclamation-triangle fa-lg text-alerta mr-2"></i> Em desenvolvimento
 		</div>
 	</div>
-</div>
+</div> -->
 
+<ul class="nav nav-pills tab-caixa" role="tablist">
+	<li class="nav-item">
+		<a class="nav-link text-uppercase active" data-toggle="tab" href="#visaoGeral" role="tab">
+			Visão Geral
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link text-uppercase" data-toggle="tab" href="#api" role="tab">
+			API
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link text-uppercase" data-toggle="tab" href="#exemplos" role="tab">
+			Exemplos
+		</a>
+	</li>
+</ul>
 
-<section id="tabelaSandbox" class="mb-5" #scrollElement>
+<br>
 
-	<div id="cardFiltros" class="mb-4">
-		<form [formGroup]="formDTConfig">
-			<h5 class="header-caixa mb-4">Opções</h5>
-			<div class="row align-items-center mb-3">
-				<div class="col-2">
-					<div class="custom-control custom-checkbox">
-						<input formControlName="showButtons" type="checkbox" (change)="getTableConfig()"
-							class="custom-control-input" id="checkBotoes">
-						<label class="custom-control-label" for="checkBotoes">
-							Botões
-						</label>
+<div class="tab-content">
+	<div class="tab-pane fade show active" id="visaoGeral" role="tabpanel">
+		<div class="row no-gutters">
+
+			<section #scrollElement class="col-12 col-xl-9 pr-2">
+				<app-documentacao-template id="painelDatatable"
+				[cardTitle]="'Configuração'" 
+				[codeViewId]="'codePainelDatatable'"
+				[htmlTabId]="'htmlCodeDatatable'" 
+				[htmlCode]="htmlCodeDatatable"
+				[tsTabId]="'tsCodeDatatable'"
+				[tsCode]="tsCodeDatatable">
+					<div class="descricao">
+						<p>O atributo <span class="citation-highlight">settings</span> recebe um objeto do tipo <span class="citation-highlight">DataTableSettings</span>
+							com a configuração desejada da tabela, informando quais elementos serão exibidos.</p>
+
+						<p>A classe <span class="citation-highlight">DataTableConfig</span> possui configurações pré-definidas mas pode-se utilizar
+							o método <span class="citation-highlight">getDataTableSettings( )</span> para definir configurações customizadas.</p>
+
+						<p>Os elementos configuráveis são: Botões, Filtro geral, Quantidade de linhas por página, Informativo e Paginação.</p>
+
+						<p>Caso o atributo não seja informado é aplicada a configuração padrão, <span class="citation-highlight">DataTableConfig.DEFAULT_SETTINGS</span>.</p>
+
+						<button class="btn btn-secundario" data-toggle="collapse" href="#conteudoPainelDatatable">Exibir tabela</button>
 					</div>
-				</div>
 
-				<div class="col-2">
-					<div class="custom-control custom-checkbox">
-						<input formControlName="showFilter" type="checkbox" (change)="getTableConfig()"
-							class="custom-control-input" id="checkFiltro">
-						<label class="custom-control-label" for="checkFiltro">
-							Filtro Geral
-						</label>
+					<div class="conteudo collapse" id="conteudoPainelDatatable">
+						<cx-datatable [settings]="configCompleta" [trigger]="dtTrigger">
+							<table datatable class="table">
+								<thead>
+									<tr>
+										<th>Prato</th>
+										<th>Ingrediente</th>
+										<th>Medida</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let row of rows">
+										<td>{{ row.dish }}</td>
+										<td>{{ row.ingredient }}</td>
+										<td>{{ row.measurement }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</cx-datatable>
 					</div>
-				</div>
+				</app-documentacao-template>
 
-				<div class="col-2">
-					<div class="custom-control custom-checkbox">
-						<input formControlName="showPagination" type="checkbox" (change)="getTableConfig()"
-							class="custom-control-input" id="checkPaging">
-						<label class="custom-control-label" for="checkPaging">
-							Paginação
-						</label>
+				<br>
+
+				<app-documentacao-template id="painelDatatableFiltros"
+				[cardTitle]="'Filtros por coluna'" 
+				[codeViewId]="'codePainelFiltros'"
+				[htmlTabId]="'htmlCodeDatatableFilter'" 
+				[htmlCode]="htmlCodeDatatableFilter"
+				[tsTabId]="'tsCodeDatatableFilter'"
+				[tsCode]="tsCodeDatatableFilter">
+					<div class="descricao">
+						<p>Filtros individuais por coluna podem ser acrescentados com os atributos 
+							<span class="citation-highlight">columnFilterType: DataTableColumnFilterType</span> ("input" ou "select") e 
+							<span class="citation-highlight">columnFilterPosition: DataTableColumnFilterPosition</span> ("top" ou "bottom").
+						</p>
+
+						<p>
+							Neste caso abaixo, todas as colunas terão um campo de filtro do tipo select na parte de baixo da tabela:							
+						</p>
+						<pre><code [highlight]="codeDataFilterAllColumns"></code></pre>
+
+						<p>
+							Caso os filtros precisem ser informados coluna a coluna, deve-se atribuir apenas o <span class="citation-highlight">columnFilterPosition</span>,
+							e depois, em cada <span class="citation-highlight">th</span> do header, informar o tipo do filtro desta forma:
+						</p>
+						<pre><code [highlight]="codeDataFilterInput"></code></pre> 
+						ou
+						<pre class="my-2"><code [highlight]="codeDataFilterSelect"></code></pre>
+
+						<button class="btn btn-secundario" data-toggle="collapse" href="#conteudoPainelFiltro">Exibir tabela</button>
 					</div>
-				</div>
 
-				<div class="col-2">
-					<div class="custom-control custom-checkbox">
-						<input formControlName="showInfo" type="checkbox" (change)="getTableConfig()"
-							class="custom-control-input" id="checkInfo">
-						<label class="custom-control-label" for="checkInfo">
-							Informativo
-						</label>
+					<div id="conteudoPainelFiltro" class="conteudo collapse">
+						<cx-datatable [settings]="configSimples" [trigger]="dtTrigger" columnFilterPosition="top">
+							<table datatable class="table">
+								<thead>
+									<tr>
+										<th data-filter="input">Prato</th>
+										<th>Ingrediente</th>
+										<th data-filter="select">Medida</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let row of rows.slice(0, 10)">
+										<td>{{ row.dish }}</td>
+										<td>{{ row.ingredient }}</td>
+										<td>{{ row.measurement }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</cx-datatable>
 					</div>
-				</div>
+				</app-documentacao-template>
 
-				<div class="col-2">
-					<div class="custom-control custom-checkbox">
-						<input formControlName="showLength" type="checkbox" (change)="getTableConfig()"
-							class="custom-control-input" id="checkLength">
-						<label class="custom-control-label" for="checkLength">
-							Linhas por página
-						</label>
+				<br>
+
+				<app-documentacao-template id="painelDatatableReinicializacao"
+				[cardTitle]="'Reinicialização'" 
+				[codeViewId]="'codePainelReload'">
+					<div class="descricao">
+						<p>Na grande maioria dos casos os dados das tabelas são carregados de fontes assíncronas, como uma consulta a um serviço.
+							Assim, quando os dados da tabela forem atualizados, há duas maneiras de reinicializar a DataTable.</p>
+
+						<p>Uma delas é a forma exibida nos exemplos anteriores. O componente 
+							<span class="citation-highlight">cx-datatable</span> recebe no atributo <span class="citation-highlight">trigger</span>
+							um <span class="citation-highlight">Subject</span>. Quando for necessário atualizar a tabela, basta chamar 
+							<span class="citation-highlight">subject.next( )</span>.</p>
+
+						<p>A alternativa é acessar o componente diretamente. Coloca-se uma template string no componente
+							<span class="citation-highlight">cx-datatable</span>, e então o seleciona utilizando o recurso <span class="citation-highlight">@ViewChild</span>.
+							Para atualizar a tabela, chama-se o método <span class="citation-highlight">datatable.reloadTable( )</span>.
+						</p>
+
+						<p>OBS: O atributo "static: true" na configuração do @ViewChild é necessário quando há a possibilidade da tabela ser retirada do DOM, estando
+							dentro de um ngIf, por exemplo.
+						</p>
+
+						<h6 class="font-fam-bold">HTML:</h6>
+						<pre><code [highlight]="codeHtmlTemplateString"></code></pre> 
+
+						<h6 class="font-fam-bold">TS:</h6>
+						<pre><code [highlight]="codeTsTemplateString"></code></pre> 
 					</div>
-				</div>
 
-			</div>
-			<div class="row">
+					<div id="conteudoPainelReload" class="conteudo collapse">
+					</div>
+				</app-documentacao-template>
+			</section>
 
-				<div class="col-3 my-3">
-					<label>Filtro por coluna</label>
-					<select (change)="updateConfigOption('columnFilterType', $event.target.value)" class="custom-select">
-						<option value="">Nenhum</option>
-						<option value="input" selected>Campo simples</option>
-						<option value="select">Campo select</option>
-					</select>
-				</div>
-
-				<div class="col-3 my-3">
-					<label>Posição do filtro</label>
-					<select (change)="setFilterPosition($event.target.value)" class="custom-select">
-						<option value="top" selected>Topo</option>
-						<option value="bottom">Rodapé</option>
-					</select>
-				</div>
-
-				<div class="col-3 my-3">
-					<button class="btn btn-secundario" (click)="fetchData()">Buscar novos dados</button>
-				</div>
-
-				<div class="col-3 my-3">
-					<button class="btn btn-secundario" (click)="showTable = !showTable">Exibir / Ocultar</button>
-				</div>
-			</div>
-		</form>
+			<nav id="navSection" class="d-none col-3 d-xl-flex pl-4">
+				<app-code-fixed-nav [items]="navItems" [currentSection]="currentSection">
+				</app-code-fixed-nav>
+			</nav>
+		</div>
 	</div>
 
-	<hr class="my-5">
-
-	<div id="cardTabelaSandbox" class="my-3" *ngIf="showTable">
-		<h5 class="header-caixa mb-4">Tabela</h5>
-		<cx-datatable [settings]="configCompleta" #tabela>
-			<table datatable class="table">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Prato</th>
-						<th>Ingrediente</th>
-						<th>Medida</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let row of rows">
-						<td>{{ row.id }}</td>
-						<td>{{ row.dish }}</td>
-						<td>{{ row.ingredient }}</td>
-						<td>{{ row.measurement }}</td>
-					</tr>
-				</tbody>
-			</table>
-		</cx-datatable>
+	<div class="tab-pane fade" id="api" role="tabpanel">
+		Em construção...
 	</div>
 
-	<!-- 	<div id="cardTabelaSandbox2" class="card my-3">
-		<div class="card-body">
-			<cx-datatable [columnFilterType]="'select'" [columnFilterPosition]="'top'" #tabela2>
+	<div class="tab-pane fade" id="exemplos" role="tabpanel">
+		<div id="cardFiltros" class="mb-4">
+			<form [formGroup]="formDTConfig">
+				<h5 class="header-caixa mb-4">Opções</h5>
+				<div class="row align-items-center mb-3">
+					<div class="col-2">
+						<div class="custom-control custom-checkbox">
+							<input formControlName="showButtons" type="checkbox" (change)="getTableConfig()"
+								class="custom-control-input" id="checkBotoes">
+							<label class="custom-control-label" for="checkBotoes">
+								Botões
+							</label>
+						</div>
+					</div>
+
+					<div class="col-2">
+						<div class="custom-control custom-checkbox">
+							<input formControlName="showFilter" type="checkbox" (change)="getTableConfig()"
+								class="custom-control-input" id="checkFiltro">
+							<label class="custom-control-label" for="checkFiltro">
+								Filtro Geral
+							</label>
+						</div>
+					</div>
+
+					<div class="col-2">
+						<div class="custom-control custom-checkbox">
+							<input formControlName="showPagination" type="checkbox" (change)="getTableConfig()"
+								class="custom-control-input" id="checkPaging">
+							<label class="custom-control-label" for="checkPaging">
+								Paginação
+							</label>
+						</div>
+					</div>
+
+					<div class="col-2">
+						<div class="custom-control custom-checkbox">
+							<input formControlName="showInfo" type="checkbox" (change)="getTableConfig()"
+								class="custom-control-input" id="checkInfo">
+							<label class="custom-control-label" for="checkInfo">
+								Informativo
+							</label>
+						</div>
+					</div>
+
+					<div class="col-2">
+						<div class="custom-control custom-checkbox">
+							<input formControlName="showLength" type="checkbox" (change)="getTableConfig()"
+								class="custom-control-input" id="checkLength">
+							<label class="custom-control-label" for="checkLength">
+								Linhas por página
+							</label>
+						</div>
+					</div>
+
+				</div>
+				<div class="row">
+
+					<div class="col-3 my-3">
+						<label>Filtro por coluna</label>
+						<select (change)="updateConfigOption('columnFilterType', $event.target.value)" class="custom-select">
+							<option value="">Nenhum</option>
+							<option value="input" selected>Campo simples</option>
+							<option value="select">Campo select</option>
+						</select>
+					</div>
+
+					<div class="col-3 my-3">
+						<label>Posição do filtro</label>
+						<select (change)="setFilterPosition($event.target.value)" class="custom-select">
+							<option value="top" selected>Topo</option>
+							<option value="bottom">Rodapé</option>
+						</select>
+					</div>
+
+					<div class="col-3 my-3">
+						<button class="btn btn-secundario" (click)="fetchData()">Buscar novos dados</button>
+					</div>
+
+					<div class="col-3 my-3">
+						<button class="btn btn-secundario" (click)="showTable = !showTable">Exibir / Ocultar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<hr class="my-5">
+
+		<div id="cardTabelaSandbox" class="my-3" *ngIf="showTable">
+			<h5 class="header-caixa mb-4">Tabela</h5>
+ 			<cx-datatable [settings]="configCompleta" [trigger]="dtTrigger" #tabela>
 				<table datatable class="table">
 					<thead>
 						<tr>
 							<th>ID</th>
 							<th>Prato</th>
-
 							<th>Ingrediente</th>
 							<th>Medida</th>
 						</tr>
@@ -141,7 +305,6 @@
 						<tr *ngFor="let row of rows">
 							<td>{{ row.id }}</td>
 							<td>{{ row.dish }}</td>
-			
 							<td>{{ row.ingredient }}</td>
 							<td>{{ row.measurement }}</td>
 						</tr>
@@ -149,253 +312,5 @@
 				</table>
 			</cx-datatable>
 		</div>
-	</div> -->
-</section>
-
-
-<div class="row no-gutters" *ngIf="false">
-	<section #scrollElement class="col-12 col-xl-9 pr-2 mb-5">
-		<app-documentacao-template id="painelTabelaDatatable" [cardTitle]="'Datatable'" [codeViewId]="'viewDatatable'"
-			[htmlTabId]="'htmlCodeDatatable'" [htmlCode]="htmlCodeDatatable" [tsTabId]="'tsCodeDatatable'"
-			[tsCode]="tsCodeDatatable">
-			<div class="descricao">
-				A diretiva <span class="citation-highlight">datatable</span> acrescenta diversos recursos à tabela
-				automaticamente.
-			</div>
-
-			<div class="conteudo">
-				<div class="table-responsive">
-					<table datatable class="table table-caixa responsive">
-						<thead>
-							<tr>
-								<th>Coluna 1</th>
-								<th>Coluna 2</th>
-								<th>Coluna 3</th>
-								<th>Coluna 4</th>
-								<th>Coluna 5</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let row of rows">
-								<td>Linha {{ row }}</td>
-								<td>Linha {{ row }}</td>
-								<td>Linha {{ row }}</td>
-								<td>Linha {{ row }}</td>
-								<td>Linha {{ row }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</app-documentacao-template>
-
-		<br class="my-3">
-
-		<app-documentacao-template id="painelDatatableCustom" [cardTitle]="'Datatable Customizada'"
-			[codeViewId]="'viewDatatableCustom'" [htmlTabId]="'htmlCodeDatatableCustom'"
-			[htmlCode]="htmlCodeDatatableCustom" [tsTabId]="'tsCodeDatatableCustom'" [tsCode]="tsCodeDatatableCustom">
-			<div class="descricao">
-				A classe <span class="citation-highlight">DatatableConfig</span> possui métodos e atributos auxiliares
-				para personalizar
-				a Datatable.
-			</div>
-
-			<div class="conteudo">
-				<div class="table-responsive">
-					<h5 class="header-caixa">Personalizada</h5>
-					<table datatable [dtOptions]="dtCustomOptions" class="table table-caixa">
-						<thead>
-							<tr>
-								<th>Coluna 1</th>
-								<th>Coluna 2</th>
-								<th>Coluna 3</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let row of rows | slice:0:5; let i = index">
-								<td>Linha {{ row }}</td>
-								<td>Linha {{ row }}</td>
-								<td>Linha {{ row }}</td>
-							</tr>
-						</tbody>
-					</table>
-
-					<hr class="my-5">
-
-					<h5 class="header-caixa">Completa</h5>
-					<table datatable [dtOptions]="dtCompleteOptions" class="table table-caixa">
-						<thead>
-							<tr>
-								<th>Coluna 1</th>
-								<th>Coluna 2</th>
-								<th>Coluna 3</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let row of rows | slice:0:5; let i = index">
-								<td>Linha {{ row }}</td>
-								<td>Linha {{ row }}</td>
-								<td>Linha {{ row }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</app-documentacao-template>
-
-		<br class="my-3">
-
-		<app-documentacao-template id="painelTabelasSimples" [cardTitle]="'Tabelas Simples'" [codeViewId]="'viewTabelas'"
-			[htmlTabId]="'htmlCodeTabelas'" [htmlCode]="htmlCodeTabelasSimples" [tsTabId]="'tsCodeTabelasSimples'"
-			[tsCode]="tsCodeTabelasSimples">
-			<div class="descricao">
-				A classe <span class="citation-highlight">table</span> do Bootstrap acrescida da classe
-				<span class="citation-highlight">table-caixa</span> aplica o estilo básico de tabelas, sem recursos
-				adicionais.
-				<br>
-				As classes auxiliares do Bootstrap como <span class="citation-highlight">table-borderless</span> (sem
-				borda) e
-				<span class="citation-highlight">table-stripped</span> (cor alternada) podem ser utilizadas.
-			</div>
-
-			<div class="conteudo">
-				<div class="table-responsive">
-					<table class="table table-caixa">
-						<thead>
-							<tr>
-								<th>Coluna 1</th>
-								<th>Coluna 2</th>
-								<th>Coluna 3</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let row of rows | slice:0:5; let i = index">
-								<td>Linha {{ row }}</td>
-								<td>Linha {{ row }}</td>
-								<td>Linha {{ row }}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</app-documentacao-template>
-	</section>
-
-	<nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
-		<div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
-			<a (click)="scrollTo('painelTabelaDatatable')" class="list-group-item list-group-item-action"
-				[ngClass]="{'active': currentSection == 'painelTabelaDatatable'}" role="button">
-				Datatable</a>
-			<a (click)="scrollTo('painelDatatableCustom')" class="list-group-item list-group-item-action"
-				[ngClass]="{'active': currentSection == 'painelDatatableCustom'}" role="button">
-				Datatable Customizada</a>
-			<a (click)="scrollTo('painelTabelasSimples')" class="list-group-item list-group-item-action"
-				[ngClass]="{'active': currentSection == 'painelTabelasSimples'}" role="button">
-				Tabelas simples</a>
-		</div>
-	</nav>
+	</div>
 </div>
-
-<section *ngIf="false" id="" class="section-caixa">
-
-	<h3 class="header-subtitulo-caixa">Completa</h3>
-	<ul>
-		<li>Botões auxiliares</li>
-		<li>Filtro (campo 'Pesquisar')</li>
-		<li>Informações de quantidade de registros</li>
-		<li>Títulos ordenáveis em cada coluna</li>
-		<li>Paginação</li>
-	</ul>
-	<div class="table-responsive p-2 mb-4">
-		<table datatable [dtOptions]="" [dtTrigger]="dtTrigger" class="table table-caixa">
-			<thead>
-				<tr>
-					<th>Coluna 1</th>
-					<th>Coluna 2</th>
-					<th>Coluna 3</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let item of rows; let i = index">
-					<td>Linha {{ i }}</td>
-					<td>Linha {{ i }}</td>
-					<td>Linha {{ i }}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-	<h3 class="header-subtitulo-caixa">Simples</h3>
-	<h5 class="mb-4">Pode ser simples, apenas com os títulos ordenáveis.</h5>
-	<div class="table-responsive mb-4">
-		<table datatable [dtOptions]="" id="tableTeste2" class="table table-caixa">
-			<thead>
-				<tr>
-					<th>Coluna 1</th>
-					<th>Coluna 2</th>
-					<th>Coluna 3</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Linha 1</td>
-					<td>Linha 1</td>
-					<td>Linha 1</td>
-				</tr>
-				<tr>
-					<td>Linha 2</td>
-					<td>Linha 2</td>
-					<td>Linha 2</td>
-				</tr>
-				<tr>
-					<td>Linha 3</td>
-					<td>Linha 3</td>
-					<td>Linha 3</td>
-				</tr>
-				<tr>
-					<td>Linha 4</td>
-					<td>Linha 4</td>
-					<td>Linha 4</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-	<h3 class="header-subtitulo-caixa">Customizada</h3>
-	<h5 class="mb-4">Ou ainda ter apenas os componentes desejados.</h5>
-	<div class="table-responsive mb-4">
-		<table datatable [dtOptions]="" id="tableTeste3" class="table table-caixa">
-			<thead>
-				<tr>
-					<th>Coluna 1</th>
-					<th>Coluna 2</th>
-					<th>Coluna 3</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Linha 1</td>
-					<td>Linha 1</td>
-					<td>Linha 1</td>
-				</tr>
-				<tr>
-					<td>Linha 2</td>
-					<td>Linha 2</td>
-					<td>Linha 2</td>
-				</tr>
-				<tr>
-					<td>Linha 3</td>
-					<td>Linha 3</td>
-					<td>Linha 3</td>
-				</tr>
-				<tr>
-					<td>Linha 4</td>
-					<td>Linha 4</td>
-					<td>Linha 4</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-
-</section>

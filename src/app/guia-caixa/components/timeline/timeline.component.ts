@@ -72,7 +72,6 @@ export class TimelineComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngAfterViewInit() {
     if (this.perfectScroll) {
-      console.log(this.perfectScroll);
       this.perfectScroll.directiveRef.update();
       this.perfectScroll.directiveRef.scrollToBottom();
     }
