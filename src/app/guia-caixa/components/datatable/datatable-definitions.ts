@@ -1,7 +1,7 @@
 export class DataTableButtons {
 
     // private to disallow creating other instances of this type
-    private constructor(public readonly value: any) {}
+    private constructor(public readonly button: any) {}
 
     static readonly PRINT = new DataTableButtons(
         { extend: "print", className: "btn btn-sm btn-outline-secundario" }
@@ -33,8 +33,8 @@ export enum DataTableColumnFilterPosition {
 }
 
 export const DatatableDefaultButtonsList = [
-    DataTableButtons.PRINT,
-    DataTableButtons.EXCEL
+    DataTableButtons.PRINT.button,
+    DataTableButtons.EXCEL.button
 ];
 
 export interface DataTableSettings extends DataTables.Settings {
@@ -114,7 +114,6 @@ export class DataTableConfig {
         showFilter: true,
         showLength: false,
         showButtons: false,
-        showTable: true,
         showInfo: true,
         showProcessing: true,
         showPagination: true
@@ -126,7 +125,6 @@ export class DataTableConfig {
         showFilter: true,
         showLength: true,
         showButtons: true,
-        showTable: true,
         showInfo: true,
         showProcessing: true,
         showPagination: true
@@ -137,7 +135,6 @@ export class DataTableConfig {
         showFilter: true,
         showLength: true,
         showButtons: false,
-        showTable: true,
         showInfo: true,
         showProcessing: true,
         showPagination: true
