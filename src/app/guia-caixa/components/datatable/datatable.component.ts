@@ -23,7 +23,7 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
   dtElement: DataTableDirective;
 
   @Input()
-  settings: DataTables.Settings = DataTableConfig.DEFAULT_SETTINGS;
+  settings: DataTableSettings = DataTableConfig.DEFAULT_SETTINGS;
 
   @Input()
   columnFilterType: DataTableColumnFilterType | string = DataTableColumnFilterType.NONE;
@@ -46,8 +46,8 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.setDefaultLanguage();
     this.setDefaultClasses();
     if (!this.dtElement.dtTrigger) { this.dtElement.dtTrigger = new Subject<any>() as any; }
-    this.settings["columnFilterType"] = this.columnFilterType;
-    this.settings["columnFilterPosition"] = this.columnFilterPosition;
+    this.settings.columnFilterType = this.columnFilterType;
+    this.settings.columnFilterPosition = this.columnFilterPosition;
     this.dtElement.dtOptions = this.settings;
   }
 
@@ -102,7 +102,7 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private drawColumnFilters(dtInstance: DataTables.Api, thead, tfoot, tbody, isInitialDraw): void {
-    const columnFilterType = this.settings["columnFilterType"];
+    const columnFilterType = this.settings.columnFilterType;
 
     if (!columnFilterType) {
       dtInstance.columns().every(function () {

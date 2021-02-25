@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
+import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef } from "@angular/core";
 import { DataTableDirective } from "angular-datatables";
 import { Subject } from "rxjs";
 
@@ -25,7 +25,8 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
     public toastr: ToastrService,
     public fb: FormBuilder,
     public randomDataService: RandomDataService,
-    public spinner: NgxSpinnerService
+    public spinner: NgxSpinnerService,
+    private cdr: ChangeDetectorRef
   ) {
     super(toastr);
   }
@@ -61,12 +62,19 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
   dtCustomOptions: DataTableSettings = {};
   dtSimpleOptions: DataTableSettings = {};
 
-  config: DataTables.Settings = DataTableConfig.COMPLETE_SETTINGS;
-  configCompleta = DataTableConfig.COMPLETE_SETTINGS;
-  configCompletaSemBotoes = DataTableConfig.COMPLETE_NO_BUTTON_SETTINGS;
-  configFilter = DataTableConfig.FILTER_SETTINGS;
-  configInfo = DataTableConfig.PAGINATION_INFO_SETTINGS;
-  configSimples = DataTableConfig.SIMPLE_SETTINGS;
+  settings: DataTableSettings = DataTableConfig.DEFAULT_SETTINGS;
+  settingsPadrao = DataTableConfig.DEFAULT_SETTINGS;
+  settingsCompleta = DataTableConfig.COMPLETE_SETTINGS;
+  settingsCompletaSemBotoes = DataTableConfig.COMPLETE_NO_BUTTON_SETTINGS;
+  settingsFilter = DataTableConfig.FILTER_SETTINGS;
+  settingsInfo = DataTableConfig.PAGINATION_INFO_SETTINGS;
+  settingsSimples = DataTableConfig.SIMPLE_SETTINGS;
+  settingsCustom = DataTableConfig.getDataTableSettings({
+    showInfo: true,
+    showPagination: true,
+    showLength: true,
+    menuLength: [5, 10, 15]
+  });
   dtTrigger: Subject<any> = new Subject();
 
   navItems: CodeFixedNavItem[] = [
@@ -87,7 +95,9 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
   codeDataFilterSelect = `<th data-filter="select">Título</th>`;
   codeDataFilterAllColumns = `<cx-datatable columnFilterPosition="bottom" columnFilterType="select">...</cx-datatable>`;
   codeHtmlTemplateString = `<cx-datatable #tabelaExemplo>...</cx-datatable>`;
+
   codeTsTemplateString = `import { Component, ViewChild } from '@angular/core';
+import { DadosTabelaService } from '~dados-tabela.service.ts';
 
 @Component({
   selector: 'app-tabelas',
@@ -101,11 +111,11 @@ export class TabelasComponent {
 
   dadosDaTabela = [];
 
-  constructor() {}
+  constructor(private service: DadosTabelaService) {}
 
   ngOnInit() {
-    this.service.subscribe((resultado: any[]) => {
-      this.dadosDaTabela = resultado;
+    this.service.subscribe((response: any[]) => {
+      this.dadosDaTabela = response;
       if (this.datatable) {
         this.datatable.reloadTable();
       }
@@ -115,7 +125,7 @@ export class TabelasComponent {
 }
 `.trim();
 
-  htmlCodeDatatable = `						<cx-datatable [settings]="configCompleta" [trigger]="dtTrigger">
+  htmlCodeDatatable = `						<cx-datatable [settings]="settingsCompleta" [trigger]="dtTrigger">
   <table datatable class="table">
     <thead>
       <tr>
@@ -136,7 +146,7 @@ export class TabelasComponent {
 
   tsCodeDatatable = `import { Component } from '@angular/core';
 import { DataTableConfig } from "~datatable-definitions";
-import { RandomDataService } from "~random-data.service";
+import { RandomDataService, RandomDataFood } from "~random-data.service";
 
 @Component({
   selector: 'app-tabelas',
@@ -145,7 +155,16 @@ import { RandomDataService } from "~random-data.service";
 })
 export class TabelasComponent {
 
-  configCompleta = DataTableConfig.COMPLETE_SETTINGS;
+  /* Exemplo de configuração pré-definida */
+  settingsCompleta = DataTableConfig.COMPLETE_SETTINGS;
+
+  /* Exemplo de configuração customizada */
+  settingsCustom = DataTableConfig.getDataTableSettings({
+    showInfo: true,
+    showPagination: true,
+    showLength: true,
+    menuLength: [5, 10, 15]
+  });
 
   constructor (
     public randomDataService: RandomDataService
@@ -164,7 +183,7 @@ export class TabelasComponent {
 }
 `.trimRight();
 
-  htmlCodeDatatableFilter = `						<cx-datatable [settings]="configInfo" [trigger]="dtTrigger" columnFilterPosition="top">
+  htmlCodeDatatableFilter = `						<cx-datatable [settings]="settingsCustom" [trigger]="dtTrigger" columnFilterPosition="top">
   <table datatable class="table">
     <thead>
       <tr>
@@ -185,7 +204,7 @@ export class TabelasComponent {
 
   tsCodeDatatableFilter = `import { Component } from '@angular/core';
 import { DataTableConfig } from "~datatable-definitions";
-import { RandomDataService } from "~random-data.service";
+import { RandomDataService, RandomDataFood } from "~random-data.service";
 
   @Component({
     selector: 'app-tabelas',
@@ -194,7 +213,12 @@ import { RandomDataService } from "~random-data.service";
   })
   export class TabelasComponent {
 
-    configSimples = DataTableConfig.SIMPLE_SETTINGS;
+    settingsCustom = DataTableConfig.getDataTableSettings({
+      showInfo: true,
+      showPagination: true,
+      showLength: true,
+      menuLength: [5, 10, 15]
+    });
 
     constructor (
       public randomDataService: RandomDataService
@@ -231,29 +255,32 @@ import { RandomDataService } from "~random-data.service";
     this.dtTrigger.unsubscribe();
   }
 
-  updateConfig(newConfig: DataTableConfig) {
-    this.config = JSON.parse(JSON.stringify(newConfig));
+  updateSettings(newConfig: DataTableConfig) {
+    this.settings = JSON.parse(JSON.stringify(newConfig));
+    console.log(this.settings);
+    this.cdr.detectChanges();
+    this.table.updateSettings(this.settings);
   }
 
-  updateConfigOption(option: string, value: boolean) {
+  updateConfigOption(option: string, value: any) {
     switch (option) {
       case "buttons":
-        this.config["buttons"] = value ? DatatableDefaultButtonsList : [];
+        this.settings["buttons"] = value ? DatatableDefaultButtonsList : [];
         break;
       case "filter":
-        this.config.searching = value;
+        this.settings.searching = value;
         break;
       case "pagination":
-        this.config.paging = value;
+        this.settings.paging = value;
         break;
       case "length":
-        this.config.lengthChange = value;
+        this.settings.lengthChange = value;
         break;
       case "columnFilterType":
-        this.config["columnFilterType"] = value;
+        this.settings.columnFilterType = value;
         break;
     }
-    this.table.updateSettings(this.config);
+    this.table.updateSettings(this.settings);
   }
 
   getTableConfig() {
@@ -263,12 +290,16 @@ import { RandomDataService } from "~random-data.service";
       this.formDTConfig.get("buttons").setValue([]);
     }
     const newConfig = DataTableConfig.getDataTableSettings(this.formDTConfig.value);
-    this.config = JSON.parse(JSON.stringify(newConfig));
-    this.table.updateSettings(this.config);
+    this.settings = JSON.parse(JSON.stringify(newConfig));
+    this.table.updateSettings(this.settings);
+  }
+
+  hasProperty(prop: string) {
+    return this.settings.dom.toLowerCase().includes(prop);
   }
 
   printConfig(): any {
-    const configPrint = JSON.parse(JSON.stringify(this.config));
+    const configPrint = JSON.parse(JSON.stringify(this.settings));
     configPrint["language"] = null;
     return configPrint;
   }
@@ -291,7 +322,7 @@ import { RandomDataService } from "~random-data.service";
 
   atualizar() {
     // this.getTableConfig();
-    this.config = DataTableConfig.PAGINATION_INFO_SETTINGS;
+    this.settings = DataTableConfig.PAGINATION_INFO_SETTINGS;
     this.table.reloadTable();
   }
 

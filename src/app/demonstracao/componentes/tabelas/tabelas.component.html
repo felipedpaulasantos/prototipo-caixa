@@ -5,34 +5,13 @@
 <div class="my-5">
 	<p>O componente <span class="citation-highlight">cx-datatable</span> em conjunto com a diretiva <span
 		class="citation-highlight">datatable</span>
-	adiciona funcionalidades especiais a tabelas comuns como filtro, organização, paginação, exportação
+	adiciona funcionalidades especiais a tabelas comuns como filtro, ordenação, paginação, exportação
 	em .xls e impressão.</p>
 	
 	<p>O componente implementa a biblioteca <a class="text-secundario" target="_blank"
 			href="https://www.npmjs.com/package/angular-datatables">
 			Angular + Datatables</a>.</p>
 </div>
-
-<!-- <div class="d-flex align-items-center mb-5">
-	<h1 class="header-principal-caixa mb-0">
-		DataTable (Tabela aprimorada)
-	</h1>
-
-	<p>O componente <span class="citation-highlight">cx-datatable</span> em conjunto com a diretiva <span
-		class="citation-highlight">datatable</span>
-	adiciona funcionalidades especiais a tabelas comuns como filtro, organização, paginação, exportação
-	em .xls e impressão.</p>
-
-	<p>O componente implementa a biblioteca <a class="text-secundario" target="_blank"
-			href="https://www.npmjs.com/package/angular-datatables">
-			Angular + Datatables</a>.</p>
-
-	<div class="card d-inline-block w-auto ml-5">
-		<div class="card-body">
-			<i class="fa fa-exclamation-triangle fa-lg text-alerta mr-2"></i> Em desenvolvimento
-		</div>
-	</div>
-</div> -->
 
 <ul class="nav nav-pills tab-caixa" role="tablist">
 	<li class="nav-item">
@@ -81,8 +60,8 @@
 					</div>
 
 					<div class="conteudo collapse" id="conteudoPainelDatatable">
-						<cx-datatable [settings]="configCompleta" [trigger]="dtTrigger">
-							<table datatable class="table">
+						<cx-datatable [settings]="settingsCompleta" [trigger]="dtTrigger">
+							<table datatable class="table table-hover">
 								<thead>
 									<tr>
 										<th>Prato</th>
@@ -134,8 +113,8 @@
 					</div>
 
 					<div id="conteudoPainelFiltro" class="conteudo collapse">
-						<cx-datatable [settings]="configSimples" [trigger]="dtTrigger" columnFilterPosition="top">
-							<table datatable class="table">
+						<cx-datatable [settings]="settingsCustom" [trigger]="dtTrigger" columnFilterPosition="top">
+							<table datatable class="table table-hover">
 								<thead>
 									<tr>
 										<th data-filter="input">Prato</th>
@@ -208,7 +187,7 @@
 				<div class="row align-items-center mb-3">
 					<div class="col-2">
 						<div class="custom-control custom-checkbox">
-							<input formControlName="showButtons" type="checkbox" (change)="getTableConfig()"
+							<input [checked]="settings.configOptions.showButtons" formControlName="showButtons" type="checkbox" (change)="getTableConfig()"
 								class="custom-control-input" id="checkBotoes">
 							<label class="custom-control-label" for="checkBotoes">
 								Botões
@@ -218,7 +197,7 @@
 
 					<div class="col-2">
 						<div class="custom-control custom-checkbox">
-							<input formControlName="showFilter" type="checkbox" (change)="getTableConfig()"
+							<input [checked]="settings.configOptions.showFilter" formControlName="showFilter" type="checkbox" (change)="getTableConfig()"
 								class="custom-control-input" id="checkFiltro">
 							<label class="custom-control-label" for="checkFiltro">
 								Filtro Geral
@@ -228,7 +207,7 @@
 
 					<div class="col-2">
 						<div class="custom-control custom-checkbox">
-							<input formControlName="showPagination" type="checkbox" (change)="getTableConfig()"
+							<input [checked]="settings.configOptions.showPagination" formControlName="showPagination" type="checkbox" (change)="getTableConfig()"
 								class="custom-control-input" id="checkPaging">
 							<label class="custom-control-label" for="checkPaging">
 								Paginação
@@ -238,7 +217,7 @@
 
 					<div class="col-2">
 						<div class="custom-control custom-checkbox">
-							<input formControlName="showInfo" type="checkbox" (change)="getTableConfig()"
+							<input [checked]="settings.configOptions.showInfo" formControlName="showInfo" type="checkbox" (change)="getTableConfig()"
 								class="custom-control-input" id="checkInfo">
 							<label class="custom-control-label" for="checkInfo">
 								Informativo
@@ -248,20 +227,19 @@
 
 					<div class="col-2">
 						<div class="custom-control custom-checkbox">
-							<input formControlName="showLength" type="checkbox" (change)="getTableConfig()"
+							<input [checked]="settings.configOptions.showLength" formControlName="showLength" type="checkbox" (change)="getTableConfig()"
 								class="custom-control-input" id="checkLength">
 							<label class="custom-control-label" for="checkLength">
 								Linhas por página
 							</label>
 						</div>
 					</div>
-
 				</div>
 				<div class="row">
 
 					<div class="col-3 my-3">
 						<label>Filtro por coluna</label>
-						<select (change)="updateConfigOption('columnFilterType', $event.target.value)" class="custom-select">
+						<select [value]="settings['columnFilterType']" (change)="updateConfigOption('columnFilterType', $event.target.value)" class="custom-select">
 							<option value="">Nenhum</option>
 							<option value="input" selected>Campo simples</option>
 							<option value="select">Campo select</option>
@@ -270,18 +248,47 @@
 
 					<div class="col-3 my-3">
 						<label>Posição do filtro</label>
-						<select (change)="setFilterPosition($event.target.value)" class="custom-select">
+						<select [value]="settings['columnFilterPosition']" (change)="setFilterPosition($event.target.value)" class="custom-select">
 							<option value="top" selected>Topo</option>
 							<option value="bottom">Rodapé</option>
 						</select>
 					</div>
-
+				</div>
+				<div class="row">
 					<div class="col-3 my-3">
-						<button class="btn btn-secundario" (click)="fetchData()">Buscar novos dados</button>
+						<button class="btn btn-secundario" (click)="updateSettings(settingsPadrao)">
+							<i class="fa fa-cog mr-2"></i>
+							Configuração Padrão
+						</button>
 					</div>
 
 					<div class="col-3 my-3">
-						<button class="btn btn-secundario" (click)="showTable = !showTable">Exibir / Ocultar</button>
+						<button class="btn btn-secundario" (click)="updateSettings(settingsCompleta)">
+							<i class="fa fa-cog mr-2"></i>
+							Configuração Completa
+						</button>
+					</div>
+
+					<div class="col-3 my-3">
+						<button class="btn btn-secundario" (click)="updateSettings(settingsSimples)">
+							<i class="fa fa-cog mr-2"></i>
+							Configuração Simples
+						</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3 my-3">
+						<button class="btn btn-secundario" (click)="fetchData()">
+							<i class="fa fa-sync mr-2"></i>
+							Buscar novos dados
+						</button>
+					</div>
+
+					<div class="col-3 my-3">
+						<button class="btn btn-secundario" (click)="showTable = !showTable">
+							<i class="fa fa-eye mr-2"></i>
+							Exibir / Ocultar
+						</button>
 					</div>
 				</div>
 			</form>
@@ -291,8 +298,8 @@
 
 		<div id="cardTabelaSandbox" class="my-3" *ngIf="showTable">
 			<h5 class="header-caixa mb-4">Tabela</h5>
- 			<cx-datatable [settings]="configCompleta" [trigger]="dtTrigger" #tabela>
-				<table datatable class="table">
+ 			<cx-datatable [settings]="settings" [trigger]="dtTrigger" #tabela>
+				<table datatable class="table table-hover">
 					<thead>
 						<tr>
 							<th>ID</th>

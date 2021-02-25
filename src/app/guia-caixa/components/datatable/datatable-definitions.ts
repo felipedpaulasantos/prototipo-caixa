@@ -39,63 +39,24 @@ export const DatatableDefaultButtonsList = [
 
 export interface DataTableSettings extends DataTables.Settings {
     buttons?: any;
+    columnFilterType?: DataTableColumnFilterType | string;
+    columnFilterPosition?: DataTableColumnFilterPosition | string;
+    configOptions?: DataTableConfigOptions;
 }
 
 export interface DataTableConfigOptions {
     showFilter?: boolean;
+    searching?: boolean;
     showLength?: boolean;
     showButtons?: boolean;
     showTable?: boolean;
     showInfo?: boolean;
     showProcessing?: boolean;
     showPagination?: boolean;
+    paging?: boolean;
     menuLength?: number[];
     buttons?: any[];
-    searching?: boolean;
 }
-
-export const dtLanguageDefinitionPt = {
-    buttons: {
-        copy: "<i class=\"fas fa-lg fa-copy mr-2\"></i>Copiar",
-        copyTitle: "Copiado",
-        copySuccess: {
-            _: "Copiados %d registros",
-            1: "Copiado 1 registro"
-        },
-        pdf: "<i class=\"fa fa-file-pdf mr-2\"></i>PDF",
-        print: "<i class=\"fa fa-print mr-2\"></i>Imprimir",
-        excel: "<i class=\"fa fa-file-excel mr-2\"></i>Planilha do Excel",
-        colvis: "<i class=\"fa fa-columns mr-2\"></i>Colunas visíveis",
-        pageLength: "<i class=\"fa fa-bars mr-2\"></i>Mostrar <b>%d</b> linhas"
-    },
-    processing: "Processando...",
-    search: "Buscar:",
-    lengthMenu: "Mostrar _MENU_ elementos",
-    info: "Mostrando desde <i>_START_</i> até <i>_END_</i> de <b>_TOTAL_</b> elementos",
-    infoEmpty: "Mostrando nenhum elemento.",
-    infoFiltered: "(filtrado _MAX_ elementos total)",
-    infoPostFix: "",
-    loadingRecords: "Carregando registros...",
-    zeroRecords: "Não foram encontrados registros",
-    emptyTable: "<div class='text-center'>Não há dados disponíveis na tabela</div>",
-    paginate: {
-        first: "Primeiro",
-        previous: "Anterior",
-        next: "Seguinte",
-        last: "Último"
-    },
-    aria: {
-        sortAscending: ": Ativar para ordenar a tabela em ordem ascendente",
-        sortDescending: ": Ativar para ordenar a tabela em ordem descendente"
-    },
-    select: {
-        rows: {
-            _: " - %d linhas selecionadas",
-            0: " - Clique em uma linha para selecioná-la",
-            1: " - 1 linha selecionada"
-        }
-    }
-};
 
 export class DataTableConfig {
 
@@ -154,7 +115,16 @@ export class DataTableConfig {
         showPagination: true
     });
 
-    static SIMPLE_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({});
+    static SIMPLE_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({
+        searching: true,
+        showFilter: false,
+        showLength: false,
+        showButtons: false,
+        showInfo: false,
+        showProcessing: false,
+        showPagination: false,
+        paging: false
+    });
 
     static getDataTableSettings(options: DataTableConfigOptions): DataTableSettings {
 
@@ -164,7 +134,6 @@ export class DataTableConfig {
             language: dtLanguageDefinitionPt,
             responsive: true
         };
-        let paging = false;
         let preTableElements = "";
         let postTableElements = "";
 
@@ -182,7 +151,7 @@ export class DataTableConfig {
             postTableElements = postTableElements += this.SHOW_INFO;
         }
         if (options.showPagination) {
-            paging = true;
+            options.paging = true;
             postTableElements = postTableElements += this.SHOW_PAGINATION;
         }
         if (options.buttons && options.buttons.length > 0) {
@@ -193,8 +162,52 @@ export class DataTableConfig {
         }
         const dtDom = preTableElements + this.SHOW_TABLE + postTableElements;
         customSettings.dom = dtDom;
-        customSettings.paging = paging || true;
-        customSettings.searching = options.searching || true;
+        customSettings.paging = (options.paging === false) ? options.paging : true;
+        customSettings.searching = (options.searching === false) ? options.searching : true;
+        customSettings.configOptions = options;
         return customSettings;
     }
 }
+
+export const dtLanguageDefinitionPt = {
+    buttons: {
+        copy: "<i class=\"fas fa-lg fa-copy mr-2\"></i>Copiar",
+        copyTitle: "Copiado",
+        copySuccess: {
+            _: "Copiados %d registros",
+            1: "Copiado 1 registro"
+        },
+        pdf: "<i class=\"fa fa-file-pdf mr-2\"></i>PDF",
+        print: "<i class=\"fa fa-print mr-2\"></i>Imprimir",
+        excel: "<i class=\"fa fa-file-excel mr-2\"></i>Exportar para planilha",
+        colvis: "<i class=\"fa fa-columns mr-2\"></i>Colunas visíveis",
+        pageLength: "<i class=\"fa fa-bars mr-2\"></i>Mostrar <b>%d</b> linhas"
+    },
+    processing: "Processando...",
+    search: "Buscar:",
+    lengthMenu: "Mostrar _MENU_ elementos",
+    info: "Mostrando desde <i>_START_</i> até <i>_END_</i> de <b>_TOTAL_</b> elementos",
+    infoEmpty: "Mostrando nenhum elemento.",
+    infoFiltered: "(filtrado _MAX_ elementos total)",
+    infoPostFix: "",
+    loadingRecords: "Carregando registros...",
+    zeroRecords: "Não foram encontrados registros",
+    emptyTable: "<div class='text-center'>Não há dados disponíveis na tabela</div>",
+    paginate: {
+        first: "Primeiro",
+        previous: "Anterior",
+        next: "Seguinte",
+        last: "Último"
+    },
+    aria: {
+        sortAscending: ": Ativar para ordenar a tabela em ordem ascendente",
+        sortDescending: ": Ativar para ordenar a tabela em ordem descendente"
+    },
+    select: {
+        rows: {
+            _: " - %d linhas selecionadas",
+            0: " - Clique em uma linha para selecioná-la",
+            1: " - 1 linha selecionada"
+        }
+    }
+};
