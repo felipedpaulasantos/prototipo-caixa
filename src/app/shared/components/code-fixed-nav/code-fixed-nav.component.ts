@@ -8,6 +8,7 @@ export interface CodeFixedNavItem {
 @Component({
   selector: "app-code-fixed-nav",
   templateUrl: "./code-fixed-nav.component.html",
+  styleUrls: ["./code-fixed-nav.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CodeFixedNavComponent implements OnInit {
