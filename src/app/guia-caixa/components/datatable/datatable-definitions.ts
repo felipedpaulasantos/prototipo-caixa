@@ -1,44 +1,3 @@
-enum DataTableButtons {
-    COLVIS = "colvis",
-    COPY = "copy",
-    PRINT = "print",
-    EXCEL = "excel"
-}
-
-export enum DataTableColumnFilterType {
-    INPUT = "input",
-    SELECT = "select",
-    NONE = "none"
-}
-
-export enum DataTableColumnFilterPosition {
-    TOP = "top",
-    BOTTOM = "bottom",
-    NONE = "none"
-}
-
-export const DatatableDefaultButtonsList = [
-    { extend: "print", className: "btn btn-sm btn-outline-secundario" },
-    { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
-];
-
-export interface DataTableSettings extends DataTables.Settings {
-    buttons?: any;
-}
-
-export interface DataTableConfigOptions {
-    showFilter?: boolean;
-    showLength?: boolean;
-    showButtons?: boolean;
-    showTable?: boolean;
-    showInfo?: boolean;
-    showProcessing?: boolean;
-    showPagination?: boolean;
-    menuLength?: number[];
-    buttons?: any[];
-    searching?: boolean;
-}
-
 export const dtLanguageDefinitionPt = {
     buttons: {
         copy: "<i class=\"fas fa-lg fa-copy mr-2\"></i>Copiar",
@@ -49,7 +8,7 @@ export const dtLanguageDefinitionPt = {
         },
         pdf: "<i class=\"fa fa-file-pdf mr-2\"></i>PDF",
         print: "<i class=\"fa fa-print mr-2\"></i>Imprimir",
-        excel: "<i class=\"fa fa-file-excel mr-2\"></i>Planilha do Excel",
+        excel: "<i class=\"fa fa-file-excel mr-2\"></i>Exportar para planilha",
         colvis: "<i class=\"fa fa-columns mr-2\"></i>Colunas visíveis",
         pageLength: "<i class=\"fa fa-bars mr-2\"></i>Mostrar <b>%d</b> linhas"
     },
@@ -82,6 +41,66 @@ export const dtLanguageDefinitionPt = {
     }
 };
 
+export class DataTableButtons {
+
+    // private to disallow creating other instances of this type
+    private constructor(public readonly button: any) {}
+
+    static readonly PRINT = new DataTableButtons(
+        { extend: "print", className: "btn btn-sm btn-outline-secundario" }
+    );
+
+    static readonly EXCEL = new DataTableButtons(
+        { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
+    );
+
+    static readonly COPY = new DataTableButtons(
+        { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
+    );
+
+    static readonly COLVIS = new DataTableButtons(
+        { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
+    );
+}
+
+export enum DataTableColumnFilterType {
+    INPUT = "input",
+    SELECT = "select",
+    NONE = "none"
+}
+
+export enum DataTableColumnFilterPosition {
+    TOP = "top",
+    BOTTOM = "bottom",
+    NONE = "none"
+}
+
+export const DatatableDefaultButtonsList = [
+    DataTableButtons.PRINT.button,
+    DataTableButtons.EXCEL.button
+];
+
+export interface DataTableSettings extends DataTables.Settings {
+    buttons?: any;
+    columnFilterType?: DataTableColumnFilterType | string;
+    columnFilterPosition?: DataTableColumnFilterPosition | string;
+    configOptions?: DataTableConfigOptions;
+}
+
+export interface DataTableConfigOptions {
+    showFilter?: boolean;
+    searching?: boolean;
+    showLength?: boolean;
+    showButtons?: boolean;
+    showTable?: boolean;
+    showInfo?: boolean;
+    showProcessing?: boolean;
+    showPagination?: boolean;
+    paging?: boolean;
+    menuLength?: number[];
+    buttons?: any[];
+}
+
 export class DataTableConfig {
 
     static BTN_CLASS = "btn btn-sm btn-outline-dark-light btn-caixa";
@@ -99,7 +118,6 @@ export class DataTableConfig {
         showFilter: true,
         showLength: false,
         showButtons: false,
-        showTable: true,
         showInfo: true,
         showProcessing: true,
         showPagination: true
@@ -111,7 +129,6 @@ export class DataTableConfig {
         showFilter: true,
         showLength: true,
         showButtons: true,
-        showTable: true,
         showInfo: true,
         showProcessing: true,
         showPagination: true
@@ -122,7 +139,6 @@ export class DataTableConfig {
         showFilter: true,
         showLength: true,
         showButtons: false,
-        showTable: true,
         showInfo: true,
         showProcessing: true,
         showPagination: true
@@ -142,7 +158,16 @@ export class DataTableConfig {
         showPagination: true
     });
 
-    static SIMPLE_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({});
+    static SIMPLE_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({
+        searching: true,
+        showFilter: false,
+        showLength: false,
+        showButtons: false,
+        showInfo: false,
+        showProcessing: false,
+        showPagination: false,
+        paging: false
+    });
 
     static getDataTableSettings(options: DataTableConfigOptions): DataTableSettings {
 
@@ -152,7 +177,6 @@ export class DataTableConfig {
             language: dtLanguageDefinitionPt,
             responsive: true
         };
-        let paging = false;
         let preTableElements = "";
         let postTableElements = "";
 
@@ -170,7 +194,7 @@ export class DataTableConfig {
             postTableElements = postTableElements += this.SHOW_INFO;
         }
         if (options.showPagination) {
-            paging = true;
+            options.paging = true;
             postTableElements = postTableElements += this.SHOW_PAGINATION;
         }
         if (options.buttons && options.buttons.length > 0) {
@@ -181,8 +205,10 @@ export class DataTableConfig {
         }
         const dtDom = preTableElements + this.SHOW_TABLE + postTableElements;
         customSettings.dom = dtDom;
-        customSettings.paging = paging || true;
-        customSettings.searching = options.searching || true;
+        customSettings.paging = (options.paging === false) ? options.paging : true;
+        customSettings.searching = (options.searching === false) ? options.searching : true;
+        customSettings.configOptions = options;
         return customSettings;
     }
 }
+

@@ -7,6 +7,10 @@ export interface ColorTheme {
 }
 
 export class BootstrapTheme {
+
+	// private to disallow creating other instances of this type
+	private constructor(private readonly key: string, public readonly value: ColorTheme) {}
+
 	static readonly PRIMARY = new BootstrapTheme(
 		"PRIMARY", { name: "primary", textColor: "light" });
 
@@ -58,10 +62,6 @@ export class BootstrapTheme {
 			}
 		});
 		return temas;
-	}
-
-	// private to disallow creating other instances of this type
-	private constructor(private readonly key: string, public readonly value: ColorTheme) {
 	}
 
 	toString() {

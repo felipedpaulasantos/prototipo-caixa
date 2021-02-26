@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ContentChild, Input, ChangeDetectionStrategy, ElementRef, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit, AfterViewInit, ContentChild, Input, ChangeDetectionStrategy, ElementRef, ViewEncapsulation, OnDestroy } from "@angular/core";
 import { DataTableDirective } from "angular-datatables";
 import { Subject } from "rxjs";
 import { DataTableColumnFilterPosition, DataTableColumnFilterType, DataTableConfig, DataTableSettings, dtLanguageDefinitionPt } from "./datatable-definitions";
@@ -13,7 +13,7 @@ declare var $: any;
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class DataTableComponent implements OnInit, AfterViewInit {
+export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private readonly TOP_FILTER_CLASS = "d-table-row-group";
   private readonly FILTER_INPUT_CLASS = "form-control";
@@ -23,7 +23,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   dtElement: DataTableDirective;
 
   @Input()
-  settings: DataTables.Settings = DataTableConfig.DEFAULT_SETTINGS;
+  settings: DataTableSettings = DataTableConfig.DEFAULT_SETTINGS;
 
   @Input()
   columnFilterType: DataTableColumnFilterType | string = DataTableColumnFilterType.NONE;
@@ -46,10 +46,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     this.setDefaultLanguage();
     this.setDefaultClasses();
     if (!this.dtElement.dtTrigger) { this.dtElement.dtTrigger = new Subject<any>() as any; }
-    this.settings["columnFilterType"] = this.columnFilterType;
-    this.settings["columnFilterPosition"] = this.columnFilterPosition;
+    this.settings.columnFilterType = this.columnFilterType;
+    this.settings.columnFilterPosition = this.columnFilterPosition;
     this.dtElement.dtOptions = this.settings;
-    this.trigger.subscribe(() => this.reloadTable());
   }
 
   ngAfterViewInit(): void {
@@ -57,7 +56,6 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   private drawTable(isInitialDraw = false): void {
-    if (!this.dtElement) { return; }
     this.dtElement.dtTrigger.next();
     this.tableElementRef = this.dtElement["el"];
     this.tableElement = this.tableElementRef.nativeElement;
@@ -72,7 +70,6 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   public reloadTable(): void {
-    if (!this.dtElement || !this.dtElement.dtInstance) { return; }
     this.dtElement.dtOptions = this.settings;
     this.dtElement.dtInstance.then((dtInstance) => {
       dtInstance.destroy();
@@ -105,7 +102,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   private drawColumnFilters(dtInstance: DataTables.Api, thead, tfoot, tbody, isInitialDraw): void {
-    const columnFilterType = this.settings["columnFilterType"];
+    const columnFilterType = this.settings.columnFilterType;
 
     if (!columnFilterType) {
       dtInstance.columns().every(function () {
@@ -119,7 +116,12 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     this.drawInputColumnFilter(dtInstance, columnFilterType);
     this.drawSelectColumnFilter(dtInstance, columnFilterType);
 
-    if (isInitialDraw) { this.reloadTable(); }
+    if (isInitialDraw) {
+      this.reloadTable();
+      this.trigger.subscribe(() => {
+        this.reloadTable();
+      });
+    }
   }
 
   private drawFooter(dtInstance: DataTables.Api, thead: any): any {
@@ -182,6 +184,14 @@ export class DataTableComponent implements OnInit, AfterViewInit {
           select.append("<option value=\"" + d + "\">" + d + "</option>");
         });
       }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.dtElement.dtTrigger.unsubscribe();
+    if (!this.dtElement || !this.dtElement.dtInstance) { return; }
+    this.dtElement.dtInstance.then(dtInstance => {
+      dtInstance.destroy();
     });
   }
 
