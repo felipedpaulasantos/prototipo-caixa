@@ -45,8 +45,12 @@
 }
 
 .dt-buttons {
-  width: 100%;
+  display: flex;
+  margin-left: auto;
   margin-bottom: 1rem;
+  .dt-button {
+    margin-left: 0.5rem;
+  }
 }
 
 .dt-button-collection {

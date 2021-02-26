@@ -4,7 +4,7 @@ import { Subject } from "rxjs";
 
 import { ComponentesInterface } from "../componentes-interface";
 import { ToastrService } from "ngx-toastr";
-import { DataTableSettings, DataTableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/components/datatable/datatable-definitions";
+import { DataTableSettings, DataTableConfig, DatatableDefaultButtonsList, DataTableButtons } from "src/app/guia-caixa/components/datatable/datatable-definitions";
 import { FormBuilder } from "@angular/forms";
 import { DataTableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
 
@@ -74,6 +74,20 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
     showPagination: true,
     showLength: true,
     menuLength: [5, 10, 15]
+  });
+  settingsComTodosBotoes = DataTableConfig.getDataTableSettings({
+    buttons: [
+      DataTableButtons.EXCEL.button,
+      DataTableButtons.PRINT.button,
+/*       DataTableButtons.COPY.button,
+      DataTableButtons.COLVIS.button */
+    ],
+    showButtons: true,
+    showFilter: true,
+    showInfo: true,
+    showLength: true,
+    showPagination: true,
+    showProcessing: true
   });
   dtTrigger: Subject<any> = new Subject();
 
