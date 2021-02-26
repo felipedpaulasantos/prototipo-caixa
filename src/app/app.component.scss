@@ -4,7 +4,7 @@
   height: 100%;
   transition: 0.5s;
   z-index: 1;
-  overflow: auto;
+/*   overflow: auto; */
   padding-top: 64px;
 }
 
@@ -72,5 +72,5 @@ main {
   box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
   display: block;
-  overflow: hidden;
+/*   overflow: hidden; */
 }

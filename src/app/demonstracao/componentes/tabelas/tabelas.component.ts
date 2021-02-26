@@ -4,7 +4,7 @@ import { Subject } from "rxjs";
 
 import { ComponentesInterface } from "../componentes-interface";
 import { ToastrService } from "ngx-toastr";
-import { DataTableSettings, DataTableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa/components/datatable/datatable-definitions";
+import { DataTableSettings, DataTableConfig, DatatableDefaultButtonsList, DataTableButtons } from "src/app/guia-caixa/components/datatable/datatable-definitions";
 import { FormBuilder } from "@angular/forms";
 import { DataTableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
 
@@ -75,6 +75,20 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
     showLength: true,
     menuLength: [5, 10, 15]
   });
+  settingsComTodosBotoes = DataTableConfig.getDataTableSettings({
+    buttons: [
+      DataTableButtons.EXCEL.button,
+      DataTableButtons.PRINT.button,
+/*       DataTableButtons.COPY.button,
+      DataTableButtons.COLVIS.button */
+    ],
+    showButtons: true,
+    showFilter: true,
+    showInfo: true,
+    showLength: true,
+    showPagination: true,
+    showProcessing: true
+  });
   dtTrigger: Subject<any> = new Subject();
 
   navItems: CodeFixedNavItem[] = [
@@ -95,6 +109,25 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
   codeDataFilterSelect = `<th data-filter="select">Título</th>`;
   codeDataFilterAllColumns = `<cx-datatable columnFilterPosition="bottom" columnFilterType="select">...</cx-datatable>`;
   codeHtmlTemplateString = `<cx-datatable #tabelaExemplo>...</cx-datatable>`;
+
+  codeDescricao = `<cx-datatable>
+  <table datatable class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Coluna 1</th>
+        <th>Coluna 2</th>
+        <th>Coluna 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let linha of linhas">
+        <td>{{ linha.dado1 }}</td>
+        <td>{{ linha.dado2 }}</td>
+        <td>{{ linha.dado3 }}</td>
+      </tr>
+    </tbody>
+  </table>
+</cx-datatable>`;
 
   codeTsTemplateString = `import { Component, ViewChild } from '@angular/core';
 import { DadosTabelaService } from '~dados-tabela.service.ts';
@@ -126,7 +159,7 @@ export class TabelasComponent {
 `.trim();
 
   htmlCodeDatatable = `						<cx-datatable [settings]="settingsCompleta" [trigger]="dtTrigger">
-  <table datatable class="table">
+  <table datatable class="table table-striped table-hover">
     <thead>
       <tr>
         <th>Prato</th>
@@ -184,7 +217,7 @@ export class TabelasComponent {
 `.trimRight();
 
   htmlCodeDatatableFilter = `						<cx-datatable [settings]="settingsCustom" [trigger]="dtTrigger" columnFilterPosition="top">
-  <table datatable class="table">
+  <table datatable class="table table-striped table-hover">
     <thead>
       <tr>
         <th data-filter="input">Prato</th>

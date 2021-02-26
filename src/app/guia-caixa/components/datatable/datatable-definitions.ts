@@ -6,14 +6,14 @@ export const dtLanguageDefinitionPt = {
             _: "Copiados %d registros",
             1: "Copiado 1 registro"
         },
-        pdf: "<i class=\"fa fa-file-pdf mr-2\"></i>PDF",
-        print: "<i class=\"fa fa-print mr-2\"></i>Imprimir",
-        excel: "<i class=\"fa fa-file-excel mr-2\"></i>Exportar para planilha",
-        colvis: "<i class=\"fa fa-columns mr-2\"></i>Colunas visíveis",
-        pageLength: "<i class=\"fa fa-bars mr-2\"></i>Mostrar <b>%d</b> linhas"
+        pdf: "<i class=\"fa fa-lg fa-file-pdf mr-2\"></i>PDF",
+        print: "<i class=\"fa fa-lg fa-print mr-2\"></i>Imprimir",
+        excel: "<i class=\"fa fa-lg fa-file-excel mr-2\"></i>Exportar para planilha",
+        colvis: "<i class=\"fa fa-lg fa-columns mr-2\"></i>Colunas visíveis",
+        pageLength: "<i class=\"fa fa-lg fa-bars mr-2\"></i>Mostrar <b>%d</b> linhas"
     },
     processing: "Processando...",
-    search: "Buscar:",
+    search: `<i class="fa fa-search fa-lg mr-2"></i>`,
     lengthMenu: "Mostrar _MENU_ elementos",
     info: "Mostrando desde <i>_START_</i> até <i>_END_</i> de <b>_TOTAL_</b> elementos",
     infoEmpty: "Mostrando nenhum elemento.",
@@ -43,7 +43,6 @@ export const dtLanguageDefinitionPt = {
 
 export class DataTableButtons {
 
-    // private to disallow creating other instances of this type
     private constructor(public readonly button: any) {}
 
     static readonly PRINT = new DataTableButtons(
@@ -55,11 +54,11 @@ export class DataTableButtons {
     );
 
     static readonly COPY = new DataTableButtons(
-        { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
+        { extend: "copy", className: "btn btn-sm btn-outline-secundario" }
     );
 
     static readonly COLVIS = new DataTableButtons(
-        { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
+        { extend: "colvis", className: "btn btn-sm btn-outline-secundario" }
     );
 }
 
@@ -180,18 +179,18 @@ export class DataTableConfig {
         let preTableElements = "";
         let postTableElements = "";
 
-        if (options.showButtons || (options.buttons && options.buttons.length > 0)) {
-            preTableElements = preTableElements += this.SHOW_BUTTONS;
-        }
         if (options.showFilter) {
             preTableElements = preTableElements += this.SHOW_FILTER;
         }
-        if (options.showLength) {
-            preTableElements = preTableElements += this.SHOW_LENGTH;
+        if (options.showButtons || (options.buttons && options.buttons.length > 0)) {
+            preTableElements = preTableElements += this.SHOW_BUTTONS;
         }
         if (options.showProcessing) { preTableElements = preTableElements += this.SHOW_PROCESSING; }
         if (options.showInfo) {
             postTableElements = postTableElements += this.SHOW_INFO;
+        }
+        if (options.showLength) {
+            postTableElements = postTableElements += this.SHOW_LENGTH;
         }
         if (options.showPagination) {
             options.paging = true;
