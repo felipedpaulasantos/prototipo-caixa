@@ -13,7 +13,7 @@ export const dtLanguageDefinitionPt = {
         pageLength: "<i class=\"fa fa-bars mr-2\"></i>Mostrar <b>%d</b> linhas"
     },
     processing: "Processando...",
-    search: "Buscar:",
+    search: `<i class="fa fa-search fa-lg mr-2"></i>`,
     lengthMenu: "Mostrar _MENU_ elementos",
     info: "Mostrando desde <i>_START_</i> até <i>_END_</i> de <b>_TOTAL_</b> elementos",
     infoEmpty: "Mostrando nenhum elemento.",

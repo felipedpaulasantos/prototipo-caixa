@@ -96,6 +96,25 @@ export class TabelasComponent extends ComponentesInterface implements OnInit, On
   codeDataFilterAllColumns = `<cx-datatable columnFilterPosition="bottom" columnFilterType="select">...</cx-datatable>`;
   codeHtmlTemplateString = `<cx-datatable #tabelaExemplo>...</cx-datatable>`;
 
+  codeDescricao = `<cx-datatable>
+  <table datatable class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Coluna 1</th>
+        <th>Coluna 2</th>
+        <th>Coluna 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let linha of linhas">
+        <td>{{ linha.dado1 }}</td>
+        <td>{{ linha.dado2 }}</td>
+        <td>{{ linha.dado3 }}</td>
+      </tr>
+    </tbody>
+  </table>
+</cx-datatable>`;
+
   codeTsTemplateString = `import { Component, ViewChild } from '@angular/core';
 import { DadosTabelaService } from '~dados-tabela.service.ts';
 
@@ -126,7 +145,7 @@ export class TabelasComponent {
 `.trim();
 
   htmlCodeDatatable = `						<cx-datatable [settings]="settingsCompleta" [trigger]="dtTrigger">
-  <table datatable class="table">
+  <table datatable class="table table-striped table-hover">
     <thead>
       <tr>
         <th>Prato</th>
@@ -184,7 +203,7 @@ export class TabelasComponent {
 `.trimRight();
 
   htmlCodeDatatableFilter = `						<cx-datatable [settings]="settingsCustom" [trigger]="dtTrigger" columnFilterPosition="top">
-  <table datatable class="table">
+  <table datatable class="table table-striped table-hover">
     <thead>
       <tr>
         <th data-filter="input">Prato</th>
