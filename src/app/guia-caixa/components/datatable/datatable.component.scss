@@ -11,7 +11,7 @@
 .dataTables_length {
   display: flex;
   margin-bottom: 1rem;
-  width: 50%;
+  width: 30%;
   margin-left: auto;
   label {
     width: 100%;
@@ -73,5 +73,8 @@
   thead th {
     border-top: none;
     border-bottom: solid 1px var(--cxContrast) !important;
+  }
+  tfoot td {
+    padding-left: 0;
   }
 }

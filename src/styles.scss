@@ -30,8 +30,8 @@
 
   --cxBase: $cx-color-white;
   --cxContrast: $cx-color-grafite-dark;
-  --cxPrincipal: $cx-color-secondary;
-  --cxSecundario: $cx-color-primary;
+  --cxDestaque: $cx-color-secondary;
+  --cxPrincipal: $cx-color-primary;
   --cxAux: $cx-color-grafite-light;
   --cxCancel: $cx-color-cinza;
 
@@ -107,7 +107,7 @@ h6 {
     color: var(--cxContrast);
   }
   &.header-principal-caixa {
-    color: var(--cxSecundario);
+    color: var(--cxPrincipal);
     margin-bottom: 2rem;
   }
 }
@@ -327,8 +327,8 @@ label {
   top: 0.1rem;
 }
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: var(--cxSecundario);
-  border-color: var(--cxSecundario);
+  background-color: var(--cxPrincipal);
+  border-color: var(--cxPrincipal);
 }
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
   border-color: var(--cxCancel);
@@ -449,7 +449,7 @@ input[type="number"] {
   }
   &:active, &.active {
     color: var(--cinza-lighter) !important;
-    background-color: var(--cxSecundario);
+    background-color: var(--cxPrincipal);
   }
   &.selected {
     .check-mark {
@@ -478,9 +478,9 @@ ul.nav.nav-pills li a {
 /*   @extend .ripple-dark; */
   &.active,
   &:active {
-    color: var(--cxSecundario) !important;
+    color: var(--cxPrincipal) !important;
     background-color: var(--cxTransparentContrast050) !important;
-    border-bottom: solid 2px var(--cxSecundario);
+    border-bottom: solid 2px var(--cxPrincipal);
     border-radius: 50;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -674,7 +674,7 @@ ul.nav.nav-pills li a {
   background-color: var(--cxBase);
   color: var(--cxContrast);
   &.active, &:active, &:focus {
-    border-color: var(--cxSecundario);
+    border-color: var(--cxPrincipal);
   }
   option {
     font-family: var(--cxFontFamilyNormal);
@@ -730,14 +730,14 @@ select + button.input-caixa {
 }
 
 .list-group-item {
-  background-color: transparent !important;
+  background-color: var(--cxBase) !important;
   border-top: transparent !important;
   border-right: transparent !important;
   border-bottom: transparent !important;
   border: solid 2px transparent !important;
   border-radius: 0 !important;
   &.active {
-    background-color: var(--cxSecundario) !important;
+    background-color: var(--cxPrincipal) !important;
     color: var(--cinza-lighter) !important;
   }
 }
@@ -932,10 +932,10 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 /* CLASSES TEMATICAS */
 
 .text-principal {
-  color: var(--cxPrincipal) !important;
+  color: var(--cxDestaque) !important;
 }
 .text-secundario {
-  color: var(--cxSecundario) !important;
+  color: var(--cxPrincipal) !important;
 }
 .text-base {
   color: var(--cxBase) !important;
@@ -959,14 +959,14 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   color: var(--cxAlerta) !important;
 }
 .text-link {
-  color: var(--cxSecundario) !important;
+  color: var(--cxPrincipal) !important;
 }
 
 .bg-principal {
-  background-color: var(--cxPrincipal) !important;
+  background-color: var(--cxDestaque) !important;
 }
 .bg-secundario {
-  background-color: var(--cxSecundario) !important;
+  background-color: var(--cxPrincipal) !important;
 }
 .bg-base {
   background-color: var(--cxBase) !important;

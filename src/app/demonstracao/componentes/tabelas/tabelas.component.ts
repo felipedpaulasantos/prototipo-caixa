@@ -290,7 +290,6 @@ import { RandomDataService, RandomDataFood } from "~random-data.service";
 
   updateSettings(newConfig: DataTableConfig) {
     this.settings = JSON.parse(JSON.stringify(newConfig));
-    console.log(this.settings);
     this.cdr.detectChanges();
     this.table.updateSettings(this.settings);
   }

@@ -1,5 +1,5 @@
 <h1 class="header-principal-caixa mb-0">
-	DataTable (Tabela aprimorada)
+	DataTable (Em desenvolvimento)
 </h1>
 
 <div class="my-5">
@@ -185,143 +185,147 @@
 	</div>
 
 	<div class="tab-pane fade" id="exemplos" role="tabpanel">
-		<div id="cardFiltros" class="mb-4">
-			<form [formGroup]="formDTConfig">
-				<h5 class="header-caixa mb-4">Opções</h5>
-				<div class="row align-items-center mb-3">
-					<div class="col-2">
-						<div class="custom-control custom-checkbox">
-							<input [checked]="settings.configOptions.showButtons" formControlName="showButtons" type="checkbox" (change)="getTableConfig()"
-								class="custom-control-input" id="checkBotoes">
-							<label class="custom-control-label" for="checkBotoes">
-								Botões
-							</label>
+		<div id="cardFiltros" class="card mb-4">
+			<div class="card-body">
+				<form [formGroup]="formDTConfig">
+					<h5 class="header-caixa mb-4">Opções</h5>
+					<div class="row align-items-center mb-3">
+						<div class="col-2">
+							<div class="custom-control custom-checkbox">
+								<input [checked]="settings.configOptions.showButtons" formControlName="showButtons" type="checkbox" (change)="getTableConfig()"
+									class="custom-control-input" id="checkBotoes">
+								<label class="custom-control-label" for="checkBotoes">
+									Botões
+								</label>
+							</div>
+						</div>
+	
+						<div class="col-2">
+							<div class="custom-control custom-checkbox">
+								<input [checked]="settings.configOptions.showFilter" formControlName="showFilter" type="checkbox" (change)="getTableConfig()"
+									class="custom-control-input" id="checkFiltro">
+								<label class="custom-control-label" for="checkFiltro">
+									Filtro Geral
+								</label>
+							</div>
+						</div>
+	
+						<div class="col-2">
+							<div class="custom-control custom-checkbox">
+								<input [checked]="settings.configOptions.showPagination" formControlName="showPagination" type="checkbox" (change)="getTableConfig()"
+									class="custom-control-input" id="checkPaging">
+								<label class="custom-control-label" for="checkPaging">
+									Paginação
+								</label>
+							</div>
+						</div>
+	
+						<div class="col-2">
+							<div class="custom-control custom-checkbox">
+								<input [checked]="settings.configOptions.showInfo" formControlName="showInfo" type="checkbox" (change)="getTableConfig()"
+									class="custom-control-input" id="checkInfo">
+								<label class="custom-control-label" for="checkInfo">
+									Informativo
+								</label>
+							</div>
+						</div>
+	
+						<div class="col-2">
+							<div class="custom-control custom-checkbox">
+								<input [checked]="settings.configOptions.showLength" formControlName="showLength" type="checkbox" (change)="getTableConfig()"
+									class="custom-control-input" id="checkLength">
+								<label class="custom-control-label" for="checkLength">
+									Linhas por página
+								</label>
+							</div>
 						</div>
 					</div>
-
-					<div class="col-2">
-						<div class="custom-control custom-checkbox">
-							<input [checked]="settings.configOptions.showFilter" formControlName="showFilter" type="checkbox" (change)="getTableConfig()"
-								class="custom-control-input" id="checkFiltro">
-							<label class="custom-control-label" for="checkFiltro">
-								Filtro Geral
-							</label>
+					<div class="row">
+	
+						<div class="col-3 my-3">
+							<label>Filtro por coluna</label>
+							<select [value]="settings['columnFilterType']" (change)="updateConfigOption('columnFilterType', $event.target.value)" class="custom-select">
+								<option value="">Nenhum</option>
+								<option value="input" selected>Campo simples</option>
+								<option value="select">Campo select</option>
+							</select>
+						</div>
+	
+						<div class="col-3 my-3">
+							<label>Posição do filtro</label>
+							<select [value]="settings['columnFilterPosition']" (change)="setFilterPosition($event.target.value)" class="custom-select">
+								<option value="top" selected>Topo</option>
+								<option value="bottom">Rodapé</option>
+							</select>
 						</div>
 					</div>
-
-					<div class="col-2">
-						<div class="custom-control custom-checkbox">
-							<input [checked]="settings.configOptions.showPagination" formControlName="showPagination" type="checkbox" (change)="getTableConfig()"
-								class="custom-control-input" id="checkPaging">
-							<label class="custom-control-label" for="checkPaging">
-								Paginação
-							</label>
+					<div class="row">
+						<div class="col-3 my-3">
+							<button class="btn btn-secundario" (click)="updateSettings(settingsPadrao)">
+								<i class="fa fa-cog mr-2"></i>
+								Configuração Padrão
+							</button>
+						</div>
+	
+						<div class="col-3 my-3">
+							<button class="btn btn-secundario" (click)="updateSettings(settingsComTodosBotoes)">
+								<i class="fa fa-cog mr-2"></i>
+								Configuração Completa
+							</button>
+						</div>
+	
+						<div class="col-3 my-3">
+							<button class="btn btn-secundario" (click)="updateSettings(settingsSimples)">
+								<i class="fa fa-cog mr-2"></i>
+								Configuração Simples
+							</button>
 						</div>
 					</div>
-
-					<div class="col-2">
-						<div class="custom-control custom-checkbox">
-							<input [checked]="settings.configOptions.showInfo" formControlName="showInfo" type="checkbox" (change)="getTableConfig()"
-								class="custom-control-input" id="checkInfo">
-							<label class="custom-control-label" for="checkInfo">
-								Informativo
-							</label>
+					<div class="row">
+						<div class="col-3 my-3">
+							<button class="btn btn-secundario" (click)="fetchData()">
+								<i class="fa fa-sync mr-2"></i>
+								Buscar novos dados
+							</button>
+						</div>
+	
+						<div class="col-3 my-3">
+							<button class="btn btn-secundario" (click)="showTable = !showTable">
+								<i class="fa fa-eye mr-2"></i>
+								Exibir / Ocultar
+							</button>
 						</div>
 					</div>
-
-					<div class="col-2">
-						<div class="custom-control custom-checkbox">
-							<input [checked]="settings.configOptions.showLength" formControlName="showLength" type="checkbox" (change)="getTableConfig()"
-								class="custom-control-input" id="checkLength">
-							<label class="custom-control-label" for="checkLength">
-								Linhas por página
-							</label>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-
-					<div class="col-3 my-3">
-						<label>Filtro por coluna</label>
-						<select [value]="settings['columnFilterType']" (change)="updateConfigOption('columnFilterType', $event.target.value)" class="custom-select">
-							<option value="">Nenhum</option>
-							<option value="input" selected>Campo simples</option>
-							<option value="select">Campo select</option>
-						</select>
-					</div>
-
-					<div class="col-3 my-3">
-						<label>Posição do filtro</label>
-						<select [value]="settings['columnFilterPosition']" (change)="setFilterPosition($event.target.value)" class="custom-select">
-							<option value="top" selected>Topo</option>
-							<option value="bottom">Rodapé</option>
-						</select>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-3 my-3">
-						<button class="btn btn-secundario" (click)="updateSettings(settingsPadrao)">
-							<i class="fa fa-cog mr-2"></i>
-							Configuração Padrão
-						</button>
-					</div>
-
-					<div class="col-3 my-3">
-						<button class="btn btn-secundario" (click)="updateSettings(settingsComTodosBotoes)">
-							<i class="fa fa-cog mr-2"></i>
-							Configuração Completa
-						</button>
-					</div>
-
-					<div class="col-3 my-3">
-						<button class="btn btn-secundario" (click)="updateSettings(settingsSimples)">
-							<i class="fa fa-cog mr-2"></i>
-							Configuração Simples
-						</button>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-3 my-3">
-						<button class="btn btn-secundario" (click)="fetchData()">
-							<i class="fa fa-sync mr-2"></i>
-							Buscar novos dados
-						</button>
-					</div>
-
-					<div class="col-3 my-3">
-						<button class="btn btn-secundario" (click)="showTable = !showTable">
-							<i class="fa fa-eye mr-2"></i>
-							Exibir / Ocultar
-						</button>
-					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 
 		<hr class="my-5">
 
-		<div id="cardTabelaSandbox" class="my-3" *ngIf="showTable">
-			<h5 class="header-caixa mb-4">Tabela</h5>
- 			<cx-datatable [settings]="settings" [trigger]="dtTrigger" #tabela>
-				<table datatable class="table table-striped table-hover">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Prato</th>
-							<th>Ingrediente</th>
-							<th>Medida</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let row of rows">
-							<td>{{ row.id }}</td>
-							<td>{{ row.dish }}</td>
-							<td>{{ row.ingredient }}</td>
-							<td>{{ row.measurement }}</td>
-						</tr>
-					</tbody>
-				</table>
-			</cx-datatable>
+		<div id="cardTabelaSandbox" class="card my-3" *ngIf="showTable">
+			<div class="card-body">
+				<h5 class="header-caixa mb-4">Tabela</h5>
+				<cx-datatable [settings]="settings" [trigger]="dtTrigger" #tabela>
+				  <table datatable class="table table-striped table-hover">
+					  <thead>
+						  <tr>
+							  <th>ID</th>
+							  <th>Prato</th>
+							  <th>Ingrediente</th>
+							  <th>Medida</th>
+						  </tr>
+					  </thead>
+					  <tbody>
+						  <tr *ngFor="let row of rows">
+							  <td>{{ row.id }}</td>
+							  <td>{{ row.dish }}</td>
+							  <td>{{ row.ingredient }}</td>
+							  <td>{{ row.measurement }}</td>
+						  </tr>
+					  </tbody>
+				  </table>
+			  </cx-datatable>
+			</div>
 		</div>
 	</div>
 </div>

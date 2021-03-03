@@ -5,6 +5,7 @@ import { DataTableComponent } from "src/app/guia-caixa/components/datatable/data
 import { loremIpsumPlaceHolder, BootstrapTheme } from "src/app/guia-caixa/constants/constants";
 import { DataTableConfig } from "src/app/guia-caixa/components/datatable/datatable-definitions";
 import { StyleService } from "src/app/shared/services/style.service";
+import { ToastrService } from "ngx-toastr";
 
 
 @Component({
@@ -14,25 +15,43 @@ import { StyleService } from "src/app/shared/services/style.service";
 })
 export class CoresComponent implements OnInit {
 
-  @ViewChild("table", { static: true })
-  table: DataTableComponent;
+  @ViewChild("tableTematicas", { static: true })
+  tableTematicas: DataTableComponent;
+
+  @ViewChild("tableConstantes", { static: true })
+  tableConstantes: DataTableComponent;
 
   cores: any[] = [];
   coresGradiente: any[] = [];
 
-  dtSettings = DataTableConfig.getDataTableSettings({
+  variavelCssExemplo = `.classe-exemplo {
+    color: var(--cxBase);
+    background-color: var(--cxContrast);
+}`;
+
+  dtTematicasSettings = DataTableConfig.getDataTableSettings({
     showFilter: false,
     showInfo: true,
+    paging: false,
+    showPagination: false
+  });
+
+  dtConstantesSettings = DataTableConfig.getDataTableSettings({
+    showFilter: false,
+    showInfo: true,
+    paging: false,
     showPagination: false
   });
 
   coresVariaveis: any[] = [];
+  coresConstantes: any[] = [];
 
   placeholder: string;
 
   constructor(
     private styleService: StyleService,
-    public domSanitizer: DomSanitizer
+    public domSanitizer: DomSanitizer,
+    private toastr: ToastrService
   ) {
     this.placeholder = loremIpsumPlaceHolder;
 
@@ -46,8 +65,20 @@ export class CoresComponent implements OnInit {
         }); */
 
     this.cores = BootstrapTheme.getTemas();
+    this.cores.forEach((cor, index) => {
+      const corConstante = {
+        name: cor.name,
+        valor: this.styleService.getCssVariableValue(`--${cor.name}`),
+        variavel: cor.name,
+        ordem: index
+      };
+      this.coresConstantes.push(corConstante);
+      if (this.tableConstantes) {
+        this.tableConstantes.reloadTable();
+      }
+    });
     this.coresGradiente = BootstrapTheme.getTemas();
-    this.dtSettings.order = [[4, "asc"]];
+    this.dtConstantesSettings.order = [[3, "asc"]];
   }
 
   ngOnInit() {
@@ -55,9 +86,9 @@ export class CoresComponent implements OnInit {
       this.coresVariaveis = [
         {
           nome: "Principal",
-          variavel: "--cxPrincipal",
+          variavel: "--cxDestaque",
           classe: "principal",
-          valor: this.styleService.getCssVariableValue("--cxPrincipal"),
+          valor: this.styleService.getCssVariableValue("--cxDestaque"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `01 - Ações principais: <br><br>
             <button class="btn btn-principal">Contratar</button>
@@ -65,9 +96,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Secundário",
-          variavel: "--cxSecundario",
+          variavel: "--cxPrincipal",
           classe: "secundario",
-          valor: this.styleService.getCssVariableValue("--cxSecundario"),
+          valor: this.styleService.getCssVariableValue("--cxPrincipal"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `02 - Ações secundárias: <br><br>
             <button class="btn btn-secundario">Avançar</button>
@@ -162,9 +193,10 @@ export class CoresComponent implements OnInit {
         }
       ];
       this.coresVariaveis = [].concat(this.coresVariaveis);
-      if (this.table) {
-        this.table.reloadTable();
+      if (this.tableTematicas) {
+        this.tableTematicas.reloadTable();
       }
+      this.dtTematicasSettings.order = [[4, "asc"]];
     });
   }
 
@@ -180,6 +212,7 @@ export class CoresComponent implements OnInit {
     selBox.select();
     document.execCommand("copy");
     document.body.removeChild(selBox);
+    this.toastr.info("Conteúdo copiado", null, { positionClass: "toast-bottom-center" });
   }
 
 }

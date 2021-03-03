@@ -10,8 +10,8 @@ export interface GlobalThemeVariables {
    cxShadowCaixa: string;
    cxShadowCaixaSm: string;
    cxShadowCaixaLg: string;
+   cxDestaque: string;
    cxPrincipal: string;
-   cxSecundario: string;
    cxAux: string;
    cxCancel: string;
    cxSucesso: string;
@@ -45,13 +45,13 @@ export const lightTheme: GlobalThemeVariables = {
    cxSidemenuTextColor: "--grafite",
    cxSidemenuActiveBgColor: "--primary",
    cxSidemenuActiveTextColor: "--white",
-   cxBodyBgColor: "--white",
+   cxBodyBgColor: "--cinza-light",
    cxBodyTextColor: "--grafite",
    cxShadowCaixa: "--cxShadowCaixaDark",
    cxShadowCaixaSm: "--cxShadowCaixaDarkSm",
    cxShadowCaixaLg: "--cxShadowCaixaDarkLg",
-   cxPrincipal: "--secondary",
-   cxSecundario: "--primary",
+   cxDestaque: "--secondary",
+   cxPrincipal: "--primary",
    cxAux: "--grafite-light",
    cxCancel: "--cinza",
    cxSucesso: "--success",
@@ -90,8 +90,8 @@ export const darkTheme: GlobalThemeVariables = {
    cxShadowCaixa: "--cxShadowCaixaLight",
    cxShadowCaixaSm: "--cxShadowCaixaLightSm",
    cxShadowCaixaLg: "--cxShadowCaixaLightLg",
-   cxPrincipal: "--secondary",
-   cxSecundario: "--ceu",
+   cxDestaque: "--secondary",
+   cxPrincipal: "--ceu",
    cxAux: "--cinza",
    cxCancel: "--grafite-light",
    cxSucesso: "--success-lighter",
@@ -102,7 +102,7 @@ export const darkTheme: GlobalThemeVariables = {
    cxAlertaContrast: "--warning",
    cxInfo: "--info-lighter",
    cxInfoContrast: "--info",
-   cxBase: "--grafite-dark",
+   cxBase: "--grafite-darker",
    cxContrast: "--cinza-lighter",
    cxTransparentBase025: "rgba(0, 0, 0, 0.025)",
    cxTransparentBase050: "rgba(0, 0, 0, 0.05)",
@@ -130,8 +130,8 @@ export const darkThemeInverted: GlobalThemeVariables = {
    cxShadowCaixa: "--cxShadowCaixaLight",
    cxShadowCaixaSm: "--cxShadowCaixaLightSm",
    cxShadowCaixaLg: "--cxShadowCaixaLightLg",
-   cxPrincipal: "--secondary",
-   cxSecundario: "--ceu",
+   cxDestaque: "--secondary",
+   cxPrincipal: "--ceu",
    cxAux: "--cinza",
    cxCancel: "--grafite-light",
    cxSucesso: "--success-lighter",
@@ -170,8 +170,8 @@ export const lightBlueTheme: GlobalThemeVariables = {
    cxShadowCaixa: "--cxShadowCaixaDark",
    cxShadowCaixaSm: "--cxShadowCaixaDarkSm",
    cxShadowCaixaLg: "--cxShadowCaixaDarkLg",
-   cxPrincipal: "--secondary",
-   cxSecundario: "--primary",
+   cxDestaque: "--secondary",
+   cxPrincipal: "--primary",
    cxAux: "--grafite",
    cxCancel: "--cinza",
    cxSucesso: "--success",
@@ -210,8 +210,8 @@ export const purpleTheme: GlobalThemeVariables = {
    cxShadowCaixa: "--cxShadowCaixaDark",
    cxShadowCaixaSm: "--cxShadowCaixaDarkSm",
    cxShadowCaixaLg: "--cxShadowCaixaDarkLg",
-   cxPrincipal: "--secondary",
-   cxSecundario: "--uva-darker",
+   cxDestaque: "--secondary",
+   cxPrincipal: "--uva-darker",
    cxAux: "--grafite",
    cxCancel: "--cinza",
    cxSucesso: "--success",
