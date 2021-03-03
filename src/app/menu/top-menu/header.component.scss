@@ -10,20 +10,8 @@
 
 .img-logo {
   min-width: 3rem;
-  max-height: 2rem;
+  max-height: 2.3rem;
 }
-@media (min-width: 768px) {
-  .img-logo {
-    min-width: 3rem;
-  }
-}
-
-@media (min-width: 992px) {
-  .img-logo {
-    min-width: 3rem;
-  }
-}
-
 .logo-title {
     font-size: 1.5rem;
 }
@@ -74,7 +62,7 @@
 }
 
 .theme-example {
-  border: solid 1px var(--cxContrast);
+  border: solid 1px var(--cxContraste);
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 2rem;

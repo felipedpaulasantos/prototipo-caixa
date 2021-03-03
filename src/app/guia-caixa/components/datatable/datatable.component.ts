@@ -71,6 +71,7 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public reloadTable(): void {
     this.dtElement.dtOptions = this.settings;
+    if (!this.dtElement.dtInstance) { return; }
     this.dtElement.dtInstance.then((dtInstance) => {
       dtInstance.destroy();
       this.drawTable();
@@ -94,9 +95,6 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setDefaultClasses(): void {
-
-    console.log($.fn.dataTable.ext.classes);
-
     $.fn.dataTable.ext.classes.sPageButton = "btn btn-sm ml-1";
     $.fn.dataTable.ext.classes.sPageButtonActive = "btn-primary text-base";
 

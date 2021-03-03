@@ -150,7 +150,7 @@
    top: 2.03rem;
    left: 0.69rem;
    margin-right: 0.07rem;
-   color: var(--cxContrast);
+   color: var(--cxContraste);
    background-color: var(--cxCancel);
    font-weight: 400;
  }
@@ -160,7 +160,7 @@
  }
  
  .stepper-wrapper > .stepper > .step.current-step > .step-title > .step-icon {
-   background-color: var(--cxSecundario);
+   background-color: var(--cxPrincipal);
    color: var(--cinza-lighter);
    box-shadow: var(--cxShadowCaixa);
  }
@@ -176,7 +176,7 @@
  }
  
  .stepper-wrapper > .stepper.nav-guided.completed > .step.previous-step > .step-title > .step-icon {
-   color: var(--cxContrast);
+   color: var(--cxContraste);
    background-color: var(--cxCancel);
    font-weight: 400;
  }

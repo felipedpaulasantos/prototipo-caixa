@@ -11,7 +11,7 @@
     transition: box-shadow 0.2s;
   }
   .card-button-wrapper.checked {
-    border: solid 0.07rem var(--cxSecundario);
+    border: solid 0.07rem var(--cxPrincipal);
     box-shadow: var(--cxShadowCaixa) !important;
   }
   
@@ -37,7 +37,7 @@
     max-height: 100%;
   }
   .card-button-wrapper.checked > .row > .card-button-left-side {
-    background-color: var(--cxSecundario);
+    background-color: var(--cxPrincipal);
   }
   
   /* CARD BUTTON RIGHT SIDE */

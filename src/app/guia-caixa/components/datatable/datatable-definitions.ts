@@ -46,19 +46,19 @@ export class DataTableButtons {
     private constructor(public readonly button: any) {}
 
     static readonly PRINT = new DataTableButtons(
-        { extend: "print", className: "btn btn-sm btn-outline-secundario" }
+        { extend: "print", className: "btn btn-sm btn-outline-destaque" }
     );
 
     static readonly EXCEL = new DataTableButtons(
-        { extend: "excel", className: "btn btn-sm btn-outline-secundario" }
+        { extend: "excel", className: "btn btn-sm btn-outline-destaque" }
     );
 
     static readonly COPY = new DataTableButtons(
-        { extend: "copy", className: "btn btn-sm btn-outline-secundario" }
+        { extend: "copy", className: "btn btn-sm btn-outline-destaque" }
     );
 
     static readonly COLVIS = new DataTableButtons(
-        { extend: "colvis", className: "btn btn-sm btn-outline-secundario" }
+        { extend: "colvis", className: "btn btn-sm btn-outline-destaque" }
     );
 }
 

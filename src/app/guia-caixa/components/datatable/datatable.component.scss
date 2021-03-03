@@ -11,11 +11,11 @@
 .dataTables_length {
   display: flex;
   margin-bottom: 1rem;
-  width: 50%;
+  width: 30%;
   margin-left: auto;
   label {
     width: 100%;
-    color: var(--cxContrast);
+    color: var(--cxContraste);
     text-align: right;
   }
   select {
@@ -31,7 +31,7 @@
     display: flex;
     align-items: center;
     margin-left: auto;
-    color: var(--cxContrast);
+    color: var(--cxContraste);
   }
 }
 
@@ -72,6 +72,9 @@
 .table.dataTable {
   thead th {
     border-top: none;
-    border-bottom: solid 1px var(--cxContrast) !important;
+    border-bottom: solid 1px var(--cxContraste) !important;
+  }
+  tfoot td {
+    padding-left: 0;
   }
 }

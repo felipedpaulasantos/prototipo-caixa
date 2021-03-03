@@ -5,7 +5,7 @@
 <ul class="nav nav-pills" role="tablist">
 	<li class="nav-item">
 		<a class="nav-link text-uppercase active" data-toggle="tab" href="#coresVariaveis" role="tab">
-			Cores variáveis
+			Cores temáticas
 		</a>
 	</li>
 	<li class="nav-item">
@@ -16,119 +16,124 @@
 </ul>
 
 <div class="tab-content">
-	<div class="tab-pane fade show active p-2" id="coresVariaveis" role="tabpanel">
-		<cx-datatable [settings]="dtSettings" columnFilterPosition="top" columnFilterType="input" #table>
-			<table id="tabelaCores" datatable class="table table-borderless">
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>Variável</th>
-						<th>Valor</th>
-						<th>Demonstração</th>
-						<th>Utilização</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let cor of coresVariaveis">
-						<td>{{ cor.nome }}</td>
-						<td>{{ cor.variavel }} 
-							<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.variavel)" class="fa fa-copy"></i></button>
-						</td>
-						<td>{{ cor.valor }} 
-							<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
-						</td>
-						<td><div class="square bg-{{ cor.classe }}"></div></td>
-						<td [innerHTML]="cor.utilizacao" class="w-50"></td>
-					</tr>
-				</tbody>
-			</table>
-		</cx-datatable>
+	<div class="tab-pane fade show active" id="coresVariaveis" role="tabpanel">
+		<div class="card">
+			<div class="card-body">
+				<div class="mb-4">
+					<p>As cores temáticas, seguindo o padrão do Bootstrap, representam conceitos e podem variar conforme a mudança do tema global da aplicação.</p>
+		
+					<p>As variáveis das cores temáticas devem ser utilizadas em <b>todos</b> os elementos e componentes da aplicação.</p>
+
+					<p>Para utilizar uma variável CSS, deve-se apenas informar seu valor seguindo a sintaxe abaixo, em qualquer lugar da aplicação:</p>
+
+					<h6 class="header-caixa">CSS</h6>
+					<pre><code [highlight]="variavelCssExemplo"></code></pre>
+				</div>
+				<cx-datatable [settings]="dtTematicasSettings" columnFilterPosition="top" #tableTematicas>
+					<table id="tabelaCores" datatable class="table table-hover">
+						<thead>
+							<tr>
+								<th data-filter="input">Nome</th>
+								<th data-filter="input">Variável</th>
+								<th data-filter="input">Valor</th>
+								<th>Demonstração</th>
+								<th data-filter="input">Utilização</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let cor of coresVariaveis">
+								<td>{{ cor.nome }}</td>
+								<td>{{ cor.variavel }} 
+									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.variavel)" class="fa fa-copy"></i></button>
+								</td>
+								<td>{{ cor.valor }} 
+									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+								</td>
+								<td><div class="square bg-{{ cor.classe }}"></div></td>
+								<td [innerHTML]="cor.utilizacao" class="w-50"></td>
+							</tr>
+						</tbody>
+					</table>
+				</cx-datatable>
+			</div>
+		</div>
 	</div>
 
-
-
-
-
 	<div class="tab-pane fade" id="coresConstantes" role="tabpanel">
-		<div class="table-responsive">
-			<table class="table table-caixa">
-				<thead>
-					<tr>
-						<th>Tema</th>
-						<th>Normal</th>
-						<th>Claro</th>
-						<th>Escuro</th>
-						<th>Texto</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let cor of cores">
-						<td>
-							<h5 class="header-caixa">
-								{{ cor.name }}
-							</h5>
-						</td>
-						<td>
-							<div class="square bg-{{ cor.name }}"></div>
-						</td>
-						<td>
-							<div class="square bg-{{ cor.name }}-light"></div>
-						</td>
-						<td>
-							<div class="square bg-{{ cor.name }}-dark"></div>
-						</td>
-						<td>
-							<h5 class="text-{{ cor.name }}-light font-fam-bold w-100">Título no tom claro</h5>
-							<h5 class="text-{{ cor.name }} font-fam-bold w-100">Título no tom padrão</h5>
-							<h5 class="text-{{ cor.name }}-dark font-fam-bold w-100">Título no tom escuro</h5>
-							<span class="text-{{ cor.name }} mr-2">Texto,</span>
-							<span class="text-{{ cor.name }} font-fam-bold">Negrito</span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="card">
+			<div class="card-body">
+				<div class="mb-4">
+					<p>Todas as cores definidas pelo 
+						<a href="http://design.caixa" target="_blank" class="text-primary">Design System Caixa</a> 
+						estão presentes aqui.</p>
+					<p>Estas cores são imutáveis e devem ser usadas apenas como referência para as variáveis temáticas.</p>
+				</div>
+				<cx-datatable [settings]="dtConstantesSettings" columnFilterPosition="top" #tableConstantes>
+					<table datatable class="table table-hover">
+						<thead>
+							<tr>
+								<th data-filter="input">Nome</th>
+								<th data-filter="input">Variável</th>
+								<th data-filter="input">Valor</th>
+								<th>Demonstração</th>
+<!-- 								<th>Padrão</th>
+								<th>Dark</th>
+								<th>Darker</th> -->
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let cor of coresConstantes">
+								<td>
+									{{ cor.variavel | titlecase }}
+								</td>
+								<td>
+									--{{ cor.variavel }}
+								</td>
+								<td>
+									{{ cor.valor }} 
+									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+								</td>
+								<td>
+									<span class="d-none">{{ cor.ordem }}</span>
+									<div class="square bg-{{ cor.name }}"></div>
+								</td>
+<!-- 								<td>
+									<div class="square bg-{{ cor.name }}-lighter"></div>
+									{{ cor.valor }} 
+									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+								</td>
+								<td>
+									<div class="square bg-{{ cor.name }}-light"></div>
+									{{ cor.valor }} 
+									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+								</td>
+								<td>
+									<div class="square bg-{{ cor.name }}"></div>
+									{{ cor.valor }} 
+									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+								</td>
+								<td>
+									<div class="square bg-{{ cor.name }}-dark"></div>
+									{{ cor.valor }} 
+									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+								</td>
+								<td>
+									<div class="square bg-{{ cor.name }}-darker"></div>
+									{{ cor.valor }} 
+									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+								</td> -->
+		<!-- 						<td>
+									<h5 class="text-{{ cor.name }}-light font-fam-bold w-100">Título no tom claro</h5>
+									<h5 class="text-{{ cor.name }} font-fam-bold w-100">Título no tom padrão</h5>
+									<h5 class="text-{{ cor.name }}-dark font-fam-bold w-100">Título no tom escuro</h5>
+									<span class="text-{{ cor.name }} mr-2">Texto,</span>
+									<span class="text-{{ cor.name }} font-fam-bold">Negrito</span>
+								</td> -->
+							</tr>
+						</tbody>
+					</table>
+				</cx-datatable>
+			</div>
 		</div>
 	</div>
 </div>
-
-
-
-
-<ng-container *ngIf="false">
-	<div *ngFor="let cor of cores" class="card card-caixa mb-3">
-		<div class="card-header">
-			<h5 class="header-caixa text-{{ cor.name }}-dark" [ngClass]="{'text-cinza-darkest': cor.name == 'light'}">
-				{{ cor.name | titlecase }}
-			</h5>
-		</div>
-		<div class="card-body">
-			<div class="row">
-				<ng-container>
-					<div class="col-12 col-xl-6 d-flex align-items-center justify-content-between mb-3">
-						<div class="row no-gutters w-100">
-							<div class="col">
-								<div class="square bg-{{ cor.name }}-light"></div>
-							</div>
-							<div class="col">
-								<div class="square bg-{{ cor.name }}"></div>
-							</div>
-							<div class="col">
-								<div class="square bg-{{ cor.name }}-dark"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-sm-6 col-xl-3 d-flex align-items-center flex-wrap mb-3">
-						<h5 class="text-{{ cor.name }}-light font-fam-bold w-100">Título no tom claro</h5>
-						<h5 class="text-{{ cor.name }} font-fam-bold w-100">Título no tom padrão</h5>
-						<h5 class="text-{{ cor.name }}-dark font-fam-bold w-100">Título no tom escuro</h5>
-					</div>
-					<div class="col-12 col-sm-6 col-xl-3 d-flex align-items-center flex-wrap mb-3">
-						<h5 class="text-{{ cor.name }}-light font-fam-bold header-caixa w-100">Header caixa no tom claro</h5>
-						<h5 class="text-{{ cor.name }} font-fam-bold header-caixa w-100">Header caixa no tom padrão</h5>
-						<h5 class="text-{{ cor.name }}-dark font-fam-bold header-caixa w-100">Header caixa no tom escuro</h5>
-					</div>
-				</ng-container>
-			</div> <!-- Row -->
-		</div> <!-- Card Body -->
-	</div> <!-- Card -->
-</ng-container>

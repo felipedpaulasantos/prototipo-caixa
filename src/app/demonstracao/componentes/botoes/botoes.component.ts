@@ -27,7 +27,7 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
 
   htmlCodeBotoes = `<button class="btn btn-caixa btn-cancel">Botão</button>`.trim();
 
-  htmlCodeBotoesTematicos = `        <button class="btn btn-caixa btn-secundario">Primário</button> &nbsp;
+  htmlCodeBotoesTematicos = `        <button class="btn btn-caixa btn-destaque">Primário</button> &nbsp;
 <button class="btn btn-caixa btn-perigo-dark">Erro com tom escuro</button> &nbsp;
 <button class="btn btn-caixa btn-apoio-light">Apoio com tom claro</button> &nbsp;
 <button class="btn btn-caixa btn-outline-info">Info - outline</button>`.trim();
@@ -35,7 +35,7 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
   htmlCodeBotoesTamanho = `        <button class="btn btn-caixa btn-outline-dark btn-sm">Pequeno</button> &nbsp;
 <button class="btn btn-caixa btn-primario btn-lg">Grande</button> &nbsp;
 <button class="btn btn-caixa btn-primario btn-lg disabled">Grande desabilitado</button> &nbsp;
-<button class="btn btn-caixa btn-outline-secundario">
+<button class="btn btn-caixa btn-outline-destaque">
   <i class="fa fa-edit mr-2"></i>
   Com ícone
 </button>`.trim();

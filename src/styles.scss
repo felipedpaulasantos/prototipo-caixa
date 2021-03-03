@@ -28,10 +28,15 @@
   --cxFontFamilyBold: "Futura LT Bold";
   --cxFontFaIcon: "Font Awesome 5 Free";
 
+  --cxBodyBgColor: $cx-color-porcelana;
+  --cxHeaderBgColor: $cx-color-secondary;
+  --cxHeaderTextColor: $cx-color-cinza-lighter;
+
   --cxBase: $cx-color-white;
-  --cxContrast: $cx-color-grafite-dark;
-  --cxPrincipal: $cx-color-secondary;
-  --cxSecundario: $cx-color-primary;
+  --cxFundo: $cx-color-polar;
+  --cxContraste: $cx-color-grafite-dark;
+  --cxDestaque: $cx-color-secondary;
+  --cxPrincipal: $cx-color-primary;
   --cxAux: $cx-color-grafite-light;
   --cxCancel: $cx-color-cinza;
 
@@ -43,6 +48,9 @@
   --cxAlertaContrast: $cx-color-warning-lighter;
   --cxInfo: $cx-color-info;
   --cxInfoContrast: $cx-color-info-light;
+
+  --cxPorcelana: $cx-color-porcelana;
+  --cxPolar: $cx-color-polar;
 
   --cxTransparentBase025: rgba(255, 255, 255, 0.025);
   --cxTransparentBase050: rgba(255, 255, 255, 0.025);
@@ -78,7 +86,7 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: var(--cxBodyBgColor);
-  color: var(--cxContrast);
+  color: var(--cxContraste);
 }
 
 #headerGeral {
@@ -104,10 +112,10 @@ h6 {
     opacity: 0.9;
   }
   &.header-subtitulo-caixa {
-    color: var(--cxContrast);
+    color: var(--cxContraste);
   }
   &.header-principal-caixa {
-    color: var(--cxSecundario);
+    color: var(--cxPrincipal);
     margin-bottom: 2rem;
   }
 }
@@ -217,7 +225,7 @@ hr.header-line-caixa {
 .toast-container {
   font-family: var(--cxFontFamilyNormal);
   > div.ngx-toastr {
-    background-color: var(--cxContrast);
+    background-color: var(--cxContraste);
     background-image: none !important;
     box-shadow: var(--cxShadowCaixaSm) !important;
     padding: 1.15rem 1.15rem 1.15rem 3.846rem;
@@ -327,8 +335,8 @@ label {
   top: 0.1rem;
 }
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: var(--cxSecundario);
-  border-color: var(--cxSecundario);
+  background-color: var(--cxPrincipal);
+  border-color: var(--cxPrincipal);
 }
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
   border-color: var(--cxCancel);
@@ -373,14 +381,14 @@ th.th-sorting {
   font-weight: 900;
   font-family: var(--cxFontFaIcon) !important;
   float: right;
-  color: var(--cxContrast);
+  color: var(--cxContraste);
   transition: 0.5s;
   font-family: var(--cxFontFamilyBold);
 }
 .table {
   border-bottom: none !important;
   border-color: var(--cxCancel);
-  color: var(--cxContrast);
+  color: var(--cxContraste);
   thead th {
     font-family: var(--cxFontFamilyBold);
     border-bottom: 0 !important;
@@ -443,13 +451,13 @@ input[type="number"] {
   vertical-align: middle;
   display: flex;
   align-items: center;
-  color: var(--cxContrast) !important;
+  color: var(--cxContraste) !important;
   &:hover {
     background-color: var(--cxTransparentContrast025);
   }
   &:active, &.active {
     color: var(--cinza-lighter) !important;
-    background-color: var(--cxSecundario);
+    background-color: var(--cxPrincipal);
   }
   &.selected {
     .check-mark {
@@ -470,7 +478,7 @@ ul.nav.nav-pills {
 }
 
 ul.nav.nav-pills li a {
-  color: var(--cxContrast);
+  color: var(--cxContraste);
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
   font-family: var(--cxFontFamilyBold);
@@ -478,9 +486,9 @@ ul.nav.nav-pills li a {
 /*   @extend .ripple-dark; */
   &.active,
   &:active {
-    color: var(--cxSecundario) !important;
+    color: var(--cxPrincipal) !important;
     background-color: var(--cxTransparentContrast050) !important;
-    border-bottom: solid 2px var(--cxSecundario);
+    border-bottom: solid 2px var(--cxPrincipal);
     border-radius: 50;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -509,7 +517,7 @@ ul.nav.nav-pills li a {
   box-shadow: var(--cxShadowCaixa);
   transition: box-shadow 0.2s ease-in-out;
   background-color: var(--cxBase);
-  color: var(--cxContrast);
+  color: var(--cxContraste);
   border-color: var(--cxCancel);
   .card-header {
     background-color: inherit;
@@ -585,7 +593,7 @@ ul.nav.nav-pills li a {
 /* INPUT */
 
 .form-control {
-  color: var(--cxContrast);
+  color: var(--cxContraste);
   width: 100%;
   padding: 0.375rem 0.5rem;
   border-top: none;
@@ -672,9 +680,9 @@ ul.nav.nav-pills li a {
   border-color: var(--cxAux);
   box-shadow: none !important;
   background-color: var(--cxBase);
-  color: var(--cxContrast);
+  color: var(--cxContraste);
   &.active, &:active, &:focus {
-    border-color: var(--cxSecundario);
+    border-color: var(--cxPrincipal);
   }
   option {
     font-family: var(--cxFontFamilyNormal);
@@ -730,14 +738,14 @@ select + button.input-caixa {
 }
 
 .list-group-item {
-  background-color: transparent !important;
+  background-color: var(--cxBase) !important;
   border-top: transparent !important;
   border-right: transparent !important;
   border-bottom: transparent !important;
   border: solid 2px transparent !important;
   border-radius: 0 !important;
   &.active {
-    background-color: var(--cxSecundario) !important;
+    background-color: var(--cxPrincipal) !important;
     color: var(--cinza-lighter) !important;
   }
 }
@@ -932,16 +940,19 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 /* CLASSES TEMATICAS */
 
 .text-principal {
-  color: var(--cxPrincipal) !important;
+  color: var(--cxDestaque) !important;
 }
-.text-secundario {
-  color: var(--cxSecundario) !important;
+.text-destaque {
+  color: var(--cxPrincipal) !important;
 }
 .text-base {
   color: var(--cxBase) !important;
 }
-.text-contrast {
-  color: var(--cxContrast) !important;
+.text-fundo {
+  color: var(--cxFundo) !important;
+}
+.text-contraste {
+  color: var(--cxContraste) !important;
 }
 .text-cancel {
   color: var(--cxCancel) !important;
@@ -959,20 +970,23 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   color: var(--cxAlerta) !important;
 }
 .text-link {
-  color: var(--cxSecundario) !important;
+  color: var(--cxPrincipal) !important;
 }
 
 .bg-principal {
-  background-color: var(--cxPrincipal) !important;
+  background-color: var(--cxDestaque) !important;
 }
-.bg-secundario {
-  background-color: var(--cxSecundario) !important;
+.bg-destaque {
+  background-color: var(--cxPrincipal) !important;
 }
 .bg-base {
   background-color: var(--cxBase) !important;
 }
-.bg-contrast {
-  background-color: var(--cxContrast) !important;
+.bg-fundo {
+  background-color: var(--cxFundo) !important;
+}
+.bg-contraste {
+  background-color: var(--cxContraste) !important;
 }
 .bg-cancel {
   background-color: var(--cxCancel) !important;
@@ -1009,10 +1023,24 @@ body.tema-claro {
     @extend .btn-outline-cinza-lighter;
   }
 
-  .btn-contrast {
+  .btn-cancel {
+    @extend .btn, .btn-cinza;
+  }
+  .btn-outline-cancel {
+    @extend .btn, .btn-outline-cinza;
+  }
+
+  .btn-aux {
+    @extend .btn, .btn-grafite;
+  }
+  .btn-outline-aux {
+    @extend .btn, .btn-outline-grafite;
+  }
+
+  .btn-contraste {
     @extend .btn-grafite-dark;
   }
-  .btn-outline-contrast {
+  .btn-outline-contraste {
     @extend .btn-outline-grafite-dark;
   }
 
@@ -1023,25 +1051,11 @@ body.tema-claro {
     @extend .btn, .btn-outline-secondary;
   }
 
-  .btn-secundario {
+  .btn-destaque {
     @extend .btn, .btn-primary;
   }
-  .btn-outline-secundario {
+  .btn-outline-destaque {
     @extend .btn, .btn-outline-primary;
-  }
-
-  .btn-aux {
-    @extend .btn, .btn-grafite;
-  }
-  .btn-outline-aux {
-    @extend .btn, .btn-outline-grafite;
-  }
-
-  .btn-cancel {
-    @extend .btn, .btn-cinza;
-  }
-  .btn-outline-cancel {
-    @extend .btn, .btn-outline-cinza;
   }
 
   .btn-perigo {
@@ -1074,7 +1088,7 @@ body.tema-escuro {
   .text-principal {
     @extend .text-secondary;
   }
-  .text-secundario {
+  .text-destaque {
     @extend .text-ceu;
   }
   .text-sucesso {
@@ -1097,10 +1111,10 @@ body.tema-escuro {
     @extend .btn-outline-grafite-dark;
   }
 
-  .btn-contrast {
+  .btn-contraste {
     @extend .btn-cinza-lighter;
   }
-  .btn-outline-contrast {
+  .btn-outline-contraste {
     @extend .btn-outline-cinza-lighter;
   }
 
@@ -1111,10 +1125,10 @@ body.tema-escuro {
     @extend .btn, .btn-outline-secondary;
   }
 
-  .btn-secundario {
+  .btn-destaque {
     @extend .btn, .btn-ceu;
   }
-  .btn-outline-secundario {
+  .btn-outline-destaque {
     @extend .btn, .btn-outline-ceu;
   }
 

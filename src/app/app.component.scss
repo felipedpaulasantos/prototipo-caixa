@@ -26,7 +26,7 @@
 
 #painelConteudoPrincipal {
   padding: 1rem 2rem;
-  min-height: calc(100vh);
+  min-height: calc(100vh - 64px);
 }
 @media (max-width: 992px) {
 	#painelConteudoPrincipal {

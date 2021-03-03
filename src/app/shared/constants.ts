@@ -100,14 +100,14 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     url: "/tipografia",
     isLink: true,
     enabled: true
-  },
+  }, */
   {
     name: "Cores",
     iconClass: "fas fa-lg fa-palette",
     url: "/cores",
     isLink: true,
     enabled: true
-  }, */
+  },
 /*   {
     name: "Prototipador",
     iconClass: "fa fa-lg fa-puzzle-piece",
