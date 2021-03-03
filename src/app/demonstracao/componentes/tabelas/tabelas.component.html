@@ -8,7 +8,7 @@
 	adiciona funcionalidades especiais a tabelas comuns como filtro, ordenação, paginação, exportação
 	em .xls e impressão.</p>
 	
-	<p>O componente implementa a biblioteca <a class="text-secundario" target="_blank"
+	<p>O componente implementa a biblioteca <a class="text-destaque" target="_blank"
 			href="https://www.npmjs.com/package/angular-datatables">
 			Angular + Datatables</a>.
 	</p>
@@ -60,7 +60,7 @@
 
 						<p>Caso o atributo não seja informado é aplicada a configuração padrão, <span class="citation-highlight">DataTableConfig.DEFAULT_SETTINGS</span>.</p>
 
-						<button class="btn btn-secundario" data-toggle="collapse" href="#conteudoPainelDatatable">Exibir tabela</button>
+						<button class="btn btn-destaque" data-toggle="collapse" href="#conteudoPainelDatatable">Exibir tabela</button>
 					</div>
 
 					<div class="conteudo collapse" id="conteudoPainelDatatable">
@@ -113,7 +113,7 @@
 						ou
 						<pre class="my-2"><code [highlight]="codeDataFilterSelect"></code></pre>
 
-						<button class="btn btn-secundario" data-toggle="collapse" href="#conteudoPainelFiltro">Exibir tabela</button>
+						<button class="btn btn-destaque" data-toggle="collapse" href="#conteudoPainelFiltro">Exibir tabela</button>
 					</div>
 
 					<div id="conteudoPainelFiltro" class="conteudo collapse">
@@ -261,21 +261,21 @@
 					</div>
 					<div class="row">
 						<div class="col-3 my-3">
-							<button class="btn btn-secundario" (click)="updateSettings(settingsPadrao)">
+							<button class="btn btn-destaque" (click)="updateSettings(settingsPadrao)">
 								<i class="fa fa-cog mr-2"></i>
 								Configuração Padrão
 							</button>
 						</div>
 	
 						<div class="col-3 my-3">
-							<button class="btn btn-secundario" (click)="updateSettings(settingsComTodosBotoes)">
+							<button class="btn btn-destaque" (click)="updateSettings(settingsComTodosBotoes)">
 								<i class="fa fa-cog mr-2"></i>
 								Configuração Completa
 							</button>
 						</div>
 	
 						<div class="col-3 my-3">
-							<button class="btn btn-secundario" (click)="updateSettings(settingsSimples)">
+							<button class="btn btn-destaque" (click)="updateSettings(settingsSimples)">
 								<i class="fa fa-cog mr-2"></i>
 								Configuração Simples
 							</button>
@@ -283,14 +283,14 @@
 					</div>
 					<div class="row">
 						<div class="col-3 my-3">
-							<button class="btn btn-secundario" (click)="fetchData()">
+							<button class="btn btn-destaque" (click)="fetchData()">
 								<i class="fa fa-sync mr-2"></i>
 								Buscar novos dados
 							</button>
 						</div>
 	
 						<div class="col-3 my-3">
-							<button class="btn btn-secundario" (click)="showTable = !showTable">
+							<button class="btn btn-destaque" (click)="showTable = !showTable">
 								<i class="fa fa-eye mr-2"></i>
 								Exibir / Ocultar
 							</button>

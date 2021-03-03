@@ -26,7 +26,7 @@ export class CoresComponent implements OnInit {
 
   variavelCssExemplo = `.classe-exemplo {
     color: var(--cxBase);
-    background-color: var(--cxContrast);
+    background-color: var(--cxContraste);
 }`;
 
   dtTematicasSettings = DataTableConfig.getDataTableSettings({
@@ -86,23 +86,23 @@ export class CoresComponent implements OnInit {
       this.coresVariaveis = [
         {
           nome: "Principal",
-          variavel: "--cxDestaque",
+          variavel: "--cxPrincipal",
           classe: "principal",
-          valor: this.styleService.getCssVariableValue("--cxDestaque"),
+          valor: this.styleService.getCssVariableValue("--cxPrincipal"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `01 - Ações principais: <br><br>
             <button class="btn btn-principal">Contratar</button>
             <button class="btn btn-principal">Salvar</button>`
           )
         }, {
-          nome: "Secundário",
-          variavel: "--cxPrincipal",
-          classe: "secundario",
-          valor: this.styleService.getCssVariableValue("--cxPrincipal"),
+          nome: "Destaque",
+          variavel: "--cxDestaque",
+          classe: "destaque",
+          valor: this.styleService.getCssVariableValue("--cxDestaque"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `02 - Ações secundárias: <br><br>
-            <button class="btn btn-secundario">Avançar</button>
-            <button class="btn btn-outline-secundario">Adicionar</button>`
+            <button class="btn btn-destaque">Avançar</button>
+            <button class="btn btn-outline-destaque">Adicionar</button>`
           )
         }, {
           nome: "Base",
@@ -110,8 +110,15 @@ export class CoresComponent implements OnInit {
           classe: "base",
           valor: this.styleService.getCssVariableValue("--cxBase"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `03 - Cor base do tema, geralmente branco ou alguma cor bem escura <br><br>
-            Cor de fundo para cards, painéis, tabelas etc.`
+            `03 - Base do tema, geralmente branco ou alguma cor bem escura.`
+          )
+        }, {
+          nome: "Fundo",
+          variavel: "--cxFundo",
+          classe: "fundo",
+          valor: this.styleService.getCssVariableValue("--cxFundo"),
+          utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
+            `04 - Bastante próxima da base, utilizada no plano de fundo do conteúdo principal da página e outros elementos.`
           )
         }, {
           nome: "Cancel",
@@ -119,7 +126,7 @@ export class CoresComponent implements OnInit {
           classe: "cancel",
           valor: this.styleService.getCssVariableValue("--cxCancel"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `04 - Cor intermediária do tema, mais próxima à cor base. Ações auxiliares relacionadas a cancelamento: <br><br>
+            `05 - Intermediária do tema, mais próxima à cor base. Ações auxiliares relacionadas a cancelamento: <br><br>
              <button class="btn btn-cancel">Voltar</button>
              <button class="btn btn-cancel">Cancelar</button>`
           )
@@ -129,17 +136,17 @@ export class CoresComponent implements OnInit {
           classe: "aux",
           valor: this.styleService.getCssVariableValue("--cxAux"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `05 - Cor intermediária do tema, mais próxima à cor de contraste. Ações auxiliares relacionadas a funcionalides de suporte: <br><br>
+            `06 - Intermediária do tema, mais próxima à cor de contraste. Ações auxiliares relacionadas a funcionalides de suporte: <br><br>
              <button class="btn btn-aux">Copiar</button>
              <button class="btn btn-outline-aux">Imprimir</button>`
           )
         }, {
           nome: "Contraste",
-          variavel: "--cxContrast",
-          classe: "contrast",
-          valor: this.styleService.getCssVariableValue("--cxContrast"),
+          variavel: "--cxContraste",
+          classe: "contraste",
+          valor: this.styleService.getCssVariableValue("--cxContraste"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `06 - Cor de contraste do tema, oposta à cor base. <br><br>
+            `07 - Contraste do tema, oposta à cor base. <br><br>
             Cor padrão do texto e de elementos que precisam contrastar ao máximo com a cor de fundo`
           )
         }, {
@@ -148,7 +155,7 @@ export class CoresComponent implements OnInit {
           classe: "sucesso",
           valor: this.styleService.getCssVariableValue("--cxSucesso"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `07 - Cor temática de sucesso. <br><br>
+            `08 - Temática de sucesso. <br><br>
             <div class="alert bg-sucesso text-white">
               <i class="fa fa-check-circle fa-lg mr-2"></i>
               Operação concluída com sucesso
@@ -160,7 +167,7 @@ export class CoresComponent implements OnInit {
           classe: "perigo",
           valor: this.styleService.getCssVariableValue("--cxPerigo"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `08 - Cor temática de erro. <br><br>
+            `09 - Temática de erro. <br><br>
             <div class="alert bg-perigo text-base">
               <i class="fa fa-times-circle fa-lg mr-2"></i>
               Houve um erro ao efetuar esta ação
@@ -172,7 +179,7 @@ export class CoresComponent implements OnInit {
           classe: "alerta",
           valor: this.styleService.getCssVariableValue("--cxAlerta"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `09 - Cor temática de alerta. <br><br>
+            `10 - Temática de alerta. <br><br>
             <div class="alert bg-alerta">
               <i class="fa fa-exclamation-triangle fa-lg mr-2"></i>
               Não foi possível recuperar a informação
@@ -184,7 +191,7 @@ export class CoresComponent implements OnInit {
           classe: "info",
           valor: this.styleService.getCssVariableValue("--cxInfo"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `10 - Cor temática de informação. <br><br>
+            `11 - Temática de informação. <br><br>
             <div class="alert bg-info text-base">
               <i class="fa fa-info-circle fa-lg mr-2"></i>
               Não há pendências
