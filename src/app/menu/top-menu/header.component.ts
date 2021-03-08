@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit {
       classTitulo: "header-caixa text-danger-dark",
       mensagem: "Deseja realmente sair?",
       btOkTexto: "Sair",
-      btnOkClass: "btn btn-caixa btn-perigo",
+      btnOkClass: "btn btn-caixa btn-danger",
       btnCancelarClass: "btn btn-caixa btn-outline-dark",
       btCancelarTexto: "Cancelar",
       modalBodyClass: "bg-danger-dark text-cinza-light"

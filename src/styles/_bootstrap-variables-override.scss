@@ -3,23 +3,16 @@
 /* Temas */
 
 $theme-colors: (
-  "primary": $cx-color-primary,
-  "primary-light": $cx-color-primary-light,
-  "primary-lighter": $cx-color-primary-lighter,
-  "primary-dark": $cx-color-primary-dark,
-  "primary-darker": $cx-color-primary-darker,
 
-  "secondary": $cx-color-secondary,
-  "secondary-light": $cx-color-secondary-light,
-  "secondary-lighter": $cx-color-secondary-lighter,
-  "secondary-dark": $cx-color-secondary-dark,
-  "secondary-darker": $cx-color-secondary-darker,
+  /* TEMÁTICAS */
 
-  "turquesa": $cx-color-turquesa,
-  "turquesa-light": $cx-color-turquesa-light,
-  "turquesa-lighter": $cx-color-turquesa-lighter,
-  "turquesa-dark": $cx-color-turquesa-dark,
-  "turquesa-darker": $cx-color-turquesa-darker,
+  "principal": $cx-color-secondary,
+  "destaque": $cx-color-primary,
+  "base": $cx-color-cinza-lighter,
+  "fundo": $cx-color-porcelana,
+  "cancel": $cx-color-cinza,
+  "aux": $cx-color-grafite-light,
+  "contraste": $cx-color-grafite-dark,
 
   "success": $cx-color-success,
   "success-light": $cx-color-success-light,
@@ -44,6 +37,17 @@ $theme-colors: (
   "warning-lighter": $cx-color-warning-lighter,
   "warning-dark": $cx-color-warning-dark,
   "warning-darker": $cx-color-warning-darker,
+
+  "porcelana": $cx-color-porcelana,
+  "polar": $cx-color-polar,
+
+  /* GERAIS */
+
+  "turquesa": $cx-color-turquesa,
+  "turquesa-light": $cx-color-turquesa-light,
+  "turquesa-lighter": $cx-color-turquesa-lighter,
+  "turquesa-dark": $cx-color-turquesa-dark,
+  "turquesa-darker": $cx-color-turquesa-darker,
 
   "limao": $cx-color-limao,
   "limao-light": $cx-color-limao-light,
@@ -75,6 +79,18 @@ $theme-colors: (
   "uva-dark": $cx-color-uva-dark,
   "uva-darker": $cx-color-uva-darker,
 
+  "primary": $cx-color-primary,
+  "primary-light": $cx-color-primary-light,
+  "primary-lighter": $cx-color-primary-lighter,
+  "primary-dark": $cx-color-primary-dark,
+  "primary-darker": $cx-color-primary-darker,
+
+  "secondary": $cx-color-secondary,
+  "secondary-light": $cx-color-secondary-light,
+  "secondary-lighter": $cx-color-secondary-lighter,
+  "secondary-dark": $cx-color-secondary-dark,
+  "secondary-darker": $cx-color-secondary-darker,
+
   "cinza": $cx-color-cinza,
   "cinza-light": $cx-color-cinza-light,
   "cinza-lighter": $cx-color-cinza-lighter,
@@ -85,10 +101,7 @@ $theme-colors: (
   "grafite-light": $cx-color-grafite-light,
   "grafite-lighter": $cx-color-grafite-lighter,
   "grafite-dark": $cx-color-grafite-dark,
-  "grafite-darker": $cx-color-grafite-darker,
-
-  "porcelana": $cx-color-porcelana,
-  "polar": $cx-color-polar
+  "grafite-darker": $cx-color-grafite-darker
 );
 
 /* Links */

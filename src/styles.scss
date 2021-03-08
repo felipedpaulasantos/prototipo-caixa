@@ -28,16 +28,16 @@
   --cxFontFamilyBold: "Futura LT Bold";
   --cxFontFaIcon: "Font Awesome 5 Free";
 
-  --cxBodyBgColor: $cx-color-porcelana;
-  --cxHeaderBgColor: $cx-color-secondary;
-  --cxHeaderTextColor: $cx-color-cinza-lighter;
+  --cxBodyBgColor: $cx-color-fundo;
+  --cxHeaderBgColor: $cx-color-base;
+  --cxHeaderTextColor: $cx-color-base;
 
   --cxBase: $cx-color-white;
   --cxFundo: $cx-color-polar;
-  --cxContraste: $cx-color-grafite-dark;
+  --cxContraste: $cx-color-contrast-lighter-dark;
   --cxDestaque: $cx-color-secondary;
   --cxPrincipal: $cx-color-primary;
-  --cxAux: $cx-color-grafite-light;
+  --cxAux: $cx-color-aux;
   --cxCancel: $cx-color-cinza;
 
   --cxSucesso: $cx-color-success;
@@ -120,7 +120,7 @@ h6 {
   }
 }
 hr.header-line-caixa {
-  border-color: var(--cxAux);
+  border-color: var(--aux);
   opacity: $cx-bg-opacity-2;
   border-width: 1px;
   margin-bottom: 1.5rem;
@@ -157,7 +157,7 @@ hr.header-line-caixa {
 .btn.btn-success,
 .btn.btn-danger,
 .btn.btn-principal {
-  color: var(--cinza-lighter);
+  color: var(--base);
 }
 
 .btn:not(.disabled):not(:disabled).active,
@@ -232,7 +232,7 @@ hr.header-line-caixa {
     pointer-events: auto;
     border-style: solid;
     border-width: 1px;
-    border-color: var(--cxAux);
+    border-color: var(--aux);
     border-radius: 0.384rem !important;
     transition: box-shadow 0.2s, border-bottom 0.3s, box-shadow 0.3s ease-in-out;
     &:before {
@@ -352,7 +352,7 @@ label {
   border-color: var(--cxSucesso);
 }
 .custom-control-input.ng-dirty.ng-valid:checked ~ .custom-control-label::before {
-  color: var(--cinza-lighter);
+  color: var(--base);
   background-color: var(--cxSucesso);
   border-color: var(--cxSucesso);
 }
@@ -361,7 +361,7 @@ label {
   border-color: var(--cxPerigo);
 }
 .custom-control-input.ng-dirty.ng-invalid:checked ~ .custom-control-label::before {
-  color: var(--cinza-lighter);
+  color: var(--base);
   background-color: var(--cxPerigo);
   border-color: var(--cxPerigo);
 }
@@ -456,7 +456,7 @@ input[type="number"] {
     background-color: var(--cxTransparentContrast025);
   }
   &:active, &.active {
-    color: var(--cinza-lighter) !important;
+    color: var(--base) !important;
     background-color: var(--cxPrincipal);
   }
   &.selected {
@@ -516,7 +516,7 @@ ul.nav.nav-pills li a {
 .card {
   box-shadow: var(--cxShadowCaixa);
   transition: box-shadow 0.2s ease-in-out;
-  background-color: var(--cxBase);
+  background-color: var(--base);
   color: var(--cxContraste);
   border-color: var(--cxCancel);
   .card-header {
@@ -602,7 +602,7 @@ ul.nav.nav-pills li a {
   border-bottom: solid 1px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-color: var(--cxAux);
+  border-color: var(--aux);
   box-shadow: none !important;
   transition: 
     background-size 0.3s, 
@@ -615,7 +615,7 @@ ul.nav.nav-pills li a {
     cursor: not-allowed;
     background-image: none !important;
     background-color: var(--cxCancel) !important;
-    color: var(--cxAux)
+    color: var(--aux)
   }
 }
 @each $theme, $colors in $cx-colors {
@@ -677,7 +677,7 @@ ul.nav.nav-pills li a {
   border-left: none;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-color: var(--cxAux);
+  border-color: var(--aux);
   box-shadow: none !important;
   background-color: var(--cxBase);
   color: var(--cxContraste);
@@ -746,7 +746,7 @@ select + button.input-caixa {
   border-radius: 0 !important;
   &.active {
     background-color: var(--cxPrincipal) !important;
-    color: var(--cinza-lighter) !important;
+    color: var(--base) !important;
   }
 }
 
@@ -937,153 +937,12 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   display: table-row-group;
 }
 
-/* CLASSES TEMATICAS */
-
-.text-principal {
-  color: var(--cxDestaque) !important;
-}
-.text-destaque {
-  color: var(--cxPrincipal) !important;
-}
-.text-base {
-  color: var(--cxBase) !important;
-}
-.text-fundo {
-  color: var(--cxFundo) !important;
-}
-.text-contraste {
-  color: var(--cxContraste) !important;
-}
-.text-cancel {
-  color: var(--cxCancel) !important;
-}
-.text-sucesso {
-  color: var(--cxSucesso) !important;
-}
-.text-perigo {
-  color: var(--cxPerigo) !important;
-}
-.text-info {
-  color: var(--cxInfo) !important;
-}
-.text-alerta {
-  color: var(--cxAlerta) !important;
-}
-.text-link {
-  color: var(--cxPrincipal) !important;
-}
-
-.bg-principal {
-  background-color: var(--cxDestaque) !important;
-}
-.bg-destaque {
-  background-color: var(--cxPrincipal) !important;
-}
-.bg-base {
-  background-color: var(--cxBase) !important;
-}
-.bg-fundo {
-  background-color: var(--cxFundo) !important;
-}
-.bg-contraste {
-  background-color: var(--cxContraste) !important;
-}
-.bg-cancel {
-  background-color: var(--cxCancel) !important;
-}
-.bg-aux {
-  background-color: var(--cxAux) !important;
-}
-.bg-sucesso {
-  background-color: var(--cxSucesso) !important;
-}
-.bg-perigo {
-  background-color: var(--cxPerigo) !important;
-}
-.bg-alerta {
-  background-color: var(--cxAlerta) !important;
-}
-.bg-info {
-  background-color: var(--cxInfo) !important;
-}
-
 
 /* TEMAS */
 
-/* TEMA CLARO */
-
-body.tema-claro {
-
-
-
-  .btn-base {
-    @extend .btn-cinza-lighter;
-  }
-  .btn-outline-base {
-    @extend .btn-outline-cinza-lighter;
-  }
-
-  .btn-cancel {
-    @extend .btn, .btn-cinza;
-  }
-  .btn-outline-cancel {
-    @extend .btn, .btn-outline-cinza;
-  }
-
-  .btn-aux {
-    @extend .btn, .btn-grafite;
-  }
-  .btn-outline-aux {
-    @extend .btn, .btn-outline-grafite;
-  }
-
-  .btn-contraste {
-    @extend .btn-grafite-dark;
-  }
-  .btn-outline-contraste {
-    @extend .btn-outline-grafite-dark;
-  }
-
-  .btn-principal {
-    @extend .btn, .btn-secondary;
-  }
-  .btn-outline-principal {
-    @extend .btn, .btn-outline-secondary;
-  }
-
-  .btn-destaque {
-    @extend .btn, .btn-primary;
-  }
-  .btn-outline-destaque {
-    @extend .btn, .btn-outline-primary;
-  }
-
-  .btn-perigo {
-    @extend .btn-danger;
-  }
-  .btn-outline-perigo {
-    @extend .btn-outline-danger;
-  }
-
-  .btn-sucesso {
-    @extend .btn-success;
-  }
-  .btn-outline-sucesso {
-    @extend .btn-outline-success;
-  }
-
-  .btn-alerta {
-    @extend .btn-warning;
-  }
-  .btn-outline-alerta {
-    @extend .btn-outline-warning;
-  }
-
-}
-
 /* TEMA ESCURO */
 
-body.tema-escuro {
+/* body.tema escuro {
 
   .text-principal {
     @extend .text-secondary;
@@ -1105,17 +964,17 @@ body.tema-escuro {
   }
 
   .btn-base {
-    @extend .btn-grafite-dark;
+    @extend .btn-contrast-lighter-dark;
   }
   .btn-outline-base {
-    @extend .btn-outline-grafite-dark;
+    @extend .btn-outline-contrast-lighter-dark;
   }
 
   .btn-contraste {
-    @extend .btn-cinza-lighter;
+    @extend .btn-cancel-lighter;
   }
   .btn-outline-contraste {
-    @extend .btn-outline-cinza-lighter;
+    @extend .btn-outline-cancel-lighter;
   }
 
   .btn-principal {
@@ -1140,20 +999,20 @@ body.tema-escuro {
   }
 
   .btn-cancel {
-    @extend .btn, .btn-grafite-light;
+    @extend .btn, .btn-contrast-lighter-light;
   }
   .btn-outline-cancel {
-    @extend .btn, .btn-outline-grafite-light;
+    @extend .btn, .btn-outline-contrast-lighter-light;
   }
 
-  .btn-perigo {
+  .btn-danger {
     @extend .btn-goiaba-light;
   }
   .btn-outline-perigo {
     @extend .btn-outline-goiaba-light;
   }
 
-  .btn-sucesso {
+  .btn-success {
     @extend .btn-success-lighter;
   }
   .btn-outline-sucesso {
@@ -1173,4 +1032,4 @@ body.tema-escuro {
   .btn-outline-info {
     @extend .btn-outline-info-light;
   }
-}
+} */

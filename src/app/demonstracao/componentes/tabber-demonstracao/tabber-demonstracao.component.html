@@ -77,7 +77,7 @@
 
 				<br>
 
-				<app-documentacao-template id="painelTabberState" [cardTitle]="'Tabber Estado'" [codeViewId]="'viewTabberState'"
+				<app-documentacao-template id="painelTabberState" [cardTitle]="'Estado'" [codeViewId]="'viewTabberState'"
 					[htmlTabId]="'htmlCodeTabberState'" [htmlCode]="htmlCodeTabberState" [tsTabId]="'tsCodeTabberState'"
 					[tsCode]="tsCodeTabberState">
 					<div class="descricao">
@@ -283,12 +283,12 @@
 
 					<div class="row">
 						<div class="col d-flex align-items-center">
-							<button title="Remover" class="btn btn-perigo btn-caixa ml-2" [disabled]="tabs.length == 2"
+							<button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="tabs.length == 2"
 								(click)="tabs.pop(); tabs = [].concat(tabs)">
 								<i class="fa fa-minus fa-lg"></i>
 							</button>
 
-							<button title="Adicionar" class="btn btn-sucesso btn-caixa ml-2"
+							<button title="Adicionar" class="btn btn-success btn-caixa ml-2"
 								[disabled]="tabs.length == tabberExemplo.MAXIMUM_TABS"
 								(click)="addTab(inputNovaAba.value); inputNovaAba.value = ''">
 								<i class="fa fa-plus fa-lg"></i>

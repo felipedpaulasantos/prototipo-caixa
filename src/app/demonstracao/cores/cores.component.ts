@@ -132,9 +132,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Auxiliar",
-          variavel: "--cxAux",
+          variavel: "--aux",
           classe: "aux",
-          valor: this.styleService.getCssVariableValue("--cxAux"),
+          valor: this.styleService.getCssVariableValue("--aux"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `06 - Intermediária do tema, mais próxima à cor de contraste. Ações auxiliares relacionadas a funcionalides de suporte: <br><br>
              <button class="btn btn-aux">Copiar</button>
@@ -151,12 +151,12 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Sucesso",
-          variavel: "--cxSucesso",
-          classe: "sucesso",
+          variavel: "--cxSuccess",
+          classe: "success",
           valor: this.styleService.getCssVariableValue("--cxSucesso"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `08 - Temática de sucesso. <br><br>
-            <div class="alert bg-sucesso text-white">
+            <div class="alert bg-success text-white">
               <i class="fa fa-check-circle fa-lg mr-2"></i>
               Operação concluída com sucesso
             </div>`
@@ -164,11 +164,11 @@ export class CoresComponent implements OnInit {
         }, {
           nome: "Perigo",
           variavel: "--cxPerigo",
-          classe: "perigo",
+          classe: "danger",
           valor: this.styleService.getCssVariableValue("--cxPerigo"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `09 - Temática de erro. <br><br>
-            <div class="alert bg-perigo text-base">
+            <div class="alert bg-danger text-base">
               <i class="fa fa-times-circle fa-lg mr-2"></i>
               Houve um erro ao efetuar esta ação
             </div>`
@@ -176,11 +176,11 @@ export class CoresComponent implements OnInit {
         }, {
           nome: "Alerta",
           variavel: "--cxAlerta",
-          classe: "alerta",
+          classe: "warning",
           valor: this.styleService.getCssVariableValue("--cxAlerta"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `10 - Temática de alerta. <br><br>
-            <div class="alert bg-alerta">
+            <div class="alert bg-warning">
               <i class="fa fa-exclamation-triangle fa-lg mr-2"></i>
               Não foi possível recuperar a informação
             </div>`

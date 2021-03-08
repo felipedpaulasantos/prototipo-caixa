@@ -138,8 +138,8 @@ export class StepperComponent {
   `.trimRight();
 
   navItems: CodeFixedNavItem[] = [
-    { id: "painelTabber", name: "Tabber - Visão Geral" },
-    { id: "painelTabberState", name: "Tabber - Estado" }
+    { id: "painelTabber", name: "Visão Geral" },
+    { id: "painelTabberState", name: "Estado" }
   ];
 
   tabberOrientation = 0;
