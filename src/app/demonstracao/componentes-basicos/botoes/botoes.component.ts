@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from "@angular/core";
 
-import { ComponentesInterface } from '../componentes-interface';
-import { ToastrService } from 'ngx-toastr';
-import { BootstrapTheme } from 'src/app/guia-caixa/constants/constants';
+import { ComponentesInterface } from "../../componentes/componentes-interface";
+import { ToastrService } from "ngx-toastr";
+import { BootstrapTheme } from "src/app/guia-caixa/constants/constants";
 
 @Component({
-  selector: 'app-botoes',
-  templateUrl: './botoes.component.html',
-  styleUrls: ['./botoes.component.css'],
-  host: { '(window:scroll)': 'onScroll($event)' }
+  selector: "app-botoes",
+  templateUrl: "./botoes.component.html",
+  styleUrls: ["./botoes.component.css"],
+  host: { "(window:scroll)": "onScroll($event)" }
 })
 export class BotoesComponent extends ComponentesInterface implements OnInit {
 
@@ -21,14 +21,28 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
   }
 
   @ViewChild("scrollElement") scrollElement;
-  spiedTags = ['APP-DOCUMENTACAO-TEMPLATE'];
+  spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   sectionOffset = 0;
   currentSection = "painelBotoes";
+
+  botoesIntroducao = `<button class="btn btn-principal">Principal</button>;
+<button class="btn btn-destaque">Destaque</button>;
+<button class="btn btn-cancel">Cancel</button>;
+<button class="btn btn-outline-aux">Auxiliar</button>;
+<button class="btn btn-danger btn-sm">Perigo</button>;
+<button class="btn btn-success btn-lg">Sucesso</button>;`;
+
+
+
+
+
+
+
 
   htmlCodeBotoes = `<button class="btn btn-caixa btn-cancel">Botão</button>`.trim();
 
   htmlCodeBotoesTematicos = `        <button class="btn btn-caixa btn-destaque">Primário</button> &nbsp;
-<button class="btn btn-caixa btn-perigo-dark">Erro com tom escuro</button> &nbsp;
+<button class="btn btn-caixa btn-danger-dark">Erro com tom escuro</button> &nbsp;
 <button class="btn btn-caixa btn-apoio-light">Apoio com tom claro</button> &nbsp;
 <button class="btn btn-caixa btn-outline-info">Info - outline</button>`.trim();
 

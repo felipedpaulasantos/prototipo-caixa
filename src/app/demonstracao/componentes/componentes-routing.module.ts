@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ComponentesComponent } from "./componentes.component";
 import { CardsComponent } from "./cards/cards.component";
-import { BotoesComponent } from "./botoes/botoes.component";
+import { BotoesComponent } from "../componentes-basicos/botoes/botoes.component";
 import { MensagensComponent } from "./mensagens/mensagens.component";
 import { TabelasComponent } from "./tabelas/tabelas.component";
 import { InputsComponent } from "./inputs/inputs.component";
@@ -30,15 +30,6 @@ const routes: Routes = [
       title: "Cards",
       breadcrumb: "Cards",
       animation: "Cards"
-    }
-  },
-  {
-    path: "botoes",
-    component: BotoesComponent,
-    data: {
-      title: "Botões",
-      breadcrumb: "Botões",
-      animation: "Botões"
     }
   },
   {
