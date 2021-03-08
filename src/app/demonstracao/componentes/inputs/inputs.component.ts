@@ -75,17 +75,17 @@ export class InputsComponent extends ComponentesInterface {
   <label>Input Caixa (Padrão)</label>
   <input class="form-control">
 
-  <br><br>
+  <br class="my-3">
 
   <label>Input Base</label>
   <input class="input-base">
 
-  <br><br>
+  <br class="my-3">
 
   <label>Input Info</label>
   <input class="form-control-info">
 
-  <br><br>
+  <br class="my-3">
 
   <label>Input Aux Dark</label>
   <input class="form-control-aux-dark">

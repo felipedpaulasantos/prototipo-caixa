@@ -121,7 +121,7 @@ export class CardButtonExemplo {
       doloribus eius deleniti porro, qui tempore totam officiis 
       nemo distinctio dolore perspiciatis ratione
       voluptas non maxime doloremque!
-      <br><br>
+      <br class="my-3">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, deserunt enim aspernatur suscipit
       doloribus eius deleniti porro, qui tempore totam officiis 
       nemo distinctio dolore perspiciatis ratione

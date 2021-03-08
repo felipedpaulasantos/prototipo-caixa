@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { BotoesComponent } from "./botoes/botoes.component";
+import { CardsComponent } from "./cards/cards.component";
 
 import { ComponentesBasicosComponent } from "./componentes-basicos.component";
 
@@ -21,6 +22,15 @@ const routes: Routes = [
       title: "Botões",
       breadcrumb: "Botões",
       animation: "Botões"
+    }
+  },
+  {
+    path: "cards",
+    component: CardsComponent,
+    data: {
+      title: "Cards",
+      breadcrumb: "Cards",
+      animation: "Cards"
     }
   },
 ];

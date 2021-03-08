@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ComponentesInterface } from '../componentes-interface';
-import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { ComponentesInterface } from "../../componentes/componentes-interface";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
-  selector: 'app-cards',
-  templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.scss'],
-  host: { '(window:scroll)': 'onScroll($event)' }
+  selector: "app-cards",
+  templateUrl: "./cards.component.html",
+  styleUrls: ["./cards.component.scss"],
+  host: { "(window:scroll)": "onScroll($event)" }
 })
 export class CardsComponent extends ComponentesInterface {
 
@@ -17,11 +17,75 @@ export class CardsComponent extends ComponentesInterface {
   }
 
   @ViewChild("scrollElement") scrollElement;
-  spiedTags = ['APP-DOCUMENTACAO-TEMPLATE'];
+  spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   sectionOffset = 0;
   currentSection = "painelCards";
 
-  htmlCodeCards = `            <div class="card card-caixa">
+  cardsIntroducao = `<div class="card">
+  <div class="card-header">
+    <h4 class="header-caixa">Título</h4>
+  </div>
+  <div class="card-body">
+    <h5>Este é um subtítulo</h5>
+    <span>Este é o corpo do card</span>
+  </div>
+  <div class="card-footer">
+    <h5>Isso é um rodapé</h5>
+  </div>
+</div>`.trim();
+
+  cardsTematicos = `<div class="row">
+  <div class="col-12 col-md-6 my-2">
+    <div class="card bg-contraste text-base">
+      <div class="card-header">
+        <h4 class="header-caixa">Título</h4>
+      </div>
+      <div class="card-body">
+        <h5>Este é um subtítulo</h5>
+        <span>Este é o corpo do card</span>
+      </div>
+      <div class="card-footer">
+        <h5>Isso é um rodapé</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="col my-2">
+    <div class="card bg-destaque text-base">
+      <div class="card-header">
+        <h4 class="header-caixa">Título</h4>
+      </div>
+      <div class="card-body">
+        <h5>Este é um subtítulo</h5>
+        <span>Este é o corpo do card</span>
+      </div>
+      <div class="card-footer">
+        <h5>Isso é um rodapé</h5>
+      </div>
+    </div>
+  </div>
+</div>`.trim();
+
+  cardsSombra = `<div class="card card-hover">
+  <div class="card-body">
+    <span>Este card possui efeito de sombra.</span>
+  </div>
+</div>`.trim();
+
+  cardHome = `<div id="cardHome" class="card card-hover border border-dark">
+  <div class="card-body">
+    <i class="fa fa-home fa-4x mr-4"></i>
+    <h2 class="d-inline font-fam-bold mb-0">HOME</h2>
+  </div>
+</div>
+
+<style>
+  #cardHome {
+    max-width: 20rem;
+  }
+</style>`.trim();
+
+  htmlCodeCards = `            <div class="card">
   <div class="card-header">
     <h4 class="header-caixa">Título</h4>
   </div>
@@ -36,7 +100,7 @@ export class CardsComponent extends ComponentesInterface {
 
   htmlCodeCardsTematicos = `            <div class="row">
   <div class="col-12 col-md-6 my-2">
-    <div class="card card-caixa bg-grafite text-cinza">
+    <div class="card bg-grafite text-cinza">
       <div class="card-header">
         <h4 class="header-caixa">Título</h4>
       </div>
@@ -51,7 +115,7 @@ export class CardsComponent extends ComponentesInterface {
   </div>  <!-- Coluna -->
 
   <div class="col my-2">
-    <div class="card card-caixa bg-destaque text-cinza">
+    <div class="card bg-destaque text-cinza">
       <div class="card-header">
         <h4 class="header-caixa">Título</h4>
       </div>
@@ -66,7 +130,7 @@ export class CardsComponent extends ComponentesInterface {
   </div>  <!-- Coluna -->
 </div>  <!-- Linha -->`.trim();
 
-  htmlCodeCardsEfeito = `        <div class="card card-caixa card-hover">
+  htmlCodeCardsEfeito = `        <div class="card card-hover">
   <div class="card-body">
     <span>Este card possui efeito de sombra.</span>
   </div>
@@ -74,7 +138,7 @@ export class CardsComponent extends ComponentesInterface {
 
   htmlCodeCardBotao = `        <div class="row">
   <div class="col-6 col-md-4 mb-3">
-    <div class="card card-caixa card-hover border border-dark">
+    <div class="card card-hover border border-dark">
       <div class="card-body">
         <i class="fa fa-home fa-4x mr-4"></i>
         <h2 class="d-inline font-fam-bold mb-0">HOME</h2>
@@ -82,14 +146,14 @@ export class CardsComponent extends ComponentesInterface {
     </div>  <!-- Card -->
   </div>  <!-- Col -->
   <div class="col-6 col-md-4 mb-3">
-    <div class="card card-caixa card-hover border border-primary bg-gradient-sky text-white">
+    <div class="card card-hover border border-primary bg-gradient-ceu text-white">
       <div class="card-body">
         <i class="fa fa-users fa-4x"></i>
       </div>
     </div>  <!-- Card -->
   </div>  <!-- Col -->
   <div class="col-6 col-md-4 mb-3">
-    <div class="card card-caixa card-hover bg-opacity-2 border border-dark-dark">
+    <div class="card card-hover bg-opacity-2 border border-dark-dark">
       <div class="card-body">
         <i class="fa fa-file-archive fa-4x"></i>
       </div>
@@ -107,13 +171,13 @@ export class CardsComponent extends ComponentesInterface {
   border-bottom-right-radius: 0px;
 }`.trim();
 
-  htmlCodeCardLayout = `        <div id="cardDadosProposta" class="card card-caixa">
+  htmlCodeCardLayout = `<div id="cardDadosProposta" class="card">
   <div class="card-header">
     <h4 class="d-inline-block mr-2 font-fam-bold">Dados da proposta</h4>
     <a class="text-link">0007.1556.0000112-3</a>
   </div>
   <div class="card-body p-0">
-    <div class="info-row bg-fade border-top border-bottom">
+    <div class="info-row bg-fundo border-top border-bottom">
       <div class="row">
         <div class="col">
           <h6 class="header-caixa">Código da Reserva</h6>
@@ -133,7 +197,7 @@ export class CardsComponent extends ComponentesInterface {
         </div>
       </div>
     </div>  <!-- Info-Row -->
-    <div class="info-row bg-fade border-bottom">
+    <div class="info-row bg-fundo border-bottom">
       <div class="row">
         <div class="col">
           <h6 class="header-caixa">Seguradora</h6>
@@ -154,9 +218,6 @@ export class CardsComponent extends ComponentesInterface {
 
   cssCodeCardLayout = `#cardDadosProposta {
   width: 800px;
-}
-.bg-fade {
-  background-color: rgba($color: black, $alpha: 0.01);
 }
 .info-row {
   padding: 1.2rem;

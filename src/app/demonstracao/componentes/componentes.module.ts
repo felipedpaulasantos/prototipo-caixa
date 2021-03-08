@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ComponentesComponent } from "./componentes.component";
-import { CardsComponent } from "./cards/cards.component";
+import { CardsComponent } from "../componentes-basicos/cards/cards.component";
 import { SharedModule } from "src/app/shared/shared.module";
 import { ComponentesRoutingModule } from "./componentes-routing.module";
 import { MensagensComponent } from "./mensagens/mensagens.component";

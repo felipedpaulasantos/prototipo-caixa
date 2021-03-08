@@ -1,6 +1,6 @@
 <ng-container *ngIf="(chatReportData && chatReportData.length > 0) else noChatData">
 
-  <div class="card card-caixa">
+  <div class="card">
     <div class="card-header">
       <h5 class="header-subtitulo-caixa mb-4">Gráfico por período</h5>
     </div>
@@ -13,7 +13,7 @@
 
   <br>
 
-  <div class="card card-caixa">
+  <div class="card">
     <div class="card-header">
       <h5 class="header-subtitulo-caixa mb-4">Estatísticas</h5>
     </div>
@@ -43,7 +43,7 @@
 </ng-container>
 
 <ng-template #noChatData>
-  <div class="card card-caixa">
+  <div class="card">
     <div class="card-body">
       <h6 class="center py-5">
           Não há dados de conversas a serem exibidos.

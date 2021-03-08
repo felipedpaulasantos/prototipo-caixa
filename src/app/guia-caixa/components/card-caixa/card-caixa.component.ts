@@ -5,7 +5,7 @@ import { Component, OnInit, ElementRef, AfterContentInit, ViewChild,
   selector: "cx-card",
   templateUrl: "./card-caixa.component.html",
   styleUrls: ["./card-caixa.component.scss"],
-  host: { "class": "card card-caixa" }
+  host: { "class": "card" }
 })
 export class CardCaixaComponent implements OnInit, AfterContentInit, OnDestroy {
 

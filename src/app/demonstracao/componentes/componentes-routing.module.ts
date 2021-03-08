@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ComponentesComponent } from "./componentes.component";
-import { CardsComponent } from "./cards/cards.component";
+import { CardsComponent } from "../componentes-basicos/cards/cards.component";
 import { BotoesComponent } from "../componentes-basicos/botoes/botoes.component";
 import { MensagensComponent } from "./mensagens/mensagens.component";
 import { TabelasComponent } from "./tabelas/tabelas.component";
