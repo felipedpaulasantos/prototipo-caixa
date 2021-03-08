@@ -65,7 +65,7 @@ export const lightTheme: GlobalThemeVariables = {
    cxInfoContrast: "--info-lighter",
    cxBase: "--base",
    cxFundo: "--polar",
-   cxContraste: "--aux-dark",
+   cxContraste: "--contraste",
    cxTransparentBase025: "rgba(255, 255, 255, 0.025)",
    cxTransparentBase050: "rgba(255, 255, 255, 0.025)",
    cxTransparentBase075: "rgba(255, 255, 255, 0.025)",

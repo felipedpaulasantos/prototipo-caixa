@@ -152,10 +152,15 @@ hr.header-line-caixa {
   vertical-align: unset;
 }
 
-.btn.btn-primario,
-.btn.btn-warning,
-.btn.btn-success,
-.btn.btn-danger,
+.btn-link {
+  text-decoration: none !important;
+  box-shadow: none;
+  &:hover {
+    box-shadow: var(--cxShadowCaixa);
+  }
+}
+
+/* Ajuste de cor do texto */
 .btn.btn-principal {
   color: var(--base);
 }

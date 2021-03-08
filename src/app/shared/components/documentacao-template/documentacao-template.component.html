@@ -4,7 +4,7 @@
 			<div class="mr-auto">
 				<h5 class="header-subtitulo-caixa mb-0">{{ cardTitle }}</h5>
 			</div>
-			<div class="ml-auto">
+			<div *ngIf="showCodeButton" class="ml-auto">
 				<a data-toggle="collapse" href="#{{ codeViewId }}"
 					class="btn btn-flat rounded-circle p-2" title="Visualizar código">
 					<i class="fa fa-lg fa-code"></i>

@@ -12,7 +12,18 @@ import { BootstrapTheme } from "src/app/guia-caixa/constants/constants";
 })
 export class BotoesComponent extends ComponentesInterface implements OnInit {
 
-  temas = BootstrapTheme.getTemas();
+/*   temas = BootstrapTheme.getTemas(); */
+
+  temas = [
+    { "name": "principal" },
+    { "name": "destaque" },
+    { "name": "cancel" },
+    { "name": "aux" },
+    { "name": "success" },
+    { "name": "danger" },
+    { "name": "info" },
+    { "name": "warning" }
+  ];
 
   constructor(
     public toastr: ToastrService
@@ -30,7 +41,22 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
 <button class="btn btn-cancel">Cancel</button>;
 <button class="btn btn-outline-aux">Auxiliar</button>;
 <button class="btn btn-danger btn-sm">Perigo</button>;
-<button class="btn btn-success btn-lg">Sucesso</button>;`;
+<button class="btn btn-success btn-lg">Sucesso</button>;
+<button class="btn btn-warning">Alerta</button>
+<button class="btn btn-info">Informativo</button>
+<button class="btn btn-link">Link</button>`;
+
+  botoesIcones = `<button class="btn btn-destaque btn-sm">
+  <i class="fa fa-plus mr-2"></i>Incluir
+</button>
+
+<button class="btn btn-outline-destaque">
+  <i class="fa fa-edit mr-2"></i>Editar
+</button>
+
+<button class="btn btn-principal btn-lg">
+  <i class="fa fa-lg fa-save mr-3"></i>Salvar
+</button>`;
 
 
 
