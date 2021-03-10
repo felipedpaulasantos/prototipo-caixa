@@ -41,6 +41,9 @@ MIT
 @angular/router
 MIT
 
+@ng-select/ng-select
+MIT
+
 after
 MIT
 Copyright (c) 2011 Raynos.
