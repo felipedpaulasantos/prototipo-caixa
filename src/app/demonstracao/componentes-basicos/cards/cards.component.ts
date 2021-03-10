@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ComponentesInterface } from "../../componentes/componentes-interface";
 import { ToastrService } from "ngx-toastr";
+import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 
 @Component({
   selector: "app-cards",
@@ -20,6 +21,12 @@ export class CardsComponent extends ComponentesInterface {
   spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   sectionOffset = 0;
   currentSection = "painelCards";
+
+  navItems: CodeFixedNavItem[] = [
+    { id: "painelCards", name: "Padrão" },
+    { id: "painelCardsTematicos", name: "Temáticos" },
+    { id: "painelCardsEfeito", name: "Com efeito" }
+  ];
 
   cardsIntroducao = `<div class="card">
   <div class="card-header">

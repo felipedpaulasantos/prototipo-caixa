@@ -23,9 +23,9 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
   currentSection = "painelStepperPadrao";
 
   navItems: CodeFixedNavItem[] = [
-    { id: "painelStepperPadrao", name: "Stepper - Navegação livre" },
-    { id: "painelStepperGuiado", name: "Stepper - Navegação guiada" },
-    { id: "painelStepperInterno", name: "Stepper - Conteúdo Interno" }
+    { id: "painelStepperPadrao", name: "Navegação livre" },
+    { id: "painelStepperGuiado", name: "Navegação guiada" },
+    { id: "painelStepperInterno", name: "Conteúdo Interno" }
   ];
 
   stylesExample = "styles='{ height: '300px'; }'";

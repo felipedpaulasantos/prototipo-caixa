@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { ComponentesInterface } from "../../componentes/componentes-interface";
 import { ToastrService } from "ngx-toastr";
 import { BootstrapTheme } from "src/app/guia-caixa/constants/constants";
+import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 
 @Component({
   selector: "app-botoes",
@@ -35,6 +36,11 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
   spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   sectionOffset = 0;
   currentSection = "painelBotoes";
+
+  navItems: CodeFixedNavItem[] = [
+    { id: "painelBotoes", name: "Padrão" },
+    { id: "painelBotoesTamanho", name: "ícones" }
+  ];
 
   botoesIntroducao = `<button class="btn btn-principal">Principal</button>;
 <button class="btn btn-destaque">Destaque</button>;

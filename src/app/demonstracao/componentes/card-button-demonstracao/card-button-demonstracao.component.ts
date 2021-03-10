@@ -25,9 +25,9 @@ export class CardButtonDemonstracaoComponent extends ComponentesInterface {
   currentSection = "painelCardButton";
 
   navItems: CodeFixedNavItem[] = [
-    { id: "painelCardButton", name: "Card Button" },
-    { id: "painelCardButtonCheckbox", name: "Card Button - Checkbox" },
-    { id: "painelCardButtonRadio", name: "Card Button - Radio" },
+    { id: "painelCardButton", name: "Layout" },
+    { id: "painelCardButtonCheckbox", name: "Checkbox" },
+    { id: "painelCardButtonRadio", name: "Radio" },
   ];
 
   formFone = this.fb.group({
