@@ -14,11 +14,15 @@
 	border-bottom-right-radius: 0px;
 }
 #cardDadosProposta {
-	// width: 800px;
+	width: 800px;
 }
 .bg-fade {
 	background-color: rgba($color: black, $alpha: 0.01);
 }
 .info-row {
 	padding: 1.2rem;
+}
+
+#cardHome {
+	max-width: 20rem;
 }

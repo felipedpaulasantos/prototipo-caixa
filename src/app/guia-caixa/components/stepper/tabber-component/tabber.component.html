@@ -8,9 +8,9 @@
             <div class="tab-icon" [ngClass]="getActiveTheme(currentTab == index)">
                <i *ngIf="currentTab == index" class="fa fa-arrow-down"></i>
                <i *ngIf="currentTab != index" class="{{ tab.icon }}"></i>
-               <i *ngIf="tab.state === tabberState.SUCCESS" class="fa fa-check bg-sucesso text-cinza-lighter state-icon"></i>
-               <i *ngIf="tab.state === tabberState.WARNING" class="fa fa-exclamation bg-alerta text-grafite state-icon"></i>
-               <i *ngIf="tab.state === tabberState.ERROR" class="fa fa-times bg-perigo text-cinza-lighter state-icon"></i>
+               <i *ngIf="tab.state === tabberState.SUCCESS" class="fa fa-check bg-success text-base state-icon"></i>
+               <i *ngIf="tab.state === tabberState.WARNING" class="fa fa-exclamation bg-warning text-contrast state-icon"></i>
+               <i *ngIf="tab.state === tabberState.ERROR" class="fa fa-times bg-danger text-base state-icon"></i>
             </div>
             <span class="tab-name">{{ tab.name }}</span>
          </div>

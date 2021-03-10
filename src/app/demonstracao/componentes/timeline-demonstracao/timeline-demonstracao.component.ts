@@ -31,8 +31,8 @@ export class TimelineDemonstracaoComponent extends ComponentesInterface implemen
   currentSection = "painelTimeline";
 
   navItems: CodeFixedNavItem[] = [
-    { id: "painelTimeline", name: "Timeline Padrão" },
-    { id: "painelTimelineExtenso", name: "Timeline Extenso" }
+    { id: "painelTimeline", name: "Padrão" },
+    { id: "painelTimelineExtenso", name: "Extenso" }
   ];
 
   timelineItems: TimelineItem[] = [

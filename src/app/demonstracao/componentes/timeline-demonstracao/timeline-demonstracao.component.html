@@ -3,11 +3,11 @@
 </h1>
 
 
-<div class="my-4">
+<h5 class="my-4">
    <p>O componente Timeline apresenta uma linha do tempo simples com ícones e cores que indicam a natureza de cada
       acontecimento.</p>
    <p>O atributo <span class="citation-highlight">items</span> deve sempre receber uma lista de TimelineItem.</p>
-</div>
+</h5>
 
 <ul class="nav nav-pills tab-caixa" role="tablist">
    <li class="nav-item">
@@ -145,7 +145,7 @@
          <cx-timeline #timelineSandbox [items]="sandboxTimelineItems" [orientation]="timelineOrientation"></cx-timeline>
 
          <form [formGroup]="sandboxForm">
-            <div class="card card-caixa mt-2">
+            <div class="card mt-2">
                <div class="card-body">
                   <div class="row">
    
@@ -183,12 +183,12 @@
                      </div>
    
                      <div class="col-3 d-flex align-items-center">
-                        <button title="Remover" class="btn btn-perigo btn-caixa ml-2"
+                        <button title="Remover" class="btn btn-danger btn-caixa ml-2"
                            [disabled]="sandboxTimelineItems.length == 2" (click)="removeItem()">
                            <i class="fa fa-minus fa-lg"></i>
                         </button>
    
-                        <button title="Adicionar" class="btn btn-sucesso btn-caixa ml-2"
+                        <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
                         [disabled]="!sandboxForm.valid"
                         (click)="addItem()">
                            <i class="fa fa-plus fa-lg"></i>

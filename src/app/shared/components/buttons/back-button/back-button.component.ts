@@ -11,7 +11,7 @@ import { Component, OnInit, Input } from "@angular/core";
 export class BackButtonComponent implements OnInit {
   constructor() {}
 
-  @Input() btnClass = "btn btn-flat text-grafite-light p-0";
+  @Input() btnClass = "btn btn-flat text-contrast-light p-0";
   @Input() iconClass = "fas fa-chevron-left mr-2";
   @Input() text = "Voltar";
 

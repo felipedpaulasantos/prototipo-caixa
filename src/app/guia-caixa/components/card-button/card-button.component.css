@@ -1,7 +1,7 @@
 /* CARD BUTTON WRAPPER */
 .card-button-wrapper {
     position: relative;
-    border: solid 0.07rem var(--cxAux);
+    border: solid 0.07rem var(--aux);
     border-radius: 0.38rem;
     height: 9.61rem;
     min-height: 7.69rem;
@@ -24,7 +24,7 @@
   
   /* CARD BUTTON LEFT SIDE */
   .card-button-wrapper > .row > .card-button-left-side {
-    background-color: var(--cxAux);
+    background-color: var(--aux);
     color: var(--cxBase);
     display: flex;
     flex-direction: column;

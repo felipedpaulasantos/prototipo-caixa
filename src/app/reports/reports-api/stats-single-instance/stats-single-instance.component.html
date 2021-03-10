@@ -10,7 +10,7 @@
 
 	<section class="row">
 		<div class="col-md-4" *ngIf="statsData[0]?.in_message_decoded">
-			<div class="card card-caixa">
+			<div class="card">
 				<div class="card-header">
 					<h6 class="center">Total</h6>
 				</div>
@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="col-md-4" *ngIf="statsData[0]?.in_message_from_server">
-			<div class="card card-caixa">
+			<div class="card">
 				<div class="card-header">
 					<h6 class="center">Mensagens Recebidas do Servidor</h6>
 				</div>
@@ -60,7 +60,7 @@
 		</div>
 
 		<div *ngIf="statsData[0]?.in_message_persisted" class="col-md-4">
-			<div class="card card-caixa">
+			<div class="card">
 					<div class="card-header">
 						<h6 class="center">Mensagens Recebidas e persistidas</h6>
 					</div>
@@ -113,7 +113,7 @@
 
 	<section class="row">
 		<div class="col-md-6" *ngIf="statsData[0]?.out_message_status">
-			<div class="card card-caixa">
+			<div class="card">
 				<div class="card-header">
 					<h6 class="center">Status das mensagens enviadas</h6>
 				</div>
@@ -139,7 +139,7 @@
 		</div>
 
 		<div class="col-md-6" *ngIf="statsData[0]?.out_message_persisted">
-			<div class="card card-caixa">
+			<div class="card">
 				<div class="card-header">
 					<h6 class="center">Mensagens Enviadas e Persistidas</h6>
 				</div>
@@ -190,7 +190,7 @@
 
 	<section class="row">
     <div class="col-md-6" *ngIf="statsData[0]?.media_downloads">
-      <div class="card card-caixa">
+      <div class="card">
         <div class="card-header">
           <h6 class="center">Download</h6>
         </div>
@@ -218,7 +218,7 @@
     </div>
 
     <div class="col-md-6" *ngIf="statsData[0]?.media_uploads">
-      <div class="card card-caixa">
+      <div class="card">
         <div class="card-header">
           <h6 class="center">Upload</h6>
         </div>

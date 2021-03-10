@@ -1,18 +1,30 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from "@angular/core";
 
-import { ComponentesInterface } from '../componentes-interface';
-import { ToastrService } from 'ngx-toastr';
-import { BootstrapTheme } from 'src/app/guia-caixa/constants/constants';
+import { ComponentesInterface } from "../../componentes/componentes-interface";
+import { ToastrService } from "ngx-toastr";
+import { BootstrapTheme } from "src/app/guia-caixa/constants/constants";
+import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 
 @Component({
-  selector: 'app-botoes',
-  templateUrl: './botoes.component.html',
-  styleUrls: ['./botoes.component.css'],
-  host: { '(window:scroll)': 'onScroll($event)' }
+  selector: "app-botoes",
+  templateUrl: "./botoes.component.html",
+  styleUrls: ["./botoes.component.css"],
+  host: { "(window:scroll)": "onScroll($event)" }
 })
 export class BotoesComponent extends ComponentesInterface implements OnInit {
 
-  temas = BootstrapTheme.getTemas();
+/*   temas = BootstrapTheme.getTemas(); */
+
+  temas = [
+    { "name": "principal" },
+    { "name": "destaque" },
+    { "name": "cancel" },
+    { "name": "aux" },
+    { "name": "success" },
+    { "name": "danger" },
+    { "name": "info" },
+    { "name": "warning" }
+  ];
 
   constructor(
     public toastr: ToastrService
@@ -21,14 +33,48 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
   }
 
   @ViewChild("scrollElement") scrollElement;
-  spiedTags = ['APP-DOCUMENTACAO-TEMPLATE'];
+  spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   sectionOffset = 0;
   currentSection = "painelBotoes";
+
+  navItems: CodeFixedNavItem[] = [
+    { id: "painelBotoes", name: "Padrão" },
+    { id: "painelBotoesTamanho", name: "ícones" }
+  ];
+
+  botoesIntroducao = `<button class="btn btn-principal">Principal</button>;
+<button class="btn btn-destaque">Destaque</button>;
+<button class="btn btn-cancel">Cancel</button>;
+<button class="btn btn-outline-aux">Auxiliar</button>;
+<button class="btn btn-danger btn-sm">Perigo</button>;
+<button class="btn btn-success btn-lg">Sucesso</button>;
+<button class="btn btn-warning">Alerta</button>
+<button class="btn btn-info">Informativo</button>
+<button class="btn btn-link">Link</button>`;
+
+  botoesIcones = `<button class="btn btn-destaque btn-sm">
+  <i class="fa fa-plus mr-2"></i>Incluir
+</button>
+
+<button class="btn btn-outline-destaque">
+  <i class="fa fa-edit mr-2"></i>Editar
+</button>
+
+<button class="btn btn-principal btn-lg">
+  <i class="fa fa-lg fa-save mr-3"></i>Salvar
+</button>`;
+
+
+
+
+
+
+
 
   htmlCodeBotoes = `<button class="btn btn-caixa btn-cancel">Botão</button>`.trim();
 
   htmlCodeBotoesTematicos = `        <button class="btn btn-caixa btn-destaque">Primário</button> &nbsp;
-<button class="btn btn-caixa btn-perigo-dark">Erro com tom escuro</button> &nbsp;
+<button class="btn btn-caixa btn-danger-dark">Erro com tom escuro</button> &nbsp;
 <button class="btn btn-caixa btn-apoio-light">Apoio com tom claro</button> &nbsp;
 <button class="btn btn-caixa btn-outline-info">Info - outline</button>`.trim();
 

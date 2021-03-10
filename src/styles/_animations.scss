@@ -57,7 +57,7 @@
   top: 0;
   left: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle, cx-variables.$cx-color-cinza-lighter 10%, transparent 10.01%);
+  background-image: radial-gradient(circle, cx-variables.$cx-color-cancel-lighter 10%, transparent 10.01%);
   background-repeat: no-repeat;
   background-position: 50%;
   transform: scale(10, 10);
@@ -81,7 +81,7 @@
 
 @function set-ripple($color) {
   @if lightness($color) <=50 {
-    @return $cx-color-cinza-lighter;
+    @return $cx-color-cancel-lighter;
   }
 
   @else {

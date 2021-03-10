@@ -36,7 +36,7 @@ const routes: Routes = [
     loadChildren: () => import("./demonstracao/layout/layout.module").then(m => m.LayoutModule)
   },
   {
-    path: "componentes",
+    path: "componentes-caixa",
     data: {
       title: "Componentes",
       breadcrumb: "Componentes",
@@ -78,7 +78,8 @@ const routes: Routes = [
       breadcrumb: "Páginas",
       animation: "Paginas"
     },
-    loadChildren: () => import("./demonstracao/paginas/paginas.module").then(m => m.PaginasModule) },
+    loadChildren: () => import("./demonstracao/paginas/paginas.module").then(m => m.PaginasModule)
+  },
   {
     path: "prototipador",
     data: {
@@ -86,7 +87,16 @@ const routes: Routes = [
       breadcrumb: "Prototipador",
       animation: "Prototipador"
     },
-    loadChildren: () => import("./prototipador/prototipador.module").then(m => m.PrototipadorModule) },
+    loadChildren: () => import("./prototipador/prototipador.module").then(m => m.PrototipadorModule)
+  },
+  {
+    path: "componentes-basicos",
+    data: {
+      title: "Componentes Básicos",
+      breadcrumb: "Componentes Básicos",
+      animation: "Componentes Básicos"
+    },
+    loadChildren: () => import("./demonstracao/componentes-basicos/componentes-basicos.module").then(m => m.ComponentesBasicosModule) },
   {
     path: "**",
     redirectTo: "home",

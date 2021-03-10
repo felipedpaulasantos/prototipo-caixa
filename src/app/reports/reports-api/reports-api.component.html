@@ -5,7 +5,7 @@
   <hr class="mt-0">
 </div>
 
-<div class="card card-caixa" *ngIf="!statsData || (statsData && statsData.length == 0)">
+<div class="card" *ngIf="!statsData || (statsData && statsData.length == 0)">
   <div body>
     <div class="alert alert-danger m-0">
       <i class="fas fa-times-circle mr-2"></i>
@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<div class="card card-caixa" *ngIf="statsData && statsData.length > 0">
+<div class="card" *ngIf="statsData && statsData.length > 0">
 
 	<div class="card-header">
 		<h5>
@@ -61,7 +61,7 @@
 
 <ng-container *ngIf="statsData && statsData.length > 0">
 
-  <br><br>
+  <br class="my-3">
 
   <div *ngIf="isMultiInstance">
     <app-report-multi-instance

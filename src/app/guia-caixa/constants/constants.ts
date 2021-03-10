@@ -148,7 +148,7 @@ export class BootstrapTheme {
 	static readonly CINZA_LIGHT = new BootstrapTheme(
 		"CINZA_LIGHT", { name: "cinza-light", textColor: "light" });
 	static readonly CINZA_LIGHTER = new BootstrapTheme(
-		"CINZA_LIGHTER", { name: "cinza-lighter", textColor: "light" });
+		"CINZA_LIGHTER", { name: "cancel-lighter", textColor: "light" });
 	static readonly CINZA_DARK = new BootstrapTheme(
 		"CINZA_DARK", { name: "cinza-dark", textColor: "light" });
 	static readonly CINZA_DARKER = new BootstrapTheme(

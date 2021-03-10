@@ -25,8 +25,8 @@ export class CoresComponent implements OnInit {
   coresGradiente: any[] = [];
 
   variavelCssExemplo = `.classe-exemplo {
-    color: var(--cxBase);
-    background-color: var(--cxContraste);
+    color: var(--base);
+    background-color: var(--contraste);
 }`;
 
   dtTematicasSettings = DataTableConfig.getDataTableSettings({
@@ -86,112 +86,112 @@ export class CoresComponent implements OnInit {
       this.coresVariaveis = [
         {
           nome: "Principal",
-          variavel: "--cxPrincipal",
+          variavel: "--principal",
           classe: "principal",
-          valor: this.styleService.getCssVariableValue("--cxPrincipal"),
+          valor: this.styleService.getCssVariableValue("--principal"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `01 - Ações principais: <br><br>
+            `01 - Ações principais: <br class="my-3">
             <button class="btn btn-principal">Contratar</button>
             <button class="btn btn-principal">Salvar</button>`
           )
         }, {
           nome: "Destaque",
-          variavel: "--cxDestaque",
+          variavel: "--destaque",
           classe: "destaque",
-          valor: this.styleService.getCssVariableValue("--cxDestaque"),
+          valor: this.styleService.getCssVariableValue("--destaque"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `02 - Ações secundárias: <br><br>
+            `02 - Ações secundárias: <br class="my-3">
             <button class="btn btn-destaque">Avançar</button>
             <button class="btn btn-outline-destaque">Adicionar</button>`
           )
         }, {
           nome: "Base",
-          variavel: "--cxBase",
+          variavel: "--base",
           classe: "base",
-          valor: this.styleService.getCssVariableValue("--cxBase"),
+          valor: this.styleService.getCssVariableValue("--base"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `03 - Base do tema, geralmente branco ou alguma cor bem escura.`
           )
         }, {
           nome: "Fundo",
-          variavel: "--cxFundo",
+          variavel: "--fundo",
           classe: "fundo",
-          valor: this.styleService.getCssVariableValue("--cxFundo"),
+          valor: this.styleService.getCssVariableValue("--fundo"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `04 - Bastante próxima da base, utilizada no plano de fundo do conteúdo principal da página e outros elementos.`
           )
         }, {
           nome: "Cancel",
-          variavel: "--cxCancel",
+          variavel: "--cancel",
           classe: "cancel",
-          valor: this.styleService.getCssVariableValue("--cxCancel"),
+          valor: this.styleService.getCssVariableValue("--cancel"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `05 - Intermediária do tema, mais próxima à cor base. Ações auxiliares relacionadas a cancelamento: <br><br>
+            `05 - Intermediária do tema, mais próxima à cor base. Ações auxiliares relacionadas a cancelamento: <br class="my-3">
              <button class="btn btn-cancel">Voltar</button>
              <button class="btn btn-cancel">Cancelar</button>`
           )
         }, {
           nome: "Auxiliar",
-          variavel: "--cxAux",
+          variavel: "--aux",
           classe: "aux",
-          valor: this.styleService.getCssVariableValue("--cxAux"),
+          valor: this.styleService.getCssVariableValue("--aux"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `06 - Intermediária do tema, mais próxima à cor de contraste. Ações auxiliares relacionadas a funcionalides de suporte: <br><br>
+            `06 - Intermediária do tema, mais próxima à cor de contraste. Ações auxiliares relacionadas a funcionalides de suporte: <br class="my-3">
              <button class="btn btn-aux">Copiar</button>
              <button class="btn btn-outline-aux">Imprimir</button>`
           )
         }, {
           nome: "Contraste",
-          variavel: "--cxContraste",
+          variavel: "--contraste",
           classe: "contraste",
-          valor: this.styleService.getCssVariableValue("--cxContraste"),
+          valor: this.styleService.getCssVariableValue("--contraste"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `07 - Contraste do tema, oposta à cor base. <br><br>
+            `07 - Contraste do tema, oposta à cor base. <br class="my-3">
             Cor padrão do texto e de elementos que precisam contrastar ao máximo com a cor de fundo`
           )
         }, {
           nome: "Sucesso",
-          variavel: "--cxSucesso",
-          classe: "sucesso",
-          valor: this.styleService.getCssVariableValue("--cxSucesso"),
+          variavel: "--success",
+          classe: "success",
+          valor: this.styleService.getCssVariableValue("--success"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `08 - Temática de sucesso. <br><br>
-            <div class="alert bg-sucesso text-white">
+            `08 - Temática de sucesso. <br class="my-3">
+            <div class="alert bg-success text-white">
               <i class="fa fa-check-circle fa-lg mr-2"></i>
               Operação concluída com sucesso
             </div>`
           )
         }, {
           nome: "Perigo",
-          variavel: "--cxPerigo",
-          classe: "perigo",
-          valor: this.styleService.getCssVariableValue("--cxPerigo"),
+          variavel: "--danger",
+          classe: "danger",
+          valor: this.styleService.getCssVariableValue("--danger"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `09 - Temática de erro. <br><br>
-            <div class="alert bg-perigo text-base">
+            `09 - Temática de erro. <br class="my-3">
+            <div class="alert bg-danger text-base">
               <i class="fa fa-times-circle fa-lg mr-2"></i>
               Houve um erro ao efetuar esta ação
             </div>`
           )
         }, {
           nome: "Alerta",
-          variavel: "--cxAlerta",
-          classe: "alerta",
-          valor: this.styleService.getCssVariableValue("--cxAlerta"),
+          variavel: "--warning",
+          classe: "warning",
+          valor: this.styleService.getCssVariableValue("--warning"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `10 - Temática de alerta. <br><br>
-            <div class="alert bg-alerta">
+            `10 - Temática de alerta. <br class="my-3">
+            <div class="alert bg-warning">
               <i class="fa fa-exclamation-triangle fa-lg mr-2"></i>
               Não foi possível recuperar a informação
             </div>`
           )
         }, {
           nome: "Info",
-          variavel: "--cxInfo",
+          variavel: "--info",
           classe: "info",
-          valor: this.styleService.getCssVariableValue("--cxInfo"),
+          valor: this.styleService.getCssVariableValue("--info"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `11 - Temática de informação. <br><br>
+            `11 - Temática de informação. <br class="my-3">
             <div class="alert bg-info text-base">
               <i class="fa fa-info-circle fa-lg mr-2"></i>
               Não há pendências

@@ -29,11 +29,11 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
   sectionOffset = 0;
   currentSection = "painelMensagens";
 
-  htmlCodeMensagens = `        <button class="btn btn-caixa btn-sucesso" (click)="exibirSucesso()">
+  htmlCodeMensagens = `        <button class="btn btn-caixa btn-success" (click)="exibirSucesso()">
   Sucesso!
 </button> &nbsp;
 
-<button class="btn btn-caixa btn-perigo" (click)="exibirErro()">
+<button class="btn btn-caixa btn-danger" (click)="exibirErro()">
   Erro!
 </button> &nbsp;
 

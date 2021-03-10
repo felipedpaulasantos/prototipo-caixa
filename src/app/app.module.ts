@@ -33,6 +33,7 @@ import { CoresModule } from "./demonstracao/cores/cores.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ResizableModule } from "angular-resizable-element";
 import { NgxSpinnerModule } from "ngx-spinner";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -60,6 +61,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       GuiaCaixaModule,
       ResizableModule,
       NgxSpinnerModule,
+      NgSelectModule,
       NgxMaskModule.forRoot(),
       OAuthModule.forRoot(),
       ToastrModule.forRoot({
