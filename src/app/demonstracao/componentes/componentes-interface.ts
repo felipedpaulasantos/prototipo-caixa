@@ -63,6 +63,7 @@ export abstract class ComponentesInterface {
 			if (this.spiedTags.some(spiedTag => spiedTag === element.tagName)) {
 				if ((element.offsetTop - this.sectionOffset) <= scrollTop) {
 					currentSection = element.id;
+          console.log(currentSection);
 				}
 			}
 		}

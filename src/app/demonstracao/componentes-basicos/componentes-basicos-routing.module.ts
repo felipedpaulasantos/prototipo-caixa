@@ -4,6 +4,7 @@ import { BotoesComponent } from "./botoes/botoes.component";
 import { CardsComponent } from "./cards/cards.component";
 
 import { ComponentesBasicosComponent } from "./componentes-basicos.component";
+import { FormsComponent } from "./forms/forms.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,15 @@ const routes: Routes = [
       title: "Cards",
       breadcrumb: "Cards",
       animation: "Cards"
+    }
+  },
+  {
+    path: "forms",
+    component: FormsComponent,
+    data: {
+      title: "Forms",
+      breadcrumb: "Forms",
+      animation: "Forms"
     }
   },
 ];

@@ -24,6 +24,7 @@
     "@angular/router": "~9.1.11",
     "@auth0/angular-jwt": "^4.2.0",
     "@fortawesome/fontawesome-free": "^5.13.0",
+    "@ng-select/ng-select": "^6.1.0",
     "angular-cli-ghpages": "^0.6.2",
     "angular-datatables": "^9.0.2",
     "angular-oauth2-oidc": "^9.2.2",

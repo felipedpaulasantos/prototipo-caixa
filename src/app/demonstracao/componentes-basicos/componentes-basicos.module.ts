@@ -12,14 +12,17 @@ import { NgxMaskModule } from "ngx-mask";
 import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 import { SharedModule } from "src/app/shared/shared.module";
 import { GuiaCaixaModule } from "src/app/guia-caixa/guia-caixa.module";
+import { FormsComponent } from "./forms/forms.component";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 @NgModule({
-  declarations: [ComponentesBasicosComponent, BotoesComponent],
+  declarations: [ComponentesBasicosComponent, BotoesComponent, FormsComponent],
   imports: [
     CommonModule,
     ComponentesBasicosRoutingModule,
     SharedModule,
     FormsModule,
+    NgSelectModule,
     ReactiveFormsModule,
     NgxMaskModule,
     DataTablesModule,

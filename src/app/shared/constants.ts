@@ -108,6 +108,13 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     isLink: true,
     enabled: true,
     submenu: [
+/*       {
+        name: "Alerts",
+        iconClass: "fa fa-lg fa-exclamation-triangle",
+        url: "/componentes-basicos/alerts",
+        isLink: true,
+        enabled: true
+      }, */
       {
         name: "Botões",
         iconClass: "fa fa-lg fa-bullseye",
@@ -123,9 +130,9 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         enabled: true
       },
       {
-        name: "Alerts",
-        iconClass: "fa fa-lg fa-exclamation-triangle",
-        url: "/componentes-basicos/alerts",
+        name: "Forms",
+        iconClass: "fab fa-lg fa-wpforms",
+        url: "/componentes-basicos/forms",
         isLink: true,
         enabled: true
       },
