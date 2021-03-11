@@ -25,6 +25,17 @@ export class TabberDemonstracaoComponent extends ComponentesInterface {
 
   stylesExample = "styles='{ height: '300px'; }'";
 
+  codeDescricao = `<cx-tabber [tabs]="abas"></cx-tabber>`.trim();
+
+  codeTsDescricao = `abas: TabberItem[] = [
+  { name: "Home", icon: "fa fa-home" },
+  { name: "Componentes", icon: "fa fa-toolbox" },
+  { name: "Tipografia", icon: "fa fa-font" },
+  { name: "Cores", icon: "fa fa-palette" },
+  { name: "Configurações", icon: "fa fa-wrench" },
+  { name: "Páginas", icon: "fa fa-newspaper" }
+];`.trim();
+
   htmlCodeTabber = `<cx-tabber [tabs]="abas" #tabberExemplo>
   <ng-container *ngFor="let aba of abas">
      <div *cxStepper>

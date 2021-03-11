@@ -28,6 +28,7 @@ export class CardButtonDemonstracaoComponent extends ComponentesInterface {
     { id: "painelCardButton", name: "Layout" },
     { id: "painelCardButtonCheckbox", name: "Checkbox" },
     { id: "painelCardButtonRadio", name: "Radio" },
+    { id: "painelCardButtonColor", name: "Cores" }
   ];
 
   formFone = this.fb.group({
@@ -38,6 +39,11 @@ export class CardButtonDemonstracaoComponent extends ComponentesInterface {
   email;
 
   stylesExample = "styles='{ height: '300px'; }'";
+
+  codeDescricao = `<cx-card-button leftIcon="fa fa-home" leftTitle="Título do lado esquerdo">
+  <h5>Título do lado direito</h5>
+  <p>Texto do lado direito</p>
+</cx-card-button>`.trim();
 
   htmlCodeCardButton = `<cx-card-button leftIcon="fa fa-home">
   <h5>Lorem Ipsum</h5>
@@ -127,6 +133,18 @@ export class CardButtonExemplo {
       nemo distinctio dolore perspiciatis ratione
       voluptas non maxime doloremque!
     </div>
+</cx-card-button>`.trim();
+
+htmlCodeCores = `<cx-card-button color="secondary" leftIcon="fa fa-home fa-lg">
+  Principal
+</cx-card-button>
+<br>
+<cx-card-button type="checkbox" color="success" leftIcon="fa fa-check">
+  Sucesso
+</cx-card-button>
+<br>
+<cx-card-button color="danger" leftIcon="fa fa-times">
+  Perigo
 </cx-card-button>`.trim();
 
 }

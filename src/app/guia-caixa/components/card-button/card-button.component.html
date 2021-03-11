@@ -1,4 +1,4 @@
-<div class="card-button-wrapper" [ngStyle]="styles" [ngClass]="{'checked': !type || model === value}">
+<div class="card-button-wrapper" class="{{ color }}" [ngStyle]="styles" [ngClass]="{'checked': !type || model === value}">
   <div class="row no-gutters">
 
     <div class="col-4 card-button-left-side" [ngClass]="{'cursor-pointer': type}" tabindex="0" (click)="toggleValue()"

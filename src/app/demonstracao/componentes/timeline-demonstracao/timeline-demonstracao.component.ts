@@ -35,6 +35,16 @@ export class TimelineDemonstracaoComponent extends ComponentesInterface implemen
     { id: "painelTimelineExtenso", name: "Extenso" }
   ];
 
+  codeDescricao = `<cx-timeline [items]="timelineItems"></cx-timeline>`.trim();
+
+  codeTsDescricao = `timelineItems: TimelineItem[] = [
+  { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
+  { title: "Item warning", state: "warning", date: new Date(), dateFormat: "full" },
+  { title: "Item warning-stop", state: "warning-stop", dateString: "05/12/2020" },
+  { title: "Item erro", state: "error", dateString: "03/12/2020" },
+  { title: "Item info", state: "info", dateString: "06/12/2020" }
+];`.trim();
+
   timelineItems: TimelineItem[] = [
     { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
     { title: "Item warning", state: "warning", date: new Date(), dateFormat: "full" },
