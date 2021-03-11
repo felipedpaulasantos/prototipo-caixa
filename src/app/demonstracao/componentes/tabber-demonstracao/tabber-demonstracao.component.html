@@ -2,6 +2,19 @@
 	Tabber
 </h1>
 
+<div class="my-4">
+	<h5>
+		<p>O componente alternativo Tabber <span class="citation-highlight">cx-tabber</span> difere do Stepper
+			ao não implementar qualquer relação de sequência entre as etapas, apenas organizando o conteúdo
+			em abas.
+		</p>
+	</h5>
+	<h6 class="font-fam-bold">HTML:</h6>
+	<pre><code [highlight]="codeDescricao" [languages]="['html']"></code></pre> 
+	<h6 class="font-fam-bold">TS:</h6>
+	<pre><code [highlight]="codeTsDescricao"  [languages]="['ts']"></code></pre> 
+</div>
+
 
 <ul class="nav nav-pills tab-caixa" role="tablist">
 	<li class="nav-item">
@@ -31,10 +44,6 @@
 					[htmlTabId]="'htmlCodeTabber'" [htmlCode]="htmlCodeTabber" [tsTabId]="'tsCodeTabber'"
 					[tsCode]="tsCodeTabber">
 					<div class="descricao">
-						<p>O componente alternativo Tabber <span class="citation-highlight">cx-tabber</span> difere do Stepper
-							ao não implementar qualquer relação de sequência entre as etapas, apenas organizando o conteúdo
-							em abas.</p>
-
 						<p>O atributo <span class="citation-highlight">tabs</span> recebe uma lista de objetos do tipo <span
 								class="citation-highlight">TabberItem</span>,
 							com as propriedades "name" e "icon".

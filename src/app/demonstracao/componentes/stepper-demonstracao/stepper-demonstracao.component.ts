@@ -28,6 +28,20 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
     { id: "painelStepperInterno", name: "Conteúdo Interno" }
   ];
 
+  codeDescricao = `<cx-stepper 
+  [steps]="passos" 
+  [currentStep]="passoAtual"
+  (changeStep)="passoAtual = $event">
+</cx-stepper>`.trim();
+
+  codeTsDescricao = `  passos: StepperItem[] = [
+  { title: "Primeiro passo" },
+  { title: "Segundo passo" },
+  { title: "Terceiro passo" },
+  { title: "Quarto passo" },
+  { title: "Quinto passo" }
+];`.trim();
+
   stylesExample = "styles='{ height: '300px'; }'";
 
   showTabsStepperPadrao = false;
