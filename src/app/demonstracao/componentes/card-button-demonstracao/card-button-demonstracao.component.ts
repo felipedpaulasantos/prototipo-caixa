@@ -129,4 +129,16 @@ export class CardButtonExemplo {
     </div>
 </cx-card-button>`.trim();
 
+htmlCodeCores = `<cx-card-button color="secondary" leftIcon="fa fa-home fa-lg">
+  Principal
+</cx-card-button>
+<br>
+<cx-card-button type="checkbox" color="success" leftIcon="fa fa-check">
+  Sucesso
+</cx-card-button>
+<br>
+<cx-card-button color="danger" leftIcon="fa fa-times">
+  Perigo
+</cx-card-button>`.trim();
+
 }

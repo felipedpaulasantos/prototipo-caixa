@@ -4,6 +4,7 @@ import {
 } from "@angular/core";
 import { ControlValueAccessor, NgControl } from "@angular/forms";
 import { CardButtonCheckEvent } from "./card-button-check-event";
+import { CardButtonColor } from "./card-button-model";
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -66,6 +67,14 @@ export class CardButtonComponent implements OnInit, ControlValueAccessor {
   */
   @Input()
   type = "";
+
+  /**
+   * @param color Define a cor geral do card (lado esquerdo e borda) quando ele estiver selecionado
+   * Deve ser do tipo CardButtonColor, ou o valor da string diretamente (primary, secondary, success, danger, warning, info)
+   * @type CardButtonColor | string
+  */
+  @Input()
+  color: CardButtonColor | string = CardButtonColor.Primary;
 
   /**
    * @param checked Evento emitido ao ativar o botão, contendo o próprio componente e seus atributos
