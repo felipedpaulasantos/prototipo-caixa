@@ -1,10 +1,34 @@
-<h1 class="header-principal-caixa">
+<h1 class="titulo">
 	Tipografia
 </h1>
 
 <div class="card mb-3">
 	<div class="card-header">
-		<h5 class="header-caixa">Títulos</h5>
+		<h5 class="subtitulo">Títulos Próprios</h5>
+	</div>
+	<div class="card-body">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th class="w-25">Tag</th>
+					<th class="w-25">Exemplo</th>
+					<th>Uso</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let titulo of titulosPadrao">
+					<td><pre><code [highlight]="titulo.tag" [languages]="['html']"></code></pre></td>
+					<td [innerHTML]="titulo.exemplo"></td>
+					<td [innerHTML]="titulo.uso"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="card mb-3">
+	<div class="card-header">
+		<h5 class="subtitulo">Tamanho padrão</h5>
 	</div>
 	<div class="card-body">
 		<table class="table table-bordered">
@@ -26,179 +50,198 @@
 
 <div class="card mb-3">
 	<div class="card-header">
-		<h5 class="header-caixa">Títulos</h5>
+		<h5 class="subtitulo">Ícones</h5>
 	</div>
 	<div class="card-body">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th class="w-25">Tag</th>
-					<th class="w-25">Exemplo</th>
-					<th>Uso</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let titulo of titulosPadrao">
-					<td><pre><code [highlight]="titulo.tag" [languages]="['html']"></code></pre></td>
-					<td [innerHTML]="titulo.exemplo"></td>
-					<td>{{ titulo.uso }}</td>
-				</tr>
-			</tbody>
-		</table>
+		<p>
+			A biblioteca de ícones a ser usada é a 
+			<a class="text-destaque" target="_blank" href="https://fontawesome.com/icons?d=gallery&p=2&m=free">
+				Font Awesome
+			</a>.
+		</p>
+
+		Para indicar estado de sucesso, erro, alerta e informação, utilizar os seguintes ícones.
+
+		<div class="my-3">
+			<span class="mr-5">
+				<i class="fa fa-check mr-3"></i>
+				<i class="fa fa-times mr-3"></i>
+				<i class="fa fa-exclamation mr-3"></i>
+				<i class="fa fa-info mr-3"></i>
+			</span>
+			<h4 class="d-inline mr-5">
+				<i class="fa fa-check fa-lg mr-3"></i>
+				<i class="fa fa-times fa-lg mr-3"></i>
+				<i class="fa fa-exclamation fa-lg mr-3"></i>
+				<i class="fa fa-info fa-lg mr-3"></i>
+			</h4>
+			<h2 class="d-inline mr-5">
+				<i class="fa fa-check fa-lg text-success mr-3"></i>
+				<i class="fa fa-times fa-lg text-danger mr-3"></i>
+				<i class="fa fa-exclamation text-warning fa-lg mr-3"></i>
+				<i class="fa fa-info fa-lg text-info mr-3"></i>
+			</h2>
+		</div>
+
+		<h6 class="subtitulo">HTML:</h6>
+		<pre><code [highlight]="iconesExemplo" [languages]="['html']"></code></pre>
 	</div>
 </div>
 
-
-<div class="mb-5">
-	<h5>Fonte padrão</h5>
-	<h5 class="font-fam-bold">Fonte Bold</h5>
-	<a href="#">Link</a>
-</div>
-
-<div class="mb-5">
-	<p>Texto padrão: {{ placeholder }}</p>
-	<small>Texto pequeno: {{ placeholder }}</small>
-	<br>
-	<span>
-		<i class="fa fa-check mr-2"></i>
-		<i class="fa fa-times mr-2"></i>
-		<i class="fa fa-user mr-2"></i>
-		<i class="fa fa-comment mr-2"></i>
-		<i class="fa fa-angle-right mr-5"></i>
-	</span>
-	<span class="text-opacity-1">
-		<i class="fa fa-check mr-2"></i>
-		<i class="fa fa-times mr-2"></i>
-		<i class="fa fa-user mr-2"></i>
-		<i class="fa fa-comment mr-2"></i>
-		<i class="fa fa-angle-right mr-5"></i>
-	</span>
-	<span>
-		<i class="fa fa-lg fa-check mr-2"></i>
-		<i class="fa fa-lg fa-times mr-2"></i>
-		<i class="fa fa-lg fa-user mr-2"></i>
-		<i class="fa fa-lg fa-comment mr-2"></i>
-		<i class="fa fa-lg fa-angle-right mr-5"></i>
-	</span>
-	<span class="text-principal text-opacity-1">
-		<i class="fa fa-lg fa-check mr-2"></i>
-		<i class="fa fa-lg fa-times mr-2"></i>
-		<i class="fa fa-lg fa-user mr-2"></i>
-		<i class="fa fa-lg fa-comment mr-2"></i>
-		<i class="fa fa-lg fa-angle-right mr-5"></i>
-	</span>
-	<h2 class="d-inline">
-		<i class="fa fa-lg fa-check mr-2"></i>
-		<i class="fa fa-lg fa-times mr-2"></i>
-		<i class="fa fa-lg fa-user mr-2"></i>
-		<i class="fa fa-lg fa-comment mr-2"></i>
-		<i class="fa fa-lg fa-angle-right mr-5"></i>
-	</h2>
-</div>
-
-<div class="row mb-5">
-	<div class="col-4">
-		<h1>Título H1</h1>
-		<h2>Título H2</h2>
-		<h3>Título H3</h3>
-		<h4>Título H4</h4>
-		<h5>Título H5</h5>
-		<h6>Título H6</h6>
+<ng-container *ngIf="false">
+	<div class="mb-5">
+		<h5>Fonte padrão</h5>
+		<h5 class="font-fam-bold">Fonte Bold</h5>
+		<a href="#">Link</a>
 	</div>
-	<div class="col-4">
-		<h1 class="font-fam-bold">Título H1</h1>
-		<h2 class="font-fam-bold">Título H2</h2>
-		<h3 class="font-fam-bold">Título H3</h3>
-		<h4 class="font-fam-bold">Título H4</h4>
-		<h5 class="font-fam-bold">Título H5</h5>
-		<h6 class="font-fam-bold">Título H6</h6>
+	
+	<div class="mb-5">
+		<p>Texto padrão: {{ placeholder }}</p>
+		<small>Texto pequeno: {{ placeholder }}</small>
+		<br>
+		<span>
+			<i class="fa fa-check mr-3"></i>
+			<i class="fa fa-times mr-3"></i>
+			<i class="fa fa-user mr-3"></i>
+			<i class="fa fa-comment mr-3"></i>
+			<i class="fa fa-angle-right mr-5"></i>
+		</span>
+		<span class="text-opacity-1">
+			<i class="fa fa-check mr-3"></i>
+			<i class="fa fa-times mr-3"></i>
+			<i class="fa fa-user mr-3"></i>
+			<i class="fa fa-comment mr-3"></i>
+			<i class="fa fa-angle-right mr-5"></i>
+		</span>
+		<span>
+			<i class="fa fa-lg fa-check mr-3"></i>
+			<i class="fa fa-lg fa-times mr-3"></i>
+			<i class="fa fa-lg fa-user mr-3"></i>
+			<i class="fa fa-lg fa-comment mr-3"></i>
+			<i class="fa fa-lg fa-angle-right mr-5"></i>
+		</span>
+		<span class="text-principal text-opacity-1">
+			<i class="fa fa-lg fa-check mr-3"></i>
+			<i class="fa fa-lg fa-times mr-3"></i>
+			<i class="fa fa-lg fa-user mr-3"></i>
+			<i class="fa fa-lg fa-comment mr-3"></i>
+			<i class="fa fa-lg fa-angle-right mr-5"></i>
+		</span>
+		<h2 class="d-inline">
+			<i class="fa fa-lg fa-check mr-3"></i>
+			<i class="fa fa-lg fa-times mr-3"></i>
+			<i class="fa fa-lg fa-user mr-3"></i>
+			<i class="fa fa-lg fa-comment mr-3"></i>
+			<i class="fa fa-lg fa-angle-right mr-5"></i>
+		</h2>
 	</div>
-</div>
-
-<div class="mb-5">
-	<h2 class="header-principal-caixa">Header Principal Caixa</h2>
-	<h2 class="header-caixa">Header Caixa</h2>
-	<h2 class="header-caixa text-principal">Header Caixa</h2>
-	<h2 class="header-caixa text-apoio">Header Caixa</h2>
-</div>
-
-<div class="row mb-5">
-	<div class="col-4">
-		<h2 class="">Opacidade normal</h2>
-		<h2 class="text-opacity-1">Opacidade 1</h2>
-		<h2 class="text-opacity-2">Opacidade 2</h2>
-		<h2 class="text-opacity-3">Opacidade 3</h2>
+	
+	<div class="row mb-5">
+		<div class="col-4">
+			<h1>Título H1</h1>
+			<h2>Título H2</h2>
+			<h3>Título H3</h3>
+			<h4>Título H4</h4>
+			<h5>Título H5</h5>
+			<h6>Título H6</h6>
+		</div>
+		<div class="col-4">
+			<h1 class="font-fam-bold">Título H1</h1>
+			<h2 class="font-fam-bold">Título H2</h2>
+			<h3 class="font-fam-bold">Título H3</h3>
+			<h4 class="font-fam-bold">Título H4</h4>
+			<h5 class="font-fam-bold">Título H5</h5>
+			<h6 class="font-fam-bold">Título H6</h6>
+		</div>
 	</div>
-	<div class="col-4">
-		<h2 class="font-fam-bold">Opacidade normal</h2>
-		<h2 class="font-fam-bold text-opacity-1">Opacidade 1</h2>
-		<h2 class="font-fam-bold text-opacity-2">Opacidade 2</h2>
-		<h2 class="font-fam-bold text-opacity-3">Opacidade 3</h2>
+	
+	<div class="mb-5">
+		<h2 class="titulo">Header Principal Caixa</h2>
+		<h2 class="subtitulo">Header Caixa</h2>
+		<h2 class="subtitulo text-principal">Header Caixa</h2>
+		<h2 class="subtitulo text-apoio">Header Caixa</h2>
 	</div>
-</div>
-
-<div class="row mb-5">
-	<div class="col-4">
-		<div class="card bg-white">
-			<div class="card-body">
-				<h2 class="header-principal-caixa">Título</h2>
-				<h2>Título</h2>
-				<h2 class="font-fam-bold">Título</h2>
-				<h2 class="header-caixa">Título</h2>
+	
+	<div class="row mb-5">
+		<div class="col-4">
+			<h2 class="">Opacidade normal</h2>
+			<h2 class="text-opacity-1">Opacidade 1</h2>
+			<h2 class="text-opacity-2">Opacidade 2</h2>
+			<h2 class="text-opacity-3">Opacidade 3</h2>
+		</div>
+		<div class="col-4">
+			<h2 class="font-fam-bold">Opacidade normal</h2>
+			<h2 class="font-fam-bold text-opacity-1">Opacidade 1</h2>
+			<h2 class="font-fam-bold text-opacity-2">Opacidade 2</h2>
+			<h2 class="font-fam-bold text-opacity-3">Opacidade 3</h2>
+		</div>
+	</div>
+	
+	<div class="row mb-5">
+		<div class="col-4">
+			<div class="card bg-white">
+				<div class="card-body">
+					<h2 class="titulo">Título</h2>
+					<h2>Título</h2>
+					<h2 class="font-fam-bold">Título</h2>
+					<h2 class="subtitulo">Título</h2>
+				</div>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="card bg-cinza">
+				<div class="card-body">
+					<h2 class="titulo">Título</h2>
+					<h2>Título</h2>
+					<h2 class="font-fam-bold">Título</h2>
+					<h2 class="subtitulo">Título</h2>
+				</div>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="card bg-grafite text-white">
+				<div class="card-body">
+					<h2 class="titulo text-white">Título</h2>
+					<h2>Título</h2>
+					<h2 class="font-fam-bold">Título</h2>
+					<h2 class="subtitulo">Título</h2>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-4">
-		<div class="card bg-cinza">
-			<div class="card-body">
-				<h2 class="header-principal-caixa">Título</h2>
-				<h2>Título</h2>
-				<h2 class="font-fam-bold">Título</h2>
-				<h2 class="header-caixa">Título</h2>
+	
+	<div class="row mb-5">
+		<div class="col-4">
+			<div class="card bg-destaque text-white">
+				<div class="card-body">
+					<h2 class="titulo text-white">Título</h2>
+					<h2>Título</h2>
+					<h2 class="font-fam-bold">Título</h2>
+					<h2 class="subtitulo">Título</h2>
+				</div>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="card bg-uva text-white">
+				<div class="card-body">
+					<h2 class="titulo text-white">Título</h2>
+					<h2>Título</h2>
+					<h2 class="font-fam-bold">Título</h2>
+					<h2 class="subtitulo">Título</h2>
+				</div>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="card bg-gradient-ceu text-white">
+				<div class="card-body">
+					<h2 class="titulo text-white">Título</h2>
+					<h2>Título</h2>
+					<h2 class="font-fam-bold">Título</h2>
+					<h2 class="subtitulo">Título</h2>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-4">
-		<div class="card bg-grafite text-white">
-			<div class="card-body">
-				<h2 class="header-principal-caixa text-white">Título</h2>
-				<h2>Título</h2>
-				<h2 class="font-fam-bold">Título</h2>
-				<h2 class="header-caixa">Título</h2>
-			</div>
-		</div>
-	</div>
-</div>
+</ng-container>
 
-<div class="row mb-5">
-	<div class="col-4">
-		<div class="card bg-destaque text-white">
-			<div class="card-body">
-				<h2 class="header-principal-caixa text-white">Título</h2>
-				<h2>Título</h2>
-				<h2 class="font-fam-bold">Título</h2>
-				<h2 class="header-caixa">Título</h2>
-			</div>
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="card bg-uva text-white">
-			<div class="card-body">
-				<h2 class="header-principal-caixa text-white">Título</h2>
-				<h2>Título</h2>
-				<h2 class="font-fam-bold">Título</h2>
-				<h2 class="header-caixa">Título</h2>
-			</div>
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="card bg-gradient-ceu text-white">
-			<div class="card-body">
-				<h2 class="header-principal-caixa text-white">Título</h2>
-				<h2>Título</h2>
-				<h2 class="font-fam-bold">Título</h2>
-				<h2 class="header-caixa">Título</h2>
-			</div>
-		</div>
-	</div>
-</div>
+

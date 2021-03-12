@@ -1,8 +1,22 @@
-<h1 class="header-principal-caixa">
+<h1 class="titulo">
 	Layout
 </h1>
 
-<h5 class="mb-3">Personalização temática dos principais componentes</h5>
+<div *ngFor="let cols of rows" class="row d-flex justify-content-center">
+	<div *ngFor="let resource of cols" class="col-10 col-md-6 col-xl-4">
+	  <div class="card w-75 card-hover button-card" role="button"
+	  optionalClasses="button-card-min-height"
+	  routerLink="{{ resource.url }}" routerLinkActive="active">
+		 <div class="card-body">
+			<h5 class="header-subtitulo-caixa m-0 mr-3 text-center">
+			  <i class="{{ resource.iconClass }} fa-lg mr-1"></i>
+			  {{ resource.name }}
+			</h5>
+		 </div>
+	  </div>
+	  <br>
+	</div>
+ </div>
 
 <div class="row collapse">
 	<div class="col-md-6 col-xl-4 mb-3">

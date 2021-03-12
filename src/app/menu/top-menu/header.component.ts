@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit {
     this.modalService.show({
       showCancelar: true,
       titulo: "Logout",
-      classTitulo: "header-caixa text-danger-dark",
+      classTitulo: "subtitulo text-danger-dark",
       mensagem: "Deseja realmente sair?",
       btOkTexto: "Sair",
       btnOkClass: "btn btn-caixa btn-danger",

@@ -105,9 +105,9 @@ h3,
 h4,
 h5,
 h6 {
-  &.header-caixa,
+  &.subtitulo,
   &.header-subtitulo-caixa,
-  &.header-principal-caixa {
+  &.titulo {
     font-family: var(--cxFontFamilyBold);
     margin-bottom: 1rem;
     opacity: 0.9;
@@ -115,7 +115,7 @@ h6 {
   &.header-subtitulo-caixa {
     color: var(--cxContraste);
   }
-  &.header-principal-caixa {
+  &.titulo {
     color: var(--cxPrincipal);
     margin-bottom: 2rem;
   }

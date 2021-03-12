@@ -11,7 +11,7 @@ export const defaultModalOptions: ModalOptions = {
   btOkTexto: "Ok",
   btCancelarTexto: "Fechar",
   showCancelar: false,
-  classTitulo: "header-principal-caixa",
+  classTitulo: "titulo",
   btnOkClass: 'btn btn-destaque btn-caixa',
   btnCancelarClass: 'btn btn-primario btn-caixa',
   modalBodyClass: "",
