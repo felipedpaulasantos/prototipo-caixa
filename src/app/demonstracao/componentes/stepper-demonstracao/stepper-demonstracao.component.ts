@@ -40,7 +40,8 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
   { title: "Terceiro passo" },
   { title: "Quarto passo" },
   { title: "Quinto passo" }
-];`.trim();
+];
+passoAtual = 0;`.trim();
 
   stylesExample = "styles='{ height: '300px'; }'";
 

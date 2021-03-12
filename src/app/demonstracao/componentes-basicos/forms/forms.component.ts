@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 import { ComponentesInterface } from "../../componentes/componentes-interface";
@@ -11,7 +12,8 @@ import { ComponentesInterface } from "../../componentes/componentes-interface";
 export class FormsComponent extends ComponentesInterface implements OnInit  {
 
   constructor(
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    private fb: FormBuilder
   ) {
     super(toastr);
   }
@@ -26,8 +28,16 @@ export class FormsComponent extends ComponentesInterface implements OnInit  {
     { id: "painelSelect", name: "Select" },
     { id: "painelCheckbox", name: "Checkbox" },
     { id: "painelRadio", name: "Radio" },
-    { id: "painelRange", name: "Range" }
+    { id: "painelRange", name: "Range" },
+    { id: "painelValidacao", name: "Validação" }
   ];
+
+  formValidation = this.fb.group({
+    email: [null, [Validators.email]],
+    linkedin: [null],
+    perfil: [null, [Validators.required]],
+    idade: [50, [Validators.min(18), Validators.max(70)]]
+  });
 
   inputExemplo = `<div class="form-group">
   <label>Nome</label>
@@ -74,8 +84,77 @@ export class FormsComponent extends ComponentesInterface implements OnInit  {
   rangeExemplo = `<label for="customRange1">Example range</label>
 <input type="range" class="custom-range" id="customRange1">`.trim();
 
+  htmlCodeValidacao = `<form [formGroup]="formValidation">
+  <div class="form-group">
+    <label>E-mail</label>
+    <input class="form-control" type="text" formControlName="email">
+    <p class="feedback-msg">
+      <span *ngIf="formValidation.get('email').invalid">E-mail inválido</span>
+    </p>
+  </div>
+
+  <div class="form-group">
+    <label>LinkedIn</label>
+    <input class="form-control" type="text" formControlName="linkedin">
+    <p class="feedback-msg">
+      <span>Campo opcional</span>
+    </p>
+  </div>
+
+  <div class="form-group">
+    <label>Perfil</label>
+    <ng-select formControlName="perfil">
+      <ng-option value="">Selecione...</ng-option>
+      <ng-option value="Visitante">Visitante</ng-option>
+      <ng-option value="Desenvolvedor">Desenvolvedor</ng-option>
+      <ng-option value="Gestor">Gestor</ng-option>
+    </ng-select>
+    <p class="feedback-msg">
+      <span *ngIf="formValidation.get('perfil').invalid">Campo obrigatório</span>
+    </p>
+  </div>
+
+  <div class="form-group">
+    <label>Idade</label>
+    <input class="custom-range" type="range" formControlName="idade" min="0" max="100">
+    <p>{{ formValidation.get('idade').value }}</p>
+    <p class="feedback-msg">
+      <span *ngIf="formValidation.get('idade').invalid">Idade inválida - deve ser entre 18 e 70</span>
+    </p>
+  </div>
+
+  <button class="btn btn-cancel" (click)="formValidation.reset()">Resetar</button>
+</form>`.trim();
+
+  tsCodeValidacao = `import { Component } from '@angular/core';
+import { FormBuilder, Validators } from "@angular/forms";
+
+@Component({
+    selector: 'app-forms',
+    templateUrl: './forms.component.html',
+    styleUrls: ['./forms.component.scss']
+})
+export class FormsComponent {
+
+  constructor() {}
+
+  formValidation = this.fb.group({
+    email: [null, [Validators.email]],
+    linkedin: [null],
+    perfil: [null, [Validators.required]],
+    idade: [50, [Validators.min(18), Validators.max(70)]]
+  });
+
+}`.trimRight();
+
+cssCodeValidacao = `.feedback-msg {
+  height: 1.5rem;
+  color: var(--aux);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}`.trimRight();
+
   ngOnInit(): void {
   }
-
 
 }

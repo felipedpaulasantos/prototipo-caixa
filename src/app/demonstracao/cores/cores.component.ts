@@ -90,7 +90,7 @@ export class CoresComponent implements OnInit {
           classe: "principal",
           valor: this.styleService.getCssVariableValue("--principal"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `01 - Ações principais: <br class="my-3">
+            `01 - Ações principais: <br>
             <button class="btn btn-principal">Contratar</button>
             <button class="btn btn-principal">Salvar</button>`
           )
@@ -100,7 +100,7 @@ export class CoresComponent implements OnInit {
           classe: "destaque",
           valor: this.styleService.getCssVariableValue("--destaque"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `02 - Ações secundárias: <br class="my-3">
+            `02 - Ações secundárias: <br>
             <button class="btn btn-destaque">Avançar</button>
             <button class="btn btn-outline-destaque">Adicionar</button>`
           )
@@ -126,7 +126,7 @@ export class CoresComponent implements OnInit {
           classe: "cancel",
           valor: this.styleService.getCssVariableValue("--cancel"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `05 - Intermediária do tema, mais próxima à cor base. Ações auxiliares relacionadas a cancelamento: <br class="my-3">
+            `05 - Intermediária do tema, mais próxima à cor base. Ações auxiliares relacionadas a cancelamento: <br>
              <button class="btn btn-cancel">Voltar</button>
              <button class="btn btn-cancel">Cancelar</button>`
           )
@@ -136,7 +136,7 @@ export class CoresComponent implements OnInit {
           classe: "aux",
           valor: this.styleService.getCssVariableValue("--aux"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `06 - Intermediária do tema, mais próxima à cor de contraste. Ações auxiliares relacionadas a funcionalides de suporte: <br class="my-3">
+            `06 - Intermediária do tema, mais próxima à cor de contraste. Ações auxiliares relacionadas a funcionalides de suporte: <br>
              <button class="btn btn-aux">Copiar</button>
              <button class="btn btn-outline-aux">Imprimir</button>`
           )
@@ -146,7 +146,7 @@ export class CoresComponent implements OnInit {
           classe: "contraste",
           valor: this.styleService.getCssVariableValue("--contraste"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `07 - Contraste do tema, oposta à cor base. <br class="my-3">
+            `07 - Contraste do tema, oposta à cor base. <br>
             Cor padrão do texto e de elementos que precisam contrastar ao máximo com a cor de fundo`
           )
         }, {
@@ -155,7 +155,7 @@ export class CoresComponent implements OnInit {
           classe: "success",
           valor: this.styleService.getCssVariableValue("--success"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `08 - Temática de sucesso. <br class="my-3">
+            `08 - Temática de sucesso. <br>
             <div class="alert bg-success text-white">
               <i class="fa fa-check-circle fa-lg mr-2"></i>
               Operação concluída com sucesso
@@ -167,7 +167,7 @@ export class CoresComponent implements OnInit {
           classe: "danger",
           valor: this.styleService.getCssVariableValue("--danger"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `09 - Temática de erro. <br class="my-3">
+            `09 - Temática de erro. <br>
             <div class="alert bg-danger text-base">
               <i class="fa fa-times-circle fa-lg mr-2"></i>
               Houve um erro ao efetuar esta ação
@@ -179,7 +179,7 @@ export class CoresComponent implements OnInit {
           classe: "warning",
           valor: this.styleService.getCssVariableValue("--warning"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `10 - Temática de alerta. <br class="my-3">
+            `10 - Temática de alerta. <br>
             <div class="alert bg-warning">
               <i class="fa fa-exclamation-triangle fa-lg mr-2"></i>
               Não foi possível recuperar a informação
@@ -191,7 +191,7 @@ export class CoresComponent implements OnInit {
           classe: "info",
           valor: this.styleService.getCssVariableValue("--info"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
-            `11 - Temática de informação. <br class="my-3">
+            `11 - Temática de informação. <br>
             <div class="alert bg-info text-base">
               <i class="fa fa-info-circle fa-lg mr-2"></i>
               Não há pendências

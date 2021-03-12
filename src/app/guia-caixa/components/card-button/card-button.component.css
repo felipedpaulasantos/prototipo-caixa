@@ -1,7 +1,7 @@
 /* CARD BUTTON WRAPPER */
 .card-button-wrapper {
     position: relative;
-    border: solid 0.07rem var(--aux);
+    border: solid 1px var(--aux);
     border-radius: 0.38rem;
     height: 9.61rem;
     min-height: 7.69rem;
@@ -11,7 +11,7 @@
     transition: box-shadow 0.2s;
   }
   .card-button-wrapper.checked {
-    border: solid 0.07rem var(--cxPrincipal);
+    border: solid 1px var(--cxPrincipal);
     box-shadow: var(--cxShadowCaixa) !important;
   }
   .card-button-wrapper.primary.checked {
