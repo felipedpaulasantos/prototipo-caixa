@@ -1,13 +1,13 @@
 import { Component, ComponentFactoryResolver, ElementRef, Injector, OnInit, Renderer2, ViewContainerRef } from "@angular/core";
-import { FormBuilder, Validators } from '@angular/forms';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { ToastrService } from 'ngx-toastr';
-import { LayoutComponent } from '../demonstracao/layout/layout.component';
-import { TipografiaComponent } from '../demonstracao/tipografia/tipografia.component';
-import { ModalSize } from '../guia-caixa/components/modal/modal-options';
-import { ModalService } from '../guia-caixa/services/modal.service';
-import { AccordionMenu } from '../shared/components/accordion/types/accordion-menu';
-import { mockedSideMenuCaixaItems, mockedSideMenuItems } from '../shared/constants';
+import { FormBuilder, Validators } from "@angular/forms";
+import { NgxSpinnerService } from "ngx-spinner";
+import { ToastrService } from "ngx-toastr";
+import { LayoutComponent } from "../demonstracao/layout/layout.component";
+import { TipografiaComponent } from "../demonstracao/layout/tipografia/tipografia.component";
+import { ModalSize } from "../guia-caixa/components/modal/modal-options";
+import { ModalService } from "../guia-caixa/services/modal.service";
+import { AccordionMenu } from "../shared/components/accordion/types/accordion-menu";
+import { mockedSideMenuCaixaItems, mockedSideMenuItems } from "../shared/constants";
 
 interface Resources {
   name: string;
@@ -77,14 +77,14 @@ export class HomeComponent implements OnInit {
   }
 
   get isCpfNisInvalid(): boolean {
-    return (this.formCpfNis.get('cpf').invalid && this.formCpfNis.get('nis').invalid)
-    || (this.formCpfNis.get('cpf').valid && this.formCpfNis.get('nis').valid);
+    return (this.formCpfNis.get("cpf").invalid && this.formCpfNis.get("nis").invalid)
+    || (this.formCpfNis.get("cpf").valid && this.formCpfNis.get("nis").valid);
   }
 
   pesquisarCpf(): void {
-    this.spinner.show('global');
+    this.spinner.show("global");
     setTimeout(() => {
-      this.spinner.hide('global');
+      this.spinner.hide("global");
       this.toastr.success("Cliente pesquisado com sucesso");
       this.clientePesquisado();
     }, 2000);
@@ -93,8 +93,8 @@ export class HomeComponent implements OnInit {
   clientePesquisado() {
     this.cliente = {
       nome: "Fulano da Silva",
-      cpf: this.formCpfNis.get('cpf').value || this.formCpfNis.get('nis').value || "111.111.111-11",
-      nis: this.formCpfNis.get('nis').value || "",
+      cpf: this.formCpfNis.get("cpf").value || this.formCpfNis.get("nis").value || "111.111.111-11",
+      nis: this.formCpfNis.get("nis").value || "",
       dataNascimento: "01/01/1920",
       nomeMae: "Ciclana da Silva"
     };

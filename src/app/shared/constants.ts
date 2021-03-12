@@ -15,13 +15,22 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     isLink: true,
     enabled: true
   },
-/*   {
+  {
     name: "Layout",
     iconClass: "fas fa-lg fa-layer-group",
     url: "/layout",
     isLink: true,
-    enabled: true
-  }, */
+    enabled: true,
+    submenu: [
+      {
+        name: "Tipografia",
+        iconClass: "fas fa-lg fa-font",
+        url: "/layout/tipografia",
+        isLink: true,
+        enabled: true
+      }
+    ]
+  },
   {
     name: "Componentes Caixa",
     url: "/componentes-caixa",
@@ -101,13 +110,6 @@ export const mockedSideMenuItems: AccordionMenu[] = [
       }
     ]
   },
-  /*   {
-      name: "Tipografia",
-      iconClass: "fas fa-lg fa-font",
-      url: "/tipografia",
-      isLink: true,
-      enabled: true
-    }, */
   {
     name: "Componentes básicos",
     iconClass: "fas fa-lg fa-tools",

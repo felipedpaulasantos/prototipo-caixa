@@ -2,6 +2,52 @@
 	Tipografia
 </h1>
 
+<div class="card mb-3">
+	<div class="card-header">
+		<h5 class="header-caixa">Títulos</h5>
+	</div>
+	<div class="card-body">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th class="w-25">Tag</th>
+					<th>Exemplo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let titulo of titulosGenericos">
+					<td><pre><code [highlight]="titulo.tag" [languages]="['html']"></code></pre></td>
+					<td [innerHTML]="titulo.exemplo"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="card mb-3">
+	<div class="card-header">
+		<h5 class="header-caixa">Títulos</h5>
+	</div>
+	<div class="card-body">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th class="w-25">Tag</th>
+					<th class="w-25">Exemplo</th>
+					<th>Uso</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let titulo of titulosPadrao">
+					<td><pre><code [highlight]="titulo.tag" [languages]="['html']"></code></pre></td>
+					<td [innerHTML]="titulo.exemplo"></td>
+					<td>{{ titulo.uso }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
 
 <div class="mb-5">
 	<h5>Fonte padrão</h5>
