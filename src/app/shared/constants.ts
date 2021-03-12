@@ -8,13 +8,29 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     isLink: true,
     enabled: true
   },
-/*   {
-    name: 'Layout',
-    iconClass: 'fas fa-lg fa-layer-group',
-    url: '/layout',
+  {
+    name: "Cores",
+    iconClass: "fas fa-lg fa-palette",
+    url: "/cores",
     isLink: true,
-    enabled: false
-  }, */
+    enabled: true
+  },
+  {
+    name: "Layout",
+    iconClass: "fas fa-lg fa-layer-group",
+    url: "/layout",
+    isLink: true,
+    enabled: true,
+    submenu: [
+      {
+        name: "Tipografia",
+        iconClass: "fas fa-lg fa-font",
+        url: "/layout/tipografia",
+        isLink: true,
+        enabled: true
+      }
+    ]
+  },
   {
     name: "Componentes Caixa",
     url: "/componentes-caixa",
@@ -22,41 +38,41 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     isLink: true,
     enabled: true,
     submenu: [
-/*       {
-        name: 'Botões',
-        iconClass: 'fa fa-lg fa-dot-circle',
-        url: '/componentes-caixa/botoes',
-        isLink: true,
-        enabled: true
-      }, */
-/*       {
-        name: 'Cards',
-        iconClass: 'fa fa-lg fa-clipboard',
-        url: '/componentes-caixa/cards',
-        isLink: true,
-        enabled: true
-      }, */
-/*       {
-        name: 'Inputs',
-        iconClass: 'fa fa-lg fa-keyboard',
-        url: '/componentes-caixa/inputs',
-        isLink: true,
-        enabled: true
-      }, */
-/*       {
-        name: 'Mensagens',
-        iconClass: 'fa fa-lg fa-comment',
-        url: '/componentes-caixa/mensagens',
-        isLink: true,
-        enabled: true
-      }, */
-/*       {
-        name: 'Select',
-        iconClass: 'fa fa-lg fa-hand-pointer',
-        url: '/componentes-caixa/select',
-        isLink: true,
-        enabled: true
-      }, */
+      /*       {
+              name: 'Botões',
+              iconClass: 'fa fa-lg fa-dot-circle',
+              url: '/componentes-caixa/botoes',
+              isLink: true,
+              enabled: true
+            }, */
+      /*       {
+              name: 'Cards',
+              iconClass: 'fa fa-lg fa-clipboard',
+              url: '/componentes-caixa/cards',
+              isLink: true,
+              enabled: true
+            }, */
+      /*       {
+              name: 'Inputs',
+              iconClass: 'fa fa-lg fa-keyboard',
+              url: '/componentes-caixa/inputs',
+              isLink: true,
+              enabled: true
+            }, */
+      /*       {
+              name: 'Mensagens',
+              iconClass: 'fa fa-lg fa-comment',
+              url: '/componentes-caixa/mensagens',
+              isLink: true,
+              enabled: true
+            }, */
+      /*       {
+              name: 'Select',
+              iconClass: 'fa fa-lg fa-hand-pointer',
+              url: '/componentes-caixa/select',
+              isLink: true,
+              enabled: true
+            }, */
       {
         name: "Stepper",
         iconClass: "fa fa-lg fa-shoe-prints",
@@ -94,13 +110,6 @@ export const mockedSideMenuItems: AccordionMenu[] = [
       }
     ]
   },
-/*   {
-    name: "Tipografia",
-    iconClass: "fas fa-lg fa-font",
-    url: "/tipografia",
-    isLink: true,
-    enabled: true
-  }, */
   {
     name: "Componentes básicos",
     iconClass: "fas fa-lg fa-tools",
@@ -108,13 +117,13 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     isLink: true,
     enabled: true,
     submenu: [
-/*       {
-        name: "Alerts",
-        iconClass: "fa fa-lg fa-exclamation-triangle",
-        url: "/componentes-basicos/alerts",
-        isLink: true,
-        enabled: true
-      }, */
+      /*       {
+              name: "Alerts",
+              iconClass: "fa fa-lg fa-exclamation-triangle",
+              url: "/componentes-basicos/alerts",
+              isLink: true,
+              enabled: true
+            }, */
       {
         name: "Botões",
         iconClass: "fa fa-lg fa-bullseye",
@@ -138,48 +147,41 @@ export const mockedSideMenuItems: AccordionMenu[] = [
       },
     ]
   },
-  {
-    name: "Cores",
-    iconClass: "fas fa-lg fa-palette",
-    url: "/cores",
-    isLink: true,
-    enabled: true
-  },
-/*   {
-    name: "Prototipador",
-    iconClass: "fa fa-lg fa-puzzle-piece",
-    url: "/prototipador",
-    isLink: true,
-    enabled: true
-  }, */
-/*   {
-    name: 'Chat',
-    iconClass: 'fas fa-lg fa-comment',
-    url: '/chat',
-    isLink: true,
-    enabled: false
-  }, */
-/*   {
-    name: 'Páginas',
-    iconClass: 'fas fa-lg fa-newspaper',
-    url: '/paginas',
-    isLink: true,
-    enabled: true
-  }, */
-/*   {
-    name: 'Configurações',
-    iconClass: 'fas fa-lg fa-wrench',
-    url: '/config',
-    isLink: false,
-    enabled: true,
-    submenu: [{
-      name: 'Menu',
-      iconClass: 'fas fa-lg fa-th-large',
-      url: '/config/menu',
+  /*   {
+      name: "Prototipador",
+      iconClass: "fa fa-lg fa-puzzle-piece",
+      url: "/prototipador",
       isLink: true,
       enabled: true
-    }]
-  } */
+    }, */
+  /*   {
+      name: 'Chat',
+      iconClass: 'fas fa-lg fa-comment',
+      url: '/chat',
+      isLink: true,
+      enabled: false
+    }, */
+  /*   {
+      name: 'Páginas',
+      iconClass: 'fas fa-lg fa-newspaper',
+      url: '/paginas',
+      isLink: true,
+      enabled: true
+    }, */
+  /*   {
+      name: 'Configurações',
+      iconClass: 'fas fa-lg fa-wrench',
+      url: '/config',
+      isLink: false,
+      enabled: true,
+      submenu: [{
+        name: 'Menu',
+        iconClass: 'fas fa-lg fa-th-large',
+        url: '/config/menu',
+        isLink: true,
+        enabled: true
+      }]
+    } */
 ];
 
 export const mockedSideMenuCaixaItems: AccordionMenu[] = [

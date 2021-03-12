@@ -44,15 +44,15 @@ const routes: Routes = [
     },
     loadChildren: () => import("./demonstracao/componentes/componentes.module").then(m => m.ComponentesModule)
   },
-  {
+/*   {
     path: "tipografia",
     data: {
       title: "Tipografia",
       breadcrumb: "Tipografia",
       animation: "Tipografia"
     },
-    loadChildren: () => import("./demonstracao/tipografia/tipografia.module").then(m => m.TipografiaModule)
-  },
+    loadChildren: () => import("./demonstracao/layout/tipografia/tipografia.module").then(m => m.TipografiaModule)
+  }, */
   {
     path: "chat",
     data: {

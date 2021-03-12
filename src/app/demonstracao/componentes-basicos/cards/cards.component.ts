@@ -30,7 +30,7 @@ export class CardsComponent extends ComponentesInterface {
 
   cardsIntroducao = `<div class="card">
   <div class="card-header">
-    <h4 class="header-caixa">Título</h4>
+    <h4 class="subtitulo">Título</h4>
   </div>
   <div class="card-body">
     <h5>Este é um subtítulo</h5>
@@ -45,7 +45,7 @@ export class CardsComponent extends ComponentesInterface {
   <div class="col-12 col-md-6 my-2">
     <div class="card bg-contraste text-base">
       <div class="card-header">
-        <h4 class="header-caixa">Título</h4>
+        <h4 class="subtitulo">Título</h4>
       </div>
       <div class="card-body">
         <h5>Este é um subtítulo</h5>
@@ -60,7 +60,7 @@ export class CardsComponent extends ComponentesInterface {
   <div class="col my-2">
     <div class="card bg-destaque text-base">
       <div class="card-header">
-        <h4 class="header-caixa">Título</h4>
+        <h4 class="subtitulo">Título</h4>
       </div>
       <div class="card-body">
         <h5>Este é um subtítulo</h5>
@@ -94,7 +94,7 @@ export class CardsComponent extends ComponentesInterface {
 
   htmlCodeCards = `            <div class="card">
   <div class="card-header">
-    <h4 class="header-caixa">Título</h4>
+    <h4 class="subtitulo">Título</h4>
   </div>
   <div class="card-body">
     <h5>Este é um subtítulo</h5>
@@ -109,7 +109,7 @@ export class CardsComponent extends ComponentesInterface {
   <div class="col-12 col-md-6 my-2">
     <div class="card bg-grafite text-cinza">
       <div class="card-header">
-        <h4 class="header-caixa">Título</h4>
+        <h4 class="subtitulo">Título</h4>
       </div>
       <div class="card-body">
         <h5>Este é um subtítulo</h5>
@@ -124,7 +124,7 @@ export class CardsComponent extends ComponentesInterface {
   <div class="col my-2">
     <div class="card bg-destaque text-cinza">
       <div class="card-header">
-        <h4 class="header-caixa">Título</h4>
+        <h4 class="subtitulo">Título</h4>
       </div>
       <div class="card-body">
         <h5>Este é um subtítulo</h5>
@@ -187,11 +187,11 @@ export class CardsComponent extends ComponentesInterface {
     <div class="info-row bg-fundo border-top border-bottom">
       <div class="row">
         <div class="col">
-          <h6 class="header-caixa">Código da Reserva</h6>
+          <h6 class="subtitulo">Código da Reserva</h6>
           1.797
         </div>
         <div class="col">
-          <h6 class="header-caixa">Fonte de recurso</h6>
+          <h6 class="subtitulo">Fonte de recurso</h6>
           SBPE
         </div>
       </div>
@@ -199,7 +199,7 @@ export class CardsComponent extends ComponentesInterface {
     <div class="info-row border-bottom">
       <div class="row">
         <div class="col">
-          <h6 class="header-caixa">Tipo de financiamento</h6>
+          <h6 class="subtitulo">Tipo de financiamento</h6>
           143 - CCSBPE - AQUISIÇÃO DE TERRENO E CONSTRUÇÃO - PF -SHF - POS
         </div>
       </div>
@@ -207,11 +207,11 @@ export class CardsComponent extends ComponentesInterface {
     <div class="info-row bg-fundo border-bottom">
       <div class="row">
         <div class="col">
-          <h6 class="header-caixa">Seguradora</h6>
+          <h6 class="subtitulo">Seguradora</h6>
           CAIXA SEGUROS
         </div>
         <div class="col">
-          <h6 class="header-caixa">Apólice</h6>
+          <h6 class="subtitulo">Apólice</h6>
           61170 - CAIXA SEGUROS - SBPE
         </div>
       </div>
