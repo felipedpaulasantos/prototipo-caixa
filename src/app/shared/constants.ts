@@ -104,7 +104,7 @@ export const mockedSideMenuItems: AccordionMenu[] = [
       {
         name: "DataTable",
         iconClass: "fa fa-lg fa-table",
-        url: "/componentes-caixa/tabelas",
+        url: "/componentes-caixa/datatable",
         isLink: true,
         enabled: true
       }

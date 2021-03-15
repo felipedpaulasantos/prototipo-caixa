@@ -4,7 +4,7 @@ import { ComponentesComponent } from "./componentes.component";
 import { CardsComponent } from "../componentes-basicos/cards/cards.component";
 import { BotoesComponent } from "../componentes-basicos/botoes/botoes.component";
 import { MensagensComponent } from "./mensagens/mensagens.component";
-import { TabelasComponent } from "./tabelas/tabelas.component";
+import { DatatableDemonstracaoComponent } from "./datatable-demonstracao/datatable-demonstracao.component";
 import { InputsComponent } from "./inputs/inputs.component";
 import { SelectComponent } from "./select/select.component";
 import { StepperDemonstracaoComponent } from "./stepper-demonstracao/stepper-demonstracao.component";
@@ -96,8 +96,8 @@ const routes: Routes = [
     }
   },
   {
-    path: "tabelas",
-    component: TabelasComponent,
+    path: "datatable",
+    component: DatatableDemonstracaoComponent,
     data: {
       title: "Tabelas",
       breadcrumb: "Tabelas",
