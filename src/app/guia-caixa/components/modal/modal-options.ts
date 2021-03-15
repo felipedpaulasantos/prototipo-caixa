@@ -1,8 +1,8 @@
 export enum ModalSize {
-  NORMAL = '',
+  NORMAL = "",
   PEQUENO = "modal-sm",
-  GRANDE = 'modal-lg',
-  MAIOR = 'modal-xl'
+  GRANDE = "modal-lg",
+  MAIOR = "modal-xl"
 }
 
 export const defaultModalOptions: ModalOptions = {
@@ -11,11 +11,11 @@ export const defaultModalOptions: ModalOptions = {
   btOkTexto: "Ok",
   btCancelarTexto: "Fechar",
   showCancelar: false,
-  classTitulo: "titulo",
-  btnOkClass: 'btn btn-destaque btn-caixa',
-  btnCancelarClass: 'btn btn-primario btn-caixa',
+  classTitulo: "subtitulo",
+  btnOkClass: "btn btn-destaque",
+  btnCancelarClass: "btn btn-cancel",
   modalBodyClass: "",
-  modalHeaderClass: "",
+  modalHeaderClass: "bg-destaque text-base",
   modalFooterClass: "",
   centralizado: false,
   tamanho: ModalSize.NORMAL

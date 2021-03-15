@@ -44,11 +44,11 @@
   --cxSucesso: $cx-color-success;
   --cxSucessoContrast: $cx-color-success-lighter;
   --cxPerigo: $cx-color-danger;
-  --cxPerigoContrast: $cx-color-goiaba-light;
+  --cxPerigoContrast: $cx-color-danger-lighter;
   --cxAlerta: $cx-color-warning;
   --cxAlertaContrast: $cx-color-warning-lighter;
   --cxInfo: $cx-color-info;
-  --cxInfoContrast: $cx-color-info-light;
+  --cxInfoContrast: $cx-color-info-lighter;
 
   --cxPorcelana: $cx-color-porcelana;
   --cxPolar: $cx-color-polar;
@@ -918,6 +918,9 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
     background-color: var(--cxSidemenuActiveBgColor);
     color: var(--cxSidemenuActiveTextColor);
   }
+  &:hover {
+    background-color: var(--cxTransparentContrast025);
+  }
 }
 
 .aberto {
@@ -947,6 +950,9 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
     width: 50%;
     flex-grow: 1;
     word-break: normal;
+  }
+  .submenu .menu-item {
+    padding-left: 1rem;
   }
 }
 
@@ -979,8 +985,8 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
   .item-caret {
     position: absolute;
-    right: auto;
-    left: 20px;
+    right: 20px;
+    left: auto;
   }
   .item-close-caret {
     display: flex;
@@ -992,10 +998,6 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
     height: 100%;
     width: 40px;
   }
-}
-
-.menu-item:hover {
-  background-color: var(--cxTransparentContrast025);
 }
 
 .submenu {

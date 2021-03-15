@@ -42,7 +42,7 @@ const routes: Routes = [
       breadcrumb: "Componentes",
       animation: "Componentes"
     },
-    loadChildren: () => import("./demonstracao/componentes/componentes.module").then(m => m.ComponentesModule)
+    loadChildren: () => import("./demonstracao/componentes/componentes-caixa.module").then(m => m.ComponentesCaixaModule)
   },
 /*   {
     path: "tipografia",

@@ -9,17 +9,17 @@ import { FormBuilder } from "@angular/forms";
 import { DataTableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
 
 import { RandomDataFood } from "src/app/shared/model/random-data-food";
-import { RandomDataService } from "src/app/demonstracao/componentes/tabelas/random-data.service";
+import { RandomDataService } from "src/app/demonstracao/componentes/datatable-demonstracao/random-data.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 
 @Component({
   selector: "app-tabelas",
-  templateUrl: "./tabelas.component.html",
-  styleUrls: ["./tabelas.component.scss"],
+  templateUrl: "./datatable-demonstracao.component.html",
+  styleUrls: ["./datatable-demonstracao.component.scss"],
   host: { "(window:scroll)": "onScroll($event)" }
 })
-export class TabelasComponent extends ComponentesInterface implements OnInit, OnDestroy {
+export class DatatableDemonstracaoComponent extends ComponentesInterface implements OnInit, OnDestroy {
 
   constructor (
     public toastr: ToastrService,

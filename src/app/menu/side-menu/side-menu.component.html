@@ -1,11 +1,6 @@
 <perfect-scrollbar #menuLateral id="menuLateral" class="shadow-sm"
   [ngClass]="{'reduzido': !isAberto, 'aberto': isAberto}">
 
-  <!--   <div id="menuLateralPesquisa" class="py-4 px-3">
-    <i id="sidemenuSearchIcon" class="fas fa-lg fa-search mr-3"></i>
-    <input class="input-base w-75 d-inline" placeholder="Pesquisar...">
-  </div> -->
-
   <div id="painelBotaoSipan" class="p-3 text-center">
     <button id="botaoSipan" class="btn btn-outline-destaque text-uppercase" [ngClass]="{'btn-block': isAberto}" title="Portal Negócios.Caixa">
       <span *ngIf="isAberto">Portal Negócios.Caixa</span>
@@ -13,12 +8,12 @@
     </button>
   </div>
 
-  <div class="menu-item mb-3 px-4" role="button" (click)="openSearch()">
+  <div class="menu-item mb-3" role="button" (click)="openSearch()">
     <span class="menu-item-icon">
       <i class="fa fa-search fa-lg mr-2"></i>
     </span>
     <span class="menu-item-name">
-      <input #inputSearch class="form-control text-center mr-2" (input)="filterMenu($event)">
+      <input #inputSearch class="form-control text-center mr-2" (input)="filterMenu($event)" placeholder="Pesquise o portal...">
     </span>
   </div>
 

@@ -58,7 +58,7 @@ export const lightTheme: GlobalThemeVariables = {
    cxSucesso: "--success",
    cxSucessoContrast: "--success-lighter",
    cxPerigo: "--danger",
-   cxPerigoContrast: "--goiaba-light",
+   cxPerigoContrast: "--danger-lighter",
    cxAlerta: "--warning",
    cxAlertaContrast: "--warning-lighter",
    cxInfo: "--info",

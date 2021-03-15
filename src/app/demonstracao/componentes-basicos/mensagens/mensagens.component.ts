@@ -3,8 +3,9 @@ import { ToastrService } from "ngx-toastr";
 import { NgxSpinnerService } from "ngx-spinner";
 import { ModalService } from "src/app/guia-caixa/services/modal.service";
 
-import { ComponentesInterface } from "../componentes-interface";
+import { ComponentesInterface } from "../../componentes/componentes-interface";
 import { ModalSize } from "src/app/guia-caixa/components/modal/modal-options";
+import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 
 @Component({
   selector: "app-mensagens",
@@ -28,6 +29,12 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
   spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   sectionOffset = 0;
   currentSection = "painelMensagens";
+
+  navItems: CodeFixedNavItem[] = [
+    { id: "painelMensagens", name: "Notificações" },
+    { id: "painelModal", name: "Modais" },
+    { id: "painelSpinner", name: "Carregamento" }
+  ];
 
   htmlCodeMensagens = `        <button class="btn btn-caixa btn-success" (click)="exibirSucesso()">
   Sucesso!
@@ -126,13 +133,7 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
         showCancelar: true,
         classTitulo: "",
         titulo: "Título do modal",
-        mensagem: "Mensagem do modal",
-        btOkTexto: "OK",
-        btnOkClass: "btn btn-caixa btn-primario",
-        btnCancelarClass: "btn btn-caixa btn-info",
-        btCancelarTexto: "Cancelar",
-        tamanho: ModalSize.NORMAL,
-        centralizado: false
+        mensagem: "Mensagem do modal"
       });
     }
   }
@@ -169,28 +170,16 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
       showCancelar: true,
       classTitulo: "",
       titulo: titulo || "Título do modal",
-      mensagem: mensagem || "Mensagem do modal",
-      btOkTexto: "OK",
-      btnOkClass: "btn btn-caixa btn-primario",
-      btnCancelarClass: "btn btn-caixa btn-info",
-      btCancelarTexto: "Cancelar",
-      tamanho: tamanho,
-      centralizado: centro
+      mensagem: mensagem || "Mensagem do modal"
     });
   }
 
   exibirModal() {
     this.modalService.show({
       showCancelar: true,
-      classTitulo: "",
       titulo: "Título do modal",
       mensagem: "Mensagem do modal",
-      btOkTexto: "OK",
-      btnOkClass: "btn btn-caixa btn-primario",
-      btnCancelarClass: "btn btn-caixa btn-info",
-      btCancelarTexto: "Cancelar",
-      tamanho: ModalSize.NORMAL,
-      centralizado: false
+      btOkTexto: "OK"
     });
   }
 

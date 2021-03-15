@@ -4,11 +4,11 @@ import { ComponentesComponent } from "./componentes.component";
 import { CardsComponent } from "../componentes-basicos/cards/cards.component";
 import { SharedModule } from "src/app/shared/shared.module";
 import { ComponentesRoutingModule } from "./componentes-routing.module";
-import { MensagensComponent } from "./mensagens/mensagens.component";
+import { MensagensComponent } from "../componentes-basicos/mensagens/mensagens.component";
 import { InputsComponent } from "./inputs/inputs.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { NgxMaskModule } from "ngx-mask";
-import { TabelasComponent } from "./tabelas/tabelas.component";
+import { DatatableDemonstracaoComponent } from "./datatable-demonstracao/datatable-demonstracao.component";
 import { DataTablesModule } from "angular-datatables";
 import { HighlightModule } from "ngx-highlightjs";
 import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
@@ -37,7 +37,7 @@ import { TimelineDemonstracaoComponent } from "./timeline-demonstracao/timeline-
     CardsComponent,
     MensagensComponent,
     InputsComponent,
-    TabelasComponent,
+    DatatableDemonstracaoComponent,
     SelectComponent,
     TabberDemonstracaoComponent,
     StepperDemonstracaoComponent,
@@ -49,4 +49,4 @@ import { TimelineDemonstracaoComponent } from "./timeline-demonstracao/timeline-
     MensagensComponent
   ]
 })
-export class ComponentesModule { }
+export class ComponentesCaixaModule { }

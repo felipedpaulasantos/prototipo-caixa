@@ -12,9 +12,9 @@ import {
   OnDestroy,
   ViewRef
 } from "@angular/core";
-import { Subscription } from 'rxjs';
+import { Subscription } from "rxjs";
 import { ModalService } from "../../services/modal.service";
-import { ModalOptions, ModalSize, defaultModalOptions } from './modal-options';
+import { ModalOptions, ModalSize, defaultModalOptions } from "./modal-options";
 
 declare var $;
 
@@ -59,12 +59,12 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   public classTitulo = "text-principal";
 
-  public btnOkClass = 'btn btn-destaque btn-caixa';
-  public btnCancelarClass = 'btn btn-primario btn-caixa';
+  public btnOkClass = "btn btn-destaque";
+  public btnCancelarClass = "btn btn-cancel";
 
   public modalDialogClass = "modal-lg";
   public modalBodyClass = "";
-  public modalHeaderClass = "";
+  public modalHeaderClass = "bg-destaque";
   public modalFooterClass = "";
 
   public centralizado = false;
@@ -87,7 +87,7 @@ export class ModalComponent implements OnInit, OnDestroy {
       (componentRef) => {
         this.componenteParaInjetarRef = componentRef;
         this.injetarComponenteInstanciado();
-    });
+      });
   }
 
   private injetarComponenteGenerico() {
@@ -100,14 +100,14 @@ export class ModalComponent implements OnInit, OnDestroy {
     }
     if (this.componenteInjetadoRef && this.componenteInjetadoRef.componentType
       && (this.componenteParaInjetar.toString() === this.componenteInjetadoRef.componentType.toString())) {
-        return;
+      return;
     }
     this.clearComponent();
     const componentType = this.componenteParaInjetar;
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType);
 
     this.injectorComponenteInjetado = Injector.create(
-      [{provide: componentType, useValue: componentType}],
+      [{ provide: componentType, useValue: componentType }],
       this.injectorDoComponenteParaInjetar
     );
     this.componenteInjetadoRef = this.modalDinamicoRef.createComponent(
