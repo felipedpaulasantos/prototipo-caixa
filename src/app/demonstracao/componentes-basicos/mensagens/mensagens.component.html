@@ -1,5 +1,5 @@
 <h1 class="titulo">
-  Mensagens
+  Mensagens (Em desenvolvimento)
 </h1>
 
 
@@ -26,10 +26,14 @@
           [htmlTabId]="'htmlCodeMensagens'" [htmlCode]="htmlCodeMensagens" [tsTabId]="'tsCodeMensagens'"
           [tsCode]="tsCodeMensagens">
           <div class="descricao">
-            As notificações que não demandam interação do usuário devem ser apresentadas no formato "toast".
-            As notificações são chamadas pelo <span class="citation-highlight">Toastr Service</span>,
-            da biblioteca <a class="text-link" href="https://www.npmjs.com/package/ngx-toastr"
-              target="_blank">Ngx-Toastr</a>.
+            <p>
+              As notificações que não demandam interação do usuário devem ser apresentadas no formato "toast".
+            </p>
+            <p>
+              A chamada é feita pelo <span class="citation-highlight">Toastr Service</span>,
+              da biblioteca <a class="text-link" href="https://www.npmjs.com/package/ngx-toastr"
+                target="_blank">Ngx-Toastr</a>.
+            </p>
           </div>
 
           <div class="conteudo">
@@ -53,6 +57,29 @@
 
         <br>
 
+        <app-documentacao-template id="painelModal" [cardTitle]="'Modal'" [codeViewId]="'viewModal'"
+          [htmlTabId]="'htmlCodeModal'" [htmlCode]="htmlCodeModal" [tsTabId]="'tsCodeModal'" [tsCode]="tsCodeModal">
+          <div class="descricao">
+            <p>
+              Quando houver a necessidade de interação do usuário com o conteúdo apresentado, deve-se utilizar um modal.
+            </p>
+
+            <p>
+              Pode-se exibir pelo serviço <span class="citation-highlight">ModalService</span>, com várias opções de customização.
+            </p>
+
+          </div>
+
+          <div class="conteudo">
+            <button class="btn btn-caixa btn-aux" (click)="exibirModal()">
+              <i class="fa fa-lg fa-external-link-alt mr-2"></i>
+              Mostrar modal
+            </button>
+          </div>
+        </app-documentacao-template>
+
+        <br>
+
         <app-documentacao-template id="painelSpinner" [cardTitle]="'Spinner (Tela de carregamento)'"
           [codeViewId]="'viewSpinner'" [htmlTabId]="'htmlCodeSpinner'" [htmlCode]="htmlCodeSpinner"
           [tsTabId]="'tsCodeSpinner'" [tsCode]="tsCodeSpinner">
@@ -68,37 +95,10 @@
             </button>
           </div>
         </app-documentacao-template>
-
-        <br>
-
-        <app-documentacao-template id="painelModal" [cardTitle]="'Modal'" [codeViewId]="'viewModal'"
-          [htmlTabId]="'htmlCodeModal'" [htmlCode]="htmlCodeModal" [tsTabId]="'tsCodeModal'" [tsCode]="tsCodeModal">
-          <div class="descricao">
-            Um modal pode ser chamado pelo serviço <span class="citation-highlight">ModalService</span>, com várias
-            opções de customização.
-          </div>
-
-          <div class="conteudo">
-            <button class="btn btn-caixa btn-aux" (click)="exibirModal()">
-              <i class="fa fa-lg fa-external-link-alt mr-2"></i>
-              Mostrar modal
-            </button>
-          </div>
-        </app-documentacao-template>
       </section>
 
-      <nav id="navSection" class="d-none col-3 d-xl-flex justify-content-center">
-        <div class="position-fixed list-group list-group-caixa shadow-caixa border-0">
-          <a (click)="scrollTo('painelMensagens')" class="list-group-item list-group-item-action"
-            [ngClass]="{'active': currentSection == 'painelMensagens'}" role="button">
-            Notificações</a>
-          <a (click)="scrollTo('painelSpinner')" class="list-group-item list-group-item-action"
-            [ngClass]="{'active': currentSection == 'painelSpinner'}" role="button">
-            Spinner</a>
-          <a (click)="scrollTo('painelModal')" class="list-group-item list-group-item-action"
-            [ngClass]="{'active': currentSection == 'painelModal'}" role="button">
-            Modal</a>
-        </div>
+      <nav id="navSection" class="d-none col-3 d-xl-flex pl-4">
+        <app-code-fixed-nav [items]="navItems" [currentSection]="currentSection"></app-code-fixed-nav>
       </nav>
     </div>
   </div> <!-- Tab Pane -->

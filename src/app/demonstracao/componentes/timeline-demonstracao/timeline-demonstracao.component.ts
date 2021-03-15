@@ -114,7 +114,7 @@ export class TimelineDemonstracaoComponent {
 
   constructor() {}
 
-  timelineItems: TimelineItem[] = [
+  timelineItemsExtenso: TimelineItem[] = [
     { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
     { title: "Item warning", state: "warning", date: new Date(), dateFormat: "full" },
     { title: "Item warning-stop", state: "warning-stop", dateString: "05/12/2020" },

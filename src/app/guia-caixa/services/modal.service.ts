@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter, Output, ComponentFactoryResolver, Injector, ComponentRef } from "@angular/core";
-import { BehaviorSubject, Subject } from 'rxjs';
-import { ContextoInjecaoComponente } from 'src/app/menu/side-menu/contexto-injecao-componente';
-import { ModalOptions } from '../components/modal/modal-options';
+import { BehaviorSubject, Subject } from "rxjs";
+import { ContextoInjecaoComponente } from "src/app/menu/side-menu/contexto-injecao-componente";
+import { ModalOptions } from "../components/modal/modal-options";
 
 declare var $;
 
