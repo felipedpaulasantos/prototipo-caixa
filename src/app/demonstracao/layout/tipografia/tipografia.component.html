@@ -2,246 +2,120 @@
 	Tipografia
 </h1>
 
-<div class="card mb-3">
-	<div class="card-header">
-		<h5 class="subtitulo">Títulos Próprios</h5>
-	</div>
-	<div class="card-body">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th class="w-25">Tag</th>
-					<th class="w-25">Exemplo</th>
-					<th>Uso</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let titulo of titulosPadrao">
-					<td><pre><code [highlight]="titulo.tag" [languages]="['html']"></code></pre></td>
-					<td [innerHTML]="titulo.exemplo"></td>
-					<td [innerHTML]="titulo.uso"></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
+<div class="row no-gutters">
+	<section #scrollElement class="col-12 col-xl-9 pr-2">
 
-<div class="card mb-3">
-	<div class="card-header">
-		<h5 class="subtitulo">Tamanho padrão</h5>
-	</div>
-	<div class="card-body">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th class="w-25">Tag</th>
-					<th>Exemplo</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let titulo of titulosGenericos">
-					<td><pre><code [highlight]="titulo.tag" [languages]="['html']"></code></pre></td>
-					<td [innerHTML]="titulo.exemplo"></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
-
-<div class="card mb-3">
-	<div class="card-header">
-		<h5 class="subtitulo">Ícones</h5>
-	</div>
-	<div class="card-body">
-		<p>
-			A biblioteca de ícones a ser usada é a 
-			<a class="text-destaque" target="_blank" href="https://fontawesome.com/icons?d=gallery&p=2&m=free">
-				Font Awesome
-			</a>.
-		</p>
-
-		Para indicar estado de sucesso, erro, alerta e informação, utilizar os seguintes ícones.
-
-		<div class="my-3">
-			<span class="mr-5">
-				<i class="fa fa-check mr-3"></i>
-				<i class="fa fa-times mr-3"></i>
-				<i class="fa fa-exclamation mr-3"></i>
-				<i class="fa fa-info mr-3"></i>
-			</span>
-			<h4 class="d-inline mr-5">
-				<i class="fa fa-check fa-lg mr-3"></i>
-				<i class="fa fa-times fa-lg mr-3"></i>
-				<i class="fa fa-exclamation fa-lg mr-3"></i>
-				<i class="fa fa-info fa-lg mr-3"></i>
-			</h4>
-			<h2 class="d-inline mr-5">
-				<i class="fa fa-check fa-lg text-success mr-3"></i>
-				<i class="fa fa-times fa-lg text-danger mr-3"></i>
-				<i class="fa fa-exclamation text-warning fa-lg mr-3"></i>
-				<i class="fa fa-info fa-lg text-info mr-3"></i>
-			</h2>
-		</div>
-
-		<h6 class="subtitulo">HTML:</h6>
-		<pre><code [highlight]="iconesExemplo" [languages]="['html']"></code></pre>
-	</div>
-</div>
-
-<ng-container *ngIf="false">
-	<div class="mb-5">
-		<h5>Fonte padrão</h5>
-		<h5 class="font-fam-bold">Fonte Bold</h5>
-		<a href="#">Link</a>
-	</div>
+		<app-documentacao-template id="painelCardFonte" [cardTitle]="'Fonte'" [showCodeButton]="false">
+			<div class="conteudo">
+				<p>
+					A fonte padrão é a "Futura LT Book", e para textos em negrito, "Futura LT Bold".
+				</p>
+		
+				<p>
+					As tags <code>b</code> e <code>strong</code> apenas aplicam o efeito de negrito a fonte padrão, Futura LT Book.<br>
+					Para aplicar a fonte Futura LT Bold que possui maior espaçamento e altura, deve-se utilizar a classe <code>font-fam-bold</code>.
+				</p>
+		
+				<hr>
+		
+				<span>Texto na fonte padrão.</span>
+				<br>
+				<b>Texto com a tag "b".</b>
+				<br>
+				<strong>Texto com a tag "strong".</strong>
+				<br>
+				<span class="font-fam-bold">Texto com a classe "font-fam-bold".</span>
+			</div>
+		</app-documentacao-template>
 	
-	<div class="mb-5">
-		<p>Texto padrão: {{ placeholder }}</p>
-		<small>Texto pequeno: {{ placeholder }}</small>
 		<br>
-		<span>
-			<i class="fa fa-check mr-3"></i>
-			<i class="fa fa-times mr-3"></i>
-			<i class="fa fa-user mr-3"></i>
-			<i class="fa fa-comment mr-3"></i>
-			<i class="fa fa-angle-right mr-5"></i>
-		</span>
-		<span class="text-opacity-1">
-			<i class="fa fa-check mr-3"></i>
-			<i class="fa fa-times mr-3"></i>
-			<i class="fa fa-user mr-3"></i>
-			<i class="fa fa-comment mr-3"></i>
-			<i class="fa fa-angle-right mr-5"></i>
-		</span>
-		<span>
-			<i class="fa fa-lg fa-check mr-3"></i>
-			<i class="fa fa-lg fa-times mr-3"></i>
-			<i class="fa fa-lg fa-user mr-3"></i>
-			<i class="fa fa-lg fa-comment mr-3"></i>
-			<i class="fa fa-lg fa-angle-right mr-5"></i>
-		</span>
-		<span class="text-principal text-opacity-1">
-			<i class="fa fa-lg fa-check mr-3"></i>
-			<i class="fa fa-lg fa-times mr-3"></i>
-			<i class="fa fa-lg fa-user mr-3"></i>
-			<i class="fa fa-lg fa-comment mr-3"></i>
-			<i class="fa fa-lg fa-angle-right mr-5"></i>
-		</span>
-		<h2 class="d-inline">
-			<i class="fa fa-lg fa-check mr-3"></i>
-			<i class="fa fa-lg fa-times mr-3"></i>
-			<i class="fa fa-lg fa-user mr-3"></i>
-			<i class="fa fa-lg fa-comment mr-3"></i>
-			<i class="fa fa-lg fa-angle-right mr-5"></i>
-		</h2>
-	</div>
-	
-	<div class="row mb-5">
-		<div class="col-4">
-			<h1>Título H1</h1>
-			<h2>Título H2</h2>
-			<h3>Título H3</h3>
-			<h4>Título H4</h4>
-			<h5>Título H5</h5>
-			<h6>Título H6</h6>
-		</div>
-		<div class="col-4">
-			<h1 class="font-fam-bold">Título H1</h1>
-			<h2 class="font-fam-bold">Título H2</h2>
-			<h3 class="font-fam-bold">Título H3</h3>
-			<h4 class="font-fam-bold">Título H4</h4>
-			<h5 class="font-fam-bold">Título H5</h5>
-			<h6 class="font-fam-bold">Título H6</h6>
-		</div>
-	</div>
-	
-	<div class="mb-5">
-		<h2 class="titulo">Header Principal Caixa</h2>
-		<h2 class="subtitulo">Header Caixa</h2>
-		<h2 class="subtitulo text-principal">Header Caixa</h2>
-		<h2 class="subtitulo text-apoio">Header Caixa</h2>
-	</div>
-	
-	<div class="row mb-5">
-		<div class="col-4">
-			<h2 class="">Opacidade normal</h2>
-			<h2 class="text-opacity-1">Opacidade 1</h2>
-			<h2 class="text-opacity-2">Opacidade 2</h2>
-			<h2 class="text-opacity-3">Opacidade 3</h2>
-		</div>
-		<div class="col-4">
-			<h2 class="font-fam-bold">Opacidade normal</h2>
-			<h2 class="font-fam-bold text-opacity-1">Opacidade 1</h2>
-			<h2 class="font-fam-bold text-opacity-2">Opacidade 2</h2>
-			<h2 class="font-fam-bold text-opacity-3">Opacidade 3</h2>
-		</div>
-	</div>
-	
-	<div class="row mb-5">
-		<div class="col-4">
-			<div class="card bg-white">
-				<div class="card-body">
-					<h2 class="titulo">Título</h2>
-					<h2>Título</h2>
-					<h2 class="font-fam-bold">Título</h2>
-					<h2 class="subtitulo">Título</h2>
-				</div>
-			</div>
-		</div>
-		<div class="col-4">
-			<div class="card bg-cinza">
-				<div class="card-body">
-					<h2 class="titulo">Título</h2>
-					<h2>Título</h2>
-					<h2 class="font-fam-bold">Título</h2>
-					<h2 class="subtitulo">Título</h2>
-				</div>
-			</div>
-		</div>
-		<div class="col-4">
-			<div class="card bg-grafite text-white">
-				<div class="card-body">
-					<h2 class="titulo text-white">Título</h2>
-					<h2>Título</h2>
-					<h2 class="font-fam-bold">Título</h2>
-					<h2 class="subtitulo">Título</h2>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row mb-5">
-		<div class="col-4">
-			<div class="card bg-destaque text-white">
-				<div class="card-body">
-					<h2 class="titulo text-white">Título</h2>
-					<h2>Título</h2>
-					<h2 class="font-fam-bold">Título</h2>
-					<h2 class="subtitulo">Título</h2>
-				</div>
-			</div>
-		</div>
-		<div class="col-4">
-			<div class="card bg-uva text-white">
-				<div class="card-body">
-					<h2 class="titulo text-white">Título</h2>
-					<h2>Título</h2>
-					<h2 class="font-fam-bold">Título</h2>
-					<h2 class="subtitulo">Título</h2>
-				</div>
-			</div>
-		</div>
-		<div class="col-4">
-			<div class="card bg-gradient-ceu text-white">
-				<div class="card-body">
-					<h2 class="titulo text-white">Título</h2>
-					<h2>Título</h2>
-					<h2 class="font-fam-bold">Título</h2>
-					<h2 class="subtitulo">Título</h2>
-				</div>
-			</div>
-		</div>
-	</div>
-</ng-container>
 
+		<app-documentacao-template id="painelCardTitulosProprios" [cardTitle]="'Títulos Próprios'" [showCodeButton]="false">
+			<div class="conteudo">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="w-25">Classe</th>
+							<th>Exemplo</th>
+							<th>Uso</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let titulo of titulosPadrao">
+							<td><pre><code [highlight]="titulo.tag" [languages]="['html']"></code></pre></td>
+							<td [innerHTML]="titulo.exemplo"></td>
+							<td [innerHTML]="titulo.uso"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</app-documentacao-template>
+	
+		<br>
 
+		<app-documentacao-template id="painelCardTamanhoPadrao" [cardTitle]="'Títulos - Tamanho Padrão'" [showCodeButton]="false">
+			<div class="conteudo">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="w-25">Tag</th>
+							<th>Exemplo</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let titulo of titulosGenericos">
+							<td><pre><code [highlight]="titulo.tag" [languages]="['html']"></code></pre></td>
+							<td [innerHTML]="titulo.exemplo"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</app-documentacao-template>
+	
+		<br>
+
+		<app-documentacao-template id="painelCardIcones" [cardTitle]="'Ícones'" [showCodeButton]="false">
+			<div class="conteudo">
+				<p>
+					A biblioteca de ícones a ser usada é a 
+					<a class="text-destaque" target="_blank" href="https://fontawesome.com/icons?d=gallery&p=2&m=free">
+						Font Awesome
+					</a>.
+				</p>
+		
+				Para indicar estado de sucesso, erro, alerta e informação, utilizar os seguintes ícones.
+		
+				<div class="my-3">
+					<span class="mr-5">
+						<i class="fa fa-check mr-3"></i>
+						<i class="fa fa-times mr-3"></i>
+						<i class="fa fa-exclamation mr-3"></i>
+						<i class="fa fa-info mr-3"></i>
+					</span>
+					<h4 class="d-inline mr-5">
+						<i class="fa fa-check fa-lg mr-3"></i>
+						<i class="fa fa-times fa-lg mr-3"></i>
+						<i class="fa fa-exclamation fa-lg mr-3"></i>
+						<i class="fa fa-info fa-lg mr-3"></i>
+					</h4>
+					<h2 class="d-inline mr-5">
+						<i class="fa fa-check fa-lg text-success mr-3"></i>
+						<i class="fa fa-times fa-lg text-danger mr-3"></i>
+						<i class="fa fa-exclamation text-warning fa-lg mr-3"></i>
+						<i class="fa fa-info fa-lg text-info mr-3"></i>
+					</h2>
+				</div>
+		
+				<h6 class="subtitulo">HTML:</h6>
+				<pre><code [highlight]="iconesExemplo" [languages]="['html']"></code></pre>
+			</div>
+		</app-documentacao-template>
+	
+		<br>
+
+	</section>
+	
+	<nav id="navSection" class="d-none col-3 d-xl-flex pl-4">
+		<app-code-fixed-nav [items]="navItems" [currentSection]="currentSection"></app-code-fixed-nav>
+	</nav>
+</div>
