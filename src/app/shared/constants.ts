@@ -145,6 +145,13 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         isLink: true,
         enabled: true
       },
+      {
+        name: "Mensagens",
+        iconClass: "fa fa-lg fa-envelope",
+        url: "/componentes-basicos/mensagens",
+        isLink: true,
+        enabled: true
+      }
     ]
   },
   /*   {

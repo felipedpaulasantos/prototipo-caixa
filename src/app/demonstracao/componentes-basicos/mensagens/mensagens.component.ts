@@ -3,7 +3,7 @@ import { ToastrService } from "ngx-toastr";
 import { NgxSpinnerService } from "ngx-spinner";
 import { ModalService } from "src/app/guia-caixa/services/modal.service";
 
-import { ComponentesInterface } from "../componentes-interface";
+import { ComponentesInterface } from "../../componentes/componentes-interface";
 import { ModalSize } from "src/app/guia-caixa/components/modal/modal-options";
 
 @Component({

@@ -4,7 +4,7 @@ import { ComponentesComponent } from "./componentes.component";
 import { CardsComponent } from "../componentes-basicos/cards/cards.component";
 import { SharedModule } from "src/app/shared/shared.module";
 import { ComponentesRoutingModule } from "./componentes-routing.module";
-import { MensagensComponent } from "./mensagens/mensagens.component";
+import { MensagensComponent } from "../componentes-basicos/mensagens/mensagens.component";
 import { InputsComponent } from "./inputs/inputs.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { NgxMaskModule } from "ngx-mask";

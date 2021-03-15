@@ -5,6 +5,7 @@ import { CardsComponent } from "./cards/cards.component";
 
 import { ComponentesBasicosComponent } from "./componentes-basicos.component";
 import { FormsComponent } from "./forms/forms.component";
+import { MensagensComponent } from "./mensagens/mensagens.component";
 
 const routes: Routes = [
   {
@@ -41,6 +42,15 @@ const routes: Routes = [
       title: "Forms",
       breadcrumb: "Forms",
       animation: "Forms"
+    }
+  },
+  {
+    path: "mensagens",
+    component: MensagensComponent,
+    data: {
+      title: "Mensagens",
+      breadcrumb: "Mensagens",
+      animation: "Mensagens"
     }
   },
 ];
