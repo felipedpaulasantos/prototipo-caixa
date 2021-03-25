@@ -100,48 +100,50 @@
    </div> <!-- Tab Pane Visão Geral -->
 
    <div class="tab-pane fade" id="api" role="tabpanel">
-      <div class="my-4">
-         <h5 class="header-subtitulo-caixa">Cx-Timeline</h5>
-         <p>
-            Componente de exibição de acontecimentos sequenciais.
-         </p>
-         <p>Usar como: <span class="citation-highlight">cx-timeline</span></p>
-
-         <h6 class="header-subtitulo-caixa">Propriedades</h6>
-         <div class="table-responsive">
-            <table class="table table-bordered table-caixa">
-               <thead>
-                  <tr>
-                     <th>Nome</th>
-                     <th>Descrição</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <tr>
-                     <td>@Input( )<br>items: TimelineItem[ ]</td>
-                     <td>
-                        Atributo obrigatório com a lista de items/eventos.<br>
-                        Padrão: [ ]
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>@Input( )<br>orientation: enum TimelineOrientation | string | number</td>
-                     <td>
-                        Orientação do componente, que pode ser horizontal (TimelineOrientation.horizontal | "0")
-                        ou vertical (TimelineOrientation.vertical | "1").<br>
-                        Padrão: TimelineOrientation.vertical | "1"
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>@Input( )<br>styles: [class: string]: any | string</td>
-                     <td>
-                        Objeto de estilo a ser passado para o card-button-wrapper.<br>
-                        <pre><code [highlight]="stylesExample"></code></pre>
-                     </td>
-                  </tr>
-               </tbody>
-            </table>
-         </div> <!-- Table-responsive -->
+      <div class="card">
+         <div class="card-body">
+            <h5 class="header-subtitulo-caixa">Cx-Timeline</h5>
+            <p>
+               Componente de exibição de acontecimentos sequenciais.
+            </p>
+            <p>Usar como: <span class="citation-highlight">cx-timeline</span></p>
+   
+            <h6 class="header-subtitulo-caixa">Propriedades</h6>
+            <div class="table-responsive">
+               <table class="table table-bordered table-striped">
+                  <thead>
+                     <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>@Input( )<br>items: TimelineItem[ ]</td>
+                        <td>
+                           Atributo obrigatório com a lista de items/eventos.<br>
+                           Padrão: [ ]
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>@Input( )<br>orientation: enum TimelineOrientation | string | number</td>
+                        <td>
+                           Orientação do componente, que pode ser horizontal (TimelineOrientation.horizontal | "0")
+                           ou vertical (TimelineOrientation.vertical | "1").<br>
+                           Padrão: TimelineOrientation.vertical | "1"
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>@Input( )<br>styles: [class: string]: any | string</td>
+                        <td>
+                           Objeto de estilo a ser passado para o card-button-wrapper.<br>
+                           <pre><code [highlight]="stylesExample"></code></pre>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div> <!-- Table-responsive -->
+         </div>
       </div>
    </div> <!-- TAB API -->
 

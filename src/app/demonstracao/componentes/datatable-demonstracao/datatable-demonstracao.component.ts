@@ -40,7 +40,9 @@ export class DatatableDemonstracaoComponent extends ComponentesInterface impleme
     showTable: true,
     showInfo: true,
     showProcessing: true,
-    showPagination: true
+    showPagination: true,
+    columnFilterType: "",
+    columnFilterPosition: ""
   });
 
   @ViewChild(DataTableDirective)
@@ -280,7 +282,6 @@ import { RandomDataService, RandomDataFood } from "~random-data.service";
       showPagination: true,
       menuLength: [5, 10, 50]
     });
-
     this.fetchData();
   }
 
@@ -292,6 +293,8 @@ import { RandomDataService, RandomDataFood } from "~random-data.service";
     this.settings = JSON.parse(JSON.stringify(newConfig));
     this.cdr.detectChanges();
     this.table.updateSettings(this.settings);
+    this.formDTConfig.get("columnFilterType").setValue(this.settings.columnFilterType);
+    this.formDTConfig.get("columnFilterPosition").setValue(this.settings.columnFilterPosition);
   }
 
   updateConfigOption(option: string, value: any) {

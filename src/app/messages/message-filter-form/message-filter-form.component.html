@@ -61,7 +61,7 @@
                   <span class="prefix-icon">
                     <i class="fas fa-arrows-alt-v"></i>
                   </span>
-                  <select name="origin" formControlName="origin" class="form-control custom-select">
+                  <select name="origin" formControlName="origin" class="form-control form-control">
                       <option *ngFor="let origin of origins" [value]="origin.value">{{ origin.name }}</option>
                   </select>
                 </div>
@@ -72,7 +72,7 @@
                 <span class="prefix-icon">
                   <i class="fas fa-comments"></i>
                 </span>
-                <select name="managerName" formControlName="managerName" class="form-control custom-select">
+                <select name="managerName" formControlName="managerName" class="form-control form-control">
                     <option *ngFor="let manager of managers" [value]="manager.value">{{ manager.name }}</option>
                 </select>
               </div>

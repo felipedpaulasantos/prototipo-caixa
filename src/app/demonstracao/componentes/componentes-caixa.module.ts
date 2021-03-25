@@ -18,6 +18,7 @@ import { TabberDemonstracaoComponent } from "./tabber-demonstracao/tabber-demons
 import { StepperDemonstracaoComponent } from "./stepper-demonstracao/stepper-demonstracao.component";
 import { CardButtonDemonstracaoComponent } from "./card-button-demonstracao/card-button-demonstracao.component";
 import { TimelineDemonstracaoComponent } from "./timeline-demonstracao/timeline-demonstracao.component";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { TimelineDemonstracaoComponent } from "./timeline-demonstracao/timeline-
     FormsModule,
     ReactiveFormsModule,
     NgxMaskModule,
+    NgSelectModule,
     DataTablesModule,
     HighlightModule,
     PerfectScrollbarModule,

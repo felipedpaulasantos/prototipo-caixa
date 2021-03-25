@@ -17,7 +17,7 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private readonly TOP_FILTER_CLASS = "d-table-row-group";
   private readonly FILTER_INPUT_CLASS = "form-control";
-  private readonly FILTER_SELECT_CLASS = "custom-select";
+  private readonly FILTER_SELECT_CLASS = "form-control";
 
   @ContentChild(DataTableDirective, { read: DataTableDirective, static: true })
   dtElement: DataTableDirective;
@@ -98,7 +98,7 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     $.fn.dataTable.ext.classes.sPageButton = "btn btn-sm ml-1";
     $.fn.dataTable.ext.classes.sPageButtonActive = "btn-primary text-base";
 
-    $.fn.dataTable.ext.classes.sLengthSelect = "custom-select";
+    $.fn.dataTable.ext.classes.sLengthSelect = "form-control";
     $.fn.dataTable.ext.classes.sFilterInput = "form-control";
   }
 

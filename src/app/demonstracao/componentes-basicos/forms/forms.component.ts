@@ -81,7 +81,7 @@ export class FormsComponent extends ComponentesInterface implements OnInit  {
   <label class="custom-control-label" for="customRadio2">Ou esse aqui</label>
 </div>`.trim();
 
-  rangeExemplo = `<label for="customRange1">Example range</label>
+  rangeExemplo = `<label for="customRange1">Exemplo</label>
 <input type="range" class="custom-range" id="customRange1">`.trim();
 
   htmlCodeValidacao = `<form [formGroup]="formValidation">

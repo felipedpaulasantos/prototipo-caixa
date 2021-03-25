@@ -69,7 +69,7 @@
 
   <div class="col-3 my-3">
     <label>Filtro por coluna</label>
-    <select [value]="config['columnFilter']" (change)="updateConfigOption('columnFilter', $event.target.value)" class="custom-select">
+    <select [value]="config['columnFilter']" (change)="updateConfigOption('columnFilter', $event.target.value)" class="form-control">
       <option value="">Nenhum</option>
       <option value="input">Campo simples</option>
       <option value="select">Campo select</option>
@@ -78,7 +78,7 @@
 
   <div class="col-3 my-3">
     <label>Posição do filtro</label>
-    <select [value]="filterPosition" (change)="filterPosition = $event.target.value; updateTable()" class="custom-select">
+    <select [value]="filterPosition" (change)="filterPosition = $event.target.value; updateTable()" class="form-control">
       <option value="top">Topo</option>
       <option value="bottom">Rodapé</option>
     </select>
