@@ -686,7 +686,9 @@ ul.nav.nav-pills li a {
 }
 
 /* Spinner */
-
+ngx-spinner .overlay {
+  background: var(--cxTransparentBase25) !important;
+}
 .la-ball-clip-rotate.la-2x {
   display: flex !important;
   align-items: center;
@@ -696,6 +698,7 @@ ul.nav.nav-pills li a {
     max-width: 3.846rem !important;
   }
 }
+
 
 /* Firefox hack */
 
@@ -1173,3 +1176,28 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 .d-table-row-group {
   display: table-row-group;
 }
+
+/* 
+  HIGHLIGHT JS 
+*/
+
+.hljs {
+  background: var(--cxFundo);
+  color: var(--cxContraste);
+}
+.hljs .hljs-tag {
+  color: var(--cxContraste);
+}
+.hljs .hljs-tag .hljs-name {
+  color: var(--cxDestaqueLight);
+}
+.hljs .hljs-tag .hljs-attr {
+  color: var(--cxDestaqueDark);
+}
+.hljs .hljs-tag .hljs-string {
+  color: var(--cxPerigo);
+}
+.hljs .hljs-keyword {
+  color: var(--cxInfo);
+}
+
