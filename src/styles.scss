@@ -832,8 +832,15 @@ select {
   box-shadow: var(--cxShadowCaixa) !important;
   background-color: var(--cxBase);
   border-radius: 4px !important;
+  border-color: var(--cxCancel);
   .ng-option {
+    background-color: var(--cxBase) !important;
+    color: var(--cxContraste) !important;
     padding: 1rem 1.3rem !important;
+    &.ng-option-selected {
+      background-color: var(--cxDestaque) !important;
+      color: var(--cxBase) !important;
+    }
   }
   &.ng-select-bottom {
     margin-top: 1px;
