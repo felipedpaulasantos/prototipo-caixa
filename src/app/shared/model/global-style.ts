@@ -37,12 +37,24 @@ export interface GlobalThemeVariables {
 
    cxSucesso: string;
    cxSucessoContrast: string;
+   cxSucessoInvert: string;
+   cxSucessoInvertContrast: string;
+
    cxPerigo: string;
    cxPerigoContrast: string;
+   cxPerigoInvert: string;
+   cxPerigoInvertContrast: string;
+
    cxAlerta: string;
    cxAlertaContrast: string;
+   cxAlertaInvert: string;
+   cxAlertaInvertContrast: string;
+
    cxInfo: string;
    cxInfoContrast: string;
+   cxInfoInvert: string;
+   cxInfoInvertContrast: string;
+
    cxBase: string;
    cxFundo: string;
    cxContraste: string;
@@ -98,13 +110,25 @@ export const lightTheme: GlobalThemeVariables = {
    cxCancelLighter: "--cinza-lighter",
 
    cxSucesso: "--success",
-   cxSucessoContrast: "--success-lighter",
+   cxSucessoContrast: "--cinza-lighter",
+   cxSucessoInvert: "--success-lighter",
+   cxSucessoInvertContrast: "--cinza-lighter",
+
    cxPerigo: "--danger",
-   cxPerigoContrast: "--danger-lighter",
+   cxPerigoContrast: "--white",
+   cxPerigoInvert: "--danger-lighter",
+   cxPerigoInvertContrast: "--grafite-dark",
+
    cxAlerta: "--warning",
-   cxAlertaContrast: "--warning-lighter",
+   cxAlertaContrast: "--grafite-dark",
+   cxAlertaInvert: "--warning-lighter",
+   cxAlertaInvertContrast: "--grafite-dark",
+
    cxInfo: "--info",
-   cxInfoContrast: "--info-lighter",
+   cxInfoContrast: "--white",
+   cxInfoInvert: "--info-lighter",
+   cxInfoInvertContrast: "--white",
+
    cxBase: "--cinza-lighter",
    cxFundo: "--polar",
    cxContraste: "--grafite-dark",
@@ -160,13 +184,25 @@ export const darkTheme: GlobalThemeVariables = {
    cxCancelLighter: "--cancel-darker",
 
    cxSucesso: "--success-lighter",
-   cxSucessoContrast: "--success",
+   cxSucessoContrast: "--grafite-dark",
+   cxSucessoInvert: "--success",
+   cxSucessoInvertContrast: "--white",
+
    cxPerigo: "--goiaba",
-   cxPerigoContrast: "--danger",
+   cxPerigoContrast: "--grafite-dark",
+   cxPerigoInvert: "--danger",
+   cxPerigoInvertContrast: "--white",
+
    cxAlerta: "--warning-lighter",
-   cxAlertaContrast: "--warning",
+   cxAlertaContrast: "--grafite-dark",
+   cxAlertaInvert: "--warning",
+   cxAlertaInvertContrast: "--grafite-dark",
+
    cxInfo: "--info-lighter",
-   cxInfoContrast: "--info",
+   cxInfoContrast: "--grafite-dark",
+   cxInfoInvert: "--info",
+   cxInfoInvertContrast: "--white",
+
    cxBase: "--grafite-darker",
    cxFundo: "--grafite-dark",
    cxContraste: "--cinza-lighter",

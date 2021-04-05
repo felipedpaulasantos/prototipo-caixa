@@ -129,24 +129,27 @@
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-success > .timeline-item-title > .timeline-item-icon {
    background-color: var(--cxSucesso) !important;
+   color: var(--cxSucessoContrast) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-info > .timeline-item-title > .timeline-item-icon {
    background-color: var(--cxInfo) !important;
+   color: var(--cxInfoContrast) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-error > .timeline-item-title > .timeline-item-icon {
    background-color: var(--cxPerigo) !important;
+   color: var(--cxPerigoContrast) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-warning > .timeline-item-title > .timeline-item-icon {
    background-color: var(--cxAlerta) !important;
-   color: var(--grafite) !important;
+   color: var(--cxAlertaContrast) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-warning-stop > .timeline-item-title > .timeline-item-icon {
    background-color: var(--cxAlerta) !important;
-   color: var(--grafite) !important;
+   color: var(--cxAlertaContrast) !important;
 }
 
 /* TIMELINE-ITEM-INFO */

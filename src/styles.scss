@@ -825,6 +825,9 @@ select {
   .ng-option {
     padding: 1rem 1.3rem !important;
   }
+  &.ng-select-bottom {
+    margin-top: 1px;
+  }
 }
 
 /* FORM VALIDATION - DIRTY */

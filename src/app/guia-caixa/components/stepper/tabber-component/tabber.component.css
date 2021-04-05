@@ -106,7 +106,7 @@
    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .tabber-wrapper > .tabber > .tab.current-tab > .tab-title > .tab-icon {
-   background-color: var(--cxPrincipal);
+   background-color: var(--cxDestaque);
    color: var(--cxBase);
    box-shadow: var(--cxShadowCaixa);
 }
@@ -126,6 +126,18 @@
    width: 1.2rem;
    height: 1.2rem;
    margin: auto;
+}
+.tabber-wrapper > .tabber > .tab > .tab-title > .tab-icon > .state-icon.success {
+   background-color: var(--cxSucesso);
+   color: var(--cxSucessoContrast);
+}
+.tabber-wrapper > .tabber > .tab > .tab-title > .tab-icon > .state-icon.danger {
+   background-color: var(--cxPerigo);
+   color: var(--cxPerigoContrast);
+}
+.tabber-wrapper > .tabber > .tab > .tab-title > .tab-icon > .state-icon.warning {
+   background-color: var(--cxAlerta);
+   color: var(--cxAlertaContrast);
 }
 
 /* ESTILOS ADICIONAIS */
