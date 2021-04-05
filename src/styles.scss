@@ -127,6 +127,13 @@ hr.header-line-caixa {
   margin-bottom: 1.5rem;
 }
 
+a {
+  color: var(--cxDestaque);
+  &:hover {
+    color: var(--cxDestaqueDark);
+  }
+}
+
 /* Fundos em degrade */
 
 @each $theme, $color in $cx-gradient-themes {
@@ -1166,7 +1173,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 
 .citation-highlight {
-  background-color: var(--cxCancelLight);
+  background-color: var(--cxCancel);
 }
 
 .cursor-pointer {
