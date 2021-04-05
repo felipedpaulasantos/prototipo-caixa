@@ -1215,7 +1215,8 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   background: var(--cxFundo);
   color: var(--cxContraste);
 }
-.hljs .hljs-name {
+.hljs .hljs-name, 
+.hljs .hljs-attribute {
   color: var(--cxAux);
 }
 .hljs .hljs-tag {
