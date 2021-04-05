@@ -183,7 +183,7 @@ export const darkTheme: GlobalThemeVariables = {
    cxCancelLight: "--grafite-lighter",
    cxCancelLighter: "--cancel-darker",
 
-   cxSucesso: "--success-lighter",
+/*    cxSucesso: "--success-lighter",
    cxSucessoContrast: "--grafite-dark",
    cxSucessoInvert: "--success",
    cxSucessoInvertContrast: "--white",
@@ -201,6 +201,26 @@ export const darkTheme: GlobalThemeVariables = {
    cxInfo: "--info-lighter",
    cxInfoContrast: "--grafite-dark",
    cxInfoInvert: "--info",
+   cxInfoInvertContrast: "--white", */
+
+   cxSucesso: "--success",
+   cxSucessoContrast: "--cinza-lighter",
+   cxSucessoInvert: "--success-lighter",
+   cxSucessoInvertContrast: "--cinza-lighter",
+
+   cxPerigo: "--danger",
+   cxPerigoContrast: "--white",
+   cxPerigoInvert: "--danger-lighter",
+   cxPerigoInvertContrast: "--grafite-dark",
+
+   cxAlerta: "--warning",
+   cxAlertaContrast: "--grafite-dark",
+   cxAlertaInvert: "--warning-lighter",
+   cxAlertaInvertContrast: "--grafite-dark",
+
+   cxInfo: "--info",
+   cxInfoContrast: "--white",
+   cxInfoInvert: "--info-lighter",
    cxInfoInvertContrast: "--white",
 
    cxBase: "--grafite-darker",

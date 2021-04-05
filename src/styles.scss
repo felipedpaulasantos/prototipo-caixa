@@ -416,7 +416,7 @@ label {
   font-family: var(--cxFontFamilyBold);
   margin-bottom: 0.2rem;
   transition: 0.2s;
-  opacity: 0.9;
+/*   opacity: 0.9; */
 }
 label.custom-control-label {
   font-family: var(--cxFontFamilyNormal);
@@ -1184,6 +1184,29 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   display: table-row-group;
 }
 
+/* Alert */
+
+.alert.alert-success {
+  background-color: var(--cxSucesso);
+  color: var(--cxSucessoContrast);
+  border-color: transparent;
+}
+.alert.alert-danger {
+  background-color: var(--cxPerigo);
+  color: var(--cxPerigoContrast);
+  border-color: transparent;
+}
+.alert.alert-warning {
+  background-color: var(--cxAlerta);
+  color: var(--cxAlertaContrast);
+  border-color: transparent;
+}
+.alert.alert-info {
+  background-color: var(--cxInfo);
+  color: var(--cxInfoContrast);
+  border-color: transparent;
+}
+
 /* 
   HIGHLIGHT JS 
 */
@@ -1191,6 +1214,9 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 .hljs {
   background: var(--cxFundo);
   color: var(--cxContraste);
+}
+.hljs .hljs-name {
+  color: var(--cxAux);
 }
 .hljs .hljs-tag {
   color: var(--cxContraste);
@@ -1206,5 +1232,8 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 .hljs .hljs-keyword {
   color: var(--cxInfo);
+}
+.hljs .hljs-selector-class {
+	color: var(--cxSucesso);
 }
 

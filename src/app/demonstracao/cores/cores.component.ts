@@ -156,7 +156,7 @@ export class CoresComponent implements OnInit {
           valor: this.styleService.getCssVariableValue("--success"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `08 - Temática de sucesso. <br>
-            <div class="alert bg-success text-white">
+            <div class="alert alert-success">
               <i class="fa fa-check-circle fa-lg mr-2"></i>
               Operação concluída com sucesso
             </div>`
@@ -168,7 +168,7 @@ export class CoresComponent implements OnInit {
           valor: this.styleService.getCssVariableValue("--danger"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `09 - Temática de erro. <br>
-            <div class="alert bg-danger text-base">
+            <div class="alert alert-danger">
               <i class="fa fa-times-circle fa-lg mr-2"></i>
               Houve um erro ao efetuar esta ação
             </div>`
@@ -180,7 +180,7 @@ export class CoresComponent implements OnInit {
           valor: this.styleService.getCssVariableValue("--warning"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `10 - Temática de alerta. <br>
-            <div class="alert bg-warning">
+            <div class="alert alert-warning">
               <i class="fa fa-exclamation-triangle fa-lg mr-2"></i>
               Não foi possível recuperar a informação
             </div>`
@@ -192,7 +192,7 @@ export class CoresComponent implements OnInit {
           valor: this.styleService.getCssVariableValue("--info"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `11 - Temática de informação. <br>
-            <div class="alert bg-info text-base">
+            <div class="alert alert-info">
               <i class="fa fa-info-circle fa-lg mr-2"></i>
               Não há pendências
             </div>`
