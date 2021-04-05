@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
     const themes = GlobalThemes.getThemes();
     themes.forEach(theme => {
       const body = theme.value.theme.cxBodyBgColor;
-      const secundario = theme.value.theme.cxPrincipal;
+      const secundario = theme.value.theme.cxDestaque;
       const style = getComputedStyle(document.body);
       const colorBody = style.getPropertyValue(body);
       const colorSecundario = style.getPropertyValue(secundario);
