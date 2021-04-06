@@ -157,118 +157,120 @@
    </div>
 
    <div class="tab-pane fade" id="api" role="tabpanel">
-      <div class="mb-4">
-         <h5 class="header-subtitulo-caixa">Cx-Card-Button</h5>
-         <p>
-            Componente de exibição ou interação com funcionalidade de checkbox ou radio.
-         </p>
-         <p>Usar como: <span class="citation-highlight">cx-card-button</span></p>
-
-         <h6 class="header-subtitulo-caixa">Propriedades</h6>
-         <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover table-caixa">
+      <div class="card mb-4">
+         <div class="card-body">
+            <h5 class="header-subtitulo-caixa">Cx-Card-Button</h5>
+            <p>
+               Componente de exibição ou interação com funcionalidade de checkbox ou radio.
+            </p>
+            <p>Usar como: <span class="citation-highlight">cx-card-button</span></p>
+   
+            <h6 class="header-subtitulo-caixa">Propriedades</h6>
+            <div class="table-responsive">
+               <table class="table table-bordered table-striped table-caixa">
+                  <thead>
+                     <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>@Input( )<br>cardId: string</td>
+                        <td>
+                           Nome ou identificação opcional para o componente.<br>
+                           Valor: ""
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>@Input( )<br>data: any</td>
+                        <td>
+                           Atributo opcional que será emitido internamente no evento CardButtonEventChecked.<br>
+                           Valor: null
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>@Input( )<br>leftIcon: string</td>
+                        <td>
+                           Classe do ícone a ser exibido no lado esquerdo, ex: "fa fa-home".<br>
+                           Padrão: ""
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>@Input( )<br>leftTitle: string | number</td>
+                        <td>
+                           Título a ser exibido do lado esquerdo, em uma tag 'h5'.<br>
+                           Padrão: ""
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>@Input( )<br>leftText: string</td>
+                        <td>
+                           Texto a ser exibido do lado esquerdo, em uma tag 'span'.<br>
+                           Padrão: ""
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>@Input( )<br>styles: [class: string]: any | string</td>
+                        <td>
+                           Objeto de estilo a ser passado para o card-button-wrapper.<br>
+                           <pre><code [highlight]="stylesExample" [languages]="['css']"></code></pre>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>@Input( )<br>type: string</td>
+                        <td>
+                           Define o visual do container de checkbox / radio. Pode ser 'checkbox', 'radio',
+                           ou algum valor falso (null / false / '') para não exibir o container.<br>
+                           Padrão: ''
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>@Input( )<br>color: CardButtonColor | string</td>
+                        <td>
+                           Define a cor geral do componente (lado esquerdo e borda) quando estiver selecionado.<br>
+                           Padrão: 'primary'
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>@Output( )<br>checked: EventEmitter&#60;CardButtonCheckEvent></td>
+                        <td>
+                           Evento emitido ao ativar o botão, contendo o próprio componente e seus atributos
+                           na propriedade (target).
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>isChecked( ): boolean</td>
+                        <td>
+                           Retorna o estado atual do componente, se está marcado ou não.
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>toggleValue( ): void</td>
+                        <td>
+                           Troca o estado atual do componente.
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div> <!-- Table-responsive -->
+   
+            <br>
+   
+            <table class="table table-bordered table-caixa">
                <thead>
-                  <tr>
-                     <th>Nome</th>
-                     <th>Descrição</th>
-                  </tr>
+                  <th>CardButtonEventChecked</th>
                </thead>
                <tbody>
                   <tr>
-                     <td>@Input( )<br>cardId: string</td>
                      <td>
-                        Nome ou identificação opcional para o componente.<br>
-                        Valor: ""
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>@Input( )<br>data: any</td>
-                     <td>
-                        Atributo opcional que será emitido internamente no evento CardButtonEventChecked.<br>
-                        Valor: null
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>@Input( )<br>leftIcon: string</td>
-                     <td>
-                        Classe do ícone a ser exibido no lado esquerdo, ex: "fa fa-home".<br>
-                        Padrão: ""
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>@Input( )<br>leftTitle: string | number</td>
-                     <td>
-                        Título a ser exibido do lado esquerdo, em uma tag 'h5'.<br>
-                        Padrão: ""
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>@Input( )<br>leftText: string</td>
-                     <td>
-                        Texto a ser exibido do lado esquerdo, em uma tag 'span'.<br>
-                        Padrão: ""
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>@Input( )<br>styles: [class: string]: any | string</td>
-                     <td>
-                        Objeto de estilo a ser passado para o card-button-wrapper.<br>
-                        <pre><code [highlight]="stylesExample" [languages]="['css']"></code></pre>
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>@Input( )<br>type: string</td>
-                     <td>
-                        Define o visual do container de checkbox / radio. Pode ser 'checkbox', 'radio',
-                        ou algum valor falso (null / false / '') para não exibir o container.<br>
-                        Padrão: ''
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>@Input( )<br>color: CardButtonColor | string</td>
-                     <td>
-                        Define a cor geral do componente (lado esquerdo e borda) quando estiver selecionado.<br>
-                        Padrão: 'primary'
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>@Output( )<br>checked: EventEmitter&#60;CardButtonCheckEvent></td>
-                     <td>
-                        Evento emitido ao ativar o botão, contendo o próprio componente e seus atributos
-                        na propriedade (target).
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>isChecked( ): boolean</td>
-                     <td>
-                        Retorna o estado atual do componente, se está marcado ou não.
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>toggleValue( ): void</td>
-                     <td>
-                        Troca o estado atual do componente.
+                        target: CardButtonComponent<br>
                      </td>
                   </tr>
                </tbody>
             </table>
-         </div> <!-- Table-responsive -->
 
-         <br>
-
-         <table class="table table-bordered table-caixa">
-            <thead>
-               <th>CardButtonEventChecked</th>
-            </thead>
-            <tbody>
-               <tr>
-                  <td>
-                     target: CardButtonComponent<br>
-                  </td>
-               </tr>
-            </tbody>
-         </table>
-
+         </div>
       </div>
    </div>
 

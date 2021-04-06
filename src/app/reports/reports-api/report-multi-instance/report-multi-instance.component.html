@@ -1,6 +1,6 @@
 <div class="form-group form-inline">
   <label>Instância</label>
-  <select class="form-control custom-select ml-2" (change)="updateSelectedInstance($event.target.value)">
+  <select class="form-control form-control ml-2" (change)="updateSelectedInstance($event.target.value)">
     <option [value]="false" selected="true">Agregado (todas as instâncias)</option>
     <ng-container *ngFor="let instance of instances">
       <option [value]="instance">{{ instance }}</option>

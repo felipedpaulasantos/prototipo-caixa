@@ -140,118 +140,122 @@
 	</div>
 
 	<div class="tab-pane fade" id="api" role="tabpanel">
-		<h5 class="header-subtitulo-caixa">*cxStepper</h5>
-		<p>
-			Diretiva que permite a inclusão de conteúdo dinâmico dentro do componente Stepper.
-			O asterisco é necessário por se tratar de uma
-			<a class="text-link" href="https://angular.io/guide/structural-directives" target="blank">diretiva
-				estrutural</a>.
-		</p>
-		<p>Usar como: <span class="citation-highlight">*cxStepper</span> no elemento a ser exibido</p>
-
-		<br>
-
-		<div class="my-4">
-			<h5 class="header-subtitulo-caixa">Cx-Tabber</h5>
-			<p>
-				Componente de exibição de abas que pode ou não englobar o conteúdo que será exibido em cada aba.
-			</p>
-			<p>Usar como: <span class="citation-highlight">cx-tabber</span></p>
-
-			<h6 class="header-subtitulo-caixa">Propriedades</h6>
-			<div class="table-responsive">
-				<table class="table table-bordered table-caixa">
-					<thead>
-						<tr>
-							<th>Nome</th>
-							<th>Descrição</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>readonly MINIMUM_TABS</td>
-							<td>
-								Quantidade mínima de abas.<br>
-								Valor: 2
-							</td>
-						</tr>
-						<tr>
-							<td>readonly MAXIMUM_TABS</td>
-							<td>
-								Quantidade máxima de abas.<br>
-								Valor: 7
-							</td>
-						</tr>
-						<tr>
-							<td>@Input( )<br>tabs: TabberItem[]</td>
-							<td>
-								Atributo obrigatório com a lista de abas,
-								contendo sua descrição e ícone.<br>
-								Padrão: []
-							</td>
-						</tr>
-						<tr>
-							<td>@Input( )<br>currentTab: string | number</td>
-							<td>
-								Índice da aba atual.<br>
-								Padrão: 0
-							</td>
-						</tr>
-						<tr>
-							<td>@Input( )<br>orientation: enum StepperOrientation</td>
-							<td>
-								Orientação do componente, que pode ser horizontal (StepperOrientation.horizontal | "0")
-								ou vertical (StepperOrientation.vertical | "1").<br>
-								Padrão: StepperOrientation.horizontal | "0"
-							</td>
-						</tr>
-						<tr>
-							<td>@Input( )<br>styles: [class: string]: any | string</td>
-							<td>
-								Objeto de estilo a ser passado para o card-button-wrapper.<br>
-								<pre><code [highlight]="stylesExample"></code></pre>
-							</td>
-						</tr>
-						<tr>
-							<td>@Output( )<br>changeTab: EventEmitter&#60;number></td>
-							<td>
-								Evento disparado sempre que um ícone válido é clicado, transmitindo o
-								índice deste ícone.
-							</td>
-						</tr>
-						<tr>
-							<td>next( ): void</td>
-							<td>
-								Avança para a próxima aba.
-							</td>
-						</tr>
-						<tr>
-							<td>previous( ): void</td>
-							<td>
-								Retorna para a aba anterior.
-							</td>
-						</tr>
-						<tr>
-							<td>first( ): void</td>
-							<td>
-								Retorna para a primeira aba.
-							</td>
-						</tr>
-						<tr>
-							<td>last( ): void</td>
-							<td>
-								Avança para a última aba.
-							</td>
-						</tr>
-						<tr>
-							<td>update( ): void</td>
-							<td>
-								Atualiza manualmente o template do componente cx-tabber.
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div> <!-- Table-responsive -->
+		<div class="card">
+			<div class="card-body">
+				<h5 class="header-subtitulo-caixa">*cxStepper</h5>
+				<p>
+					Diretiva que permite a inclusão de conteúdo dinâmico dentro do componente Stepper.
+					O asterisco é necessário por se tratar de uma
+					<a class="text-link" href="https://angular.io/guide/structural-directives" target="blank">diretiva
+						estrutural</a>.
+				</p>
+				<p>Usar como: <span class="citation-highlight">*cxStepper</span> no elemento a ser exibido</p>
+		
+				<br>
+		
+				<div class="my-4">
+					<h5 class="header-subtitulo-caixa">Cx-Tabber</h5>
+					<p>
+						Componente de exibição de abas que pode ou não englobar o conteúdo que será exibido em cada aba.
+					</p>
+					<p>Usar como: <span class="citation-highlight">cx-tabber</span></p>
+		
+					<h6 class="header-subtitulo-caixa">Propriedades</h6>
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>Descrição</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>readonly MINIMUM_TABS</td>
+									<td>
+										Quantidade mínima de abas.<br>
+										Valor: 2
+									</td>
+								</tr>
+								<tr>
+									<td>readonly MAXIMUM_TABS</td>
+									<td>
+										Quantidade máxima de abas.<br>
+										Valor: 7
+									</td>
+								</tr>
+								<tr>
+									<td>@Input( )<br>tabs: TabberItem[]</td>
+									<td>
+										Atributo obrigatório com a lista de abas,
+										contendo sua descrição e ícone.<br>
+										Padrão: []
+									</td>
+								</tr>
+								<tr>
+									<td>@Input( )<br>currentTab: string | number</td>
+									<td>
+										Índice da aba atual.<br>
+										Padrão: 0
+									</td>
+								</tr>
+								<tr>
+									<td>@Input( )<br>orientation: enum StepperOrientation</td>
+									<td>
+										Orientação do componente, que pode ser horizontal (StepperOrientation.horizontal | "0")
+										ou vertical (StepperOrientation.vertical | "1").<br>
+										Padrão: StepperOrientation.horizontal | "0"
+									</td>
+								</tr>
+								<tr>
+									<td>@Input( )<br>styles: [class: string]: any | string</td>
+									<td>
+										Objeto de estilo a ser passado para o card-button-wrapper.<br>
+										<pre><code [highlight]="stylesExample"></code></pre>
+									</td>
+								</tr>
+								<tr>
+									<td>@Output( )<br>changeTab: EventEmitter&#60;number></td>
+									<td>
+										Evento disparado sempre que um ícone válido é clicado, transmitindo o
+										índice deste ícone.
+									</td>
+								</tr>
+								<tr>
+									<td>next( ): void</td>
+									<td>
+										Avança para a próxima aba.
+									</td>
+								</tr>
+								<tr>
+									<td>previous( ): void</td>
+									<td>
+										Retorna para a aba anterior.
+									</td>
+								</tr>
+								<tr>
+									<td>first( ): void</td>
+									<td>
+										Retorna para a primeira aba.
+									</td>
+								</tr>
+								<tr>
+									<td>last( ): void</td>
+									<td>
+										Avança para a última aba.
+									</td>
+								</tr>
+								<tr>
+									<td>update( ): void</td>
+									<td>
+										Atualiza manualmente o template do componente cx-tabber.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div> <!-- Table-responsive -->
+				</div>
+			</div>
 		</div>
 	</div>
 

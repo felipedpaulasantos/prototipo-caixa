@@ -359,7 +359,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
     if (this.config["columnFilter"] === "select") {
       dtInstance.columns().every(function () {
         const column = this;
-        const select = $(`<select class='custom-select'><option value=\"\">Filtro</option></select>`)
+        const select = $(`<select class='form-control'><option value=\"\">Filtro</option></select>`)
           .appendTo($(column.footer()).empty())
           .on("change", function () {
             const val = $.fn.dataTable.util.escapeRegex(
