@@ -86,9 +86,9 @@ export class CoresComponent implements OnInit {
       this.coresVariaveis = [
         {
           nome: "Principal",
-          variavel: "--principal",
+          variavel: "--cxPrincipal",
           classe: "principal",
-          valor: this.styleService.getCssVariableValue("--principal"),
+          valor: this.styleService.getCssVariableValue("--cxPrincipal"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `01 - Ações principais: <br>
             <button class="btn btn-principal">Contratar</button>
@@ -96,9 +96,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Destaque",
-          variavel: "--destaque",
+          variavel: "--cxDestaque",
           classe: "destaque",
-          valor: this.styleService.getCssVariableValue("--destaque"),
+          valor: this.styleService.getCssVariableValue("--cxDestaque"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `02 - Ações secundárias: <br>
             <button class="btn btn-destaque">Avançar</button>
@@ -106,9 +106,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Base",
-          variavel: "--base",
+          variavel: "--cxBase",
           classe: "base",
-          valor: this.styleService.getCssVariableValue("--base"),
+          valor: this.styleService.getCssVariableValue("--cxBase"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `03 - Base do tema, geralmente branco ou alguma cor bem escura.`
           )
@@ -122,9 +122,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Cancel",
-          variavel: "--cancel",
+          variavel: "--cxCancel",
           classe: "cancel",
-          valor: this.styleService.getCssVariableValue("--cancel"),
+          valor: this.styleService.getCssVariableValue("--cxCancel"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `05 - Intermediária do tema, mais próxima à cor base. Ações auxiliares relacionadas a cancelamento: <br>
              <button class="btn btn-cancel">Voltar</button>
@@ -132,9 +132,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Auxiliar",
-          variavel: "--aux",
+          variavel: "--cxAux",
           classe: "aux",
-          valor: this.styleService.getCssVariableValue("--aux"),
+          valor: this.styleService.getCssVariableValue("--cxAux"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `06 - Intermediária do tema, mais próxima à cor de contraste. Ações auxiliares relacionadas a funcionalides de suporte: <br>
              <button class="btn btn-aux">Copiar</button>
@@ -142,9 +142,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Contraste",
-          variavel: "--contraste",
+          variavel: "--cxContraste",
           classe: "contraste",
-          valor: this.styleService.getCssVariableValue("--contraste"),
+          valor: this.styleService.getCssVariableValue("--cxContraste"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `07 - Contraste do tema, oposta à cor base. <br>
             Cor padrão do texto e de elementos que precisam contrastar ao máximo com a cor de fundo`
@@ -156,7 +156,7 @@ export class CoresComponent implements OnInit {
           valor: this.styleService.getCssVariableValue("--success"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `08 - Temática de sucesso. <br>
-            <div class="alert bg-success text-white">
+            <div class="alert alert-success">
               <i class="fa fa-check-circle fa-lg mr-2"></i>
               Operação concluída com sucesso
             </div>`
@@ -168,7 +168,7 @@ export class CoresComponent implements OnInit {
           valor: this.styleService.getCssVariableValue("--danger"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `09 - Temática de erro. <br>
-            <div class="alert bg-danger text-base">
+            <div class="alert alert-danger">
               <i class="fa fa-times-circle fa-lg mr-2"></i>
               Houve um erro ao efetuar esta ação
             </div>`
@@ -180,7 +180,7 @@ export class CoresComponent implements OnInit {
           valor: this.styleService.getCssVariableValue("--warning"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `10 - Temática de alerta. <br>
-            <div class="alert bg-warning">
+            <div class="alert alert-warning">
               <i class="fa fa-exclamation-triangle fa-lg mr-2"></i>
               Não foi possível recuperar a informação
             </div>`
@@ -192,7 +192,7 @@ export class CoresComponent implements OnInit {
           valor: this.styleService.getCssVariableValue("--info"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `11 - Temática de informação. <br>
-            <div class="alert bg-info text-base">
+            <div class="alert alert-info">
               <i class="fa fa-info-circle fa-lg mr-2"></i>
               Não há pendências
             </div>`

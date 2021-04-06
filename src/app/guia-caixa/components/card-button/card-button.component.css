@@ -1,7 +1,7 @@
 /* CARD BUTTON WRAPPER */
 .card-button-wrapper {
     position: relative;
-    border: solid 1px var(--aux);
+    border: solid 1px var(--cxAux);
     border-radius: 0.38rem;
     height: 9.61rem;
     min-height: 7.69rem;
@@ -15,10 +15,10 @@
     box-shadow: var(--cxShadowCaixa) !important;
   }
   .card-button-wrapper.primary.checked {
-    border: solid 1px var(--destaque);
+    border: solid 1px var(--cxDestaque);
   }
   .card-button-wrapper.secondary.checked {
-    border: solid 1px var(--principal);
+    border: solid 1px var(--cxPrincipal);
   }
   .card-button-wrapper.success.checked {
     border: solid 1px var(--success);
@@ -42,7 +42,7 @@
   
   /* CARD BUTTON LEFT SIDE */
   .card-button-wrapper > .row > .card-button-left-side {
-    background-color: var(--aux);
+    background-color: var(--cxAux);
     color: var(--cxBase);
     display: flex;
     flex-direction: column;
@@ -55,10 +55,10 @@
     max-height: 100%;
   }
   .card-button-wrapper.checked > .row > .card-button-left-side {
-    background-color: var(--destaque);
+    background-color: var(--cxDestaque);
   }
   .card-button-wrapper.checked.secondary > .row > .card-button-left-side {
-    background-color: var(--principal);
+    background-color: var(--cxPrincipal);
   }
   .card-button-wrapper.checked.success > .row > .card-button-left-side {
     background-color: var(--success);
@@ -87,8 +87,7 @@
     max-height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    margin-top: auto;
-    margin-bottom: auto;
+    justify-content: center;
   }
   
   /* CHECK BOX WRAPPER */
