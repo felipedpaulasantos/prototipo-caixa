@@ -1,4 +1,4 @@
-export interface GlobalThemeVariables {
+export interface GlobalThemeMainVariables {
    cxHeaderBgColor: string;
    cxHeaderTextColor: string;
    cxSidemenuBgColor: string;
@@ -10,51 +10,44 @@ export interface GlobalThemeVariables {
    cxShadowCaixa: string;
    cxShadowCaixaSm: string;
    cxShadowCaixaLg: string;
-
    cxPrincipal: string;
    cxPrincipalDark: string;
    cxPrincipalDarker: string;
    cxPrincipalLight: string;
    cxPrincipalLighter: string;
-
    cxDestaque: string;
    cxDestaqueDark: string;
    cxDestaqueDarker: string;
    cxDestaqueLight: string;
    cxDestaqueLighter: string;
-
    cxAux: string;
    cxAuxDark: string;
    cxAuxDarker: string;
    cxAuxLight: string;
    cxAuxLighter: string;
-
    cxCancel: string;
    cxCancelDark: string;
    cxCancelDarker: string;
    cxCancelLight: string;
    cxCancelLighter: string;
-
+}
+export interface GlobalThemeBaseVariables {
    cxSucesso: string;
    cxSucessoContrast: string;
    cxSucessoInvert: string;
    cxSucessoInvertContrast: string;
-
    cxPerigo: string;
    cxPerigoContrast: string;
    cxPerigoInvert: string;
    cxPerigoInvertContrast: string;
-
    cxAlerta: string;
    cxAlertaContrast: string;
    cxAlertaInvert: string;
    cxAlertaInvertContrast: string;
-
    cxInfo: string;
    cxInfoContrast: string;
    cxInfoInvert: string;
    cxInfoInvertContrast: string;
-
    cxBase: string;
    cxFundo: string;
    cxContraste: string;
@@ -72,63 +65,25 @@ export interface GlobalThemeVariables {
    cxTransparentContrast75: string;
 }
 
-export const lightTheme: GlobalThemeVariables = {
-   cxHeaderBgColor: "--primary",
-   cxHeaderTextColor: "--white",
-   cxSidemenuBgColor: "--white",
-   cxSidemenuTextColor: "--grafite",
-   cxSidemenuActiveBgColor: "--primary",
-   cxSidemenuActiveTextColor: "--white",
-   cxBodyBgColor: "--polar",
-   cxBodyTextColor: "--grafite",
-   cxShadowCaixa: "--cxShadowCaixaDark",
-   cxShadowCaixaSm: "--cxShadowCaixaDarkSm",
-   cxShadowCaixaLg: "--cxShadowCaixaDarkLg",
+export interface GlobalThemeVariables extends GlobalThemeMainVariables, GlobalThemeBaseVariables {}
 
-   cxPrincipal: "--secondary",
-   cxPrincipalDark: "--secondary-dark",
-   cxPrincipalDarker: "--secondary-darker",
-   cxPrincipalLight: "--secondary-light",
-   cxPrincipalLighter: "--secondary-lighter",
-
-   cxDestaque: "--primary",
-   cxDestaqueDark: "--primary-dark",
-   cxDestaqueDarker: "--primary-darker",
-   cxDestaqueLight: "--primary-light",
-   cxDestaqueLighter: "--primary-lighter",
-
-   cxAux: "--grafite-light",
-   cxAuxDark: "--grafite",
-   cxAuxDarker: "--grafite-dark",
-   cxAuxLight: "--grafite-lighter",
-   cxAuxLighter: "--cancel-darker",
-
-   cxCancel: "--cinza",
-   cxCancelDark: "--cinza-dark",
-   cxCancelDarker: "--cinza-darker",
-   cxCancelLight: "--cinza-light",
-   cxCancelLighter: "--cinza-lighter",
-
+const baseLightTheme: GlobalThemeBaseVariables = {
    cxSucesso: "--success",
    cxSucessoContrast: "--cinza-lighter",
    cxSucessoInvert: "--success-lighter",
    cxSucessoInvertContrast: "--cinza-lighter",
-
    cxPerigo: "--danger",
    cxPerigoContrast: "--white",
    cxPerigoInvert: "--danger-lighter",
    cxPerigoInvertContrast: "--grafite-dark",
-
    cxAlerta: "--warning",
    cxAlertaContrast: "--grafite-dark",
    cxAlertaInvert: "--warning-lighter",
    cxAlertaInvertContrast: "--grafite-dark",
-
    cxInfo: "--info",
    cxInfoContrast: "--white",
    cxInfoInvert: "--info-lighter",
    cxInfoInvertContrast: "--white",
-
    cxBase: "--cinza-lighter",
    cxFundo: "--polar",
    cxContraste: "--grafite-dark",
@@ -146,83 +101,23 @@ export const lightTheme: GlobalThemeVariables = {
    cxTransparentContrast75: "rgba(0, 0, 0, 0.75)"
 };
 
-export const darkTheme: GlobalThemeVariables = {
-   cxHeaderBgColor: "--grafite-darker",
-   cxHeaderTextColor: "--cinza-lighter",
-   cxSidemenuBgColor: "--grafite-darker",
-   cxSidemenuTextColor: "--cinza-lighter",
-   cxSidemenuActiveBgColor: "--ceu",
-   cxSidemenuActiveTextColor: "--white",
-   cxBodyBgColor: "--grafite-dark",
-   cxBodyTextColor: "--white",
-   cxShadowCaixa: "--cxShadowCaixaLight",
-   cxShadowCaixaSm: "--cxShadowCaixaLightSm",
-   cxShadowCaixaLg: "--cxShadowCaixaLightLg",
-
-   cxPrincipal: "--secondary",
-   cxPrincipalDark: "--secondary-dark",
-   cxPrincipalDarker: "--secondary-darker",
-   cxPrincipalLight: "--secondary-light",
-   cxPrincipalLighter: "--secondary-lighter",
-
-   cxDestaque: "--ceu",
-   cxDestaqueDark: "--ceu-dark",
-   cxDestaqueDarker: "--ceu-darker",
-   cxDestaqueLight: "--ceu-light",
-   cxDestaqueLighter: "--ceu-lighter",
-
-   cxAux: "--cinza",
-   cxAuxDark: "--cinza-dark",
-   cxAuxDarker: "--cinza-darker",
-   cxAuxLight: "--cinza-light",
-   cxAuxLighter: "--cinza-lighter",
-
-   cxCancel: "--grafite-light",
-   cxCancelDark: "--grafite",
-   cxCancelDarker: "--grafite-dark",
-   cxCancelLight: "--grafite-lighter",
-   cxCancelLighter: "--cancel-darker",
-
-/*    cxSucesso: "--success-lighter",
-   cxSucessoContrast: "--grafite-dark",
-   cxSucessoInvert: "--success",
-   cxSucessoInvertContrast: "--white",
-
-   cxPerigo: "--goiaba",
-   cxPerigoContrast: "--grafite-dark",
-   cxPerigoInvert: "--danger",
-   cxPerigoInvertContrast: "--white",
-
-   cxAlerta: "--warning-lighter",
-   cxAlertaContrast: "--grafite-dark",
-   cxAlertaInvert: "--warning",
-   cxAlertaInvertContrast: "--grafite-dark",
-
-   cxInfo: "--info-lighter",
-   cxInfoContrast: "--grafite-dark",
-   cxInfoInvert: "--info",
-   cxInfoInvertContrast: "--white", */
-
+const baseDarkTheme: GlobalThemeBaseVariables = {
    cxSucesso: "--success",
    cxSucessoContrast: "--cinza-lighter",
    cxSucessoInvert: "--success-lighter",
    cxSucessoInvertContrast: "--cinza-lighter",
-
    cxPerigo: "--danger",
    cxPerigoContrast: "--white",
    cxPerigoInvert: "--danger-lighter",
    cxPerigoInvertContrast: "--grafite-dark",
-
    cxAlerta: "--warning",
    cxAlertaContrast: "--grafite-dark",
    cxAlertaInvert: "--warning-lighter",
    cxAlertaInvertContrast: "--grafite-dark",
-
    cxInfo: "--info",
    cxInfoContrast: "--white",
    cxInfoInvert: "--info-lighter",
    cxInfoInvertContrast: "--white",
-
    cxBase: "--grafite-darker",
    cxFundo: "--grafite-dark",
    cxContraste: "--cinza-lighter",
@@ -240,12 +135,84 @@ export const darkTheme: GlobalThemeVariables = {
    cxTransparentContrast75: "rgba(255, 255, 255, 0.75)"
 };
 
+/* Light blue theme */
+const lightTheme: GlobalThemeMainVariables = {
+   cxHeaderBgColor: "--primary",
+   cxHeaderTextColor: "--white",
+   cxSidemenuBgColor: "--white",
+   cxSidemenuTextColor: "--grafite",
+   cxSidemenuActiveBgColor: "--primary",
+   cxSidemenuActiveTextColor: "--white",
+   cxBodyBgColor: "--polar",
+   cxBodyTextColor: "--grafite",
+   cxShadowCaixa: "--cxShadowCaixaDark",
+   cxShadowCaixaSm: "--cxShadowCaixaDarkSm",
+   cxShadowCaixaLg: "--cxShadowCaixaDarkLg",
+   cxPrincipal: "--secondary",
+   cxPrincipalDark: "--secondary-dark",
+   cxPrincipalDarker: "--secondary-darker",
+   cxPrincipalLight: "--secondary-light",
+   cxPrincipalLighter: "--secondary-lighter",
+   cxDestaque: "--primary",
+   cxDestaqueDark: "--primary-dark",
+   cxDestaqueDarker: "--primary-darker",
+   cxDestaqueLight: "--primary-light",
+   cxDestaqueLighter: "--primary-lighter",
+   cxAux: "--grafite-light",
+   cxAuxDark: "--grafite",
+   cxAuxDarker: "--grafite-dark",
+   cxAuxLight: "--grafite-lighter",
+   cxAuxLighter: "--cancel-darker",
+   cxCancel: "--cinza",
+   cxCancelDark: "--cinza-dark",
+   cxCancelDarker: "--cinza-darker",
+   cxCancelLight: "--cinza-light",
+   cxCancelLighter: "--cinza-lighter",
+};
+export const blueLightTheme: GlobalThemeVariables = Object.assign(lightTheme, baseLightTheme);
+
+/* Dark lightblue theme */
+const darkTheme: GlobalThemeMainVariables = {
+   cxHeaderBgColor: "--grafite-darker",
+   cxHeaderTextColor: "--cinza-lighter",
+   cxSidemenuBgColor: "--grafite-darker",
+   cxSidemenuTextColor: "--cinza-lighter",
+   cxSidemenuActiveBgColor: "--ceu",
+   cxSidemenuActiveTextColor: "--white",
+   cxBodyBgColor: "--grafite-dark",
+   cxBodyTextColor: "--white",
+   cxShadowCaixa: "--cxShadowCaixaLight",
+   cxShadowCaixaSm: "--cxShadowCaixaLightSm",
+   cxShadowCaixaLg: "--cxShadowCaixaLightLg",
+   cxPrincipal: "--secondary",
+   cxPrincipalDark: "--secondary-dark",
+   cxPrincipalDarker: "--secondary-darker",
+   cxPrincipalLight: "--secondary-light",
+   cxPrincipalLighter: "--secondary-lighter",
+   cxDestaque: "--ceu",
+   cxDestaqueDark: "--ceu-dark",
+   cxDestaqueDarker: "--ceu-darker",
+   cxDestaqueLight: "--ceu-light",
+   cxDestaqueLighter: "--ceu-lighter",
+   cxAux: "--cinza",
+   cxAuxDark: "--cinza-dark",
+   cxAuxDarker: "--cinza-darker",
+   cxAuxLight: "--cinza-light",
+   cxAuxLighter: "--cinza-lighter",
+   cxCancel: "--grafite-light",
+   cxCancelDark: "--grafite",
+   cxCancelDarker: "--grafite-dark",
+   cxCancelLight: "--grafite-lighter",
+   cxCancelLighter: "--cancel-darker",
+};
+export const blueDarkTheme: GlobalThemeVariables = Object.assign(darkTheme, baseDarkTheme);
+
+
 export interface GlobalTheme {
    name: string;
    className: string;
    theme: GlobalThemeVariables;
 }
-
 export class GlobalThemes {
 
    private constructor(
@@ -254,7 +221,7 @@ export class GlobalThemes {
    ) { }
 
    static readonly lightTheme = new GlobalThemes(
-      "Tema Claro", { name: "lightTheme", className: "tema-claro", theme: lightTheme }
+      "Tema Claro", { name: "lightTheme", className: "tema-claro", theme: blueLightTheme }
    );
 
 /*    static readonly lightBlueTheme = new GlobalThemes(
@@ -266,7 +233,7 @@ export class GlobalThemes {
    ); */
 
    static readonly darkTheme = new GlobalThemes(
-      "Tema Escuro (experimental)", { name: "darkTheme", className: "tema-escuro", theme: darkTheme }
+      "Tema Escuro (experimental)", { name: "darkTheme", className: "tema-escuro", theme: blueDarkTheme }
    );
 
 /*    static readonly darkThemeInverted = new GlobalThemes(
