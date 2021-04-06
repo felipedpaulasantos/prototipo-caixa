@@ -7,9 +7,6 @@ export interface GlobalThemeMainVariables {
    cxSidemenuActiveTextColor: string;
    cxBodyBgColor: string;
    cxBodyTextColor: string;
-   cxShadowCaixa: string;
-   cxShadowCaixaSm: string;
-   cxShadowCaixaLg: string;
    cxPrincipal: string;
    cxPrincipalDark: string;
    cxPrincipalDarker: string;
@@ -51,6 +48,9 @@ export interface GlobalThemeBaseVariables {
    cxBase: string;
    cxFundo: string;
    cxContraste: string;
+   cxShadowCaixa: string;
+   cxShadowCaixaSm: string;
+   cxShadowCaixaLg: string;
    cxTransparentBase025: string;
    cxTransparentBase050: string;
    cxTransparentBase075: string;
@@ -87,6 +87,9 @@ const baseLightTheme: GlobalThemeBaseVariables = {
    cxBase: "--cinza-lighter",
    cxFundo: "--polar",
    cxContraste: "--grafite-dark",
+   cxShadowCaixa: "--cxShadowCaixaDark",
+   cxShadowCaixaSm: "--cxShadowCaixaDarkSm",
+   cxShadowCaixaLg: "--cxShadowCaixaDarkLg",
    cxTransparentBase025: "rgba(255, 255, 255, 0.025)",
    cxTransparentBase050: "rgba(255, 255, 255, 0.05)",
    cxTransparentBase075: "rgba(255, 255, 255, 0.075)",
@@ -121,6 +124,9 @@ const baseDarkTheme: GlobalThemeBaseVariables = {
    cxBase: "--grafite-darker",
    cxFundo: "--grafite-dark",
    cxContraste: "--cinza-lighter",
+   cxShadowCaixa: "--cxShadowCaixaLight",
+   cxShadowCaixaSm: "--cxShadowCaixaLightSm",
+   cxShadowCaixaLg: "--cxShadowCaixaLightLg",
    cxTransparentBase025: "rgba(0, 0, 0, 0.025)",
    cxTransparentBase050: "rgba(0, 0, 0, 0.05)",
    cxTransparentBase075: "rgba(0, 0, 0, 0.075)",
@@ -136,7 +142,7 @@ const baseDarkTheme: GlobalThemeBaseVariables = {
 };
 
 /* Light blue theme */
-const lightTheme: GlobalThemeMainVariables = {
+const blueLightBaseTheme: GlobalThemeMainVariables = {
    cxHeaderBgColor: "--primary",
    cxHeaderTextColor: "--white",
    cxSidemenuBgColor: "--white",
@@ -145,9 +151,6 @@ const lightTheme: GlobalThemeMainVariables = {
    cxSidemenuActiveTextColor: "--white",
    cxBodyBgColor: "--polar",
    cxBodyTextColor: "--grafite",
-   cxShadowCaixa: "--cxShadowCaixaDark",
-   cxShadowCaixaSm: "--cxShadowCaixaDarkSm",
-   cxShadowCaixaLg: "--cxShadowCaixaDarkLg",
    cxPrincipal: "--secondary",
    cxPrincipalDark: "--secondary-dark",
    cxPrincipalDarker: "--secondary-darker",
@@ -169,10 +172,10 @@ const lightTheme: GlobalThemeMainVariables = {
    cxCancelLight: "--cinza-light",
    cxCancelLighter: "--cinza-lighter",
 };
-export const blueLightTheme: GlobalThemeVariables = Object.assign(lightTheme, baseLightTheme);
+export const blueLightTheme: GlobalThemeVariables = Object.assign(blueLightBaseTheme, baseLightTheme);
 
 /* Dark lightblue theme */
-const darkTheme: GlobalThemeMainVariables = {
+const blueDarkBaseTheme: GlobalThemeMainVariables = {
    cxHeaderBgColor: "--grafite-darker",
    cxHeaderTextColor: "--cinza-lighter",
    cxSidemenuBgColor: "--grafite-darker",
@@ -181,9 +184,6 @@ const darkTheme: GlobalThemeMainVariables = {
    cxSidemenuActiveTextColor: "--white",
    cxBodyBgColor: "--grafite-dark",
    cxBodyTextColor: "--white",
-   cxShadowCaixa: "--cxShadowCaixaLight",
-   cxShadowCaixaSm: "--cxShadowCaixaLightSm",
-   cxShadowCaixaLg: "--cxShadowCaixaLightLg",
    cxPrincipal: "--secondary",
    cxPrincipalDark: "--secondary-dark",
    cxPrincipalDarker: "--secondary-darker",
@@ -205,7 +205,42 @@ const darkTheme: GlobalThemeMainVariables = {
    cxCancelLight: "--grafite-lighter",
    cxCancelLighter: "--cancel-darker",
 };
-export const blueDarkTheme: GlobalThemeVariables = Object.assign(darkTheme, baseDarkTheme);
+export const blueDarkTheme: GlobalThemeVariables = Object.assign(blueDarkBaseTheme, baseDarkTheme);
+
+const purpleLightBaseTheme: GlobalThemeMainVariables = {
+   cxHeaderBgColor: "--uva-darker",
+   cxHeaderTextColor: "--cinza-lighter",
+   cxSidemenuBgColor: "--white",
+   cxSidemenuTextColor: "--grafite",
+   cxSidemenuActiveBgColor: "--uva",
+   cxSidemenuActiveTextColor: "--white",
+   cxBodyBgColor: "--polar",
+   cxBodyTextColor: "--grafite",
+   cxPrincipal: "--secondary",
+   cxPrincipalDark: "--secondary-dark",
+   cxPrincipalDarker: "--secondary-darker",
+   cxPrincipalLight: "--secondary-light",
+   cxPrincipalLighter: "--secondary-lighter",
+   cxDestaque: "--uva",
+   cxDestaqueDark: "--uva-dark",
+   cxDestaqueDarker: "--uva-darker",
+   cxDestaqueLight: "--uva-light",
+   cxDestaqueLighter: "--uva-lighter",
+   cxAux: "--grafite-light",
+   cxAuxDark: "--grafite",
+   cxAuxDarker: "--grafite-dark",
+   cxAuxLight: "--grafite-lighter",
+   cxAuxLighter: "--cancel-darker",
+   cxCancel: "--cinza",
+   cxCancelDark: "--cinza-dark",
+   cxCancelDarker: "--cinza-darker",
+   cxCancelLight: "--cinza-light",
+   cxCancelLighter: "--cinza-lighter",
+};
+export const purpleLightTheme: GlobalThemeVariables = Object.assign(purpleLightBaseTheme, baseLightTheme);
+
+
+
 
 
 export interface GlobalTheme {
@@ -221,24 +256,16 @@ export class GlobalThemes {
    ) { }
 
    static readonly lightTheme = new GlobalThemes(
-      "Tema Claro", { name: "lightTheme", className: "tema-claro", theme: blueLightTheme }
+      "Tema Claro e Azul", { name: "lightTheme", className: "tema-claro", theme: blueLightTheme }
    );
 
-/*    static readonly lightBlueTheme = new GlobalThemes(
-      "Tema Cinza", { name: "lightBlueTheme", className: "tema-claro", theme: lightBlueTheme }
-   );
-
-   static readonly purpleTheme = new GlobalThemes(
-      "Tema Roxo", { name: "purpleTheme", className: "tema-claro", theme: purpleTheme }
+/*    static readonly purpleTheme = new GlobalThemes(
+      "Tema Claro e Roxo", { name: "purpleTheme", className: "tema-claro", theme: purpleLightTheme }
    ); */
 
    static readonly darkTheme = new GlobalThemes(
-      "Tema Escuro (experimental)", { name: "darkTheme", className: "tema-escuro", theme: blueDarkTheme }
+      "Tema Preto e Azul", { name: "darkTheme", className: "tema-escuro", theme: blueDarkTheme }
    );
-
-/*    static readonly darkThemeInverted = new GlobalThemes(
-      "Tema Escuro Invertido", { name: "darkThemeInverted", className: "tema-escuro", theme: darkThemeInverted }
-   ); */
 
    static getThemes(): GlobalThemes[] {
 		const temas: GlobalThemes[] = [];

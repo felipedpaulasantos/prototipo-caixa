@@ -52,6 +52,7 @@ export class StyleService {
   }
 
   public setGlobalTheme(tema: string) {
+    console.log(tema);
     const body = this.document.body;
     const globalTheme: GlobalThemes = GlobalThemes[tema];
     const theme = globalTheme.value.theme;

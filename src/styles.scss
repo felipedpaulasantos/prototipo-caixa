@@ -793,6 +793,7 @@ ngx-spinner .overlay {
   }
   &:focus,
   &:active {
+    color: var(--cxContraste);
     border-color: var(--cxDestaque);
     box-shadow: 0 0.15rem 0.07rem 0rem var(--cxDestaque);
   }
@@ -890,6 +891,21 @@ select {
 }
 .ng-select.ng-select-focused.ng-dirty.ng-valid .ng-select-container {
   box-shadow: 0 0.15rem 0.07rem 0rem var(--success) !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--cxAux) !important;
+  opacity: 0.8; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--cxAux) !important;
+  opacity: 0.8
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--cxAux) !important;
+  opacity: 0.8
 }
 
 /* 
