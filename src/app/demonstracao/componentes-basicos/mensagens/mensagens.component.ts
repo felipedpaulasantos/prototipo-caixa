@@ -139,6 +139,8 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
   }
   `.trimRight();
 
+  tamanhoModal = ModalSize.NORMAL;
+
   ngOnInit() {
   }
 
@@ -151,11 +153,12 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
   }
 
   exibirAlerta() {
-    this.toastr.warning("Alerta!", null, { positionClass: "toast-top-right", progressBar: false, disableTimeOut: true });
+    this.toastr.warning("Alerta!", null, { disableTimeOut: true });
+/*     this.toastr.warning("Alerta!", null, { positionClass: "toast-top-right", progressBar: false, disableTimeOut: true }); */
   }
 
   exibirInfo() {
-    this.toastr.info("Informação!", "Importante!", { positionClass: "toast-bottom-right", progressBar: false, disableTimeOut: true });
+    this.toastr.info("Informação!", "Importante!", { disableTimeOut: true });
   }
 
   exibirSpinner() {
@@ -170,7 +173,9 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
       showCancelar: true,
       classTitulo: "",
       titulo: titulo || "Título do modal",
-      mensagem: mensagem || "Mensagem do modal"
+      mensagem: mensagem || "Mensagem do modal",
+      centralizado: centro,
+      tamanho: tamanho
     });
   }
 
@@ -179,7 +184,8 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
       showCancelar: true,
       titulo: "Título do modal",
       mensagem: "Mensagem do modal",
-      btOkTexto: "OK"
+      btOkTexto: "OK",
+      centralizado: true
     });
   }
 

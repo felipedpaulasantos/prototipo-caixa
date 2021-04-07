@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
-import { DataTableDirective } from "angular-datatables";
 import { DataTableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
 import { loremIpsumPlaceHolder, BootstrapTheme } from "src/app/guia-caixa/constants/constants";
 import { DataTableConfig } from "src/app/guia-caixa/components/datatable/datatable-definitions";
@@ -25,8 +24,8 @@ export class CoresComponent implements OnInit {
   coresGradiente: any[] = [];
 
   variavelCssExemplo = `.classe-exemplo {
-    color: var(--base);
-    background-color: var(--contraste);
+    color: var(--cxBase);
+    background-color: var(--cxContrast);
 }`;
 
   dtTematicasSettings = DataTableConfig.getDataTableSettings({
@@ -114,9 +113,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Fundo",
-          variavel: "--fundo",
+          variavel: "--cxBackground",
           classe: "fundo",
-          valor: this.styleService.getCssVariableValue("--fundo"),
+          valor: this.styleService.getCssVariableValue("--cxBackground"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `04 - Bastante próxima da base, utilizada no plano de fundo do conteúdo principal da página e outros elementos.`
           )
@@ -151,9 +150,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Sucesso",
-          variavel: "--success",
+          variavel: "--cxSuccess",
           classe: "success",
-          valor: this.styleService.getCssVariableValue("--success"),
+          valor: this.styleService.getCssVariableValue("--cxSuccess"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `08 - Temática de sucesso. <br>
             <div class="alert alert-success">
@@ -163,9 +162,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Perigo",
-          variavel: "--danger",
+          variavel: "--cxDanger",
           classe: "danger",
-          valor: this.styleService.getCssVariableValue("--danger"),
+          valor: this.styleService.getCssVariableValue("--cxDanger"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `09 - Temática de erro. <br>
             <div class="alert alert-danger">
@@ -175,9 +174,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Alerta",
-          variavel: "--warning",
+          variavel: "--cxWarning",
           classe: "warning",
-          valor: this.styleService.getCssVariableValue("--warning"),
+          valor: this.styleService.getCssVariableValue("--cxWarning"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `10 - Temática de alerta. <br>
             <div class="alert alert-warning">
@@ -187,9 +186,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Info",
-          variavel: "--info",
+          variavel: "--cxInfo",
           classe: "info",
-          valor: this.styleService.getCssVariableValue("--info"),
+          valor: this.styleService.getCssVariableValue("--cxInfo"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `11 - Temática de informação. <br>
             <div class="alert alert-info">

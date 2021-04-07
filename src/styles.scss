@@ -319,10 +319,10 @@ a {
 .toast-container {
   font-family: var(--cxFontFamilyNormal);
   > div.ngx-toastr {
-    background-color: var(--cxContrast);
+    background-color: var(--cxCancel);
     background-image: none !important;
     box-shadow: var(--cxShadowSm) !important;
-    padding: 1.15rem 1.15rem 1.15rem 3.846rem;
+    padding: 1.15rem 1.15rem 1.15rem 4.5rem;
     pointer-events: auto;
     border-style: solid;
     border-width: 1px;
@@ -336,51 +336,56 @@ a {
       bottom: 0;
       display: flex;
       align-items: center;
+      justify-content: center;
       font-family: var(--cxFontFaIcon);
       font-size: 1.4rem;
       line-height: 1.384rem;
       float: left;
       font-weight: 900;
-      padding-left: 1rem;
+      width: 4rem;
     }
     &.toast-success {
-      border-left: solid 4px var(--cxSuccessContrast);
+      /* border-left: solid 4px var(--cxSuccessContrast); */
       &:before {
         content: "\f00c";
         color: var(--cxSuccessContrast);
+        background-color: var(--cxSuccess);
       }
       .toast-progress {
-        background-color: var(--cxSuccessContrast);
+        background-color: var(--cxSuccess);
       }
     }
     &.toast-error {
-      border-left: solid 4px var(--cxDangerContrast);
+/*       border-left: solid 4px var(--cxDangerContrast); */
       &:before {
         content: "\f00d";
         color: var(--cxDangerContrast);
+        background-color: var(--cxDanger);
       }
       .toast-progress {
-        background-color: var(--cxDangerContrast);
+        background-color: var(--cxDanger);
       }
     }
     &.toast-info {
-      border-left: solid 4px var(--cxInfoContrast);
+      /* border-left: solid 4px var(--cxInfoContrast); */
       &:before {
         content: "\f129";
         color: var(--cxInfoContrast);
+        background-color: var(--cxInfo);
       }
       .toast-progress {
-        background-color: var(--cxInfoContrast);
+        background-color: var(--cxInfo);
       }
     }
     &.toast-warning {
-      border-left: solid 4px var(--cxWarningContrast);
+      /* border-left: solid 4px var(--cxWarningContrast); */
       &:before {
         content: "\f12a";
         color: var(--cxWarningContrast);
+        background-color: var(--cxWarning);
       }
       .toast-progress {
-        background-color: var(--cxWarningContrast);
+        background-color: var(--cxWarning);
       }
     }
     &:hover {
@@ -388,19 +393,19 @@ a {
       transition: opacity 0.3s ease-in-out;
     }
     .toast-close-button {
-      color: var(--cxBase);
+      color: var(--cxContrast);
       position: absolute;
       right: 1rem;
       top: 0;
     }
     div.toast-title {
-      color: var(--cxBase);
+      color: var(--cxContrast);
       font-family: var(--cxFontFamilyBold);
       font-weight: 400;
       margin-bottom: 0.3rem;
     }
     div.toast-message {
-      color: var(--cxBase) !important;
+      color: var(--cxContrast) !important;
     }
     div .toast-progress {
       opacity: 0.9;
@@ -651,6 +656,9 @@ ul.nav.nav-pills li a {
 .modal-title {
   margin-bottom: 0 !important;
 }
+.modal .modal-dialog .modal-content .modal-footer {
+  border-top: none;
+}
 
 /* Cards */
 
@@ -779,8 +787,6 @@ ngx-spinner .overlay {
   border-left: none;
   border-right: none;
   border-bottom: solid 1px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
   border-color: var(--cxAux);
   background-color: transparent !important;
   transition: background-size 0.3s, background-color 0.3s, border-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out,
@@ -799,6 +805,14 @@ ngx-spinner .overlay {
     box-shadow: 0 0.15rem 0.07rem 0rem var(--cxAccent);
   }
 }
+input.form-control,
+select.form-control {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+textarea.form-control {
+  border: solid 1px var(--cxAux);
+}
 
 select {
   -webkit-appearance: none;
@@ -812,6 +826,8 @@ select {
 
 .ng-select .ng-select-container {
   @extend .form-control;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   box-shadow: none;
   height: unset !important;
   min-height: unset !important;
@@ -839,6 +855,9 @@ select {
     background-color: var(--cxBase) !important;
     color: var(--cxContrast) !important;
     padding: 1rem 1.3rem !important;
+    &:hover {
+      background-color: var(--cxTransparentContrast025) !important;
+    }
     &.ng-option-selected {
       background-color: var(--cxAccent) !important;
       color: var(--cxBase) !important;
@@ -933,7 +952,7 @@ select {
 .bg-aux {
   background-color: var(--cxAux) !important;
 }
-.bg-constraste {
+.bg-contraste {
   background-color: var(--cxContrast) !important;
 }
 @each $theme, $value in $cx-bg-opacities {
