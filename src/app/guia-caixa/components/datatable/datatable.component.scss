@@ -15,7 +15,7 @@
   margin-left: auto;
   label {
     width: 100%;
-    color: var(--cxContraste);
+    color: var(--cxContrast);
     text-align: right;
   }
   select {
@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
     margin-left: auto;
-    color: var(--cxContraste);
+    color: var(--cxContrast);
     input {
       font-family: var(--cxFontFamilyNormal);
     }
@@ -62,7 +62,7 @@
   z-index: 999;
   border: solid 1px var(--cxCancel);
   background-color: var(--cxBase);
-  box-shadow: var(--cxShadowCaixa);
+  box-shadow: var(--cxShadow);
   width: auto;
   top: 0;
   left: 0;
@@ -76,7 +76,7 @@
 .table.dataTable {
   thead th {
     border-top: none;
-    border-bottom: solid 1px var(--cxContraste) !important;
+    border-bottom: solid 1px var(--cxContrast) !important;
   }
   tfoot td {
     padding-left: 0;
