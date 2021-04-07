@@ -33,20 +33,21 @@
   --cxHeaderBgColor: $cx-color-base;
   --cxHeaderTextColor: $cx-color-base;
 
+  --cxAccent: $cx-color-secondary;
+  --cxMain: $cx-color-primary;
   --cxBase: $cx-color-white;
-  --cxFundo: $cx-color-polar;
-  --cxContraste: $cx-color-contrast-lighter-dark;
-  --cxDestaque: $cx-color-secondary;
-  --cxPrincipal: $cx-color-primary;
+  --cxBackground: $cx-color-polar;
+  --cxContrast: $cx-color-contrast-lighter-dark;
+
   --cxAux: $cx-color-aux;
   --cxCancel: $cx-color-cinza;
 
-  --cxSucesso: $cx-color-success;
-  --cxSucessoContrast: $cx-color-success-lighter;
-  --cxPerigo: $cx-color-danger;
-  --cxPerigoContrast: $cx-color-danger-lighter;
-  --cxAlerta: $cx-color-warning;
-  --cxAlertaContrast: $cx-color-warning-lighter;
+  --cxSuccess: $cx-color-success;
+  --cxSuccessContrast: $cx-color-success-lighter;
+  --cxDanger: $cx-color-danger;
+  --cxDangerContrast: $cx-color-danger-lighter;
+  --cxWarning: $cx-color-warning;
+  --cxWarningContrast: $cx-color-warning-lighter;
   --cxInfo: $cx-color-info;
   --cxInfoContrast: $cx-color-info-lighter;
 
@@ -66,17 +67,17 @@
   --cxTransparentContrast50: rgba(0, 0, 0, 0.5);
   --cxTransparentContrast75: rgba(0, 0, 0, 0.75);
 
-  --cxShadowCaixaDarkSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
-  --cxShadowCaixaDark: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
-  --cxShadowCaixaDarkLg: 0 0.3rem 0.8rem rgba(8, 1, 1, 0.15);
+  --cxShadowDarkSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadowDark: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadowDarkLg: 0 0.3rem 0.8rem rgba(8, 1, 1, 0.15);
 
-  --cxShadowCaixaLightSm: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
-  --cxShadowCaixaLight: 0 0.2rem 0.2rem rgba(255, 255, 255, 0.15);
-  --cxShadowCaixaLightLg: 0 0.3rem 0.8rem rgba(255, 255, 255, 0.15);
+  --cxShadowLightSm: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
+  --cxShadowLight: 0 0.2rem 0.2rem rgba(255, 255, 255, 0.15);
+  --cxShadowLightLg: 0 0.3rem 0.8rem rgba(255, 255, 255, 0.15);
 
-  --cxShadowCaixaSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
-  --cxShadowCaixa: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
-  --cxShadowCaixaLg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+  --cxShadowSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+  --cxShadowLg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
 }
 
 html {
@@ -87,7 +88,7 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: var(--cxBodyBgColor);
-  color: var(--cxContraste);
+  color: var(--cxContrast);
 }
 
 #headerGeral {
@@ -113,10 +114,10 @@ h6 {
     opacity: 0.9;
   }
   &.header-subtitulo-caixa {
-    color: var(--cxContraste);
+    color: var(--cxContrast);
   }
   &.titulo {
-    color: var(--cxDestaque);
+    color: var(--cxAccent);
     margin-bottom: 2rem;
   }
 }
@@ -128,9 +129,9 @@ hr.header-line-caixa {
 }
 
 a {
-  color: var(--cxDestaque);
+  color: var(--cxAccent);
   &:hover {
-    color: var(--cxDestaqueDark);
+    color: var(--cxAccentDark);
   }
 }
 
@@ -154,7 +155,7 @@ a {
   padding-left: 1.5em;
   padding-right: 1.5em;
   font-family: var(--cxFontFamilyBold);
-  box-shadow: var(--cxShadowCaixa);
+  box-shadow: var(--cxShadow);
   position: relative;
   overflow: hidden;
   vertical-align: unset;
@@ -165,7 +166,7 @@ a {
   text-decoration: none !important;
   box-shadow: none;
   &:hover {
-    box-shadow: var(--cxShadowCaixa);
+    box-shadow: var(--cxShadow);
   }
 }
 
@@ -219,46 +220,46 @@ a {
 }
 
 .btn.btn-principal {
-  background-color: var(--cxPrincipal);
+  background-color: var(--cxMain);
   color: var(--cxBase);
   &:hover:not([disabled]),
   &:active, &.active {
-    background-color: var(--cxPrincipalDark);
-    border-color: var(--cxPrincipalDark);
+    background-color: var(--cxMainDark);
+    border-color: var(--cxMainDark);
   }
 }
 .btn.btn-outline-principal {
-  color: var(--cxPrincipal);
-  border-color: var(--cxPrincipal);
+  color: var(--cxMain);
+  border-color: var(--cxMain);
   &:hover:not([disabled]),
   &:active, &.active {
     color: var(--cxBase);
-    background-color: var(--cxPrincipal);
-    border-color: var(--cxPrincipal);
+    background-color: var(--cxMain);
+    border-color: var(--cxMain);
   }
 }
 .btn.btn-destaque {
-  background-color: var(--cxDestaque);
+  background-color: var(--cxAccent);
   color: var(--cxBase);
   &:hover:not([disabled]),
   &:active, &.active {
-    background-color: var(--cxDestaqueDark);
-    border-color: var(--cxDestaqueDark);
+    background-color: var(--cxAccentDark);
+    border-color: var(--cxAccentDark);
   }
 }
 .btn.btn-outline-destaque {
-  color: var(--cxDestaque);
-  border-color: var(--cxDestaque);
+  color: var(--cxAccent);
+  border-color: var(--cxAccent);
   &:hover:not([disabled]),
   &:active, &.active {
     color: var(--cxBase);
-    background-color: var(--cxDestaque);
-    border-color: var(--cxDestaque);
+    background-color: var(--cxAccent);
+    border-color: var(--cxAccent);
   }
 }
 .btn.btn-cancel {
   background-color: var(--cxCancel);
-  color: var(--cxContraste);
+  color: var(--cxContrast);
   &:hover:not([disabled]),
   &:active, &.active {
     background-color: var(--cxCancelDark);
@@ -270,7 +271,7 @@ a {
   border-color: var(--cxCancel);
   &:hover:not([disabled]),
   &:active, &.active {
-    color: var(--cxContraste);
+    color: var(--cxContrast);
     background-color: var(--cxCancel);
     border-color: var(--cxCancel);
   }
@@ -318,9 +319,9 @@ a {
 .toast-container {
   font-family: var(--cxFontFamilyNormal);
   > div.ngx-toastr {
-    background-color: var(--cxContraste);
+    background-color: var(--cxContrast);
     background-image: none !important;
-    box-shadow: var(--cxShadowCaixaSm) !important;
+    box-shadow: var(--cxShadowSm) !important;
     padding: 1.15rem 1.15rem 1.15rem 3.846rem;
     pointer-events: auto;
     border-style: solid;
@@ -343,23 +344,23 @@ a {
       padding-left: 1rem;
     }
     &.toast-success {
-      border-left: solid 4px var(--cxSucessoContrast);
+      border-left: solid 4px var(--cxSuccessContrast);
       &:before {
         content: "\f00c";
-        color: var(--cxSucessoContrast);
+        color: var(--cxSuccessContrast);
       }
       .toast-progress {
-        background-color: var(--cxSucessoContrast);
+        background-color: var(--cxSuccessContrast);
       }
     }
     &.toast-error {
-      border-left: solid 4px var(--cxPerigoContrast);
+      border-left: solid 4px var(--cxDangerContrast);
       &:before {
         content: "\f00d";
-        color: var(--cxPerigoContrast);
+        color: var(--cxDangerContrast);
       }
       .toast-progress {
-        background-color: var(--cxPerigoContrast);
+        background-color: var(--cxDangerContrast);
       }
     }
     &.toast-info {
@@ -373,17 +374,17 @@ a {
       }
     }
     &.toast-warning {
-      border-left: solid 4px var(--cxAlertaContrast);
+      border-left: solid 4px var(--cxWarningContrast);
       &:before {
         content: "\f12a";
-        color: var(--cxAlertaContrast);
+        color: var(--cxWarningContrast);
       }
       .toast-progress {
-        background-color: var(--cxAlertaContrast);
+        background-color: var(--cxWarningContrast);
       }
     }
     &:hover {
-      box-shadow: var(--cxShadowCaixaLg) !important;
+      box-shadow: var(--cxShadowLg) !important;
       transition: opacity 0.3s ease-in-out;
     }
     .toast-close-button {
@@ -440,8 +441,8 @@ label.custom-control-label {
   top: -0.01rem;
 }
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: var(--cxDestaque);
-  border-color: var(--cxDestaque);
+  background-color: var(--cxAccent);
+  border-color: var(--cxAccent);
 }
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
   border-color: var(--cxCancel);
@@ -454,35 +455,35 @@ label.custom-control-label {
 }
 
 /* .custom-checkbox .custom-control-input.ng-dirty.ng-valid:checked ~ .custom-control-label::before {
-  background-color: var(--cxSucesso);
-  border-color: var(--cxSucesso);
+  background-color: var(--cxSuccess);
+  border-color: var(--cxSuccess);
 }
 .custom-checkbox .custom-control-input.ng-dirty.ng-valid:not(:checked) ~ .custom-control-label::before {
-  background-color: var(--cxSucesso);
-  border-color: var(--cxSucesso);
+  background-color: var(--cxSuccess);
+  border-color: var(--cxSuccess);
 } */
 
 .custom-control-input.ng-dirty.ng-valid:checked ~ .custom-control-label::before {
-  background-color: var(--cxSucesso);
-  border-color: var(--cxSucesso);
+  background-color: var(--cxSuccess);
+  border-color: var(--cxSuccess);
 }
 .custom-control-input.ng-dirty.ng-valid:not(:checked) ~ .custom-control-label::before {
   background-color: transparent;
-  border-color: var(--cxSucesso);
+  border-color: var(--cxSuccess);
 }
 
 .custom-control-input.ng-dirty.ng-invalid:checked ~ .custom-control-label::before {
-  background-color: var(--cxPerigo);
-  border-color: var(--cxPerigo);
+  background-color: var(--cxDanger);
+  border-color: var(--cxDanger);
 }
 .custom-control-input.ng-dirty.ng-invalid:not(:checked) ~ .custom-control-label::before {
   background-color: transparent;
-  border-color: var(--cxPerigo);
+  border-color: var(--cxDanger);
 }
 
 .custom-checkbox .custom-control-input.ng-invalid:checked ~ .custom-control-label::before {
-  background-color: var(--cxPerigo);
-  border-color: var(--cxPerigo);
+  background-color: var(--cxDanger);
+  border-color: var(--cxDanger);
 }
 
 /* RANGE */
@@ -498,11 +499,11 @@ label.custom-control-label {
 
 .custom-range.ng-dirty.ng-valid::-moz-range-thumb,
 .custom-range.ng-dirty.ng-valid::-webkit-slider-thumb {
-  background-color: var(--cxSucesso);
+  background-color: var(--cxSuccess);
 }
 .custom-range.ng-dirty.ng-invalid::-moz-range-thumb,
 .custom-range.ng-dirty.ng-invalid::-webkit-slider-thumb  {
-  background-color: var(--cxPerigo);
+  background-color: var(--cxDanger);
 }
 
 /* Bootstrap-select */
@@ -517,14 +518,14 @@ th.th-sorting {
   font-weight: 900;
   font-family: var(--cxFontFaIcon) !important;
   float: right;
-  color: var(--cxContraste);
+  color: var(--cxContrast);
   transition: 0.5s;
   font-family: var(--cxFontFamilyBold);
 }
 .table {
   border-bottom: none !important;
   border-color: var(--cxCancel);
-  color: var(--cxContraste);
+  color: var(--cxContrast);
   thead th {
     font-family: var(--cxFontFamilyBold);
     border-bottom: 0 !important;
@@ -557,7 +558,7 @@ th.th-sorting {
     }
   }
   &.table-hover tbody tr:hover {
-    color: var(--cxContraste);
+    color: var(--cxContrast);
   }
 }
 
@@ -582,7 +583,7 @@ input[type="number"] {
   Dropdown item 
 */
 .dropdown-menu {
-  box-shadow: var(--cxShadowCaixa);
+  box-shadow: var(--cxShadow);
   background-color: var(--cxBase);
 }
 .dropdown-item {
@@ -590,14 +591,14 @@ input[type="number"] {
   vertical-align: middle;
   display: flex;
   align-items: center;
-  color: var(--cxContraste) !important;
+  color: var(--cxContrast) !important;
   &:hover {
     background-color: var(--cxTransparentContrast025);
   }
   &:active,
   &.active {
     color: var(--cxBase) !important;
-    background-color: var(--cxDestaque);
+    background-color: var(--cxAccent);
   }
   &.selected {
     .check-mark {
@@ -618,7 +619,7 @@ ul.nav.nav-pills {
 }
 
 ul.nav.nav-pills li a {
-  color: var(--cxContraste);
+  color: var(--cxContrast);
   padding: 1rem 1.5rem;
   transition: ease-in-out 0.2s;
   font-family: var(--cxFontFamilyBold);
@@ -626,9 +627,9 @@ ul.nav.nav-pills li a {
   /*   @extend .ripple-dark; */
   &.active,
   &:active {
-    color: var(--cxDestaque) !important;
+    color: var(--cxAccent) !important;
     background-color: var(--cxTransparentContrast050) !important;
-    border-bottom: solid 2px var(--cxDestaque);
+    border-bottom: solid 2px var(--cxAccent);
     border-radius: 50;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -654,10 +655,10 @@ ul.nav.nav-pills li a {
 /* Cards */
 
 .card {
-  box-shadow: var(--cxShadowCaixa);
+  box-shadow: var(--cxShadow);
   transition: box-shadow 0.2s ease-in-out;
   background-color: var(--cxBase);
-  color: var(--cxContraste);
+  color: var(--cxContrast);
   border-color: var(--cxCancel);
   .card-header {
     background-color: inherit;
@@ -771,7 +772,7 @@ ngx-spinner .overlay {
 }
 
 .form-control {
-  color: var(--cxContraste);
+  color: var(--cxContrast);
   width: 100%;
   padding: 0.375rem 0.5rem;
   border-top: none;
@@ -793,9 +794,9 @@ ngx-spinner .overlay {
   }
   &:focus,
   &:active {
-    color: var(--cxContraste);
-    border-color: var(--cxDestaque);
-    box-shadow: 0 0.15rem 0.07rem 0rem var(--cxDestaque);
+    color: var(--cxContrast);
+    border-color: var(--cxAccent);
+    box-shadow: 0 0.15rem 0.07rem 0rem var(--cxAccent);
   }
 }
 
@@ -822,24 +823,24 @@ select {
   background-image: none !important;
 }
 .ng-select.ng-select-focused .ng-select-container {
-  border-color: var(--cxDestaque);
-  box-shadow: 0 0.15rem 0.07rem 0rem var(--cxDestaque) !important;
+  border-color: var(--cxAccent);
+  box-shadow: 0 0.15rem 0.07rem 0rem var(--cxAccent) !important;
 }
 .ng-select.ng-select-disabled > .ng-select-container {
   background-color: var(--cancel);
   opacity: 0.5;
 }
 .ng-dropdown-panel {
-  box-shadow: var(--cxShadowCaixa) !important;
+  box-shadow: var(--cxShadow) !important;
   background-color: var(--cxBase);
   border-radius: 4px !important;
   border-color: var(--cxCancel);
   .ng-option {
     background-color: var(--cxBase) !important;
-    color: var(--cxContraste) !important;
+    color: var(--cxContrast) !important;
     padding: 1rem 1.3rem !important;
     &.ng-option-selected {
-      background-color: var(--cxDestaque) !important;
+      background-color: var(--cxAccent) !important;
       color: var(--cxBase) !important;
     }
   }
@@ -915,16 +916,16 @@ select {
 /* Background */
 
 .bg-principal {
-  background-color: var(--cxPrincipal) !important;
+  background-color: var(--cxMain) !important;
 }
 .bg-destaque {
-  background-color: var(--cxDestaque) !important;
+  background-color: var(--cxAccent) !important;
 }
 .bg-base {
   background-color: var(--cxBase) !important;
 }
 .bg-fundo {
-  background-color: var(--cxFundo) !important;
+  background-color: var(--cxBackground) !important;
 }
 .bg-cancel {
   background-color: var(--cxCancel) !important;
@@ -933,7 +934,7 @@ select {
   background-color: var(--cxAux) !important;
 }
 .bg-constraste {
-  background-color: var(--cxContraste) !important;
+  background-color: var(--cxContrast) !important;
 }
 @each $theme, $value in $cx-bg-opacities {
   .bg-opacity-#{$theme} {
@@ -949,16 +950,16 @@ select {
 /* Text */
 
 .text-principal {
-  color: var(--cxPrincipal) !important;
+  color: var(--cxMain) !important;
 }
 .text-destaque {
-  color: var(--cxDestaque) !important;
+  color: var(--cxAccent) !important;
 }
 .text-base {
   color: var(--cxBase) !important;
 }
 .text-fundo {
-  color: var(--cxFundo) !important;
+  color: var(--cxBackground) !important;
 }
 .text-cancel {
   color: var(--cxCancel) !important;
@@ -967,7 +968,7 @@ select {
   color: var(--cxAux) !important;
 }
 .text-contraste {
-  color: var(--cxContraste) !important;
+  color: var(--cxContrast) !important;
 }
 
 .full-opacity {
@@ -986,7 +987,7 @@ select {
 /* Sombreamento */
 
 .shadow-caixa {
-  box-shadow: var(--cxShadowCaixa) !important;
+  box-shadow: var(--cxShadow) !important;
 }
 .shadow-lg-caixa {
   box-shadow: $cx-lg-box-shadow !important;
@@ -1063,7 +1064,7 @@ select {
   border: solid 2px transparent !important;
   border-radius: 0 !important;
   &.active {
-    background-color: var(--cxDestaque) !important;
+    background-color: var(--cxAccent) !important;
     color: var(--cxBase) !important;
   }
 }
@@ -1210,18 +1211,18 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 /* Alert */
 
 .alert.alert-success {
-  background-color: var(--cxSucesso);
-  color: var(--cxSucessoContrast);
+  background-color: var(--cxSuccess);
+  color: var(--cxSuccessContrast);
   border-color: transparent;
 }
 .alert.alert-danger {
-  background-color: var(--cxPerigo);
-  color: var(--cxPerigoContrast);
+  background-color: var(--cxDanger);
+  color: var(--cxDangerContrast);
   border-color: transparent;
 }
 .alert.alert-warning {
-  background-color: var(--cxAlerta);
-  color: var(--cxAlertaContrast);
+  background-color: var(--cxWarning);
+  color: var(--cxWarningContrast);
   border-color: transparent;
 }
 .alert.alert-info {
@@ -1235,29 +1236,29 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 */
 
 .hljs {
-  background: var(--cxFundo);
-  color: var(--cxContraste);
+  background: var(--cxBackground);
+  color: var(--cxContrast);
 }
 .hljs .hljs-name, 
 .hljs .hljs-attribute {
   color: var(--cxAux);
 }
 .hljs .hljs-tag {
-  color: var(--cxContraste);
+  color: var(--cxContrast);
 }
 .hljs .hljs-tag .hljs-name {
-  color: var(--cxDestaqueLight);
+  color: var(--cxAccentLight);
 }
 .hljs .hljs-tag .hljs-attr {
-  color: var(--cxDestaqueDark);
+  color: var(--cxAccentDark);
 }
 .hljs .hljs-tag .hljs-string {
-  color: var(--cxPerigo);
+  color: var(--cxDanger);
 }
 .hljs .hljs-keyword {
   color: var(--cxInfo);
 }
 .hljs .hljs-selector-class {
-	color: var(--cxSucesso);
+	color: var(--cxSuccess);
 }
 

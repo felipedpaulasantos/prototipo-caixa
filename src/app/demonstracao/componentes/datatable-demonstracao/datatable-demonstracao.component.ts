@@ -293,8 +293,8 @@ import { RandomDataService, RandomDataFood } from "~random-data.service";
     this.settings = JSON.parse(JSON.stringify(newConfig));
     this.cdr.detectChanges();
     this.table.updateSettings(this.settings);
-    this.formDTConfig.get("columnFilterType").setValue(this.settings.columnFilterType);
-    this.formDTConfig.get("columnFilterPosition").setValue(this.settings.columnFilterPosition);
+/*     this.formDTConfig.get("columnFilterType").setValue(this.settings.columnFilterType);
+    this.formDTConfig.get("columnFilterPosition").setValue(this.settings.columnFilterPosition); */
   }
 
   updateConfigOption(option: string, value: any) {

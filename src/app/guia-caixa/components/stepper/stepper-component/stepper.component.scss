@@ -150,7 +150,7 @@
    top: 2.03rem;
    left: 0.69rem;
    margin-right: 1px;
-   color: var(--cxContraste);
+   color: var(--cxContrast);
    background-color: var(--cxCancel);
    font-weight: 400;
  }
@@ -160,29 +160,30 @@
  }
  
  .stepper-wrapper > .stepper > .step.current-step > .step-title > .step-icon {
-   background-color: var(--cxDestaque);
+   background-color: var(--cxAccent);
    color: var(--cxBase);
-   box-shadow: var(--cxShadowCaixa);
+   box-shadow: var(--cxShadow);
  }
  
  .stepper-wrapper > .stepper > .step.previous-step > .step-title > .step-icon {
-   border: 0.23rem var(--cxSucesso) solid;
+   border: 0.23rem var(--cxSuccess) solid;
    line-height: 2.07rem;
  }
  
  .stepper-wrapper > .stepper.nav-guided:not(.completed) > .step.previous-step > .step-title > .step-icon {
    background-color: var(--cxBase);
-   color: var(--cxSucesso);
+   color: var(--cxSuccess);
  }
  
  .stepper-wrapper > .stepper.nav-guided.completed > .step.previous-step > .step-title > .step-icon {
-   color: var(--cxContraste);
+   color: var(--cxContrast);
    background-color: var(--cxCancel);
    font-weight: 400;
  }
  
  .stepper-wrapper > .stepper > .step.last-step > .step-title > .step-icon {
-   background-color: var(--cxSucesso);
+   background-color: var(--cxSuccess);
+   color: var(--cxSuccessContrast);
  }
  
  /* ESTILOS ADICIONAIS */

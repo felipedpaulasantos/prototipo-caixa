@@ -124,12 +124,12 @@
    color: var(--base);
    background-color:var(--cxCancel);
    font-weight: 400;
-   box-shadow: var(--cxShadowCaixaSm);
+   box-shadow: var(--cxShadowSm);
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-success > .timeline-item-title > .timeline-item-icon {
-   background-color: var(--cxSucesso) !important;
-   color: var(--cxSucessoContrast) !important;
+   background-color: var(--cxSuccess) !important;
+   color: var(--cxSuccessContrast) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-info > .timeline-item-title > .timeline-item-icon {
@@ -138,18 +138,18 @@
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-error > .timeline-item-title > .timeline-item-icon {
-   background-color: var(--cxPerigo) !important;
-   color: var(--cxPerigoContrast) !important;
+   background-color: var(--cxDanger) !important;
+   color: var(--cxDangerContrast) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-warning > .timeline-item-title > .timeline-item-icon {
-   background-color: var(--cxAlerta) !important;
-   color: var(--cxAlertaContrast) !important;
+   background-color: var(--cxWarning) !important;
+   color: var(--cxWarningContrast) !important;
 }
 
 .timeline-wrapper .timeline > .timeline-item.timeline-item-warning-stop > .timeline-item-title > .timeline-item-icon {
-   background-color: var(--cxAlerta) !important;
-   color: var(--cxAlertaContrast) !important;
+   background-color: var(--cxWarning) !important;
+   color: var(--cxWarningContrast) !important;
 }
 
 /* TIMELINE-ITEM-INFO */

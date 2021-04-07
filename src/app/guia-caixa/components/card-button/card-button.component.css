@@ -11,14 +11,14 @@
     transition: box-shadow 0.2s;
   }
   .card-button-wrapper.checked {
-    border: solid 1px var(--cxPrincipal);
-    box-shadow: var(--cxShadowCaixa) !important;
+    border: solid 1px var(--cxMain);
+    box-shadow: var(--cxShadow) !important;
   }
   .card-button-wrapper.primary.checked {
-    border: solid 1px var(--cxDestaque);
+    border: solid 1px var(--cxAccent);
   }
   .card-button-wrapper.secondary.checked {
-    border: solid 1px var(--cxPrincipal);
+    border: solid 1px var(--cxMain);
   }
   .card-button-wrapper.success.checked {
     border: solid 1px var(--success);
@@ -55,10 +55,10 @@
     max-height: 100%;
   }
   .card-button-wrapper.checked > .row > .card-button-left-side {
-    background-color: var(--cxDestaque);
+    background-color: var(--cxAccent);
   }
   .card-button-wrapper.checked.secondary > .row > .card-button-left-side {
-    background-color: var(--cxPrincipal);
+    background-color: var(--cxMain);
   }
   .card-button-wrapper.checked.success > .row > .card-button-left-side {
     background-color: var(--success);

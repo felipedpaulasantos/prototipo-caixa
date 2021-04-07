@@ -86,9 +86,9 @@ export class CoresComponent implements OnInit {
       this.coresVariaveis = [
         {
           nome: "Principal",
-          variavel: "--cxPrincipal",
+          variavel: "--cxMain",
           classe: "principal",
-          valor: this.styleService.getCssVariableValue("--cxPrincipal"),
+          valor: this.styleService.getCssVariableValue("--cxMain"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `01 - Ações principais: <br>
             <button class="btn btn-principal">Contratar</button>
@@ -96,9 +96,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Destaque",
-          variavel: "--cxDestaque",
+          variavel: "--cxAccent",
           classe: "destaque",
-          valor: this.styleService.getCssVariableValue("--cxDestaque"),
+          valor: this.styleService.getCssVariableValue("--cxAccent"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `02 - Ações secundárias: <br>
             <button class="btn btn-destaque">Avançar</button>
@@ -142,9 +142,9 @@ export class CoresComponent implements OnInit {
           )
         }, {
           nome: "Contraste",
-          variavel: "--cxContraste",
+          variavel: "--cxContrast",
           classe: "contraste",
-          valor: this.styleService.getCssVariableValue("--cxContraste"),
+          valor: this.styleService.getCssVariableValue("--cxContrast"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `07 - Contraste do tema, oposta à cor base. <br>
             Cor padrão do texto e de elementos que precisam contrastar ao máximo com a cor de fundo`
