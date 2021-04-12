@@ -86,22 +86,22 @@ export class CoresComponent implements OnInit {
         {
           nome: "Principal",
           variavel: "--cxMain",
-          classe: "principal",
+          classe: "main",
           valor: this.styleService.getCssVariableValue("--cxMain"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `01 - Ações principais: <br>
-            <button class="btn btn-principal">Contratar</button>
-            <button class="btn btn-principal">Salvar</button>`
+            <button class="btn btn-main">Contratar</button>
+            <button class="btn btn-main">Salvar</button>`
           )
         }, {
           nome: "Destaque",
           variavel: "--cxAccent",
-          classe: "destaque",
+          classe: "accent",
           valor: this.styleService.getCssVariableValue("--cxAccent"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `02 - Ações secundárias: <br>
-            <button class="btn btn-destaque">Avançar</button>
-            <button class="btn btn-outline-destaque">Adicionar</button>`
+            <button class="btn btn-accent">Avançar</button>
+            <button class="btn btn-outline-accent">Adicionar</button>`
           )
         }, {
           nome: "Base",
@@ -114,7 +114,7 @@ export class CoresComponent implements OnInit {
         }, {
           nome: "Fundo",
           variavel: "--cxBackground",
-          classe: "fundo",
+          classe: "background",
           valor: this.styleService.getCssVariableValue("--cxBackground"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `04 - Bastante próxima da base, utilizada no plano de fundo do conteúdo principal da página e outros elementos.`
@@ -142,7 +142,7 @@ export class CoresComponent implements OnInit {
         }, {
           nome: "Contraste",
           variavel: "--cxContrast",
-          classe: "contraste",
+          classe: "contrast",
           valor: this.styleService.getCssVariableValue("--cxContrast"),
           utilizacao: this.domSanitizer.bypassSecurityTrustHtml(
             `07 - Contraste do tema, oposta à cor base. <br>
