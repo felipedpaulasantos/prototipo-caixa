@@ -58,7 +58,7 @@ passoAtual = 0;`.trim();
     </button>
 
     <button [disabled]="passoAtual == passos.length - 1"
-    (click)="passoAtual = passoAtual + 1" class="btn btn-destaque btn-caixa mx-2">
+    (click)="passoAtual = passoAtual + 1" class="btn btn-accent btn-caixa mx-2">
         Avançar
     </button>
   </ng-container>
@@ -99,7 +99,7 @@ passoAtual = 0;`.trim();
     </button>
 
     <button [disabled]="passoAtual == passos.length - 1"
-    (click)="passoAtual = passoAtual + 1" class="btn btn-destaque btn-caixa mx-2">
+    (click)="passoAtual = passoAtual + 1" class="btn btn-accent btn-caixa mx-2">
         Avançar
     </button>
   </ng-container>
@@ -147,7 +147,7 @@ passoAtual = 0;`.trim();
   </button>
 
   <button [disabled]="stepperExemplo.currentStep == passos.length - 1"
-  (click)="stepperExemplo.next()" class="btn btn-destaque btn-caixa mx-2">
+  (click)="stepperExemplo.next()" class="btn btn-accent btn-caixa mx-2">
      Avançar
   </button>`.trim();
 
@@ -207,7 +207,7 @@ passoAtual = 0;`.trim();
 </button>
 
 <button [disabled]="stepperInterno.currentStep == passos.length - 1"
-(click)="stepperInterno.next()" class="btn btn-destaque btn-caixa mx-2">
+(click)="stepperInterno.next()" class="btn btn-accent btn-caixa mx-2">
   Avançar
 </button>`.trim();
 

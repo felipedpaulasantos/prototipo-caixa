@@ -7,7 +7,7 @@
          'is-link': menu.active && !menu.submenu
       }">
       <span class="menu-item-icon" (click)="activate(menu)">
-         <i *ngIf="menu.iconClass" [class]="menu.iconClass"></i>
+         <i *ngIf="menu.iconClass && (menu.submenu || menu.level === 1)" [class]="menu.iconClass"></i>
       </span>
       <span class="menu-item-name" (click)="activate(menu)">
          {{ menu.name }}

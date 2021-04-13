@@ -59,12 +59,12 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   public classTitulo = "text-principal";
 
-  public btnOkClass = "btn btn-destaque";
+  public btnOkClass = "btn btn-accent";
   public btnCancelarClass = "btn btn-cancel";
 
   public modalDialogClass = "modal-lg";
   public modalBodyClass = "";
-  public modalHeaderClass = "bg-destaque";
+  public modalHeaderClass = "bg-accent";
   public modalFooterClass = "";
 
   public centralizado = false;
