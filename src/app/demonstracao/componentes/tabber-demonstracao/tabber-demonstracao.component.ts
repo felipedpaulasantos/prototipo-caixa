@@ -55,7 +55,7 @@ export class TabberDemonstracaoComponent extends ComponentesInterface {
 </button>
 
 <button [disabled]="tabberExemplo.currentTab == abas.length - 1"
-(click)="tabberExemplo.next()" class="btn btn-destaque btn-caixa mx-2">
+(click)="tabberExemplo.next()" class="btn btn-accent btn-caixa mx-2">
   Avançar
 </button>
 
@@ -112,7 +112,7 @@ export class StepperComponent {
 </button>
 
 <button [disabled]="tabberExemploState.currentTab == abas.length - 1" (click)="tabberExemploState.next()"
-  class="btn btn-destaque btn-caixa mx-2">
+  class="btn btn-accent btn-caixa mx-2">
   Avançar
 </button>
 

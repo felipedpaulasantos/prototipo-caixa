@@ -12,10 +12,10 @@ export const defaultModalOptions: ModalOptions = {
   btCancelarTexto: "Fechar",
   showCancelar: false,
   classTitulo: "subtitulo",
-  btnOkClass: "btn btn-destaque",
+  btnOkClass: "btn btn-accent",
   btnCancelarClass: "btn btn-cancel",
   modalBodyClass: "",
-  modalHeaderClass: "bg-destaque text-base",
+  modalHeaderClass: "bg-accent text-base",
   modalFooterClass: "",
   centralizado: false,
   tamanho: ModalSize.NORMAL

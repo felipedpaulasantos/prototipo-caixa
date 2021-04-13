@@ -6,14 +6,16 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     iconClass: "fas fa-lg fa-home",
     url: "/home",
     isLink: true,
-    enabled: true
+    enabled: true,
+    level: 1
   },
   {
     name: "Cores",
     iconClass: "fas fa-lg fa-palette",
     url: "/cores",
     isLink: true,
-    enabled: true
+    enabled: true,
+    level: 1
   },
   {
     name: "Layout",
@@ -21,13 +23,15 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     url: "/layout",
     isLink: true,
     enabled: true,
+    level: 1,
     submenu: [
       {
         name: "Tipografia",
         iconClass: "fas fa-lg fa-font",
         url: "/layout/tipografia",
         isLink: true,
-        enabled: true
+        enabled: true,
+        level: 2
       }
     ]
   },
@@ -37,6 +41,7 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     iconClass: "fas fa-lg fa-toolbox",
     isLink: true,
     enabled: true,
+    level: 1,
     submenu: [
       /*       {
               name: 'Botões',
@@ -78,35 +83,40 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         iconClass: "fa fa-lg fa-shoe-prints",
         url: "/componentes-caixa/stepper",
         isLink: true,
-        enabled: true
+        enabled: true,
+        level: 2
       },
       {
         name: "Tabber",
         iconClass: "fa fa-lg fa-ellipsis-h",
         url: "/componentes-caixa/tabber",
         isLink: true,
-        enabled: true
+        enabled: true,
+        level: 2
       },
       {
         name: "Card-button",
         iconClass: "fa fa-lg fa-dot-circle",
         url: "/componentes-caixa/card-button",
         isLink: true,
-        enabled: true
+        enabled: true,
+        level: 2
       },
       {
         name: "Timeline",
         iconClass: "fa fa-lg fa-calendar-alt",
         url: "/componentes-caixa/timeline",
         isLink: true,
-        enabled: true
+        enabled: true,
+        level: 2
       },
       {
         name: "DataTable",
         iconClass: "fa fa-lg fa-table",
         url: "/componentes-caixa/datatable",
         isLink: true,
-        enabled: true
+        enabled: true,
+        level: 2
       }
     ]
   },
@@ -116,6 +126,7 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     url: "/componentes-basicos",
     isLink: true,
     enabled: true,
+    level: 1,
     submenu: [
       /*       {
               name: "Alerts",
@@ -129,28 +140,32 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         iconClass: "fa fa-lg fa-bullseye",
         url: "/componentes-basicos/botoes",
         isLink: true,
-        enabled: true
+        enabled: true,
+        level: 2
       },
       {
         name: "Cards",
         iconClass: "fa fa-lg fa-clipboard",
         url: "/componentes-basicos/cards",
         isLink: true,
-        enabled: true
+        enabled: true,
+        level: 2
       },
       {
         name: "Forms",
         iconClass: "fab fa-lg fa-wpforms",
         url: "/componentes-basicos/forms",
         isLink: true,
-        enabled: true
+        enabled: true,
+        level: 2
       },
       {
         name: "Mensagens",
         iconClass: "fa fa-lg fa-envelope",
         url: "/componentes-basicos/mensagens",
         isLink: true,
-        enabled: true
+        enabled: true,
+        level: 2
       }
     ]
   },
@@ -191,33 +206,3 @@ export const mockedSideMenuItems: AccordionMenu[] = [
     } */
 ];
 
-export const mockedSideMenuCaixaItems: AccordionMenu[] = [
-  {
-    name: "Pessoa Física / Jurídica",
-    iconClass: "fas fa-lg fa-user-alt",
-    url: "/home",
-    isLink: true,
-    enabled: true
-  },
-  {
-    name: "Serviços ao Cidadão",
-    iconClass: "fas fa-lg fa-users",
-    url: "/layout",
-    isLink: true,
-    enabled: false
-  },
-  {
-    name: "Investimentos",
-    url: "/componentes",
-    iconClass: "fas fa-lg fa-chart-line",
-    isLink: true,
-    enabled: true,
-  },
-  {
-    name: "Configurações",
-    iconClass: "fas fa-lg fa-wrench",
-    url: "/tipografia",
-    isLink: true,
-    enabled: true
-  }
-];

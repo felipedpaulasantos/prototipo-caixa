@@ -171,7 +171,7 @@ a {
 }
 
 /* Ajuste de cor do texto */
-.btn.btn-principal {
+.btn.btn-main {
   color: var(--cxBase);
 }
 
@@ -219,7 +219,7 @@ a {
   }
 }
 
-.btn.btn-principal {
+.btn.btn-main {
   background-color: var(--cxMain);
   color: var(--cxBase);
   &:hover:not([disabled]),
@@ -228,7 +228,7 @@ a {
     border-color: var(--cxMainDark);
   }
 }
-.btn.btn-outline-principal {
+.btn.btn-outline-main {
   color: var(--cxMain);
   border-color: var(--cxMain);
   &:hover:not([disabled]),
@@ -238,7 +238,7 @@ a {
     border-color: var(--cxMain);
   }
 }
-.btn.btn-destaque {
+.btn.btn-accent {
   background-color: var(--cxAccent);
   color: var(--cxBase);
   &:hover:not([disabled]),
@@ -247,7 +247,7 @@ a {
     border-color: var(--cxAccentDark);
   }
 }
-.btn.btn-outline-destaque {
+.btn.btn-outline-accent {
   color: var(--cxAccent);
   border-color: var(--cxAccent);
   &:hover:not([disabled]),
@@ -934,16 +934,16 @@ select {
 
 /* Background */
 
-.bg-principal {
+.bg-main {
   background-color: var(--cxMain) !important;
 }
-.bg-destaque {
+.bg-accent {
   background-color: var(--cxAccent) !important;
 }
 .bg-base {
   background-color: var(--cxBase) !important;
 }
-.bg-fundo {
+.bg-background {
   background-color: var(--cxBackground) !important;
 }
 .bg-cancel {
@@ -952,7 +952,7 @@ select {
 .bg-aux {
   background-color: var(--cxAux) !important;
 }
-.bg-contraste {
+.bg-contrast {
   background-color: var(--cxContrast) !important;
 }
 @each $theme, $value in $cx-bg-opacities {

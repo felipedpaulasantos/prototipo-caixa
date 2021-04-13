@@ -58,7 +58,7 @@ export class CardsComponent extends ComponentesInterface {
   </div>
 
   <div class="col my-2">
-    <div class="card bg-destaque text-base">
+    <div class="card bg-accent text-base">
       <div class="card-header">
         <h4 class="subtitulo">Título</h4>
       </div>
@@ -122,7 +122,7 @@ export class CardsComponent extends ComponentesInterface {
   </div>  <!-- Coluna -->
 
   <div class="col my-2">
-    <div class="card bg-destaque text-cinza">
+    <div class="card bg-accent text-cinza">
       <div class="card-header">
         <h4 class="subtitulo">Título</h4>
       </div>

@@ -95,8 +95,8 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setDefaultClasses(): void {
-    $.fn.dataTable.ext.classes.sPageButton = "btn btn-sm ml-1";
-    $.fn.dataTable.ext.classes.sPageButtonActive = "btn-destaque";
+    $.fn.dataTable.ext.classes.sPageButton = "btn btn-sm ml-1 shadow-none";
+    $.fn.dataTable.ext.classes.sPageButtonActive = "btn-accent";
 
     $.fn.dataTable.ext.classes.sLengthSelect = "form-control";
     $.fn.dataTable.ext.classes.sFilterInput = "form-control";

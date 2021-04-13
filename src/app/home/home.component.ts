@@ -1,13 +1,12 @@
-import { Component, ComponentFactoryResolver, ElementRef, Injector, OnInit, Renderer2, ViewContainerRef } from "@angular/core";
+import { Component, ComponentFactoryResolver, Injector, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from "ngx-toastr";
-import { LayoutComponent } from "../demonstracao/layout/layout.component";
 import { TipografiaComponent } from "../demonstracao/layout/tipografia/tipografia.component";
 import { ModalSize } from "../guia-caixa/components/modal/modal-options";
 import { ModalService } from "../guia-caixa/services/modal.service";
 import { AccordionMenu } from "../shared/components/accordion/types/accordion-menu";
-import { mockedSideMenuCaixaItems, mockedSideMenuItems } from "../shared/constants";
+import { mockedSideMenuItems } from "../shared/constants";
 
 interface Resources {
   name: string;

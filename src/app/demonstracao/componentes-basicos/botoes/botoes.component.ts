@@ -42,8 +42,8 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
     { id: "painelBotoesTamanho", name: "ícones" }
   ];
 
-  botoesIntroducao = `<button class="btn btn-principal">Principal</button>;
-<button class="btn btn-destaque">Destaque</button>;
+  botoesIntroducao = `<button class="btn btn-main">Principal</button>;
+<button class="btn btn-accent">Destaque</button>;
 <button class="btn btn-cancel">Cancel</button>;
 <button class="btn btn-outline-aux">Auxiliar</button>;
 <button class="btn btn-danger btn-sm">Perigo</button>;
@@ -52,15 +52,15 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
 <button class="btn btn-info">Informativo</button>
 <button class="btn btn-link">Link</button>`;
 
-  botoesIcones = `<button class="btn btn-destaque btn-sm">
+  botoesIcones = `<button class="btn btn-accent btn-sm">
   <i class="fa fa-plus mr-2"></i>Incluir
 </button>
 
-<button class="btn btn-outline-destaque">
+<button class="btn btn-outline-accent">
   <i class="fa fa-edit mr-2"></i>Editar
 </button>
 
-<button class="btn btn-principal btn-lg">
+<button class="btn btn-main btn-lg">
   <i class="fa fa-lg fa-save mr-3"></i>Salvar
 </button>`;
 
@@ -73,7 +73,7 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
 
   htmlCodeBotoes = `<button class="btn btn-caixa btn-cancel">Botão</button>`.trim();
 
-  htmlCodeBotoesTematicos = `        <button class="btn btn-caixa btn-destaque">Primário</button> &nbsp;
+  htmlCodeBotoesTematicos = `        <button class="btn btn-caixa btn-accent">Primário</button> &nbsp;
 <button class="btn btn-caixa btn-danger-dark">Erro com tom escuro</button> &nbsp;
 <button class="btn btn-caixa btn-apoio-light">Apoio com tom claro</button> &nbsp;
 <button class="btn btn-caixa btn-outline-info">Info - outline</button>`.trim();
@@ -81,7 +81,7 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
   htmlCodeBotoesTamanho = `        <button class="btn btn-caixa btn-outline-dark btn-sm">Pequeno</button> &nbsp;
 <button class="btn btn-caixa btn-primario btn-lg">Grande</button> &nbsp;
 <button class="btn btn-caixa btn-primario btn-lg disabled">Grande desabilitado</button> &nbsp;
-<button class="btn btn-caixa btn-outline-destaque">
+<button class="btn btn-caixa btn-outline-accent">
   <i class="fa fa-edit mr-2"></i>
   Com ícone
 </button>`.trim();
