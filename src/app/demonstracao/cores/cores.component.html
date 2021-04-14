@@ -46,10 +46,14 @@
 							<tr *ngFor="let cor of coresVariaveis">
 								<td>{{ cor.nome }}</td>
 								<td>{{ cor.variavel }} 
-									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.variavel)" class="fa fa-copy"></i></button>
+									<button (click)="copy(cor.variavel)" class="btn btn-flat" title="Copiar">
+										<i class="fa fa-copy"></i>
+									</button>
 								</td>
 								<td>{{ cor.valor }} 
-									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+									<button (click)="copy(cor.valor)" class="btn btn-flat" title="Copiar">
+										<i class="fa fa-copy"></i>
+									</button>
 								</td>
 								<td><div class="square bg-{{ cor.classe }}"></div></td>
 								<td [innerHTML]="cor.utilizacao" class="w-50"></td>

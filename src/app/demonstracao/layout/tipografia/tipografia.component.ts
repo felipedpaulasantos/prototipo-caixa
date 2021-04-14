@@ -75,10 +75,10 @@ export class TipografiaComponent extends ComponentesInterface implements OnInit 
   <i class="fa fa-info fa-lg text-info mr-3"></i>
 </h4>
 <h2 class="d-inline mr-5">
-  <i class="fa fa-check fa-lg mr-3"></i>
-  <i class="fa fa-times fa-lg mr-3"></i>
-  <i class="fa fa-exclamation fa-lg mr-3"></i>
-  <i class="fa fa-info fa-lg mr-3"></i>
+  <i class="fa fa-check fa-lg text-success mr-3"></i>
+  <i class="fa fa-times fa-lg text-danger mr-3"></i>
+  <i class="fa fa-exclamation text-warning fa-lg mr-3"></i>
+  <i class="fa fa-info fa-lg text-info mr-3"></i>
 </h2>`.trim();
 
   ngOnInit(): void {
