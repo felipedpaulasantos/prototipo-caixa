@@ -17,6 +17,8 @@ export interface GlobalThemeMainVariables {
    cxAccentDarker: string;
    cxAccentLight: string;
    cxAccentLighter: string;
+   cxLink: string;
+   cxRemark: string;
    cxAux: string;
    cxAuxDark: string;
    cxAuxDarker: string;
@@ -161,6 +163,8 @@ const blueLightBaseTheme: GlobalThemeMainVariables = {
    cxAccentDarker: "--primary-darker",
    cxAccentLight: "--primary-light",
    cxAccentLighter: "--primary-lighter",
+   cxLink: "--primary-light",
+   cxRemark: "--turquesa",
    cxAux: "--grafite-light",
    cxAuxDark: "--grafite",
    cxAuxDarker: "--grafite-dark",
@@ -194,6 +198,8 @@ const blueDarkBaseTheme: GlobalThemeMainVariables = {
    cxAccentDarker: "--ceu-darker",
    cxAccentLight: "--ceu-light",
    cxAccentLighter: "--ceu-lighter",
+   cxLink: "--primary-light",
+   cxRemark: "--turquesa",
    cxAux: "--cinza",
    cxAuxDark: "--cinza-dark",
    cxAuxDarker: "--cinza-darker",
@@ -226,6 +232,8 @@ const purpleLightBaseTheme: GlobalThemeMainVariables = {
    cxAccentDarker: "--uva-darker",
    cxAccentLight: "--uva-light",
    cxAccentLighter: "--uva-lighter",
+   cxLink: "--primary-light",
+   cxRemark: "--tangerina",
    cxAux: "--grafite-light",
    cxAuxDark: "--grafite",
    cxAuxDarker: "--grafite-dark",

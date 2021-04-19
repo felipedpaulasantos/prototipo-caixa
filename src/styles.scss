@@ -35,6 +35,8 @@
 
   --cxAccent: $cx-color-secondary;
   --cxMain: $cx-color-primary;
+  --cxLink: $cx-color-primary-light;
+  --cxRemark: $cx-color-turquesa;
   --cxBase: $cx-color-white;
   --cxBackground: $cx-color-polar;
   --cxContrast: $cx-color-contrast-lighter-dark;
@@ -129,9 +131,9 @@ hr.header-line-caixa {
 }
 
 a {
-  color: var(--cxAccent);
+  color: var(--cxLink);
   &:hover {
-    color: var(--cxAccentDark);
+    color: var(--cxAccent);
   }
 }
 
@@ -940,6 +942,12 @@ select {
 .bg-accent {
   background-color: var(--cxAccent) !important;
 }
+.bg-link {
+  background-color: var(--cxLink) !important;
+}
+.bg-remark {
+  background-color: var(--cxRemark) !important;
+}
 .bg-base {
   background-color: var(--cxBase) !important;
 }
@@ -968,16 +976,22 @@ select {
 
 /* Text */
 
-.text-principal {
+.text-main {
   color: var(--cxMain) !important;
 }
-.text-destaque {
+.text-accent {
   color: var(--cxAccent) !important;
+}
+.text-link {
+  color: var(--cxLink) !important;
+}
+.text-remark {
+  color: var(--cxRemark) !important;
 }
 .text-base {
   color: var(--cxBase) !important;
 }
-.text-fundo {
+.text-background {
   color: var(--cxBackground) !important;
 }
 .text-cancel {
@@ -986,7 +1000,7 @@ select {
 .text-aux {
   color: var(--cxAux) !important;
 }
-.text-contraste {
+.text-contrast {
   color: var(--cxContrast) !important;
 }
 
@@ -1227,28 +1241,120 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   display: table-row-group;
 }
 
-/* Alert */
+/* 
+  ALERT 
+*/
 
-.alert.alert-success {
-  background-color: var(--cxSuccess);
-  color: var(--cxSuccessContrast);
-  border-color: transparent;
+.alert {
+  padding: 0.75rem 1.75rem 0.75rem 3.5rem;
+  border-radius: 2px;
+  &::before {
+    display: inline-block;
+    font-family: var(--cxFontFaIcon);
+    font-weight: 900;
+    min-width: 3rem;
+    width: 3rem;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    line-height: 3rem;
+  }
 }
-.alert.alert-danger {
-  background-color: var(--cxDanger);
-  color: var(--cxDangerContrast);
-  border-color: transparent;
+/* INFO */
+.alert-info, .alert-outline-info {
+  &::before {
+    content: "\f129";
+  }
 }
-.alert.alert-warning {
-  background-color: var(--cxWarning);
-  color: var(--cxWarningContrast);
-  border-color: transparent;
-}
-.alert.alert-info {
+.alert-info {
   background-color: var(--cxInfo);
   color: var(--cxInfoContrast);
-  border-color: transparent;
+  border-color: var(--cxInfo);
+  &::before {
+    color: var(--cxInfoContrast);
+    background-color: var(--cxInfo);
+  }
 }
+.alert-outline-info {
+  background-color: transparent;
+  border-color: var(--cxInfo);
+  &::before {
+    color: var(--cxInfoContrast);
+    background-color: var(--cxInfo);
+  }
+}
+/* WARNING */
+.alert-warning, .alert-outline-warning {
+  &::before {
+    content: "\f12a";
+  }
+}
+.alert-warning {
+  background-color: var(--cxWarning);
+  color: var(--cxWarningContrast);
+  border-color: var(--cxWarning);
+  &::before {
+    color: var(--cxWarningContrast);
+    background-color: var(--cxWarning);
+  }
+}
+.alert-outline-warning {
+  background-color: transparent;
+  border-color: var(--cxWarning);
+  &::before {
+    color: var(--cxWarningContrast);
+    background-color: var(--cxWarning);
+  }
+}
+/* SUCCESS */
+.alert-success, .alert-outline-success {
+  &::before {
+    content: "\f00c";
+  }
+}
+.alert-success {
+  background-color: var(--cxSuccess);
+  color: var(--cxSuccessContrast);
+  border-color: var(--cxSuccess);
+  &::before {
+    color: var(--cxSuccessContrast);
+    background-color: var(--cxSuccess);
+  }
+}
+.alert-outline-success {
+  background-color: transparent;
+  border-color: var(--cxSuccess);
+  &::before {
+    color: var(--cxSuccessContrast);
+    background-color: var(--cxSuccess);
+  }
+}
+/* DANGER */
+.alert-danger, .alert-outline-danger {
+  &::before {
+    content: "\f00d";
+  }
+}
+.alert-danger {
+  background-color: var(--cxDanger);
+  color: var(--cxDangerContrast);
+  border-color: var(--cxDanger);
+  &::before {
+    color: var(--cxDangerContrast);
+    background-color: var(--cxDanger);
+  }
+}
+.alert-outline-danger {
+  background-color: transparent;
+  border-color: var(--cxDanger);
+  &::before {
+    color: var(--cxDangerContrast);
+    background-color: var(--cxDanger);
+  }
+}
+
 
 /* 
   HIGHLIGHT JS 
