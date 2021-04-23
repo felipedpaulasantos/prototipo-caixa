@@ -963,6 +963,18 @@ select {
 .bg-contrast {
   background-color: var(--cxContrast) !important;
 }
+.bg-danger {
+  background-color: var(--cxDanger) !important;
+}
+.bg-success {
+  background-color: var(--cxSuccess) !important;
+}
+.bg-warning {
+  background-color: var(--cxWarning) !important;
+}
+.bg-info {
+  background-color: var(--cxInfo) !important;
+}
 @each $theme, $value in $cx-bg-opacities {
   .bg-opacity-#{$theme} {
     opacity: $value !important;
@@ -1002,6 +1014,18 @@ select {
 }
 .text-contrast {
   color: var(--cxContrast) !important;
+}
+.text-danger {
+  color: var(--cxDanger) !important;
+}
+.text-success {
+  color: var(--cxSuccess) !important;
+}
+.text-warning {
+  color: var(--cxWarning) !important;
+}
+.text-info {
+  color: var(--cxInfo) !important;
 }
 
 .full-opacity {
