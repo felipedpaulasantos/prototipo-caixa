@@ -1,3 +1,12 @@
+:host:hover {
+   .card-caixa-botoes {
+      opacity: 1;
+      z-index: 9;
+   }
+}
+:host-context(.card) {
+   z-index: 1;
+}
 .card-caixa-botoes {
    position: absolute;
    width: 100%;
@@ -5,10 +14,4 @@
    opacity: 0;
    transition: 0.2s;
    right: 0.2rem;
-}
-.card-caixa-botoes:hover {
-   opacity: 1;
-}
-:host-context(.card.card-caixa) {
-   z-index: 1;
 }

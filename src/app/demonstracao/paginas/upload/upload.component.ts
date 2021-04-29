@@ -228,7 +228,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
   }
 
   addDocumento() {
-    this.toastr.success("Documento adicionado com sucesso!");
+    this.toastr.success("Documento adicionado com sucesso!", "", { positionClass: "toast-top-right" });
   }
 
   fromFileToBase64(file: File, comMetadata: boolean = false): Promise<string> {

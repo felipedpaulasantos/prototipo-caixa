@@ -162,6 +162,7 @@ export class CardCaixaComponent implements OnInit, AfterContentInit, OnDestroy {
     const elmnt = this.cardElement;
 
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (!this.moveButton) { return; }
     if (this.moveButton.nativeElement) {
       // if present, the header is where you move the DIV from:
       this.moveButton.nativeElement.onmousedown = dragMouseDown;

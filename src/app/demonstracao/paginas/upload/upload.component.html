@@ -3,135 +3,7 @@
 </h1>
  -->
 
-<div class="mb-3">
-  <button class="btn btn-accent mr-3" (click)="updateConfig(configCompleta)">
-    Completa
-  </button>
-
-  <button class="btn btn-accent mr-3" (click)="updateConfig(configCompletaSemBotoes)">
-    Completa sem botões
-  </button>
-
-  <button class="btn btn-accent mr-3" (click)="updateConfig(configFilter)">
-    Com filtro geral
-  </button>
-
-  <button class="btn btn-accent mr-3" (click)="updateConfig(configInfo)">
-    Com info e paginação
-  </button>
-
-  <button class="btn btn-accent mr-3" (click)="updateConfig(configSimples)">
-    Simples
-  </button>
-</div>
-
-<div class="row mb-3">
-
-  <div class="col-3">
-    <div class="custom-control custom-checkbox">
-      <input [disabled]="!config['buttons']" [checked]="config['buttons'] && config['buttons'].length > 0" (change)="updateConfigOption('buttons', $event.target.checked)" type="checkbox"
-        class="custom-control-input" id="checkBotoes" name="checkBotoes">
-      <label class="custom-control-label" for="checkBotoes">
-        Botões
-      </label>
-    </div>
-  </div>
-
-  <div class="col-3">
-    <div class="custom-control custom-checkbox">
-      <input [disabled]="!config.searching" [checked]="config.searching" (change)="updateConfigOption('filter', $event.target.checked)" type="checkbox"
-        class="custom-control-input" id="checkFiltro" name="checkFiltro">
-      <label class="custom-control-label" for="checkFiltro">
-        Filtro
-      </label>
-    </div>
-  </div>
-
-  <div class="col-3">
-    <div class="custom-control custom-checkbox">
-      <input [disabled]="!config.paging" [checked]="config.paging" (change)="updateConfigOption('pagination', $event.target.checked)" type="checkbox"
-        class="custom-control-input" id="checkPaging" name="checkPaging">
-      <label class="custom-control-label" for="checkPaging">
-        Paginação
-      </label>
-    </div>
-  </div>
-
-  <div class="col-3">
-    <div class="custom-control custom-checkbox">
-      <input [checked]="config.lengthChange" (change)="updateConfigOption('length', $event.target.checked)" type="checkbox"
-        class="custom-control-input" id="checkLength" name="checkLength">
-      <label class="custom-control-label" for="checkLength">
-        Comprimento
-      </label>
-    </div>
-  </div>
-
-  <div class="col-3 my-3">
-    <label>Filtro por coluna</label>
-    <select [value]="config['columnFilter']" (change)="updateConfigOption('columnFilter', $event.target.value)" class="form-control">
-      <option value="">Nenhum</option>
-      <option value="input">Campo simples</option>
-      <option value="select">Campo select</option>
-    </select>
-  </div>
-
-  <div class="col-3 my-3">
-    <label>Posição do filtro</label>
-    <select [value]="filterPosition" (change)="filterPosition = $event.target.value; updateTable()" class="form-control">
-      <option value="top">Topo</option>
-      <option value="bottom">Rodapé</option>
-    </select>
-  </div>
-
-</div>
-
-<div class="card my-3">
-  <div class="card-body">
-    <div class="table-responsive">
-      <table datatable [dtTrigger]="dtTrigger" class="table">
-        <thead>
-          <tr>
-            <th>Coluna 1</th>
-            <th>Coluna 2</th>
-            <th>Coluna 3</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of rows">
-            <td>{{ row }}</td>
-            <td>{{ row }}</td>
-            <td>{{ row }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-
-
 <div id="painelTestesDiversos">
-  <form [formGroup]="formCpfNis" (submit)="pesquisarCpf()">
-    <div class="row">
-      <div class="col-12 col-md-5 col-lg-4">
-        <label>CPF</label>
-        <input class="form-control" name="cpf" placeholder="Informe o CPF" mask="000.000.000-00" formControlName="cpf">
-      </div>
-      <div class="col-12 col-md-5 col-lg-4">
-
-        <label>NIS</label>
-        <input class="form-control" name="nis" placeholder="Informe o NIS" mask="000.000.000-00" formControlName="nis">
-      </div>
-      <div class="col d-flex align-items-center mt-2 mt-md-0">
-        <button type="submit" [disabled]="isCpfNisInvalid"
-          [title]="!isCpfNisInvalid ? 'Pesquisar' : 'Preencha um dos campos'" class="btn btn-caixa btn-primario">
-          <i class="fa fa-search"></i>
-        </button>
-      </div>
-    </div>
-  </form>
-
   <ng-container *ngIf="cliente">
     <section id="secaoInformacoesPessoais" class="row mt-4">
       <div class="col-12 col-xl-4 mb-3 mb-xl-0">
@@ -211,6 +83,10 @@
               <cx-spinner [fullscreen]="false" [name]="'spinnerUpload'"></cx-spinner>
 
               <div class="row h-100">
+                <div *ngIf="!previaSrc && !uploadedFile" class="col-12 d-flex flex-column align-items-center justify-content-center">                
+                    <i class="fa fa-file-image fa-10x text-cancel mb-4"></i>
+                    <h5>Adicione alguma imagem ao lado</h5>
+                </div>
                 <div class="col">
                   <ng-container *ngIf="previaSrc">
                     <div (click)="open(previaSrc)" role="button"
@@ -273,7 +149,7 @@
           </h5>
         </div>
         <div class="card-body">
-          <div class="table-responsive">
+          <cx-datatable>
             <table datatable class="table table-caixa">
               <thead>
                 <tr>
@@ -289,20 +165,20 @@
                   <td>{{ contrato.situacao }}</td>
                   <td>{{ contrato.valor | currency: 'R$' }}</td>
                   <td>
-                    <button class="btn btn-caixa btn-sm btn-outline-accent mr-2" title="Detalhar">
+                    <button class="btn btn-sm btn-outline-aux mr-2" title="Detalhar">
                       <i class="fa fa-search"></i>
                     </button>
-                    <button class="btn btn-caixa btn-sm btn-outline-perigo mr-2" title="Excluir">
+                    <button class="btn btn-sm btn-outline-aux mr-2" title="Excluir">
                       <i class="fa fa-trash"></i>
                     </button>
-                    <button class="btn btn-caixa btn-sm btn-outline-sucesso" title="Confirmar">
+                    <button class="btn btn-sm btn-outline-aux" title="Confirmar">
                       <i class="fa fa-check"></i>
                     </button>
                   </td>
                 </tr>
               </tbody>
             </table>
-          </div>
+          </cx-datatable>
         </div>
       </cx-card>
     </section>

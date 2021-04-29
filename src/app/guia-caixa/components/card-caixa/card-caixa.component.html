@@ -1,4 +1,4 @@
-<div class="card-caixa-botoes">
+<div class="card-caixa-botoes" *ngIf="cardHeaderElement">
    <a *ngIf="draggable && wasMoved" (click)="reset()"
    title="Resetar posição" class="btn btn-caixa text-contrast-light shadow-none rounded-circle p-2">
       <i class="fa fa-lg fa-undo-alt"></i>
@@ -16,8 +16,7 @@
       <i *ngIf="!isFullscreen" class="fa fa-lg fa-expand" title="Tela Cheia"></i>
       <i *ngIf="isFullscreen" class="fa fa-lg fa-compress" title="Sair do modo Tela Cheia"></i>
    </a>
-   <a (click)="destruir()"
-   [ngClass]="{'d-none': !draggable || isFullscreen}"
+   <a (click)="destruir()" [ngClass]="{'d-none': !draggable || isFullscreen}"
    title="Destruir" class="btn btn-caixa text-contrast-light shadow-none rounded-circle p-2">
       <i class="fa fa-lg fa-times"></i>
    </a>
@@ -29,3 +28,4 @@
    </a>
 </div>
 <ng-content></ng-content>
+<cx-spinner [fullscreen]=false></cx-spinner>

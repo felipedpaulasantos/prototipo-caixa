@@ -98,6 +98,14 @@ const routes: Routes = [
     },
     loadChildren: () => import("./demonstracao/componentes-basicos/componentes-basicos.module").then(m => m.ComponentesBasicosModule) },
   {
+    path: "roadmap", loadChildren: () => import("./roadmap/roadmap.module").then(m => m.RoadmapModule),
+    data: {
+      title: "Roadmap",
+      breadcrumb: "Roadmap",
+      animation: "Roadmap"
+    }
+  },
+  {
     path: "**",
     redirectTo: "home",
     pathMatch: "full"
