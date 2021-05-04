@@ -118,7 +118,12 @@ export class CardButtonComponent implements OnInit, ControlValueAccessor {
   */
   toggleValue() {
     if (!this.type) { return; }
-    this.model = this.isChecked() ? null : this.value;
+    if (this.type === "checkbox") {
+      this.model = this.isChecked() ? null : this.value;
+    }
+    if (this.type === "radio") {
+      this.model = this.value;
+    }
     this.onChange(this.model);
     this.emitChecked();
   }
