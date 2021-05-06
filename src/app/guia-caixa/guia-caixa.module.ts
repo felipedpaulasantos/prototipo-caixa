@@ -14,6 +14,7 @@ import { StepperModule } from "./components/stepper/stepper.module";
 import { CardButtonModule } from "./components/card-button/card-button.module";
 import { TimelineModule } from "./components/timeline/timeline.module";
 import { CaixaDatatableModule } from "./components/datatable/caixa-datatable.module";
+import { ButtonControlModule } from "./components/button-control/button-control.module";
 
 
 
@@ -34,7 +35,8 @@ import { CaixaDatatableModule } from "./components/datatable/caixa-datatable.mod
     StepperModule,
     CardButtonModule,
     TimelineModule,
-    CaixaDatatableModule
+    CaixaDatatableModule,
+    ButtonControlModule
   ],
   exports: [
     InputCaixaComponent,
@@ -47,7 +49,8 @@ import { CaixaDatatableModule } from "./components/datatable/caixa-datatable.mod
     StepperModule,
     CardButtonModule,
     TimelineModule,
-    CaixaDatatableModule
+    CaixaDatatableModule,
+    ButtonControlModule
   ]
 })
 export class GuiaCaixaModule { }

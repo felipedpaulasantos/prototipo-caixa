@@ -11,6 +11,7 @@ import { StepperDemonstracaoComponent } from "./stepper-demonstracao/stepper-dem
 import { TabberDemonstracaoComponent } from "./tabber-demonstracao/tabber-demonstracao.component";
 import { CardButtonDemonstracaoComponent } from "./card-button-demonstracao/card-button-demonstracao.component";
 import { TimelineDemonstracaoComponent } from "./timeline-demonstracao/timeline-demonstracao.component";
+import { ButtonControlDemonstracaoComponent } from "./button-control-demonstracao/button-control-demonstracao.component";
 
 
 const routes: Routes = [
@@ -102,6 +103,15 @@ const routes: Routes = [
       title: "Tabelas",
       breadcrumb: "Tabelas",
       animation: "Tabelas"
+    }
+  },
+  {
+    path: "button-control",
+    component: ButtonControlDemonstracaoComponent,
+    data: {
+      title: "Button control",
+      breadcrumb: "Button contro",
+      animation: "Button contro"
     }
   },
   {

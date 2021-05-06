@@ -19,6 +19,7 @@ import { StepperDemonstracaoComponent } from "./stepper-demonstracao/stepper-dem
 import { CardButtonDemonstracaoComponent } from "./card-button-demonstracao/card-button-demonstracao.component";
 import { TimelineDemonstracaoComponent } from "./timeline-demonstracao/timeline-demonstracao.component";
 import { NgSelectModule } from "@ng-select/ng-select";
+import { ButtonControlDemonstracaoComponent } from './button-control-demonstracao/button-control-demonstracao.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { NgSelectModule } from "@ng-select/ng-select";
     TabberDemonstracaoComponent,
     StepperDemonstracaoComponent,
     CardButtonDemonstracaoComponent,
-    TimelineDemonstracaoComponent
+    TimelineDemonstracaoComponent,
+    ButtonControlDemonstracaoComponent
   ],
   exports: [
     CardsComponent,
