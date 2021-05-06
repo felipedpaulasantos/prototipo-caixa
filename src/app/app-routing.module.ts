@@ -39,7 +39,7 @@ const routes: Routes = [
     path: "componentes-caixa",
     data: {
       title: "Componentes",
-      breadcrumb: "Componentes",
+      breadcrumb: "Componentes Caixa",
       animation: "Componentes"
     },
     loadChildren: () => import("./demonstracao/componentes/componentes-caixa.module").then(m => m.ComponentesCaixaModule)
