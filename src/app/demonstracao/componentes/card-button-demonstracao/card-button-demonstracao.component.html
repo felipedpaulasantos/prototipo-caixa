@@ -86,6 +86,20 @@
                      <label>E-mail</label>
                      <input [disabled]="!email" value="fulano@email.com" class="form-control">
                   </cx-card-button>
+
+                  <br>
+
+                  <cx-button-control type="checkbox" [(ngModel)]="user" value="user">
+                     <label>Usuário</label>
+                     <input [disabled]="!user" value="Fulano" class="form-control">
+                  </cx-button-control>
+                  
+                  <br><br>
+
+                  <cx-button-control type="checkbox" [(ngModel)]="email" value="email">
+                     <label>E-mail</label>
+                     <input [disabled]="!email" value="fulano@email.com" class="form-control">
+                  </cx-button-control>
                </div>
             </app-documentacao-template>
 
@@ -119,6 +133,24 @@
                         <input [disabled]="formFone.get('tipoFone').value !== 'celular'" class="form-control"
                            placeholder="(00) 00000-0000">
                      </cx-card-button>
+
+                     <br>
+
+                     <h3>{{ formFone.get('tipoFone').value }}</h3>
+
+                     <cx-button-control type="radio" formControlName="tipoFone" value="fixo">
+                        <label>Fixo</label>
+                        <input [disabled]="formFone.get('tipoFone').value !== 'fixo'" class="form-control"
+                           placeholder="(00) 0000-0000">
+                     </cx-button-control>
+
+                     <br><br>
+
+                     <cx-button-control type="radio" formControlName="tipoFone" value="celular">
+                        <label>Celular</label>
+                        <input [disabled]="formFone.get('tipoFone').value !== 'celular'" class="form-control"
+                           placeholder="(00) 00000-0000">
+                     </cx-button-control>
                   </form>
                </div>
             </app-documentacao-template>

@@ -117,6 +117,14 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         isLink: true,
         enabled: true,
         level: 2
+      },
+      {
+        name: "Button Control",
+        iconClass: "fa fa-lg fa-check-square",
+        url: "/componentes-caixa/button-control",
+        isLink: true,
+        enabled: true,
+        level: 2
       }
     ]
   },
