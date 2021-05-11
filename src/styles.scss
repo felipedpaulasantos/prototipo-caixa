@@ -113,7 +113,6 @@ h6 {
   &.titulo {
     font-family: var(--cxFontFamilyBold);
     margin-bottom: 1rem;
-    opacity: 0.9;
   }
   &.header-subtitulo-caixa {
     color: var(--cxContrast);
@@ -125,7 +124,6 @@ h6 {
 }
 hr.header-line-caixa {
   border-color: var(--cxAux);
-  opacity: $cx-bg-opacity-2;
   border-width: 1px;
   margin-bottom: 1.5rem;
 }
@@ -424,7 +422,6 @@ label {
   font-family: var(--cxFontFamilyBold);
   margin-bottom: 0.2rem;
   transition: 0.2s;
-/*   opacity: 0.9; */
 }
 label.custom-control-label {
   font-family: var(--cxFontFamilyNormal);

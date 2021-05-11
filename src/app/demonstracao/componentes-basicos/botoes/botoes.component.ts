@@ -16,8 +16,8 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
 /*   temas = BootstrapTheme.getTemas(); */
 
   temas = [
-    { "name": "principal" },
-    { "name": "destaque" },
+    { "name": "main" },
+    { "name": "accent" },
     { "name": "cancel" },
     { "name": "aux" },
     { "name": "success" },
@@ -92,7 +92,7 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
 <button class="btn btn-caixa btn-flat rounded-circle p-3">
   <i class="fa fa-bars fa-2x"></i>
 </button>
-<button class="btn btn-caixa btn-flat text-principal rounded-circle p-2">
+<button class="btn btn-caixa btn-flat text-main rounded-circle p-2">
   <i class="fa fa-home fa-2x"></i>
 </button>
 <button class="btn btn-caixa btn-outline-apoio rounded-circle p-2">
