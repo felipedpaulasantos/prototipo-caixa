@@ -335,7 +335,7 @@ export class GlobalThemes {
    ) { }
 
    static readonly lightTheme = new GlobalThemes(
-      "Tema Claro e Azul", { name: "lightTheme", className: "tema-claro", theme: blueLightTheme }
+      "Tema Padrão", { name: "lightTheme", className: "tema-padrao", theme: blueLightTheme }
    );
 
 /*    static readonly purpleTheme = new GlobalThemes(
@@ -343,11 +343,11 @@ export class GlobalThemes {
    ); */
 
    static readonly darkTheme = new GlobalThemes(
-      "Tema Preto e Azul", { name: "darkTheme", className: "tema-escuro", theme: blueDarkTheme }
+      "Tema Escuro", { name: "darkTheme", className: "tema-escuro", theme: blueDarkTheme }
    );
 
    static readonly highContrast = new GlobalThemes(
-      "Tema de Alto Contraste", { name: "highContrast", className: "tema-alto-contraste", theme: highContrastTheme }
+      "Tema Alto Contraste", { name: "highContrast", className: "tema-alto-contraste", theme: highContrastTheme }
    );
 
    static getThemes(): GlobalThemes[] {
