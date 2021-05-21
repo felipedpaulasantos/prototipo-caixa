@@ -288,13 +288,13 @@ export const purpleLightTheme: GlobalThemeVariables = Object.assign(purpleLightB
 
 /* High Contrast theme */
 const highContrastBaseTheme: GlobalThemeMainVariables = {
-   cxHeaderBgColor: "--grafite-darker",
+   cxHeaderBgColor: "--black",
    cxHeaderTextColor: "--warning",
-   cxSidemenuBgColor: "--grafite-darker",
+   cxSidemenuBgColor: "--black",
    cxSidemenuTextColor: "--warning",
    cxSidemenuActiveBgColor: "--warning",
-   cxSidemenuActiveTextColor: "--grafite-darker",
-   cxBodyBgColor: "--grafite-darker",
+   cxSidemenuActiveTextColor: "--black",
+   cxBodyBgColor: "--black",
    cxBodyTextColor: "--warning",
    cxMain: "--secondary-light",
    cxMainDark: "--secondary-dark",

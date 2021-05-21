@@ -67,11 +67,13 @@ export class HeaderComponent implements OnInit {
       const colorBody = style.getPropertyValue(body);
       const colorSecundario = style.getPropertyValue(secundario);
       const colorText = style.getPropertyValue(textColor);
+      console.log("TEXT COLOR", theme.value.name, textColor, colorText);
       if (theme.value.name === "highContrast") {
         theme["background"] = `linear-gradient(-45deg, ${colorText}, ${colorText} 49%, white 49%, white 51%, ${colorBody} 51%)`;
       } else {
         theme["background"] = `linear-gradient(-45deg, ${colorSecundario}, ${colorSecundario} 49%, white 49%, white 51%, ${colorBody} 51%)`;
       }
+      console.log("BACKGROUND", theme["background"]);
     });
     this.themes = themes;
   }

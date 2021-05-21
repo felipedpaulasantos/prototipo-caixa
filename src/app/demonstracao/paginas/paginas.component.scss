@@ -7,26 +7,26 @@ section {
 */
 .cliente-tab-wrapper {
    display: flex;
-   height: 110px;
+   height: 7.2rem;
    border-bottom: solid 1px var(--cxCancel);
    .cliente-tab {
       margin-right: 2rem;
    }
 }
 .consulta-direta-container {
-   display: inline-flex;
+   display: block;
    flex-direction: column;
-   width: 220px;
+   width: 22rem;
    .form-control {
       margin-bottom: 0.5rem;
    }
 }
 .cliente-tab {
    display: inline-block;
-   min-height: 80px;
-   height: 80px;
-   width: 300px;
-   max-width: 300px;
+   min-height: 6.15rem;
+   height: 6.15rem;
+   width: 23.07rem;
+   max-width: 23.07rem;
    border: solid 1px var(--cxCancel);
    border-radius: 5px;
    box-shadow: var(--cxShadowSm);
@@ -40,7 +40,7 @@ section {
       height: 3px;
       background: var(--cxAccent);
       position: absolute;
-      bottom: -30px;
+      bottom: -1.1rem;
    }
    &.cliente-close {
       cursor: pointer;
@@ -49,7 +49,7 @@ section {
       }
    }
    &.cliente-far {
-      width: 120px;
+      width: 9.23rem;
       .cliente-tab-left-side {
          background-color: var(--cxAux);
       }
@@ -77,8 +77,8 @@ section {
          width: 70px;
          .cliente-picture {
             display: inline-block;
-            width: 65px;
-            height: 65px;
+            width: 5rem;
+            height: 5rem;
             border: solid 2px var(--cxCancel);
             box-shadow: var(--cxShadowSm);
             border-radius: 50%;
@@ -152,9 +152,9 @@ section {
 }
 .calendar-box {
    display: inline-flex;
-   min-width: 300px;
-   max-width: 300px;
-   min-height: 220px;
+   min-width: 23.07rem;
+   max-width: 23.07rem;
+   min-height: 16.92rem;
    height: auto;
    .card-header {
       opacity: 0.9;
@@ -200,4 +200,19 @@ section {
          color: var(--cxSuccess);
       }
    } 
+}
+
+/* 
+   CARD VERTICAL
+*/
+.card-vertical-wrapper {
+   display: flex;
+}
+.card-vertical {
+   display: inline-flex;
+   flex-direction: column;
+   width: 200px;
+   .card-vertical-topside {
+      background-color: var(--cxAccent);
+   }
 }
