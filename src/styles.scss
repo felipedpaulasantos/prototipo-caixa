@@ -80,6 +80,9 @@
   --cxShadowSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
   --cxShadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
   --cxShadowLg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+
+  --cxBorderRadius: 5px;
+  --cxBorderRadiusRound: 50%;
 }
 
 html {
@@ -300,7 +303,7 @@ a {
 .cx-ripple {
   top: 0;
   left: 0;
-  border-radius: 50%;
+  border-radius: var(--cxBorderRadiusRound);
   // background-color: rgba(255, 255, 255, 0.7);
   position: absolute;
   transform: scale(0);
@@ -327,7 +330,7 @@ a {
     border-style: solid;
     border-width: 1px;
     border-color: var(--cxAux);
-    border-radius: 0.25rem !important;
+    border-radius: var(--cxBorderRadius) !important;
     transition: box-shadow 0.2s, border-bottom 0.3s, box-shadow 0.3s ease-in-out;
     &:before {
       position: absolute;
@@ -634,7 +637,6 @@ ul.nav.nav-pills li a {
     color: var(--cxAccent) !important;
     background-color: transparent !important;
     border-bottom: solid 2px var(--cxAccent);
-    border-radius: 50;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -672,7 +674,7 @@ ul.nav.nav-pills li a {
     background-color: inherit;
     border: none;
     vertical-align: center;
-    border-radius: 0.25rem;
+    border-radius: var(--cxBorderRadius);
     & h1,
     h2,
     h3,
@@ -685,7 +687,7 @@ ul.nav.nav-pills li a {
   .card-footer {
     background-color: inherit;
     border-top: 0;
-    border-radius: 0.25rem;
+    border-radius: var(--cxBorderRadius);
   }
 }
 .card.card-hover::after {
@@ -695,7 +697,7 @@ ul.nav.nav-pills li a {
   width: 100%;
   height: 100%;
   opacity: 0;
-  border-radius: 0.25rem;
+  border-radius: var(--cxBorderRadius);
   box-shadow: $cx-lg-box-shadow;
   transition: opacity 0.3s ease-in-out;
 }
@@ -851,7 +853,7 @@ select {
 .ng-dropdown-panel {
   box-shadow: var(--cxShadow) !important;
   background-color: var(--cxBase);
-  border-radius: 0.25rem !important;
+  border-radius: var(--cxBorderRadius) !important;
   border-color: var(--cxCancel);
   .ng-option {
     background-color: var(--cxBase) !important;
@@ -1065,7 +1067,7 @@ select {
   transition: 0.5s;
   z-index: 999;
   max-height: calc(100% - 64px);
-  border-right: solid 1px var(--cxCancel);
+  box-shadow: var(--cxShadow);
 }
 #menuLateral.reduzido {
   width: 165px;
@@ -1271,7 +1273,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 
 .alert {
   padding: 0.75rem 1.75rem 0.75rem 3.5rem;
-  border-radius: 2px;
+  border-radius: var(--cxBorderRadius);
   &::before {
     display: inline-block;
     font-family: var(--cxFontFaIcon);

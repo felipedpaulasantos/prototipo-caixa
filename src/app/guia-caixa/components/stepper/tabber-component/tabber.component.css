@@ -93,7 +93,7 @@
    position: absolute;
    height: 2.69rem;
    width: 2.69rem;
-   border-radius: 50%;
+   border-radius: var(--cxBorderRadiusRound);
    text-align: center;
    line-height: 2.5rem;
    font-size: 1.3rem;

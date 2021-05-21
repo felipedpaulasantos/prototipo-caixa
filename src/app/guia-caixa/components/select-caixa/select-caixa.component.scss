@@ -29,7 +29,7 @@
 			opacity: 0.5;
 			padding-left: 0.5rem;
 			border: solid 1px !important;
-			border-radius: 5px !important;
+			border-radius: var(--cxBorderRadius) !important;
 			cursor: not-allowed;
 		}
 	}
@@ -65,7 +65,7 @@
 	display: inline-block;
 	margin-top: auto;
 	margin-bottom: auto;
-	border-radius: 50% !important;
+	border-radius: var(--cxBorderRadiusRound) !important;
 	padding-top: 0.25rem;
 	padding-bottom: 0.25rem;
 	padding-left: 0.5rem;

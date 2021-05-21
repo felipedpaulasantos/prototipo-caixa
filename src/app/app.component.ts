@@ -1,13 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { Router, ActivatedRoute, NavigationEnd, RouterOutlet } from "@angular/router";
-import { switchMap, map, filter } from "rxjs/operators";
+import { Router, ActivatedRoute, NavigationEnd, RouterOutlet, Params } from "@angular/router";
+import { switchMap, map, filter, mergeMap, tap } from "rxjs/operators";
 
 import { fadeInAnimation } from "./shared/animations/simple-fade.animation";
 import { UserService } from "./authentication/users/user.service";
 import { SideMenuService } from "./menu/side-menu/side-menu.service";
-import { GuiaCaixaStyleService } from "./guia-caixa/services/style-guia-caixa.service";
+import { GuiaCaixaStyleService, Tema } from "./guia-caixa/services/style-guia-caixa.service";
 import { DataTableConfig } from "./guia-caixa/components/datatable/datatable-definitions";
+import { UrlRedirectService } from "./shared/services/url-redirect.service";
+import { of } from "rxjs";
 
 
 @Component({
@@ -24,7 +26,8 @@ export class AppComponent implements OnInit {
     private titleService: Title,
     public menuService: SideMenuService,
     public userService: UserService,
-    public styleService: GuiaCaixaStyleService
+    public styleService: GuiaCaixaStyleService,
+    public redirectService: UrlRedirectService
   ) {
     // this.authService.initSSO();
   }
@@ -32,7 +35,8 @@ export class AppComponent implements OnInit {
   isMenuAberto = false;
   account: Account;
   hasAccount = true;
-  temaGlobal;
+  temaGlobal: Tema;
+  routeParams: Params;
 
   ngOnInit(): void {
     this.setPageTitleAsRoute();
@@ -58,6 +62,9 @@ export class AppComponent implements OnInit {
     .pipe(map(route => {
       while (route.firstChild) { route = route.firstChild; }
       return route;
+    }))
+    .pipe(tap((route) => {
+      this.redirectService.setRedirectParams(route, this.router.parseUrl(this.router.url));
     }))
     .pipe(switchMap(route => route.data))
     .subscribe(event => this.titleService.setTitle(event.title));
