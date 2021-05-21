@@ -168,11 +168,23 @@
  .stepper-wrapper > .stepper > .step.previous-step > .step-title > .step-icon {
    border: 0.23rem var(--cxSuccess) solid;
    line-height: 2.07rem;
+   transition: background-color 0.2s, color 0.2s;
+   &:hover {
+    border-color: var(--cxAccent);
+    background-color: var(--cxAccent);
+    color: var(--cxBase);
+  }
  }
  
  .stepper-wrapper > .stepper.nav-guided:not(.completed) > .step.previous-step > .step-title > .step-icon {
    background-color: var(--cxBase);
-   color: var(--cxSuccess);
+   color: var(--cxAux);
+   transition: background-color 0.2s, color 0.2s;
+   &:hover {
+    border-color: var(--cxAccent);
+    background-color: var(--cxAccent);
+    color: var(--cxBase);
+  }
  }
  
  .stepper-wrapper > .stepper.nav-guided.completed > .step.previous-step > .step-title > .step-icon {
