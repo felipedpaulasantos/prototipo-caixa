@@ -7,7 +7,7 @@
    color: var(--cxBase);
    border-style: solid;
    border-width: 1px;
-   border-radius: 0.25rem;
+   border-radius: var(--cxBorderRadius);
    border-color: var(--cxAux);
 }
 .button-control-wrapper.checked {
@@ -48,7 +48,7 @@
    border: 1px solid var(--cxCancel);
 }
 .button-control-wrapper > .row > .left-side > .checkbox-wrapper > .checkmark.radio {
-   border-radius: 15px;
+   border-radius: var(--cxBorderRadiusRound);
    display: flex;
    align-items: center;
    justify-content: center;
@@ -77,7 +77,7 @@
    border-style: solid;
    border-width: 4px;
    border-color: var(--cxContrast);
-   border-radius: 15px;
+   border-radius: var(--cxBorderRadiusRound);
    background-color: var(--cxContrast);
 }
 .button-control-wrapper.checked > .row > .left-side > .checkbox-wrapper > .checkmark:after {

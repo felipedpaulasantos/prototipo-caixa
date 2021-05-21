@@ -2,7 +2,7 @@
 .card-button-wrapper {
     position: relative;
     border: solid 1px var(--cxAux);
-    border-radius: 0.38rem;
+    border-radius: var(--cxBorderRadius);
     height: 9.61rem;
     min-height: 7.69rem;
     width: 38.46rem;
@@ -110,7 +110,7 @@
     border: 0.15rem solid var(--cxBase);
   }
   .card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark.checkbox {
-    border-radius: 0.38rem;
+    border-radius: var(--cxBorderRadius);
   }
   .card-button-wrapper > .row > .card-button-left-side > .checkbox-wrapper > .checkmark.radio {
     border-radius: 0.77rem;
