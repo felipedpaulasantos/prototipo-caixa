@@ -247,7 +247,7 @@ section {
    border-color: var(--cxCancel);
    border-radius: var(--cxBorderRadius);
    position: relative;
-
+   background: linear-gradient(to bottom, var(--cxAccent) 0%, var(--cxBase) 100%) no-repeat;
    transition: border 0.2s, box-shadow 0.2s;
    &:hover {
       border-color: var(--cxAccent);
@@ -260,6 +260,7 @@ section {
       background-color: var(--cxAccent);
       color: var(--cxBase);
       height: 65%;
+      border: solid 1px var(--cxAccent);
       border-top-right-radius: var(--cxBorderRadius);
       border-top-left-radius: var(--cxBorderRadius);
       .topside-icon {
@@ -301,5 +302,6 @@ section {
       flex-grow: 1;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
+      background-color: var(--cxBase);
    }
 }
