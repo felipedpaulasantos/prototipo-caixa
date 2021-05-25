@@ -50,6 +50,12 @@
    width 0.4s,
    visibility 0.4s,
    opacity 0.4s;
+   border: solid 2px transparent;
+   border-radius: var(--cxBorderRadius);
+   transition: border 0.2s;
+   &:hover {
+      border: solid 2px var(--cxCancel);
+   }
 }
 
 .timeline-wrapper.vertical .timeline > .timeline-item {
@@ -60,6 +66,12 @@
    width 0.4s,
    visibility 0.4s,
    opacity 0.4s;
+   border: solid 2px transparent;
+   border-radius: var(--cxBorderRadius);
+   transition: border 0.2s;
+   &:hover {
+      border: solid 2px var(--cxCancel);
+   }
 }
 
 .timeline-wrapper .timeline .timeline-item:last-of-type {

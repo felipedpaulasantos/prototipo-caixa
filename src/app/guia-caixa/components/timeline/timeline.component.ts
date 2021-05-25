@@ -11,7 +11,7 @@ interface StateIcon {
   // tslint:disable-next-line:component-selector
   selector: "cx-timeline",
   templateUrl: "./timeline.component.html",
-  styleUrls: ["./timeline.component.css"],
+  styleUrls: ["./timeline.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TimelineComponent implements OnInit, OnChanges, AfterViewInit {
