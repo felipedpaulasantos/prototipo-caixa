@@ -10,7 +10,7 @@ import { CardButtonColor } from "./card-button-model";
   // tslint:disable-next-line:component-selector
   selector: "cx-card-button",
   templateUrl: "./card-button.component.html",
-  styleUrls: ["./card-button.component.css"],
+  styleUrls: ["./card-button.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardButtonComponent implements OnInit, ControlValueAccessor {

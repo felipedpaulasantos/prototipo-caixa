@@ -1,36 +1,46 @@
 /* CARD BUTTON WRAPPER */
 .card-button-wrapper {
     position: relative;
-    border: solid 1px var(--cxAux);
+    border: solid 2px var(--cxCancel);
     border-radius: var(--cxBorderRadius);
     height: 9.61rem;
     min-height: 7.69rem;
     width: 38.46rem;
     max-width: 100%;
     max-height: 100%;
-    transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, border 0.2s;
+    background: linear-gradient(to right, var(--cxAux) 0%, var(--cxBase) 20%) no-repeat;
+    &:hover {
+      border: solid 2px var(--cxAux);
+    }
   }
   .card-button-wrapper.checked {
-    border: solid 1px var(--cxMain);
-    box-shadow: var(--cxShadow) !important;
+    border: solid 2px var(--cxAux);
+    background: linear-gradient(to right, var(--cxAux) 0%, var(--cxBase) 20%) no-repeat;
   }
   .card-button-wrapper.primary.checked {
-    border: solid 1px var(--cxAccent);
+    border: solid 2px var(--cxAccent);
+    background: linear-gradient(to right, var(--cxAccent) 0%, var(--cxBase) 20%) no-repeat;
   }
   .card-button-wrapper.secondary.checked {
-    border: solid 1px var(--cxMain);
+    border: solid 2px var(--cxMain);
+    background: linear-gradient(to right, var(--cxMain) 0%, var(--cxBase) 20%) no-repeat;
   }
   .card-button-wrapper.success.checked {
-    border: solid 1px var(--success);
+    border: solid 2px var(--success);
+    background: linear-gradient(to right, var(--success) 0%, var(--cxBase) 20%) no-repeat;
   }
   .card-button-wrapper.danger.checked {
-    border: solid 1px var(--danger);
+    border: solid 2px var(--danger);
+    background: linear-gradient(to right, var(--danger) 0%, var(--cxBase) 20%) no-repeat;
   }
   .card-button-wrapper.warning.checked {
-    border: solid 1px var(--warning);
+    border: solid 2px var(--warning);
+    background: linear-gradient(to right, var(--warning) 0%, var(--cxBase) 20%) no-repeat;
   }
   .card-button-wrapper.info.checked {
-    border: solid 1px var(--info);
+    border: solid 2px var(--info);
+    background: linear-gradient(to right, var(--info) 0%, var(--cxBase) 20%) no-repeat;
   }
   
   /* ROW */
@@ -53,6 +63,8 @@
     padding: 0.2rem 0.3rem;
     min-height: 100%;
     max-height: 100%;
+    border-top-left-radius: var(--cxBorderRadius);
+    border-bottom-left-radius: var(--cxBorderRadius);
   }
   .card-button-wrapper.checked > .row > .card-button-left-side {
     background-color: var(--cxAccent);
