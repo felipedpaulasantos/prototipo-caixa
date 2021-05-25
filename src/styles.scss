@@ -628,17 +628,19 @@ ul.nav.nav-pills {
 ul.nav.nav-pills li a {
   color: var(--cxAux);
   padding: 1rem 1.5rem;
-  transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.1s;
   font-family: var(--cxFontFamilyBold);
   border-bottom: solid 2px transparent;
-  /*   @extend .ripple-dark; */
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  &:hover {
+    border-bottom: solid 2px var(--cxAux);
+  }
   &.active,
   &:active {
     color: var(--cxAccent) !important;
     background-color: transparent !important;
     border-bottom: solid 2px var(--cxAccent);
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
   }
   &.disabled,
   &:disabled {
