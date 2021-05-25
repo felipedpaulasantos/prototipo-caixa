@@ -282,7 +282,6 @@ import { RandomDataService, RandomDataFood } from "~random-data.service";
       showPagination: true,
       menuLength: [5, 10, 50]
     });
-    this.fetchData();
   }
 
   ngOnDestroy(): void {
@@ -341,6 +340,12 @@ import { RandomDataService, RandomDataFood } from "~random-data.service";
 
   setFilterPosition(position: string) {
     this.table.updateFilterColumnPosition(position);
+  }
+
+  consultarDados() {
+    if (!this.rows || (this.rows && this.rows.length < 1)) {
+      this.fetchData();
+    }
   }
 
   fetchData() {
