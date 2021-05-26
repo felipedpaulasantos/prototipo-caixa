@@ -16,26 +16,7 @@
     font-size: 1.5rem;
 }
 
-#headerGeral {
-  height: 64px !important;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 9;
-  width: 100%;
-  box-shadow: var(--cxShadow);
-  #headerNav {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    #btnTrocarMenuLateral {
-      display: flex;
-      align-items: center;
-      height: 100%;
-    }
-  }
-}
+
 
 .notification-container {
   display: inline-block;
@@ -62,7 +43,7 @@
 }
 
 .theme-example {
-  border: solid 1px var(--cxCancel);
+  border: solid 3px var(--cxCancel);
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 2rem;
