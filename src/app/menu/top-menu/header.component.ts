@@ -67,15 +67,33 @@ export class HeaderComponent implements OnInit {
       const colorBody = style.getPropertyValue(body);
       const colorSecundario = style.getPropertyValue(secundario);
       const colorText = style.getPropertyValue(textColor);
-      console.log("TEXT COLOR", theme.value.name, textColor, colorText);
       if (theme.value.name === "highContrast") {
         theme["background"] = `linear-gradient(-45deg, ${colorText}, ${colorText} 49%, white 49%, white 51%, ${colorBody} 51%)`;
       } else {
         theme["background"] = `linear-gradient(-45deg, ${colorSecundario}, ${colorSecundario} 49%, white 49%, white 51%, ${colorBody} 51%)`;
       }
-      console.log("BACKGROUND", theme["background"]);
     });
     this.themes = themes;
+  }
+
+  toggleHeaderBackground() {
+    console.log("TEMA", this.currentTheme);
+    const temaAtual = this.currentTheme.value.theme;
+    const headerBgVariableValue = this.styleService.getCssVariableValue("--cxHeaderBgColor");
+    if (headerBgVariableValue === this.styleService.getCssVariableValue(temaAtual.cxHeaderBgColor)) {
+      console.log("IGUAL", headerBgVariableValue, temaAtual.cxHeaderBgColor);
+      this.styleService.setCssVariable(
+        "--cxHeaderBgColor",
+        "linear-gradient(90deg, #005CA9 40%, #54BBAB 100%)"
+      );
+    } else {
+      console.log("DIFERENTE", headerBgVariableValue, temaAtual.cxHeaderBgColor);
+      this.styleService.setCssVariable(
+        "--cxHeaderBgColor",
+        this.styleService.getCssVariableValue(temaAtual.cxHeaderBgColor)
+      );
+    }
+    console.log("HEADER BG COLOR", this.styleService.getCssVariableValue(temaAtual.cxHeaderBgColor));
   }
 
   showLogoutModal() {

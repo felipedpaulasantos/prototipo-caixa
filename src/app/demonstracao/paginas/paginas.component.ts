@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { NgxUiLoaderService } from "ngx-ui-loader";
 
 @Component({
   selector: "app-paginas",
@@ -7,9 +8,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class PaginasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ngxLoader: NgxUiLoaderService) { }
 
   ngOnInit(): void {
+    this.ngxLoader.start("loader-1");
   }
 
 }

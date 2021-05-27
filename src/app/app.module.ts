@@ -34,6 +34,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ResizableModule } from "angular-resizable-element";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgSelectModule } from "@ng-select/ng-select";
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -62,6 +63,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       ResizableModule,
       NgxSpinnerModule,
       NgSelectModule,
+      NgxUiLoaderModule,
       NgxMaskModule.forRoot(),
       OAuthModule.forRoot(),
       ToastrModule.forRoot({

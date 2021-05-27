@@ -48,11 +48,12 @@
     "ngx-perfect-scrollbar": "^9.0.0",
     "ngx-spinner": "^9.0.2",
     "ngx-toastr": "^12.1.0",
+    "ngx-ui-loader": "^9.1.1",
     "popper.js": "^1.16.1",
     "rxjs": "^6.5.5",
     "socket.io-client": "^2.3.0",
     "toastr": "^2.1.4",
-    "tslib": "^2.0.0",
+    "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

@@ -126,19 +126,19 @@ $cx-h6-font-size: $cx-font-size-base;
 
 /* Gradiente */
 
-$cx-gradient-oceano: linear-gradient(90deg, $cx-color-primary 70%, $cx-color-turquesa 100%);
-$cx-gradient-gelo: linear-gradient(90deg, $cx-color-cinza-lighter 70%, $cx-color-cinza 100%);
+$cx-gradient-oceano: linear-gradient(90deg, $cx-color-primary 40%, $cx-color-turquesa 100%);
+$cx-gradient-gelo: linear-gradient(90deg, $cx-color-cinza-lighter 40%, $cx-color-cinza 100%);
 $cx-gradient-tangerina: linear-gradient(90deg, $cx-color-primary 40%, $cx-color-turquesa 70%, $cx-color-tangerina 100%);
 $cx-gradient-limao: linear-gradient(90deg, $cx-color-primary 40%, $cx-color-turquesa 70%, $cx-color-limao 100%);
 $cx-gradient-ceu: linear-gradient(90deg, $cx-color-primary 40%, $cx-color-turquesa 70%, $cx-color-ceu 100%);
 $cx-gradient-uva: linear-gradient(90deg, $cx-color-primary 40%, $cx-color-turquesa 70%, $cx-color-uva 100%);
 $cx-gradient-goiaba: linear-gradient(90deg, $cx-color-primary 40%, $cx-color-turquesa 70%, $cx-color-goiaba 100%);
 
-$cx-gradient-verao: linear-gradient(90deg, $cx-color-turquesa 70%, $cx-color-tangerina 100%);
-$cx-gradient-outono: linear-gradient(90deg, $cx-color-turquesa 70%, $cx-color-goiaba 100%);
-$cx-gradient-agua: linear-gradient(90deg, $cx-color-turquesa 70%, $cx-color-ceu 100%);
-$cx-gradient-primavera: linear-gradient(90deg, $cx-color-turquesa 70%, $cx-color-uva 100%);
-$cx-gradient-inverno: linear-gradient(90deg, $cx-color-turquesa 70%, $cx-color-limao 100%);
+$cx-gradient-verao: linear-gradient(90deg, $cx-color-turquesa 40%, $cx-color-tangerina 100%);
+$cx-gradient-outono: linear-gradient(90deg, $cx-color-turquesa 40%, $cx-color-goiaba 100%);
+$cx-gradient-agua: linear-gradient(90deg, $cx-color-turquesa 40%, $cx-color-ceu 100%);
+$cx-gradient-primavera: linear-gradient(90deg, $cx-color-turquesa 40%, $cx-color-uva 100%);
+$cx-gradient-inverno: linear-gradient(90deg, $cx-color-turquesa 40%, $cx-color-limao 100%);
 
 $cx-gradient-themes: (
   "oceano": $cx-gradient-oceano,

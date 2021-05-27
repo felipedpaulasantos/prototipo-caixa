@@ -267,7 +267,6 @@ export class UploadComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log("CONFIG", this.config);
     this.dtTrigger.next();
     this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
 
@@ -275,16 +274,11 @@ export class UploadComponent implements OnInit, AfterViewInit {
       const thead = $(table).children("thead")[0];
       const tfoot = $(table).children("tfoot")[0];
 
-      console.log("TABLE", table);
-      console.log("THEAD", thead);
-      console.log("TFOOT", tfoot);
-
       this.drawColumnFilters(dtInstance, table, thead, tfoot);
     });
   }
 
   updateConfig(newConfig: DataTableConfig) {
-    console.log("NEW CONFIG", newConfig);
     this.config = JSON.parse(JSON.stringify(newConfig));
     this.updateTable();
   }

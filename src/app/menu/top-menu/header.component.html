@@ -2,7 +2,7 @@
 
   <nav id="headerNav">
     <div id="spanLogo" class="h-100"  [ngClass]="{'menu-is-aberto': isMenuAberto}">
-      <div class="d-flex align-items-center h-100">
+      <div (dblclick)="toggleHeaderBackground()" class="d-flex align-items-center h-100">
         <img [src]="isMenuAberto ? logoCompletoBranco : logoXBranco" class="img-fluid img-logo rounded mx-auto">
       </div>
     </div>

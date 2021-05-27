@@ -32,7 +32,6 @@ export class UrlRedirectService {
         };
         if (!redirectParams.target) { return; }
         this.redirectParamsSource.next(redirectParams);
-        console.log("Route", this.redirectParamsSource.value);
         this.router.navigateByUrl(redirectParams.target);
       }
     );

@@ -96,9 +96,28 @@ body {
   color: var(--cxContrast);
 }
 
-#headerGeral {
+header {
+  height: 64px !important;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+/*   box-shadow: var(--cxShadow); */
   background: var(--cxHeaderBgColor);
   color: var(--cxHeaderTextColor);
+  border-bottom: solid 1px var(--cxCancel);
+  #headerNav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    #btnTrocarMenuLateral {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  }
 }
 
 /* 
@@ -1069,7 +1088,8 @@ select {
   transition: 0.5s;
   z-index: 999;
   max-height: calc(100% - 64px);
-  box-shadow: var(--cxShadow);
+/*   box-shadow: var(--cxShadow); */
+  border-right: solid 1px var(--cxCancel);
 }
 #menuLateral.reduzido {
   width: 165px;
@@ -1438,3 +1458,66 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 	color: var(--cxSuccess);
 }
 
+/* LOADING BAR 1 */
+.progress-line, .progress-line:before {
+  height: 3px;
+  width: 100%;
+  margin: 0;
+}
+.progress-line {
+  background-color: var(--cxCancel);
+  display: -webkit-flex;
+  display: flex;
+}
+.progress-line:before {
+  background-color: var(--cxAccent);
+  content: '';
+  -webkit-animation: running-progress 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: running-progress 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@-webkit-keyframes running-progress {
+  0% { margin-left: 0px; margin-right: 100%; }
+  50% { margin-left: 25%; margin-right: 0%; }
+  100% { margin-left: 100%; margin-right: 0; }
+}
+@keyframes running-progress {
+  0% { margin-left: 0px; margin-right: 100%; }
+  50% { margin-left: 25%; margin-right: 0%; }
+  100% { margin-left: 100%; margin-right: 0; }
+}
+
+/* LOADING BAR 2 */
+.slider{
+  position: relative;
+  width: 100%;
+  height: 3px;
+  overflow-x: hidden;
+}
+
+.line{
+  position: absolute;
+  background: var(--cxCancel);
+  width:150%;
+  height: 3px;
+}
+
+.subline{
+  position:absolute;
+  background: var(--cxAccent);
+  height: 3px; 
+}
+.inc{
+  animation: increase 2s infinite;
+}
+.dec{
+  animation: decrease 2s 0.5s infinite;
+}
+
+@keyframes increase {
+   from { left: -5%; width: 5%; }
+   to { left: 130%; width: 100%;}
+}
+@keyframes decrease {
+   from { left: -80%; width: 80%; }
+   to { left: 110%; width: 10%;}
+}
