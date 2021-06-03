@@ -3,7 +3,9 @@ import { ToastrService } from "ngx-toastr";
 import { StepperItem } from "src/app/guia-caixa/components/stepper/stepper-component/stepper-item";
 import { BootstrapTheme } from "src/app/guia-caixa/constants/constants";
 import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
+import { DocApiProperties } from "src/app/shared/components/documentacao-api-table/documentacao-api-table.component";
 import { ComponentesInterface } from "../componentes-interface";
+import { stepperApiProps } from "./stepper-api-props";
 
 @Component({
   templateUrl: "./stepper-demonstracao.component.html",
@@ -43,7 +45,7 @@ export class StepperDemonstracaoComponent extends ComponentesInterface implement
 ];
 passoAtual = 0;`.trim();
 
-  stylesExample = "styles='{ height: '300px'; }'";
+  propsApi: DocApiProperties[] = stepperApiProps;
 
   showTabsStepperPadrao = false;
   htmlCodeStepperPadrao = `<cx-stepper [steps]="passos" [currentStep]="passoAtual" (changeStep)="passoAtual = $event"></cx-stepper>
