@@ -1,8 +1,10 @@
 import { Component, ViewChild } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
+import { DomSanitizer } from "@angular/platform-browser";
 import { ToastrService } from "ngx-toastr";
 import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 import { ComponentesInterface } from "../componentes-interface";
+import { cardButtonApiProps } from "./card-button-api-props";
 
 @Component({
   templateUrl: "./card-button-demonstracao.component.html",
@@ -13,7 +15,8 @@ export class CardButtonDemonstracaoComponent extends ComponentesInterface {
 
   constructor(
     public toastr: ToastrService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private sanitizer: DomSanitizer
   ) {
     super(toastr);
   }
@@ -38,7 +41,7 @@ export class CardButtonDemonstracaoComponent extends ComponentesInterface {
   user;
   email;
 
-  stylesExample = "styles='{ height: '300px'; }'";
+  propsApi = cardButtonApiProps;
 
   codeDescricao = `<cx-card-button leftIcon="fa fa-home" leftTitle="Título do lado esquerdo">
   <h5>Título do lado direito</h5>
