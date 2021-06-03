@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { ComponentesComponent } from "./componentes.component";
+import { ComponentesCaixaComponent } from "./componentes.component";
 import { CardsComponent } from "../componentes-basicos/cards/cards.component";
 import { BotoesComponent } from "../componentes-basicos/botoes/botoes.component";
 import { MensagensComponent } from "../componentes-basicos/mensagens/mensagens.component";
@@ -17,7 +17,7 @@ import { ButtonControlDemonstracaoComponent } from "./button-control-demonstraca
 const routes: Routes = [
   {
     path: "",
-    component: ComponentesComponent,
+    component: ComponentesCaixaComponent,
     // canActivate: [AuthGuard],
     data: {
       title: "Componentes",

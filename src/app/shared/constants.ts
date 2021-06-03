@@ -86,14 +86,14 @@ export const mockedSideMenuItems: AccordionMenu[] = [
         enabled: true,
         level: 2
       },
-      {
+/*       {
         name: "Tabber",
         iconClass: "fa fa-lg fa-ellipsis-h",
         url: "/componentes-caixa/tabber",
         isLink: true,
         enabled: true,
         level: 2
-      },
+      }, */
       {
         name: "Card-button",
         iconClass: "fa fa-lg fa-dot-circle",

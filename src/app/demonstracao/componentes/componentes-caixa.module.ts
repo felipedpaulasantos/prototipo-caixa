@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ComponentesComponent } from "./componentes.component";
+import { ComponentesCaixaComponent } from "./componentes.component";
 import { CardsComponent } from "../componentes-basicos/cards/cards.component";
 import { SharedModule } from "src/app/shared/shared.module";
 import { ComponentesRoutingModule } from "./componentes-routing.module";
@@ -36,7 +36,7 @@ import { ButtonControlDemonstracaoComponent } from './button-control-demonstraca
     GuiaCaixaModule
   ],
   declarations: [
-    ComponentesComponent,
+    ComponentesCaixaComponent,
     CardsComponent,
     MensagensComponent,
     InputsComponent,
