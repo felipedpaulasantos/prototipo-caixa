@@ -3,7 +3,9 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { TimelineItem, TimelineState } from "src/app/guia-caixa/components/timeline/timeline-item";
 import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
+import { DocApiProperties } from "src/app/shared/components/documentacao-api-table/documentacao-api-table.component";
 import { ComponentesInterface } from "../componentes-interface";
+import { timelineApiProps } from "./timeline-api-props";
 
 @Component({
   templateUrl: "./timeline-demonstracao.component.html",
@@ -35,6 +37,8 @@ export class TimelineDemonstracaoComponent extends ComponentesInterface implemen
     { id: "painelTimelineExtenso", name: "Extenso" }
   ];
 
+  propsApi: DocApiProperties[] = timelineApiProps;
+
   codeDescricao = `<cx-timeline [items]="timelineItems"></cx-timeline>`.trim();
 
   codeTsDescricao = `timelineItems: TimelineItem[] = [
@@ -65,8 +69,6 @@ export class TimelineDemonstracaoComponent extends ComponentesInterface implemen
     { title: "Item erro", state: "error", dateString: "03/12/2020" },
     { title: "Item info", state: "info", dateString: "06/12/2020" }
   ];
-
-  stylesExample = "styles='{ height: '300px'; }'";
 
   sandboxTimelineItems = [
     { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
