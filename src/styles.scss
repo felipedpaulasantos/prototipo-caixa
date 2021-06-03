@@ -1064,15 +1064,6 @@ select {
   font-family: Futura LT Bold !important;
 }
 
-/* Sombreamento */
-
-.shadow-caixa {
-  box-shadow: var(--cxShadow) !important;
-}
-.shadow-lg-caixa {
-  box-shadow: $cx-lg-box-shadow !important;
-}
-
 /* 
   MENU LATERAL 
 */
@@ -1088,8 +1079,7 @@ select {
   transition: 0.5s;
   z-index: 999;
   max-height: calc(100% - 64px);
-/*   box-shadow: var(--cxShadow); */
-  border-right: solid 1px var(--cxCancel);
+  box-shadow: var(--cxShadowLg);
 }
 #menuLateral.reduzido {
   width: 165px;
