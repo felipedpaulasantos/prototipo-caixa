@@ -10,7 +10,8 @@ export interface DocApiProperties {
 @Component({
   selector: "app-documentacao-api-table",
   template: `
-  <h6 class="header-subtitulo-caixa">Propriedades</h6>
+  <h6 class="header-subtitulo-caixa">{{ titulo }}</h6>
+  <p *ngIf="descricao">{{ descricao }}</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped table-caixa">
       <thead>
@@ -40,6 +41,12 @@ export class DocumentacaoApiTableComponent implements OnInit {
 
   @Input()
   props: DocApiProperties[];
+
+  @Input()
+  titulo = "Propriedades";
+
+  @Input()
+  descricao: string;
 
   ngOnInit(): void {}
 

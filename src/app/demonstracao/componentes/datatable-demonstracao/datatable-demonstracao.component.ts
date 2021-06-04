@@ -12,6 +12,7 @@ import { RandomDataFood } from "src/app/shared/model/random-data-food";
 import { RandomDataService } from "src/app/demonstracao/componentes/datatable-demonstracao/random-data.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
+import { datatableApiProps, datatableConfigOptionsProps, datatableConfigProps } from "./datatable-api-props";
 
 @Component({
   selector: "app-tabelas",
@@ -68,7 +69,6 @@ export class DatatableDemonstracaoComponent extends ComponentesInterface impleme
   settingsPadrao = DataTableConfig.DEFAULT_SETTINGS;
   settingsCompleta = DataTableConfig.COMPLETE_SETTINGS;
   settingsCompletaSemBotoes = DataTableConfig.COMPLETE_NO_BUTTON_SETTINGS;
-  settingsFilter = DataTableConfig.FILTER_SETTINGS;
   settingsInfo = DataTableConfig.PAGINATION_INFO_SETTINGS;
   settingsSimples = DataTableConfig.SIMPLE_SETTINGS;
   settingsCustom = DataTableConfig.getDataTableSettings({
@@ -98,6 +98,10 @@ export class DatatableDemonstracaoComponent extends ComponentesInterface impleme
     { id: "painelDatatableFiltros", name: "Filtros por coluna" },
     { id: "painelDatatableReinicializacao", name: "Reinicialização" }
   ];
+
+  propsApi = datatableApiProps;
+  propsConfig = datatableConfigProps;
+  propsConfigOptions = datatableConfigOptionsProps;
 
   filterPosition = "";
 

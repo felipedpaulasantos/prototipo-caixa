@@ -88,6 +88,11 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.reloadTable();
   }
 
+  public updateFilterColumnType(type: string): void {
+    this.columnFilterType = type;
+    this.reloadTable();
+  }
+
   private setDefaultLanguage(): void {
     $.extend($.fn.dataTable.defaults, {
       language: dtLanguageDefinitionPt

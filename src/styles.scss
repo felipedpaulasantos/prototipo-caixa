@@ -1170,7 +1170,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   &.active.has-submenu {
     color: var(--cxSidemenuActiveBgColor);
     font-family: var(--cxFontFamilyBold);
-    box-shadow: 0 0.6rem 0.4rem -0.4rem var(--cxTransparentContrast025);
+    box-shadow: var(--cxShadow);
   }
   &.active.is-link {
     background-color: var(--cxSidemenuActiveBgColor);
@@ -1287,7 +1287,9 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   padding: 0.75rem 1.75rem 0.75rem 3.5rem;
   border-radius: var(--cxBorderRadius);
   &::before {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--cxFontFaIcon);
     font-weight: 900;
     min-width: 3rem;

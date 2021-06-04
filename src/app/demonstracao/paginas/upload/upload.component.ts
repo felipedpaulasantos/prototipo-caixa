@@ -131,7 +131,6 @@ export class UploadComponent implements OnInit, AfterViewInit {
   config: DataTables.Settings = DataTableConfig.COMPLETE_SETTINGS;
   configCompleta = DataTableConfig.COMPLETE_SETTINGS;
   configCompletaSemBotoes = DataTableConfig.COMPLETE_NO_BUTTON_SETTINGS;
-  configFilter = DataTableConfig.FILTER_SETTINGS;
   configInfo = DataTableConfig.PAGINATION_INFO_SETTINGS;
   configSimples = DataTableConfig.SIMPLE_SETTINGS;
   dtTrigger: Subject<any> = new Subject();

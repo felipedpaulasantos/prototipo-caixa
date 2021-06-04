@@ -1,5 +1,5 @@
 <h1 class="titulo mb-0">
-	DataTable (Em desenvolvimento)
+	DataTable
 </h1>
 
 <div class="my-4">
@@ -14,6 +14,20 @@
 				Angular + Datatables</a>.
 		</p>
 	</h5>
+
+	<div class="alert alert-outline-warning">
+		Este componente <b>não</b> funciona nas seguintes situações:
+		<ul class="lista-alert">
+			<li>
+				<a href="https://datatables.net/forums/discussion/30847/cannot-use-colspan-in-tbody" target="_blank">
+					Tabela com 'colspan' no 'tbody'
+				</a>. A biblioteca DataTables exige que todas as linhas do 'tbody' tenham a mesma quantidade de colunas.<br>
+				OBS: É possível contornar essa limitação acrescentando os 'td's faltantes com 'display: none', mas os efeitos são imprevisíveis.
+				
+			</li>
+			<li>Tabela dentro de outra tabela</li>
+		</ul>
+	</div>
 
 	<h6 class="font-fam-bold">HTML:</h6>
 	<pre><code [highlight]="codeDescricao"></code></pre> 
@@ -183,7 +197,29 @@
 	</div>
 
 	<div class="tab-pane fade" id="api" role="tabpanel">
-		Em construção...
+		<div class="card">
+			<div class="card-body">
+				<app-documentacao-api-table
+					[props]="propsApi"
+				></app-documentacao-api-table>
+
+				<br>
+
+				<app-documentacao-api-table
+					titulo="DataTableConfig"
+					descricao="Classe de configurações pré-definidas e métodos auxiliares"
+					[props]="propsConfig"
+				></app-documentacao-api-table>
+
+				<br>
+
+				<app-documentacao-api-table
+					titulo="DataTableConfigOptions"
+					descricao="Parâmetros para o método DataTableConfig.getDataTableSettings( )"
+					[props]="propsConfigOptions"
+				></app-documentacao-api-table>
+			</div>
+		</div>
 	</div>
 
 	<div class="tab-pane fade" id="exemplos" role="tabpanel">
