@@ -14,7 +14,7 @@ export const timelineApiProps: DocApiProperties[] = [
       Padrão: TimelineOrientation.vertical | "1"`
    }, {
       nome: `@Input( )<br>styles: [class: string]: any | string`,
-      descricao: `Objeto de estilo a ser passado para o card-button-wrapper.`,
+      descricao: `Objeto de estilo a ser passado para o timeline-wrapper.`,
       codeExample: stylesExample,
       codeLang: "css"
    }

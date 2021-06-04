@@ -33,13 +33,12 @@ export const stepperApiProps: DocApiProperties[] = [
       Padrão: true`
    }, {
       nome: `@Input( )<br>styles: [class: string]: any | string`,
-      descricao: `Objeto de estilo a ser passado para o card-button-wrapper`,
+      descricao: `Objeto de estilo a ser passado para o stepper-wrapper`,
       codeExample: stylesExample,
       codeLang: "css"
    }, {
       nome: `@Output( )<br>changeStep: EventEmitter&#60;number>`,
-      descricao: `Objeto de estilo a ser passado para o card-button-wrapper.<br>
-      <pre><code [highlight]="stylesExample"></code></pre>`
+      descricao: `Evento disparado sempre que um ícone válido é clicado, transmitindo o índice deste ícone. `
    }, {
       nome: `next( ): void`,
       descricao: `Avança para o próximo passo.`
