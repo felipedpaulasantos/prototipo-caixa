@@ -15,6 +15,7 @@ import { MenuItemComponent } from "./accordion/menu-item/menu-item.component";
 import { StepperModule } from "../../guia-caixa/components/stepper/stepper.module";
 import { CodeFixedNavComponent } from "./code-fixed-nav/code-fixed-nav.component";
 import { DocumentacaoTemplateComponent } from "./documentacao-template/documentacao-template.component";
+import { DocumentacaoApiTableComponent } from './documentacao-api-table/documentacao-api-table.component';
 
 @NgModule({
 	declarations: [
@@ -25,7 +26,8 @@ import { DocumentacaoTemplateComponent } from "./documentacao-template/documenta
 		CodeViewComponent,
 		MenuItemComponent,
 		CodeFixedNavComponent,
-		DocumentacaoTemplateComponent
+		DocumentacaoTemplateComponent,
+		DocumentacaoApiTableComponent
 	],
 	imports: [
 		CommonModule,
@@ -43,7 +45,8 @@ import { DocumentacaoTemplateComponent } from "./documentacao-template/documenta
 		AccordionComponent,
 		CodeViewComponent,
 		CodeFixedNavComponent,
-		DocumentacaoTemplateComponent
+		DocumentacaoTemplateComponent,
+		DocumentacaoApiTableComponent
 	]
 })
 export class SharedComponentsModule { }

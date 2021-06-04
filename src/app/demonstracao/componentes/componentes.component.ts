@@ -6,7 +6,7 @@ import { SideMenuService } from "src/app/menu/side-menu/side-menu.service";
   templateUrl: "./componentes.component.html",
   styleUrls: ["./componentes.component.css"]
 })
-export class ComponentesComponent implements OnInit {
+export class ComponentesCaixaComponent implements OnInit {
 
   constructor(
     private menuService: SideMenuService

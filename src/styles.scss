@@ -71,7 +71,7 @@
 
   --cxShadowDarkSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
   --cxShadowDark: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
-  --cxShadowDarkLg: 0 0.3rem 0.8rem rgba(8, 1, 1, 0.15);
+  --cxShadowDarkLg: 0 3px 4px 0 rgba(0,0,0,.2),0 3px 3px -2px rgba(0,0,0,.14),0 1px 8px 0 rgba(0,0,0,.12);
 
   --cxShadowLightSm: 0 0.1rem 0.2rem rgba(255, 255, 255, 0.15);
   --cxShadowLight: 0 0.2rem 0.2rem rgba(255, 255, 255, 0.15);
@@ -79,7 +79,7 @@
 
   --cxShadowSm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
   --cxShadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
-  --cxShadowLg: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+  --cxShadowLg: 0 3px 4px 0 rgba(0,0,0,.2),0 3px 3px -2px rgba(0,0,0,.14),0 1px 8px 0 rgba(0,0,0,.12);
 
   --cxBorderRadius: 5px;
   --cxBorderRadiusRound: 50%;
@@ -104,10 +104,10 @@ header {
   left: 0;
   z-index: 9;
   width: 100%;
-/*   box-shadow: var(--cxShadow); */
+  box-shadow: var(--cxShadowLg);
   background: var(--cxHeaderBgColor);
   color: var(--cxHeaderTextColor);
-  border-bottom: solid 1px var(--cxCancel);
+  // border-bottom: solid 1px var(--cxCancel);
   #headerNav {
     display: flex;
     align-items: center;
@@ -1064,15 +1064,6 @@ select {
   font-family: Futura LT Bold !important;
 }
 
-/* Sombreamento */
-
-.shadow-caixa {
-  box-shadow: var(--cxShadow) !important;
-}
-.shadow-lg-caixa {
-  box-shadow: $cx-lg-box-shadow !important;
-}
-
 /* 
   MENU LATERAL 
 */
@@ -1088,8 +1079,7 @@ select {
   transition: 0.5s;
   z-index: 999;
   max-height: calc(100% - 64px);
-/*   box-shadow: var(--cxShadow); */
-  border-right: solid 1px var(--cxCancel);
+  box-shadow: var(--cxShadowLg);
 }
 #menuLateral.reduzido {
   width: 165px;
@@ -1168,7 +1158,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   height: 4.153rem;
   width: 100%;
   min-height: 4.153rem;
-  transition: 0.2s;
+  transition: 0.2s, background 0s;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -1180,7 +1170,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   &.active.has-submenu {
     color: var(--cxSidemenuActiveBgColor);
     font-family: var(--cxFontFamilyBold);
-    box-shadow: 0 0.6rem 0.4rem -0.4rem var(--cxTransparentContrast025);
+    box-shadow: var(--cxShadow);
   }
   &.active.is-link {
     background-color: var(--cxSidemenuActiveBgColor);
@@ -1297,7 +1287,9 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   padding: 0.75rem 1.75rem 0.75rem 3.5rem;
   border-radius: var(--cxBorderRadius);
   &::before {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--cxFontFaIcon);
     font-weight: 900;
     min-width: 3rem;

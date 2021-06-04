@@ -46,3 +46,12 @@
   height: 2.5rem;
   border-radius: 2rem;
 }
+
+.sidemenu-collapse-icon {
+  background: var(--cxHeaderBgColor);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  height: 100%;
+}

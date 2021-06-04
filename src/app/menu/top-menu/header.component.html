@@ -1,16 +1,14 @@
 <header #headerGeral id="headerGeral">
 
   <nav id="headerNav">
+    <span class="sidemenu-collapse-icon" role="button" (click)="trocaMenuLateral()">
+      <i class="fas fa-bars fa-lg"></i>
+    </span>
     <div id="spanLogo" class="h-100"  [ngClass]="{'menu-is-aberto': isMenuAberto}">
       <div (dblclick)="toggleHeaderBackground()" class="d-flex align-items-center h-100">
         <img [src]="isMenuAberto ? logoCompletoBranco : logoXBranco" class="img-fluid img-logo rounded mx-auto">
       </div>
     </div>
-
-    <span class="d-flex align-items-center p-4 h-100" role="button" (click)="trocaMenuLateral()">
-      <i *ngIf="isMenuAberto" class="fa fa-angle-double-left fa-lg"></i>
-      <i *ngIf="!isMenuAberto" class="fas fa-bars fa-lg"></i>
-    </span>
 
     <h4 class="d-none d-md-block mb-0 ml-2 subtitulo full-opacity">
       Olá, {{ user.nome_completo }}

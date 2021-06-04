@@ -143,17 +143,13 @@ export class DataTableConfig {
         showPagination: true
     });
 
-    static FILTER_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({
-        searching: true,
-        showFilter: true
-    });
-
-    static PAGINATION_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({
-        showPagination: true
-    });
-
     static PAGINATION_INFO_SETTINGS: DataTableSettings = DataTableConfig.getDataTableSettings({
+        searching: false,
+        showFilter: false,
+        showLength: false,
+        showButtons: false,
         showInfo: true,
+        showProcessing: true,
         showPagination: true
     });
 
