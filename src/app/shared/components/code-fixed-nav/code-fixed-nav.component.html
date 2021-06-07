@@ -1,4 +1,4 @@
-<div class="position-sticky list-group list-group-caixa shadow-caixa border-0 mx-auto">
+<div class="position-sticky list-group mx-auto">
    <a *ngFor="let item of items" (click)="scrollTo(item.id)" class="list-group-item list-group-item-action"
       [ngClass]="{'active': currentSection == item.id}" role="button">
       {{ item.name }}

@@ -1133,10 +1133,9 @@ select {
   border-right: transparent !important;
   border-bottom: transparent !important;
   border: solid 2px transparent !important;
-  border-radius: 0 !important;
   &.active {
-    background-color: var(--cxAccent) !important;
-    color: var(--cxBase) !important;
+    font-family: var(--cxFontFamilyBold);
+    color: var(--cxAccent) !important;
   }
 }
 
