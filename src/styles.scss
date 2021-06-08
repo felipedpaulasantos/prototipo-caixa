@@ -188,7 +188,7 @@ a {
   text-decoration: none !important;
   box-shadow: none;
   &:hover {
-    box-shadow: var(--cxShadow);
+    box-shadow: var(--cxShadowLg);
   }
 }
 
@@ -1301,6 +1301,9 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
     line-height: 3rem;
   }
 }
+*[class*="alert-outline-"] {
+  background-color: var(--cxBase);
+}
 /* INFO */
 .alert-info, .alert-outline-info {
   &::before {
@@ -1317,7 +1320,6 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
 }
 .alert-outline-info {
-  background-color: transparent;
   border-color: var(--cxInfo);
   &::before {
     color: var(--cxInfoContrast);
@@ -1340,7 +1342,6 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
 }
 .alert-outline-warning {
-  background-color: transparent;
   border-color: var(--cxWarning);
   &::before {
     color: var(--cxWarningContrast);
@@ -1363,7 +1364,6 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
 }
 .alert-outline-success {
-  background-color: transparent;
   border-color: var(--cxSuccess);
   &::before {
     color: var(--cxSuccessContrast);
@@ -1386,7 +1386,6 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
 }
 .alert-outline-danger {
-  background-color: transparent;
   border-color: var(--cxDanger);
   &::before {
     color: var(--cxDangerContrast);
