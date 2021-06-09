@@ -28,7 +28,7 @@ export class StepperComponent implements OnInit, OnChanges, AfterContentInit {
   readonly BACK_ICON_Y = "fa fa-arrow-up";
 
   /**
-   * Mapeia as templates dinâmicas com a diretiva *stepper, caso seja usada a variante de comportamento contentInside;
+   * Mapeia as templates dinâmicas com a diretiva *cxStepper;
   */
   @ContentChildren(StepperDirective, { read: TemplateRef })
   templates: TemplateRef<any>[];
