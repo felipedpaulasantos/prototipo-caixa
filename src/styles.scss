@@ -184,14 +184,6 @@ a {
   transition: 0.2s;
 }
 
-.btn-link {
-  text-decoration: none !important;
-  box-shadow: none;
-  &:hover {
-    box-shadow: var(--cxShadowLg);
-  }
-}
-
 /* Ajuste de cor do texto */
 .btn.btn-main {
   color: var(--cxBase);
@@ -228,8 +220,7 @@ a {
   font-size: 0.875rem !important;
 }
 
-.btn-flat {
-  @extend .btn;
+.btn-link {
   transition: 0.3s;
   background: transparent;
   box-shadow: none;

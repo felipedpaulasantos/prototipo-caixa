@@ -86,13 +86,13 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
   Com ícone
 </button>`.trim();
 
-  htmlCodeExemplo = `          <button class="btn btn-caixa btn-flat">
+  htmlCodeExemplo = `          <button class="btn btn-caixa btn-link">
   Flat
 </button>
-<button class="btn btn-caixa btn-flat rounded-circle p-3">
+<button class="btn btn-caixa btn-link rounded-circle p-3">
   <i class="fa fa-bars fa-2x"></i>
 </button>
-<button class="btn btn-caixa btn-flat text-main rounded-circle p-2">
+<button class="btn btn-caixa btn-link text-main rounded-circle p-2">
   <i class="fa fa-home fa-2x"></i>
 </button>
 <button class="btn btn-caixa btn-outline-apoio rounded-circle p-2">
