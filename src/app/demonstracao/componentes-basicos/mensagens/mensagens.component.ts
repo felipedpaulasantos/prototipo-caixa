@@ -36,19 +36,19 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
     { id: "painelSpinner", name: "Carregamento" }
   ];
 
-  htmlCodeMensagens = `        <button class="btn btn-caixa btn-success" (click)="exibirSucesso()">
+  htmlCodeMensagens = `        <button class="btn btn-success" (click)="exibirSucesso()">
   Sucesso!
 </button> &nbsp;
 
-<button class="btn btn-caixa btn-danger" (click)="exibirErro()">
+<button class="btn btn-danger" (click)="exibirErro()">
   Erro!
 </button> &nbsp;
 
-<button class="btn btn-caixa btn-alerta" (click)="exibirAlerta()">
+<button class="btn btn-alerta" (click)="exibirAlerta()">
   Alerta!
 </button> &nbsp;
 
-<button class="btn btn-caixa btn-info" (click)="exibirInfo()">
+<button class="btn btn-info" (click)="exibirInfo()">
   Informação!
 </button> &nbsp;`.trim();
   tsCodeMensagens = `  import { Component } from '@angular/core';
@@ -83,7 +83,7 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
   }
   `.trimRight();
 
-  htmlCodeSpinner = `        <button class="btn btn-caixa btn-outline-dark" (click)="exibirSpinner()">
+  htmlCodeSpinner = `        <button class="btn btn-outline-dark" (click)="exibirSpinner()">
   Mostrar tela de carregamento
 </button>`.trim();
   tsCodeSpinner = `  import { Component } from '@angular/core';
@@ -109,7 +109,7 @@ export class MensagensComponent extends ComponentesInterface implements OnInit {
   }
   `.trimRight();
 
-  htmlCodeModal = `        <button class="btn btn-caixa btn-outline-dark" (click)="exibirModal()">
+  htmlCodeModal = `        <button class="btn btn-outline-dark" (click)="exibirModal()">
   <i class="fa fa-lg fa-external-link-alt mr-2"></i>
   Mostrar modal
 </button>`.trim();

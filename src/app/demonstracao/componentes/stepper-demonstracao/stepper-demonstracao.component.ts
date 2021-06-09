@@ -55,12 +55,12 @@ passoAtual = 0;`.trim();
     <h2 class="text-center">{{ passo }}</h2>
 
     <button [disabled]="passoAtual == 0"
-    (click)="passoAtual = passoAtual - 1" class="btn btn-cancel btn-caixa mx-2">
+    (click)="passoAtual = passoAtual - 1" class="btn btn-cancel mx-2">
         Voltar
     </button>
 
     <button [disabled]="passoAtual == passos.length - 1"
-    (click)="passoAtual = passoAtual + 1" class="btn btn-accent btn-caixa mx-2">
+    (click)="passoAtual = passoAtual + 1" class="btn btn-accent mx-2">
         Avançar
     </button>
   </ng-container>
@@ -96,12 +96,12 @@ passoAtual = 0;`.trim();
     <h2 class="text-center">{{ passo }}</h2>
 
     <button [disabled]="passoAtual == 0"
-    (click)="passoAtual = passoAtual - 1" class="btn btn-cancel btn-caixa mx-2">
+    (click)="passoAtual = passoAtual - 1" class="btn btn-cancel mx-2">
         Voltar
     </button>
 
     <button [disabled]="passoAtual == passos.length - 1"
-    (click)="passoAtual = passoAtual + 1" class="btn btn-accent btn-caixa mx-2">
+    (click)="passoAtual = passoAtual + 1" class="btn btn-accent mx-2">
         Avançar
     </button>
   </ng-container>
@@ -139,17 +139,17 @@ passoAtual = 0;`.trim();
   </div>
 
   <button [disabled]="stepperExemplo.currentStep == 0"
-  (click)="stepperExemplo.first()" class="btn btn-aux btn-caixa mx-2">
+  (click)="stepperExemplo.first()" class="btn btn-aux mx-2">
      Primeiro
   </button>
 
   <button [disabled]="stepperExemplo.currentStep == 0"
-  (click)="stepperExemplo.previous()" class="btn btn-cancel btn-caixa mx-2">
+  (click)="stepperExemplo.previous()" class="btn btn-cancel mx-2">
      Voltar
   </button>
 
   <button [disabled]="stepperExemplo.currentStep == passos.length - 1"
-  (click)="stepperExemplo.next()" class="btn btn-accent btn-caixa mx-2">
+  (click)="stepperExemplo.next()" class="btn btn-accent mx-2">
      Avançar
   </button>`.trim();
 
@@ -199,17 +199,17 @@ passoAtual = 0;`.trim();
 </cx-stepper>
 
 <button [disabled]="stepperInterno.currentStep == 0"
-(click)="stepperInterno.first()" class="btn btn-aux btn-caixa mx-2">
+(click)="stepperInterno.first()" class="btn btn-aux mx-2">
   Primeiro
 </button>
 
 <button [disabled]="stepperInterno.currentStep == 0"
-(click)="stepperInterno.previous()" class="btn btn-cancel btn-caixa mx-2">
+(click)="stepperInterno.previous()" class="btn btn-cancel mx-2">
   Voltar
 </button>
 
 <button [disabled]="stepperInterno.currentStep == passos.length - 1"
-(click)="stepperInterno.next()" class="btn btn-accent btn-caixa mx-2">
+(click)="stepperInterno.next()" class="btn btn-accent mx-2">
   Avançar
 </button>`.trim();
 

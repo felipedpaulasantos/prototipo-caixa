@@ -71,40 +71,40 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
 
 
 
-  htmlCodeBotoes = `<button class="btn btn-caixa btn-cancel">Botão</button>`.trim();
+  htmlCodeBotoes = `<button class="btn btn-cancel">Botão</button>`.trim();
 
-  htmlCodeBotoesTematicos = `        <button class="btn btn-caixa btn-accent">Primário</button> &nbsp;
-<button class="btn btn-caixa btn-danger-dark">Erro com tom escuro</button> &nbsp;
-<button class="btn btn-caixa btn-apoio-light">Apoio com tom claro</button> &nbsp;
-<button class="btn btn-caixa btn-outline-info">Info - outline</button>`.trim();
+  htmlCodeBotoesTematicos = `        <button class="btn btn-accent">Primário</button> &nbsp;
+<button class="btn btn-danger-dark">Erro com tom escuro</button> &nbsp;
+<button class="btn btn-apoio-light">Apoio com tom claro</button> &nbsp;
+<button class="btn btn-outline-info">Info - outline</button>`.trim();
 
-  htmlCodeBotoesTamanho = `        <button class="btn btn-caixa btn-outline-dark btn-sm">Pequeno</button> &nbsp;
-<button class="btn btn-caixa btn-primario btn-lg">Grande</button> &nbsp;
-<button class="btn btn-caixa btn-primario btn-lg disabled">Grande desabilitado</button> &nbsp;
-<button class="btn btn-caixa btn-outline-accent">
+  htmlCodeBotoesTamanho = `        <button class="btn btn-outline-dark btn-sm">Pequeno</button> &nbsp;
+<button class="btn btn-primario btn-lg">Grande</button> &nbsp;
+<button class="btn btn-primario btn-lg disabled">Grande desabilitado</button> &nbsp;
+<button class="btn btn-outline-accent">
   <i class="fa fa-edit mr-2"></i>
   Com ícone
 </button>`.trim();
 
-  htmlCodeExemplo = `          <button class="btn btn-caixa btn-link">
+  htmlCodeExemplo = `          <button class="btn btn-link">
   Flat
 </button>
-<button class="btn btn-caixa btn-link rounded-circle p-3">
+<button class="btn btn-link rounded-circle p-3">
   <i class="fa fa-bars fa-2x"></i>
 </button>
-<button class="btn btn-caixa btn-link text-main rounded-circle p-2">
+<button class="btn btn-link text-main rounded-circle p-2">
   <i class="fa fa-home fa-2x"></i>
 </button>
-<button class="btn btn-caixa btn-outline-apoio rounded-circle p-2">
+<button class="btn btn-outline-apoio rounded-circle p-2">
   <i class="fa fa-check fa-lg"></i>
 </button>
-<button class="btn btn-caixa btn-primario rounded-circle p-3">
+<button class="btn btn-primario rounded-circle p-3">
   <i class="fa fa-play fa-lg"></i>
 </button>
-<button class="btn btn-caixa btn-outline-perigo rounded-circle shadow-none p-4">
+<button class="btn btn-outline-perigo rounded-circle shadow-none p-4">
   <i class="fa fa-trash fa-2x"></i>
 </button>
-<button class="btn btn-caixa btn-aux shadow-none">
+<button class="btn btn-aux shadow-none">
   Sem sombra
 </button>`.trim();
 
@@ -118,12 +118,12 @@ export class BotoesComponent extends ComponentesInterface implements OnInit {
     <tbody>
       <ng-container *ngFor="let tema of temas; let i = index">
         <tr>
-          <td><button class="btn btn-caixa btn-{{tema.name}}">Padrão</button></td>
-          <td><button class="btn btn-caixa btn-{{tema.name}}-light">Claro</button></td>
-          <td><button class="btn btn-caixa btn-{{tema.name}}-dark">Escuro</button></td>
-          <td><button class="btn btn-caixa btn-outline-{{tema.name}}">Outline</button></td>
-          <td><button class="btn btn-caixa btn-outline-{{tema.name}}-light">Claro</button></td>
-          <td><button class="btn btn-caixa btn-outline-{{tema.name}}-dark">Escuro</button></td>
+          <td><button class="btn btn-{{tema.name}}">Padrão</button></td>
+          <td><button class="btn btn-{{tema.name}}-light">Claro</button></td>
+          <td><button class="btn btn-{{tema.name}}-dark">Escuro</button></td>
+          <td><button class="btn btn-outline-{{tema.name}}">Outline</button></td>
+          <td><button class="btn btn-outline-{{tema.name}}-light">Claro</button></td>
+          <td><button class="btn btn-outline-{{tema.name}}-dark">Escuro</button></td>
         </tr>
       </ng-container>
     </tbody>

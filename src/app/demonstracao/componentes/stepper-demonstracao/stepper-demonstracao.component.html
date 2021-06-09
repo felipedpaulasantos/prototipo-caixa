@@ -64,12 +64,12 @@
                         <h2 class="text-center">{{ passo.title }}</h2>
 
                         <button [disabled]="passoAtual == 0" (click)="passoAtual = passoAtual - 1"
-                           class="btn btn-cancel btn-caixa mx-2">
+                           class="btn btn-cancel mx-2">
                            Voltar
                         </button>
 
                         <button [disabled]="passoAtual == passos.length - 1" (click)="passoAtual = passoAtual + 1"
-                           class="btn btn-accent btn-caixa mx-2">
+                           class="btn btn-accent mx-2">
                            Avançar
                         </button>
                      </ng-container>
@@ -98,12 +98,12 @@
                         <h2 class="text-center">{{ passo.title }}</h2>
 
                         <button [disabled]="passoAtual == 0" (click)="passoAtual = passoAtual - 1"
-                           class="btn btn-cancel btn-caixa mx-2">
+                           class="btn btn-cancel mx-2">
                            Voltar
                         </button>
 
                         <button [disabled]="passoAtual == passos.length - 1" (click)="passoAtual = passoAtual + 1"
-                           class="btn btn-accent btn-caixa mx-2">
+                           class="btn btn-accent mx-2">
                            Avançar
                         </button>
                      </ng-container>
@@ -157,17 +157,17 @@
                   </cx-stepper>
 
                   <button [disabled]="stepperInterno.currentStep == 0" (click)="stepperInterno.first()"
-                     class="btn btn-aux btn-caixa mx-2">
+                     class="btn btn-aux mx-2">
                      Primeiro
                   </button>
 
                   <button [disabled]="stepperInterno.currentStep == 0" (click)="stepperInterno.previous()"
-                     class="btn btn-cancel btn-caixa mx-2">
+                     class="btn btn-cancel mx-2">
                      Voltar
                   </button>
 
                   <button [disabled]="stepperInterno.currentStep == passos.length - 1" (click)="stepperInterno.next()"
-                     class="btn btn-accent btn-caixa mx-2">
+                     class="btn btn-accent mx-2">
                      Avançar
                   </button>
                </div>
@@ -237,22 +237,22 @@
                   </div>
                </div>
                <div class="d-flex justify-content-center">
-                  <button title="Primeiro" class="btn btn-aux btn-caixa mr-2"
+                  <button title="Primeiro" class="btn btn-aux mr-2"
                      [disabled]="stepperFree.currentStep == 0" (click)="stepperFree.first()">
                      <i class="fa fa-angle-double-left fa-lg"></i>
                   </button>
 
                   <button [disabled]="stepperFree.currentStep <= 0" (click)="stepperFree.previous()"
-                     class="btn btn-cancel btn-caixa mr-2">
+                     class="btn btn-cancel mr-2">
                      <i class="fa fa-angle-left fa-lg"></i>
                   </button>
 
                   <button [disabled]="stepperFree.currentStep == (steps.length - 1)" (click)="stepperFree.next()"
-                     class="btn btn-accent btn-caixa">
+                     class="btn btn-accent">
                      <i class="fa fa-angle-right fa-lg"></i>
                   </button>
 
-                  <button title="Último" class="btn btn-aux btn-caixa ml-2"
+                  <button title="Último" class="btn btn-aux ml-2"
                      [disabled]="true"
                      (click)="stepperFree.toStepByIndex(steps.length - 1)">
                      <i class="fa fa-angle-double-right fa-lg"></i>
@@ -260,12 +260,12 @@
                </div>
                <div class="row">
                   <div class="col d-flex align-items-center">
-                     <button title="Remover" class="btn btn-danger btn-caixa ml-2" [disabled]="steps.length == 2"
+                     <button title="Remover" class="btn btn-danger ml-2" [disabled]="steps.length == 2"
                         (click)="removeStep()">
                         <i class="fa fa-minus fa-lg"></i>
                      </button>
 
-                     <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
+                     <button title="Adicionar" class="btn btn-success ml-2"
                         [disabled]="steps.length == stepperFree.MAXIMUM_STEPS"
                         (click)="addStep(inputNovoStepFree.value); inputNovoStepFree.value = ''">
                         <i class="fa fa-plus fa-lg"></i>

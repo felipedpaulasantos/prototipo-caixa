@@ -1,6 +1,6 @@
 <div class="card-caixa-botoes" *ngIf="cardHeaderElement">
    <a *ngIf="draggable && wasMoved" (click)="reset()"
-   title="Resetar posição" class="btn btn-caixa rounded-circle">
+   title="Resetar posição" class="btn rounded-circle">
       <i class="fa fa-lg fa-undo-alt"></i>
    </a>
    <a *ngIf="cardHeaderElement && !isMinimized" (click)="minimizar()"

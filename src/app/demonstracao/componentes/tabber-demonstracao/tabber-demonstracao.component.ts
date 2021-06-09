@@ -45,22 +45,22 @@ export class TabberDemonstracaoComponent extends ComponentesInterface {
 </cx-tabber>
 
 <button [disabled]="tabberExemplo.currentTab == 0"
-(click)="tabberExemplo.first()" class="btn btn-aux btn-caixa mx-2">
+(click)="tabberExemplo.first()" class="btn btn-aux mx-2">
   Primeiro
 </button>
 
 <button [disabled]="tabberExemplo.currentTab == 0"
-(click)="tabberExemplo.previous()" class="btn btn-cancel btn-caixa mx-2">
+(click)="tabberExemplo.previous()" class="btn btn-cancel mx-2">
   Voltar
 </button>
 
 <button [disabled]="tabberExemplo.currentTab == abas.length - 1"
-(click)="tabberExemplo.next()" class="btn btn-accent btn-caixa mx-2">
+(click)="tabberExemplo.next()" class="btn btn-accent mx-2">
   Avançar
 </button>
 
 <button [disabled]="tabberExemplo.currentTab == abas.length - 1"
-(click)="tabberExemplo.last()" class="btn btn-aux btn-caixa mx-2">
+(click)="tabberExemplo.last()" class="btn btn-aux mx-2">
    Último
 </button>`.trim();
 
@@ -102,22 +102,22 @@ export class StepperComponent {
 </cx-tabber>
 
 <button [disabled]="tabberExemploState.currentTab == 0" (click)="tabberExemploState.first()"
-  class="btn btn-aux btn-caixa mt-3 mx-2">
+  class="btn btn-aux mt-3 mx-2">
   Primeiro
 </button>
 
 <button [disabled]="tabberExemploState.currentTab == 0" (click)="tabberExemploState.previous()"
-  class="btn btn-cancel btn-caixa mx-2">
+  class="btn btn-cancel mx-2">
   Voltar
 </button>
 
 <button [disabled]="tabberExemploState.currentTab == abas.length - 1" (click)="tabberExemploState.next()"
-  class="btn btn-accent btn-caixa mx-2">
+  class="btn btn-accent mx-2">
   Avançar
 </button>
 
 <button [disabled]="tabberExemploState.currentTab == abas.length - 1" (click)="tabberExemploState.last()"
-  class="btn btn-aux btn-caixa mx-2">
+  class="btn btn-aux mx-2">
   Último
 </button>`.trim();
 
