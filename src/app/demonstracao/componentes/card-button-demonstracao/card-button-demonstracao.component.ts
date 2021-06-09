@@ -9,7 +9,6 @@ import { CardButtonCodeExamples } from "./card-button-code-examples";
 
 @Component({
   templateUrl: "./card-button-demonstracao.component.html",
-  styleUrls: ["./card-button-demonstracao.component.scss"],
   host: { "(window:scroll)": "onScroll($event)" }
 })
 export class CardButtonDemonstracaoComponent extends ComponentesInterface {
