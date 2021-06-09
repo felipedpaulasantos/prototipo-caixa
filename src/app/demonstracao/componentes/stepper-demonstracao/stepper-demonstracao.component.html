@@ -10,9 +10,9 @@
          cada passo.</p>
    </h5>
    <h6 class="font-fam-bold">HTML:</h6>
-	<pre><code [highlight]="codeDescricao" [languages]="['html']"></code></pre> 
+	<pre><code [highlight]="examples.codeDescricao" [languages]="['html']"></code></pre> 
    <h6 class="font-fam-bold">TS:</h6>
-	<pre><code [highlight]="codeTsDescricao"  [languages]="['ts']"></code></pre> 
+	<pre><code [highlight]="examples.codeTsDescricao"  [languages]="['ts']"></code></pre> 
 </div>
 
 
@@ -41,9 +41,9 @@
       <div class="row no-gutters">
          <section #scrollElement class="col-12 col-xl-9 pr-2">
 
-            <app-documentacao-template id="painelStepperPadrao" [cardTitle]="'Stepper - Navegação Livre'"
+            <app-documentacao-template id="painelStepperPadrao" [cardTitle]="'Navegação Livre'"
                [codeViewId]="'viewStepperPadrao'" [htmlTabId]="'htmlCodeStepperPadrao'"
-               [htmlCode]="htmlCodeStepperPadrao" [tsTabId]="'tsCodeStepperPadrao'" [tsCode]="tsCodeStepperPadrao">
+               [htmlCode]="examples.htmlCodeStepperPadrao" [tsTabId]="'tsCodeStepperPadrao'" [tsCode]="examples.tsCodeStepperPadrao">
                <div class="descricao">
                   <p>Em seu comportamento padrão, de <span class="citation-highlight">navegação livre</span>, o usuário
                      pode retornar a qualquer passo anterior clicando nos ícones.</p>
@@ -79,9 +79,9 @@
 
             <br>
 
-            <app-documentacao-template id="painelStepperGuiado" [cardTitle]="'Stepper - Navegação Guiada'"
+            <app-documentacao-template id="painelStepperGuiado" [cardTitle]="'Navegação Guiada'"
                [codeViewId]="'viewStepperGuiado'" [htmlTabId]="'htmlCodeStepperGuiado'"
-               [htmlCode]="htmlCodeStepperGuiado" [tsTabId]="'tsCodeStepperGuiado'" [tsCode]="tsCodeStepperGuiado">
+               [htmlCode]="examples.htmlCodeStepperGuiado" [tsTabId]="'tsCodeStepperGuiado'" [tsCode]="examples.tsCodeStepperGuiado">
                <div class="descricao">
                   <p>Passando o valor <span class="citation-highlight">false</span> para
                      a propriedade <span class="citation-highlight">freeNavigation</span>,
@@ -113,9 +113,9 @@
 
             <br>
 
-            <app-documentacao-template id="painelStepperInterno" [cardTitle]="'Stepper - Conteúdo dentro do componente'"
+            <app-documentacao-template id="painelStepperInterno" [cardTitle]="'Conteúdo dentro do componente'"
                [codeViewId]="'viewStepperInterno'" [htmlTabId]="'htmlCodeStepperInterno'"
-               [htmlCode]="htmlCodeStepperInterno" [tsTabId]="'tsCodeStepperInterno'" [tsCode]="tsCodeStepperInterno">
+               [htmlCode]="examples.htmlCodeStepperInterno" [tsTabId]="'tsCodeStepperInterno'" [tsCode]="examples.tsCodeStepperInterno">
                <div class="descricao">
                   <p>O conteúdo dinâmico a ser exibido também pode ser colocado dentro do componente Stepper,
                      identificando-o com a
