@@ -180,7 +180,7 @@ a {
   box-shadow: var(--cxShadow);
   position: relative;
   overflow: hidden;
-  vertical-align: unset;
+  /* vertical-align: unset; */
   transition: 0.2s;
 }
 
