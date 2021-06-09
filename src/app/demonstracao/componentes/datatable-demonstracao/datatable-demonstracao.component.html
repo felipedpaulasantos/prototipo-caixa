@@ -30,7 +30,7 @@
 	</div>
 
 	<h6 class="font-fam-bold">HTML:</h6>
-	<pre><code [highlight]="codeDescricao"></code></pre> 
+	<pre><code [highlight]="examples.codeDescricao"></code></pre> 
 </div>
 
 <ul class="nav nav-pills tab-caixa" role="tablist">
@@ -62,9 +62,9 @@
 				[cardTitle]="'Configuração'" 
 				[codeViewId]="'codePainelDatatable'"
 				[htmlTabId]="'htmlCodeDatatable'" 
-				[htmlCode]="htmlCodeDatatable"
+				[htmlCode]="examples.htmlCodeDatatable"
 				[tsTabId]="'tsCodeDatatable'"
-				[tsCode]="tsCodeDatatable">
+				[tsCode]="examples.tsCodeDatatable">
 					<div class="descricao">
 						<p>O atributo <span class="citation-highlight">settings</span> recebe um objeto do tipo <span class="citation-highlight">DataTableSettings</span>
 							com a configuração desejada da tabela, informando quais elementos serão exibidos.</p>
@@ -107,9 +107,9 @@
 				[cardTitle]="'Filtros por coluna'" 
 				[codeViewId]="'codePainelFiltros'"
 				[htmlTabId]="'htmlCodeDatatableFilter'" 
-				[htmlCode]="htmlCodeDatatableFilter"
+				[htmlCode]="examples.htmlCodeDatatableFilter"
 				[tsTabId]="'tsCodeDatatableFilter'"
-				[tsCode]="tsCodeDatatableFilter">
+				[tsCode]="examples.tsCodeDatatableFilter">
 					<div class="descricao">
 						<p>Filtros individuais por coluna podem ser acrescentados com os atributos 
 							<span class="citation-highlight">columnFilterType: DataTableColumnFilterType</span> ("input" ou "select") e 
@@ -158,7 +158,8 @@
 
 				<app-documentacao-template id="painelDatatableReinicializacao"
 				[cardTitle]="'Reinicialização'" 
-				[codeViewId]="'codePainelReload'">
+				[codeViewId]="'codePainelReload'"
+				[showCodeButton]="false">
 					<div class="descricao">
 						<p>Na grande maioria dos casos os dados das tabelas são carregados de fontes assíncronas, como uma consulta a um serviço.
 							Assim, quando os dados da tabela forem atualizados, há duas maneiras de reinicializar a DataTable.</p>
@@ -181,7 +182,7 @@
 						<pre><code [highlight]="codeHtmlTemplateString"></code></pre> 
 
 						<h6 class="font-fam-bold">TS:</h6>
-						<pre><code [highlight]="codeTsTemplateString"></code></pre> 
+						<pre><code [highlight]="examples.codeTsTemplateString"></code></pre> 
 					</div>
 
 					<div id="conteudoPainelReload" class="conteudo collapse">
@@ -349,9 +350,11 @@
 
 		<hr class="my-5">
 
-		<div id="cardTabelaSandbox" class="card my-3" *ngIf="showTable">
+		<cx-card id="cardTabelaSandbox" class="my-3" *ngIf="showTable">
+			<div class="card-header">
+				<h5 class="subtitulo">Tabela</h5>
+			</div>
 			<div class="card-body">
-				<h5 class="subtitulo mb-4">Tabela</h5>
 				<cx-datatable [settings]="settings" [trigger]="dtTrigger" #tabela>
 				  <table datatable class="table table-striped table-hover">
 					  <thead>
@@ -373,6 +376,41 @@
 				  </table>
 			  </cx-datatable>
 			</div>
-		</div>
+		</cx-card>
+
+		<cx-card id="cardTabelaSandboxChildRows" class="card my-3" *ngIf="showTable">
+			<div class="card-header">
+				<h5 class="subtitulo">Linhas afilhadas (em desenvolvimento)</h5>
+			</div>
+			<div class="card-body">
+				<cx-datatable [settings]="settings" [trigger]="dtTrigger" #tabelaChildRows>
+				  <table datatable class="table table-striped">
+					  <thead>
+						  <tr>
+							  <th></th> <!-- ícone -->
+							  <th>ID</th>
+							  <th>Prato</th>
+							  <th>Ingrediente</th>
+							  <th>Medida</th>
+						  </tr>
+					  </thead>
+					  <tbody>
+						  <tr *ngFor="let row of rows"
+						  [attr.data-content]="childRowContent"
+						  [attr.data-child-name]="row.id" 
+						  [attr.data-child-value]="row.dish">
+							  <td class="table-expand-button">
+								  <i class="fa fa-plus"></i>
+								</td>
+							  <td>{{ row.id }}</td>
+							  <td>{{ row.dish }}</td>
+							  <td>{{ row.ingredient }}</td>
+							  <td>{{ row.measurement }}</td>
+						  </tr>
+					  </tbody>
+				  </table>
+			  </cx-datatable>
+			</div>
+		</cx-card>
 	</div>
 </div>
