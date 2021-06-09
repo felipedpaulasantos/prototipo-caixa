@@ -35,7 +35,7 @@ export class ButtonControlComponent implements OnInit, ControlValueAccessor {
   /**
    * @param checked Evento emitido ao ativar o botão, contendo o próprio componente e seus atributos
    * na propriedade (target).
-   * @type CardButtonCheckEvent
+   * @type ButtonControlCheckedEvent
   */
   @Output()
   checked: EventEmitter<ButtonControlCheckedEvent> = new EventEmitter();

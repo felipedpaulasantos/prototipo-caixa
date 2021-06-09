@@ -119,6 +119,25 @@
 
       <br>
 
+      <app-documentacao-template id="painelButtonControl" [showCodeButton]="false" [cardTitle]="'Button Control'">
+        <div class="descricao">
+          O componente 'cx-button-control' se comporta como radio ou checkbox, conforme o valor passado no atributo 'type'.
+        </div>
+
+        <div class="conteudo">
+          <cx-button-control type="checkbox" value="valor_do_checkbox">
+            Checkbox
+          </cx-button-control>
+
+          <cx-button-control type="radio" value="valor_do_radio" class="ml-3">
+            Radio
+          </cx-button-control>
+          <pre class="mt-3"><code [highlight]="buttonControlExample" [languages]="['html']"></code></pre>
+        </div>
+      </app-documentacao-template>
+
+      <br>
+
       <app-documentacao-template id="painelRange" [showCodeButton]="false" [cardTitle]="'Range'">
         <div class="descricao">
           Para o elemento Range utilizar a classe "custom-range".
