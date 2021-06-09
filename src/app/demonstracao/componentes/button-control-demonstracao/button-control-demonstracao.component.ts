@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  templateUrl: "./button-control-demonstracao.component.html",
-  styleUrls: ["./button-control-demonstracao.component.scss"]
+  templateUrl: "./button-control-demonstracao.component.html"
 })
 export class ButtonControlDemonstracaoComponent implements OnInit {
 

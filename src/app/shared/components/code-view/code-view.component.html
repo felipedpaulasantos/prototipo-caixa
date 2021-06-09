@@ -22,21 +22,21 @@
 	<div class="tab-content">
 		<div *ngIf="htmlTabId && htmlCode" class="tab-pane fade show active" id="{{ htmlTabId }}" role="tabpanel">
 			<button (click)="copiarConteudo(htmlCode);" 
-			class="btn btn-caixa shadow-none text-contrast-light float-right rounded-circle">
+			class="btn shadow-none text-contrast-light float-right rounded-circle">
 				<i class="fa fa-copy fa-lg"></i>
 			</button>
 			<pre><code [highlight]="htmlCode" [languages]="['html']"></code></pre>
 		</div>
 		<div *ngIf="tsTabId && tsCode" class="tab-pane fade" id="{{ tsTabId }}" role="tabpanel">
 			<button (click)="copiarConteudo(tsCode);" 
-			class="btn btn-caixa shadow-none text-contrast-light float-right rounded-circle">
+			class="btn shadow-none text-contrast-light float-right rounded-circle">
 				<i class="fa fa-copy fa-lg"></i>
 			</button>
 			<pre><code [highlight]="tsCode" [languages]="['ts']"></code></pre>
 		</div>
 		<div *ngIf="cssTabId && cssCode" class="tab-pane fade" id="{{ cssTabId }}" role="tabpanel">
 			<button (click)="copiarConteudo(cssCode);" 
-			class="btn btn-caixa shadow-none text-contrast-light float-right rounded-circle">
+			class="btn shadow-none text-contrast-light float-right rounded-circle">
 				<i class="fa fa-copy fa-lg"></i>
 			</button>
 			<pre><code [highlight]="cssCode"  [languages]="['css']"></code></pre>

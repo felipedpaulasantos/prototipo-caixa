@@ -62,6 +62,7 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.theadElement = this.tableElement.querySelector("thead");
     this.tfootElement = this.tableElement.querySelector("tfoot");
     this.tbodyElement = this.tableElement.querySelector("tbody");
+    this.bindRowExpandEvent(this.tbodyElement);
 
     if (!this.dtElement.dtInstance) { return; }
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
@@ -191,6 +192,34 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       }
     });
+  }
+
+  private bindRowExpandEvent(tbody: HTMLElement) {
+    if (!tbody) { return; }
+    const format = function(name, value) {
+      return "<div>Id: " + name + "<br />Prato: " + value + "</div>";
+    };
+    this.dtElement.dtInstance.then((dtInstance) => {
+      this.unbindRowExpandEvent(tbody);
+      $(tbody).on("click", "td.table-expand-button", function() {
+        const tr = $(this).closest("tr");
+        const row = dtInstance.row(tr);
+
+        if (row.child.isShown()) {
+          row.child.hide();
+          tr.removeClass("shown");
+          tr.find("i").attr("class", "fa fa-plus");
+        } else {
+          row.child(format(tr.data("child-name"), tr.data("child-value"))).show();
+          tr.addClass("shown");
+          tr.find("i").attr("class", "fa fa-minus");
+        }
+      });
+    });
+  }
+
+  private unbindRowExpandEvent(tbody: HTMLElement) {
+    $(tbody).off("click", "td.table-expand-button");
   }
 
   ngOnDestroy(): void {

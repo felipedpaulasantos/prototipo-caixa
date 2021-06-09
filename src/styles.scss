@@ -180,16 +180,8 @@ a {
   box-shadow: var(--cxShadow);
   position: relative;
   overflow: hidden;
-  vertical-align: unset;
+  /* vertical-align: unset; */
   transition: 0.2s;
-}
-
-.btn-link {
-  text-decoration: none !important;
-  box-shadow: none;
-  &:hover {
-    box-shadow: var(--cxShadow);
-  }
 }
 
 /* Ajuste de cor do texto */
@@ -228,8 +220,7 @@ a {
   font-size: 0.875rem !important;
 }
 
-.btn-flat {
-  @extend .btn;
+.btn-link {
   transition: 0.3s;
   background: transparent;
   box-shadow: none;
@@ -1133,10 +1124,9 @@ select {
   border-right: transparent !important;
   border-bottom: transparent !important;
   border: solid 2px transparent !important;
-  border-radius: 0 !important;
   &.active {
-    background-color: var(--cxAccent) !important;
-    color: var(--cxBase) !important;
+    font-family: var(--cxFontFamilyBold);
+    color: var(--cxAccent) !important;
   }
 }
 
@@ -1302,6 +1292,9 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
     line-height: 3rem;
   }
 }
+*[class*="alert-outline-"] {
+  background-color: var(--cxBase);
+}
 /* INFO */
 .alert-info, .alert-outline-info {
   &::before {
@@ -1318,7 +1311,6 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
 }
 .alert-outline-info {
-  background-color: transparent;
   border-color: var(--cxInfo);
   &::before {
     color: var(--cxInfoContrast);
@@ -1341,7 +1333,6 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
 }
 .alert-outline-warning {
-  background-color: transparent;
   border-color: var(--cxWarning);
   &::before {
     color: var(--cxWarningContrast);
@@ -1364,7 +1355,6 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
 }
 .alert-outline-success {
-  background-color: transparent;
   border-color: var(--cxSuccess);
   &::before {
     color: var(--cxSuccessContrast);
@@ -1387,7 +1377,6 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
 }
 .alert-outline-danger {
-  background-color: transparent;
   border-color: var(--cxDanger);
   &::before {
     color: var(--cxDangerContrast);

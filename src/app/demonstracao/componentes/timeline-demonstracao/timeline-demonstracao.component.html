@@ -10,9 +10,9 @@
       <p>O atributo <span class="citation-highlight">items</span> deve sempre receber uma lista de TimelineItem.</p>
    </h5>
    <h6 class="font-fam-bold">HTML:</h6>
-	<pre><code [highlight]="codeDescricao" [languages]="['html']"></code></pre> 
+	<pre><code [highlight]="examples.codeDescricao" [languages]="['html']"></code></pre> 
 	<h6 class="font-fam-bold">TS:</h6>
-	<pre><code [highlight]="codeTsDescricao"  [languages]="['ts']"></code></pre> 
+	<pre><code [highlight]="examples.codeTsDescricao"  [languages]="['ts']"></code></pre> 
 </div>
 
 <ul class="nav nav-pills tab-caixa" role="tablist">
@@ -42,7 +42,7 @@
 
             <app-documentacao-template id="painelTimeline" [cardTitle]="'Timeline Padrão'"
                [codeViewId]="'viewTimelinePadrao'" [htmlTabId]="'htmlCodeTimelinePadrao'"
-               [htmlCode]="htmlCodeTimelinePadrao" [tsTabId]="'tsCodeTimelinePadrao'" [tsCode]="tsCodeTimelinePadrao">
+               [htmlCode]="examples.htmlCodeTimelinePadrao" [tsTabId]="'tsCodeTimelinePadrao'" [tsCode]="examples.tsCodeTimelinePadrao">
                <div class="descricao">
                   <p>O componente recebe a lista de <span class="citation-highlight">TimelineItem</span> e desenha,
                      por padrão na vertical, a linha do tempo.
@@ -73,8 +73,8 @@
 
             <app-documentacao-template id="painelTimelineExtenso" [cardTitle]="'Timeline Extenso'"
                [codeViewId]="'viewTimelineExtenso'" [htmlTabId]="'htmlCodeTimelineExtenso'"
-               [htmlCode]="htmlCodeTimelineExtenso" [tsTabId]="'tsCodeTimelineExtenso'"
-               [tsCode]="tsCodeTimelineExtenso">
+               [htmlCode]="examples.htmlCodeTimelineExtenso" [tsTabId]="'tsCodeTimelineExtenso'"
+               [tsCode]="examples.tsCodeTimelineExtenso">
                <div class="descricao">
                   <p>Caso a lista de acontecimentos seja extensa, é possível atribuir valores para os propriedades do
                      componente,
@@ -159,12 +159,12 @@
                      </div>
    
                      <div class="col-3 d-flex align-items-center">
-                        <button title="Remover" class="btn btn-danger btn-caixa ml-2"
+                        <button title="Remover" class="btn btn-danger ml-2"
                            [disabled]="sandboxTimelineItems.length == 2" (click)="removeItem()">
                            <i class="fa fa-minus fa-lg"></i>
                         </button>
    
-                        <button title="Adicionar" class="btn btn-success btn-caixa ml-2"
+                        <button title="Adicionar" class="btn btn-success ml-2"
                         [disabled]="!sandboxForm.valid"
                         (click)="addItem()">
                            <i class="fa fa-plus fa-lg"></i>

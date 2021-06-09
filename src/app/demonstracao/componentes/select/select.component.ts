@@ -1,14 +1,13 @@
-import { Component, OnInit, ViewChild, ContentChild } from '@angular/core';
-import { ComponentesInterface } from '../componentes-interface';
-import { ToastrService } from 'ngx-toastr';
-import { FormBuilder, Validators } from '@angular/forms';
-import { SelectCaixaComponent } from 'src/app/guia-caixa/components/select-caixa/select-caixa.component';
+import { Component, OnInit, ViewChild, ContentChild } from "@angular/core";
+import { ComponentesInterface } from "../componentes-interface";
+import { ToastrService } from "ngx-toastr";
+import { FormBuilder, Validators } from "@angular/forms";
+import { SelectCaixaComponent } from "src/app/guia-caixa/components/select-caixa/select-caixa.component";
 
 
 @Component({
-  templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss'],
-  host: { '(window:scroll)': 'onScroll($event)' }
+  templateUrl: "./select.component.html",
+  host: { "(window:scroll)": "onScroll($event)" }
 })
 export class SelectComponent extends ComponentesInterface implements OnInit {
 
@@ -22,7 +21,7 @@ export class SelectComponent extends ComponentesInterface implements OnInit {
   @ViewChild("selectTeste") selectCaixa: SelectCaixaComponent;
   @ViewChild("scrollElement") scrollElement;
   sectionOffset = 0;
-  spiedTags = ['APP-DOCUMENTACAO-TEMPLATE'];
+  spiedTags = ["APP-DOCUMENTACAO-TEMPLATE"];
   currentSection = "painelSelect";
 
   formulario = this.fb.group({
@@ -130,7 +129,7 @@ export class SelectComponent extends ComponentesInterface implements OnInit {
     </select>
   </cx-select>
 
-  <button (click)="atualizaOpcoes()" class="btn btn-caixa btn-primario">
+  <button (click)="atualizaOpcoes()" class="btn btn-primario">
     <i class="fa fa-sync mr-2"></i>
     Atualizar opções
   </button>

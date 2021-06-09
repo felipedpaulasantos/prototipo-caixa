@@ -40,7 +40,7 @@
             </div>
           </div>
           <div class="card-footer text-right">
-            <button class="btn btn-caixa btn-accent">
+            <button class="btn btn-accent">
               <i class="fa fa-edit"></i>
               Editar
             </button>
@@ -71,7 +71,7 @@
                     <input #inputUploadDocIdentidade name="arquivo" type="file"
                       accept=".pdf, .tiff, .jpg, .jpeg, .png, .gif" class="d-none"
                       (change)="uploadArquivo($event.target.files)">
-                    <button class="btn btn-outline-accent btn-caixa mx-auto d-flex align-items-center"
+                    <button class="btn btn-outline-accent mx-auto d-flex align-items-center"
                       (click)="inputUploadDocIdentidade.click();" title="Upload de arquivo">
                       <i class="fas fa-file-upload fa-2x mr-2"></i>
                       Selecione um arquivo para upload...
@@ -139,7 +139,7 @@
             </div> <!-- CARD BODY -->
             <div class="card-footer">
               <div class="d-flex">
-                <button (click)="addDocumento()" *ngIf="uploadedFile" class="btn btn-caixa btn-success ml-auto">
+                <button (click)="addDocumento()" *ngIf="uploadedFile" class="btn btn-success ml-auto">
                   <i class="fa fa-plus fa-lg mr-2"></i>
                   Adicionar Documento
                 </button>

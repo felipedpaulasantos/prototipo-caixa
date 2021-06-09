@@ -102,7 +102,7 @@ export interface DataTableConfigOptions {
 
 export class DataTableConfig {
 
-    static BTN_CLASS = "btn btn-sm btn-outline-dark-light btn-caixa";
+    static BTN_CLASS = "btn btn-sm btn-outline-dark-light";
     static SHOW_FILTER = "f";
     static SHOW_LENGTH = "l";
     static SHOW_BUTTONS = "B";

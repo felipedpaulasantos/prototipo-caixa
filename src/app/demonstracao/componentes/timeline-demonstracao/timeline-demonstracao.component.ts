@@ -6,10 +6,10 @@ import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-
 import { DocApiProperties } from "src/app/shared/components/documentacao-api-table/documentacao-api-table.component";
 import { ComponentesInterface } from "../componentes-interface";
 import { timelineApiProps } from "./timeline-api-props";
+import { TimelineCodeExamples } from "./timeline-code-examples";
 
 @Component({
   templateUrl: "./timeline-demonstracao.component.html",
-  styleUrls: ["./timeline-demonstracao.component.scss"],
   host: { "(window:scroll)": "onScroll($event)" }
 })
 export class TimelineDemonstracaoComponent extends ComponentesInterface implements OnInit {
@@ -39,16 +39,6 @@ export class TimelineDemonstracaoComponent extends ComponentesInterface implemen
 
   propsApi: DocApiProperties[] = timelineApiProps;
 
-  codeDescricao = `<cx-timeline [items]="timelineItems"></cx-timeline>`.trim();
-
-  codeTsDescricao = `timelineItems: TimelineItem[] = [
-  { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
-  { title: "Item warning", state: "warning", date: new Date(), dateFormat: "full" },
-  { title: "Item warning-stop", state: "warning-stop", dateString: "05/12/2020" },
-  { title: "Item erro", state: "error", dateString: "03/12/2020" },
-  { title: "Item info", state: "info", dateString: "06/12/2020" }
-];`.trim();
-
   timelineItems: TimelineItem[] = [
     { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
     { title: "Item warning", state: "warning", date: new Date(), dateFormat: "full" },
@@ -76,63 +66,9 @@ export class TimelineDemonstracaoComponent extends ComponentesInterface implemen
   ];
   timelineOrientation = 1;
 
-  htmlCodeTimelinePadrao = `<cx-timeline [items]="timelineItems"></cx-timeline>`.trim();
+  examples = TimelineCodeExamples;
 
-  tsCodeTimelinePadrao = `import { Component } from '@angular/core';
-import { TimelineItem, TimelineState } from "./timeline/timeline-item";
-
-@Component({
-    selector: 'app-timeline',
-    templateUrl: './timeline.component.html',
-    styleUrls: ['./timeline.component.scss']
-})
-export class TimelineDemonstracaoComponent {
-
-  constructor() {}
-
-  timelineItems: TimelineItem[] = [
-    { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
-    { title: "Item warning", state: "warning", date: new Date(), dateFormat: "full" },
-    { title: "Item warning-stop", state: "warning-stop", dateString: "05/12/2020" },
-    { title: "Item erro", state: "error", dateString: "03/12/2020" },
-    { title: "Item info", state: "info", dateString: "06/12/2020" }
-  ];
-}
-`.trimRight();
-
-
-
-htmlCodeTimelineExtenso = `<cx-timeline [styles]="{ height: '350px', width: 'auto' }" [items]="timelineItemsExtenso"></cx-timeline>`.trim();
-
-tsCodeTimelineExtenso = `import { Component } from '@angular/core';
-import { TimelineItem, TimelineState } from "./timeline/timeline-item";
-
-@Component({
-  selector: 'app-timeline',
-  templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.scss']
-})
-export class TimelineDemonstracaoComponent {
-
-  constructor() {}
-
-  timelineItemsExtenso: TimelineItem[] = [
-    { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
-    { title: "Item warning", state: "warning", date: new Date(), dateFormat: "full" },
-    { title: "Item warning-stop", state: "warning-stop", dateString: "05/12/2020" },
-    { title: "Item erro", state: "error", dateString: "03/12/2020" },
-    { title: "Item info", state: "info", dateString: "06/12/2020" },
-    { title: "Item sucesso", state: TimelineState.SUCCESS, date: new Date()  },
-    { title: "Item warning", state: "warning", date: new Date(), dateFormat: "full" },
-    { title: "Item warning-stop", state: "warning-stop", dateString: "05/12/2020" },
-    { title: "Item erro", state: "error", dateString: "03/12/2020" },
-    { title: "Item info", state: "info", dateString: "06/12/2020" }
-  ];
-}
-`.trimRight();
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   addItem() {
     const newItem: any = {};

@@ -46,12 +46,12 @@
 							<tr *ngFor="let cor of coresVariaveis">
 								<td>{{ cor.nome }}</td>
 								<td>{{ cor.variavel }} 
-									<button (click)="copy(cor.variavel)" class="btn btn-flat" title="Copiar">
+									<button (click)="copy(cor.variavel)" class="btn btn-link" title="Copiar">
 										<i class="fa fa-copy"></i>
 									</button>
 								</td>
 								<td>{{ cor.valor }} 
-									<button (click)="copy(cor.valor)" class="btn btn-flat" title="Copiar">
+									<button (click)="copy(cor.valor)" class="btn btn-link" title="Copiar">
 										<i class="fa fa-copy"></i>
 									</button>
 								</td>
@@ -97,7 +97,7 @@
 								</td>
 								<td>
 									{{ cor.valor }} 
-									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+									<button class="btn btn-link" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
 								</td>
 								<td>
 									<span class="d-none">{{ cor.ordem }}</span>
@@ -106,27 +106,27 @@
 <!-- 								<td>
 									<div class="square bg-{{ cor.name }}-lighter"></div>
 									{{ cor.valor }} 
-									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+									<button class="btn btn-link" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
 								</td>
 								<td>
 									<div class="square bg-{{ cor.name }}-light"></div>
 									{{ cor.valor }} 
-									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+									<button class="btn btn-link" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
 								</td>
 								<td>
 									<div class="square bg-{{ cor.name }}"></div>
 									{{ cor.valor }} 
-									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+									<button class="btn btn-link" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
 								</td>
 								<td>
 									<div class="square bg-{{ cor.name }}-dark"></div>
 									{{ cor.valor }} 
-									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+									<button class="btn btn-link" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
 								</td>
 								<td>
 									<div class="square bg-{{ cor.name }}-darker"></div>
 									{{ cor.valor }} 
-									<button class="btn btn-flat" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
+									<button class="btn btn-link" title="Copiar"><i (click)="copy(cor.valor)" class="fa fa-copy"></i></button>
 								</td> -->
 		<!-- 						<td>
 									<h5 class="text-{{ cor.name }}-light font-fam-bold w-100">Título no tom claro</h5>

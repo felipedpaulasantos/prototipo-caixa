@@ -154,6 +154,14 @@ cssCodeValidacao = `.feedback-msg {
   font-size: 0.9rem;
 }`.trimRight();
 
+buttonControlExample = `<cx-button-control type="checkbox" value="valor_do_checkbox">
+  Checkbox
+</cx-button-control>
+
+<cx-button-control type="radio" value="valor_do_radio" class="ml-3">
+  Radio
+</cx-button-control>`;
+
   ngOnInit(): void {
   }
 

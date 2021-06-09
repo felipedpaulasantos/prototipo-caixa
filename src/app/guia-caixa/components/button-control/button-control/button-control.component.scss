@@ -9,6 +9,8 @@
    border-width: 1px;
    border-radius: var(--cxBorderRadius);
    border-color: var(--cxAux);
+   box-sizing: content-box;
+   vertical-align: middle;
 }
 .button-control-wrapper.checked {
    border-color: var(--cxAccent);
