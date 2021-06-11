@@ -1,7 +1,7 @@
 /* BUTTON CONTROL WRAPPER */
 .button-control-wrapper {
    display: inline-block;
-   min-width: 100px;
+/*    min-width: 100px; */
    padding: 0.6rem 1rem;
    background-color: var(--cxAux);
    color: var(--cxBase);
@@ -20,26 +20,32 @@
    cursor: pointer;
 }
 
-/* LEFT SIDE */
-/* .button-control-wrapper > .row > .left-side {
+/* FLEX WRAPPER */
+.button-control-wrapper > .flex-wrapper {
+   display: flex;
 
-} */
-
-/* RIGHT SIDE */
-/* .button-control-wrapper > .row > .right-side {
-
-} */
+}
 
 /* CHECK BOX WRAPPER */
-.button-control-wrapper > .row > .left-side > .checkbox-wrapper {
+.button-control-wrapper > .flex-wrapper > .checkbox-wrapper {
    position: relative;
    height: 100%;
    display: flex;
    align-items: center;
+   width: 2rem;
 }
 
+.button-control-wrapper > .flex-wrapper > .checkbox-wrapper {
+   position: relative;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   width: 2rem;
+}
+
+
 /* CHECKMARK */
-.button-control-wrapper > .row > .left-side > .checkbox-wrapper > .checkmark {
+.button-control-wrapper > .flex-wrapper > .checkbox-wrapper > .checkmark {
    display: flex;
    align-items: center;
    justify-content: center;
@@ -49,7 +55,7 @@
    background-color: var(--cxBase);
    border: 1px solid var(--cxCancel);
 }
-.button-control-wrapper > .row > .left-side > .checkbox-wrapper > .checkmark.radio {
+.button-control-wrapper > .flex-wrapper > .checkbox-wrapper > .checkmark.radio {
    border-radius: var(--cxBorderRadiusRound);
    display: flex;
    align-items: center;
@@ -57,13 +63,13 @@
 }
 
 /* CHECKMARK AFTER */
-.button-control-wrapper > .row > .left-side > .checkbox-wrapper > .checkmark:after {
+.button-control-wrapper > .flex-wrapper > .checkbox-wrapper > .checkmark:after {
    position: absolute;
    content: "";
    opacity: 0;
    transition: opacity 0.2s;
 }
-.button-control-wrapper > .row > .left-side > .checkbox-wrapper > .checkmark.checkbox:after {
+.button-control-wrapper > .flex-wrapper > .checkbox-wrapper > .checkmark.checkbox:after {
    width: 5px;
    height: 10px;
    border-style: solid;
@@ -73,7 +79,7 @@
    -ms-transform: rotate(45deg);
    transform: rotate(45deg);
 }
-.button-control-wrapper > .row > .left-side > .checkbox-wrapper > .checkmark.radio:after {
+.button-control-wrapper > .flex-wrapper > .checkbox-wrapper > .checkmark.radio:after {
    width: 8px;
    height: 8px;
    border-style: solid;
@@ -82,6 +88,6 @@
    border-radius: var(--cxBorderRadiusRound);
    background-color: var(--cxContrast);
 }
-.button-control-wrapper.checked > .row > .left-side > .checkbox-wrapper > .checkmark:after {
+.button-control-wrapper.checked > .flex-wrapper > .checkbox-wrapper > .checkmark:after {
    opacity: 1;
 }

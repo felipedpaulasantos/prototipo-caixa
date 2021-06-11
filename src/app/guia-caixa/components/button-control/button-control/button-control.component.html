@@ -1,12 +1,10 @@
 <div class="button-control-wrapper" [ngStyle]="styles" [ngClass]="{'checked': !type || model === value}"
 (click)="toggleValue()">
-   <div class="row no-gutters">
-      <div class="col-4 left-side">
-         <div class="checkbox-wrapper">
-            <div *ngIf="type" [ngClass]="type" class="checkmark"></div>
-         </div>
+   <div class="flex-wrapper">
+      <div class="checkbox-wrapper">
+         <div *ngIf="type" [ngClass]="type" class="checkmark"></div>
       </div>
-      <div class="col-8 right-side">
+      <div class="content-wrapper">
          <ng-content></ng-content>
       </div>
    </div>
