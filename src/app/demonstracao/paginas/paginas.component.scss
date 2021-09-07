@@ -260,7 +260,7 @@ section {
    display: inline-flex;
    flex-direction: column;
    width: 13.07rem;
-   height: 13.84rem;
+   min-height: 13.84rem;
    border-style: solid;
    border-width: 2px;
    border-color: var(--cxCancel);
@@ -319,6 +319,7 @@ section {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
       flex-grow: 1;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;

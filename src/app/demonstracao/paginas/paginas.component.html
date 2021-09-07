@@ -1,3 +1,53 @@
+<!-- TESTE VALIDAÇÃO CPF CNPJ NIS EM UM CAMPO SÓ -->
+
+<div [formGroup]="formCampoUnico" class="row my-3">
+   <div class="col-4">
+      <div class="card">
+         <div class="card-body">
+            <label>
+               <span [ngClass]="{'text-cancel': !isCpf(campoUnico.value)}">CPF</span> /
+               <span [ngClass]="{'text-cancel': !isCpnj(campoUnico.value)}">CNPJ</span> /
+               <span [ngClass]="{'text-cancel': !isNis(campoUnico.value)}">NIS</span>
+            </label>
+            <input formControlName="campoUnico" class="form-control" minlength="9" maxlength="14" (input)="validaCampo($event.target.value)">
+            <br>
+            IS VALID CPF {{ campoUnico.value }}: <strong>{{ isCpf(campoUnico.value) ? 'VÁLIDO' : 'INVÁLIDO' | uppercase }}</strong>
+            <br>
+            IS VALID NIS {{ campoUnico.value }}: <strong>{{ isNis(campoUnico.value) ? 'VÁLIDO' : 'INVÁLIDO' | uppercase }}</strong>
+            <br>
+            IS VALID CNPJ {{ campoUnico.value }}: <strong>{{ isCpnj(campoUnico.value) ? 'VÁLIDO' : 'INVÁLIDO' | uppercase }}</strong>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div [formGroup]="formTeste" class="row my-5">
+   <div class="col">
+      <div>
+         <label>CPF</label>
+         <input formControlName="cpf" class="form-control">
+         <br>
+         IS VALID CPF {{ cpf.value }}: <strong>{{ isCpf(cpf.value) ? 'VÁLIDO' : 'INVÁLIDO' | uppercase }}</strong>
+      </div>
+   </div>
+   <div class="col">
+      <div>
+         <label>NIS</label>
+         <input formControlName="nis" class="form-control">
+         <br>
+         IS VALID NIS {{ nis.value }}: <strong>{{ isNis(nis.value) ? 'VÁLIDO' : 'INVÁLIDO' | uppercase }}</strong>
+      </div>
+   </div>
+   <div class="col">
+      <div>
+         <label>CNPJ</label>
+         <input formControlName="cnpj" class="form-control">
+         <br>
+         IS VALID CNPJ {{ cnpj.value }}: <strong>{{ isCpnj(cnpj.value) ? 'VÁLIDO' : 'INVÁLIDO' | uppercase }}</strong>
+      </div>
+   </div>
+</div>
+
 <!-- CLIENTE TAB -->
 <section id="cliente-tab">
    <div class="cliente-tab-wrapper">
@@ -20,7 +70,7 @@
             </div>
          </div>
       </div>
-   
+
       <div class="cliente-tab cliente-close">
          <div class="row no-gutters">
             <div class="col-4 cliente-tab-left-side">
@@ -86,21 +136,21 @@
             Gerenciador de atendimento
          </span>
       </div>
-   
+
       <div class="circle-button">
          <i class="fa fa-users-cog circle-button-icon"></i>
          <span class="circle-button-text">
             Configurações pessoais
          </span>
       </div>
-   
+
       <div class="circle-button">
          <i class="fa fa-calendar-plus circle-button-icon"></i>
          <span class="circle-button-text">
             Nova agenda
          </span>
       </div>
-   
+
       <div class="circle-button">
          <i class="fa fa-chart-pie circle-button-icon"></i>
          <span class="circle-button-text">
@@ -131,11 +181,12 @@
             </div>
          </div>
          <div class="card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            At nemo corrupti similique sapiente, eos ab ex voluptate necessitatibus culpa ullam ipsa libero. Provident debitis eaque pariatur itaque sit rem accusamus?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            At nemo corrupti similique sapiente, eos ab ex voluptate necessitatibus culpa ullam ipsa libero. Provident
+            debitis eaque pariatur itaque sit rem accusamus?
          </div>
       </div>
-   
+
       <div class="card calendar-box calendar-box-done">
          <div class="card-header">
             <div class="d-flex align-items-center">
@@ -154,8 +205,9 @@
             </div>
          </div>
          <div class="card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            At nemo corrupti similique sapiente, eos ab ex voluptate necessitatibus culpa ullam ipsa libero. Provident debitis eaque pariatur itaque sit rem accusamus?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            At nemo corrupti similique sapiente, eos ab ex voluptate necessitatibus culpa ullam ipsa libero. Provident
+            debitis eaque pariatur itaque sit rem accusamus?
          </div>
       </div>
 
@@ -177,8 +229,9 @@
             </div>
          </div>
          <div class="card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            At nemo corrupti similique sapiente, eos ab ex voluptate necessitatibus culpa ullam ipsa libero. Provident debitis eaque pariatur itaque sit rem accusamus?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            At nemo corrupti similique sapiente, eos ab ex voluptate necessitatibus culpa ullam ipsa libero. Provident
+            debitis eaque pariatur itaque sit rem accusamus?
          </div>
       </div>
 
@@ -201,8 +254,9 @@
             </div>
          </div>
          <div class="card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            At nemo corrupti similique sapiente, eos ab ex voluptate necessitatibus culpa ullam ipsa libero. Provident debitis eaque pariatur itaque sit rem accusamus?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            At nemo corrupti similique sapiente, eos ab ex voluptate necessitatibus culpa ullam ipsa libero. Provident
+            debitis eaque pariatur itaque sit rem accusamus?
          </div>
       </div>
    </div>
@@ -260,3 +314,48 @@
 </div> -->
 
 <hr class="mt-5">
+
+
+<!-- 
+   CARD VERTICAL DOSSIE
+-->
+<!-- <section id="card-vertical">
+   <div class="card-vertical-wrapper">
+      <div class="card-vertical card-vertical-pending">
+         <div class="card-vertical-topside">
+            <h4><i class="fa fa-id-card topside-icon"></i></h4>
+            <h5 class="mt-2">Documento de identificação</h5>
+            <div class="card-vertical-middle">
+               Pendente
+            </div>
+         </div>
+         <div class="card-vertical-bottomside">
+            <div>
+               <button class="btn btn-accent btn-sm mt-2">
+                  <i class="fa fa-upload mr-2"></i>Selecionar documento do computador
+               </button>
+               <p class="my-3">ou</p>
+               <button class="btn btn-accent btn-sm mt-2">
+                  <i class="fa fa-print mr-2"></i>Digitalizar
+               </button>
+            </div>
+
+         </div>
+      </div>
+
+      <div class="card-vertical card-vertical-ok">
+         <div class="card-vertical-topside">
+            <h4><i class="fa fa-credit-card topside-icon"></i></h4>
+            <h5 class="mt-2">Cartão de Crédito</h5>
+            <div class="card-vertical-middle">
+               <i class="fa fa-check"></i>
+            </div>
+         </div>
+         <div class="card-vertical-bottomside">
+            <button class="btn btn-accent btn-sm mt-2">
+               Contratar
+            </button>
+         </div>
+      </div>
+   </div>
+</section> -->
