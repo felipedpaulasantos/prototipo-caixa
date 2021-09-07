@@ -49,13 +49,9 @@ export class PaginasComponent implements OnInit {
   isCpf(cpf: string): boolean {
     const multiplicador1 = [10, 9, 8, 7, 6, 5, 4, 3, 2];
     const multiplicador2 = [11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
-    let tempCpf: string;
-    let digito: string;
-    let soma: number;
-    let resto: number;
+    let tempCpf, digito, soma, resto;
 
-    cpf = cpf.trim();
-    cpf = cpf.replace(".", "").replace("-", "");
+    cpf = cpf.trim().replace(".", "").replace("-", "");
     if (cpf.length != 11) {
       return false;
     }
@@ -92,15 +88,13 @@ export class PaginasComponent implements OnInit {
 
   isNis(pis: string): boolean {
     const multiplicador = [3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-    let soma;
-    let resto;
+    let soma, resto;
 
     if (pis.trim().length != 11) {
       return false;
     }
 
-    pis = pis.trim();
-    pis = pis.replace("-", "").replace(".", "").padStart(11, "0");
+    pis = pis.trim().replace("-", "").replace(".", "").padStart(11, "0");
     soma = 0;
 
     for (let i = 0; i < 10; i++) {
@@ -119,15 +113,13 @@ export class PaginasComponent implements OnInit {
   isCpnj(cnpj: string): boolean {
     const multiplicador1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
     const multiplicador2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-    let soma;
-    let resto;
-    let digito;
-    let tempCnpj;
-    cnpj = cnpj.trim();
-    cnpj = cnpj.replace(".", "").replace("-", "").replace("/", "");
+    let soma, resto, digito, tempCnpj;
+
+    cnpj = cnpj.trim().replace(".", "").replace("-", "").replace("/", "");
     if (cnpj.length != 14) {
       return false;
     }
+
     tempCnpj = cnpj.substring(0, 12);
     soma = 0;
     for (let i = 0; i < 12; i++) {
