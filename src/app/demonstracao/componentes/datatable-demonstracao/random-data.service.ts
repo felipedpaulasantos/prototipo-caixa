@@ -17,6 +17,11 @@ export class RandomDataService {
       return this.http.get<RandomDataFood[]>(`${this.BASE_URL}/food/random_food${sizeParam}`);
    }
 
+   getRandomStripeData(size: number): Observable<RandomDataFood[]> {
+      const sizeParam = size ? `?size=${size}` : "";
+      return this.http.get<RandomDataFood[]>(`${this.BASE_URL}/stripe/random_stripe${sizeParam}`);
+   }
+
    getCep() {
       return this.http.get("https://ws.apicep.com/cep/12071000.json");
    }

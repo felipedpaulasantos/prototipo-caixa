@@ -1,4 +1,58 @@
-
+<div class="mb-5">
+   <cx-extrato>
+      <table class="table">
+         <thead>
+            <tr>
+               <th>Data</th>
+               <th>Tipo</th>
+               <th>Valor</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td data-separador="true">2021-09-07</td>
+               <td>Pagamento</td>
+               <td class="text-success">2000.00</td>
+            </tr>
+            <tr>
+               <td data-separador="true">2021-09-07</td>
+               <td>Pagamento</td>
+               <td>3000.00</td>
+            </tr>
+            <tr>
+               <td data-separador="true">2021-09-08</td>
+               <td>Pagamento</td>
+               <td>4000.00</td>
+            </tr>
+            <tr>
+               <td data-separador="true">2021-09-08</td>
+               <td>Pagamento</td>
+               <td>4000.00</td>
+            </tr>
+            <tr>
+               <td data-separador="true">2021-09-08</td>
+               <td>Pagamento</td>
+               <td>4000.00</td>
+            </tr>
+            <tr>
+               <td data-separador="true">2021-09-12</td>
+               <td>Pagamento</td>
+               <td>4000.00</td>
+            </tr>
+            <tr>
+               <td data-separador="true">2021-19-12</td>
+               <td>Pagamento</td>
+               <td>4000.00</td>
+            </tr>
+            <tr>
+               <td data-separador="true">2021-09-14</td>
+               <td>Pagamento</td>
+               <td>4000.00</td>
+            </tr>
+         </tbody>
+      </table>
+   </cx-extrato>
+</div>
 
 <!-- TESTE VALIDAÇÃO CPF CNPJ NIS EM UM CAMPO SÓ -->
 <div [formGroup]="formCampoUnico" class="row my-3">
@@ -10,13 +64,17 @@
                <span [ngClass]="{'text-cancel': !isCpnj(campoUnico.value)}">CNPJ</span> /
                <span [ngClass]="{'text-cancel': !isNis(campoUnico.value)}">NIS</span>
             </label>
-            <input formControlName="campoUnico" class="form-control" minlength="9" maxlength="14" (input)="validaCampo($event.target.value)">
+            <input formControlName="campoUnico" class="form-control" minlength="9" maxlength="14"
+               (input)="validaCampo($event.target.value)">
             <br>
-            IS VALID CPF {{ campoUnico.value }}: <strong>{{ isCpf(campoUnico.value) ? 'VÁLIDO' : 'INVÁLIDO' | uppercase }}</strong>
+            IS VALID CPF {{ campoUnico.value }}: <strong>{{ isCpf(campoUnico.value) ? 'VÁLIDO' : 'INVÁLIDO' | uppercase
+               }}</strong>
             <br>
-            IS VALID NIS {{ campoUnico.value }}: <strong>{{ isNis(campoUnico.value) ? 'VÁLIDO' : 'INVÁLIDO' | uppercase }}</strong>
+            IS VALID NIS {{ campoUnico.value }}: <strong>{{ isNis(campoUnico.value) ? 'VÁLIDO' : 'INVÁLIDO' | uppercase
+               }}</strong>
             <br>
-            IS VALID CNPJ {{ campoUnico.value }}: <strong>{{ isCpnj(campoUnico.value) ? 'VÁLIDO' : 'INVÁLIDO' | uppercase }}</strong>
+            IS VALID CNPJ {{ campoUnico.value }}: <strong>{{ isCpnj(campoUnico.value) ? 'VÁLIDO' : 'INVÁLIDO' |
+               uppercase }}</strong>
          </div>
       </div>
    </div>

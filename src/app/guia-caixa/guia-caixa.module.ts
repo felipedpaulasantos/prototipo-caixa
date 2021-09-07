@@ -15,6 +15,7 @@ import { CardButtonModule } from "./components/card-button/card-button.module";
 import { TimelineModule } from "./components/timeline/timeline.module";
 import { CaixaDatatableModule } from "./components/datatable/caixa-datatable.module";
 import { ButtonControlModule } from "./components/button-control/button-control.module";
+import { ExtratoModule } from './components/extrato/extrato.module';
 
 
 
@@ -36,7 +37,8 @@ import { ButtonControlModule } from "./components/button-control/button-control.
     CardButtonModule,
     TimelineModule,
     CaixaDatatableModule,
-    ButtonControlModule
+    ButtonControlModule,
+    ExtratoModule
   ],
   exports: [
     InputCaixaComponent,
@@ -50,7 +52,8 @@ import { ButtonControlModule } from "./components/button-control/button-control.
     CardButtonModule,
     TimelineModule,
     CaixaDatatableModule,
-    ButtonControlModule
+    ButtonControlModule,
+    ExtratoModule
   ]
 })
 export class GuiaCaixaModule { }
