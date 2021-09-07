@@ -545,9 +545,9 @@ th.th-sorting {
   color: var(--cxContrast);
   thead th {
     font-family: var(--cxFontFamilyBold);
-    border-bottom: 0 !important;
     font-weight: 400 !important;
-    border-color: var(--cxCancel);
+    border-top: none;
+    border-bottom: solid 1px var(--cxAux);
     &.sorting,
     &.sorting_asc,
     &.sorting_desc {

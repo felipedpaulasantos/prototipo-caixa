@@ -1,5 +1,5 @@
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
-import { Component, OnInit, ChangeDetectionStrategy, AfterViewInit, Renderer2, ViewChild, ElementRef, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy, AfterViewInit, Renderer2, ViewChild, ElementRef, ChangeDetectorRef, ContentChild } from "@angular/core";
+import { TabelaExtratoDirective } from "./tabela-extrato.directive";
 
 @Component({
   selector: "cx-extrato",
@@ -11,6 +11,12 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
 
   @ViewChild("novoExtrato", { static: false })
   novoExtrato: ElementRef;
+
+  @ContentChild(TabelaExtratoDirective, { read: TabelaExtratoDirective, static: true })
+  tabelaExtrato: TabelaExtratoDirective;
+
+  readonly ATRIBUTO_AGRUPADOR = "data-agrupador";
+  readonly DIAS_SEMANA = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
 
   newTable: string;
   listaComObjetosSeparadores = [];
@@ -31,8 +37,11 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
   }
 
   getTableCellsSeparador() {
+
+    const novaTabela = this.tabelaExtrato.elementRef.nativeElement;
+
     /* Captura os 'td' com atributo 'data-separador' */
-    const listaTdSeparador = document.querySelectorAll("td[data-separador]");
+    const listaTdSeparador = novaTabela.querySelectorAll(`td[${this.ATRIBUTO_AGRUPADOR}]`);
     console.log("LISTA TD SEPARADOR", listaTdSeparador);
 
     /* Captura o 'conteúdo' destes 'td' em outro array */
@@ -46,8 +55,8 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
     const listaConteudoUnique = [...setConteudo];
 
     /* Cria uma lista com o set anterior e ordena */
-    listaConteudoUnique.sort(function(a, b) {
-      return (a < b) ? -1 : ((a > b) ? 1 : 0);
+    listaConteudoUnique.sort(function (a, b) {
+      return (a < b) ? 1 : ((a > b) ? -1 : 0);
     });
     console.log("LISTA CONTEUDO UNIQUE", listaConteudoUnique);
 
@@ -61,7 +70,7 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
     console.log("LISTA OBJETOS SEPARADORES", listaComObjetosSeparadores);
 
     /* Captura uma lista com os 'tr' */
-    const listaTr = document.querySelectorAll("tr");
+    const listaTr = novaTabela.querySelectorAll("tr");
     this.trHeader = listaTr[0];
     console.log("LISTA TR", listaTr);
     console.log("TR HEADER", this.trHeader);
@@ -69,12 +78,14 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
     /* Popular os objetosSeparadores com as 'tr' correspondentes */
     listaTr.forEach(tr => {
       console.log("TR", tr);
-      const data = tr.firstChild.textContent;
-      const objSeparador = listaComObjetosSeparadores.find(obj => obj[data]);
+      const tdSeparador = tr.querySelector(`[${this.ATRIBUTO_AGRUPADOR}]`);
+      if (!tdSeparador) { return; }
+      const conteudoTdSeparador = tdSeparador.textContent;
+      const objSeparador = listaComObjetosSeparadores.find(obj => obj[conteudoTdSeparador]);
       if (!objSeparador) {
         return;
       }
-      objSeparador[data].push(tr);
+      objSeparador[conteudoTdSeparador].push(tr);
     });
 
     listaComObjetosSeparadores.forEach((objSeparador, index) => {
@@ -95,8 +106,8 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
     });
 
     this.listaComObjetosSeparadores = listaComObjetosSeparadores;
-    this.cdr.markForCheck();
     this.showOriginalTable = false;
+    this.cdr.detectChanges();
     console.log("LISTA OBJETOS SEPARADORES", listaComObjetosSeparadores);
   }
 
@@ -111,6 +122,27 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
     if (this.novoExtrato) {
       this.renderer.appendChild(this.novoExtrato.nativeElement, titulo);
       this.renderer.appendChild(this.novoExtrato.nativeElement, newTable);
+    }
+  }
+
+  getValorSeparadorFormatado(separador: any) {
+    const data = Object.keys(separador)[0];
+    const dataSeparador = new Date(data);
+    const hoje = new Date();
+
+    const ontem = new Date();
+    ontem.setDate(hoje.getDate() - 1);
+
+    console.log("DATA SEPARADOR", dataSeparador.toDateString());
+    console.log("HOJE", hoje.toDateString());
+    console.log("ONTEM", ontem.toDateString());
+
+    if (dataSeparador.toDateString() === hoje.toDateString()) {
+      return `HOJE (${dataSeparador.toLocaleDateString()}, ${this.DIAS_SEMANA[dataSeparador.getDay()]})`;
+    } else if (ontem.toDateString() === dataSeparador.toDateString()) {
+      return `ONTEM (${dataSeparador.toLocaleDateString()}, ${this.DIAS_SEMANA[dataSeparador.getDay()]})`;
+    } else {
+      return `${dataSeparador.toLocaleDateString()} (${this.DIAS_SEMANA[dataSeparador.getDay()]})`;
     }
   }
 }

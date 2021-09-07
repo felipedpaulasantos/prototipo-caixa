@@ -3,13 +3,12 @@
    <ng-content></ng-content>
 </ng-container>
 
-
-
 <!-- <div #novoExtrato></div> -->
 
 <div class="extrato-view" *ngIf="listaComObjetosSeparadores?.length > 1">
    <ng-container *ngFor="let separador of listaComObjetosSeparadores; let isLast = last; let i = index;">
-      <h3 class="titulo mb-3">{{ separador.valor() }}</h3>
+<!--       <h3 class="titulo mb-3">{{ separador.valor() }}</h3> -->
+      <h3 class="titulo mb-3">{{ getValorSeparadorFormatado(separador) }}</h3>
       <hr>
       <div class="card" [ngClass]="{'mb-4': !isLast}">
          <div class="card-body">
