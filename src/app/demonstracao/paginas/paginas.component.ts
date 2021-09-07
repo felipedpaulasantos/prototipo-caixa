@@ -146,4 +146,9 @@ export class PaginasComponent implements OnInit {
     digito = digito + resto.toString();
     return cnpj.endsWith(digito);
   }
+
+
+  teste(msg) {
+    alert(msg);
+  }
 }

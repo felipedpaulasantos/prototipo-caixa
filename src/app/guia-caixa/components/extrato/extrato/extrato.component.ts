@@ -1,4 +1,6 @@
+import { stringify } from "@angular/compiler/src/util";
 import { Component, OnInit, ChangeDetectionStrategy, AfterViewInit, Renderer2, ViewChild, ElementRef, ChangeDetectorRef, ContentChild } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
 import { TabelaExtratoDirective } from "./tabela-extrato.directive";
 
 @Component({
@@ -19,13 +21,14 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
   readonly DIAS_SEMANA = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
 
   newTable: string;
-  listaComObjetosSeparadores = [];
+  listaComObjetosAgrupadores = [];
   trHeader;
   showOriginalTable = true;
 
   constructor(
     private renderer: Renderer2,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -33,24 +36,24 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.getTableCellsSeparador();
+    this.getTableCellsAgrupador();
   }
 
-  getTableCellsSeparador() {
+  getTableCellsAgrupador() {
 
     const novaTabela = this.tabelaExtrato.elementRef.nativeElement;
 
-    /* Captura os 'td' com atributo 'data-separador' */
-    const listaTdSeparador = novaTabela.querySelectorAll(`td[${this.ATRIBUTO_AGRUPADOR}]`);
-    console.log("LISTA TD SEPARADOR", listaTdSeparador);
+    /* Captura os 'td' com atributo 'data-agrupador' */
+    const listaTdAgrupador = novaTabela.querySelectorAll(`td[${this.ATRIBUTO_AGRUPADOR}]`);
+    console.log("LISTA TD AGRUPADOR", listaTdAgrupador);
 
     /* Captura o 'conteúdo' destes 'td' em outro array */
-    const listaTdSeparadorConteudo = [];
-    listaTdSeparador.forEach(td => listaTdSeparadorConteudo.push(td.innerHTML));
-    console.log("LISTA TD CONTEUDO", listaTdSeparadorConteudo);
+    const listaTdAgrupadorConteudo = [];
+    listaTdAgrupador.forEach(td => listaTdAgrupadorConteudo.push(td.innerHTML));
+    console.log("LISTA TD CONTEUDO", listaTdAgrupadorConteudo);
 
     /* Cria um set com o array anterior para filtrar os valores e eliminar duplicatas */
-    const setConteudo = new Set(listaTdSeparadorConteudo);
+    const setConteudo = new Set(listaTdAgrupadorConteudo);
     console.log("SET TD CONTEUDO", setConteudo);
     const listaConteudoUnique = [...setConteudo];
 
@@ -61,37 +64,41 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
     console.log("LISTA CONTEUDO UNIQUE", listaConteudoUnique);
 
     /* Cria uma lista com objetos, onde a propriedade do objeto é o valor da lista, e seu conteúdo é um array, onde ficarão as 'tr' */
-    const listaComObjetosSeparadores = listaConteudoUnique.map(valor => {
+    const listaComObjetosAgrupadores = listaConteudoUnique.map(valor => {
       const obj: any = {};
       obj[valor] = [];
       obj.valor = () => Object.keys(obj)[0];
       return obj;
     });
-    console.log("LISTA OBJETOS SEPARADORES", listaComObjetosSeparadores);
+    console.log("LISTA OBJETOS AGRUPADORES", listaComObjetosAgrupadores);
 
     /* Captura uma lista com os 'tr' */
     const listaTr = novaTabela.querySelectorAll("tr");
     this.trHeader = listaTr[0];
+    console.log("TR HEADER", this.trHeader);
     console.log("LISTA TR", listaTr);
+    const thAgrupador = this.trHeader.querySelector(`[${this.ATRIBUTO_AGRUPADOR}]`);
+    this.renderer.setStyle(thAgrupador, "display", "none");
     console.log("TR HEADER", this.trHeader);
 
-    /* Popular os objetosSeparadores com as 'tr' correspondentes */
+    /* Popular os objetosAgrupadores com as 'tr' correspondentes */
     listaTr.forEach(tr => {
       console.log("TR", tr);
-      const tdSeparador = tr.querySelector(`[${this.ATRIBUTO_AGRUPADOR}]`);
-      if (!tdSeparador) { return; }
-      const conteudoTdSeparador = tdSeparador.textContent;
-      const objSeparador = listaComObjetosSeparadores.find(obj => obj[conteudoTdSeparador]);
-      if (!objSeparador) {
+      const tdAgrupador = tr.querySelector(`[${this.ATRIBUTO_AGRUPADOR}]`);
+      if (!tdAgrupador) { return; }
+      const conteudoTdAgrupador = tdAgrupador.textContent;
+      const objAgrupador = listaComObjetosAgrupadores.find(obj => obj[conteudoTdAgrupador]);
+      if (!objAgrupador) {
         return;
       }
-      objSeparador[conteudoTdSeparador].push(tr);
+      objAgrupador[conteudoTdAgrupador].push(tr);
+      this.renderer.setStyle(tdAgrupador, "display", "none");
     });
 
-    listaComObjetosSeparadores.forEach((objSeparador, index) => {
-      console.log("FOR EACH OBJ SEPARADOR", objSeparador);
-      const atributoSeparador = Object.keys(objSeparador)[0];
-      const arrayTr = objSeparador[atributoSeparador] as Array<any>;
+    listaComObjetosAgrupadores.forEach((objAgrupador, index) => {
+      console.log("FOR EACH OBJ AGRUPADOR", objAgrupador);
+      const atributoAgrupador = Object.keys(objAgrupador)[0];
+      const arrayTr = objAgrupador[atributoAgrupador] as Array<any>;
       arrayTr.sort((a, b) => {
         a = a.firstChild.textContent;
         b = b.firstChild.textContent;
@@ -102,47 +109,90 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
         this.renderer.appendChild(newTbody, tr);
       });
       const newTable = this.renderer.createElement("table");
-      // this.renderNewTable(index, newTable, newTbody, atributoSeparador, this.trHeader);
+      const isFirst = (index === 0);
+      const isLast = (index === listaComObjetosAgrupadores.length - 1);
+      this.renderNewTable(newTable, newTbody, objAgrupador, this.trHeader, isFirst, isLast);
     });
 
-    this.listaComObjetosSeparadores = listaComObjetosSeparadores;
+    this.listaComObjetosAgrupadores = listaComObjetosAgrupadores;
     this.showOriginalTable = false;
     this.cdr.detectChanges();
-    console.log("LISTA OBJETOS SEPARADORES", listaComObjetosSeparadores);
+    console.log("LISTA OBJETOS AGRUPADORES", listaComObjetosAgrupadores);
   }
 
-  renderNewTable(index: number, newTable: any, newTbody: any, atributoSeparador: string, header): void {
+  renderNewTable(newTable: any, newTbody: any, objAgrupador: any, header, isFirst: boolean, isLast: boolean): void {
+
+    if (isFirst) {
+      const newThead = this.renderer.createElement("thead");
+      this.renderer.appendChild(newThead, header);
+      this.renderer.appendChild(newTable, newThead);
+    }
+
+    this.getValorAgrupadorFormatado(objAgrupador);
+
+    /* Cria título */
     const titulo = this.renderer.createElement("h4");
-    this.renderer.addClass(titulo, "titulo");
+    const subtituloPrincipal = this.renderer.createElement("span");
+    const subtituloComplementar = this.renderer.createElement("span");
+
+    this.renderer.addClass(titulo, "subtitulo");
     this.renderer.addClass(titulo, "mb-2");
-    this.renderer.setProperty(titulo, "innerHTML", atributoSeparador);
+    this.renderer.addClass(subtituloPrincipal, "text-accent");
+    this.renderer.addClass(subtituloComplementar, "text-aux");
+
+    this.renderer.setProperty(subtituloPrincipal, "innerHTML", objAgrupador.dataFormatada.principal);
+    this.renderer.setProperty(subtituloComplementar, "innerHTML", `, (${objAgrupador.dataFormatada.complementar})`);
+
+    this.renderer.appendChild(titulo, subtituloPrincipal);
+    this.renderer.appendChild(titulo, subtituloComplementar);
+
+    /* Cria card */
+    const card = this.renderer.createElement("div");
+    this.renderer.addClass(card, "card");
+    if (!isLast) {
+      this.renderer.addClass(card, "mb-4");
+    }
+    const cardBody = this.renderer.createElement("div");
+    this.renderer.addClass(card, "card-body");
+    this.renderer.appendChild(card, cardBody);
 
     this.renderer.addClass(newTable, "table");
+    this.renderer.addClass(newTable, "table-striped");
     this.renderer.appendChild(newTable, newTbody);
     if (this.novoExtrato) {
       this.renderer.appendChild(this.novoExtrato.nativeElement, titulo);
-      this.renderer.appendChild(this.novoExtrato.nativeElement, newTable);
+      this.renderer.appendChild(this.novoExtrato.nativeElement, card);
+      this.renderer.appendChild(cardBody, newTable);
     }
   }
 
-  getValorSeparadorFormatado(separador: any) {
-    const data = Object.keys(separador)[0];
-    const dataSeparador = new Date(data);
+  getValorAgrupadorFormatado(agrupador: any): any {
+    const data = Object.keys(agrupador)[0];
+    const dataAgrupador = new Date(data);
     const hoje = new Date();
 
     const ontem = new Date();
     ontem.setDate(hoje.getDate() - 1);
 
-    console.log("DATA SEPARADOR", dataSeparador.toDateString());
+    console.log("DATA AGRUPADOR", dataAgrupador.toDateString());
     console.log("HOJE", hoje.toDateString());
     console.log("ONTEM", ontem.toDateString());
 
-    if (dataSeparador.toDateString() === hoje.toDateString()) {
-      return `HOJE (${dataSeparador.toLocaleDateString()}, ${this.DIAS_SEMANA[dataSeparador.getDay()]})`;
-    } else if (ontem.toDateString() === dataSeparador.toDateString()) {
-      return `ONTEM (${dataSeparador.toLocaleDateString()}, ${this.DIAS_SEMANA[dataSeparador.getDay()]})`;
+    const dataFormatada = {
+      principal: "",
+      complementar: ""
+    };
+
+    if (dataAgrupador.toDateString() === hoje.toDateString()) {
+      dataFormatada.principal = "HOJE";
+      dataFormatada.complementar = `${dataAgrupador.toLocaleDateString()}, ${this.DIAS_SEMANA[dataAgrupador.getDay()]}`;
+    } else if (ontem.toDateString() === dataAgrupador.toDateString()) {
+      dataFormatada.principal = "ONTEM";
+      dataFormatada.complementar = `${dataAgrupador.toLocaleDateString()}, ${this.DIAS_SEMANA[dataAgrupador.getDay()]}`;
     } else {
-      return `${dataSeparador.toLocaleDateString()} (${this.DIAS_SEMANA[dataSeparador.getDay()]})`;
+      dataFormatada.principal = dataAgrupador.toLocaleDateString();
+      dataFormatada.complementar = this.DIAS_SEMANA[dataAgrupador.getDay()];
     }
+    agrupador.dataFormatada = dataFormatada;
   }
 }
