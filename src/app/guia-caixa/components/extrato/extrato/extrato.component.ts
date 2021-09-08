@@ -1,6 +1,7 @@
-import { stringify } from "@angular/compiler/src/util";
-import { Component, OnInit, ChangeDetectionStrategy, AfterViewInit, Renderer2, ViewChild, ElementRef, ChangeDetectorRef, ContentChild } from "@angular/core";
+// tslint:disable-next-line:max-line-length
+import { Component, OnInit, AfterViewInit, Renderer2, ViewChild, ElementRef, ChangeDetectorRef, ContentChild, DoCheck, ChangeDetectionStrategy } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
+import { Console } from "console";
 import { TabelaExtratoDirective } from "./tabela-extrato.directive";
 
 @Component({
@@ -32,20 +33,33 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-
+    console.log("ON INIT");
   }
 
   ngAfterViewInit(): void {
+    console.log("AFTER VIEW INIT");
     this.getTableCellsAgrupador();
   }
 
-  getTableCellsAgrupador() {
+  public reload() {
+    setTimeout(() => {
+      this.getTableCellsAgrupador();
+    }, 0);
+  }
 
+  public getTableCellsAgrupador() {
+    console.log("==========================================");
     const novaTabela = this.tabelaExtrato.elementRef.nativeElement;
 
+    console.log("NOVA TABELA", novaTabela);
+
     /* Captura os 'td' com atributo 'data-agrupador' */
+    const listaTeste = novaTabela.querySelectorAll(`td`);
+    console.log("LISTA TESTE", listaTeste);
     const listaTdAgrupador = novaTabela.querySelectorAll(`td[${this.ATRIBUTO_AGRUPADOR}]`);
     console.log("LISTA TD AGRUPADOR", listaTdAgrupador);
+    if (!listaTdAgrupador || listaTdAgrupador.length < 1) { return; }
+
 
     /* Captura o 'conteúdo' destes 'td' em outro array */
     const listaTdAgrupadorConteudo = [];
@@ -131,7 +145,7 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
     this.getValorAgrupadorFormatado(objAgrupador);
 
     /* Cria título */
-    const titulo = this.renderer.createElement("h4");
+    const titulo = this.renderer.createElement("h5");
     const subtituloPrincipal = this.renderer.createElement("span");
     const subtituloComplementar = this.renderer.createElement("span");
 
@@ -158,6 +172,7 @@ export class ExtratoComponent implements OnInit, AfterViewInit {
 
     this.renderer.addClass(newTable, "table");
     this.renderer.addClass(newTable, "table-striped");
+    this.renderer.addClass(newTable, "mb-0");
     this.renderer.appendChild(newTable, newTbody);
     if (this.novoExtrato) {
       this.renderer.appendChild(this.novoExtrato.nativeElement, titulo);

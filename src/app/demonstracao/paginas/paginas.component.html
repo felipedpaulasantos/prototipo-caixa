@@ -1,60 +1,5 @@
 <!-- <div class="mb-5">
    <cx-extrato>
-      <table class="table">
-         <thead>
-            <tr>
-               <th>Data</th>
-               <th>Tipo</th>
-               <th>Valor</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td data-agrupador="true">2021-09-07</td>
-               <td>Pagamento</td>
-               <td class="text-success">2000.00</td>
-            </tr>
-            <tr>
-               <td data-agrupador="true">2021-09-07</td>
-               <td>Pagamento</td>
-               <td>3000.00</td>
-            </tr>
-            <tr>
-               <td data-agrupador="true">2021-09-08</td>
-               <td>Pagamento</td>
-               <td>4000.00</td>
-            </tr>
-            <tr>
-               <td data-agrupador="true">2021-09-08</td>
-               <td>Pagamento</td>
-               <td>4000.00</td>
-            </tr>
-            <tr>
-               <td data-agrupador="true">2021-09-08</td>
-               <td>Pagamento</td>
-               <td>4000.00</td>
-            </tr>
-            <tr>
-               <td data-agrupador="true">2021-09-12</td>
-               <td>Pagamento</td>
-               <td>4000.00</td>
-            </tr>
-            <tr>
-               <td data-agrupador="true">2021-19-12</td>
-               <td>Pagamento</td>
-               <td>4000.00</td>
-            </tr>
-            <tr>
-               <td data-agrupador="true">2021-09-14</td>
-               <td>Pagamento</td>
-               <td>4000.00</td>
-            </tr>
-         </tbody>
-      </table>
-   </cx-extrato>
-</div> -->
-<div class="mb-5">
-   <cx-extrato>
       <table cxTabelaExtrato class="table">
          <thead>
             <tr>
@@ -103,10 +48,28 @@
                <td data-agrupador="true">2021-09-04</td>
                <td>Pagamento</td>
             </tr>
+         </tbody>
+      </table>
+   </cx-extrato>
+</div> -->
+
+<div class="mb-5">
+   <cx-extrato #extratoTeste>
+      <table cxTabelaExtrato class="table">
+         <thead>
             <tr>
-               <td>4000.00</td>
-               <td data-agrupador="true">2021-09-01</td>
-               <td>Pagamento</td>
+               <th>ID</th>
+               <th>Valid Card</th>
+               <th>CCV</th>
+               <th data-agrupador="true">Data</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr *ngFor="let stripe of randomStripes">
+               <td>{{ stripe.id }}</td>
+               <td>{{ stripe.valid_card }}</td>
+               <td>{{ stripe.ccv }}</td>
+               <td data-agrupador="true">{{stripe.year}}-{{stripe.month}}-01</td>
             </tr>
          </tbody>
       </table>

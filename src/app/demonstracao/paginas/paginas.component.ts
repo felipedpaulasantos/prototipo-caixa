@@ -1,6 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { NgxUiLoaderService } from "ngx-ui-loader";
+import { ExtratoComponent } from "src/app/guia-caixa/components/extrato/extrato/extrato.component";
+import { RandomDataStripe } from "src/app/shared/model/randon-data-stripe";
+import { RandomDataService } from "../componentes/datatable-demonstracao/random-data.service";
 
 @Component({
   selector: "app-paginas",
@@ -11,8 +14,12 @@ export class PaginasComponent implements OnInit {
 
   constructor(
     private ngxLoader: NgxUiLoaderService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private randomService: RandomDataService
   ) { }
+
+  @ViewChild("extratoTeste", { static: false })
+  extratoTeste: ExtratoComponent;
 
   formTeste = this.fb.group({
     cpf: new FormControl("39761837840", []),
@@ -30,8 +37,18 @@ export class PaginasComponent implements OnInit {
   campoUnico = this.formCampoUnico.controls.campoUnico;
   tipoCampo = this.formCampoUnico.controls.tipoCampo;
 
+  randomStripes: RandomDataStripe[] = [];
+
   ngOnInit(): void {
     this.ngxLoader.start("loader-1");
+
+    this.randomService.getRandomStripeData(20).subscribe((response: RandomDataStripe[]) => {
+      this.randomStripes = response;
+      console.log("EXTRATO TESTE", this.extratoTeste);
+      if (this.extratoTeste) {
+        this.extratoTeste.reload();
+      }
+    });
   }
 
   validaCampo(valor: string) {

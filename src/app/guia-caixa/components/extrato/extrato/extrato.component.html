@@ -1,36 +1,6 @@
 <!-- Teste EXTRATO -->
-<ng-container *ngIf="showOriginalTable">
+<div class="d-none" *ngIf="showOriginalTable">
    <ng-content></ng-content>
-</ng-container>
+</div>
 
 <div #novoExtrato class="extrato-view"></div>
-
-<!-- <div class="extrato-view" *ngIf="listaComObjetosAgrupadores?.length > 1">
-   <ng-container *ngFor="let agrupador of listaComObjetosAgrupadores; let isLast = last; let i = index;">
-      <h4 class="subtitulo">
-         <span class="text-accent">{{ agrupador.dataFormatada?.principal }}</span>, 
-         <span class="text-aux">({{ agrupador.dataFormatada?.complementar }})</span>
-      </h4>
-      <hr class="linha-agrupador">
-      <div class="card" [ngClass]="{'mb-4': !isLast}">
-         <div class="card-body">
-            <table class="table table-striped mb-0">
-               <thead *ngIf="i === 0 && trHeader">
-                  <tr>
-                     <ng-container *ngFor="let cell of trHeader.children">
-                        <th [classList]="cell.classList" [innerHTML]="cell.innerHTML | safe: 'html'"></th>
-                     </ng-container>
-                  </tr>
-               </thead> 
-               <tbody>
-                  <tr *ngFor="let row of agrupador[agrupador.valor()]" [innerHTML]="row.innerHTML | safe: 'html'">
-                      <ng-container *ngFor="let cell of row.children">
-                        <td [classList]="cell.classList" [innerHTML]="cell.innerHTML | safe: 'html'"></td>
-                     </ng-container>
-                  </tr>
-               </tbody>
-            </table>
-         </div>
-      </div>
-   </ng-container>
-</div> -->

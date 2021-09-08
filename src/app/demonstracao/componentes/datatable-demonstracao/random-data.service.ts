@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { RandomDataStripe } from "src/app/shared/model/randon-data-stripe";
 import { RandomDataFood } from "../../../shared/model/random-data-food";
 
 @Injectable({
@@ -17,9 +18,9 @@ export class RandomDataService {
       return this.http.get<RandomDataFood[]>(`${this.BASE_URL}/food/random_food${sizeParam}`);
    }
 
-   getRandomStripeData(size: number): Observable<RandomDataFood[]> {
+   getRandomStripeData(size: number): Observable<RandomDataStripe[]> {
       const sizeParam = size ? `?size=${size}` : "";
-      return this.http.get<RandomDataFood[]>(`${this.BASE_URL}/stripe/random_stripe${sizeParam}`);
+      return this.http.get<RandomDataStripe[]>(`${this.BASE_URL}/stripe/random_stripe${sizeParam}`);
    }
 
    getCep() {
