@@ -1,4 +1,5 @@
-<!-- <div class="mb-5">
+<div class="mb-5">
+   <h4>Extrato estático</h4>
    <cx-extrato>
       <table cxTabelaExtrato class="table">
          <thead>
@@ -51,9 +52,10 @@
          </tbody>
       </table>
    </cx-extrato>
-</div> -->
+</div>
 
 <div class="mb-5">
+   <h4>Extrato dinâmico</h4>
    <cx-extrato #extratoTeste>
       <table cxTabelaExtrato class="table">
          <thead>
@@ -67,7 +69,7 @@
          <tbody>
             <tr *ngFor="let stripe of randomStripes">
                <td>{{ stripe.id }}</td>
-               <td>{{ stripe.valid_card }}</td>
+               <td class="cursor-pointer text-accent" (click)="teste(stripe.valid_card)">{{ stripe.valid_card }}</td>
                <td>{{ stripe.ccv }}</td>
                <td data-agrupador="true">{{stripe.year}}-{{stripe.month}}-01</td>
             </tr>

@@ -44,7 +44,6 @@ export class PaginasComponent implements OnInit {
 
     this.randomService.getRandomStripeData(20).subscribe((response: RandomDataStripe[]) => {
       this.randomStripes = response;
-      console.log("EXTRATO TESTE", this.extratoTeste);
       if (this.extratoTeste) {
         this.extratoTeste.reload();
       }
