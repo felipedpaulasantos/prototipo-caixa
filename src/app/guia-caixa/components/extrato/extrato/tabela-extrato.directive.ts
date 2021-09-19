@@ -5,7 +5,7 @@ import { Directive, ElementRef } from "@angular/core";
 })
 export class TabelaExtratoDirective {
 
-  public elementRef;
+  public elementRef: ElementRef;
 
   constructor(el: ElementRef) {
     this.elementRef = el;

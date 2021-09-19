@@ -1,5 +1,5 @@
 // tslint:disable-next-line:max-line-length
-import { Component, AfterViewInit, Renderer2, ViewChild, ElementRef, ChangeDetectorRef, ContentChild, ChangeDetectionStrategy } from "@angular/core";
+import { Component, AfterViewInit, Renderer2, ViewChild, ElementRef, ContentChild, ChangeDetectionStrategy, Input } from "@angular/core";
 import { AgrupamentoExtrato, AgrupamentoExtratoDataFormatada } from "src/app/shared/model/agrupamento-extrato.model";
 import { TabelaExtratoDirective } from "./tabela-extrato.directive";
 
@@ -14,76 +14,117 @@ export class ExtratoComponent implements AfterViewInit {
   private readonly ATRIBUTO_AGRUPADOR = "data-agrupador";
   private readonly DIAS_SEMANA = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
 
-  private readonly TITULO_CLASSES: string[] = "subtitulo mb-2".split(" ");
-  private readonly SUBTITULO_PRINCIPAL_CLASSES: string[] = "text-accent".split(" ");
-  private readonly SUBTITULO_COMPLEMENTAR_CLASSES: string[] = "text-aux".split(" ");
-  private readonly CARD_TABELA_CLASSES: string[] = "card".split(" ");
-  private readonly CARD_ULTIMO_CLASSES: string[] = "mb-4".split(" ");
-  private readonly CARD_BODY_CLASSES: string[] = "card-body".split(" ");
-  private readonly TABELA_CLASSES: string[] = "table table-striped mb-0".split(" ");
-  private readonly PAINEL_AGRUPAMENTO_CLASSES: string[] = "painel-agrupamento".split(" ");
-  private readonly SEPARADOR_CLASSES: string[] = "separador-agrupamento".split(" ");
+  private TITULO_CLASSES: string[] = "subtitulo mb-2".split(" ");
+  private SUBTITULO_PRINCIPAL_CLASSES: string[] = "text-accent".split(" ");
+  private SUBTITULO_COMPLEMENTAR_CLASSES: string[] = "text-aux".split(" ");
+  private CARD_TABELA_CLASSES: string[] = "card".split(" ");
+  private CARD_ULTIMO_CLASSES: string[] = "mb-4".split(" ");
+  private CARD_BODY_CLASSES: string[] = "card-body".split(" ");
+  private TABELA_CLASSES: string[] = "table mb-0".split(" ");
+  private PAINEL_AGRUPAMENTO_CLASSES: string[] = "painel-agrupamento".split(" ");
+  private SEPARADOR_CLASSES: string[] = "separador-agrupamento".split(" ");
 
   @ViewChild("novoExtrato", { static: false })
   novoExtrato: ElementRef;
 
   @ContentChild(TabelaExtratoDirective, { read: TabelaExtratoDirective, static: true })
-  tabelaExtrato: TabelaExtratoDirective;
+  tabelaExtratoDirective: TabelaExtratoDirective;
 
   agrupamentosExtrato: AgrupamentoExtrato[] = [];
-  trHeader: any;
-  showOriginalTable = true;
+
+  /*
+    O 'nativeElement' da tabela original, capturado pela diretiva TabelaExtratoDirective
+  */
+  tabelaOriginal: HTMLTableElement;
+
+  /*
+    A linha de cabeçalho da tabela original, sem a coluna de valor agrupador, que pode se repetir ou não nos agrupamentos
+  */
+  trHeader: HTMLTableRowElement;
+
+  /*
+    Todas as linhas da tabela original
+  */
+  linhasTabela: HTMLTableRowElement[] = [];
+
+  /*
+    Indica se as linhas de cabeçalho 'th - table header' serão exibidas em todos os agrupamentos ou só no primeiro
+  */
+  @Input()
+  headerApenasNoPrimeiroAgrupamento = true;
+
+  /*
+    Função para ordenar os agrupamentos.
+    Por padrão, compara os atributos agrupadores como texto.
+    Por este motivo, caso o atributo seja uma data, o ideal é passá-lo no formato ISO,
+    já preparado para comparação textual.
+  */
+  @Input()
+  sortFunctionAgrupamentos: (a: any, b: any) => number = (a, b) => {
+    return (a < b) ? 1 : ((a > b) ? -1 : 0);
+  }
 
   constructor(
-    private renderer: Renderer2,
-    private cdr: ChangeDetectorRef
+    private renderer: Renderer2
   ) { }
 
   ngAfterViewInit(): void {
-    this.initExtratoAgrupado();
+    this.initAgrupamentoExtrato();
   }
 
   public reload() {
     setTimeout(() => {
-      this.initExtratoAgrupado();
+      this.initAgrupamentoExtrato();
     }, 0);
   }
 
-  public initExtratoAgrupado() {
-    if (!this.tabelaExtrato || !this.tabelaExtrato.elementRef) { return; }
-    const novaTabela = this.tabelaExtrato.elementRef.nativeElement;
+  public initAgrupamentoExtrato(): void {
+    if (!this.tabelaExtratoDirective || !this.tabelaExtratoDirective.elementRef) { return; }
 
-    /* Captura os 'td' com atributo 'data-agrupador' */
-    const tdsComAtributoAgrupador: any[] = novaTabela.querySelectorAll(`td[${this.ATRIBUTO_AGRUPADOR}]`);
+    this.tabelaOriginal = this.tabelaExtratoDirective.elementRef.nativeElement;
+    this.TABELA_CLASSES = this.tabelaOriginal.className.split(" ");
+
+    this.tabelaOriginal.querySelectorAll("tr").forEach(
+      linhaTabela => this.linhasTabela.push(linhaTabela)
+    );
+    if (!this.linhasTabela) { return; }
+
+    this.agrupamentosExtrato = this.criaAgrupamentosExtrato(this.tabelaOriginal);
+    if (!this.agrupamentosExtrato || this.agrupamentosExtrato.length < 1) { return; }
+
+    this.trHeader = this.getHeaderFromTabelaOriginal(this.linhasTabela);
+    this.populaNovasTabelasAgrupadas(this.agrupamentosExtrato, this.linhasTabela);
+  }
+
+  private criaAgrupamentosExtrato(tabelaOriginal: any): AgrupamentoExtrato[] {
+    const tdsComAtributoAgrupador: any[] = [];
+    tabelaOriginal.querySelectorAll(`td[${this.ATRIBUTO_AGRUPADOR}]`).forEach(td => {
+      tdsComAtributoAgrupador.push(td);
+    });
     if (!tdsComAtributoAgrupador || tdsComAtributoAgrupador.length < 1) { return; }
 
-    /* Captura o 'conteúdo' destes 'td' em outro array */
-    const conteudoTdsComAgrupador: any[] = [];
-    tdsComAtributoAgrupador.forEach(td => conteudoTdsComAgrupador.push(td.innerHTML));
+    const conteudoTdsComAgrupador: any[] = [...new Set(tdsComAtributoAgrupador.map(td => td.innerHTML))];
+    conteudoTdsComAgrupador.sort(this.sortFunctionAgrupamentos);
 
-    /* Cria um set com o array anterior para filtrar os valores e eliminar duplicatas */
-    const setConteudoTdsComAgrupador = new Set(conteudoTdsComAgrupador);
-
-    /* Cria uma lista com o set anterior e ordena */
-    const conteudoTdsComAgrupadorUnique = [...setConteudoTdsComAgrupador];
-    conteudoTdsComAgrupadorUnique.sort(function (a, b) {
-      return (a < b) ? 1 : ((a > b) ? -1 : 0);
+    const agrupamentosExtrato: AgrupamentoExtrato[] = conteudoTdsComAgrupador.map(conteudoTdAgrupador => {
+      return {
+        valorAgrupador: conteudoTdAgrupador,
+        linhasDoAgrupamento: [],
+        dataFormatada: null
+      };
     });
 
-    /* Cria uma lista com objetos do tipo AgrupadorExtrato */
-    const agrupamentosExtrato: AgrupamentoExtrato[] = conteudoTdsComAgrupadorUnique.map(valor => {
-      return { valorAgrupador: valor, itensAgrupados: [], dataFormatada: null };
-    });
+    return agrupamentosExtrato;
+  }
 
-    /* Captura uma lista com os 'tr' */
-    const linhasTabela = novaTabela.querySelectorAll("tr");
-
-    /* Captura a primeira linha, do header, o 'th' com atributo agrupador, e o oculta */
-    this.trHeader = linhasTabela[0];
-    const thAgrupador = this.trHeader.querySelector(`[${this.ATRIBUTO_AGRUPADOR}]`);
+  private getHeaderFromTabelaOriginal(linhasTabela: any): any {
+    const trHeader = linhasTabela[0];
+    const thAgrupador = trHeader.querySelector(`[${this.ATRIBUTO_AGRUPADOR}]`);
     this.renderer.setStyle(thAgrupador, "display", "none");
+    return trHeader;
+  }
 
-    /* Popular os objetosAgrupadores com as 'tr' correspondentes, e oculta o 'td' com o atributo agrupador */
+  private populaNovasTabelasAgrupadas(agrupamentosExtrato: AgrupamentoExtrato[], linhasTabela): void {
     linhasTabela.forEach(linha => {
       const tdAgrupador = linha.querySelector(`[${this.ATRIBUTO_AGRUPADOR}]`);
       if (!tdAgrupador) { return; }
@@ -92,13 +133,12 @@ export class ExtratoComponent implements AfterViewInit {
       if (!objAgrupador) {
         return;
       }
-      objAgrupador.itensAgrupados.push(linha);
+      objAgrupador.linhasDoAgrupamento.push(linha);
       this.renderer.setStyle(tdAgrupador, "display", "none");
     });
 
-
     agrupamentosExtrato.forEach((agrupador, index) => {
-      const linhasDoAgrupamento = agrupador.itensAgrupados;
+      const linhasDoAgrupamento = agrupador.linhasDoAgrupamento;
       linhasDoAgrupamento.sort((a, b) => {
         a = a.firstChild.textContent;
         b = b.firstChild.textContent;
@@ -108,21 +148,19 @@ export class ExtratoComponent implements AfterViewInit {
       linhasDoAgrupamento.forEach((linha) => {
         this.renderer.appendChild(newTbody, linha);
       });
-      const newTable = this.renderer.createElement("table");
+      const newTable: HTMLTableElement = this.renderer.createElement("table");
       const isFirst = (index === 0);
       const isLast = (index === agrupamentosExtrato.length - 1);
-      this.renderNewTable(newTable, newTbody, agrupador, this.trHeader, isFirst, isLast);
+      this.renderNovaTabelaAgrupada(newTable, newTbody, agrupador, this.trHeader, isFirst, isLast);
     });
-
-    this.agrupamentosExtrato = agrupamentosExtrato;
-    this.showOriginalTable = false;
   }
 
-  renderNewTable(newTable: any, newTbody: any, agrupamento: AgrupamentoExtrato, header, isFirst: boolean, isLast: boolean): void {
+  private renderNovaTabelaAgrupada(
+    newTable: HTMLTableElement, newTbody: any, agrupamento: AgrupamentoExtrato, trHeader: any, isFirst: boolean, isLast: boolean): void {
 
     if (isFirst) {
       const newThead = this.renderer.createElement("thead");
-      this.renderer.appendChild(newThead, header);
+      this.renderer.appendChild(newThead, trHeader);
       this.renderer.appendChild(newTable, newThead);
     }
 
@@ -162,9 +200,10 @@ export class ExtratoComponent implements AfterViewInit {
 
     /* Cria painel de agrupamento */
     const painelAgrupamento = this.renderer.createElement("div");
-    this.renderer.setAttribute(painelAgrupamento, "data-valor-agrupador", agrupamento.valorAgrupador)
+    this.renderer.setAttribute(painelAgrupamento, "data-valor-agrupador", agrupamento.valorAgrupador);
     this.PAINEL_AGRUPAMENTO_CLASSES.forEach(classe => this.renderer.addClass(painelAgrupamento, classe));
 
+    /* Renderiza o painel de agrupamento */
     if (this.novoExtrato) {
       this.renderer.appendChild(this.novoExtrato.nativeElement, painelAgrupamento);
       this.renderer.appendChild(painelAgrupamento, titulo);

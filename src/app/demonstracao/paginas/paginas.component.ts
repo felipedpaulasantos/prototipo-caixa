@@ -39,6 +39,10 @@ export class PaginasComponent implements OnInit {
 
   randomStripes: RandomDataStripe[] = [];
 
+  sortFunctionTeste = (a, b) => {
+    return (a < b) ? -1 : ((a > b) ? 1 : 0);
+  }
+
   ngOnInit(): void {
     this.ngxLoader.start("loader-1");
 

@@ -1,5 +1,5 @@
 <div class="mb-5">
-   <h4>Extrato estático</h4>
+   <h4 class="subtitulo">Extrato estático descendente</h4>
    <cx-extrato>
       <table cxTabelaExtrato class="table">
          <thead>
@@ -12,12 +12,12 @@
          <tbody>
             <tr>
                <td [ngClass]="{'text-success': true}">2000.00</td>
-               <td data-agrupador="true">2021-09-08</td>
+               <td data-agrupador="true">2021-09-17</td>
                <td>Pagamento</td>
             </tr>
             <tr>
                <td [ngClass]="{'text-danger': false}">3000.00</td>
-               <td data-agrupador="true">2021-09-07</td>
+               <td data-agrupador="true">2021-09-17</td>
                <td>Pagamento</td>
             </tr>
             <tr>
@@ -54,10 +54,32 @@
    </cx-extrato>
 </div>
 
-<div class="mb-5">
+<!-- <div class="mb-5">
    <h4>Extrato dinâmico</h4>
-   <cx-extrato #extratoTeste>
-      <table cxTabelaExtrato class="table">
+   <table class="table">
+      <thead>
+         <tr>
+            <th>ID</th>
+            <th>Valid Card</th>
+            <th>CCV</th>
+            <th data-agrupador="true">Data</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr *ngFor="let stripe of randomStripes">
+            <td>{{ stripe.id }}</td>
+            <td class="cursor-pointer text-accent" (click)="teste(stripe.valid_card)">{{ stripe.valid_card }}</td>
+            <td>{{ stripe.ccv }}</td>
+            <td data-agrupador="true">{{stripe.year}}-{{stripe.month}}-01</td>
+         </tr>
+      </tbody>
+   </table>
+</div> -->
+
+<div class="mb-5">
+   <h4 class="subtitulo">Extrato dinâmico crescente</h4>
+   <cx-extrato #extratoTeste [sortFunctionAgrupamentos]="sortFunctionTeste">
+      <table cxTabelaExtrato class="table table-striped mb-0 table-bordered">
          <thead>
             <tr>
                <th>ID</th>

@@ -1,6 +1,6 @@
 export interface AgrupamentoExtrato {
    valorAgrupador: string;
-   itensAgrupados: any[];
+   linhasDoAgrupamento: any[];
    dataFormatada: AgrupamentoExtratoDataFormatada;
 }
 
