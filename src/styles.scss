@@ -818,7 +818,7 @@ ngx-spinner .overlay {
   &:active {
     color: var(--cxContrast);
     border-color: var(--cxAccent);
-    box-shadow: 0 0.15rem 0.07rem 0rem var(--cxAccent);
+    box-shadow: 0 0.15rem 0rem 0rem var(--cxAccent);
   }
 }
 input.form-control,
@@ -856,7 +856,7 @@ select {
 }
 .ng-select.ng-select-focused .ng-select-container {
   border-color: var(--cxAccent);
-  box-shadow: 0 0.15rem 0.07rem 0rem var(--cxAccent) !important;
+  box-shadow: 0 0.15rem 0rem 0rem var(--cxAccent) !important;
 }
 .ng-select.ng-select-disabled > .ng-select-container {
   background-color: var(--cancel);
@@ -889,14 +889,14 @@ select {
 .form-control.ng-dirty {
   border-color: var(--warning-dark);
   &:active, &:focus {
-    box-shadow: 0 0.15rem 0.07rem 0rem var(--warning-dark);
+    box-shadow: 0 0.15rem 0rem 0rem var(--warning-dark);
   }
 }
 .ng-select.ng-dirty .ng-select-container {
   border-color: var(--warning-dark);
 }
 .ng-select.ng-select-focused.ng-dirty .ng-select-container {
-  box-shadow: 0 0.15rem 0.07rem 0rem var(--warning-dark);
+  box-shadow: 0 0.15rem 0rem 0rem var(--warning-dark);
 }
 
 /* FORM VALIDATION - INVALID */
@@ -904,14 +904,14 @@ select {
 .form-control.ng-dirty.ng-invalid {
   border-color: var(--danger) !important;
   &:active, &:focus {
-    box-shadow: 0 0.15rem 0.07rem 0rem var(--danger) !important;
+    box-shadow: 0 0.15rem 0rem 0rem var(--danger) !important;
   }
 }
 .ng-select.ng-dirty.ng-invalid .ng-select-container {
   border-color: var(--danger) !important;
 }
 .ng-select.ng-select-focused.ng-dirty.ng-invalid .ng-select-container {
-  box-shadow: 0 0.15rem 0.07rem 0rem var(--danger) !important;
+  box-shadow: 0 0.15rem 0rem 0rem var(--danger) !important;
 }
 
 /* FORM VALIDATION - VALID */
@@ -919,14 +919,14 @@ select {
 .form-control.ng-dirty.ng-valid {
   border-color: var(--success) !important;
   &:active, &:focus {
-    box-shadow: 0 0.15rem 0.07rem 0rem var(--success) !important;
+    box-shadow: 0 0.15rem 0rem 0rem var(--success) !important;
   }
 }
 .ng-select.ng-dirty.ng-valid .ng-select-container {
   border-color: var(--success) !important;
 }
 .ng-select.ng-select-focused.ng-dirty.ng-valid .ng-select-container {
-  box-shadow: 0 0.15rem 0.07rem 0rem var(--success) !important;
+  box-shadow: 0 0.15rem 0rem 0rem var(--success) !important;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -1143,6 +1143,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   transform: rotate(180deg);
 }
 .menu-item {
+  position: relative;
   display: flex;
   align-items: center;
   height: 4.153rem;
