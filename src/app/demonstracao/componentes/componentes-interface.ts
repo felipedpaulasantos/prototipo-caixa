@@ -10,9 +10,9 @@ export abstract class ComponentesInterface {
 	) { }
 
 	abstract scrollElement;
-	abstract sectionOffset = 0;
+	abstract sectionOffset;
 	abstract spiedTags: string[];
-	abstract currentSection = "";
+	abstract currentSection;
 
 	scrollTo(section) {
     window.scrollBy({ top: - TOOLBAR_HEIGHT });

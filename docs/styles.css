@@ -1,5 +1,5 @@
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].rules[0].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].rules[0].oneOf[1].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[5].rules[1].use[0]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].rules[1].use[1]!./src/styles.scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].rules[0].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].rules[0].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[6].rules[1].use[0]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[6].rules[1].use[1]!./src/styles.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /* Fontes */
@@ -21478,22 +21478,22 @@ h3 {
 */
 @-webkit-keyframes input-ripple {
   0% {
-    background-position: 50% 100%, calc(50% - 0px/2 + 0px) 100%;
-    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)) 100%;
+    background-position: 50% 100%, calc(50% - 0px / 2 + 0px) 100%;
+    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px) / 2 + var(--click-offset-x, 0px)) 100%;
   }
   100% {
-    background-position: 50% 100%, calc(50% - 0px/2 + 0px) 100%;
-    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)) 100%;
+    background-position: 50% 100%, calc(50% - 0px / 2 + 0px) 100%;
+    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px) / 2 + var(--click-offset-x, 0px)) 100%;
   }
 }
 @keyframes input-ripple {
   0% {
-    background-position: 50% 100%, calc(50% - 0px/2 + 0px) 100%;
-    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)) 100%;
+    background-position: 50% 100%, calc(50% - 0px / 2 + 0px) 100%;
+    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px) / 2 + var(--click-offset-x, 0px)) 100%;
   }
   100% {
-    background-position: 50% 100%, calc(50% - 0px/2 + 0px) 100%;
-    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px)/2 + var(--click-offset-x, 0px)) 100%;
+    background-position: 50% 100%, calc(50% - 0px / 2 + 0px) 100%;
+    background-position: 50% 100%, calc(50% - var(--click-el-w, 0px) / 2 + var(--click-offset-x, 0px)) 100%;
   }
 }
 /* SlideIn */
@@ -22042,7 +22042,7 @@ a:hover {
   /* border-left: solid 4px var(--cxSuccessContrast); */
 }
 .toast-container > div.ngx-toastr.toast-success:before {
-  content: "";
+  content: "\f00c";
   color: $cx-color-success-lighter;
   color: var(--cxSuccessContrast);
   background-color: $cx-color-success;
@@ -22056,7 +22056,7 @@ a:hover {
   /*       border-left: solid 4px var(--cxDangerContrast); */
 }
 .toast-container > div.ngx-toastr.toast-error:before {
-  content: "";
+  content: "\f00d";
   color: $cx-color-danger-lighter;
   color: var(--cxDangerContrast);
   background-color: $cx-color-danger;
@@ -22070,7 +22070,7 @@ a:hover {
   /* border-left: solid 4px var(--cxInfoContrast); */
 }
 .toast-container > div.ngx-toastr.toast-info:before {
-  content: "";
+  content: "\f129";
   color: $cx-color-info-lighter;
   color: var(--cxInfoContrast);
   background-color: $cx-color-info;
@@ -22084,7 +22084,7 @@ a:hover {
   /* border-left: solid 4px var(--cxWarningContrast); */
 }
 .toast-container > div.ngx-toastr.toast-warning:before {
-  content: "";
+  content: "\f12a";
   color: $cx-color-warning-lighter;
   color: var(--cxWarningContrast);
   background-color: $cx-color-warning;
@@ -22260,13 +22260,13 @@ th.th-sorting, .table thead th.sorting_desc::after, .table thead th.sorting_asc:
 }
 .table thead th.sorting:hover::after {
   opacity: 0.5;
-  content: "";
+  content: "\f0dc";
 }
 .table thead th.sorting_asc::after {
-  content: "";
+  content: "\f0de";
 }
 .table thead th.sorting_desc::after {
-  content: "";
+  content: "\f0dd";
 }
 .table tbody td {
   vertical-align: middle;
@@ -24346,7 +24346,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 /* INFO */
 .alert-info::before, .alert-outline-info::before {
-  content: "";
+  content: "\f129";
 }
 .alert-info {
   background-color: $cx-color-info;
@@ -24374,7 +24374,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 /* WARNING */
 .alert-warning::before, .alert-outline-warning::before {
-  content: "";
+  content: "\f12a";
 }
 .alert-warning {
   background-color: $cx-color-warning;
@@ -24402,7 +24402,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 /* SUCCESS */
 .alert-success::before, .alert-outline-success::before {
-  content: "";
+  content: "\f00c";
 }
 .alert-success {
   background-color: $cx-color-success;
@@ -24430,7 +24430,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 /* DANGER */
 .alert-danger::before, .alert-outline-danger::before {
-  content: "";
+  content: "\f00d";
 }
 .alert-danger {
   background-color: $cx-color-danger;
@@ -24675,10 +24675,10 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   font-weight: 900;
 }
 .consulta-container.consulta-ok > .consulta-container-icon::before {
-  content: "";
+  content: "\f00c";
 }
 .consulta-container.consulta-warning > .consulta-container-icon::before {
-  content: "";
+  content: "\f12a";
 }
 .consulta-container > .consulta-container-collapse-icon {
   display: inline-flex;
@@ -24698,7 +24698,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   font-family: "Font Awesome 5 Free";
   font-family: var(--cxFontFaIcon);
   font-weight: 900;
-  content: "";
+  content: "\f077";
   display: inline-block;
   font-style: normal;
   font-feature-settings: normal;
@@ -24723,3 +24723,5 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.15);
   box-shadow: var(--cxShadowSm);
 }
+
+/*# sourceMappingURL=styles.css.map*/
