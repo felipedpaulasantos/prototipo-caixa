@@ -10,11 +10,10 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatComponent", function() { return ChatComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "8Y7J");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _shared_services_socketio_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/services/socketio.service */ "6k6v");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-toastr */ "EApP");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "SVse");
-
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-toastr */ "5eHb");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
 
 
 
@@ -107,15 +106,7 @@ ChatComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.contador || 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.messages);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgClass"]], styles: ["#chatPanel[_ngcontent-%COMP%] {\n  height: calc(100vh - 160px);\n  max-height: calc(100vh - 160px);\n}\n\n#chatDiv[_ngcontent-%COMP%] {\n  height: 40vh;\n  max-height: 40vh;\n  width: 100%;\n  overflow-y: scroll;\n}\n\n#msgInput[_ngcontent-%COMP%] {\n  width: 100%;\n}\n\n#msgInput[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\n  width: 80%;\n}\n\n#msgInput[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  width: 20%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2hhdC9jaGF0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0MsMkJBQUE7RUFDQSwrQkFBQTtBQUNEOztBQUNBO0VBQ0MsWUFBQTtFQUNBLGdCQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0FBRUQ7O0FBQUE7RUFDQyxXQUFBO0FBR0Q7O0FBRkM7RUFDQyxVQUFBO0FBSUY7O0FBRkM7RUFDQyxVQUFBO0FBSUYiLCJmaWxlIjoic3JjL2FwcC9jaGF0L2NoYXQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjY2hhdFBhbmVsIHtcclxuXHRoZWlnaHQ6IGNhbGMoMTAwdmggLSAxNjBweCk7XHJcblx0bWF4LWhlaWdodDogY2FsYygxMDB2aCAtIDE2MHB4KTtcclxufVxyXG4jY2hhdERpdiB7XHJcblx0aGVpZ2h0OiA0MHZoO1xyXG5cdG1heC1oZWlnaHQ6IDQwdmg7IFxyXG5cdHdpZHRoOiAxMDAlO1xyXG5cdG92ZXJmbG93LXk6IHNjcm9sbDtcclxufVxyXG4jbXNnSW5wdXQge1xyXG5cdHdpZHRoOiAxMDAlO1xyXG5cdGlucHV0IHtcclxuXHRcdHdpZHRoOiA4MCU7XHJcblx0fVxyXG5cdGJ1dHRvbiB7XHJcblx0XHR3aWR0aDogMjAlO1xyXG5cdH1cclxufSJdfQ== */"] });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ChatComponent, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-                selector: 'app-chat',
-                templateUrl: './chat.component.html',
-                styleUrls: ['./chat.component.scss']
-            }]
-    }], function () { return [{ type: _shared_services_socketio_service__WEBPACK_IMPORTED_MODULE_1__["SocketioService"] }, { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_2__["ToastrService"] }]; }, null); })();
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgClass"]], styles: ["#chatPanel[_ngcontent-%COMP%] {\n  height: calc(100vh - 160px);\n  max-height: calc(100vh - 160px);\n}\n\n#chatDiv[_ngcontent-%COMP%] {\n  height: 40vh;\n  max-height: 40vh;\n  width: 100%;\n  overflow-y: scroll;\n}\n\n#msgInput[_ngcontent-%COMP%] {\n  width: 100%;\n}\n\n#msgInput[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\n  width: 80%;\n}\n\n#msgInput[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  width: 20%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXGNoYXQuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDQywyQkFBQTtFQUNBLCtCQUFBO0FBQ0Q7O0FBQ0E7RUFDQyxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7QUFFRDs7QUFBQTtFQUNDLFdBQUE7QUFHRDs7QUFGQztFQUNDLFVBQUE7QUFJRjs7QUFGQztFQUNDLFVBQUE7QUFJRiIsImZpbGUiOiJjaGF0LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2NoYXRQYW5lbCB7XHJcblx0aGVpZ2h0OiBjYWxjKDEwMHZoIC0gMTYwcHgpO1xyXG5cdG1heC1oZWlnaHQ6IGNhbGMoMTAwdmggLSAxNjBweCk7XHJcbn1cclxuI2NoYXREaXYge1xyXG5cdGhlaWdodDogNDB2aDtcclxuXHRtYXgtaGVpZ2h0OiA0MHZoOyBcclxuXHR3aWR0aDogMTAwJTtcclxuXHRvdmVyZmxvdy15OiBzY3JvbGw7XHJcbn1cclxuI21zZ0lucHV0IHtcclxuXHR3aWR0aDogMTAwJTtcclxuXHRpbnB1dCB7XHJcblx0XHR3aWR0aDogODAlO1xyXG5cdH1cclxuXHRidXR0b24ge1xyXG5cdFx0d2lkdGg6IDIwJTtcclxuXHR9XHJcbn0iXX0= */"] });
 
 
 /***/ }),
@@ -1864,34 +1855,24 @@ Emitter.prototype.hasListeners = function(event){
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatModule", function() { return ChatModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "8Y7J");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "SVse");
-/* harmony import */ var _chat_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./chat-routing.module */ "cC0O");
-/* harmony import */ var _chat_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./chat.component */ "+XlM");
-
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _chat_routing_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chat-routing.module */ "cC0O");
+/* harmony import */ var _chat_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./chat.component */ "+XlM");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
 
 
 
 
 class ChatModule {
 }
-ChatModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: ChatModule });
-ChatModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function ChatModule_Factory(t) { return new (t || ChatModule)(); }, imports: [[
-            _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
-            _chat_routing_module__WEBPACK_IMPORTED_MODULE_2__["ChatRoutingModule"]
+ChatModule.ɵfac = function ChatModule_Factory(t) { return new (t || ChatModule)(); };
+ChatModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineNgModule"]({ type: ChatModule });
+ChatModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ imports: [[
+            _angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"],
+            _chat_routing_module__WEBPACK_IMPORTED_MODULE_1__["ChatRoutingModule"]
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](ChatModule, { declarations: [_chat_component__WEBPACK_IMPORTED_MODULE_3__["ChatComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
-        _chat_routing_module__WEBPACK_IMPORTED_MODULE_2__["ChatRoutingModule"]] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ChatModule, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
-        args: [{
-                declarations: [_chat_component__WEBPACK_IMPORTED_MODULE_3__["ChatComponent"]],
-                imports: [
-                    _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
-                    _chat_routing_module__WEBPACK_IMPORTED_MODULE_2__["ChatRoutingModule"]
-                ]
-            }]
-    }], null, null); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsetNgModuleScope"](ChatModule, { declarations: [_chat_component__WEBPACK_IMPORTED_MODULE_2__["ChatComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"],
+        _chat_routing_module__WEBPACK_IMPORTED_MODULE_1__["ChatRoutingModule"]] }); })();
 
 
 /***/ }),
@@ -2357,25 +2338,24 @@ function plural(ms, n, name) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SocketioService", function() { return SocketioService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "8Y7J");
-/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! socket.io-client */ "gFX4");
-/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(socket_io_client__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ "AytR");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "qCKp");
-
+/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! socket.io-client */ "gFX4");
+/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(socket_io_client__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ "AytR");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
 
 
 
 
 class SocketioService {
     constructor() {
-        this.contadorSource = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]("");
+        this.contadorSource = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]("");
         this.contador$ = this.contadorSource.asObservable();
-        this.messageSource = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]("");
+        this.messageSource = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]("");
         this.message$ = this.messageSource.asObservable();
     }
     setupSocketConnection() {
-        this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_1__(src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].SOCKET_ENDPOINT);
+        this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_0__(src_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].SOCKET_ENDPOINT);
         this.socket.emit('my message', 'Hello there from Angular.');
         this.socket.on('message', (msg) => {
             this.messageSource.next(msg);
@@ -2393,13 +2373,7 @@ class SocketioService {
     }
 }
 SocketioService.ɵfac = function SocketioService_Factory(t) { return new (t || SocketioService)(); };
-SocketioService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: SocketioService, factory: SocketioService.ɵfac, providedIn: 'root' });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SocketioService, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
-        args: [{
-                providedIn: 'root'
-            }]
-    }], function () { return []; }, null); })();
+SocketioService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({ token: SocketioService, factory: SocketioService.ɵfac, providedIn: 'root' });
 
 
 /***/ }),
@@ -6253,27 +6227,20 @@ function polling (opts) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatRoutingModule", function() { return ChatRoutingModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "8Y7J");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "iInd");
-/* harmony import */ var _chat_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./chat.component */ "+XlM");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _chat_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chat.component */ "+XlM");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
 
 
 
 
-
-const routes = [{ path: '', component: _chat_component__WEBPACK_IMPORTED_MODULE_2__["ChatComponent"] }];
+const routes = [{ path: '', component: _chat_component__WEBPACK_IMPORTED_MODULE_1__["ChatComponent"] }];
 class ChatRoutingModule {
 }
-ChatRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: ChatRoutingModule });
-ChatRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function ChatRoutingModule_Factory(t) { return new (t || ChatRoutingModule)(); }, imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](ChatRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ChatRoutingModule, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
-        args: [{
-                imports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild(routes)],
-                exports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]]
-            }]
-    }], null, null); })();
+ChatRoutingModule.ɵfac = function ChatRoutingModule_Factory(t) { return new (t || ChatRoutingModule)(); };
+ChatRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineNgModule"]({ type: ChatRoutingModule });
+ChatRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forChild(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsetNgModuleScope"](ChatRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
 
 
 /***/ }),
