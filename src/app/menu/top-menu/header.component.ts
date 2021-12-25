@@ -49,9 +49,11 @@ export class HeaderComponent implements OnInit {
   }
 
   fontSizes = [
-    { name: "Médio", value: "13px" },
-    { name: "Grande", value: "14px" },
-    { name: "Extra Grande", value: "15px" }
+    { name: "Pequeno", value: "13px" },
+    { name: "Médio", value: "14px" },
+    { name: "Grande", value: "15px" },
+    { name: "Muito Grande", value: "16px" },
+    { name: "Extra Grande", value: "17px" }
   ];
 
   themes: GlobalThemes[] = [];

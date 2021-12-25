@@ -1,14 +1,14 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, ChangeDetectorRef } from '@angular/core';
-import { Config } from 'protractor';
-import { AccordionMenu } from './types/accordion-menu';
-import { Router, NavigationEnd } from '@angular/router';
-import { Location } from '@angular/common';
-import { SideMenuService } from 'src/app/menu/side-menu/side-menu.service';
+import { Component, OnInit, ChangeDetectionStrategy, Input, ChangeDetectorRef } from "@angular/core";
+import { Config } from "protractor";
+import { AccordionMenu } from "./types/accordion-menu";
+import { Router, NavigationEnd } from "@angular/router";
+import { Location } from "@angular/common";
+import { SideMenuService } from "src/app/menu/side-menu/side-menu.service";
 
 @Component({
-  selector: 'app-accordion',
-  templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.scss'],
+  selector: "app-accordion",
+  templateUrl: "./accordion.component.html",
+  styleUrls: ["./accordion.component.scss"],
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class AccordionComponent implements OnInit {

@@ -818,7 +818,7 @@ ngx-spinner .overlay {
   &:active {
     color: var(--cxContrast);
     border-color: var(--cxAccent);
-    box-shadow: 0 0.15rem 0.07rem 0rem var(--cxAccent);
+    box-shadow: 0 0.15rem 0rem 0rem var(--cxAccent);
   }
 }
 input.form-control,
@@ -856,7 +856,7 @@ select {
 }
 .ng-select.ng-select-focused .ng-select-container {
   border-color: var(--cxAccent);
-  box-shadow: 0 0.15rem 0.07rem 0rem var(--cxAccent) !important;
+  box-shadow: 0 0.15rem 0rem 0rem var(--cxAccent) !important;
 }
 .ng-select.ng-select-disabled > .ng-select-container {
   background-color: var(--cancel);
@@ -889,14 +889,14 @@ select {
 .form-control.ng-dirty {
   border-color: var(--warning-dark);
   &:active, &:focus {
-    box-shadow: 0 0.15rem 0.07rem 0rem var(--warning-dark);
+    box-shadow: 0 0.15rem 0rem 0rem var(--warning-dark);
   }
 }
 .ng-select.ng-dirty .ng-select-container {
   border-color: var(--warning-dark);
 }
 .ng-select.ng-select-focused.ng-dirty .ng-select-container {
-  box-shadow: 0 0.15rem 0.07rem 0rem var(--warning-dark);
+  box-shadow: 0 0.15rem 0rem 0rem var(--warning-dark);
 }
 
 /* FORM VALIDATION - INVALID */
@@ -904,14 +904,14 @@ select {
 .form-control.ng-dirty.ng-invalid {
   border-color: var(--danger) !important;
   &:active, &:focus {
-    box-shadow: 0 0.15rem 0.07rem 0rem var(--danger) !important;
+    box-shadow: 0 0.15rem 0rem 0rem var(--danger) !important;
   }
 }
 .ng-select.ng-dirty.ng-invalid .ng-select-container {
   border-color: var(--danger) !important;
 }
 .ng-select.ng-select-focused.ng-dirty.ng-invalid .ng-select-container {
-  box-shadow: 0 0.15rem 0.07rem 0rem var(--danger) !important;
+  box-shadow: 0 0.15rem 0rem 0rem var(--danger) !important;
 }
 
 /* FORM VALIDATION - VALID */
@@ -919,14 +919,14 @@ select {
 .form-control.ng-dirty.ng-valid {
   border-color: var(--success) !important;
   &:active, &:focus {
-    box-shadow: 0 0.15rem 0.07rem 0rem var(--success) !important;
+    box-shadow: 0 0.15rem 0rem 0rem var(--success) !important;
   }
 }
 .ng-select.ng-dirty.ng-valid .ng-select-container {
   border-color: var(--success) !important;
 }
 .ng-select.ng-select-focused.ng-dirty.ng-valid .ng-select-container {
-  box-shadow: 0 0.15rem 0.07rem 0rem var(--success) !important;
+  box-shadow: 0 0.15rem 0rem 0rem var(--success) !important;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -1134,6 +1134,7 @@ select {
 
 .accordion li {
   max-width: 100%;
+  position: relative;
 }
 .accordion li i {
   transition: all 0.3s ease;
@@ -1143,11 +1144,12 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   transform: rotate(180deg);
 }
 .menu-item {
+  position: relative;
   display: flex;
   align-items: center;
-  height: 4.153rem;
+  height: 4.15rem;
   width: 100%;
-  min-height: 4.153rem;
+  min-height: 4.15rem;
   transition: 0.2s, background 0s;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -1171,7 +1173,8 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
 }
 
-.aberto {
+#menuLateral.aberto,
+#menuLateral.reduzido ul.submenu > {
   .menu-item-open-icon {
     display: none;
   }
@@ -1204,47 +1207,103 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
 }
 
-.reduzido {
-  .menu-item-name {
-    display: none;
+#menuLateral.reduzido {
+  overflow: unset;
+  div.ps {
+    overflow: unset !important;
   }
-  .menu-item-open-icon {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    justify-content: center;
-    height: 100%;
+  .accordion {
+    .menu-item-name {
+      display: none;
+    }
+    .menu-item-open-icon {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      justify-content: center;
+      height: 100%;
+    }
+    .menu-item-close-icon {
+      display: none;
+    }
+    .menu-item-icon {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-item-caret {
+      width: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .item-caret {
+      position: absolute;
+      right: 20px;
+      left: auto;
+    }
+    .item-close-caret {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: auto;
+      right: 1px;
+      height: 100%;
+      width: 40px;
+    }
   }
-  .menu-item-close-icon {
-    display: none;
-  }
-  .menu-item-icon {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .menu-item-caret {
-    width: 0;
-    display: flex;
-    align-items: center;
-    height: 100%;
-  }
-  .item-caret {
+  .submenu {
+    background-color: var(--cxTransparentContrast025);
+    border: solid 1px var(--cxAux);
+    overflow: hidden;
+    transition: 0.2s ease;
+    list-style: none;
+    padding-left: 0;
     position: absolute;
-    right: 20px;
-    left: auto;
-  }
-  .item-close-caret {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    left: auto;
-    right: 1px;
-    height: 100%;
-    width: 40px;
+    width: 264px;
+    top: 0;
+    right: -160%;
+    .submenu-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 4.15rem;
+      background-color: var(--cxBase);
+      border-bottom: solid 1px var(--cxAux);
+    }
+    .menu-item-open-icon {
+      display: none;
+    }
+    .menu-item-close-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      flex-grow: 1;
+    }
+    .menu-item-caret,
+    .menu-item-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 40px;
+    }
+    .menu-item-name {
+      display: flex;
+      align-items: center;
+      justify-self: start;
+      height: 100%;
+      width: 50%;
+      flex-grow: 1;
+      word-break: normal;
+    }
+    .submenu .menu-item {
+      padding-left: 1rem;
+    }
   }
 }
 
@@ -1255,6 +1314,9 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   list-style: none;
   padding-left: 0;
   border-bottom: 1px solid var(--cxCancel);
+  .submenu-title {
+    display: none;
+  }
 }
 
 .citation-highlight {

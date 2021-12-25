@@ -1,11 +1,11 @@
 import { Injectable, ComponentFactoryResolver, Injector, Type, Component } from "@angular/core";
-import { BehaviorSubject, Subject } from 'rxjs';
-import { AccordionMenu } from 'src/app/shared/components/accordion/types/accordion-menu';
-import { mockedSideMenuItems } from 'src/app/shared/constants';
-import { ContextoInjecaoComponente } from './contexto-injecao-componente';
+import { BehaviorSubject, Subject } from "rxjs";
+import { AccordionMenu } from "src/app/shared/components/accordion/types/accordion-menu";
+import { mockedSideMenuItems } from "src/app/shared/constants";
+import { ContextoInjecaoComponente } from "./contexto-injecao-componente";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class SideMenuService {
 

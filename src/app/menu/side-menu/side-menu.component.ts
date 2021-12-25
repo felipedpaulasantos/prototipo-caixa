@@ -1,7 +1,6 @@
 import {
   Component, Input, ComponentFactoryResolver, ViewChild, ElementRef, ViewContainerRef, Type, ComponentRef,
-  Injector, OnInit, OnDestroy, HostListener
-} from "@angular/core";
+  Injector, OnInit, OnDestroy, HostListener} from "@angular/core";
 import { SideMenuService } from "./side-menu.service";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { Subscription } from "rxjs";
