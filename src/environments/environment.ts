@@ -2,8 +2,7 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-// import pkg from "../../package.json";
-const version = require("../../package.json");
+import packageInfo from "../../package.json";
 
 export const environment = {
   production: false,
@@ -11,7 +10,7 @@ export const environment = {
   SOCKET_ENDPOINT: "http://localhost:3000",
   apiUrl: "http://localhost:8180/whatscaixa/v1",
 /*   apiUrl: 'https://whatscaixa.des.caixa:443/whatscaixa/v1', */
-  version: String(version),
+  version: String(packageInfo.version),
 
   // CONFIGURACOES DO SSO
   SSO_issuer: "https://login.des.caixa/auth/realms/intranet",
