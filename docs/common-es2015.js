@@ -1,17 +1,18 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"],{
+"use strict";
+(self["webpackChunkprototipo_caixa"] = self["webpackChunkprototipo_caixa"] || []).push([["common"],{
 
-/***/ "uZDt":
+/***/ 59038:
 /*!****************************************************************************************!*\
   !*** ./src/app/demonstracao/componentes/datatable-demonstracao/random-data.service.ts ***!
   \****************************************************************************************/
-/*! exports provided: RandomDataService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RandomDataService", function() { return RandomDataService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RandomDataService": function() { return /* binding */ RandomDataService; }
+/* harmony export */ });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 53882);
 
 
 class RandomDataService {
@@ -31,8 +32,8 @@ class RandomDataService {
         return this.http.get("https://ws.apicep.com/cep/12071000.json");
     }
 }
-RandomDataService.ɵfac = function RandomDataService_Factory(t) { return new (t || RandomDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
-RandomDataService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: RandomDataService, factory: RandomDataService.ɵfac, providedIn: "root" });
+RandomDataService.ɵfac = function RandomDataService_Factory(t) { return new (t || RandomDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient)); };
+RandomDataService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: RandomDataService, factory: RandomDataService.ɵfac, providedIn: "root" });
 
 
 /***/ })

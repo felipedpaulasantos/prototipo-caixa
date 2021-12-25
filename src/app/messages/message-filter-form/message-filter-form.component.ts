@@ -1,12 +1,12 @@
-import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, Output, EventEmitter, OnInit, Input } from "@angular/core";
+import { FormBuilder, Validators } from "@angular/forms";
 
-import { DateValidator } from '../../shared/validators/date.validator';
+import { DateValidator } from "../../shared/validators/date.validator";
 
 @Component({
-  selector: 'app-message-filter-form',
-  templateUrl: './message-filter-form.component.html',
-  styleUrls: ['./message-filter-form.component.css']
+  selector: "app-message-filter-form",
+  templateUrl: "./message-filter-form.component.html",
+  styleUrls: ["./message-filter-form.component.css"]
 })
 export class MessageFilterFormComponent implements OnInit {
 
@@ -14,34 +14,33 @@ export class MessageFilterFormComponent implements OnInit {
     private fb: FormBuilder ) {}
 
   @Input() fields: string[] = [
-    'accountId', 'dataInicial', 'dataFinal',
-    'pageSize', 'origin', 'managerName', 'creator'
+    "accountId", "dataInicial", "dataFinal",
+    "pageSize", "origin", "managerName", "creator"
   ];
 
-  accounts: Account[] = null;
   creators: String[];
 
   messageFilterForm = this.fb.group({
-    accountId: [''],
-    dataInicial: ['', [ DateValidator.simpleDate, DateValidator.simpleMonthDate]],
-    dataFinal: ['', DateValidator.simpleDate],
+    accountId: [""],
+    dataInicial: ["", [ DateValidator.simpleDate, DateValidator.simpleMonthDate]],
+    dataFinal: ["", DateValidator.simpleDate],
     pageSize: [10, [Validators.required, Validators.min(10), Validators.max(100)]],
-    origin: [''],
-    managerName: [''],
-	creator: ['']
+    origin: [""],
+    managerName: [""],
+	creator: [""]
   });
 
   origins = [
-    {value: '', name: 'Enviado e Recebido'},
-    {value: 'E', name: 'Enviado'},
-    {value: 'R', name: 'Recebido'}
+    {value: "", name: "Enviado e Recebido"},
+    {value: "E", name: "Enviado"},
+    {value: "R", name: "Recebido"}
   ];
 
   managers = [
-    {value: '', name: 'Qualquer'},
-    {value: 'RCK', name: 'Rocket Chat'},
-    {value: 'QNA', name: 'QNA'},
-    {value: 'BOT', name: 'SIBOT'}
+    {value: "", name: "Qualquer"},
+    {value: "RCK", name: "Rocket Chat"},
+    {value: "QNA", name: "QNA"},
+    {value: "BOT", name: "SIBOT"}
   ];
 
   @Output() messages = new EventEmitter();
@@ -99,7 +98,7 @@ export class MessageFilterFormComponent implements OnInit {
   }
 
   private toDate = (dateStr) => {
-    const [day, month, year] = dateStr.split('/');
+    const [day, month, year] = dateStr.split("/");
     return new Date(year, month - 1, day);
   }
 

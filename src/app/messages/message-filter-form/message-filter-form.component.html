@@ -83,21 +83,6 @@
           </div>
         </div>
 
-        <div class="row">
-          <div *ngIf="fields && fields.includes('accountId')" class="form-group col-sm-6">
-            <label>Conta</label>    
-            <cx-select>
-              <select selectCaixa formControlName="accountId">
-                <option value="">Qualquer</option>
-                <option *ngFor="let account of accounts"
-                    value="{{account.id}}">
-                    {{account.description}} : {{ account.id }}
-                </option>
-              </select>
-            </cx-select>         
-          </div>
-        </div>
-
         <button type="submit" [disabled]="!messageFilterForm.valid" class="btn btn-accent mr-2">Consultar</button>
     </form>
   </div>

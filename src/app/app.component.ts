@@ -1,15 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { Router, ActivatedRoute, NavigationEnd, RouterOutlet, Params } from "@angular/router";
-import { switchMap, map, filter, mergeMap, tap } from "rxjs/operators";
+import { switchMap, map, filter, tap } from "rxjs/operators";
 
 import { fadeInAnimation } from "./shared/animations/simple-fade.animation";
 import { UserService } from "./authentication/users/user.service";
 import { SideMenuService } from "./menu/side-menu/side-menu.service";
 import { GuiaCaixaStyleService, Tema } from "./guia-caixa/services/style-guia-caixa.service";
-import { DataTableConfig } from "./guia-caixa/components/datatable/datatable-definitions";
 import { UrlRedirectService } from "./shared/services/url-redirect.service";
-import { of } from "rxjs";
 
 
 @Component({
@@ -33,7 +31,6 @@ export class AppComponent implements OnInit {
   }
 
   isMenuAberto = false;
-  account: Account;
   hasAccount = true;
   temaGlobal: Tema;
   routeParams: Params;
@@ -44,15 +41,6 @@ export class AppComponent implements OnInit {
       this.isMenuAberto = isAberto;
     });
     this.styleService.globalTheme$.subscribe(tema => this.temaGlobal = tema);
-  }
-
-  updateAccount(account: Account) {
-    if (account) {
-      this.account = account;
-      this.hasAccount = true;
-    } else {
-      this.hasAccount = false;
-    }
   }
 
   setPageTitleAsRoute() {

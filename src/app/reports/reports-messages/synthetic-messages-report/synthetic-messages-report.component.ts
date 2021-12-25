@@ -21,8 +21,6 @@ export class SyntheticMessageReportComponent implements OnInit {
   @ViewChild(ChatDetailsComponent, { static: true })
   chatDetailsComponent: ChatDetailsComponent;
 
-  currentAccount: Account;
-  accounts: Account[];
   creators: String[];
 
   filterForm = this.fb.group({
