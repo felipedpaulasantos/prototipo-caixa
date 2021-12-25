@@ -26,6 +26,10 @@
    </div>
 
    <ul *ngIf="menu.submenu" class="submenu" #submenuDiv [ngClass]="{'d-none': !menu.active}">
+      <div class="submenu-title">
+         <i [class]="menu.iconClass"></i>
+         <span class="ml-3">{{ menu.name }}</span>
+      </div>
       <app-menu-item [menus]="menu.submenu" [parentRef]="submenuDiv"></app-menu-item>
    </ul>
 </li>
