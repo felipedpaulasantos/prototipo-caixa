@@ -1,5 +1,6 @@
 import { Component, ComponentFactoryResolver, Injector, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from "ngx-toastr";
 import { TipografiaComponent } from "../demonstracao/layout/tipografia/tipografia.component";
@@ -7,13 +8,6 @@ import { ModalSize } from "../guia-caixa/components/modal/modal-options";
 import { ModalService } from "../guia-caixa/services/modal.service";
 import { AccordionMenu } from "../shared/components/accordion/types/accordion-menu";
 import { mockedSideMenuItems } from "../shared/constants";
-
-interface Resources {
-  name: string;
-  icon: string;
-  url?: string;
-  description?: string;
-}
 
 @Component({
   selector: "app-home",
@@ -28,7 +22,8 @@ export class HomeComponent implements OnInit {
     private toastr: ToastrService,
     private modal: ModalService,
     private resolver: ComponentFactoryResolver,
-    private injector: Injector  ) {}
+    private injector: Injector,
+    private router: Router) { }
 
   rows: any[] = [];
   resources: AccordionMenu[] = mockedSideMenuItems;
@@ -44,40 +39,33 @@ export class HomeComponent implements OnInit {
   previaSrc: string;
   uploadedFile: File = null;
 
+  saleData = [
+    { name: "Mobiles", value: 105000 },
+    { name: "Laptop", value: 55000 },
+    { name: "AC", value: 15000 },
+    { name: "Headset", value: 150000 },
+    { name: "Fridge", value: 20000 }
+  ];
+
   ngOnInit() {
     this.rows = this.groupColumns(this.resources);
     this.clientePesquisado();
-    this.populaContratos();
-  }
-
-  populaContratos(): void {
-    for (let index = 0; index < 10; index++) {
-      const contrato = {
-        numero: `4200.160.0150${index}-${index}`,
-        valor: 50000 + (index * 1000),
-        situacao: "Pago"
-      };
-      this.contratos.push(contrato);
-    }
   }
 
   groupColumns(resources: any[]): any[] {
-
     const filteredResources = this.resources.filter(resource => {
-      return (resource.enabled && resource.isLink) &&
-      (resource.name != "Início");
+      return (resource.enabled && resource.isLink) && (resource.name != "Início");
     });
     const newRows = [];
     for (let index = 0; index < filteredResources.length; index += 3) {
       newRows.push(filteredResources.slice(index, index + 3));
     }
-
     return newRows;
   }
 
   get isCpfNisInvalid(): boolean {
     return (this.formCpfNis.get("cpf").invalid && this.formCpfNis.get("nis").invalid)
-    || (this.formCpfNis.get("cpf").valid && this.formCpfNis.get("nis").valid);
+      || (this.formCpfNis.get("cpf").valid && this.formCpfNis.get("nis").valid);
   }
 
   pesquisarCpf(): void {
@@ -111,6 +99,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
+  redirect(url: string): void {
+    this.router.navigate([url]);
+  }
 
 }

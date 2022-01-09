@@ -1,10 +1,9 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, LOCALE_ID } from "@angular/core";
-import { HttpClientModule, HTTP_INTERCEPTORS  } from "@angular/common/http";
+import { HttpClientModule  } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
-import { ChartsModule } from "ng2-charts";
 import { NgxMaskModule, IConfig } from "ngx-mask";
 import { AppRoutingModule } from "./app-routing.module";
 import { DataTablesModule } from "angular-datatables";
@@ -21,12 +20,9 @@ registerLocaleData(localePt);
 
 import { ErrorsModule } from "./errors/errors.module";
 import { MenuModule } from "./menu/menu.module";
-import { ReportsModule } from "./reports/reports.module";
 import { MessagesModule } from "./messages/messages.module";
 import { OAuthModule } from "angular-oauth2-oidc";
-import { LoaderInterceptor } from "./shared/interceptors/loader.interceptor";
 import { SharedModule } from "./shared/shared.module";
-import { HomeComponent } from "./home/home.component";
 
 import { GuiaCaixaModule } from "./guia-caixa/guia-caixa.module";
 import { CoresModule } from "./demonstracao/cores/cores.module";
@@ -35,13 +31,14 @@ import { ResizableModule } from "angular-resizable-element";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { HomeModule } from "./home/home.module";
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
    declarations: [
-      AppComponent,
-      HomeComponent
+      AppComponent
    ],
    imports: [
       BrowserModule,
@@ -49,12 +46,11 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       HttpClientModule,
       FormsModule,
       ReactiveFormsModule,
-      ChartsModule,
       AppRoutingModule,
+      HomeModule,
       CoresModule,
       MenuModule,
       MessagesModule,
-      ReportsModule,
       ErrorsModule,
       SharedModule,
       PerfectScrollbarModule,
@@ -63,6 +59,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       ResizableModule,
       NgxSpinnerModule,
       NgSelectModule,
+      NgxChartsModule,
       NgxUiLoaderModule,
       NgxMaskModule.forRoot(),
       OAuthModule.forRoot(),

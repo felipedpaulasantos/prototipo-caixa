@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from "@angular/core";
 
-import { SocketioService } from '../shared/services/socketio.service';
-import { ToastrService } from 'ngx-toastr';
-import { environment } from 'src/environments/environment';
+import { SocketioService } from "../shared/services/socketio.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  selector: "app-chat",
+  templateUrl: "./chat.component.html",
+  styleUrls: ["./chat.component.scss"]
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent {
 
   contador: any;
   url: string;
@@ -20,21 +19,6 @@ export class ChatComponent implements OnInit {
     private socketService: SocketioService,
     private toastr: ToastrService
   ) {}
-
-  ngOnInit(): void {
-/*     this.socketService.setupSocketConnection();
-    this.url = environment.SOCKET_ENDPOINT;
-    this.socketService.contador$.subscribe(contador => {
-      this.contador = contador;
-    });
-    this.socketService.message$.subscribe(msg => {
-      if (msg) {
-        this.messages.push(msg);
-        this.scrollSmoothToBottom("chatDiv");
-      }
-      this.message = msg;
-    }); */
-  }
 
   resetarSocket() {
     this.socketService.resetSocket();

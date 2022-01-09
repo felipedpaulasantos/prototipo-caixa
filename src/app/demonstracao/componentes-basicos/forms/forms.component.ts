@@ -9,7 +9,7 @@ import { ComponentesInterface } from "../../componentes/componentes-interface";
   styleUrls: ["./forms.component.scss"],
   host: { "(window:scroll)": "onScroll($event)" }
 })
-export class FormsComponent extends ComponentesInterface implements OnInit  {
+export class FormsComponent extends ComponentesInterface  {
 
   constructor(
     public toastr: ToastrService,
@@ -161,8 +161,5 @@ buttonControlExample = `<cx-button-control type="checkbox" value="valor_do_check
 <cx-button-control type="radio" value="valor_do_radio" class="ml-3">
   Radio
 </cx-button-control>`;
-
-  ngOnInit(): void {
-  }
 
 }

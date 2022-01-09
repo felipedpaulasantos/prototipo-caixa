@@ -4,7 +4,7 @@
 
 <div *ngFor="let cols of rows" class="row d-flex justify-content-center">
   <div *ngFor="let resource of cols" class="col-10 col-md-6 col-xl-4">
-    <div class="card card-hover w-75" role="button" [routerLink]="resource.url">
+    <div class="card card-hover w-75" role="button" (click)="redirect(resource.url)">
       <div class="card-body">
         <div class="d-flex align-items-center justify-content-center text-center">
           <h5 class="header-subtitulo-caixa m-0 mr-3 text-center">
@@ -16,4 +16,21 @@
     </div>
     <br>
   </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <ngx-charts-bar-vertical
+      [view]="[1000,400]"
+      [results]="saleData"
+      [xAxisLabel]="'Products'"
+      [legendTitle]="'Product Sale Chart'"
+      [yAxisLabel]="'Sale'"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxis]="true"
+      [yAxis]="true">
+    </ngx-charts-bar-vertical>
+  </div>
+  <div class="col"></div>
 </div>
