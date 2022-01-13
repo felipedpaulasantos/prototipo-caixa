@@ -9,8 +9,6 @@ import { SideMenuComponent } from "./side-menu/side-menu.component";
 import { SharedModule } from "../shared/shared.module";
 import { FooterComponent } from "./footer/footer.component";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
-import { BuscaMenuModule } from "./busca-menu/busca-menu.module";
-
 
 
 @NgModule({
@@ -22,14 +20,12 @@ import { BuscaMenuModule } from "./busca-menu/busca-menu.module";
   ],
   imports: [
     CommonModule,
-    BuscaMenuModule,
     RouterModule,
     SharedModule,
     ReactiveFormsModule,
     PerfectScrollbarModule
   ],
   exports: [
-    BuscaMenuModule,
     HeaderComponent,
     SideMenuComponent,
     FooterComponent,

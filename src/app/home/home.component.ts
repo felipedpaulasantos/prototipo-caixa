@@ -8,6 +8,7 @@ import { ModalSize } from "../guia-caixa/components/modal/modal-options";
 import { ModalService } from "../guia-caixa/services/modal.service";
 import { AccordionMenu } from "../shared/components/accordion/types/accordion-menu";
 import { mockedSideMenuItems } from "../shared/constants";
+import { StyleService } from "../shared/services/style.service";
 
 @Component({
   selector: "app-home",
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
     private modal: ModalService,
     private resolver: ComponentFactoryResolver,
     private injector: Injector,
-    private router: Router) { }
+    private router: Router,
+    private styleService: StyleService) { }
 
   rows: any[] = [];
   resources: AccordionMenu[] = mockedSideMenuItems;
@@ -44,8 +46,25 @@ export class HomeComponent implements OnInit {
     { name: "Laptop", value: 55000 },
     { name: "AC", value: 15000 },
     { name: "Headset", value: 150000 },
-    { name: "Fridge", value: 20000 }
+    { name: "Fridge", value: 20000 },
+    { name: "PC", value: 50000 },
+    { name: "Oven", value: 70000 },
+    { name: "aaaa", value: 20000 },
+    { name: "bbbb", value: 150000 }
   ];
+
+  // your color scheme
+  colorScheme = {
+    domain: [
+      this.styleService.getCssVariableValue("--info-light"),
+      this.styleService.getCssVariableValue("--tangerina"),
+      this.styleService.getCssVariableValue("--limao"),
+      this.styleService.getCssVariableValue("--goiaba"),
+      this.styleService.getCssVariableValue("--uva"),
+      this.styleService.getCssVariableValue("--turquesa"),
+      this.styleService.getCssVariableValue("--goiaba-dark")
+    ]
+  };
 
   ngOnInit() {
     this.rows = this.groupColumns(this.resources);

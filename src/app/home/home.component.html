@@ -21,11 +21,12 @@
 <div class="row mt-4">
   <div class="col">
     <ngx-charts-bar-vertical
-      [view]="[1000,400]"
+      [view]="[800, undefined]"
       [results]="saleData"
       [xAxisLabel]="'Products'"
       [legendTitle]="'Product Sale Chart'"
       [yAxisLabel]="'Sale'"
+      [scheme]="colorScheme"
       [showXAxisLabel]="true"
       [showYAxisLabel]="true"
       [xAxis]="true"
