@@ -16,6 +16,7 @@ import { TimelineModule } from "./components/timeline/timeline.module";
 import { CaixaDatatableModule } from "./components/datatable/caixa-datatable.module";
 import { ButtonControlModule } from "./components/button-control/button-control.module";
 import { ExtratoModule } from "./components/extrato/extrato.module";
+import { CardCaixaModule } from "./components/card-caixa/card-caixa/card-caixa.module";
 
 
 
@@ -26,8 +27,7 @@ import { ExtratoModule } from "./components/extrato/extrato.module";
 		SelectCaixaDirective,
     SelectCaixaComponent,
     SpinnerCaixaComponent,
-		ModalComponent,
-    CardCaixaComponent
+		ModalComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +38,8 @@ import { ExtratoModule } from "./components/extrato/extrato.module";
     TimelineModule,
     CaixaDatatableModule,
     ButtonControlModule,
-    ExtratoModule
+    ExtratoModule,
+    CardCaixaModule
   ],
   exports: [
     InputCaixaComponent,
@@ -53,7 +54,8 @@ import { ExtratoModule } from "./components/extrato/extrato.module";
     TimelineModule,
     CaixaDatatableModule,
     ButtonControlModule,
-    ExtratoModule
+    ExtratoModule,
+    CardCaixaModule
   ]
 })
 export class GuiaCaixaModule { }

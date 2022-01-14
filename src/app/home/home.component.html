@@ -20,18 +20,37 @@
 
 <div class="row mt-4">
   <div class="col">
-    <ngx-charts-bar-vertical
-      [view]="[800, undefined]"
-      [results]="saleData"
-      [xAxisLabel]="'Products'"
-      [legendTitle]="'Product Sale Chart'"
-      [yAxisLabel]="'Sale'"
-      [scheme]="colorScheme"
-      [showXAxisLabel]="true"
-      [showYAxisLabel]="true"
-      [xAxis]="true"
-      [yAxis]="true">
-    </ngx-charts-bar-vertical>
+    <cx-tabber [tabs]="[{ name: 'Gráfico', icon: 'fa fa-chart-bar' }, { name: 'Teste', icon: 'fa fa-home' }]">
+
+      <ng-container *cxStepper>
+        <cx-card [minimizable]="false">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <ngx-charts-bar-vertical *ngIf="reloadChart"
+              [view]="[800, undefined]"
+              [results]="chartData"
+              [xAxisLabel]="'Products'"
+              [legendTitle]="'Product Sale Chart'"
+              [yAxisLabel]="'Sale'"
+              [legend]="true"
+              [scheme]="colorScheme"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [xAxis]="true"
+              [yAxis]="true"
+              (select)="onSelect($event)"
+              (activate)="onActivate($event)"
+              (deactivate)="onDeactivate($event)">
+            </ngx-charts-bar-vertical>
+          </div>
+        </cx-card>
+      </ng-container>
+
+      <ng-container *cxStepper>
+        <h1>Teste</h1>
+      </ng-container>
+    </cx-tabber>
+
   </div>
   <div class="col"></div>
 </div>

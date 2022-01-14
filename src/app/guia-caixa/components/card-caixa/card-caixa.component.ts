@@ -52,7 +52,7 @@ export class CardCaixaComponent implements OnInit, AfterContentInit, OnDestroy {
 
   ngAfterContentInit() {
     if (this.draggable) { this.dragElement(); }
-    if (this.minimizable) { this.setChildren(); }
+    if (this.minimizable || this.expandable) { this.setChildren(); }
   }
 
   setChildren(): void {

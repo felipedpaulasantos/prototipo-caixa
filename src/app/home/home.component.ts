@@ -9,6 +9,7 @@ import { ModalService } from "../guia-caixa/services/modal.service";
 import { AccordionMenu } from "../shared/components/accordion/types/accordion-menu";
 import { mockedSideMenuItems } from "../shared/constants";
 import { StyleService } from "../shared/services/style.service";
+import { groupColumns, makeShallowCopy } from "../shared/utils/utils";
 
 @Component({
   selector: "app-home",
@@ -41,45 +42,40 @@ export class HomeComponent implements OnInit {
   previaSrc: string;
   uploadedFile: File = null;
 
-  saleData = [
-    { name: "Mobiles", value: 105000 },
+  sourceData = [
+    { name: "Mobiles", value: 72000 },
     { name: "Laptop", value: 55000 },
     { name: "AC", value: 15000 },
-    { name: "Headset", value: 150000 },
+    { name: "Headset", value: 100000 },
     { name: "Fridge", value: 20000 },
     { name: "PC", value: 50000 },
     { name: "Oven", value: 70000 },
-    { name: "aaaa", value: 20000 },
-    { name: "bbbb", value: 150000 }
+    { name: "aaaa", value: 40000 }
   ];
+  chartData = [];
+  reloadChart = true;
 
   // your color scheme
   colorScheme = {
     domain: [
-      this.styleService.getCssVariableValue("--info-light"),
+      this.styleService.getCssVariableValue("--info-lighter"),
       this.styleService.getCssVariableValue("--tangerina"),
       this.styleService.getCssVariableValue("--limao"),
       this.styleService.getCssVariableValue("--goiaba"),
       this.styleService.getCssVariableValue("--uva"),
       this.styleService.getCssVariableValue("--turquesa"),
-      this.styleService.getCssVariableValue("--goiaba-dark")
+      this.styleService.getCssVariableValue("--ceu"),
+      this.styleService.getCssVariableValue("--cxMain")
     ]
   };
 
   ngOnInit() {
-    this.rows = this.groupColumns(this.resources);
-    this.clientePesquisado();
-  }
-
-  groupColumns(resources: any[]): any[] {
     const filteredResources = this.resources.filter(resource => {
       return (resource.enabled && resource.isLink) && (resource.name != "Início");
     });
-    const newRows = [];
-    for (let index = 0; index < filteredResources.length; index += 3) {
-      newRows.push(filteredResources.slice(index, index + 3));
-    }
-    return newRows;
+    this.rows = groupColumns(filteredResources);
+    this.clientePesquisado();
+    this.chartData = makeShallowCopy(this.sourceData);
   }
 
   get isCpfNisInvalid(): boolean {
@@ -120,6 +116,53 @@ export class HomeComponent implements OnInit {
 
   redirect(url: string): void {
     this.router.navigate([url]);
+  }
+
+  onSelect(event) {
+    if (typeof event !== "string") {
+      event = event.name;
+    }
+    console.log("SELECT", event);
+    const temp = JSON.parse(JSON.stringify(this.chartData));
+    if (this.isDataShown(event)) {
+      // Hide it
+      temp.some(pie => {
+        if (pie.name === event) {
+          pie.value = 0;
+          return true;
+        }
+      });
+    } else {
+      // Show it back
+      const pieToAdd = this.sourceData.filter(pie => {
+        return pie.name === event;
+      });
+      temp.some(pie => {
+        if (pie.name === event) {
+          pie.value = pieToAdd[0].value;
+          return true;
+        }
+      });
+    }
+    this.chartData = temp;
+    const total = this.chartData.map(el => el.value).reduce((acc, cur, index) => {
+      return cur + acc;
+    });
+  }
+
+  isDataShown = (name) => {
+    const selectedPie = this.chartData.filter(pie => {
+      return pie.name === name && pie.value !== 0;
+    });
+    return selectedPie && selectedPie.length > 0;
+  }
+
+  onActivate(data): void {
+/*     console.log("Activate", JSON.parse(JSON.stringify(data))); */
+  }
+
+  onDeactivate(data): void {
+/*     console.log("Deactivate", JSON.parse(JSON.stringify(data))); */
   }
 
 }
