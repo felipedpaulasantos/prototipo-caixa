@@ -1,0 +1,139 @@
+<div class="validation-type-buttons" *ngIf="(enableValidacaoPorSenha || enableValidacaoPorToken) else semValidacoesHabilitadas">
+  <strong class="mr-3" *ngIf="showLabel">
+    Autenticação por:
+  </strong>
+
+  <cx-button-control [formControl]="showTipoValidacao" [value]="tipoValidacaoSelecionada.SENHA" type="radio"
+  *ngIf="enableValidacaoPorSenha" (click)="setTipoValidacao(true, false)" class="mr-2">
+    Senha da Conta
+  </cx-button-control>
+
+  <cx-button-control [formControl]="showTipoValidacao" [value]="tipoValidacaoSelecionada.TOKEN" type="radio"
+  *ngIf="enableValidacaoPorToken" (click)="setTipoValidacao(false, true)">
+    Token
+  </cx-button-control>
+</div>
+
+<ng-template #semValidacoesHabilitadas>
+  <div class="alert alert-caixa alert-outline-info mb-0">
+    As validações por senha e token estão desabilitadas para essa funcionalidade
+  </div>
+</ng-template>
+
+<!--
+  PAINEL VALIDAÇÃO POR SENHA
+-->
+<div class="painel-validacao-senha mt-4" *ngIf="showValidacaoSenha">
+
+  <div *ngIf="!conta && !dadosConta && (!contas || contas?.length < 1)" class="alert alert-caixa alert-outline-warning m-0">
+    Cliente não possui conta apta para validação por senha
+  </div>
+
+  <!-- SELECAO DE CONTA -->
+  <div *ngIf="contas?.length > 0" class="painel-selecao-conta mt-4 mb-3">
+    <div class="formulario">
+      <label id="label-conta-caixa">
+        Escolha uma Conta Caixa:
+      </label>
+      <ng-select [items]="contas" [virtualScroll]="false" [searchFn]="customSearchFn"
+        placeholder="Selecione" class="custom" [ngModelOptions]="{standalone: true}"
+        (change)="onSelectContasChange()" [(ngModel)]="contaSelecionada">
+        <ng-template ng-label-tmp let-item="item">
+          Agência: {{item?.unidade}} - Operação: {{item?.produto}} - Conta bancária:
+          {{item?.numero}}-{{item?.dv}}
+        </ng-template>
+        <ng-template ng-option-tmp let-item="item" let-search="searchTerm" let-index="index">
+          Agência: {{item.unidade}} - Operação: {{item?.produto}} - Conta bancária:
+          {{item?.numero}}-{{item?.dv}}
+        </ng-template>
+      </ng-select>
+    </div>
+  </div>
+
+  <ng-container *ngIf="conta">
+    <!-- CONTA FORMATADA -->
+    <p *ngIf="conta?.contaFormatada && (!contas || contas.length < 1)" class="mb-3">
+      <span class="font-weight-bold">Conta Caixa</span>:
+      {{ conta.contaFormatada }}
+    </p>
+
+    <!-- INPUT DE SENHA -->
+    <div class="painel-input-senha">
+      <form [formGroup]="formPassword">
+        <label>Digite a senha da conta para efetuar a operação</label>
+        <input type="password" maxlength="4" formControlName="password" class="form-control input-password"/>
+      </form>
+    </div>
+
+    <!-- RECADASTRAR SENHA -->
+    <!-- DESATIVADO PARA O MÓDULO DE INVESTIMENTO
+    <p class="text-primary cursor-pointer mt-2 d-inline-block" (click)="abrirModalCadastroSenha()">
+      Recadastrar senha
+    </p>      
+    -->
+  </ng-container>
+</div>
+
+
+<!--
+  PAINEL VALIDAÇÃO POR TOKEN
+-->
+<div class="painel-validacao-token mt-4" *ngIf="showValidacaoToken">
+  <ng-container *ngIf="listaCelularToken && listaCelularToken.length > 0; else emptyListaCelularToken">
+
+    <!-- LISTA TELEFONE PARA TOKEN -->
+    <label for="telefone">Escolha um número: </label>
+    <ng-select class="select-telefone" name="telefone" [(ngModel)]="telefoneEscolhido"
+      [ngModelOptions]="{standalone: true}" placeholder="Digite pelo menos 3 caracteres" [virtualScroll]="false">
+      <ng-option *ngFor="let telefone of listaCelularToken" [value]="telefone">
+        {{ telefone.value }}
+      </ng-option>
+    </ng-select>
+
+    <button (click)="enviarToken()" class="btn btn-azul mt-3" [disabled]="!isTelefoneEscolhidoValid() || btnDisabledEnviarToken">
+      <i class="fa fa-paper-plane mr-2" aria-hidden="true"></i>
+      Gerar Token
+    </button>
+  </ng-container>
+
+  <!-- MENSAGEM SE NÃO HOUVER TELEFONE -->
+  <ng-template #emptyListaCelularToken>
+    <div *ngIf="loading" class="alert alert-caixa alert-outline-info mb-3">
+      Consultando a lista de telefones...
+    </div>
+    <div *ngIf="!loading" class="alert alert-caixa alert-outline-warning mb-3">
+      Cliente não possui telefones aptos para validação por token
+    </div>
+  </ng-template>
+
+  <!-- PAINEL DE TIMER E INPUT TOKEN -->
+  <div *ngIf="btnDisabledEnviarToken" class="painel-input-token mt-4">
+    <p>Foi enviado um Token SMS para o número: <span class="link"> {{ telefoneEnviado }}</span></p>
+    <div class="alert alert-caixa alert-outline-info w-95 mt-3" role="alert">
+      <i class="far fa-clock"></i>
+      <span>
+        Aguarde <b>{{ timer | timeTransform }}</b> minutos para um novo envio de TOKEN
+      </span>
+    </div>
+
+    <p class="mt-2">Insira o código informado pelo cliente e confirme</p>
+    <div class="mt-4">
+      <form [formGroup]="formTokenCode">
+        <input class="input-sms" maxlength="1" formControlName="tokenCodeChar1" (keyup)="onTokenCodeKeyup($event)" type="number">
+        <input class="input-sms" maxlength="1" formControlName="tokenCodeChar2" (keyup)="onTokenCodeKeyup($event)" type="number">
+        <input class="input-sms" maxlength="1" formControlName="tokenCodeChar3" (keyup)="onTokenCodeKeyup($event)" type="number">
+        <input class="input-sms" maxlength="1" formControlName="tokenCodeChar4" (keyup)="onTokenCodeKeyup($event)" type="number">
+        <input class="input-sms" maxlength="1" formControlName="tokenCodeChar5" (keyup)="onTokenCodeKeyup($event)" type="number">
+        <input class="input-sms" maxlength="1" formControlName="tokenCodeChar6" (keyup)="onTokenCodeKeyup($event)" type="number">
+      </form>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col">
+      <div class="col alert-caixa alert-outline-info">
+        <span>Importante: para opção via Token, o cliente deve possuir adesão ao serviço de SMS com o mesmo número telefônico que receberá o Token.</span>
+      </div>
+    </div>
+  </div>
+</div>
+

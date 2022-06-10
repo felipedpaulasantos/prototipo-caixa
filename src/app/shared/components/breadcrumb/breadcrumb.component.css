@@ -1,0 +1,28 @@
+.breadcrumb-list {
+  display: inline-block !important;
+  list-style: none !important;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 !important;
+  vertical-align: bottom;
+}
+.breadcrumb-list li {
+  display: inline-flex;
+  align-items: center;
+}
+.breadcrumb-list li+li:before {
+  padding-right: 0.5rem;
+/*   padding-left: 0.5rem; */
+}
+.breadcrumb-list li a {
+  text-decoration: none;
+}
+ol.breadcrumb-list li a:hover {
+  text-decoration: underline;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "\f054";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  opacity: .8;
+}

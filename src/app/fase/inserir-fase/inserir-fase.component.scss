@@ -1,0 +1,11 @@
+form .card:not(:last-child) {
+	margin-bottom: 1.5rem;
+}
+
+.card-body .row:not(:last-child) {
+	margin-bottom: 1.5rem;
+}
+
+.row .col:not(:last-child) {
+	margin-bottom: 1.5rem;
+}

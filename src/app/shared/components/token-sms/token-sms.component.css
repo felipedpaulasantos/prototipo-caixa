@@ -1,0 +1,53 @@
+ .input-sms {
+    border-radius: 5px;
+    width: 32px;
+    margin-right: 3px;
+    height: 40px;
+    text-align: center;
+  }
+
+  #reaload-button {
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  .link {
+    color: var(--cxInfo) !important;
+    font-family: var(--cxFontFamilyBold);
+    text-decoration: none;
+  }
+
+  :host ::ng-deep .ng-select.custom .ng-select-container  {
+    border: none;
+    border-bottom: 1px solid var(--cxContrast);
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 0;
+    text-overflow: ellipsis;
+    margin-top: -4px;
+  }
+
+  :host ::ng-deep .mydp, .mydp .headertodaybtn{
+    border: none;
+    border-bottom: 1px solid var(--cxContrast);
+    width: 100%;
+    white-space: nowrap;
+    border-radius: 0;
+    margin-top: -4px;
+  }
+
+  :host ::ng-deep .ng-select.ng-select-disabled>.ng-select-container {
+    background-color: inherit;
+  }
+
+  label {
+  color: var(--cxAux);
+  }
+
+  :host ::ng-deep .btn-azul {
+  border: 1px solid var(--cxAccent);
+  background-color: var(--cxAccent);
+  color: var(--cxBase);
+  margin-top: 10px;
+  }

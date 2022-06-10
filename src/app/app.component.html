@@ -1,0 +1,51 @@
+<app-loading-caixa></app-loading-caixa>
+
+<!-- Cabeçalho tela login -->
+<app-cabecalho-geral [hidden]="firstLoad"></app-cabecalho-geral>
+<!-- Fim do Cabeçalho -->
+
+<!-- Inicio do menu de navegação -->
+<!-- <app-menu-principal></app-menu-principal> -->
+<!-- Fim do menu de navegação -->
+
+<app-menu-lateral-fixo [hidden]="firstLoad"></app-menu-lateral-fixo>
+
+<main [hidden]="firstLoad">
+  <div #conteudoPrincipal id="conteudoPrincipal" [ngClass]="{'sem-menu-lateral': !isMenuAberto}">
+
+    <!-- Fundo escuro com o menu aberto para mobile e tablet -->
+    <div #mobileBackdrop id="mobileBackdrop" (click)="menuService.fechar()"
+      [ngClass]="{'exibindo-backdrop': isMenuAberto}">
+    </div>
+
+    <!-- Wrapper do conteúdo principal para manter o rodapé no fim -->
+    <div id="wrapperConteudoPrincipal" class="d-flex flex-wrap h-100 align-content-between">
+      <section id="wrapperRouterOutlet" class="w-100 px-4 pb-5">
+        <!-- <app-tab-cliente-integrado></app-tab-cliente-integrado> -->
+
+        <app-breadcrumb></app-breadcrumb>
+
+        <app-mensagem></app-mensagem>
+
+        <router-outlet></router-outlet>
+      </section>
+
+<!--       <section id="wrapperRodape" class="w-100">
+        <app-rodape></app-rodape>
+      </section> -->
+
+      <div id="modalResponse" class="modal-sso" style="display: none;">
+        <div class="modal-response-body">
+          <div class="alert alert-outline-danger" role="alert">
+            <p>[SSO] Token expirado, realize o login novamente.</p>
+          </div>
+          <div class="col-md-12">
+            <button type="button"
+              class="btn btn-cancel" (click)="redirectSso()">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

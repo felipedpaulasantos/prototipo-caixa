@@ -1,0 +1,9 @@
+.date-input {
+    border-radius: 0px !important;
+    border: none;
+    font-family: var(--cxFontFamilyNormal);
+    padding: 10px;
+    float: left;
+    position: relative;
+    width: 16%;
+  }

@@ -1,0 +1,84 @@
+<nav class="menu-horizontal d-flex p-0 shadow-sm" *ngIf="viewMessage">
+  <div id="menuHorizontalContainer" class="my-auto">
+    <ul id="menuPrincipalHorizontal" class="text-center text-sm-left pl-4 m-0">
+      <li>
+        <a routerLinkActive="active-route-menu" routerLink="/principal">Principal</a>
+      </li>
+      <li>
+        <a routerLinkActive="active-route-menu" href="http://negocios.caixa" target="_blank"
+          title="Cliente Negócios">Cliente Negócios.CAIXA</a>
+      </li>
+      <li *ngIf="isComercial" id="menu-comercial">
+        <a class="cursor-pointer" [class.active-route-menu]="isRotaAtiva('comercial')"
+          (click)="redirecionar('comercial')" title="Pessoa Física/Jurídica">Pessoa Física/Jurídica</a>
+      </li>
+      <li *ngIf="isGovSocial">
+        <a routerLinkActive="active-route-menu" routerLink="/govsocial" title="Social">Serviços ao Cidadão</a>
+      </li>
+      <li *ngIf="isInvestimentos">
+        <a routerLinkActive="active-route-menu" routerLink="/investimento" title="Investimento">Investimento</a>
+      </li>
+      <li *ngIf="isDeterminacaoJudicial">
+        <a routerLinkActive="active-route-menu" routerLink="/judicial" title="Determinação Judicial">Determinação Judicial</a>
+      </li>
+      <li *ngIf="isDossieDigital">
+        <a routerLinkActive="active-route-menu" routerLink="/dossiedigital/" title="Dossiê Digital">Dossiê Digital</a>
+      </li>
+      <li *ngIf="isAutorizacaoGerencial">
+        <a routerLinkActive="active-route-menu" routerLink="/autorizacao-gerencial" title="Autorização">Autorização</a>
+      </li>
+      <li *ngIf="isTrilhaAuditoria">
+        <a routerLinkActive="active-route-menu" routerLink="/trilha-auditoria" title="Trilha de Auditoria">Trilha de
+          Auditoria
+        </a>
+      </li>
+      <!-- <li>
+        <a routerLinkActive="active-route-menu" routerLink="/formularios" title="Formulários">Formulários
+        </a>
+      </li> -->
+      <li [appHasRole]="'CONFIGURACOES'">
+        <a routerLinkActive="active-route-menu" routerLink="/configuracao" title="Configurações"> Configurações
+        </a>
+      </li>
+    </ul>
+
+    <div id="menuPrincipalDropdown" class="text-center">
+      <span id="dropdownMenuButton" (click)="fecharMenulateral()"
+        class="px-3 text-center font-weight-bold text-aux" data-toggle="dropdown">
+        <span *ngIf="isRotaAtiva('principal')">Principal</span>
+        <span *ngIf="isRotaAtiva('comercial')">Pessoa Física/Jurídica</span>
+        <span *ngIf="isRotaAtiva('govsocial')">Serviços ao Cidadão</span>
+        <span *ngIf="isRotaAtiva('dossiedigital')">Dossiê Digital</span>
+        <span *ngIf="isRotaAtiva('autorizacao-gerencial')">Autorização</span>
+        <span *ngIf="isRotaAtiva('trilha-auditoria')">Trilha de Auditoria</span>
+        <!-- <span *ngIf="isRotaAtiva('formularios')">Formulários</span> -->
+        <span *ngIf="isRotaAtiva('configuracao')">Configurações</span>
+        <i class="fa fa-caret-down fa-lg ml-2"></i>
+      </span>
+      <div id="menuPrincipalDropdownMenu" class="dropdown-menu p-3 mt-2 shadow text-center">
+        <a class="dropdown-item text-aux font-weight-bold" routerLinkActive="selected-route"
+          routerLink="/principal">Principal</a>
+        <a class="dropdown-item text-aux font-weight-bold" href="http://negocios.caixa" target="_blank"
+          title="Cliente Negócios">Cliente Negócios.CAIXA</a>
+        <a *ngIf="isComercial" class="dropdown-item text-aux font-weight-bold" routerLinkActive="selected-route"
+          routerLink="/comercial">Pessoa Física/Jurídica</a>
+        <a *ngIf="isGovSocial" class="dropdown-item text-aux font-weight-bold" routerLinkActive="selected-route"
+          routerLink="/govsocial" title=" Social">Serviços ao Cidadão</a>
+        <a *ngIf="isInvestimentos" class="dropdown-item text-aux font-weight-bold"
+          routerLinkActive="selected-route" routerLink="/investimento" title=" Social">Investimentos</a>
+        <a *ngIf="isDossieDigital" class="dropdown-item text-aux font-weight-bold"
+          routerLinkActive="selected-route" routerLink="/dossiedigital/" title="Dossiê Digital">Dossiê Digital</a>
+        <a *ngIf="isAutorizacaoGerencial" class="dropdown-item text-aux font-weight-bold"
+          routerLinkActive="selected-route" routerLink="/autorizacao-gerencial/" title="Dossiê Digital">Autorização</a>
+        <a *ngIf="isTrilhaAuditoria" class="dropdown-item text-aux font-weight-bold"
+          routerLinkActive="selected-route" routerLink="/trilha-auditoria/" title="Trilha de sAuditoria">Trilha de
+          Auditoria</a>
+        <!-- <a class="dropdown-item text-aux font-weight-bold" routerLinkActive="selected-route"
+          routerLink="/formularios" title="Formulários">Formulários</a> -->
+        <a [appHasRole]="'CONFIGURACOES'" class="dropdown-item text-aux font-weight-bold"
+          routerLinkActive="selected-route" routerLink="/configuracao" title="configuracao">Configurações</a>
+      </div>
+    </div>
+
+  </div>
+</nav>

@@ -1,0 +1,63 @@
+<div class="card card-body card-borderless">
+  <!-- TABELA -->
+  <div class="table-responsive row mt-4">
+    <table id="table-configuracao" class="table">
+      <thead>
+        <tr>
+          <th>Módulo</th>
+          <th>Nacional</th>
+          <th>Piloto</th>
+          <th>PrePiloto</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container id="container-configuracao">
+          <tr *ngFor="let funcionalidade of funcionalidades| paginate: {itemsPerPage: 10, currentPage: page}; let i = index">
+            <td>{{funcionalidade.nomeFuncionalidade}}</td>
+            <td>
+              <span *ngIf="isAtivo(funcionalidade.nacional)" (click)="alterarFuncionalidade(funcionalidade, ambiente.NACIONAL)"
+                class="badge  badge-success cursor-pointer">Ativo <i class="fas fa-toggle-on"></i></span>
+              <span *ngIf="isInativo(funcionalidade.nacional)" (click)="alterarFuncionalidade(funcionalidade, ambiente.NACIONAL)"
+                class="badge badge-dark cursor-pointer">Inativo <i class="fas fa-toggle-off"></i></span>
+            </td>
+            <td>
+              <span *ngIf="isAtivo(funcionalidade.piloto)" (click)="alterarFuncionalidade(funcionalidade, ambiente.PILOTO)"
+                class="badge  badge-success cursor-pointer">Ativo <i class="fas fa-toggle-on"></i></span>
+              <span *ngIf="isInativo(funcionalidade.piloto)" (click)="alterarFuncionalidade(funcionalidade, ambiente.PILOTO)"
+                class="badge  badge-dark cursor-pointer">Inativo <i class="fas fa-toggle-off"></i></span>
+            </td>
+            <td>
+              <span *ngIf="isAtivo(funcionalidade.prePiloto)" (click)="alterarFuncionalidade(funcionalidade, ambiente.PREPILOTO)"
+                class="badge  badge-success cursor-pointer">Ativo <i class="fas fa-toggle-on"></i></span>
+              <span *ngIf="isInativo(funcionalidade.prePiloto)" (click)="alterarFuncionalidade(funcionalidade, ambiente.PREPILOTO)"
+                class="badge  badge-dark cursor-pointer">Inativo <i class="fas fa-toggle-off"></i></span>
+            </td>
+            <td>
+              <button type="button" class="btn btn-accent" [disabled]="existeMenu(funcionalidade)"
+                routerLink="/configuracao/configuracao-do-menu"
+                [queryParams]="{ id: funcionalidade.numeroFuncionalidade , nomeModulo: funcionalidade.nomeFuncionalidade}" title="Acessar os Menus"
+                (click)="gerenciarMenu()">
+                <i class="fas fa-angle-right"></i>
+                <i class="fas fa-angle-right"></i>
+                  Gerenciar Menu</button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <div id="paginacao" class="pull-right mt-2">
+    <pagination-controls autoHide="true" responsive="true" previousLabel="Anterior" nextLabel="Próximo"
+      (pageChange)="page=$event">
+    </pagination-controls>
+  </div>
+</div>
+<!-- LOADING -->
+<!-- <div style="background: transparent!important;" class="modal fade show high" id="exampleModal" tabindex="-1" [ngClass]="{'d-block': loading}"
+  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="loading">
+  <div class="col-md-12 padding-reset text-center">
+    <img class="img-responsive text-center loading-img center-block" src="assets/img/loading.gif" />
+  </div>
+</div>
+ -->

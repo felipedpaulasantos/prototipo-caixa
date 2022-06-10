@@ -1,0 +1,77 @@
+<form [formGroup]="formRepresentante">
+    <div class="formulario">
+        <div class="col-xl-4 col-md-4 col-sm-12 col-12 mb-4" *ngIf="showRepresentante">
+            <label id="label-representante">
+                Representante Legal
+            </label>
+            <select id="select-representante" name="select-representante" formControlName="representante"
+                (change)="atualizarRepresentante($event.target.selectedIndex)">
+                <option [ngValue]="null">Selecione</option>
+                <option *ngFor="let representanteOpcao of representantesCombo"
+                    [ngValue]="representanteOpcao.coDocumento">
+                    {{representanteOpcao.noPessoa}}</option>
+            </select>
+        </div>
+    </div>
+</form>
+
+<div id="div-table" *ngIf="showTable">
+    <table class="table table-striped" id="table-contas">
+        <thead>
+            <tr>
+                <th id="th-check" *ngIf="multiSelecao"></th>
+                <th id="th-conta">Conta</th>
+                <th id="th-tipo" class="text-center">Tipo de conta</th>
+                <th id="th-conta-acao" class="text-center" *ngIf="!multiSelecao">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let conta of contaDeposito?.contas ; index as i">
+                <td class="custom-checkbox-table" *ngIf="multiSelecao">
+                    <div>
+                        <input type="checkbox" id="check-conta-{{ i }}"
+                            class="checkbox__input custom-checkbox-table__input" [checked]=conta.checked
+                            (change)="checkConta($event, conta)" />
+                        <label for="check-conta-{{ i }}"
+                            class="checkbox__label custom-checkbox-table__label checkbox-table-item"></label>
+                    </div>
+                </td>
+                <td style="vertical-align: inherit;">{{ conta?.item?.contaFormatada }}</td>
+                <td style="vertical-align: inherit;" class="text-center">
+                    {{ conta?.item?.descricaoTipoConta }}
+                </td>
+                <td class="text-center" *ngIf="!multiSelecao">
+                    <button [attr.data-toggle]="tooltip" [attr.title]="' '" data-placement="left" class="btn cursor-pointer {{conta.titularidade}}" (click)="selecionarConta(conta?.item)">
+                        <i *ngIf="iconBtnAcao" class="fa {{iconBtnAcao }} mr-3"></i>
+                        <span>{{ textoBtnAcao }}</span>
+                    </button>
+                </td>
+            </tr>
+            <tr [hidden]="contaDeposito?.contas && contaDeposito?.contas?.length > 0">
+                <td colspan="3" class="text-center">
+                    Não existem contas.
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <button id="btn-accent-multiselecao" class="btn btn-accent" *ngIf="multiSelecao" (click)="selecionarMultiContas()"
+        [disabled]="desabilitarBtnAcaoMultiSelecao()">
+        <i class="fa fa-sync mr-3" aria-hidden="true"></i>
+        <span>{{ textoBtnAcao }}</span>
+    </button>
+</div>
+
+<app-paginacao [pageIndex]="pageIndex" [totalItems]="propriedadesPaginador?.totalItens"
+  [totalItemsPage]="propriedadesPaginador?.tamanhoPagina" (consultarPagina)="alterarPagina($event)">
+</app-paginacao>
+
+<!-- <div clas="row">
+  <div style="background: transparent!important;" class="modal fade show high" id="exampleModal" tabindex="-1" [ngClass]="{'d-block': loading}"
+    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="loading">
+    <div class="col-md-12 padding-reset text-center">
+      <img class="img-responsive text-center loading-img center-block" src="assets/img/loading.gif" />
+    </div>
+  </div>
+</div> -->

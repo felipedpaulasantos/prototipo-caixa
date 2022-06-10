@@ -1,0 +1,42 @@
+<ng-container *ngIf="(consultasCadastrais$ | async) as consultas">
+  <ng-container *ngFor="let consulta of [
+    consultas.consultaReceita,
+    consultas.consultaSicli,
+    consultas.consultaSipes
+  ]; let isLast = last; let i = index">
+    <div class="alert-consulta" *ngIf="consulta?.visivel" [ngClass]="{
+      'alert-consulta-timeout': consulta?.status === statusConsulta.TIMEOUT,
+      'alert-consulta-pending': consulta?.status === statusConsulta.NAO_CONSULTADO,
+      'alert-consulta-success' : consulta?.status === statusConsulta.SUCESSO,
+      'alert-consulta-warning': consulta?.status === statusConsulta.ERRO_NAO_IMPEDITIVO,
+      'alert-consulta-danger': consulta?.status === statusConsulta.ERRO_IMPEDITIVO,
+      'alert-consulta-loading': consulta?.status === statusConsulta.LOADING,
+      'mb-3': !isLast
+    }">
+      <div class="alert-header">
+        <div class="icon-container">
+          <ng-container [ngSwitch]="consulta?.status">
+            <i *ngSwitchCase="statusConsulta.TIMEOUT" [class]="TIMEOUT_ICON"></i>
+            <i *ngSwitchCase="statusConsulta.NAO_CONSULTADO" [class]="PENDING_ICON"></i>
+            <i *ngSwitchCase="statusConsulta.SUCESSO" [class]="SUCCESS_ICON"></i>
+            <i *ngSwitchCase="statusConsulta.ERRO_IMPEDITIVO" [class]="ERROR_ICON"></i>
+            <i *ngSwitchCase="statusConsulta.ERRO_NAO_IMPEDITIVO" [class]="WARNING_ICON"></i>
+            <i *ngSwitchCase="statusConsulta.LOADING" [class]="LOADING_ICON"></i>
+          </ng-container>
+        </div>
+        <div class="title-container">
+          <span>{{ consulta?.titulo }}</span>
+        </div>
+        <a class="collapse-icon-container collapsed" [ngClass]="{'collapsed': consulta.colapsado}" data-toggle="collapse" href="#collapseConsultaDetalhes{{i}}" role="button">
+          <i class="collapse-icon collapse-icon"></i>
+        </a>
+      </div>
+      <div id="collapseConsultaDetalhes{{i}}" class="collapse" [ngClass]="{'show': !consulta.colapsado}">
+        <div class="alert-body"
+          [innerHTML]="consulta?.mensagem">
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+

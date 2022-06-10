@@ -1,0 +1,7 @@
+<div class="row" *ngIf="totalItems > totalItemsPage">
+  <div class="col-sm-12 d-flex justify-content-center">
+    <pagination [(ngModel)]="pageIndex" class="pagination-md" [itemsPerPage]="totalItemsPage" [rotate]="true"
+      (pageChanged)="novaPagina($event)" [boundaryLinks]="true" [totalItems]="totalItems" [maxSize]="maxSize" previousText="Anterior"
+      nextText="Próxima" firstText="Primeira" lastText="Última"></pagination>
+  </div>
+</div>

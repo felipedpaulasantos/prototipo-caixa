@@ -1,0 +1,120 @@
+<div class="card">
+  <div class="card-body">
+    <h3 id="title-configuracao" class="titulo">
+      <span id="link-voltar-menu" class="mr-3 cursor-pointer"
+        (click)="voltar()" ><i class="fa fa-backward" aria-hidden="true"></i> Voltar
+      </span>
+    </h3>
+    <!-- TABELA -->
+    <div class="table-responsive mt-4">
+      <table id="table-configuracao" class="table">
+        <thead>
+          <tr>
+            <th>Módulo</th>
+            <th>Menu</th>
+            <th class="text-center">Nacional</th>
+            <th class="text-center">Piloto</th>
+            <th class="text-center">PrePiloto</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container id="container-configuracao">
+            <tr
+              *ngFor="let funcionalidade of funcionalidades | paginate: {itemsPerPage: 10, currentPage: page}; let i = index">
+              <td>{{nomeDoModulo}}</td>
+              <td>{{funcionalidade.nomeFuncionalidade}}</td>
+              <td class="text-center">
+                <span *ngIf="isAtivo(funcionalidade.siglaFuncionalidade, funcionalidade.nacional)"
+                 (click)="alterarFuncionalidade(funcionalidade, ambiente.NACIONAL)"
+                  class="badge  badge-success cursor-pointer">Ativo <i class="fas fa-toggle-on"></i></span>
+                <span *ngIf="isInativo(funcionalidade.siglaFuncionalidade, funcionalidade.nacional)"
+                 (click)="alterarFuncionalidade(funcionalidade, ambiente.NACIONAL)"
+                  class="badge badge-dark cursor-pointer">Inativo <i class="fas fa-toggle-off"></i></span>
+
+                <!-- Ativação/Desativação por TipoCliente PF/PJ -->
+                <span *ngIf="isAtivoPF(funcionalidade.siglaFuncionalidade, funcionalidade.nacional)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.NACIONAL, funcionalidade.nacional, actionButton.INATIVAR_PF)"
+                  class="badge  badge-success cursor-pointer mr-2">Ativo PF <i class="fas fa-toggle-on"></i></span>
+                <span *ngIf="isInativoPF(funcionalidade.siglaFuncionalidade, funcionalidade.nacional)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.NACIONAL, funcionalidade.nacional, actionButton.ATIVAR_PF)"
+                  class="badge badge-dark cursor-pointer mr-2">Inativo PF <i class="fas fa-toggle-off"></i></span>
+                <span *ngIf="isAtivoPJ(funcionalidade.siglaFuncionalidade, funcionalidade.nacional)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.NACIONAL, funcionalidade.nacional, actionButton.INATIVAR_PJ)"
+                  class="badge  badge-success cursor-pointer">Ativo PJ <i class="fas fa-toggle-on"></i></span>
+                <span *ngIf="isInativoPJ(funcionalidade.siglaFuncionalidade, funcionalidade.nacional)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.NACIONAL, funcionalidade.nacional, actionButton.ATIVAR_PJ)"
+                  class="badge badge-dark cursor-pointer">Inativo PJ <i class="fas fa-toggle-off"></i></span>
+                <!-- Ativação/Desativação por TipoCliente PF/PJ -->
+
+              </td>
+              <td class="text-center">
+                <span *ngIf="isAtivo(funcionalidade.siglaFuncionalidade, funcionalidade.piloto)"
+                 (click)="alterarFuncionalidade(funcionalidade, ambiente.PILOTO)"
+                  class="badge  badge-success cursor-pointer">Ativo <i class="fas fa-toggle-on"></i></span>
+                <span *ngIf="isInativo(funcionalidade.siglaFuncionalidade, funcionalidade.piloto)"
+                 (click)="alterarFuncionalidade(funcionalidade, ambiente.PILOTO)"
+                  class="badge  badge-dark cursor-pointer">Inativo <i class="fas fa-toggle-off"></i></span>
+
+                <!-- Ativação/Desativação por TipoCliente PF/PJ -->
+                <span *ngIf="isAtivoPF(funcionalidade.siglaFuncionalidade, funcionalidade.piloto)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.PILOTO, funcionalidade.piloto, actionButton.INATIVAR_PF)"
+                  class="badge  badge-success cursor-pointer mr-2">Ativo PF <i class="fas fa-toggle-on"></i></span>
+                <span *ngIf="isInativoPF(funcionalidade.siglaFuncionalidade, funcionalidade.piloto)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.PILOTO, funcionalidade.piloto, actionButton.ATIVAR_PF)"
+                  class="badge badge-dark cursor-pointer mr-2">Inativo PF <i class="fas fa-toggle-off"></i></span>
+                <span *ngIf="isAtivoPJ(funcionalidade.siglaFuncionalidade, funcionalidade.piloto)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.PILOTO, funcionalidade.piloto, actionButton.INATIVAR_PJ)"
+                  class="badge  badge-success cursor-pointer">Ativo PJ <i class="fas fa-toggle-on"></i></span>
+                <span *ngIf="isInativoPJ(funcionalidade.siglaFuncionalidade, funcionalidade.piloto)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.PILOTO, funcionalidade.piloto, actionButton.ATIVAR_PJ)"
+                  class="badge badge-dark cursor-pointer">Inativo PJ <i class="fas fa-toggle-off"></i></span>
+                <!-- Ativação/Desativação por TipoCliente PF/PJ -->
+
+              </td>
+              <td class="text-center">
+                <span *ngIf="isAtivo(funcionalidade.siglaFuncionalidade, funcionalidade.prePiloto)"
+                 (click)="alterarFuncionalidade(funcionalidade, ambiente.PREPILOTO)"
+                  class="badge  badge-success cursor-pointer">Ativo <i class="fas fa-toggle-on"></i></span>
+                <span *ngIf="isInativo(funcionalidade.siglaFuncionalidade, funcionalidade.prePiloto)"
+                 (click)="alterarFuncionalidade(funcionalidade, ambiente.PREPILOTO)"
+                  class="badge  badge-dark cursor-pointer">Inativo <i class="fas fa-toggle-off"></i></span>
+
+                <!-- Ativação/Desativação por TipoCliente PF/PJ -->
+                <span *ngIf="isAtivoPF(funcionalidade.siglaFuncionalidade, funcionalidade.prePiloto)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.PREPILOTO, funcionalidade.prePiloto, actionButton.INATIVAR_PF)"
+                  class="badge  badge-success cursor-pointer mr-2">Ativo PF <i class="fas fa-toggle-on"></i></span>
+                <span *ngIf="isInativoPF(funcionalidade.siglaFuncionalidade, funcionalidade.prePiloto)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.PREPILOTO, funcionalidade.prePiloto, actionButton.ATIVAR_PF)"
+                  class="badge badge-dark cursor-pointer mr-2">Inativo PF <i class="fas fa-toggle-off"></i></span>
+                <span *ngIf="isAtivoPJ(funcionalidade.siglaFuncionalidade, funcionalidade.prePiloto)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.PREPILOTO, funcionalidade.prePiloto, actionButton.INATIVAR_PJ)"
+                  class="badge  badge-success cursor-pointer">Ativo PJ <i class="fas fa-toggle-on"></i></span>
+                <span *ngIf="isInativoPJ(funcionalidade.siglaFuncionalidade, funcionalidade.prePiloto)"
+                 (click)="alterarFuncionalidadePorTipoCliente(funcionalidade.numeroFuncionalidade, ambiente.PREPILOTO, funcionalidade.prePiloto, actionButton.ATIVAR_PJ)"
+                  class="badge badge-dark cursor-pointer">Inativo PJ <i class="fas fa-toggle-off"></i></span>
+                <!-- Ativação/Desativação por TipoCliente PF/PJ -->
+
+              </td>
+              <td>
+                <button type="button" class="btn btn-accent" [disabled]="existeFuncionalidade(funcionalidade)"
+                  routerLink="/configuracao/configuracao-funcionalidade"
+                  [queryParams]="{ id: funcionalidade.numeroFuncionalidade , nomeMenu: funcionalidade.nomeFuncionalidade, nomeModulo: nomeDoModulo}"
+                  (click)="gerenciarFuncionalidade()"
+                  title="Acessar as Funcionalidades">
+                  <i class="fas fa-angle-right"></i>
+                  <i class="fas fa-angle-right"></i>
+                  Gerenciar Funcionalidade</button>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <div id="paginacao" class="float-right mt-2">
+      <pagination-controls autoHide="true" responsive="true" previousLabel="Anterior" nextLabel="Próximo"
+        (pageChange)="page=$event">
+      </pagination-controls>
+    </div>
+  </div>
+</div>

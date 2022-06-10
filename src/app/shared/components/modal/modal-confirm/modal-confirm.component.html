@@ -1,0 +1,23 @@
+    <div class="modal-header">
+      <h5 [ngSwitch]="type">
+        Confirmação
+      </h5>
+    </div>
+    <div class="modal-body">
+      <div [ngClass]="{
+        'alert-outline-danger': type === 'error',
+        'alert-outline-warning': type === 'warning',
+        'alert-outline-info': type === 'info'
+      }" class="alert"
+      role="alert">
+        <p>{{message}}</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-cancel" mz-modal-close (click)="cancelar()">
+        {{textoCancelar}}
+      </button>
+      <button type="button" class="btn btn-main" mz-modal-close (click)="confirmar()">
+        {{textoConfirmar}}
+      </button>
+    </div>

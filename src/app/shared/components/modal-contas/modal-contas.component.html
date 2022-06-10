@@ -1,0 +1,29 @@
+<mz-modal [options]="options">
+    <mz-modal-header>
+        <h3 class="text-left font-weight-bold">
+            {{header}}
+            <a mz-modal-close class="close cursor-pointer">x</a>
+        </h3>
+    </mz-modal-header>
+    <mz-modal-content>
+<div id="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead >
+        <th class="text-left">Conta</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let conta of contas | paginate: {itemsPerPage: 10, currentPage: page}; let i = index">
+
+          <td class="text-left">Agência: {{ conta?.unidade }} - Operação: {{ conta?.operacao  }} - Conta Bancária:
+            {{ conta?.numero }}-{{ conta?.dv }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="paginacao" class="float-right mt-2" *ngIf="modalComPaginacao">
+      <pagination-controls autoHide="true" responsive="true" previousLabel="Anterior" nextLabel="Próximo"
+        (pageChange)="page=$event">
+      </pagination-controls>
+    </div><br/>
+  </div>
+</mz-modal-content>
+</mz-modal>

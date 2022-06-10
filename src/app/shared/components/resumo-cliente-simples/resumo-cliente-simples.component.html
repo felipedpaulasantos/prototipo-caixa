@@ -1,0 +1,65 @@
+<div class="container-fluid p-0">
+  <div class="card border border-primary mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm"*ngIf="ehClientePF()">
+          <div class="col-md-9 align-top" >
+            <div class="d-inline-block align-top">
+              <p class="card-text nome-cliente"> {{resumoCliente?.nome}}</p>
+              <p class="card-text"><strong>CPF:</strong> {{resumoCliente?.cpf | cpfOuCnpj }}</p>
+              <p class="card-text"><strong>Segmento:</strong> {{resumoCliente?.segmento}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm" *ngIf="!ehClientePF()">
+          <div class="col-md-9 align-top" >
+            <div class="d-inline-block align-top">
+              <p class="card-text nome-cliente"> {{resumoCliente?.razaoSocial}}</p>
+              <p class="card-text"><strong>CNPJ:</strong> {{resumoCliente?.cnpj | cpfOuCnpj }}</p>
+              <p class="card-text"><strong>Segmento:</strong> {{resumoCliente?.segmento}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="divider my-2">
+      </div>
+
+      <div class="row">
+        <div class="col-sm">
+          <div class="col-md-12">
+            <h5 class="card-text titulo-dados">Dados Pessoais</h5>
+            <p class="card-text"><strong>Data de nascimento:</strong> {{resumoCliente?.dtNascimento | localDate:
+              'dd/MM/yyyy'}}</p>
+            <p class="card-text"><strong>Sexo:</strong> {{resumoCliente?.sexo}}</p>
+            <p class="card-text"><strong>Nome da Mãe:</strong> {{resumoCliente?.nomeMae}}</p>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="col-md-12" *ngIf="ehClientePF()">
+            <h5 class="card-text titulo-dados">Dados Profissionais</h5>
+            <p class="card-text"><strong>Profissão:</strong> {{resumoCliente?.profissao}}</p>
+            <p class="card-text"><strong>Renda:</strong> {{resumoCliente?.rendaTotal | currency: 'BRL': true}}</p>
+          </div>
+          <div class="col-md-12" *ngIf="!ehClientePF()">
+            <h5 class="card-text titulo-dados">Dados Empresariais</h5>
+            <p class="card-text"><strong>Razão Social:</strong> {{resumoCliente?.razaoSocial }}</p>
+            <p class="card-text"><strong>Nome Fantasia:</strong> {{resumoCliente?.nomeFantasia}}</p>
+            <p class="card-text"><strong>CNAE Principal:</strong> {{resumoCliente?.cnae}}</p>
+            <p class="card-text"><strong>Faturamento:</strong> {{resumoCliente?.faturamento | currency: 'BRL': true}}
+            </p>
+          </div>
+        </div>
+        <div class="col-sm">
+          <h5 class="card-text titulo-dados">Contatos</h5>
+          <p class="card-text"><i class="fa fa-envelope mr-2" aria-hidden="true"></i><strong>E-mail:</strong>
+            {{resumoCliente?.email}}</p>
+          <p class="card-text"><i class="fa fa-phone mr-2" aria-hidden="true"></i><strong>Tel.Fixo:</strong>
+            {{resumoCliente?.telefone | tel}}</p>
+          <p class="card-text"><i class="fa fa-mobile mr-2" aria-hidden="true"></i><strong>Tel.Celular:</strong>
+            {{resumoCliente?.celular | tel}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

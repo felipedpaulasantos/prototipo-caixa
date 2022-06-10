@@ -1,0 +1,12 @@
+<div id="cabecalho-opcoes">
+    <ul class="stepper horizontal" id="horizontal" [ngClass]="{'previous-step': stepSelecionado === (steps.length - 1)}">
+        <li class="step" *ngFor="let step of steps; let index = index; let last = last" [ngClass]="{'previous-step': index < stepSelecionado}">
+            <div class="step-title waves-effect waves-dark"
+                [ngClass]="{'sequencial': isSequencial, 'active-option': stepSelecionado === index, 'previous-step': index < stepSelecionado, 'last-step': last && stepSelecionado === index, 'cursor-pointer': (index < stepSelecionado && stepSelecionado < (steps.length - 1))}"
+                style="color: var(--cxCancel);font-weight: 600;"
+                (click)="selecionarStep(index)">
+                <label [hidden]="index < stepSelecionado">{{step?.title}}</label>
+            </div>
+        </li>
+    </ul>
+</div>

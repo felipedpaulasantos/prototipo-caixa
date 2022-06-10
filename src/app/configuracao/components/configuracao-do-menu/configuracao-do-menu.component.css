@@ -1,0 +1,232 @@
+:host ::ng-deep .ng-select.custom .ng-select-container  {
+    border: none;
+
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 0;
+    text-overflow: ellipsis;
+    margin-top: -4px;
+  }
+
+  :host ::ng-deep .mydp, .mydp .headertodaybtn{
+    border: none;
+    width: 100%;
+    white-space: nowrap;
+    border-radius: 0;
+    margin-top: -4px;
+  }
+
+  :host ::ng-deep .ng-select.ng-select-disabled>.ng-select-container {
+    background-color: inherit;
+  }
+
+  :host ::ng-deep #panel-filtros-consulta label {
+    padding-left: 5px;
+  }
+
+  .custom-control-label::before{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--cxBase);
+  }
+
+  .custom-control-label::after{
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  #panel-filtros-consulta input[type=checkbox][disabled]{
+    opacity: 0;
+  }
+
+  #panel-dados-cadastrais {
+      margin-top: 20px;
+  }
+
+
+  #panel-filtros-consulta {
+    height: 350px!important;
+  }
+
+
+  /* Modal */
+  .modal-response-body {
+    width: 70%;
+    text-align: unset;
+  }
+
+  .modal-header-margin {
+    margin-bottom: 10px;
+  }
+
+  #modalResponse {
+    z-index: 99999;
+  }
+
+  .alert {
+    padding: .75rem 1.25rem;
+  }
+
+  @media (max-width: 576px) {
+    #modalResponse button {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+  }
+
+  .alert-success strong {
+    display: unset;
+  }
+
+  :host ::ng-deep .titulo-secao{
+    border: none;
+    margin-bottom: -20px
+  }
+
+  :host ::ng-deep .btn-secao-cadastro {
+    color: var(--cxAccent);
+    font-family: var(--cxFontFamilyBold);
+    border: 1px solid;
+    width: 100%;
+  }
+
+  :host ::ng-deep div[aria-expanded=true] .glyphicon-triangle-right {
+    display: none;
+  }
+
+  :host ::ng-deep div[aria-expanded=false] .glyphicon-triangle-right {
+    display: none;
+  }
+
+  :host ::ng-deep .toggle-pesquisa {
+    margin: 5px auto 5px auto;
+    color: var(--cxAux);
+  }
+
+  :host ::ng-deep .icon-toggle {
+    font-size: 1rem;
+    background-color:var(--cxMain);
+    color:var(--cxBase);
+    border-radius: 12px;
+    padding: 4px 4px 4px 4px;
+    margin-right: 10px;
+  }
+
+  /* estilo para campos de formulários */
+  :host ::ng-deep .btn-consultas {
+  margin-top: 17px;
+  }
+
+  :host ::ng-deep div.formulario form input[type='text'],
+  :host ::ng-deep div.formulario form select {
+  padding: 5px;
+  width: 100%;
+  }
+
+  :host ::ng-deep div.formulario form input[type='text'].ng-pristine,
+  :host ::ng-deep div.formulario form select.ng-pristine {
+  border: none;
+  font-family: var(--cxFontFamilyNormal);
+  padding: 5px;
+  width: 100%;
+  }
+
+  :host ::ng-deep div.formulario form select {
+  color: inherit;
+  }
+
+  :host ::ng-deep select[disabled], input[disabled] {
+  background-color: unset !important;
+  }
+
+  :host ::ng-deep div.formulario form .has-error > input[type='text'].ng-touched,
+  :host ::ng-deep div.formulario form .has-error > select.ng-touched,
+  :host ::ng-deep div.formulario form .has-error > app-cpf.ng-touched > input[type='text'],
+  :host ::ng-deep div.formulario form .has-error > app-cpf-cnpj.ng-touched > input[type='text'] {
+    border-bottom: 1px solid var(--cxDanger);
+  }
+
+  :host ::ng-deep div.formulario form .has-error > label,
+  :host ::ng-deep div.formulario form .has-error > label.label-dirty {
+    color: var(--cxDanger);
+  }
+
+  :host ::ng-deep div.formulario form input[type='text'].ng-dirty,
+  :host ::ng-deep div.formulario form select.ng-dirty,
+  :host ::ng-deep div.formulario form app-cpf.ng-dirty > input[type='text'],
+  :host ::ng-deep div.formulario form app-cpf-cnpj.ng-dirty > input[type='text'] {
+  padding: 5px;
+  border-bottom: 1px solid var(--cxWarning);
+  }
+
+  :host ::ng-deep div.formulario form label.label-dirty {
+  color: var(--cxMain);
+  }
+
+  :host ::ng-deep div.formulario form input[type='text'].ng-invalid,
+  :host ::ng-deep div.formulario form select.ng-invalid {
+  padding: 5px;
+  border-bottom: 1px solid var(--cxDanger);
+  }
+
+  :host ::ng-deep div.formulario form label.label-invalid {
+  color: var(--cxDanger);
+  }
+
+  :host ::ng-deep .btn-alterar-excluir {
+  color: var(--cxAccent);
+  border: none;
+  font-size: small;
+  }
+
+  :host ::ng-deep .table-scroll {
+  max-height: 405px;
+  overflow: auto;
+  }
+
+  @media (max-width: 600px) {
+  :host ::ng-deep .table-scroll {
+    max-width: 600px;
+  }
+  }
+
+  :host ::ng-deep div.formulario form select {
+  text-overflow: ellipsis !important;
+  padding-right: 10px !important;
+  }
+
+  :host ::ng-deep select[disabled],
+  :host ::ng-deep input[disabled] {
+  background-color: unset !important;
+  }
+
+  #input-cpf-cnpj {
+    text-transform: none !important;
+  }
+  :host ::ng-deep .cpf-cnpj-input-width {
+    min-width: 100%!important;
+  }
+  :host ::ng-deep .ng-dropdown-panel .scroll-host{
+    height: 140px!important;
+  }
+  :host ::ng-deep .mydp .selectiongroup {
+    background-color: transparent;
+  }
+
+  .btn-accent {
+    font-family: var(--cxFontFamilyBold);
+  }
+
+/*
+  LEIA-ME
+  --
+  RTC 16984125 - SIPNC - Menu Configuração - Separar por Tipo de Cliente
+  Daqui para baixo tratar apenas está demanda, favor não misturar o CSS
+  --
+*/
+
+.card-borderless {
+  border: 0px !important;
+}
+

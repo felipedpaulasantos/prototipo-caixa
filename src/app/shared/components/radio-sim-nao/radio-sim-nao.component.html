@@ -1,0 +1,18 @@
+<form>
+  <div class="row radio-sim-nao">
+    <div [ngClass]="getButtonSimClass()" (click)="changeSimNao(true)">
+      <input class="form-check-input" type="radio" name="simNaoRadio" value="true"
+        [checked]="checked === true">
+      <span class="form-check-label" for="simRadio">
+        {{ labelSim }}
+      </span>
+    </div>
+    <div [ngClass]="getButtonNaoClass()" (click)="changeSimNao(false)">
+      <input class="form-check-input" type="radio" name="simNaoRadio" value="false"
+        [checked]="checked === false">
+      <span class="form-check-label" for="naoRadio">
+        {{ labelNao }}
+      </span>
+    </div>
+  </div>
+</form>

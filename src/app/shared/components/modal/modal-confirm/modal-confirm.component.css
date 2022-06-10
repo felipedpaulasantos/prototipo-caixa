@@ -1,0 +1,17 @@
+mz-modal-content {
+  padding: 0;
+}
+.modal-header {
+  justify-content: start;
+  background-color: var(--cxAccent);
+  color: var(--cxBase);
+  font-family: var(--cxFontFamilyBold);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.alert {
+  margin: 0;
+}
+.modal-footer {
+  border: none;
+}

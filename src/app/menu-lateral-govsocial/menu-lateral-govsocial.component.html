@@ -1,0 +1,120 @@
+<nav *ngIf="(cpfNisService.listaCidadao$ | async).length > 0" id="">
+  <app-accordion [menus]="items"></app-accordion>
+</nav>
+
+<!-- Exibição antiga -->
+<nav *ngIf="false && (cpfNisService.listaCidadao$ | async).length > 0" id="">
+  <ul class="menu tabs">
+    <li class="action-sub-menu" [class.disabled-menu]="!isResumo" *ngIf="isResumo">
+      <a [class.active]="isRotaAtiva('resumo')" (click)="redirecionaPara('resumo')"
+        title="Resumo do Cidadão">
+        <!--<i class="fas fa-users fa"></i>-->Resumo Cidadão
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isCadastro" *ngIf="isCadastro">
+      <a [class.active]="isRotaAtiva('cadastro')" (click)="redirecionaPara('cadastro')"
+        title="Cadastro NIS">
+        <!--<i class="far fa-id-badge fa"></i>-->Cadastro NIS
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isCartaoSocial" *ngIf="isCartaoSocial">
+      <a [class.active]="isRotaAtiva('cartao-social')" (click)="redirecionaPara('cartao-social')"
+        title="Cartões Sociais" class="cartoes-sociais-func">
+        <!--<i class="far fa-address-card fa"></i>-->Cartões Sociais
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isSenhaCidadao" *ngIf="isSenhaCidadao">
+      <a [class.active]="isRotaAtiva('senha-cidadao')" (click)="redirecionaPara('senha-cidadao')"
+        title="Senha Cidadão">
+        <!--<i class="far fa-address-card fa"></i>-->Senha Cidadão
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isIdentificacaoPositiva" *ngIf="isIdentificacaoPositiva">
+      <a [class.active]="isRotaAtiva('identificacao-positiva')" (click)="redirecionaPara('identificacao-positiva')"
+        title="Identificação Positiva">
+        <!--<i class="far fa-address-card fa"></i>-->Identificação Positiva
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isFgts" *ngIf="isFgts">
+      <a [class.active]="isRotaAtiva('fgts')" (click)="redirecionaPara('fgts')"  title="FGTS">
+        <!--<i class="fas fa-calculator fa"></i>-->FGTS
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isSistematicaSaqueFgts" *ngIf="isSistematicaSaqueFgts">
+      <a [class.active]="isRotaAtiva('sistematica-saque-fgts/modalidade-saque')" (click)="redirecionaPara('sistematica-saque-fgts/modalidade-saque')"  title="FGTS - Sistemática de Saque">
+        <!--<i class="fas fa-calculator fa"></i>-->Saque Aniversário FGTS
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isServicoFgts" *ngIf="isServicoFgts">
+      <a [class.active]="isRotaAtiva('servico-fgts/autorizacao-if')" (click)="redirecionaPara('servico-fgts/autorizacao-if')"  title="Serviços FGTS">
+        <!--<i class="fas fa-calculator fa"></i>-->Serviços FGTS
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isSaqueEmergencial94620" *ngIf="isSaqueEmergencial94620">
+      <a [class.active]="isRotaAtiva('saque-emergencial')" (click)="redirecionaPara('saque-emergencial')"
+        title="FGTS">
+        <!--<i class="fas fa-calculator fa"></i>-->Saque Emergencial - MP 946/20
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isSaqueAniversario" *ngIf="isSaqueAniversario">
+      <a [class.active]="isRotaAtiva('saque-aniversario')" (click)="redirecionaPara('saque-aniversario')"  title="Saque Aniversário">
+        <!--<i class="fas fa-calculator fa"></i>-->Saque Aniversário
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isSaqueImediato" *ngIf="isSaqueImediato">
+      <a [class.active]="isRotaAtiva('saque-imediato')" (click)="redirecionaPara('saque-imediato')"
+        title="FGTS">
+        <!--<i class="fas fa-calculator fa"></i>-->Saque Imediato - MP 889/19
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isPis" *ngIf="isPis">
+      <a [class.active]="isRotaAtiva('pis')" (click)="redirecionaPara('pis')"  title="PIS">
+        <!--<i class="far fa-sticky-note fa"></i>-->Abono Salarial
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isBeneficiosSociais" *ngIf="isBeneficiosSociais">
+      <a [class.active]="isRotaAtiva('beneficios-sociais')" (click)="redirecionaPara('beneficios-sociais')"
+          title="Benefícios Sociais">
+        <!--<i class="fas fa-tags fa"></i>-->Benefícios Sociais
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isSeguroDesemprego" *ngIf="isSeguroDesemprego">
+      <a [class.active]="isRotaAtiva('seguro-desemprego')" (click)="redirecionaPara('seguro-desemprego')"
+          title="Seguro Desemprego">
+        <!--<i class="fas fa-briefcase fa"></i>-->Seguro Desemprego
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isInss" *ngIf="isInss">
+      <a [class.active]="isRotaAtiva('inss')" (click)="redirecionaPara('inss')"  title="INSS">
+        <!--<i class="fas fa-table fa"></i>-->INSS
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isPortifolio" *ngIf="isPortifolio">
+      <a [class.active]="isRotaAtiva('portifolio')" title="Portfólio de Acessos">
+        <!--<i class="fas fa-folder fa"></i>-->Portfólio de Acessos
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+    <li class="action-sub-menu" [class.disabled-menu]="!isPoupancaCaixaFacil" *ngIf="isPoupancaCaixaFacil">
+      <a [class.active]="isRotaAtiva('poupanca-caixa-facil')" (click)="redirecionaPara('poupanca-caixa-facil')"  title="Poupança CAIXA Fácil">
+        <!--<i class="fas fa-table fa"></i>-->Poupança CAIXA Fácil
+        <i class="fas fa-angle-right fa icon-down-normalize"></i>
+      </a>
+    </li>
+  </ul>
+</nav>

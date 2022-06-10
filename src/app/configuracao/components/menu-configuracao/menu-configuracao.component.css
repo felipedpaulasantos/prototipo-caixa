@@ -1,0 +1,72 @@
+.fa {
+  margin-right: 0.5em;
+  font-size: 1.2em;
+  margin-left: -0.6em;
+}
+
+nav ul.menu li {
+  background-color: var(--cxBase);
+  margin-bottom: 1px;
+}
+
+nav ul.menu li a {
+  color: var(--cxCancel);
+  display: block;
+  padding: 19px 17px;
+}
+
+@media screen and (max-width: 980px) {
+  nav ul.menu li a {
+    padding: 13px 17px;
+  }
+}
+
+nav ul.menu li a:hover,
+nav ul.menu li a:active {
+background: var(--cxAccent);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="var(--cxAccent)", endColorstr="var(--cxAccent)", GradientType=1);
+  color: var(--cxBase);
+}
+
+nav ul.menu li a.active {
+background: var(--cxAccent);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="var(--cxAccent)", endColorstr="var(--cxAccent)", GradientType=1);
+  color: var(--cxBase);
+}
+
+nav ul.menu li ul {
+  display: none;
+  margin-left: 17px;
+}
+
+nav ul.menu > li > a {
+  color: inherit;
+  font-size: 1.1rem;
+  font-family: var(--cxFontFamilyBold);
+}
+
+nav ul.menu > li > a:hover {
+  cursor: pointer;
+  text-decoration: underline !important;
+}
+
+nav ul.menu > li.ativo > a {
+background: var(--cxAccent);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="var(--cxAccent)", endColorstr="var(--cxAccent)", GradientType=1);
+  color: var(--cxBase);
+}
+
+nav ul.menu > li > ul > li > a {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.disabled-menu {
+  pointer-events: none !important;
+  opacity: 0.6;
+  cursor: not-allowed !important;
+}
+
+li.disabled-menu a:hover {
+  cursor: not-allowed !important;
+}

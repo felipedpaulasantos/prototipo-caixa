@@ -1,0 +1,32 @@
+/* .cpf-cnpj-input {
+    border-radius: 0px !important;
+    border: none;
+    font-family: var(--cxFontFamilyNormal);
+    padding: 10px;
+    float: left;
+    position: relative;
+    width: 100%;
+} */
+
+#input-cpf-cnpj {
+    text-transform: none !important;
+}
+
+
+@media (max-width: 379px) {
+  .cpf-cnpj-input-width {
+    width: 80% !important;
+  }
+}
+
+@media (min-width: 380px) and (max-width: 599px) {
+  .cpf-cnpj-input-width {
+    width: 90% !important;
+  }
+}
+
+@media (min-width: 600px) {
+  .cpf-cnpj-input-width {
+    width: 35% !important;
+  }
+}

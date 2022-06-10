@@ -1,0 +1,392 @@
+.item-sair a {
+  /*     color: var(--cxBase); */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dataHora {
+  /*     color: var(--cxBase); */
+  float: right;
+  margin-left: 16px;
+  margin-top: 26px;
+}
+
+div#select-agencias {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+header h3.agencia {
+  /*   color: var(--cxBase); */
+  float: left;
+  font-family: var(--cxFontFamilyNormal);
+  font-size: 1.1rem;
+  padding-top: 5px;
+  text-decoration: underline !important;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+header h3.agencia:hover,
+header h3.agencia:focus {
+  color: var(--cxMain) !important;
+}
+
+header h3.agencia-no-link {
+  font-family: var(--cxFontFamilyNormal);
+  font-size: 1.1rem;
+  padding-top: 5px;
+}
+
+#imgLogo {
+  display: block;
+  max-height: 2.2rem;
+  min-width: 1.7rem;
+  position: relative;
+}
+@media (max-width: 1199.98px) {
+  #imgLogo {
+    display: block;
+    max-height: 3rem;
+    position: relative;
+  }
+}
+
+header {
+  background-color: var(--cxHeaderBgColor);
+  color: var(--cxHeaderTextColor);
+  height: 64px;
+  border-bottom: solid 1px var(--cxCancel);
+  width: 100%;
+  display: block;
+  position: fixed;
+  z-index: 5;
+}
+
+header div.content {
+  position: relative;
+}
+
+header h1 {
+  float: left;
+  padding-top: 23px;
+}
+
+header h1 a {
+  background-image: url(/assets/img/logo_caixa.png);
+  display: block;
+  height: 72px;
+  margin: -23px 0 0 -12px;
+  overflow: hidden;
+  position: relative;
+  text-indent: -999em;
+  width: 90px;
+}
+
+header h2 {
+  /*   color: var(--cxBase); */
+  float: left;
+  font-family: var(--cxFontFamilyNormal);
+  font-size: 1.23rem;
+  padding-top: 28px;
+}
+
+header h2 strong {
+  font-family: var(--cxFontFamilyBold);
+}
+
+header h3 {
+  /*   color: var(--cxBase); */
+  float: left;
+  font-family: var(--cxFontFamilyNormal);
+  font-size: 1.1rem;
+  padding-top: 28px;
+}
+
+header h3 strong {
+  font-family: var(--cxFontFamilyBold);
+}
+
+header ul {
+  float: right;
+}
+
+header ul li {
+  float: right;
+  position: relative;
+}
+
+header ul li a {
+  display: block;
+}
+
+header ul li.item-calendario,
+header ul li.item-config,
+header ul li.item-pesquisa {
+  height: 71px;
+  padding: 23px 13px 0;
+}
+
+header ul li.item-calendario a,
+header ul li.item-config a,
+header ul li.item-pesquisa a {
+  overflow: hidden;
+  text-indent: -9999em;
+}
+
+header ul li.item-calendario.ativo,
+header ul li.item-config.ativo,
+header ul li.item-pesquisa.ativo {
+  background-color: var(--cxAccent);
+  position: relative;
+  z-index: 99;
+}
+
+header ul li.item-config a {
+  background-image: url(/assets/img/config_header.png);
+  height: 21px;
+  width: 21px;
+}
+
+header ul li.item-pesquisa a {
+  background-image: url(/assets/img/pesquisa_header.png);
+  height: 21px;
+  width: 20px;
+}
+
+header ul li.item-calendario a {
+  background-image: url(/assets/img/calendario_header.png);
+  height: 21px;
+  width: 26px;
+}
+
+header ul li.item-sair {
+  margin-left: 13px;
+}
+
+header ul li.item-sair a {
+  border: 1px solid var(--cxLink);
+  /*   color: var(--cxBase); */
+  font-family: var(--cxFontFamilyBold);
+  font-size: 0.77rem;
+  height: 24px;
+  line-height: 22px;
+  margin-top: 23px;
+  min-width: 80px;
+  text-align: center;
+}
+
+header div.sub-item {
+  display: none;
+  position: absolute;
+  right: 15px;
+  top: 71px;
+  z-index: 99;
+}
+
+header div.sub-item.calendario {
+  border-bottom: 1px solid var(--cxCancel);
+  background-color: var(--cxBase);
+  padding: 0;
+  width: 265px;
+}
+
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline {
+  background: transparent;
+  border: none;
+  padding: 1px;
+  width: auto;
+}
+
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline .ui-datepicker-header {
+  background: transparent;
+  border: none;
+}
+
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline .ui-datepicker-header .ui-datepicker-next,
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline .ui-datepicker-header .ui-datepicker-prev {
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline .ui-datepicker-header .ui-datepicker-next .ui-icon,
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline .ui-datepicker-header .ui-datepicker-prev .ui-icon {
+  display: none;
+}
+
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline .ui-datepicker-header .ui-datepicker-prev {
+  background-image: url(/assets/img/bt_anteriorMes.png);
+}
+
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline .ui-datepicker-header .ui-datepicker-next {
+  background-image: url(/assets/img/bt_proximoMes.png);
+}
+
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline .ui-datepicker-header .ui-datepicker-title {
+  color: var(--cxAux);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline .ui-datepicker-calendar thead tr th {
+  background-color: var(--cxCancel);
+}
+
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline .ui-datepicker-calendar tbody tr td {
+  background: transparent;
+  border: none;
+  text-align: center;
+}
+
+header div.sub-item.calendario .hasDatepicker .ui-datepicker-inline .ui-datepicker-calendar tbody tr td a {
+  background: transparent;
+  border: none;
+  color: var(--cxAux);
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+header
+  div.sub-item.calendario
+  .hasDatepicker
+  .ui-datepicker-inline
+  .ui-datepicker-calendar
+  tbody
+  tr
+  td.ui-datepicker-current-day
+  a {
+  background-color: var(--cxAccent);
+  color: var(--cxBase);
+  font-weight: 700;
+}
+
+header div.sub-item.calendario div.evento h5 {
+  border-bottom: 1px solid var(--cxCancel);
+  border-top: 1px solid var(--cxCancel);
+  color: var(--cxAux);
+  line-height: 28px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+header div.sub-item.calendario div.evento div.conteudo {
+  padding: 15px 16px;
+}
+
+header div.sub-item.calendario div.evento div.conteudo h6 {
+  color: var(--cxCancel);
+  font-size: 0.92rem;
+  margin-bottom: 5px;
+}
+
+header div.sub-item.calendario div.evento div.conteudo h6 strong {
+  color: var(--cxAux);
+  font-size: 1rem;
+}
+
+header div.sub-item.calendario div.evento div.conteudo p {
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+
+header div.sub-item.calendario div.evento div.conteudo a.verMais {
+  color: var(--cxAccent);
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding-left: 10px;
+  position: relative;
+}
+
+header div.sub-item.calendario div.evento div.conteudo a.verMais:before {
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-left: 4px solid var(--cxAccent);
+  content: " ";
+  left: 0;
+  position: absolute;
+  top: 3px;
+}
+
+header div.sub-item.config {
+  border: 1px solid var(--cxCancel);
+  background-color: var(--cxBase);
+  width: 265px;
+}
+
+header div.sub-item.config h5 {
+  border-bottom: 1px solid var(--cxCancel);
+  color: var(--cxAux);
+  font-family: var(--cxFontFamilyNormal);
+  line-height: 30px;
+  margin-bottom: 12px;
+  padding: 0 15px;
+  text-transform: uppercase;
+}
+
+header div.sub-item.config ul {
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+header div.sub-item.config ul li {
+  margin-bottom: 16px;
+  padding: 0 15px;
+  width: 100%;
+}
+
+header div.sub-item.config ul li a {
+  background-image: url(/assets/img/gr_engrenagem.png);
+  background-repeat: no-repeat;
+  color: var(--cxAux);
+  line-height: 16px;
+  padding-left: 30px;
+}
+
+header div.sub-item.pesquisa {
+  border-bottom: 1px solid var(--cxCancel);
+  background-color: var(--cxBase);
+  padding: 17px 25px;
+  width: 675px;
+}
+
+header div.sub-item.pesquisa label {
+  font-weight: 400;
+  margin: 0;
+  margin-right: 26px;
+}
+
+header div.sub-item.pesquisa input[type="text"] {
+  border: 1px solid var(--cxCancel);
+  border-radius: 3px;
+  line-height: 25px;
+  padding: 0 15px;
+  width: 317px;
+}
+
+header div.sub-item.pesquisa button {
+  background-color: var(--cxMain);
+  border: none;
+  border-radius: 3px;
+  color: var(--cxBase);
+  display: block;
+  float: right;
+  font-size: 1.1rem;
+  height: 27px;
+  width: 98px;
+}
+
+.btn-flat {
+  position: relative;
+}
+.btn-detail {
+  position: absolute;
+  top: 0;
+  right: 0.7rem;
+}
+
+.theme-example {
+  border: 3px solid var(--cxCancel);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+}

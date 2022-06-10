@@ -1,0 +1,127 @@
+<div class="container-fluid p-0">
+  <div class="card border border-primary mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-8 mb-4">
+          <div class="row">
+            <div class="col-md-7" *ngIf="ehClientePF()">
+              <div class="d-inline-block">
+                <i [appTipoClienteHasConfig]="'comercial_perfilCliente_siabm'" *ngIf="!resumoBiometria?.possuiCadastroFace" class="fa fa-user-circle fa-6 float-left mr-2"
+                  aria-hidden="true"></i>
+                <img [appTipoClienteHasConfig]="'comercial_perfilCliente_siabm'" *ngIf="resumoBiometria?.possuiCadastroFace" class="rounded-circle float-left mr-2" width="250"
+                  height="250" [src]="url">
+              </div>
+              <div class="d-inline-block align-top">
+                <p class="card-text nome-cliente"> {{resumoCliente?.nome}}</p>
+                <p class="card-text"><strong>CPF:</strong> {{resumoCliente?.cpf | cpfOuCnpj }}</p>
+                <p class="card-text"><strong>Segmento:</strong> {{resumoCliente?.segmento}}</p>
+                <div [appTipoClienteHasConfig]="'comercial_perfilCliente_siabm'">
+                <span class="d-inline badge badge-pill mr-2" *ngIf="!error?.mensagem"
+                  [ngClass]="resumoBiometria?.possuiCadastroDigitais === true ? 'badge-success' : 'badge-warning'">Id
+                  Digital<i class="fa ml-2"
+                    [ngClass]="resumoBiometria?.possuiCadastroDigitais === true ? 'fa-check' : 'fa-exclamation'"
+                    aria-hidden="true"></i></span>
+                <span class="d-inline badge badge-pill" *ngIf="!error?.mensagem"
+                  [ngClass]="resumoBiometria?.possuiCadastroFace === true ? 'badge-success' : 'badge-warning'">Id
+                  Facial<i class="fa ml-2"
+                    [ngClass]="resumoBiometria?.possuiCadastroFace === true ? 'fa-check' : 'fa-exclamation'"
+                    aria-hidden="true"></i></span>
+              </div>
+            </div>
+              <div class="d-block">
+                <div [appTipoClienteHasConfig]="'comercial_perfilCliente_siabm'" *ngIf="error?.mensagem" class="alert alert-outline-warning card-text mt-4 img-extraida">{{error?.mensagem}}</div>
+                <p [appTipoClienteHasConfig]="'comercial_perfilCliente_siabm'" *ngIf="resumoBiometria?.possuiCadastroFace" class="card-text mt-4 img-extraida"><strong>Foto
+                    extraída:</strong> {{resumoBiometria?.origemImagem }}</p>
+              </div>
+            </div>
+            <div class="col-md-7 align-top" *ngIf="!ehClientePF()">
+              <p class="card-text nome-cliente"> {{resumoCliente?.razaoSocial}}</p>
+              <p class="card-text"><strong>CNPJ:</strong> {{resumoCliente?.cnpj | cpfOuCnpj }}</p>
+              <p class="card-text"><strong>Segmento:</strong> {{resumoCliente?.segmento}}</p>
+            </div>
+            <div class="col-md-5">
+              <div *ngIf="msgRegularidade">
+                <div class="consulta-container"
+                  [ngClass]="msgRegularidade === 'REGULAR' || msgRegularidade === 'ATIVA' ? 'consulta-ok' : 'consulta-warning'">
+                  <div class="consulta-container-icon"></div>
+                  <div class="consulta-container-titulo">
+                    Consulta da Receita
+                  </div>
+                  <div class="consulta-container-collapse-icon collapsed" data-toggle="collapse" aria-expanded="true"
+                    href="#containerConsultaDetalhes" role="button">
+                    <i class="collapse-icon"></i>
+                  </div>
+                </div>
+                <div class="collapse show" id="containerConsultaDetalhes">
+                  <div class="consulta-detalhes">
+                    <span *ngIf="ehClientePF()">CPF informado está com situação <strong>{{msgRegularidade | uppercase
+                        }}</strong> perante a
+                      Receita Federal</span>
+                    <span *ngIf="!ehClientePF()">CNPJ informado está com situação <strong>{{msgRegularidade | uppercase
+                        }}</strong> perante a
+                      Receita Federal</span>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="!msgRegularidade">
+                <div class="consulta-container consulta-warning">
+                  <div class="consulta-container-icon"></div>
+                  <div class="consulta-container-titulo">
+                    Consulta da Receita
+                  </div>
+                  <div class="consulta-container-collapse-icon collapsed" data-toggle="collapse"
+                    href="#containerConsultaDetalhes" role="button">
+                    <i class="collapse-icon"></i>
+                  </div>
+                </div>
+                <div class="collapse show" id="containerConsultaDetalhes">
+                  <div class="consulta-detalhes">
+                    <span *ngIf="ehClientePF()">{{mensagemErroReceitaPF}}</span>
+                    <span *ngIf="!ehClientePF()">{{mensagemErroReceitaPJ}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="divider my-2">
+          </div>
+          <div class="row">
+            <div class="col-md-4" *ngIf="ehClientePF()">
+              <h5 class="card-text titulo-dados">Dados Pessoais</h5>
+              <p class="card-text"><strong>Data de nascimento:</strong> {{resumoCliente?.dtNascimento | localDate:
+                'dd/MM/yyyy'}}</p>
+              <p class="card-text"><strong>Sexo:</strong> {{resumoCliente?.sexo}}</p>
+              <p class="card-text"><strong>Nome da Mãe:</strong> {{resumoCliente?.nomeMae}}</p>
+            </div>
+            <div class="col-md-4" *ngIf="ehClientePF()">
+              <h5 class="card-text titulo-dados">Dados Profissionais</h5>
+              <p class="card-text"><strong>Profissão:</strong> {{resumoCliente?.profissao}}</p>
+              <p class="card-text"><strong>Renda:</strong> {{resumoCliente?.rendaTotal | currency: 'BRL': true}}</p>
+            </div>
+            <div class="col-md-8" *ngIf="!ehClientePF()">
+              <h5 class="card-text titulo-dados">Dados Empresariais</h5>
+              <p class="card-text"><strong>Razão Social:</strong> {{resumoCliente?.razaoSocial }}</p>
+              <p class="card-text"><strong>Nome Fantasia:</strong> {{resumoCliente?.nomeFantasia}}</p>
+              <p class="card-text"><strong>CNAE Principal:</strong> {{resumoCliente?.cnae}}</p>
+              <p class="card-text"><strong>Faturamento:</strong> {{resumoCliente?.faturamento | currency: 'BRL': true}}
+              </p>
+            </div>
+            <div class="col-md-4">
+              <h5 class="card-text titulo-dados">Contatos</h5>
+              <p class="card-text"><i class="fa fa-envelope mr-2" aria-hidden="true"></i><strong>E-mail:</strong>
+                {{resumoCliente?.email}}</p>
+              <p class="card-text"><i class="fa fa-phone mr-2" aria-hidden="true"></i><strong>Tel.Fixo:</strong>
+                {{resumoCliente?.telefone | tel}}</p>
+              <p class="card-text"><i class="fa fa-mobile mr-2" aria-hidden="true"></i><strong>Tel.Celular:</strong>
+                {{resumoCliente?.celular | tel}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h5 class="card-text titulo-dados">Lista de Consulta</h5>
+          <app-pesquisas-cadastrais [cliente]="cliente"></app-pesquisas-cadastrais>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

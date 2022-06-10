@@ -1,0 +1,18 @@
+<div class="alert mb-0 d-flex align-items-center {{ isClosed ? 'closed' : '' }}" [ngClass]="alertClasses?.alertClass" *ngIf="message">
+
+  <div class="alert-icon">
+    <i class="alert-type-icon" [ngClass]="alertClasses?.iconClass"></i>
+  </div>
+
+  <div class="alert-message">
+    <span *ngIf="title" class="font-fam-bold mr-2">{{ title }}:</span>
+    <span>{{ message }}</span>
+  </div>
+
+  <div class="alert-close">
+    <button class="btn btn-sm shadow-none" [ngClass]="alertClasses?.closeButtonClass" (click)="onClose()">
+      <i class="fa fa-lg fa-times"></i>
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,19 @@
+<div [class.has-success]="hasSuccess()" [class.has-error]="hasError()">
+  <label>{{label}}</label>
+  <ng-content></ng-content>
+  <span class="help-block" *ngIf="hasError() && input.errors['required']">
+    <i class="fa fa-remove"></i> {{errorMessage}}</span>
+  <span class="help-block" *ngIf="hasError() && input.errors['maxValue']">
+    <i class="fa fa-remove"></i> {{errorMaxMessage}}</span>
+  <span class="help-block" *ngIf="hasError() && input.errors['minValue']">
+    <i class="fa fa-remove"></i> {{errorMinMessage}}</span>
+  <span class="help-block" *ngIf="hasError() && input.errors['valueInList']">
+    <i class="fa fa-remove"></i> {{errorValueInListMessage}}</span>
+  <span class="help-block" *ngIf="hasError() && input.errors['minlength']">
+    <i class="fa fa-remove"></i> {{errorMinLengthMessage}}</span>
+  <span class="help-block" *ngIf="hasError() && input.errors['maxlength']">
+    <i class="fa fa-remove"></i> {{errorMaxLengthMessage}}</span>
+  <span class="help-block" *ngIf="hasError() && input.errors['pattern']">
+    <i class="fa fa-remove"></i> {{errorPatternMessage}}
+  </span>
+</div>

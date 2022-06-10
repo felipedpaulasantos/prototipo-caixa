@@ -1,0 +1,13 @@
+{
+    "clientId": "cli-pnc-web",
+    "name" : "cli-pnc-web",
+    "description" : "Created with keycloak-schematic",
+    "rootUrl": "http://localhost:4200",
+    "baseUrl": "http://localhost:4200",
+    "redirectUris": [
+        "/*"
+    ],
+    "webOrigins": [
+        "http://localhost:4200"
+    ]
+}

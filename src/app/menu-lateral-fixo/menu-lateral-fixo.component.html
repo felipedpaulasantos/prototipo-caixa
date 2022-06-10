@@ -1,0 +1,28 @@
+<perfect-scrollbar #menuLateral id="menuLateral" [ngClass]="{'escondido': (menuService.isAberto$ | async) === false}" tabindex="-1">
+
+  <span class="d-flex flex-column align-items-center my-4">
+    <!-- <img class="img-responsive img-logo mx-auto" [src]="logoSource" alt="SIPNC - Portal Negócios Caixa"
+      title="SIPNC - Portal Negócios Caixa"/> -->
+    <h1 id="tituloApp" class="titulo m-0 mb-1">SIJUR Web</h1>
+    <small class="text-version">v{{version}}</small>
+  </span>
+
+  <div class="d-block d-sm-none text-center mb-3 mb-sm-0">
+    <hr>
+    <h5 class="p-0 m-0">Olá,
+      <strong>{{username}}</strong>
+    </h5>
+  </div>
+
+  <div id="menuLateralDinamico">
+    <ng-container #menuDinamico>
+      <!-- Componente dinâmico a ser inserido -->
+    </ng-container>
+  </div>
+
+  <div id="menuLateralUnico">
+    <app-menu-lateral-unico></app-menu-lateral-unico>
+  </div>
+
+  <!--   <div id="footerPlaceholder"></div> -->
+</perfect-scrollbar>

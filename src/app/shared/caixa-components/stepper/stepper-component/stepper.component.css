@@ -1,0 +1,208 @@
+/** STEPPER WRAPPER - div */
+
+.stepper-wrapper.horizontal {
+  max-height: 6.46rem;
+}
+
+.stepper-wrapper.vertical {
+  max-width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/** STEPPER - ul */
+
+.stepper-wrapper > .stepper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  counter-reset: section;
+
+  padding: 0;
+  margin: 0;
+  transition: justify-content 0.4s;
+}
+
+.stepper-wrapper > .stepper.completed {
+  justify-content: start;
+}
+
+.stepper-wrapper.vertical > .stepper {
+  flex-direction: column;
+}
+
+/* .stepper-wrapper > .stepper.completed {
+  display: inline-flex;
+} */
+
+.stepper-wrapper > .stepper.completed > .step.last-step {
+  width: 100%;
+}
+
+.stepper-wrapper > .stepper.completed > .step.prior-step {
+  width: 6.92rem;
+}
+
+/** STEP - li */
+
+.stepper-wrapper.horizontal > .stepper > .step {
+  position: relative;
+  padding: 0 !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 6.46rem;
+  transition:
+     width 0.4s,
+     visibility 0.4s,
+     opacity 0.4s;
+}
+
+.stepper-wrapper.horizontal > .stepper.nav-guided:not(.completed) > .step.previous-step:not(.prior-step) {
+  visibility: hidden !important;
+  opacity: 0;
+  width: 0 !important;
+}
+
+.stepper-wrapper.vertical > .stepper > .step {
+  position: relative;
+  max-height: 38.46rem;
+  transition:
+     max-height 0.4s,
+     width 0.4s,
+     visibility 0.4s,
+     opacity 0.4s;
+}
+
+.stepper-wrapper.vertical > .stepper.nav-guided:not(.completed) > .step.previous-step:not(.prior-step) {
+  visibility: hidden !important;
+  width: 0 !important;
+  max-height: 0 !important;
+  opacity: 0;
+}
+
+.stepper-wrapper > .stepper > .step.previous-step {
+  width: 6.92rem;
+}
+
+.stepper-wrapper > .stepper.completed > .step {
+  width: 5.23rem;
+}
+
+.stepper-wrapper > .stepper > .step:last-of-type {
+  width: auto !important;
+}
+
+/** STEP AFTER - linha */
+
+.stepper > .step:not(:last-of-type)::after {
+  content: "";
+  background-color: var(--cxCancel);
+  display: inline-block;
+/*    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
+}
+
+.stepper-wrapper.horizontal > .stepper > .step:not(:last-of-type)::after {
+  position: static;
+  min-width: 10px;
+  width: 100%;
+  height: 1px;
+}
+
+.stepper-wrapper.vertical > .stepper > .step:not(:last-of-type)::after {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  top: 3.38rem;
+  left: 1.92rem;
+}
+
+/** STEP TITLE - span */
+
+.stepper-wrapper > .stepper > .step > .step-title {
+  line-height: 6.5rem;
+  height: 6.5rem;
+  margin: 0;
+  padding: 0 4px 0 3.69rem;
+  display: inline-block;
+  max-width: 18.84rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+
+/** STEP TITLE ICON - div */
+
+.stepper-wrapper > .stepper > .step > .step-title > .step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  position: absolute;
+  height: 2.69rem;
+  width: 2.69rem;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 2.54rem;
+  font-size: 1.3rem;
+  left: 1px;
+  top: 1.9rem;
+  left: 9px;
+  margin-right: 1px;
+  color: var(--cxAux);
+  background-color: var(--cxCancel);
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepper-wrapper > .stepper:not(.nav-guided) > .step > .step-title > .step-icon {
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stepper-wrapper > .stepper > .step.current-step > .step-title > .step-icon {
+  background-color: var(--cxAccent);
+  color: var(--cxBase);
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+}
+
+.stepper-wrapper > .stepper > .step.previous-step > .step-title > .step-icon {
+  border: 3px var(--cxAux) solid;
+  line-height: 2.07rem;
+}
+
+.stepper-wrapper > .stepper.nav-guided:not(.completed) > .step.previous-step > .step-title > .step-icon {
+  background-color: var(--cxBase);
+  color: var(--cxAux);
+}
+
+.stepper-wrapper > .stepper.nav-guided.completed > .step.previous-step > .step-title > .step-icon {
+  color: var(--cxAux);
+  background-color: var(--cxCancel);
+  font-weight: 400;
+}
+
+.stepper-wrapper > .stepper > .step.last-step > .step-title > .step-icon {
+  background-color: var(--cxSuccess);
+}
+
+/* ESTILOS ADICIONAIS */
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.waves-effect {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  vertical-align: middle;
+  z-index: 1;
+}

@@ -1,0 +1,9 @@
+<div class="menu-item mb-3" role="button" (click)="openSearch()">
+  <span class="menu-item-icon">
+    <i class="fa fa-search mr-2"></i>
+  </span>
+  <span class="menu-item-name">
+    <input #inputSearch class="form-control text-center mr-2" (input)="filterMenu($event)" placeholder="Pesquise a funcionalidade">
+  </span>
+</div>
+<app-accordion [menus]="itemsGeral"></app-accordion>

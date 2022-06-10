@@ -1,0 +1,175 @@
+<h3 class="subtitulo">Inserir fase</h3>
+
+<form [formGroup]="formInserirFase">
+
+  <div class="row">
+    <div class="col col-lg-5">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col col-12">
+              <label>Número Área Judicial</label>
+              <input formControlName="numeroAreaJudicial" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('numeroAreaJudicial'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Área Judicial</label>
+              <input formControlName="areaJudicial" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('areaJudicial'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Grupo Assunto</label>
+              <input formControlName="coGrupoAssunto" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('coGrupoAssunto'))">Obrigatório</small>
+            </div>
+          </div>
+        </div>
+      </div>
+          
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col col-12">
+              <label>Ativo</label>
+              <input formControlName="ativo" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('ativo'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Origem</label>
+              <input formControlName="coOrigem" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('coOrigem'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Recurso</label>
+              <input formControlName="coRecurso" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('coRecurso'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Documento</label>
+              <input formControlName="documento" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('documento'))">Obrigatório</small>
+            </div>
+          </div>
+        </div>
+      </div>
+          
+      <div class="card">
+        <div class="card-body">  
+          <div class="row">
+            <div class="col col-12">
+              <label>Nome Fase</label>
+              <input formControlName="nomeFase" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('nomeFase'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Número Fase</label>
+              <input formControlName="nuFase" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('nuFase'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Fase Anterior</label>
+              <input formControlName="faseAnterior" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('faseAnterior'))">Obrigatório</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">  
+          <div class="row">
+            <div class="col col-12">
+              <label>Acordo</label>
+              <input formControlName="icAcordo" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('icAcordo'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Bem</label>
+              <input formControlName="icBem" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('icBem'))">Obrigatório</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">  
+          <div class="row">
+            <div class="col col-12">
+              <label>Novo Advogado</label>
+              <input formControlName="icNovoAdvogado" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('icNovoAdvogado'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Novo Credenciado</label>
+              <input formControlName="icNovoCredenciado" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('icNovoCredenciado'))">Obrigatório</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body"> 
+          <div class="row">
+            <div class="col col-12">
+              <label>Instância</label>
+              <input formControlName="instancia" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('instancia'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Tribunal</label>
+              <input formControlName="tribunal" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('tribunal'))">Obrigatório</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body"> 
+          <div class="row">
+            <div class="col col-12">
+              <label>Suspensão</label>
+              <input formControlName="suspensao" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('suspensao'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Tipo Processo</label>
+              <input formControlName="tipoProcesso" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('tipoProcesso'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Tipos Ação</label>
+              <input formControlName="tiposAcao" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('tiposAcao'))">Obrigatório</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body"> 
+          <div class="row">
+            <div class="col col-12">
+              <label>Matrícula</label>
+              <input formControlName="matricula" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formInserirFase.get('matricula'))">Obrigatório</small>
+            </div>
+          
+            <div class="col col-12 d-flex justify-content-end">
+              <button (click)="formInserirFase.reset()" class="btn btn-cancel mr-3">
+                Limpar
+              </button>
+              <button (click)="inserirFase()" class="btn btn-accent" [disabled]="!formInserirFase.valid">
+                Inserir
+              </button>
+            </div>    
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>

@@ -1,0 +1,56 @@
+.modal-sso {
+    z-index: 999999999 !important;
+}
+
+footer {
+  position: relative;
+  float: left;
+  bottom: 0;
+  margin: 0;
+  clear: both;
+  width: 100%;
+  height: 59px;
+  background: linear-gradient(90deg, var(--cxAccent) 0%, rgba(84,187,171,1) 100%);
+  background-position: top;
+  background-repeat: no-repeat;
+  color: var(--cxBase);
+}
+
+footer h6 {
+  float: left;
+  font-size: 0.84rem;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 8px;
+  padding-left: 8px;
+  position: relative;
+  display: flex;
+  margin-bottom: auto;
+}
+
+footer ul li:before {
+  content: '|';
+  left: -3px;
+  position: absolute;
+  top: 0;
+}
+
+footer ul li:first-child:before {
+  display: none;
+}
+
+footer ul li a {
+  color: var(--cxBase);
+  font-size: 0.84rem;
+}
+
+footer ul li a:hover {
+  color: var(--cxBase);
+}
+
+#rodapeFixo {
+  position: relative;
+  transition: 0.6s;
+}

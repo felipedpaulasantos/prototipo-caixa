@@ -1,0 +1,54 @@
+<ng-container>
+  <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12 mt-4">
+      <label for="telefone">Escolha um número: </label>
+      <ng-select class="custom" id="telefone" name="Selecione o número" [(ngModel)]="telefone"
+        [ngModelOptions]="{standalone: true}" placeholder="Digite pelo menos 3 caracteres" [virtualScroll]="false">
+        <ng-option *ngFor="let telefone of listaCelularToken" [value]="telefone">
+          {{ telefone.value }} </ng-option>
+      </ng-select>
+      <button id="reaload-button" (click)="enviarToken()" class="btn btn-accent" [disabled]="!telefone || btnDisabledEnviarToken">
+        <i class="fa fa-paper-plane" aria-hidden="true"></i> Gerar Token
+      </button>
+      <div class="mt-4" *ngIf="btnDisabledEnviarToken">
+        <p>Foi enviado um Token SMS para o número: <span class="link"> {{ telefoneEnviado
+            }}</span></p>
+        <div class="alert alert-outline-info w-95 mt-3" role="alert">
+          <i class="far fa-clock"></i>
+          <span>
+            Aguarde {{ timer | timeTransform }} minutos para um novo envio de TOKEN
+          </span>
+        </div>
+        <p class="mt-2">Insira o código informado pelo cliente e confirme</p>
+      </div>
+      <div class="row ml-0 mt-4" *ngIf="btnDisabledEnviarToken">
+        <input id="input-sms-2" class="col-1 input-sms" maxlength="1" [(ngModel)]="cod1" (keyup)="tokenTab($event)"
+          type="text" appOnlyNumbers>
+        <input id="input-sms-2" class="col-1 input-sms" maxlength="1" [(ngModel)]="cod2" (keyup)="tokenTab($event)"
+          type="text" appOnlyNumbers>
+        <input id="input-sms-2" class="col-1 input-sms" maxlength="1" [(ngModel)]="cod3" (keyup)="tokenTab($event)"
+          type="text" appOnlyNumbers>
+        <input id="input-sms-2" class="col-1 input-sms" maxlength="1" [(ngModel)]="cod4" (keyup)="tokenTab($event)"
+          type="text" appOnlyNumbers>
+        <input id="input-sms-2" class="col-1 input-sms" maxlength="1" [(ngModel)]="cod5" (keyup)="tokenTab($event)"
+          type="text" appOnlyNumbers>
+        <input id="input-sms-2" class="col-1 input-sms" maxlength="1" [(ngModel)]="cod6" (keyup)="tokenTab($event)"
+          type="text" appOnlyNumbers>
+      </div>
+      <button id="reaload-button" class="btn btn-accent" *ngIf="botao?.show" [disabled]="validarBotaoContratarPorToken() || !btnDisabledEnviarToken" (click)="validarToken()">
+        <i [ngClass]="botao?.icon" aria-hidden="true"></i> {{botao?.name}}
+      </button>
+    </div>
+  </div>
+</ng-container>
+<!-- loading -->
+<!-- <div clas="row">
+  <div style="background: transparent!important;" class="modal fade show high" id="exampleModal" tabindex="-1"
+    [ngClass]="{'d-block': loading}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    *ngIf="loading">
+    <div class="col-md-12 padding-reset text-center">
+      <img class="img-responsive text-center loading-img center-block" src="assets/img/loading.gif" />
+    </div>
+  </div>
+</div> -->
+<!-- loading -->

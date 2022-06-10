@@ -1,0 +1,114 @@
+<header>
+  <nav class="d-flex w-100 h-100">
+      <div class="mr-auto ml-2 ml-xl-4 d-flex align-items-center">
+
+        <!-- Ainda não realiza qualquer ação -->
+        <button (click)="trocarExibicaoMenuLateral()" class="btn btn-flat mr-3">
+          <div class="d-none d-lg-block">
+            <i class="fa fa-bars fa-xl" aria-hidden="true"></i>
+          </div>
+          <div class="d-block d-lg-none">
+            <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+          </div>
+        </button>
+
+        <img id="imgLogo" [src]="logoSource" class="d-none d-xl-block mr-2 mr-sm-3 mr-xl-5" title="v.{{version}}">
+        <img id="imgLogo" [src]="logoSourceReduzido" class="d-block d-xl-none mr-2 mr-sm-3 mr-xl-5" title="v.{{version}}">
+
+        <div class="d-none d-sm-block">
+          <h2 class="p-0 m-0">Olá,
+            <strong>{{username}}</strong>
+          </h2>
+
+          <!-- Troca de agência não necessária no SIJUR -->
+          <!-- <ng-container *ngIf="!habilitaInteragencia || (habilitaInteragencia && !temPermissaoInteragencia)">
+            <br>
+            <h3 *ngIf="agenciaAtual.numeroNomeUnidade; else carregandoAgencia" class="agencia-no-link" tabindex="0">
+              {{agenciaAtual.numeroNomeUnidade}}
+            </h3>
+            <ng-template #carregandoAgencia>
+              <h3 class="agencia-no-link">Carregando agência...</h3>
+            </ng-template>
+          </ng-container> -->
+          <!-- <ng-container *ngIf="habilitaInteragencia && temPermissaoInteragencia">
+            <br>
+            <h3 *ngIf="agenciaAtual.numeroNomeUnidade; else carregandoAgencia" class="agencia" (click)="abrirModalAgencia()" tabindex="0">
+              {{agenciaAtual.numeroNomeUnidade}}
+            </h3>
+            <ng-template #carregandoAgencia>
+              <h3 class="agencia">Carregando agência...</h3>
+            </ng-template>
+          </ng-container> -->
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center ml-auto mr-4">
+        <div class="d-0 m-0 dataHora d-none d-xl-block mr-4">
+            <b>{{ horaAtual }}</b>  - <b>{{data | date: 'dd/MM/yy'}}</b>
+        </div>
+
+
+        <div class="dropdown mr-2">
+          <button class="btn btn-flat btn-sm dropdown-toggle"
+          data-toggle="dropdown" title="Alterar tamanho da fonte">
+            <i role="button" class="fa fa-font mr-2 fa-2x"></i>
+            <small class="btn-detail">{{ currentFontSize?.slice(0, 2) }}</small>
+          </button>
+          <div class="dropdown-menu" role="menu">
+            <div *ngFor="let font of fontSizes" (click)="setFontSize(font.value)" (keydown.enter)="setFontSize(font.value)"
+            [ngClass]="{'active': currentFontSize === font.value}"
+            [title]="font.name"
+            class="dropdown-item cursor-pointer d-flex align-items-center" [style.fontSize]="font.value"
+            tabindex="0">
+              {{font.name}} ({{font.value}})
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown mr-2">
+          <button class="btn btn-flat btn-sm dropdown-toggle" data-toggle="dropdown" title="Alterar tema de cores">
+            <i role="button" class="fa fa-palette mr-2 fa-2x"></i>
+          </button>
+          <div class="dropdown-menu" role="menu">
+            <div *ngFor="let tema of themes" class="dropdown-item cursor-pointer" [ngClass]="{'active': currentTheme?.value?.name === tema.value.name}"
+            (click)="setTheme(tema.value.name)" (keydown.enter)="setTheme(tema.value.name)"
+            [title]="tema.toString()"
+            tabindex="0">
+              <div class="theme-example mr-2" [style.background]="tema['background']"></div>
+              {{ tema.toString() }}
+            </div>
+          </div>
+        </div>
+
+        <button (click)="logout()" class="btn btn-sm btn-cancel">
+          <i class="fa fa-sign-out-alt fa-rotate-180 fa-lg mr-2 align-middle"></i>
+          Sair
+        </button>
+      </div>
+  </nav>
+</header>
+
+<!-- MODAL CONTRATOS DO PRODUTO SELECIONADO -->
+<div *ngIf="exibirModalAgencia" id="modalResponse" class="modal-contratos">
+  <div class="modal-response-body">
+    <div class="row modal-header-margin">
+      <div class="col-12">
+        <h3 id="title-contratos">Escolha uma agência</h3>
+      </div>
+    </div>
+    <div class="row modal-response-content">
+      <div class="col-12" id="select-agencias">
+        <ng-select class="custom" id="select-pv" name="Selecione" [multiple]="false" [clearable]="false"
+              [items]="listaAgenciasCombo" bindLabel="numeroNomeUnidade" labelForId="input-selecione-parametro"
+              placeholder="Escolha" [loading]="loadingModalAgencia" [virtualScroll]="false" (change)="confirmChangeAgencia()" [(ngModel)]="agenciaAtualSelect">
+        </ng-select>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-right">
+        <button type="button" id= "btn-fechar-modal-contratos"class="btn btn-cancel modal-close" (click)="fecharModalAgencia()">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

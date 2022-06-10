@@ -1,0 +1,22 @@
+.alert {
+  padding: 0.3rem;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.alert.closed {
+  opacity: 0;
+}
+
+.alert .alert-icon {
+  width: 40px;
+  text-align: center;
+}
+
+.alert .alert-close {
+  margin-left: auto;
+}
+
+.alert-type-icon {
+  font-size: 1.5em;
+}

@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-12 col-md-12">
+        <div class="header">
+            <h3 id="title-configuracao" class="titulo">
+                <span class="mr-3">Configuração do Menu</span>
+            </h3>
+        </div>
+    </div>
+</div>
+<ul class="nav nav-pills nav-caixa" *ngIf="!router.isActive('/configuracao/servico-mensageria', false)">
+    <li class="nav-item">
+      <a class="nav-link active" [ngClass]="{'active': activeTab === categoria.MODULO}" style="cursor: not-allowed;">
+       Gerenciar Módulo
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': activeTab === categoria.MENU}" style="cursor: not-allowed;">
+        Gerenciar Menu
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': activeTab === categoria.FUNCIONALIDADE}" style="cursor: not-allowed;">
+        Gerenciar Funcionalidade
+      </a>
+    </li>
+</ul>
+<router-outlet></router-outlet>
