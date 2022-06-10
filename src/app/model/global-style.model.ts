@@ -108,10 +108,10 @@ const baseLightTheme: GlobalThemeBaseVariables = {
   cxTransparentContrast25: "rgba(0, 0, 0, 0.25)",
   cxTransparentContrast50: "rgba(0, 0, 0, 0.5)",
   cxTransparentContrast75: "rgba(0, 0, 0, 0.75)",
-  cxLogoPrincipal: "assets/img/logo-caixa-branco.png",
-  cxLogoPrincipalReduzido: "assets/img/logo-caixa-reduzido-branco.png",
-  cxLogoLateral: "assets/img/logo-pnc-azul.png",
-  cxLogoLateralReduzido: "assets/img/logo-pnc-reduzido-azul.png"
+  cxLogoPrincipal: "assets/img/CAIXA_volume_negativa.png",
+  cxLogoPrincipalReduzido: "assets/img/X_volume_negativa.png",
+  cxLogoLateral: "assets/img/CAIXA_2cores_positiva.png",
+  cxLogoLateralReduzido: "assets/img/X_volume_positiva.png"
 };
 
 const baseDarkTheme: GlobalThemeBaseVariables = {
@@ -149,10 +149,10 @@ const baseDarkTheme: GlobalThemeBaseVariables = {
   cxTransparentContrast25: "rgba(255, 255, 255, 0.25)",
   cxTransparentContrast50: "rgba(255, 255, 255, 0.5)",
   cxTransparentContrast75: "rgba(255, 255, 255, 0.75)",
-  cxLogoPrincipal: "assets/img/logo-caixa-branco.png",
-  cxLogoPrincipalReduzido: "assets/img/logo-caixa-reduzido-branco.png",
-  cxLogoLateral: "assets/img/logo-pnc-branco.png",
-  cxLogoLateralReduzido: "assets/img/logo-pnc-reduzido-branco.png"
+  cxLogoPrincipal: "assets/img/CAIXA_volume_negativa.png",
+  cxLogoPrincipalReduzido: "assets/img/X_volume_negativa.png",
+  cxLogoLateral: "assets/img/CAIXA_volume_negativa.png",
+  cxLogoLateralReduzido: "assets/img/X_volume_negativa.png"
 };
 
 const baseHighContrastTheme: GlobalThemeBaseVariables = {
@@ -190,10 +190,10 @@ const baseHighContrastTheme: GlobalThemeBaseVariables = {
   cxTransparentContrast25: "rgba(255, 255, 255, 0.25)",
   cxTransparentContrast50: "rgba(255, 255, 255, 0.5)",
   cxTransparentContrast75: "rgba(255, 255, 255, 0.75)",
-  cxLogoPrincipal: "assets/img/logo-caixa-branco.png",
-  cxLogoPrincipalReduzido: "assets/img/logo-caixa-reduzido-branco.png",
-  cxLogoLateral: "assets/img/logo-pnc-branco.png",
-  cxLogoLateralReduzido: "assets/img/logo-pnc-reduzido-branco.png"
+  cxLogoPrincipal: "assets/img/CAIXA_volume_negativa.png",
+  cxLogoPrincipalReduzido: "assets/img/X_volume_negativa.png",
+  cxLogoLateral: "assets/img/CAIXA_volume_negativa.png",
+  cxLogoLateralReduzido: "assets/img/X_volume_negativa.png"
 };
 
 /* Light blue theme */

@@ -16,29 +16,10 @@
         <img id="imgLogo" [src]="logoSourceReduzido" class="d-block d-xl-none mr-2 mr-sm-3 mr-xl-5" title="v.{{version}}">
 
         <div class="d-none d-sm-block">
-          <h2 class="p-0 m-0">Olá,
-            <strong>{{username}}</strong>
+          <h2 class="p-0 m-0">Olá, 
+            <strong>Usuário</strong>
           </h2>
 
-          <!-- Troca de agência não necessária no SIJUR -->
-          <!-- <ng-container *ngIf="!habilitaInteragencia || (habilitaInteragencia && !temPermissaoInteragencia)">
-            <br>
-            <h3 *ngIf="agenciaAtual.numeroNomeUnidade; else carregandoAgencia" class="agencia-no-link" tabindex="0">
-              {{agenciaAtual.numeroNomeUnidade}}
-            </h3>
-            <ng-template #carregandoAgencia>
-              <h3 class="agencia-no-link">Carregando agência...</h3>
-            </ng-template>
-          </ng-container> -->
-          <!-- <ng-container *ngIf="habilitaInteragencia && temPermissaoInteragencia">
-            <br>
-            <h3 *ngIf="agenciaAtual.numeroNomeUnidade; else carregandoAgencia" class="agencia" (click)="abrirModalAgencia()" tabindex="0">
-              {{agenciaAtual.numeroNomeUnidade}}
-            </h3>
-            <ng-template #carregandoAgencia>
-              <h3 class="agencia">Carregando agência...</h3>
-            </ng-template>
-          </ng-container> -->
         </div>
       </div>
 
