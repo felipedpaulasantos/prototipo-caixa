@@ -5,10 +5,8 @@ import { Component, OnInit } from "@angular/core";
 import { getCurrentAddress, notEmpty, objIsNotEmpty } from "../shared/utils/utils";
 import { environment } from "../../environments/environment";
 import { MenuLateralService } from "../menu-lateral-fixo/menu-lateral-fixo.service";
-import { ModalAlertComponent } from "../shared/components/modal/modal-alert/modal-alert.component";
 
 import { Router } from "@angular/router";
-import { ModalConfirmComponent } from "../shared/components/modal/modal-confirm/modal-confirm.component";
 import { Role } from "../model/enum/role.enum";
 import { ControleAcessoFuncionalidade, Funcionalidade } from "../model/controle-acesso-funcionalidade.model";
 import { StyleService } from "../service/style.service";

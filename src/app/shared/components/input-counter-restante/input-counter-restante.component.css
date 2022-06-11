@@ -1,9 +1,0 @@
-.counter-default {
-  color: var(--cxAccent);
-  font-size: 0.77rem;
-  text-align: left;
-}
-
-.limite-atingido {
-  color: var(--cxDanger);
-}

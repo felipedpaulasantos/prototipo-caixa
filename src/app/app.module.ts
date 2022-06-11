@@ -1,10 +1,10 @@
-import { BreadcrumbComponent } from './shared/components/breadcrumb/breadcrumb.component';
+import { BreadcrumbComponent } from './shared/caixa-components/breadcrumb/breadcrumb.component';
 
 import { KeycloakGuard } from "./keycloak-service/keycloak.guard";
 import { DeactivateGuard } from "./shared/guards/deactivate-guard";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, LOCALE_ID, ErrorHandler } from "@angular/core";
-import { APP_BASE_HREF, registerLocaleData } from "@angular/common";
+import { APP_BASE_HREF, registerLocaleData, CommonModule } from "@angular/common";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
@@ -38,10 +38,7 @@ import { KeycloakService } from "./keycloak-service/keycloak.service";
 import { DataStorage } from "./model/data-storage.model";
 import { LoadingCaixaComponent } from "./shared/loading-caixa/loading-caixa.component";
 import { VersaoSistemaService } from "./service/versao-sistema.service";
-import { ModalAlertComponent } from "./shared/components/modal/modal-alert/modal-alert.component";
-import { ModalConfirmComponent } from "./shared/components/modal/modal-confirm/modal-confirm.component";
 import { InterceptorService } from "./interceptor/interceptor.service";
-import { MensagemComponent } from "./shared/components/mensagem/mensagem.component";
 //import { SharedModule } from "./shared/shared.module";
 import { MenuLateralFixoModule } from "./menu-lateral-fixo/menu-lateral-fixo.module";
 import { MenuLateralService } from "./menu-lateral-fixo/menu-lateral-fixo.service";
@@ -64,12 +61,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         MenuPrincipalComponent,
         Page404Component,
         LoadingCaixaComponent,
-        ModalAlertComponent,
-        ModalConfirmComponent,
-        MensagemComponent,
         BreadcrumbComponent
     ],
     imports: [
+        CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,

@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,8 @@ import { InserirFaseComponent } from './inserir-fase/inserir-fase.component';
     CommonModule,
     FaseRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class FaseModule { }

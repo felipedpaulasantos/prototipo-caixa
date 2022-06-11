@@ -1,7 +1,0 @@
-<div class="alert" [ngClass]="{'alert-outline-danger': type === 'error','alert-outline-warning': type === 'warning','alert-outline-info': type === 'info'}"
-  role="alert" *ngIf="mensagem">
-  {{ mensagem }}
-  <button style="margin: 6px;" (click)="close()" class="button" class="close" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>

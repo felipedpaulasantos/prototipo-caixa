@@ -1,8 +1,0 @@
-<input appCpfCnpjMask type="text" class="cpf-cnpj-input cpf-cnpj-input-width form-control" maxlength="18" id="input-cpf-cnpj"
-  [placeholder]="placeholder" [(ngModel)]="value" (ngModelChange)="inputChange($event)" #cpfCnpj [required]="isRequired"
-  [attr.disabled]="disabledInputCpfCnpj ? true : null">
-
-<button id="button-cpf-cnpj" [disabled]="disabledInputCpfCnpj || isDisabledInput" (click)="callSearch(value)"
-  class="btn btn-accent" *ngIf="isButtonSearch">
-  <span class="fa fa-search"></span>
-</button>

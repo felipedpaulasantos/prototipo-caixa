@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
-import { getCurrentAddress } from "./shared/utils/utils";
 import { MenuLateralService } from "./menu-lateral-fixo/menu-lateral-fixo.service";
 import { InterceptorService } from "./interceptor/interceptor.service";
+import { NgSelectConfig } from "@ng-select/ng-select";
 
 @Component({
   selector: "app-root",
@@ -15,7 +15,8 @@ export class AppComponent implements AfterViewInit {
 
   constructor(
     public menuService: MenuLateralService,
-    private interceptorService: InterceptorService
+    private interceptorService: InterceptorService,
+    private ngSelectService: NgSelectConfig
   ) {
       this.menuService.isAberto$.subscribe(isAberto => this.isMenuAberto = isAberto);
   }
@@ -38,6 +39,11 @@ export class AppComponent implements AfterViewInit {
     this.interceptorService.loadingPendingActions$.subscribe(pending => {
       if (pending === false) { this.firstLoad = false }
     });
+    this.ngSelectService.clearAllText = "Limpar";
+    this.ngSelectService.loadingText = "Carregando";
+    this.ngSelectService.notFoundText = "Nenhum resultado encontrado";
+    this.ngSelectService.placeholder = "Selecione";
+    this.ngSelectService.typeToSearchText = "Digite para filtrar";
   }
 
 }

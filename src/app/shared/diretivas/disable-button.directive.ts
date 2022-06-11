@@ -1,6 +1,5 @@
 import { Directive, OnInit, ElementRef, Renderer2, Input, SimpleChanges, OnChanges, OnDestroy } from "@angular/core";
 import { InterceptorService } from "../../interceptor/interceptor.service";
-import { ValidaSenhaContaService } from "../components/valida-senha-conta/valida-senha-conta.service";
 import { Subscription } from "rxjs";
 
 @Directive({
@@ -13,7 +12,6 @@ export class DisableBtnDirective implements OnInit, OnChanges, OnDestroy {
   constructor(
     private el: ElementRef,
     private loadingService: InterceptorService,
-    private validacaoSenhaService: ValidaSenhaContaService,
     private renderer: Renderer2
   ) { }
 
@@ -47,10 +45,10 @@ export class DisableBtnDirective implements OnInit, OnChanges, OnDestroy {
 
   private updateButtonWhenModalOpen(): void {
     this.subscription.add(
-      this.validacaoSenhaService.isModalConfirmacaoOpen$.subscribe((isModalConfirmacaoAberto: boolean) => {
-        this.isModalConfirmacaoOpen = isModalConfirmacaoAberto;
-        this.updateButton(isModalConfirmacaoAberto);
-      })
+      // this.validacaoSenhaService.isModalConfirmacaoOpen$.subscribe((isModalConfirmacaoAberto: boolean) => {
+      //   this.isModalConfirmacaoOpen = isModalConfirmacaoAberto;
+      //   this.updateButton(isModalConfirmacaoAberto);
+      // })
     );
   }
 

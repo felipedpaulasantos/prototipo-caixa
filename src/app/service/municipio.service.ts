@@ -1,21 +1,19 @@
 
 import {of as observableOf,  Observable } from "rxjs";
 import { tap } from "rxjs/operators";
-import { ConsultaCorporativaService } from "./consulta-corporativa.service";
 import { Injectable } from "@angular/core";
-import { Localidade } from "../governo-social/model/cliente.model";
 import { strNotEmpty } from "../shared/utils/utils";
 class LocalidadeCache {
   lastFetch: number;
   uf: string;
-  localidades: Localidade[];
+  localidades: any[];
 }
 
 @Injectable()
 export class MunicipioService {
-  constructor(private corpService: ConsultaCorporativaService) {}
+  constructor(private corpService) {}
 
-  consultaMunicipios(uf: string): Observable<Localidade[]> {
+  consultaMunicipios(uf: string): Observable<any[]> {
     const lista: string = localStorage.getItem(uf);
     if (strNotEmpty(lista)) {
       const cache: LocalidadeCache = JSON.parse(lista);
@@ -24,15 +22,15 @@ export class MunicipioService {
       }
     }
 
-    return this.corpService.consultaMunicipios(uf).pipe(
-      tap((loc: Localidade[]) => {
-        // console.log("Salvando no local storage");
-        const newCache = new LocalidadeCache();
-        newCache.uf = uf;
-        newCache.lastFetch = new Date().getTime();
-        newCache.localidades = loc;
-        localStorage.setItem(uf, JSON.stringify(newCache));
-      })
-    );
+    // return this.corpService.consultaMunicipios(uf).pipe(
+    //   tap((loc: any[]) => {
+    //     // console.log("Salvando no local storage");
+    //     const newCache = new LocalidadeCache();
+    //     newCache.uf = uf;
+    //     newCache.lastFetch = new Date().getTime();
+    //     newCache.localidades = loc;
+    //     localStorage.setItem(uf, JSON.stringify(newCache));
+    //   })
+    // );
   }
 }
