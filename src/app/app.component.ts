@@ -10,8 +10,8 @@ import { NgSelectConfig } from "@ng-select/ng-select";
 })
 export class AppComponent implements AfterViewInit {
 
-  isMenuAberto = false;
-  firstLoad = false;
+  isMenuAberto = true;
+  firstLoad = true;
 
   constructor(
     public menuService: MenuLateralService,
