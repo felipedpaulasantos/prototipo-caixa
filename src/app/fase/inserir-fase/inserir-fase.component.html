@@ -7,15 +7,16 @@
     #stepperInterno 
     [currentStep]="passoAtual" 
   (changeStep)="trocarPasso($event)">
-    <div class="row no-gutters" *cxStepper>
+    
+    <div class="row no-gutters" *cxStepper id="stepperPasso1">
       <div class="card col col-12 col-xl-5 col-lg-6" formGroupName="formPassoAreaJudicial">
         <div class="card-body">
           <div class="row">
             <div class="col col-12">
               <label>Área Judicial</label>
-              <ng-select [items]="areasJudiciais" [virtualScroll]="false" [searchFn]="searchAreaGrupoFn"
+              <ng-select [items]="areasJudiciais" [virtualScroll]="false" [searchFn]="searchItemCodigoNome"
                 placeholder="Selecione" class="custom" [ngModelOptions]="{standalone: true}"
-                [(ngModel)]="areaJudicialSelecionada" (change)="onChangeGrupoArea($event, 'areaJudicial')">
+                [(ngModel)]="areaJudicialSelecionada" (change)="onChangeItemCodigoNome($event, 'areaJudicial')">
                 <ng-template ng-label-tmp let-item="item">
                   {{item.codigo}}: {{item.nome}}
                 </ng-template>
@@ -27,9 +28,9 @@
             </div>
             <div class="col col-12">
               <label>Grupo Assunto</label>
-              <ng-select [items]="gruposAssunto" [virtualScroll]="false" [searchFn]="searchAreaGrupoFn"
+              <ng-select [items]="gruposAssunto" [virtualScroll]="false" [searchFn]="searchItemCodigoNome"
                 placeholder="Selecione" class="custom" [ngModelOptions]="{standalone: true}"
-                [(ngModel)]="grupoAssuntoSelecionado" (change)="onChangeGrupoArea($event, 'grupoAssunto')">
+                [(ngModel)]="grupoAssuntoSelecionado" (change)="onChangeItemCodigoNome($event, 'grupoAssunto')">
                 <ng-template ng-label-tmp let-item="item">
                   {{item.codigo}}: {{item.nome}}
                 </ng-template>
@@ -44,15 +45,10 @@
       </div>
     </div>
   
-    <div *cxStepper class="row no-gutters">
+    <div *cxStepper id="stepperPasso2" class="row no-gutters">
       <div class="card col col-12 col-xl-5 col-lg-6" formGroupName="formPassoOrigem">
         <div class="card-body">
           <div class="row">
-            <div class="col col-12">
-              <label>Ativo</label>
-              <input formControlName="ativo" class="form-control">
-              <small class="text-aux" *ngIf="hasRequiredField(formPassoOrigem.get('ativo'))">Obrigatório</small>
-            </div>
             <div class="col col-12">
               <label>Origem</label>
               <input formControlName="coOrigem" class="form-control">
@@ -73,18 +69,22 @@
       </div>
     </div>
   
-    <div *cxStepper class="row no-gutters">
+    <div *cxStepper id="stepperPasso3" class="row no-gutters">
       <div class="card col col-12 col-xl-5 col-lg-6" formGroupName="formPassoFase">
         <div class="card-body">  
           <div class="row">
             <div class="col col-12">
-              <label>Nome Fase</label>
-              <input formControlName="nomeFase" class="form-control">
-              <small class="text-aux" *ngIf="hasRequiredField(formPassoFase.get('nomeFase'))">Obrigatório</small>
-            </div>
-            <div class="col col-12">
-              <label>Número Fase</label>
-              <input formControlName="nuFase" class="form-control">
+              <label>Fase</label>
+              <ng-select [items]="fases" [virtualScroll]="false" [searchFn]="searchItemCodigoNome"
+                placeholder="Selecione" class="custom" [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="faseSelecionada" (change)="onChangeItemCodigoNome($event, 'fase')">
+                <ng-template ng-label-tmp let-item="item">
+                  {{item.codigo}}: {{item.nome}}
+                </ng-template>
+                <ng-template ng-option-tmp let-item="item" let-search="searchTerm" let-index="index">
+                  {{item.codigo}}: {{item.nome}}
+                </ng-template>
+              </ng-select>
               <small class="text-aux" *ngIf="hasRequiredField(formPassoFase.get('nuFase'))">Obrigatório</small>
             </div>
             <div class="col col-12">
@@ -97,7 +97,7 @@
       </div>
     </div>
   
-    <div *cxStepper class="row no-gutters">
+    <div *cxStepper id="stepperPasso4" class="row no-gutters">
       <div class="card col col-12 col-xl-5 col-lg-6" formGroupName="formPassoAdvogado">
         <div class="card-body">  
           <div class="row">
@@ -140,8 +140,8 @@
       </div>
     </div>
   
-    <div *cxStepper class="row no-gutters">
-      <div class="card col col-12 col-xl-5 col-lg-6">
+    <div *cxStepper id="stepperPasso5" class="row no-gutters">
+      <div class="card col col-12 col-xl-5 col-lg-6" formGroupName="formPassoTipoProcesso">
         <div class="card-body"> 
           <div class="row">
             <div class="col col-12">
@@ -158,29 +158,38 @@
               <label>Tipos Ação</label>
               <input formControlName="tiposAcao" class="form-control">
               <small class="text-aux" *ngIf="hasRequiredField(formPassoTipoProcesso.get('tiposAcao'))">Obrigatório</small>
+            </div>
+            <div class="col col-12">
+              <label>Matrícula</label>
+              <input formControlName="matricula" class="form-control">
+              <small class="text-aux" *ngIf="hasRequiredField(formPassoTipoProcesso.get('matricula'))">Obrigatório</small>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
+    <div *cxStepper class="row no-gutters" id="stepperPasso6">
       <div class="card col col-12 col-xl-5 col-lg-6">
         <div class="card-body"> 
-          <div class="row">
-            <div class="col col-12">
-              <label>Suspensão</label>
-              <input formControlName="suspensao" class="form-control">
-              <small class="text-aux" *ngIf="hasRequiredField(formPassoTipoProcesso.get('suspensao'))">Obrigatório</small>
-            </div>
-            <div class="col col-12">
-              <label>Tipo Processo</label>
-              <input formControlName="tipoProcesso" class="form-control">
-              <small class="text-aux" *ngIf="hasRequiredField(formPassoTipoProcesso.get('tipoProcesso'))">Obrigatório</small>
-            </div>
-            <div class="col col-12">
-              <label>Tipos Ação</label>
-              <input formControlName="tiposAcao" class="form-control">
-              <small class="text-aux" *ngIf="hasRequiredField(formPassoTipoProcesso.get('tiposAcao'))">Obrigatório</small>
-            </div>
+          <h6 class="subtitulo text-success">Fase inserida com sucesso!</h6>
+          <div class="table-responsive">
+            <table class="table table-bordered m-0">
+              <tbody>
+                <tr>
+                  <td class="font-weight-bold">Expediente</td>
+                  <td>- Número do expediente -</td>
+                </tr>
+                <tr>
+                  <td class="font-weight-bold">Área Judicial</td>
+                  <td>{{ areaJudicialSelecionada.nome }} - {{ areaJudicialSelecionada.codigo }}</td>
+                </tr>
+                <tr>
+                  <td class="font-weight-bold">Fase inserida</td>
+                  <td>{{ faseSelecionada.nome }} - {{ faseSelecionada.codigo }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -190,14 +199,13 @@
   <div class="row mt-4">
     <div class="col col-12">
       <button class="btn btn-cancel mr-3" 
-      [hidden]="passoAtual === 0"
-      [disabled]="passoAtual === 0" 
+      [hidden]="passoAtual === 0 || passoAtual === 5"
       (click)="trocarPasso(passoAtual - 1)">
         Voltar
       </button>
 
       <button class="btn btn-accent"
-      [hidden]="passoAtual === getIndexPasso(PASSO_5_TIPO_DO_PROCESSO)"
+      [hidden]="passoAtual === getIndexPasso(PASSO_5_TIPO_DO_PROCESSO) || passoAtual === getIndexPasso(PASSO_6_Finalizar)"
       [disabled]="!isFormAtualValid()" 
       (click)="trocarPasso(passoAtual + 1)">
         Avançar
@@ -207,7 +215,14 @@
       [hidden]="passoAtual !== getIndexPasso(PASSO_5_TIPO_DO_PROCESSO)"
       [disabled]="formInserirFase.invalid" 
       (click)="inserirFase()">
-        Avançar
+        Inserir fase
+      </button>
+
+      <button class="btn btn-accent"
+      [hidden]="passoAtual !== getIndexPasso(PASSO_6_Finalizar)"
+      [disabled]="formInserirFase.invalid" 
+      (click)="recomecar()">
+        Recomeçar
       </button>
     </div>
   </div>

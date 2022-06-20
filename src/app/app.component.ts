@@ -3,6 +3,8 @@ import { MenuLateralService } from "./menu-lateral-fixo/menu-lateral-fixo.servic
 import { InterceptorService } from "./interceptor/interceptor.service";
 import { NgSelectConfig } from "@ng-select/ng-select";
 
+declare var $;
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -44,6 +46,13 @@ export class AppComponent implements AfterViewInit {
     this.ngSelectService.notFoundText = "Nenhum resultado encontrado";
     this.ngSelectService.placeholder = "Selecione";
     this.ngSelectService.typeToSearchText = "Digite para filtrar";
+    this.initTooltip();
+  }
+
+  initTooltip(): void {
+    $(function () {
+      $("[rel='tooltip']").tooltip();
+  });
   }
 
 }
