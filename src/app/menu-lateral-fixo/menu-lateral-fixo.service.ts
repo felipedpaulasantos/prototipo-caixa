@@ -4,6 +4,7 @@ import {ContextoInjecaoComponente} from "./contexto-injecao-componente";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {ComboTransacao} from "../model/combo-transacao.model";
+import { AccordionMenuItem } from "../shared/caixa-components/accordion/types/accordion-menu-item";
 
 
 @Injectable()
@@ -20,6 +21,9 @@ export class MenuLateralService {
 
   private injetarComponenteSource = new BehaviorSubject<boolean>(false);
   injetarComponente$ = this.injetarComponenteSource.asObservable();
+
+  private itemsMenuSource = new BehaviorSubject<AccordionMenuItem[]>([]);
+  itemsMenu$ = this.itemsMenuSource.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -58,6 +62,10 @@ export class MenuLateralService {
     return this.http.get<any>(
       `${environment.BUSCA_API}/agencias/${agencia}`
     );
+  }
+
+  public setItemsMenu(items: AccordionMenuItem[]): void {
+    this.itemsMenuSource.next(items);
   }
 
 }

@@ -1,3 +1,4 @@
+import { HomeModule } from './home/home.module';
 import { BreadcrumbComponent } from './shared/caixa-components/breadcrumb/breadcrumb.component';
 
 import { KeycloakGuard } from "./keycloak-service/keycloak.guard";
@@ -74,6 +75,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         // MzInjectionModule,
         // MzModalModule,
         //SharedModule,
+        HomeModule,
         MenuLateralFixoModule,
         PerfectScrollbarModule,
         NgxPaginationModule
