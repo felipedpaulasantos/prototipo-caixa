@@ -146,6 +146,12 @@ export class MenuLateralUnicoComponent implements OnInit {
         order: 2,
         submenu: [
           {
+            name: "Consultar Expediente",
+            url: "/expediente/consultar",
+            enabled: true,
+            active: this.isRotaAtiva("/expediente/consultar", true)
+          },
+          {
             name: "Inserir Expediente",
             url: "/expediente/inserir",
             enabled: true,

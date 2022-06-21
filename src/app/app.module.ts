@@ -1,6 +1,7 @@
 import { HomeModule } from './home/home.module';
 import { BreadcrumbComponent } from './shared/caixa-components/breadcrumb/breadcrumb.component';
 
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { KeycloakGuard } from "./keycloak-service/keycloak.guard";
 import { DeactivateGuard } from "./shared/guards/deactivate-guard";
 import { BrowserModule } from "@angular/platform-browser";
@@ -45,6 +46,8 @@ import { MenuLateralFixoModule } from "./menu-lateral-fixo/menu-lateral-fixo.mod
 import { MenuLateralService } from "./menu-lateral-fixo/menu-lateral-fixo.service";
 import { XmlPipe } from "./shared/pipes/xml.pipe";
 
+const maskConfig: Partial<IConfig> = null;
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelPropagation: false
@@ -78,7 +81,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         HomeModule,
         MenuLateralFixoModule,
         PerfectScrollbarModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        NgxMaskModule.forRoot(maskConfig)
     ],
     providers: [
         KeycloakGuard,

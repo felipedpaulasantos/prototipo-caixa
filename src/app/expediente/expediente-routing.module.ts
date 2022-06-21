@@ -1,3 +1,4 @@
+import { ConsultarExpedienteComponent } from './consultar-expediente/consultar-expediente.component';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
@@ -12,6 +13,9 @@ const routes: Routes = [
   { path: "",
     component: ExpedienteComponent,
     children: [
+      { path: "consultar",
+        component: ConsultarExpedienteComponent
+      },
       { path: "extinguir",
         component: ExtinguirExpedienteComponent
       },

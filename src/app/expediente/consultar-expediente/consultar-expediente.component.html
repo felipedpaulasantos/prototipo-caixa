@@ -1,0 +1,19 @@
+<h3 class="subtitulo">Consultar expediente</h3>
+
+<form [formGroup]="formConsultarExpediente">
+	<div class="row">
+		<div class="col col-12 col-lg-5 col-xl-4">
+			<div class="card">
+				<div class="card-body">
+					<label class="d-block">Código do Expediente</label>
+					<input class="form-control d-inline-block w-50" appExpedienteMask formControlName="expediente">
+					<button (click)="consultarExpediente()" [disabled]="formConsultarExpediente.invalid" class="btn btn-accent btn-sm ml-3">
+						Consultar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+

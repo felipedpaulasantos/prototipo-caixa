@@ -1,3 +1,4 @@
+import { ExpedienteMaskDirective } from './diretivas/expediente-mask.directive';
 import { HasRoleDirective } from "./diretivas/has-role.directive";
 import { CelularPipe } from "./pipes/celular.pipe";
 import { NgModule } from "@angular/core";
@@ -80,6 +81,7 @@ import { DisableBtnDirective } from "./diretivas/disable-button.directive";
         TimeTransformPipe,
         HasRoleDirective,
         DisableBtnDirective,
+        ExpedienteMaskDirective
     ],
     providers: [
         ControleAcessoService
@@ -116,6 +118,7 @@ import { DisableBtnDirective } from "./diretivas/disable-button.directive";
         HasRoleDirective,
         CaixaComponentsModule,
         DisableBtnDirective,
+        ExpedienteMaskDirective
     ]
 })
 export class SharedModule {
