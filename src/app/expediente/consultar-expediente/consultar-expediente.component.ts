@@ -3,6 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-consultar-expediente',
@@ -13,11 +14,12 @@ export class ConsultarExpedienteComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private interceptorService: InterceptorService
+    private interceptorService: InterceptorService,
+    private toastr: ToastrService
   ) { }
 
   formConsultarExpediente: FormGroup = this.formBuilder.group({
-    expediente: [null, [Validators.required, Validators.minLength(17)]]
+    expediente: ["11.111.11111/1111", [Validators.required, Validators.minLength(17)]]
   });
 
   ngOnInit(): void { }
@@ -25,7 +27,7 @@ export class ConsultarExpedienteComponent implements OnInit {
   consultarExpediente(): void {
     this.interceptorService.setLoadingReqPendente(true);
     setTimeout(() => {
-      alert("Expediente consultado com sucesso");
+      this.toastr.success("Expediente consultado com sucesso");
       this.interceptorService.setLoadingReqPendente(false);
     }, 1000);
   }

@@ -1,7 +1,8 @@
 import { HomeModule } from './home/home.module';
 import { BreadcrumbComponent } from './shared/caixa-components/breadcrumb/breadcrumb.component';
 
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { ToastrModule } from 'ngx-toastr';
 import { KeycloakGuard } from "./keycloak-service/keycloak.guard";
 import { DeactivateGuard } from "./shared/guards/deactivate-guard";
 import { BrowserModule } from "@angular/platform-browser";
@@ -82,6 +83,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         MenuLateralFixoModule,
         PerfectScrollbarModule,
         NgxPaginationModule,
+        ToastrModule.forRoot({
+            positionClass: "toast-bottom-center",
+            preventDuplicates: true
+        }),
         NgxMaskModule.forRoot(maskConfig)
     ],
     providers: [
