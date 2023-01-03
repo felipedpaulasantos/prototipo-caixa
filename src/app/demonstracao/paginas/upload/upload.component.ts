@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from "@angular/core";
-import { FormBuilder, FormControl, Validators } from "@angular/forms";
+import { UntypedFormBuilder, FormControl, Validators } from "@angular/forms";
 import { DataTableDirective } from "angular-datatables";
 
 import { NgxSpinnerService } from "ngx-spinner";
@@ -20,7 +20,7 @@ import { DataTableConfig, DatatableDefaultButtonsList } from "src/app/guia-caixa
 export class UploadComponent implements OnInit, AfterViewInit {
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     private renderer: Renderer2

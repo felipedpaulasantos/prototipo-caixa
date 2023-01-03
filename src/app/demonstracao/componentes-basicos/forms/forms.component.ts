@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
+import { UntypedFormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
 import { ComponentesInterface } from "../../componentes/componentes-interface";
@@ -13,7 +13,7 @@ export class FormsComponent extends ComponentesInterface implements OnInit  {
 
   constructor(
     public toastr: ToastrService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     super(toastr);
   }

@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, OnInit, Input } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
+import { UntypedFormBuilder, Validators } from "@angular/forms";
 
 import { DateValidator } from "../../shared/validators/date.validator";
 
@@ -11,7 +11,7 @@ import { DateValidator } from "../../shared/validators/date.validator";
 export class MessageFilterFormComponent implements OnInit {
 
   constructor(
-    private fb: FormBuilder ) {}
+    private fb: UntypedFormBuilder ) {}
 
   @Input() fields: string[] = [
     "accountId", "dataInicial", "dataFinal",

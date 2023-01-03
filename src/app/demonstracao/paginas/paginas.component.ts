@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormControl, FormGroup } from "@angular/forms";
 import { NgxUiLoaderService } from "ngx-ui-loader";
 import { ExtratoComponent } from "src/app/guia-caixa/components/extrato/extrato/extrato.component";
 import { RandomDataStripe } from "src/app/shared/model/randon-data-stripe";
@@ -14,7 +14,7 @@ export class PaginasComponent implements OnInit {
 
   constructor(
     private ngxLoader: NgxUiLoaderService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private randomService: RandomDataService
   ) { }
 
@@ -22,17 +22,17 @@ export class PaginasComponent implements OnInit {
   extratoTeste: ExtratoComponent;
 
   formTeste = this.fb.group({
-    cpf: new FormControl("39761837840", []),
-    nis: new FormControl("21070628575", []),
-    cnpj: new FormControl("00360305000104", [])
+    cpf: new UntypedFormControl("39761837840", []),
+    nis: new UntypedFormControl("21070628575", []),
+    cnpj: new UntypedFormControl("00360305000104", [])
   });
   cpf = this.formTeste.controls.cpf;
   nis = this.formTeste.controls.nis;
   cnpj = this.formTeste.controls.cnpj;
 
   formCampoUnico = this.fb.group({
-    campoUnico: new FormControl("39761837840", []),
-    tipoCampo: new FormControl("cpf")
+    campoUnico: new UntypedFormControl("39761837840", []),
+    tipoCampo: new UntypedFormControl("cpf")
   });
   campoUnico = this.formCampoUnico.controls.campoUnico;
   tipoCampo = this.formCampoUnico.controls.tipoCampo;

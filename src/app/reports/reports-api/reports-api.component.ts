@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { WhatsappStats } from "../../whatsapp-api/whatsapp-stats";
 import { WhatsappSupport } from "../../whatsapp-api/whatsapp-support";
-import { FormBuilder } from "@angular/forms";
+import { UntypedFormBuilder } from "@angular/forms";
 import { WhatsappApiService } from "src/app/whatsapp-api/whatsapp-api.service";
 
 @Component({
@@ -12,7 +12,7 @@ import { WhatsappApiService } from "src/app/whatsapp-api/whatsapp-api.service";
 export class ReportsApiComponent implements OnInit {
   constructor(
     private whatsappService: WhatsappApiService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {}
 
   isMultiInstance = false;

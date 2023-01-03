@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ContentChild } from "@angular/core";
 import { ComponentesInterface } from "../componentes-interface";
 import { ToastrService } from "ngx-toastr";
-import { FormBuilder, Validators } from "@angular/forms";
+import { UntypedFormBuilder, Validators } from "@angular/forms";
 import { SelectCaixaComponent } from "src/app/guia-caixa/components/select-caixa/select-caixa.component";
 
 
@@ -13,7 +13,7 @@ export class SelectComponent extends ComponentesInterface implements OnInit {
 
   constructor(
     public toastr: ToastrService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     super(toastr);
   }

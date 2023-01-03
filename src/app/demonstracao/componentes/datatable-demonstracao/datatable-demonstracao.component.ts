@@ -5,7 +5,7 @@ import { Subject } from "rxjs";
 import { ComponentesInterface } from "../componentes-interface";
 import { ToastrService } from "ngx-toastr";
 import { DataTableSettings, DataTableConfig, DatatableDefaultButtonsList, DataTableButtons } from "src/app/guia-caixa/components/datatable/datatable-definitions";
-import { FormBuilder } from "@angular/forms";
+import { UntypedFormBuilder } from "@angular/forms";
 import { DataTableComponent } from "src/app/guia-caixa/components/datatable/datatable.component";
 
 import { RandomDataFood } from "src/app/shared/model/random-data-food";
@@ -25,7 +25,7 @@ export class DatatableDemonstracaoComponent extends ComponentesInterface impleme
 
   constructor (
     public toastr: ToastrService,
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
     public randomDataService: RandomDataService,
     public spinner: NgxSpinnerService,
     private cdr: ChangeDetectorRef

@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { CardButtonComponent } from './card-button.component';
 
 export interface CardButtonCheckEvent {
@@ -6,6 +6,6 @@ export interface CardButtonCheckEvent {
 }
 
 export interface CardButtonFormControlData {
-   formGroup: FormGroup;
+   formGroup: UntypedFormGroup;
    formControlName: string;
 }

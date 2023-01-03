@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
+import { UntypedFormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { TimelineItem, TimelineState } from "src/app/guia-caixa/components/timeline/timeline-item";
 import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
@@ -14,7 +14,7 @@ import { TimelineCodeExamples } from "./timeline-code-examples";
 })
 export class TimelineDemonstracaoComponent extends ComponentesInterface implements OnInit {
 
-  constructor(public toastr: ToastrService, private fb: FormBuilder) {
+  constructor(public toastr: ToastrService, private fb: UntypedFormBuilder) {
     super(toastr);
   }
 

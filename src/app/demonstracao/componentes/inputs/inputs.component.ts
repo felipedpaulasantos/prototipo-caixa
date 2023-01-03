@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { DateValidator } from 'src/app/shared/validators/date.validator';
 import { ToastrService } from 'ngx-toastr';
 import { ComponentesInterface } from '../componentes-interface';
@@ -14,7 +14,7 @@ import { ComponentesInterface } from '../componentes-interface';
 export class InputsComponent extends ComponentesInterface {
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     public toastr: ToastrService,
   ) {
     super(toastr);

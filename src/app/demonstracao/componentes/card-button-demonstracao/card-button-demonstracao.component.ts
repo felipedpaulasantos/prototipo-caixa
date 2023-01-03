@@ -1,5 +1,5 @@
 import { Component, ViewChild } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
+import { UntypedFormBuilder } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ToastrService } from "ngx-toastr";
 import { CodeFixedNavItem } from "src/app/shared/components/code-fixed-nav/code-fixed-nav.component";
@@ -15,7 +15,7 @@ export class CardButtonDemonstracaoComponent extends ComponentesInterface {
 
   constructor(
     public toastr: ToastrService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private sanitizer: DomSanitizer
   ) {
     super(toastr);

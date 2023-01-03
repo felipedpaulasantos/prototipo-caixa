@@ -1,5 +1,5 @@
 import { Component, ComponentFactoryResolver, Injector, OnInit } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
+import { UntypedFormBuilder, Validators } from "@angular/forms";
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from "ngx-toastr";
 import { TipografiaComponent } from "../demonstracao/layout/tipografia/tipografia.component";
@@ -23,7 +23,7 @@ interface Resources {
 export class HomeComponent implements OnInit {
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     private modal: ModalService,
