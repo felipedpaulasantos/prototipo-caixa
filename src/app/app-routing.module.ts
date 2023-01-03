@@ -117,8 +117,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
     scrollPositionRestoration: "enabled",
     useHash: true,
-    initialNavigation: 'enabledNonBlocking',
-    relativeLinkResolution: 'legacy'
+    initialNavigation: 'enabledNonBlocking'
 })
   ],
   exports: [RouterModule]
