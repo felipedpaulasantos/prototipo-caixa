@@ -45,7 +45,7 @@
     "jquery": "^3.5.1",
     "ng2-charts": "^4.1.1",
     "ngx-mask": "^15.0.2",
-    "ngx-perfect-scrollbar": "^9.0.0",
+    "ngx-perfect-scrollbar": "^10.1.1",
     "ngx-spinner": "^9.0.2",
     "ngx-toastr": "^12.1.0",
     "ngx-ui-loader": "^9.1.1",
