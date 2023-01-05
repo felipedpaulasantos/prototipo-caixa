@@ -56,7 +56,7 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private drawTable(isInitialDraw = false): void {
-    this.dtElement.dtTrigger.next();
+    this.dtElement.dtTrigger.next(null);
     this.tableElementRef = this.dtElement["el"];
     this.tableElement = this.tableElementRef.nativeElement;
     this.theadElement = this.tableElement.querySelector("thead");

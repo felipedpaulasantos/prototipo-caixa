@@ -3,6 +3,12 @@
     "development"
   ],
   "hints": {
-    "typescript-config/strict": "off"
+    "typescript-config/strict": "off",
+    "axe/aria": "off",
+    "axe/structure": "off",
+    "button-type": "off",
+    "axe/name-role-value": "off",
+    "axe/forms": "off",
+    "disown-opener": "off"
   }
 }

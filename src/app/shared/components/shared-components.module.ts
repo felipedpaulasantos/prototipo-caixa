@@ -3,10 +3,7 @@ import { CommonModule } from "@angular/common";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { RouterModule } from "@angular/router";
 import { HighlightModule } from "ngx-highlightjs";
-import { NgChartsModule } from "ng2-charts";
-import * as ngxMask from "ngx-mask";
 
-import { CustomChartComponent } from "./charts/bar-chart/bar-chart.component";
 import { TooltipIconComponent } from "./tooltip-icon/tooltip-icon.component";
 import { BackButtonComponent } from "./buttons/back-button/back-button.component";
 import { AccordionComponent } from "./accordion/accordion.component";
@@ -19,7 +16,6 @@ import { DocumentacaoApiTableComponent } from './documentacao-api-table/document
 
 @NgModule({
 	declarations: [
-		CustomChartComponent,
 		TooltipIconComponent,
 		BackButtonComponent,
 		AccordionComponent,
@@ -32,14 +28,11 @@ import { DocumentacaoApiTableComponent } from './documentacao-api-table/document
 	imports: [
 		CommonModule,
 		NgxSpinnerModule,
-		ChartsModule,
 		RouterModule,
 		HighlightModule,
-		ngxMask.NgxMaskModule.forChild(),
 		StepperModule
 	],
 	exports: [
-		CustomChartComponent,
 		TooltipIconComponent,
 		BackButtonComponent,
 		AccordionComponent,

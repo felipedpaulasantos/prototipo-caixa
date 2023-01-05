@@ -20,7 +20,6 @@ registerLocaleData(localePt);
 
 import { ErrorsModule } from "./errors/errors.module";
 import { MenuModule } from "./menu/menu.module";
-import { ReportsModule } from "./reports/reports.module";
 import { MessagesModule } from "./messages/messages.module";
 import { OAuthModule } from "angular-oauth2-oidc";
 import { LoaderInterceptor } from "./shared/interceptors/loader.interceptor";
@@ -34,6 +33,7 @@ import { ResizableModule } from "angular-resizable-element";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { IConfig } from "ngx-mask/lib/ngx-mask.config";
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -48,12 +48,10 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       HttpClientModule,
       FormsModule,
       ReactiveFormsModule,
-      //ChartsModule,
       AppRoutingModule,
       CoresModule,
       MenuModule,
       MessagesModule,
-      ReportsModule,
       ErrorsModule,
       SharedModule,
       PerfectScrollbarModule,

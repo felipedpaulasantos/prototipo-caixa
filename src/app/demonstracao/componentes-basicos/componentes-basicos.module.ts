@@ -24,7 +24,6 @@ import { NgSelectModule } from "@ng-select/ng-select";
     FormsModule,
     NgSelectModule,
     ReactiveFormsModule,
-    NgxMaskModule,
     DataTablesModule,
     HighlightModule,
     PerfectScrollbarModule,

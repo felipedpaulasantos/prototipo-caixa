@@ -15,7 +15,7 @@
 @import "~@fortawesome/fontawesome-free/css/all.css";
 @import "~bootstrap-select/dist/css/bootstrap-select.min.css";
 @import "~bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
-@import "~ngx-toastr/toastr.css";
+@import "../node_modules/ngx-toastr/toastr-bs4-alert.scss";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
 // Estilos complementares
@@ -120,8 +120,8 @@ header {
   }
 }
 
-/* 
-  HEADERS 
+/*
+  HEADERS
 */
 
 h1,
@@ -426,7 +426,7 @@ a {
   }
 }
 
-/* 
+/*
   FORMS
 */
 
@@ -579,8 +579,8 @@ th.th-sorting {
   }
 }
 
-/* 
-  Remove setas do Input do tipo Number 
+/*
+  Remove setas do Input do tipo Number
 */
 
 /* Chrome, Safari, Edge, Opera */
@@ -596,8 +596,8 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-/* 
-  Dropdown item 
+/*
+  Dropdown item
 */
 .dropdown-menu {
   box-shadow: var(--cxShadow);
@@ -627,7 +627,7 @@ input[type="number"] {
   }
 }
 
-/* 
+/*
   Tabs e Navs
 */
 
@@ -655,7 +655,7 @@ ul.nav.nav-pills li a {
   &.disabled,
   &:disabled {
     color: var(--cxCancel) !important;
-    
+
   }
 }
 
@@ -743,8 +743,8 @@ ngx-spinner .overlay {
   border: 0;
 }
 
-/* 
-  Bootstrap Select 
+/*
+  Bootstrap Select
 */
 
 .bootstrap-select .dropdown-toggle:focus,
@@ -944,7 +944,7 @@ select {
   opacity: 0.8
 }
 
-/* 
+/*
   CLASSES AUXILIARES
 */
 
@@ -1055,8 +1055,8 @@ select {
   font-family: Futura LT Bold !important;
 }
 
-/* 
-  MENU LATERAL 
+/*
+  MENU LATERAL
 */
 
 #menuLateral {
@@ -1106,7 +1106,7 @@ select {
   white-space: nowrap;
 }
 
-/* 
+/*
   COMPONENTES BASICOS
 */
 
@@ -1331,8 +1331,8 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   display: table-row-group;
 }
 
-/* 
-  ALERT 
+/*
+  ALERT
 */
 
 .alert {
@@ -1446,7 +1446,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
   }
 }
 
-/* 
+/*
   BORDER
 */
 
@@ -1470,15 +1470,15 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 }
 
 
-/* 
-  HIGHLIGHT JS 
+/*
+  HIGHLIGHT JS
 */
 
 .hljs {
   background: var(--cxBackground);
   color: var(--cxContrast);
 }
-.hljs .hljs-name, 
+.hljs .hljs-name,
 .hljs .hljs-attribute {
   color: var(--cxAux);
 }
@@ -1547,7 +1547,7 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
 .subline{
   position:absolute;
   background: var(--cxAccent);
-  height: 3px; 
+  height: 3px;
 }
 .inc{
   animation: increase 2s infinite;

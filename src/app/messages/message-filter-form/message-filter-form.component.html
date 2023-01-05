@@ -20,9 +20,7 @@
                   class="form-control"
                   formControlName="dataInicial"
                   placeholder="dd/mm/aaaa"
-                  mask="00/00/0000"
-                  [showMaskTyped]="true"
-                  [dropSpecialCharacters]="false">
+                  mask="00/00/0000">
               </div>
             </div>
             <div *ngIf="fields && fields.includes('dataFinal')" class="form-group col-sm-4">
@@ -36,15 +34,13 @@
                   class="form-control"
                   formControlName="dataFinal"
                   placeholder="dd/mm/aaaa"
-                  mask="00/00/0000"
-                  [showMaskTyped]="true"
-                  [dropSpecialCharacters]="false">
+                  mask="00/00/0000">
               </div>
             </div>
             <div *ngIf="fields && fields.includes('creator')" class="form-group col-sm-4">
               <label for="creator">Sistema</label>
               <cx-select>
-                <select selectCaixa formControlName="creator">
+                <select selectCaixa formControlName="creator" title="creator">
                     <option value="">Qualquer</option>
                     <option *ngFor="let creator of creators" value="{{ creator }}">
                         {{ creator | uppercase }}

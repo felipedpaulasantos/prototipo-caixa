@@ -16,8 +16,7 @@ import { GuiaCaixaModule } from '../guia-caixa/guia-caixa.module';
     ReactiveFormsModule,
     NgxSpinnerModule,
     SharedComponentsModule,
-    GuiaCaixaModule,
-    NgxMaskModule.forChild()
+    GuiaCaixaModule
   ],
   exports: [
     MessageFilterFormComponent

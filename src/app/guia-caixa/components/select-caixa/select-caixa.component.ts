@@ -4,7 +4,6 @@ import {
 } from "@angular/core";
 import { SelectCaixaDirective } from "./select-caixa.directive";
 import { AbstractControl, NgControl, FormControlName } from "@angular/forms";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
 declare let $: any;
 

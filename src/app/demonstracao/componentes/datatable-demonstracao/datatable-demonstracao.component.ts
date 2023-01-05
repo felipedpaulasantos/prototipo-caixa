@@ -209,7 +209,7 @@ export class DatatableDemonstracaoComponent extends ComponentesInterface impleme
 /*       if (this.table) {
         this.table.reloadTable();
       } */
-      this.dtTrigger.next();
+      this.dtTrigger.next(null);
       this.spinner.hide("global");
     });
   }
