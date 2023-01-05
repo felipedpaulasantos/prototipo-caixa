@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DataTablesModule } from "angular-datatables";
 
 import { HighlightModule } from "ngx-highlightjs";
-import { NgxMaskModule } from "ngx-mask";
+import * as ngxMask from "ngx-mask";
 import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 import { SharedModule } from "src/app/shared/shared.module";
 import { GuiaCaixaModule } from "src/app/guia-caixa/guia-caixa.module";

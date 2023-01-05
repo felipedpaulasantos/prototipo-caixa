@@ -4,8 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS  } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
-import { ChartsModule } from "ng2-charts";
-import { NgxMaskModule, IConfig } from "ngx-mask";
+
 import { AppRoutingModule } from "./app-routing.module";
 import { DataTablesModule } from "angular-datatables";
 import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
@@ -49,7 +48,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       HttpClientModule,
       FormsModule,
       ReactiveFormsModule,
-      ChartsModule,
+      //ChartsModule,
       AppRoutingModule,
       CoresModule,
       MenuModule,
@@ -64,7 +63,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       NgxSpinnerModule,
       NgSelectModule,
       NgxUiLoaderModule,
-      NgxMaskModule.forRoot(),
+      //NgxMaskModule.forRoot(),
       OAuthModule.forRoot(),
       ToastrModule.forRoot({
         timeOut: 5000,

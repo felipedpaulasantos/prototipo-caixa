@@ -353,9 +353,9 @@ export class GlobalThemes {
    static getThemes(): GlobalThemes[] {
 		const temas: GlobalThemes[] = [];
 		Object.getOwnPropertyNames(GlobalThemes).forEach((theme: any) => {
-         const tema = GlobalThemes[theme];
-			if (tema && tema.value) {
-				temas.push(tema);
+      const tema: any = <unknown>GlobalThemes[theme as keyof Object];
+			if (tema && <unknown>tema.value) {
+				temas.push(<GlobalThemes>tema);
 			}
 		});
 		return temas;

@@ -7,7 +7,7 @@ import { ComponentesRoutingModule } from "./componentes-routing.module";
 import { MensagensComponent } from "../componentes-basicos/mensagens/mensagens.component";
 import { InputsComponent } from "./inputs/inputs.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { NgxMaskModule } from "ngx-mask";
+import * as ngxMask from "ngx-mask";
 import { DatatableDemonstracaoComponent } from "./datatable-demonstracao/datatable-demonstracao.component";
 import { DataTablesModule } from "angular-datatables";
 import { HighlightModule } from "ngx-highlightjs";

@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { PaginasComponent } from "./paginas.component";
 import { SharedModule } from "src/app/shared/shared.module";
-import { NgxMaskModule } from "ngx-mask";
+import * as ngxMask from "ngx-mask";
 import { GuiaCaixaModule } from "src/app/guia-caixa/guia-caixa.module";
 import { UploadComponent } from "./upload/upload.component";
 import { DataTablesModule } from "angular-datatables";

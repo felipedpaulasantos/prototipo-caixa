@@ -3,8 +3,8 @@ import { CommonModule } from "@angular/common";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { RouterModule } from "@angular/router";
 import { HighlightModule } from "ngx-highlightjs";
-import { ChartsModule } from "ng2-charts";
-import { NgxMaskModule } from "ngx-mask";
+import { NgChartsModule } from "ng2-charts";
+import * as ngxMask from "ngx-mask";
 
 import { CustomChartComponent } from "./charts/bar-chart/bar-chart.component";
 import { TooltipIconComponent } from "./tooltip-icon/tooltip-icon.component";
@@ -35,7 +35,7 @@ import { DocumentacaoApiTableComponent } from './documentacao-api-table/document
 		ChartsModule,
 		RouterModule,
 		HighlightModule,
-		NgxMaskModule.forChild(),
+		ngxMask.NgxMaskModule.forChild(),
 		StepperModule
 	],
 	exports: [

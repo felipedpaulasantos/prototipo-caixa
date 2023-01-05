@@ -1,7 +1,7 @@
 import { DOCUMENT } from "@angular/common";
 import { Inject, Injectable, Renderer2, RendererFactory2 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { GlobalThemes } from "../model/global-style";
+import { GlobalTheme, GlobalThemes } from "../model/global-style";
 
 @Injectable({
   providedIn: "root"
@@ -28,7 +28,7 @@ export class StyleService {
   private currentGlobalStyleSource = new BehaviorSubject<GlobalThemes>(null);
   public currentGlobalStyle$ = this.currentGlobalStyleSource.asObservable();
 
-  private currentFontSizeSource = new BehaviorSubject<string>(null);
+  private currentFontSizeSource = new BehaviorSubject<string>("");
   public currentFontSize$ = this.currentFontSizeSource.asObservable();
 
   public setDefaultStyle(): void {
@@ -39,7 +39,7 @@ export class StyleService {
     this.setFontSize(bodyFontSize);
 
     let themeName = this.getLocalStorageValue(this.GLOBAL_THEME);
-    if (!themeName || !GlobalThemes[themeName]) {
+    if (!themeName || !GlobalThemes[themeName as keyof Object]) {
       themeName = this.DEFAULT_GLOBAL_THEME_NAME;
     }
     this.setGlobalTheme(themeName);
@@ -53,7 +53,7 @@ export class StyleService {
 
   public setGlobalTheme(tema: string) {
     const body = this.document.body;
-    const globalTheme: GlobalThemes = GlobalThemes[tema];
+    const globalTheme: GlobalThemes = <any>GlobalThemes[tema as keyof Object];
     const theme = globalTheme.value.theme;
     let color = "";
     for (const prop in theme) {
@@ -82,7 +82,7 @@ export class StyleService {
     root.style.setProperty(name, value);
   }
 
-  private getLocalStorageValue(name: string): string {
+  private getLocalStorageValue(name: string): string | null {
     return window.localStorage.getItem(name);
   }
 

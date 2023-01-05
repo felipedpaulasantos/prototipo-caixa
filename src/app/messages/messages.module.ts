@@ -5,7 +5,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { SharedComponentsModule } from '../shared/components/shared-components.module';
 import { MessageFilterFormComponent } from './message-filter-form/message-filter-form.component';
-import { NgxMaskModule } from 'ngx-mask';
+import * as ngxMask from "ngx-mask";
 import { GuiaCaixaModule } from '../guia-caixa/guia-caixa.module';
 
 @NgModule({
