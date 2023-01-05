@@ -16,6 +16,7 @@ import { TimelineModule } from "./components/timeline/timeline.module";
 import { CaixaDatatableModule } from "./components/datatable/caixa-datatable.module";
 import { ButtonControlModule } from "./components/button-control/button-control.module";
 import { ExtratoModule } from './components/extrato/extrato.module';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 
 

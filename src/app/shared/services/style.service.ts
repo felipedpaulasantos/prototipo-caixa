@@ -19,7 +19,7 @@ export class StyleService {
 
   readonly BODY_FONT_SIZE = "bodyFontSize";
   readonly BODY_FONT_SIZE_CSS = "--cxBodyFontSize";
-  readonly DEFAULT_BODY_FONT_SIZE = "13px";
+  readonly DEFAULT_BODY_FONT_SIZE = "14px";
   readonly BODY_BG_COLOR = "bodyBgColor";
   readonly BODY_TEXT_COLOR = "bodyTextColor";
   readonly GLOBAL_THEME = "globalTheme";

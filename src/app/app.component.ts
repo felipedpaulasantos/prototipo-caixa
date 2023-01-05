@@ -8,6 +8,7 @@ import { UserService } from "./authentication/users/user.service";
 import { SideMenuService } from "./menu/side-menu/side-menu.service";
 import { GuiaCaixaStyleService, Tema } from "./guia-caixa/services/style-guia-caixa.service";
 import { UrlRedirectService } from "./shared/services/url-redirect.service";
+import { NgxSpinnerService, Spinner } from "ngx-spinner";
 
 
 @Component({
@@ -25,7 +26,8 @@ export class AppComponent implements OnInit {
     public menuService: SideMenuService,
     public userService: UserService,
     public styleService: GuiaCaixaStyleService,
-    public redirectService: UrlRedirectService
+    public redirectService: UrlRedirectService,
+    private spinner: NgxSpinnerService
   ) {
     // this.authService.initSSO();
   }

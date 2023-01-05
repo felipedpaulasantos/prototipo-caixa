@@ -23,7 +23,7 @@
 @import "animations";
 
 :root {
-  --cxBodyFontSize: $cx-font-13;
+  --cxBodyFontSize: $cx-font-14;
 
   --cxFontFamilyNormal: "Futura LT Book";
   --cxFontFamilyBold: "Futura LT Bold";
@@ -728,6 +728,7 @@ ngx-spinner .overlay {
   > div {
     max-height: 3.846rem !important;
     max-width: 3.846rem !important;
+    border-width: 6px;
   }
 }
 
