@@ -63,4 +63,8 @@ export class AppComponent implements OnInit {
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData["animation"];
   }
+
+  teste() {
+    console.log("clicou");
+  }
 }

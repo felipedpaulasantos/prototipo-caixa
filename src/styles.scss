@@ -1,7 +1,7 @@
 @use "sass:map";
 
 /* Fontes */
-@import "./assets/fonts/style.css";
+@import "./assets/fonts/fonts.css";
 
 /* Overriden Bootstrap variables */
 @import "./styles/bootstrap-variables-override";
@@ -1256,56 +1256,56 @@ li.active > .top-menu > .menu-item > .menu-item-caret > i.fa-chevron-down {
       width: 40px;
     }
   }
-  .submenu {
-    background-color: var(--cxTransparentContrast025);
-    border: solid 1px var(--cxAux);
-    overflow: hidden;
-    transition: 0.2s ease;
-    list-style: none;
-    padding-left: 0;
-    position: absolute;
-    width: 264px;
-    top: 0;
-    right: -160%;
-    .submenu-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 4.15rem;
-      background-color: var(--cxBase);
-      border-bottom: solid 1px var(--cxAux);
-    }
-    .menu-item-open-icon {
-      display: none;
-    }
-    .menu-item-close-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      flex-grow: 1;
-    }
-    .menu-item-caret,
-    .menu-item-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      width: 40px;
-    }
-    .menu-item-name {
-      display: flex;
-      align-items: center;
-      justify-self: start;
-      height: 100%;
-      width: 50%;
-      flex-grow: 1;
-      word-break: normal;
-    }
-    .submenu .menu-item {
-      padding-left: 1rem;
-    }
-  }
+  // .submenu {
+  //   background-color: var(--cxTransparentContrast025);
+  //   border: solid 1px var(--cxAux);
+  //   overflow: hidden;
+  //   transition: 0.2s ease;
+  //   list-style: none;
+  //   padding-left: 0;
+  //   position: absolute;
+  //   width: 264px;
+  //   top: 0;
+  //   right: -160%;
+  //   .submenu-title {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     height: 4.15rem;
+  //     background-color: var(--cxBase);
+  //     border-bottom: solid 1px var(--cxAux);
+  //   }
+  //   .menu-item-open-icon {
+  //     display: none;
+  //   }
+  //   .menu-item-close-icon {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     height: 100%;
+  //     flex-grow: 1;
+  //   }
+  //   .menu-item-caret,
+  //   .menu-item-icon {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     height: 100%;
+  //     width: 40px;
+  //   }
+  //   .menu-item-name {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-self: start;
+  //     height: 100%;
+  //     width: 50%;
+  //     flex-grow: 1;
+  //     word-break: normal;
+  //   }
+  //   .submenu .menu-item {
+  //     padding-left: 1rem;
+  //   }
+  // }
 }
 
 .submenu {

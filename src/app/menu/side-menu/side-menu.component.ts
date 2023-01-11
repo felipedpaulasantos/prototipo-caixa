@@ -183,6 +183,11 @@ export class SideMenuComponent implements OnInit, OnDestroy {
     this.menus = JSON.parse(JSON.stringify(filteredMenus));
   }
 
+  openIfCollapsed() {
+    console.log("mouse over");
+    if (!this.isAberto) this.menuService.abrir();
+  }
+
   ngOnDestroy() {
     this.resolverSub.unsubscribe();
     this.clearComponent();

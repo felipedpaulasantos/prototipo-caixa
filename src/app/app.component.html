@@ -7,7 +7,7 @@
 <main>
   <app-side-menu></app-side-menu>
 
-  <section id="conteudoPrincipal" [ngClass]="{'sidemenu-hidden': !isMenuAberto}">
+  <section id="conteudoPrincipal" [ngClass]="{'sidemenu-hidden': !isMenuAberto}" (click)="teste()">
     <div id="mobileBackdrop"
       (click)="menuService.fechar()"
       [ngClass]="{'sidemenu-shown': isMenuAberto}">
