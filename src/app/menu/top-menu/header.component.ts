@@ -10,6 +10,7 @@ import { GuiaCaixaStyleService, Tema } from "src/app/guia-caixa/services/style-g
 import { LOGO_CAIXA_BRANCO_SRC, LOGO_COMPLETO_BRANCO_SRC, Meses } from "src/app/guia-caixa/constants/constants";
 import { StyleService } from "src/app/shared/services/style.service";
 import { GlobalThemeVariables, GlobalThemes, GlobalTheme } from "src/app/shared/model/global-style";
+import { SideMenuStatus } from "../side-menu/side-menu-status";
 
 @Component({
   selector: "app-header",
@@ -26,7 +27,8 @@ export class HeaderComponent implements OnInit {
   @Input() resources;
   user$ = new Observable<User>(null);
   user: User;
-  isMenuAberto: boolean;
+  isMenuAberto: SideMenuStatus;
+  readonly menuStatus = SideMenuStatus;
   dataHora: string;
 
   currentFontSize: string;
@@ -83,7 +85,6 @@ export class HeaderComponent implements OnInit {
     const temaAtual = this.currentTheme.value.theme;
     const headerBgVariableValue = this.styleService.getCssVariableValue("--cxHeaderBgColor");
     if (headerBgVariableValue === this.styleService.getCssVariableValue(temaAtual.cxHeaderBgColor)) {
-      console.log("IGUAL", headerBgVariableValue, temaAtual.cxHeaderBgColor);
       this.styleService.setCssVariable(
         "--cxHeaderBgColor",
         "linear-gradient(90deg, #005CA9 40%, #54BBAB 100%)"
@@ -95,7 +96,6 @@ export class HeaderComponent implements OnInit {
         this.styleService.getCssVariableValue(temaAtual.cxHeaderBgColor)
       );
     }
-    console.log("HEADER BG COLOR", this.styleService.getCssVariableValue(temaAtual.cxHeaderBgColor));
   }
 
   showLogoutModal() {

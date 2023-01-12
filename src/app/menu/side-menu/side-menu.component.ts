@@ -9,14 +9,14 @@ import { AccordionConfig } from "src/app/shared/components/accordion/types/accor
 import { AccordionMenu } from "src/app/shared/components/accordion/types/accordion-menu";
 import { GuiaCaixaStyleService, Tema } from "src/app/guia-caixa/services/style-guia-caixa.service";
 import { mockedSideMenuItems } from "src/app/shared/constants";
+import { SideMenuStatus } from "./side-menu-status";
 
 const MENU_ROUTE_PROPERTY = "menuLateral";
 const MOBILE_BREAKPOINT = 991.9;
 
 @Component({
   selector: "app-side-menu",
-  templateUrl: "./side-menu.component.html",
-  styleUrls: ["./side-menu.component.scss"]
+  templateUrl: "./side-menu.component.html"
 })
 export class SideMenuComponent implements OnInit, OnDestroy {
 
@@ -40,8 +40,8 @@ export class SideMenuComponent implements OnInit, OnDestroy {
   inputSearch: ElementRef;
 
   larguraTela: number;
-  isAberto: boolean;
-
+  isAberto: SideMenuStatus;
+  readonly menuStatus = SideMenuStatus;
   componenteParaInjetar: any;
   injectorComponentParaInjetar: Injector;
 
@@ -55,7 +55,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.larguraTela = window.innerWidth;
 
-    this.menuService.isAberto$.subscribe((isAberto: boolean) => {
+    this.menuService.isAberto$.subscribe((isAberto: SideMenuStatus) => {
       this.isAberto = isAberto;
     });
 
@@ -75,7 +75,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
 
   fecharSeMobile() {
     if (this.larguraTela <= MOBILE_BREAKPOINT) {
-      this.menuService.fechar();
+      this.menuService.esconder();
     }
   }
 

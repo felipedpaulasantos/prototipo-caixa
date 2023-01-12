@@ -3,6 +3,7 @@ import { BehaviorSubject, Subject } from "rxjs";
 import { AccordionMenu } from "src/app/shared/components/accordion/types/accordion-menu";
 import { mockedSideMenuItems } from "src/app/shared/constants";
 import { ContextoInjecaoComponente } from "./contexto-injecao-componente";
+import { SideMenuStatus } from "./side-menu-status";
 
 @Injectable({
   providedIn: "root"
@@ -16,22 +17,29 @@ export class SideMenuService {
   private contextoInjecaoSource = new Subject<ContextoInjecaoComponente>();
   contextoInjecao$ = this.contextoInjecaoSource.asObservable();
 
-  private abertoSource = new BehaviorSubject<boolean>(false);
+  private abertoSource = new BehaviorSubject<SideMenuStatus>(SideMenuStatus.ABERTO);
   isAberto$ = this.abertoSource.asObservable();
 
   private menuItemsSource = new BehaviorSubject<AccordionMenu[]>(this.menus);
   menuItems$ = this.menuItemsSource.asObservable();
 
   public trocar() {
-    this.abertoSource.next(!this.abertoSource.value);
+    const novoStatus = this.abertoSource.value == SideMenuStatus.ABERTO
+      ? SideMenuStatus.REDUZIDO
+      : SideMenuStatus.ABERTO
+    this.abertoSource.next(novoStatus);
   }
 
   public abrir() {
-    this.abertoSource.next(true);
+    this.abertoSource.next(SideMenuStatus.ABERTO);
   }
 
   public fechar() {
-    this.abertoSource.next(false);
+    this.abertoSource.next(SideMenuStatus.REDUZIDO);
+  }
+
+  public esconder() {
+    this.abertoSource.next(SideMenuStatus.ESCONDIDO);
   }
 
   public receberContexto(resolver: ComponentFactoryResolver, injector: Injector, componenteParaInjetar?: any) {

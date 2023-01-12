@@ -9,6 +9,7 @@ import { SideMenuService } from "./menu/side-menu/side-menu.service";
 import { GuiaCaixaStyleService, Tema } from "./guia-caixa/services/style-guia-caixa.service";
 import { UrlRedirectService } from "./shared/services/url-redirect.service";
 import { NgxSpinnerService, Spinner } from "ngx-spinner";
+import { SideMenuStatus } from "./menu/side-menu/side-menu-status";
 
 
 @Component({
@@ -32,16 +33,15 @@ export class AppComponent implements OnInit {
     // this.authService.initSSO();
   }
 
-  isMenuAberto = false;
+  isMenuAberto = SideMenuStatus.ABERTO;
+  readonly menuStatus = SideMenuStatus;
   hasAccount = true;
   temaGlobal: Tema;
   routeParams: Params;
 
   ngOnInit(): void {
     this.setPageTitleAsRoute();
-    this.menuService.isAberto$.subscribe(isAberto => {
-      this.isMenuAberto = isAberto;
-    });
+    this.menuService.isAberto$.subscribe(isAberto => this.isMenuAberto = isAberto);
     this.styleService.globalTheme$.subscribe(tema => this.temaGlobal = tema);
   }
 
@@ -62,9 +62,5 @@ export class AppComponent implements OnInit {
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData["animation"];
-  }
-
-  teste() {
-    console.log("clicou");
   }
 }
