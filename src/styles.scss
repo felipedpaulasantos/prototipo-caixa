@@ -6,6 +6,8 @@
 /* Overriden Bootstrap variables */
 @import "./styles/bootstrap-variables-override";
 
+@import "./styles/layout";
+
 // Bootstrap and its default variables
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/bootstrap";
@@ -1219,67 +1221,6 @@ $value in $cx-text-opacities {
 
 .font-fam-bold {
   font-family: Futura LT Bold !important;
-}
-
-/*
-  MENU LATERAL
-*/
-
-#menuLateral {
-  background-color: var(--cxSidemenuBgColor);
-  color: var(--cxSidemenuTextColor);
-  width: 90vw;
-  position: fixed;
-  top: 64px;
-  left: 0;
-  bottom: 0;
-  transition: 0.5s;
-  z-index: 999;
-  max-height: calc(100% - 64px);
-  box-shadow: var(--cxShadowLg);
-  margin-left: 0;
-  visibility: visible;
-}
-
-#menuLateral.reduzido {
-  margin-left: -900px;
-  visibility: hidden;
-}
-
-#menuLateral.escondido {
-  margin-left: -900px;
-  visibility: hidden;
-}
-
-@media (min-width: 768px) {
-  #menuLateral {
-    width: 70vw;
-    max-width: 70vw;
-  }
-}
-
-
-@media (min-width: 992px) {
-  #menuLateral {
-    width: 264px;
-    max-width: 264px;
-  }
-
-  #menuLateral.reduzido {
-    margin-left: 0;
-    visibility: visible;
-    width: 165px;
-    max-width: 165px;
-  }
-
-  #menuLateral.escondido {
-    width: 165px;
-    max-width: 165px;
-  }
-}
-
-#botaoSipan {
-  white-space: nowrap;
 }
 
 /*

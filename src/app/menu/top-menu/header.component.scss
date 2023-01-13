@@ -1,19 +1,23 @@
 #spanLogo {
-  width: 165px;
-  max-width: 165px;
+  min-width: 5rem;
+  max-width: 5rem;
   transition: 0.5s;
 }
-#spanLogo.menu-is-aberto {
-  width: 264px;
-  max-width: 264px;
+
+@media (min-width: 768px) {
+  #spanLogo {
+    min-width: 15rem;
+    max-width: 15rem;
+  }
 }
 
 .img-logo {
   min-width: 3rem;
   max-height: 2.1rem;
 }
+
 .logo-title {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .notification-container {
@@ -26,11 +30,12 @@
   background-color: #fa3e3e;
   border-radius: 0.9rem;
   color: white;
- 
+
   padding: 0.1rem 0.3rem;
   font-size: 0.9rem;
-  
-  position: absolute; /* Position the badge within the relatively positioned button */
+
+  position: absolute;
+  /* Position the badge within the relatively positioned button */
   top: -5px;
   right: -5px;
 }
@@ -48,7 +53,7 @@
 }
 
 .sidemenu-collapse-icon {
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   padding: 1.5rem;

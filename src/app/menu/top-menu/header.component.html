@@ -7,7 +7,7 @@
     <div id="spanLogo" class="h-100" [ngClass]="{'menu-is-aberto': isMenuAberto == menuStatus.ABERTO}">
       <div (dblclick)="toggleHeaderBackground()" class="d-flex align-items-center h-100">
         <img [src]="isMenuAberto == menuStatus.ABERTO ? logoCompletoBranco : logoXBranco"
-          class="img-fluid img-logo rounded mx-auto" alt="Logotipo">
+          class="img-fluid img-logo rounded" alt="Logotipo">
       </div>
     </div>
 
@@ -57,8 +57,8 @@
     </div>
 
     <button class="btn btn-link border mx-4">
-      <i class="fa fa-sign-out-alt fa-lg mr-2"></i>
-      <span class="text-uppercase font-fam-bold">Sair</span>
+      <i class="fa fa-sign-out-alt fa-lg mr-sm-0 mr-md-2"></i>
+      <span class="text-uppercase font-fam-bold d-none d-md-inline-block">Sair</span>
     </button>
 
   </nav>
