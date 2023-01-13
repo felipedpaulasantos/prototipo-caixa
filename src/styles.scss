@@ -1237,43 +1237,44 @@ $value in $cx-text-opacities {
   z-index: 999;
   max-height: calc(100% - 64px);
   box-shadow: var(--cxShadowLg);
+  margin-left: 0;
+  visibility: visible;
 }
 
 #menuLateral.reduzido {
-  margin-left: -500px;
+  margin-left: -900px;
   visibility: hidden;
 }
 
 #menuLateral.escondido {
-  margin-left: -500px;
+  margin-left: -900px;
   visibility: hidden;
 }
 
 @media (min-width: 768px) {
   #menuLateral {
-    width: 50%;
-    max-width: 50%;
-  }
-
-  #menuLateral.reduzido {
-    margin-left: -500px;
-    visibility: hidden;
-  }
-
-  #menuLateral.escondido {
-    margin-left: -500px;
-    visibility: hidden;
+    width: 70vw;
+    max-width: 70vw;
   }
 }
 
+
 @media (min-width: 992px) {
   #menuLateral {
+    width: 264px;
     max-width: 264px;
   }
 
+  #menuLateral.reduzido {
+    margin-left: 0;
+    visibility: visible;
+    width: 165px;
+    max-width: 165px;
+  }
+
   #menuLateral.escondido {
-    margin-left: -302px;
-    visibility: hidden;
+    width: 165px;
+    max-width: 165px;
   }
 }
 
