@@ -3,7 +3,7 @@ import { BehaviorSubject, Subject } from "rxjs";
 import { AccordionMenu } from "src/app/shared/components/accordion/types/accordion-menu";
 import { mockedSideMenuItems } from "src/app/shared/constants";
 import { ContextoInjecaoComponente } from "./contexto-injecao-componente";
-import { SideMenuStatus } from "./side-menu-status";
+import { SideMenuStatus } from "./sidemenu-status";
 
 @Injectable({
   providedIn: "root"

@@ -5,11 +5,11 @@ import { switchMap, map, filter, tap } from "rxjs/operators";
 
 import { fadeInAnimation } from "./shared/animations/simple-fade.animation";
 import { UserService } from "./authentication/users/user.service";
-import { SideMenuService } from "./menu/side-menu/side-menu.service";
+import { SideMenuService } from "./menu/sidemenu/sidemenu.service";
 import { GuiaCaixaStyleService, Tema } from "./guia-caixa/services/style-guia-caixa.service";
 import { UrlRedirectService } from "./shared/services/url-redirect.service";
 import { NgxSpinnerService, Spinner } from "ngx-spinner";
-import { SideMenuStatus } from "./menu/side-menu/side-menu-status";
+import { SideMenuStatus } from "./menu/sidemenu/sidemenu-status";
 
 
 @Component({

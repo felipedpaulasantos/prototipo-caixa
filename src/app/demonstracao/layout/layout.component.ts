@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UntypedFormBuilder } from "@angular/forms";
 import { LOGO_CAIXA_BRANCO_SRC, LOGO_CAIXA_SRC, LOGO_COMPLETO_SRC, LOGO_COMPLETO_BRANCO_SRC, BootstrapTheme, GradientTheme } from "src/app/guia-caixa/constants/constants";
 import { GuiaCaixaStyleService, Tema } from "src/app/guia-caixa/services/style-guia-caixa.service";
-import { SideMenuService } from "src/app/menu/side-menu/side-menu.service";
+import { SideMenuService } from "src/app/menu/sidemenu/sidemenu.service";
 
 @Component({
   selector: "app-layout",

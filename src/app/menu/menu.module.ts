@@ -4,12 +4,12 @@ import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
 import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 
-import { HeaderComponent } from "./top-menu/header.component";
-import { SideMenuComponent } from "./side-menu/side-menu.component";
+import { HeaderComponent } from "./header/header.component";
+
 import { SharedModule } from "../shared/shared.module";
 import { FooterComponent } from "./footer/footer.component";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
-import { BuscaMenuModule } from "./busca-menu/busca-menu.module";
+import { SideMenuComponent } from "./sidemenu/sidemenu.component";
 
 
 
@@ -22,14 +22,12 @@ import { BuscaMenuModule } from "./busca-menu/busca-menu.module";
   ],
   imports: [
     CommonModule,
-    BuscaMenuModule,
     RouterModule,
     SharedModule,
     ReactiveFormsModule,
     PerfectScrollbarModule
   ],
   exports: [
-    BuscaMenuModule,
     HeaderComponent,
     SideMenuComponent,
     FooterComponent,

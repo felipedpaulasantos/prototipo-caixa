@@ -5,12 +5,12 @@ import { Observable } from "rxjs";
 import { UserService } from "../../authentication/users/user.service";
 import { User } from "../../authentication/users/user";
 import { ModalService } from "src/app/guia-caixa/services/modal.service";
-import { SideMenuService } from "../side-menu/side-menu.service";
+import { SideMenuService } from "../sidemenu/sidemenu.service";
 import { GuiaCaixaStyleService, Tema } from "src/app/guia-caixa/services/style-guia-caixa.service";
 import { LOGO_CAIXA_BRANCO_SRC, LOGO_COMPLETO_BRANCO_SRC, Meses } from "src/app/guia-caixa/constants/constants";
 import { StyleService } from "src/app/shared/services/style.service";
 import { GlobalThemeVariables, GlobalThemes, GlobalTheme } from "src/app/shared/model/global-style";
-import { SideMenuStatus } from "../side-menu/side-menu-status";
+import { SideMenuStatus } from "../sidemenu/sidemenu-status";
 
 @Component({
   selector: "app-header",

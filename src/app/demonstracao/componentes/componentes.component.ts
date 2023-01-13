@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { SideMenuService } from "src/app/menu/side-menu/side-menu.service";
+import { SideMenuService } from "src/app/menu/sidemenu/sidemenu.service";
 
 @Component({
   selector: "app-componentes",

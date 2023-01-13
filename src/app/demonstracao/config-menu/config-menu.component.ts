@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { DataTableConfig } from "src/app/guia-caixa/components/datatable/datatable-definitions";
-import { SideMenuService } from "src/app/menu/side-menu/side-menu.service";
+import { SideMenuService } from "src/app/menu/sidemenu/sidemenu.service";
 import { AccordionMenu } from "src/app/shared/components/accordion/types/accordion-menu";
 
 @Component({
